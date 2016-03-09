@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7eT-UX-jiu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--阅读话题-->
+        <scene sceneID="Idv-t6-Gs6">
+            <objects>
+                <viewController title="阅读话题" id="7eT-UX-jiu" customClass="WTTopicDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uk1-dC-aQ0"/>
+                        <viewControllerLayoutGuide type="bottom" id="RRQ-3z-lHK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QNC-1n-JV9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2TX-g9-ng4" userLabel="Normal View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-4Z-bXl">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7eT-UX-jiu" id="ulJ-Pn-pjB"/>
+                                            <outlet property="delegate" destination="7eT-UX-jiu" id="aUO-LB-goa"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yPj-4Z-bXl" secondAttribute="bottom" id="FPo-6k-nRh"/>
+                                    <constraint firstItem="yPj-4Z-bXl" firstAttribute="leading" secondItem="2TX-g9-ng4" secondAttribute="leading" id="HQ2-A7-MY2"/>
+                                    <constraint firstItem="yPj-4Z-bXl" firstAttribute="top" secondItem="2TX-g9-ng4" secondAttribute="top" id="U50-aj-6oE"/>
+                                    <constraint firstAttribute="trailing" secondItem="yPj-4Z-bXl" secondAttribute="trailing" id="ptc-JP-VOV"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfC-rt-HLe" userLabel="Login View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiH-Ph-vHE">
+                                        <rect key="frame" x="232" y="435" width="135" height="30"/>
+                                        <state key="normal" title="查看本主题需要登录">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonClick" destination="7eT-UX-jiu" eventType="touchUpInside" id="uMd-xK-q82"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-OL-vzS">
+                                        <rect key="frame" x="150" y="105" width="300" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="pkr-P4-rdy"/>
+                                            <constraint firstAttribute="height" constant="250" id="vyZ-m5-oQq"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="EiH-Ph-vHE" firstAttribute="top" secondItem="mJF-OL-vzS" secondAttribute="bottom" constant="80" id="6UT-Jh-4ua"/>
+                                    <constraint firstItem="EiH-Ph-vHE" firstAttribute="centerX" secondItem="sfC-rt-HLe" secondAttribute="centerX" id="AKF-lg-8Xn"/>
+                                    <constraint firstItem="EiH-Ph-vHE" firstAttribute="centerY" secondItem="sfC-rt-HLe" secondAttribute="centerY" constant="150" id="JUI-2j-xcK"/>
+                                    <constraint firstItem="mJF-OL-vzS" firstAttribute="centerX" secondItem="sfC-rt-HLe" secondAttribute="centerX" id="zF9-R4-11t"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2TX-g9-ng4" firstAttribute="leading" secondItem="QNC-1n-JV9" secondAttribute="leading" id="8hM-mI-gm7"/>
+                            <constraint firstItem="RRQ-3z-lHK" firstAttribute="top" secondItem="2TX-g9-ng4" secondAttribute="bottom" id="F2s-Tu-YYw"/>
+                            <constraint firstItem="2TX-g9-ng4" firstAttribute="top" secondItem="QNC-1n-JV9" secondAttribute="top" id="G5Q-Ax-pQ6"/>
+                            <constraint firstAttribute="trailing" secondItem="sfC-rt-HLe" secondAttribute="trailing" id="Oh5-br-ul2"/>
+                            <constraint firstAttribute="trailing" secondItem="2TX-g9-ng4" secondAttribute="trailing" id="QMw-CZ-gGb"/>
+                            <constraint firstItem="RRQ-3z-lHK" firstAttribute="top" secondItem="sfC-rt-HLe" secondAttribute="bottom" id="Rgi-pc-m0E"/>
+                            <constraint firstItem="sfC-rt-HLe" firstAttribute="top" secondItem="Uk1-dC-aQ0" secondAttribute="bottom" id="ULe-d8-sc4"/>
+                            <constraint firstAttribute="trailing" secondItem="sfC-rt-HLe" secondAttribute="trailing" id="W3R-6s-sbR"/>
+                            <constraint firstAttribute="bottom" secondItem="sfC-rt-HLe" secondAttribute="bottom" id="WgS-Q8-AUl"/>
+                            <constraint firstAttribute="bottom" secondItem="2TX-g9-ng4" secondAttribute="bottom" id="Y92-1G-0fx"/>
+                            <constraint firstItem="sfC-rt-HLe" firstAttribute="leading" secondItem="QNC-1n-JV9" secondAttribute="leading" id="Zh2-EA-hFK"/>
+                            <constraint firstItem="sfC-rt-HLe" firstAttribute="top" secondItem="QNC-1n-JV9" secondAttribute="top" id="fdY-HA-PZA"/>
+                            <constraint firstItem="sfC-rt-HLe" firstAttribute="leading" secondItem="QNC-1n-JV9" secondAttribute="leading" id="ktd-pd-ZLJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Oh5-br-ul2"/>
+                                <exclude reference="ULe-d8-sc4"/>
+                                <exclude reference="ktd-pd-ZLJ"/>
+                                <exclude reference="F2s-Tu-YYw"/>
+                                <exclude reference="Rgi-pc-m0E"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="loginView" destination="sfC-rt-HLe" id="tnU-3k-lsw"/>
+                        <outlet property="normalView" destination="2TX-g9-ng4" id="uqU-kC-2ws"/>
+                        <outlet property="tableView" destination="yPj-4Z-bXl" id="nXI-2R-Zjm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UqJ-rQ-KWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850" y="-22"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="login-logo" width="200" height="200"/>
+    </resources>
+</document>
