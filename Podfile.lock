@@ -30,6 +30,7 @@ PODS:
   - SDWebImage/Core (3.7.5)
   - SVProgressHUD (1.1.3)
   - TYAttributedLabel (2.5.6)
+  - UITableView+FDTemplateLayoutCell (1.4)
   - YYCategories (1.0):
     - YYCategories/no-arc (= 1.0)
   - YYCategories/no-arc (1.0)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - SDWebImage
   - SVProgressHUD
   - TYAttributedLabel
+  - UITableView+FDTemplateLayoutCell
   - YYCategories
   - YYText
 
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   TYAttributedLabel: 251d4cb2bf35813815d0ad632b3e56ba626c6b01
+  UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
   YYCategories: 08fccb29097e711091d828cdf77a2066ad8ba806
   YYText: 29ebca1380349ce9bb8da62c82865254c1f703e3
 

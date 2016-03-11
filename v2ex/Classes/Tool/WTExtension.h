@@ -50,4 +50,6 @@
  *
  */
 + (NSString *)getCodeUrlWithData:(NSData *)data;
+
+
 @end

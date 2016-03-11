@@ -8,21 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTTopic;
+@class WTTopicViewModel;
 @interface WTTopicCell : UITableViewCell
 
-/** Blog模型 */
-@property (nonatomic, strong) WTTopic            *topic;
-
-/**
- *  快速创建的类方法
- *
- *  @param tableView tableView
- *
- *  @return WTBlogCell
- */
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
-
-
+@property (nonatomic, strong) WTTopicViewModel            *topicViewModel;
 
 @end

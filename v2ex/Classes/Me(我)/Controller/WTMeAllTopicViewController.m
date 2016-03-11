@@ -123,7 +123,7 @@ static NSString * const ID = @"meAllTopiccell";
     
     WTTopic *topic = self.topics[indexPath.row];
     WTTopicDetailViewController *topDetailVC = [WTTopicDetailViewController new];
-    topDetailVC.topic = topic;
+    //topDetailVC.topic = topic;
     [self.navigationController pushViewController: topDetailVC animated: YES];
 }
 @end

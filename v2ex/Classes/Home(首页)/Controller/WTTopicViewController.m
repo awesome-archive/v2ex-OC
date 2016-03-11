@@ -14,16 +14,21 @@
 #import "WTTopicDetailViewController.h"
 #import "WTTopic.h"
 #import "NSString+YYAdd.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "NetworkTool.h"
+#import "WTTopicViewModel.h"
 // ======
 #import "WTNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+static NSString *const ID = @"topicCell";
+
 @interface WTTopicViewController ()
 
-/** 博客模型数组 */
-@property (nonatomic, strong) NSMutableArray           *topics;
+@property (nonatomic, strong) NSMutableArray<WTTopicViewModel *>  *topicViewModels;
 /** 当前第几页 */
-@property (nonatomic, assign) NSInteger                page;
+@property (nonatomic, assign) NSInteger                           page;
 
 @end
 
@@ -37,118 +42,73 @@ NS_ASSUME_NONNULL_BEGIN
     [self setUpView];
 }
 
-#pragma mark - Lazy method
-#pragma mark blogs
-- (NSMutableArray *)topics
-{
-    if (_topics == nil)
-    {
-        _topics = [NSMutableArray array];
-    }
-    return _topics;
-}
-
 #pragma mark - 初始化页面
 - (void)setUpView
 {
-    self.tableView.backgroundColor = [UIColor whiteColor];
-    
-    // cell 的高度
-    self.tableView.rowHeight = 81;
-    
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
     
+    // 调整tableView的内边距和滚动条内边距
     if (![self.urlString containsString: @"my"])
     {
-        // 设置内边距
         self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
-        // 设置滚动条的内边距
         self.tableView.separatorInset = self.tableView.contentInset;
     }
     
-    // 添加上拉刷新
-    if ([WTTopic isNewestNodeWithUrlSuffix: self.urlString])
+    // 只有'最近'节点需要上拉刷新
+    if ([WTTopicViewModel isNeedNextPage: self.urlString])
     {
         self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
     }
-    
-    // 下拉刷新
     self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
     
-    // 开始下拉刷新
     [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    // 每次下拉刷新重置所有数据，从第一页重新请求
     self.page = 1;
-    [WTTopicTool getTopicsWithUrlString: [self stitchingUrlParameter] success:^(NSArray *topics) {
+    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
         
-        [self.tableView.mj_header endRefreshing];
-        
-        // topics数组中的最后一个对象是保存是否有下一页的
-        WTTopic *lastTopic = topics.lastObject;
-        if (!lastTopic.isHasNextPage)
-        {
-            self.tableView.mj_footer = nil;
-        }
-        
-        [self.topics removeAllObjects];
-        [self.topics addObjectsFromArray: topics];
-        
-        // 由于最后一个WTTopic对象只是单纯保存了是否有下一页所以删除最后一个对象
-        [self.topics removeLastObject];
+        self.topicViewModels = [WTTopicViewModel topicsWithData: data];
         [self.tableView reloadData];
-        
+        [self.tableView.mj_header endRefreshing];
         
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
-        WTLog(@"error:%@", error);
     }];
 }
 
 #pragma mark 加载旧的数据
 - (void)loadOldData
 {
-    // 每次下拉刷新重置所有数据，从第一页重新请求
     self.page ++;
-
-    [WTTopicTool getTopicsWithUrlString: [self stitchingUrlParameter] success:^(NSArray *topics) {
-        
-        [self.tableView.mj_footer endRefreshing];
-        
-        // topics数组中的最后一个对象是保存是否有下一页的
-        WTTopic *lastTopic = topics.lastObject;
-        if (!lastTopic.isHasNextPage)
-        {
-            self.tableView.mj_footer = nil;
-        }
     
-        [self.topics addObjectsFromArray: topics];
-        // 由于最后一个WTTopic对象只是单纯保存了是否有下一页所以删除最后一个对象
-        [self.topics removeLastObject];
+    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
+        
+        [self.topicViewModels addObjectsFromArray: [WTTopicViewModel topicsWithData: data]];
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
         
     } failure:^(NSError *error) {
-        [self.tableView.mj_footer endRefreshing];
-        WTLog(@"error:%@", error)
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.topics.count;
+    return self.topicViewModels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WTTopicCell *cell = [WTTopicCell cellWithTableView: tableView];
+    WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
     // 设置数据
-    cell.topic = self.topics[indexPath.row];
+    cell.topicViewModel = self.topicViewModels[indexPath.row];
     return cell;
 }
 
@@ -159,10 +119,17 @@ NS_ASSUME_NONNULL_BEGIN
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     
     // 跳转至话题详情控制器
-    WTTopic *topic = self.topics[indexPath.row];
+    WTTopicViewModel *topicViewModel = self.topicViewModels[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
-    detailVC.topic = topic;
+    detailVC.topicViewModel = topicViewModel;
     [self.navigationController pushViewController: detailVC animated: YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
+        cell.topicViewModel = self.topicViewModels[indexPath.row];
+    }];
 }
 
 /**

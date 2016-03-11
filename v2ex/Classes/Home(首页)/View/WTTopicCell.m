@@ -8,48 +8,25 @@
 
 #import "WTTopicCell.h"
 #import "UIImageView+WebCache.h"
-#import "WTTopic.h"
+#import "WTTopicViewModel.h"
 #import "UILabel+StringFrame.h"
 #import "NSString+Regex.h"
 #import "UIImage+Extension.h"
+
 NS_ASSUME_NONNULL_BEGIN
+
 @interface WTTopicCell ()
 
-/** 头像 */
 @property (weak, nonatomic) IBOutlet UIImageView            *iconImageV;
-/** 标题 */
 @property (weak, nonatomic) IBOutlet UILabel                *titleLabel;
-/** 节点名称 */
 @property (weak, nonatomic) IBOutlet UIButton               *nodeBtn;
-/** 最后回复时间 */
 @property (weak, nonatomic) IBOutlet UILabel                *lastReplyTimeLabel;
-/** 作者*/
 @property (weak, nonatomic) IBOutlet UILabel                *authorLabel;
-
+@property (weak, nonatomic) IBOutlet UIImageView *commentCountImageView;
+@property (weak, nonatomic) IBOutlet UILabel                *commentCountLabel;
 
 @end
-
 @implementation WTTopicCell
-
-
-/**
- *  快速创建的类方法
- *
- *  @param tableView tableView
- *
- *  @return WTBlogCell
- */
-+ (instancetype)cellWithTableView:(UITableView * _Nonnull)tableView
-{
-    static NSString *ID = @"topicCell";
-    WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
-    
-    if (cell == nil)
-    {
-        cell = [[[NSBundle mainBundle] loadNibNamed: @"WTTopicCell" owner: nil options: nil] lastObject];
-    }
-    return cell;
-}
 
 - (void)awakeFromNib
 {
@@ -58,49 +35,37 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 // 重写 blog set方法，初始化数据
-- (void)setTopic:(WTTopic *)topic
+- (void)setTopicViewModel:(WTTopicViewModel *)topicViewModel
 {
-    _topic = topic;
-    
-    // 设置数据
-    [self setUpData];
-    
-    // 设置属性
-    [self setUpView];
-}
+    _topicViewModel = topicViewModel;
 
-#pragma mark - 设置数据
-- (void)setUpData
-{
-    // 1、头像
-    [self.iconImageV sd_setImageWithURL: _topic.icon placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        self.iconImageV.image = [image roundImage];
+    [self.iconImageV sd_setImageWithURL: topicViewModel.iconURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.iconImageV.image = [image roundImageWithCornerRadius: 3];
     }];
     
     // 2、标题
-    self.titleLabel.text = _topic.title;
+    self.titleLabel.text = topicViewModel.topic.title;
     
     // 3、节点
-    NSString *node = _topic.node;
+    NSString *node = topicViewModel.topic.node;
     // 判断是否包含中文字符串
     if ([NSString isChineseCharactersWithString: node] || node.length > 4)
     {
         //NSLog(@"中文:%@", _blog.node);
-        node = [NSString stringWithFormat: @" %@ ", _topic.node];
+        node = [NSString stringWithFormat: @" %@ ", topicViewModel.topic.node];
     }
     [self.nodeBtn setTitle: node forState: UIControlStateNormal];
     
     // 4、最后回复时间
-    self.lastReplyTimeLabel.text = _topic.lastReplyTime;
+    self.lastReplyTimeLabel.text = topicViewModel.topic.lastReplyTime;
     
     // 6、作者
-    self.authorLabel.text = _topic.author;
+    self.authorLabel.text = topicViewModel.topic.author;
+    
+    // 7、评论数
+    self.commentCountLabel.text = topicViewModel.topic.commentCount;
+    self.commentCountImageView.hidden = !topicViewModel.topic.commentCount.length > 0;
 }
 
-#pragma mark - 设置属性
-- (void)setUpView
-{
-    [self.authorLabel adjustFontSizeToFillItsContents];
-}
 @end
 NS_ASSUME_NONNULL_END

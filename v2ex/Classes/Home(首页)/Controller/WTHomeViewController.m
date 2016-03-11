@@ -51,20 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setupNav
 {
     self.navigationItem.title = @"v2ex";
-    // 1、设置titleView
-//    self.navigationItem.titleView = ({
-//        
-//        UIView *titleView = [UIView new];
-//        
-//        UIImageView *imageView = [UIImageView new];
-//        imageView.frame = CGRectMake(0, 0, 94, 30);
-//        
-//        titleView.frame = imageView.bounds;
-//        [titleView addSubview: imageView];
-//        
-//        imageView.image = [UIImage imageNamed: @"nav_title"];
-//        titleView;
-//    });
 }
 
 #pragma mark 添加子控制器

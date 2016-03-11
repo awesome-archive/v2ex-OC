@@ -135,7 +135,7 @@ static NSString * const ID = @"notificationCell";
     WTNotification *notification = self.notifications[indexPath.row];
     
     WTTopicDetailViewController *topDetailVC = [WTTopicDetailViewController new];
-    topDetailVC.topic = notification.topic;
+    //topDetailVC.topic = notification.topic;
     [self.navigationController pushViewController: topDetailVC animated: YES];
 }
 

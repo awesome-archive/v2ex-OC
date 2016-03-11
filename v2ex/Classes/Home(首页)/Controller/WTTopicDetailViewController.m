@@ -7,7 +7,7 @@
 //  话题详情控制器
 
 #import "WTTopicDetailViewController.h"
-#import "WTTopic.h"
+#import "WTTopicViewModel.h"
 #import "WTTopicTool.h"
 #import "WTTopicDetail.h"
 #import "WTCommentCell.h"
@@ -105,7 +105,7 @@ static NSString * const topID = @"topCell";
     // 初始化数据
     [self setupData];
     
-    self.postReplyUrl = self.topic.detailUrl;
+    self.postReplyUrl = self.topicViewModel.topicDetailUrl;
 }
 
 #pragma mark - 初始化View
@@ -154,7 +154,7 @@ static NSString * const topID = @"topCell";
         loginVC.loginSuccessBlock = ^{
             [SVProgressHUD show];
             
-            [WTTopicTool addOrCancelCollectionTopicWithUrlString: self.topicDetail.collectionUrl topicDetailUrl: self.topic.detailUrl success:^(WTTopicDetail *authorTopicDetail) {
+            [WTTopicTool addOrCancelCollectionTopicWithUrlString: self.topicDetail.collectionUrl topicDetailUrl: self.topicViewModel.topicDetailUrl success:^(WTTopicDetail *authorTopicDetail) {
                 
                 // 2、隐藏等待框，并刷新页面
                 [self operationCompleteWithTopicDetail: authorTopicDetail];
@@ -175,19 +175,19 @@ static NSString * const topID = @"topCell";
     
     if (self.currentPage != 0)
     {
-        NSString *url = self.topic.detailUrl;
+        NSString *url = self.topicViewModel.topicDetailUrl;
         NSRange range = [url rangeOfString: @"#" options: NSBackwardsSearch];
         // 说明没查找到#号
         if (range.location > url.length)
         {
             range = [url rangeOfString: @"=" options: NSBackwardsSearch];
             url = [url substringToIndex: range.location];
-            self.topic.detailUrl = [url stringByAppendingFormat: @"=%d", self.currentPage];
+            self.topicViewModel.topicDetailUrl = [url stringByAppendingFormat: @"=%ld", self.currentPage];
         }
         else
         {
             url = [url substringToIndex: range.location];
-            self.topic.detailUrl = [url stringByAppendingFormat: @"?p=%ld", self.currentPage];
+            self.topicViewModel.topicDetailUrl = [url stringByAppendingFormat: @"?p=%ld", self.currentPage];
         }
         
     }
@@ -195,7 +195,7 @@ static NSString * const topID = @"topCell";
     [SVProgressHUD show];
     
     // 获取详情页信息
-    [WTTopicTool getTopicDetailWithUrlString: self.topic.detailUrl success:^(NSArray *topicDetailArray) {
+    [WTTopicTool getTopicDetailWithUrlString: self.topicViewModel.topicDetailUrl success:^(NSArray *topicDetailArray) {
         
         [SVProgressHUD dismiss];
         
@@ -356,7 +356,7 @@ static NSString * const topID = @"topCell";
     // 确定按钮
     UIAlertAction *sureAction = [UIAlertAction actionWithTitle: @"确定" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [SVProgressHUD show];
-        [WTTopicTool loveTopicWithUrlString: self.topicDetail.loveUrl topicDetailUrl: self.topic.detailUrl success:^(WTTopicDetail *authorTopicDetail) {
+        [WTTopicTool loveTopicWithUrlString: self.topicDetail.loveUrl topicDetailUrl: self.topicViewModel.topicDetailUrl success:^(WTTopicDetail *authorTopicDetail) {
             
             [self.tipView showTipViewWithTitle: @"感谢已发送"];
             self.toolBarView.loveButton.selected = YES;
@@ -384,7 +384,7 @@ static NSString * const topID = @"topCell";
     
     [SVProgressHUD show];
     
-    [WTTopicTool addOrCancelCollectionTopicWithUrlString: self.topicDetail.collectionUrl topicDetailUrl: self.topic.detailUrl success:^(WTTopicDetail *authorTopicDetail) {
+    [WTTopicTool addOrCancelCollectionTopicWithUrlString: self.topicDetail.collectionUrl topicDetailUrl: self.topicViewModel.topicDetailUrl success:^(WTTopicDetail *authorTopicDetail) {
        
         // 1、展示提示框
         if ([self.topicDetail.collectionUrl containsString: @"unfavorite"])

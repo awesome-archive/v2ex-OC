@@ -22,9 +22,17 @@
  */
 + (void)loginWithParam:(WTAccountParam *)param success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
+/**
+ *  获取某个节点的话题数据
+ *
+ *  @param urlString url
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
+ */
++ (void)getTopicsWithUrlString:(NSString *)urlString success:(void (^)(NSMutableArray *topics))success failure:(void(^)(NSError *error))failure;
 
 /**
- *  根据url获取用户信息
+ *  获取用户信息
  *
  *  @param urlString 网址
  *  @param success   请求成功的回调
@@ -33,7 +41,7 @@
 + (void)getUserInfoWithUrlString:(NSString *)urlString success:(void(^)(WTUser *user))success failure:(void(^)(NSError *error))failure;
 
 /**
- *  根据url获取用户的消息
+ *  获取用户的消息
  *
  *  @param urlString url
  *  @param success   请求成功的回调
@@ -42,7 +50,7 @@
 + (void)getNotificationWithUrlString:(NSString *)urlString success:(void(^)(NSMutableArray<WTNotification *> *notifications))success failure:(void(^)(NSError *error))failure;
 
 /**
- *  根据url获取用户的全部话题
+ *  获取用户的全部话题
  *
  *  @param urlString url
  *  @param success   请求成功的回调
@@ -50,7 +58,7 @@
  */
 + (void)getMeAllTopicWithUrlString:(NSString *)urlString success:(void(^)(NSMutableArray<WTTopic *> *topics))success failure:(void(^)(NSError *error))failure;
 /**
- *  根据url获取用户的回复话题
+ *  获取用户的回复话题
  *
  *  @param urlString url
  *  @param success   请求成功的回调

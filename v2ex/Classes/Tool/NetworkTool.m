@@ -32,6 +32,32 @@ static NetworkTool *_instance;
 }
 
 /**
+ *  获取html源码
+ *
+ *  @param urlString url
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
+ */
+- (void)getHtmlCodeWithUrlString:(NSString *)urlString success:(void (^)(NSData *data))success failure:(void(^)(NSError *error))failure;
+{
+    [_instance GET: urlString parameters: nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (success)
+        {
+            success(responseObject);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+        
+    }];
+}
+
+/**
  *  发起请求
  *
  *  @param method  请求方法
