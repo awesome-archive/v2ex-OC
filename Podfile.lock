@@ -19,6 +19,7 @@ PODS:
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
+  - IQKeyboardManager (4.0.0)
   - Masonry (0.6.4)
   - MJExtension (3.0.10)
   - MJRefresh (3.1.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CTAssetsPickerController
   - FMDB (~> 2.3)
+  - IQKeyboardManager
   - Masonry
   - MJExtension
   - MJRefresh
@@ -52,6 +54,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   CTAssetsPickerController: b1d1d50ab87cf6b8b13531de5f4530482e7e53ed
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4

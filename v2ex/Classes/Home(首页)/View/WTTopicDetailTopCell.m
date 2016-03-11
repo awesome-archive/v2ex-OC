@@ -341,11 +341,13 @@
                     
                     NSURL *imageUrl = [NSURL URLWithString: srcStr];
                     imageUrlStorage.imageURL = imageUrl;
-                    imageUrlStorage.placeholdImageName = @"icon_placeholder";
+                    imageUrlStorage.placeholdImageName = @"topic_placeholder";
                     imageUrlStorage.size            = CGSizeMake(374, 200);
                     imageUrlStorage.imageAlignment  = TYImageAlignmentLeft;
                     [textContainer appendTextStorage: imageUrlStorage];
                     
+                    // 添加图片数组中
+                    [self.imageUrls addObject: imageUrl];
                     continue;
                 }
                 
@@ -400,7 +402,7 @@
     
     NSURL *imageUrl = [NSURL URLWithString: src];
     imageUrlStorage.imageURL = imageUrl;
-    imageUrlStorage.placeholdImageName = @"icon_placeholder";
+    imageUrlStorage.placeholdImageName = @"topic_placeholder";
     imageUrlStorage.size            = CGSizeMake(374, 200);
     [textContainer appendTextStorage: imageUrlStorage];
     

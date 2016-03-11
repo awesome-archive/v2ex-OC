@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation WTHomeViewController
 
+- (instancetype)init
+{
+    return [UIStoryboard storyboardWithName: NSStringFromClass([WTHomeViewController class]) bundle: nil].instantiateInitialViewController;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     // 添加子控制器
     [self setupAllChildViewControllers];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 
 }
 #pragma mark - Lazy method

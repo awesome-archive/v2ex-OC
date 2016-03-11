@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
 #import "WTTipView.h"
+#import "WTPrivacyStatementViewController.h"
 
 @interface WTRegisterViewController ()
 /** 二维码图片 */
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextF;
 /** 验证码 */
 @property (weak, nonatomic) IBOutlet UITextField *codeTextF;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 /** 验证码图片Url */
 @property (nonatomic, strong) NSString           *codeUrl;
@@ -81,6 +83,8 @@
     // 1、为 codeImageView 添加点击手势
     self.codeImageView.userInteractionEnabled = YES;
     [self.codeImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(imageViewClick)]];
+    
+    self.loginButton.layer.cornerRadius = 3;
 }
 
 #pragma mark - 事件
@@ -107,7 +111,7 @@
         
         if (isSuccess)
         {
-            [self.tipView showSuccessTitle: @"登陆成功"];
+            [self.tipView showSuccessTitle: @"注册成功"];
         }
         
         [SVProgressHUD dismiss];
@@ -122,12 +126,22 @@
     
         
 }
+#pragma mark - 隐私按钮点击
+- (IBAction)privacyButtonClick
+{
+    [self presentViewController: [WTPrivacyStatementViewController new] animated: YES  completion: nil];
+}
 
 #pragma mark 验证码图片点击
 - (void)imageViewClick
 {
     // 设置验证码图片
     [self setupCodeImage];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing: YES];
 }
 
 #pragma mark - 懒加载
@@ -144,4 +158,5 @@
     }
     return _tipView;
 }
+
 @end

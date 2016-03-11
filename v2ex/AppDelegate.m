@@ -10,8 +10,10 @@
 #import "WTTabBarController.h"
 #import "WTAccount.h"
 #import "NSString+Regex.h"
+#import "IQKeyboardManager.h"
 // =============
 #import "WTAccountTool.h"
+#import "WTFPSLabel.h"
 @interface AppDelegate ()
 
 @end
@@ -29,8 +31,11 @@
     // 3、显示窗口
     [self.window makeKeyAndVisible];
     
+    // 4、全局设置状态栏颜色
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
    
+    // 5、键盘呼出隐藏
+    [IQKeyboardManager sharedManager].enable = YES;
     
     // 如果之前登陆过，就自动登录
     if ([[WTAccount shareAccount] isLogin])
@@ -46,6 +51,13 @@
             
         }];
     }
+    
+    // 界面 FPS 代码
+    #if DEBUG
+    WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 40, 55, 50)];
+    [self.window addSubview: fpsLabel];
+    #else
+    #endif
     return YES;
 }
 

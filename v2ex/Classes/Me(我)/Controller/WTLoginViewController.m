@@ -37,28 +37,9 @@
     [self.usernameOrEmailTextField addTarget: self action: @selector(textFieldEditingChanged) forControlEvents: UIControlEventEditingChanged];
     [self.passwordTextField addTarget: self action: @selector(textFieldEditingChanged) forControlEvents: UIControlEventEditingChanged];
     
-    // 3、设置textField的文字颜色和占位文字颜色
-    self.usernameOrEmailTextField.textColor = WTPrettyColor;
-    self.passwordTextField.textColor = self.usernameOrEmailTextField.textColor;
-
-    self.usernameOrEmailTextField.attributedPlaceholder = [self setPlaceholderAttribute: 14 placeholder: @"邮箱或帐号"];
-    self.passwordTextField.attributedPlaceholder = [self setPlaceholderAttribute: 14 placeholder: @"密码"];
-    
     self.title = @"帐号登录";
 }
 
-/**
- *  设置placeholder的属性
- *
- *  @param font        字体大小
- *  @param placeholder placeholder
- *
- *  @return placeholder的属性
- */
-- (NSAttributedString *)setPlaceholderAttribute:(NSInteger)fontSize placeholder:(NSString *)placeholder
-{
-    return [[NSAttributedString alloc] initWithString: placeholder attributes:@{NSForegroundColorAttributeName : WTPrettyColor, NSFontAttributeName : [UIFont systemFontOfSize: fontSize]}];
-}
 
 #pragma mark - 事件
 - (IBAction)loginButton:(UIButton *)sender
@@ -107,9 +88,9 @@
     }
 }
 
-- (BOOL)prefersStatusBarHidden
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    return true;
+    [self.view endEditing: YES];
 }
 
 #pragma mark - 懒加载

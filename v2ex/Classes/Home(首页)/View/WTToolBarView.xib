@@ -48,7 +48,6 @@
                         <constraint firstAttribute="height" constant="30" id="xYR-5w-3No"/>
                     </constraints>
                     <state key="normal" backgroundImage="prev_normal"/>
-                    <state key="selected" backgroundImage="prev_selected"/>
                     <connections>
                         <action selector="toolBarBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="0jh-z3-8k3"/>
                     </connections>
@@ -71,14 +70,14 @@
                         <constraint firstAttribute="width" constant="30" id="BeV-Ar-IKz"/>
                         <constraint firstAttribute="height" constant="30" id="m4M-dZ-OZW"/>
                     </constraints>
-                    <state key="normal" backgroundImage="safari_normal"/>
+                    <state key="normal" backgroundImage="refresh_normal"/>
                     <state key="selected" backgroundImage="collection_selected"/>
                     <connections>
                         <action selector="toolBarBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="V8v-cx-rAk"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BH-f1-nxz">
-                    <rect key="frame" x="562" y="7" width="30" height="30"/>
+                    <rect key="frame" x="562" y="9" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="hvt-Ni-101"/>
                         <constraint firstAttribute="width" constant="30" id="vhh-sg-Tly"/>
@@ -96,7 +95,7 @@
                 <constraint firstItem="b6n-AM-3QB" firstAttribute="leading" secondItem="ig7-Pv-8hJ" secondAttribute="trailing" constant="8" id="3VZ-5P-ctg"/>
                 <constraint firstItem="OMZ-k8-BJC" firstAttribute="leading" secondItem="b6n-AM-3QB" secondAttribute="trailing" constant="8" id="4m3-nP-bnZ"/>
                 <constraint firstItem="6AV-yn-dsp" firstAttribute="baseline" secondItem="OMZ-k8-BJC" secondAttribute="baseline" id="6dX-Bh-xS7"/>
-                <constraint firstItem="7BH-f1-nxz" firstAttribute="centerY" secondItem="OMZ-k8-BJC" secondAttribute="centerY" id="ALU-nl-fLO"/>
+                <constraint firstItem="7BH-f1-nxz" firstAttribute="centerY" secondItem="OMZ-k8-BJC" secondAttribute="centerY" constant="2" id="ALU-nl-fLO"/>
                 <constraint firstItem="MQo-fn-Wms" firstAttribute="leading" secondItem="pSV-hh-sFe" secondAttribute="trailing" constant="8" id="CIq-UU-Glo"/>
                 <constraint firstItem="ig7-Pv-8hJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Cdc-DE-58q"/>
                 <constraint firstAttribute="trailing" secondItem="7BH-f1-nxz" secondAttribute="trailing" constant="8" id="El2-Wq-TPV"/>
@@ -134,8 +133,7 @@
         <image name="love_selected" width="32" height="32"/>
         <image name="next_normal" width="32" height="32"/>
         <image name="prev_normal" width="32" height="32"/>
-        <image name="prev_selected" width="132" height="132"/>
+        <image name="refresh_normal" width="32" height="32"/>
         <image name="reply_normal" width="32" height="32"/>
-        <image name="safari_normal" width="64" height="64"/>
     </resources>
 </document>

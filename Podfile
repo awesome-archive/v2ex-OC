@@ -15,4 +15,4 @@ pod "YYCategories"
 pod 'YYText'
 pod 'TYAttributedLabel'
 pod 'CTAssetsPickerController'
-
+pod 'IQKeyboardManager'

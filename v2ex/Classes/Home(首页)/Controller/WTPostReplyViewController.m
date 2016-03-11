@@ -147,6 +147,8 @@
         WTLog(@"上传中:%lld, 总大小:%lld", uploadProgress.completedUnitCount, uploadProgress.totalUnitCount);
     } success:^(id responseObject) {
         
+        //WTLog(@"responseObject:%@", [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding]);
+        
         if (responseObject[@"original_pic"])
         {
             self.textView.text = [self.textView.text stringByAppendingFormat: @"\n%@", responseObject[@"original_pic"]];

@@ -51,6 +51,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 初始化页面
 - (void)setUpView
 {
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    
     // cell 的高度
     self.tableView.rowHeight = 81;
     

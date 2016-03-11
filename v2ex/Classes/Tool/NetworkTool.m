@@ -106,6 +106,8 @@ static NetworkTool *_instance;
         progress(uploadProgress);
     };
     
+    _instance.responseSerializer = [AFJSONResponseSerializer serializer];
+    _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
     
     // 5、发起请求
     [_instance POST: urlString parameters: nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

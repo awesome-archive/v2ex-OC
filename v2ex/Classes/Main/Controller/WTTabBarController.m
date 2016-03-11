@@ -43,8 +43,8 @@
     [self addOneChildViewController: meVC title: @"我" imageName: @"tabbar_wo_normal" selectedImageName : @"tabbar_wo_selected"];
     
     // 设置
-   // WTSettingViewController *settingVC = [WTSettingViewController new];
-    //[self addOneChildViewController: settingVC title: @"设置" imageName: @"tabbar_setting_normal" selectedImageName: @"tabbar_setting_selected"];
+    WTSettingViewController *settingVC = [WTSettingViewController new];
+    [self addOneChildViewController: settingVC title: @"设置" imageName: @"tabbar_setting_normal" selectedImageName: @"tabbar_setting_selected"];
 }
 
 #pragma mark - 添加单个子控制器

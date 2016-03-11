@@ -97,7 +97,7 @@ static NSString * const topID = @"topCell";
      */
     //self.topic.detailUrl = @"http://www.v2ex.com/t/259763#reply1";
     
-    //self.topic.detailUrl = @"http://www.v2ex.com/t/261979#reply1";
+    //self.topic.detailUrl = @"http://www.v2ex.com/t/262493#reply28";
     
     // 初始化View
     [self setupView];
@@ -182,7 +182,7 @@ static NSString * const topID = @"topCell";
         {
             range = [url rangeOfString: @"=" options: NSBackwardsSearch];
             url = [url substringToIndex: range.location];
-            self.topic.detailUrl = [url stringByAppendingFormat: @"=%ld", self.currentPage];
+            self.topic.detailUrl = [url stringByAppendingFormat: @"=%d", self.currentPage];
         }
         else
         {
@@ -421,13 +421,15 @@ static NSString * const topID = @"topCell";
 #pragma mark 刷safari
 - (void)safari
 {
-    if ([UIDevice systemVersion] >= 9.0)
-    {
-        SFSafariViewController *vc = [[SFSafariViewController alloc] initWithURL: [NSURL URLWithString: self.topic.detailUrl]];
-        [self.navigationController pushViewController: vc animated: nil];
-        return;
-    }
-    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: self.topic.detailUrl]];
+//    if ([UIDevice systemVersion] >= 9.0)
+//    {
+//        SFSafariViewController *vc = [[SFSafariViewController alloc] initWithURL: [NSURL URLWithString: self.topic.detailUrl]];
+//        [self.navigationController pushViewController: vc animated: NO];
+//        return;
+//    }
+//    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: self.topic.detailUrl]];
+
+    [self setupData];
 }
 
 #pragma mark 回复话题

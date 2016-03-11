@@ -206,7 +206,7 @@
                     
                     NSURL *imageUrl = [NSURL URLWithString: srcStr];
                     imageUrlStorage.imageURL = imageUrl;
-                    imageUrlStorage.placeholdImageName = @"icon_placeholder";
+                    imageUrlStorage.placeholdImageName = @"topic_placeholder";
                     imageUrlStorage.size            = CGSizeMake(374, 200);
                     imageUrlStorage.imageAlignment  = TYImageAlignmentLeft;
                     [textContainer appendTextStorage: imageUrlStorage];
@@ -221,7 +221,7 @@
 
     textStore.text = @"";
     [textContainer appendTextStorage: textStore];
-    textContainer = [textContainer createTextContainerWithTextWidth: WTScreenWidth - 2 * WTMargin - CGRectGetMaxX(self.iconImageView.frame)];
+    textContainer = [textContainer createTextContainerWithTextWidth: WTScreenWidth - 2 * WTMargin];
     self.markdownLabel.textContainer = textContainer;
 }
 
@@ -238,9 +238,9 @@
         
         // 布局
         [markdownLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.iconImageView.mas_right).offset(WTMargin);
+            make.left.mas_equalTo(WTMargin);
             make.right.mas_equalTo(-WTMargin);
-            make.top.mas_equalTo(self.authorLabel.mas_bottom).offset(WTMargin);
+            make.top.mas_equalTo(self.iconImageView.mas_bottom).offset(WTMargin);
             make.bottom.mas_equalTo(-WTMargin);
         }];
     }
