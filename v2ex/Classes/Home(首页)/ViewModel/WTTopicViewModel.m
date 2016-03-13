@@ -54,6 +54,8 @@
                 
                 // 6、最后回复时间
                 topic.lastReplyTime = [[timeElement.content componentsSeparatedByString: @"•"].firstObject stringByReplacingOccurrencesOfString: @" " withString: @""];
+                
+                // 7、头像
                 topic.icon = [icon objectForKey: @"src"];
                 
                 topicViewModel.topic = topic;

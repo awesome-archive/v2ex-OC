@@ -10,12 +10,13 @@
 
 @implementation WTRefreshAutoNormalFooter
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)prepare
+{
+    [super prepare];
+    
+    // 自动透明度
+//    self.automaticallyChangeAlpha = YES;
+
 }
-*/
 
 @end

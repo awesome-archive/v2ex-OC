@@ -186,15 +186,7 @@
             // 4、作者
             node = small_fade_aNodeArray[1];
             topic.author = node.allContents;
-          
-            // 5、最后回复人
-//            HTMLNode *nodet = small_fadeNodeArray.lastObject;
-//            lastCommentsPeopleNode = [small_fadeNodeArray.lastObject findChildTag: @"a"];
-//            if (lastCommentsPeopleNode.allContents != nil)
-//            {
-//                topic.lastCommentsPeople = lastCommentsPeopleNode.allContents;
-//            }
-            
+
             // 6、最后回复时间
             NSString *lastReplyTime = nil;
             if (small_fadeNodeArray.count > 1)
@@ -202,7 +194,6 @@
                 lastTimeNode = small_fadeNodeArray.lastObject;
                 nodes = [lastTimeNode.allContents componentsSeparatedByString: @"•"];
                 lastReplyTime = nodes[0];
-                
             }
             else
             {
@@ -220,17 +211,11 @@
                 topic.lastReplyTime = lastReplyTime;
             }
             
-            
-            
             // 7、回复数
             topic.replyCount = [[[htmlNode findChildOfClass: @"count_livid"] contents] integerValue];
-            
             [tmpArray addObject: topic];
         }
-        
-        
     }
-    
     return tmpArray;
 }
 
