@@ -100,7 +100,6 @@
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
         if ([html containsString: @"你回复过于频繁了"])
         {
-//            NSString *tip = [NSString subStringWithRegex: @"\\d*" string: html];
             
             [SVProgressHUD showErrorWithStatus: @"你回复过于频繁了，请稍等1800秒之后再试"];
         }
@@ -143,11 +142,9 @@
 - (void)uploadImage:(UIImage *)image
 {
     [[NetworkTool shareInstance] uploadImageWithUrlString: WTUploadPictureUrl image: image progress:^(NSProgress *uploadProgress) {
-//        [SVProgressHUD showProgress: 1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount];
+
         WTLog(@"上传中:%lld, 总大小:%lld", uploadProgress.completedUnitCount, uploadProgress.totalUnitCount);
     } success:^(id responseObject) {
-        
-        //WTLog(@"responseObject:%@", [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding]);
         
         if (responseObject[@"original_pic"])
         {

@@ -1272,7 +1272,7 @@ a.btn_hero:hover {
     margin-bottom: 0 !important;
 }
 .markdown_body > p > img {
-    max-width: 660px;
+    max-width: 100%;
 }
 .markdown_body table {
     border-collapse: collapse;

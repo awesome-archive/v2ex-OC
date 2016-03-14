@@ -65,7 +65,16 @@
  *
  *  @return 截取之后的字符串
  */
-+ (NSString *)subStringWithStr:(NSString *)str string:(NSString *)string;
++ (NSString *)subStringToIndexWithStr:(NSString *)str string:(NSString *)string;
+
+/**
+ *  截取到str之后的字符串
+ *
+ *  @param string 要截取字符串
+ *
+ *  @return 截取之后的字符串
+ */
++ (NSString *)subStringFromIndexWithStr:(NSString *)str string:(NSString *)string;
 
 /**
  *  去除前面和后面空格

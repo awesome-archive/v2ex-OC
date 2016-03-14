@@ -7,7 +7,7 @@
 //
 
 #import "WTToolBarView.h"
-#import "WTTopicDetail.h"
+#import "WTTopicDetailViewModel.h"
 @interface WTToolBarView()
 /** 上一页按钮 */
 @property (weak, nonatomic) IBOutlet UIButton           *prevButton;
@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel            *pageLabel;
 /** 加入收藏和取消收藏 */
 @property (weak, nonatomic) IBOutlet UIButton           *collectionButton;
-
 
 @end
 
@@ -34,31 +33,22 @@
     return [[NSBundle mainBundle] loadNibNamed: NSStringFromClass(self) owner: nil options: nil].lastObject;
 }
 
-
-
-/**
- *  更新pageLabel的值
- */
-- (void)updatePageLabel:(NSInteger)page
+- (void)setTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
-    // 1、设置评论页数的最大值，只有第一次才设置
+    _topicDetailVM = topicDetailVM;
+    
+    // 当前页数
+    NSUInteger page = [topicDetailVM.floorText integerValue] / 100 + 1;
+    self.pageLabel.text = [NSString stringWithFormat: @"%zd", page];
+    
+    // 记录话题的最大页数
     if (self.maxPage == 0)
     {
         self.maxPage = page;
     }
 
-    self.pageLabel.text = [NSString stringWithFormat: @"%ld", page];
-}
-
-- (void)setTopicDetail:(WTTopicDetail *)topicDetail
-{
-    _topicDetail = topicDetail;
-    
-    // 1、设置是加入收藏或取消收藏
-    self.collectionButton.selected = topicDetail.isCollection;
-    // 2、设置是感谢或已经感谢
-    self.loveButton.selected = topicDetail.isLove;
-    self.loveButton.enabled = !self.loveButton.isSelected;
+    // 收藏按钮
+    self.collectionButton.selected = [topicDetailVM.collectionUrl containsString: @"unfavorite"];
 }
 
 #pragma mark - 初始化
@@ -72,10 +62,8 @@
 #pragma mark - toolBar上各个按钮的点击事件
 - (IBAction)toolBarBtnClick:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector: @selector(toolBarView:didClickedAtIndex:)])
-    {
-        [self.delegate toolBarView: self didClickedAtIndex: sender.tag];
-    }
+    NSDictionary *userInfo = @{@"buttonType" : @(sender.tag)};
+    [[NSNotificationCenter defaultCenter] postNotificationName: WTToolBarButtonClickNotification object: nil userInfo:userInfo];
 }
 
 #pragma mark - KVO

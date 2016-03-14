@@ -8,7 +8,9 @@
 
 #import "WTTopicDetailContentCell.h"
 #import "WTTopicDetailViewModel.h"
-@interface WTTopicDetailContentCell()
+
+@interface WTTopicDetailContentCell() <UIWebViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -16,8 +18,8 @@
 
 - (void)awakeFromNib
 {
-    self.webView.scrollView.bounces = NO;
     
+    self.webView.scrollView.bounces = NO;
     [self.webView.scrollView addObserver: self forKeyPath: @"contentSize" options: NSKeyValueObservingOptionNew context: nil];
 }
 
@@ -29,6 +31,10 @@
     {
         self.updateCellHeightBlock(height);
     }
+    
+    if ([keyPath isEqualToString: @"loading"]) {
+        WTLog(@"loading")
+    }
 }
 
 - (void)setTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
@@ -36,11 +42,31 @@
     _topicDetailVM = topicDetailVM;
 
     [self.webView loadHTMLString: topicDetailVM.contentHTML baseURL: nil];
+    WTLog(@"1")
+    
+    self.cellHeight = self.webView.scrollView.contentSize.height;
+    
 }
 
 - (void)dealloc
 {
     [self.webView.scrollView removeObserver: self forKeyPath: @"contentSize"];
+}
+
+#pragma mark - UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSString *url = request.URL.absoluteString;
+    if ([url containsString: @"about:blank"])
+    {
+        return YES;
+    }
+    
+    if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
+    {
+        [self.delegate topicDetailContentCell: self didClickedWithLinkURL: request.URL];
+    }
+    return NO;
 }
 
 @end

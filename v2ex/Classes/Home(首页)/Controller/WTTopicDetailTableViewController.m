@@ -8,19 +8,29 @@
 
 #import "WTTopicDetailTableViewController.h"
 #import "WTTopicDetailViewModel.h"
-#import "NetworkTool.h"
 #import "WTTopicDetailHeadCell.h"
 #import "WTTopicDetailContentCell.h"
 #import "WTTopicDetailCommentCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-@interface WTTopicDetailTableViewController ()
+#import "WTToolBarView.h"
+#import "SVProgressHUD.h"
+#import "WTPostReplyViewController.h"
+#import "NSString+Regex.h"
+#import "WTNavigationController.h"
+#import "WTWebViewViewController.h"
+@interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate>
 
-@property (nonatomic, strong) NSArray<WTTopicDetailViewModel *> *topicDetailViewModels;
+@property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
 
-@property (nonatomic, assign) NSInteger                         currentPage;
+@property (nonatomic, assign) NSInteger                                currentPage;
 
-@property (nonatomic, strong) WTTopicDetailContentCell          *contentCell;
+@property (nonatomic, strong) WTTopicDetailContentCell                 *contentCell;
 
+@property (nonatomic, strong) WTTopicDetailViewModel                   *firstTopicDetailVM;
+/** 回复话题的Url */
+@property (nonatomic, strong) NSString                                 *replyTopicUrl;
+/** 最后一页的Url */
+@property (nonatomic, strong) NSString                                 *lastPageUrl;
 @end
 
 static NSString  * const headerCellID = @"headerCellID";
@@ -41,11 +51,124 @@ static NSString  * const commentCellID = @"commentCellID";
     // 加载数据
     [self setupData];
     
+    // 添加通知
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(toolbarButtonClick:) name: WTToolBarButtonClickNotification object: nil];
+    
+    // 回复帖子用的url
+    self.replyTopicUrl = [NSString subStringToIndexWithStr: @"#" string: self.topicDetailUrl];
+    
+    self.lastPageUrl = self.topicDetailUrl;
+}
+
+#pragma mark - 事件
+- (void)toolbarButtonClick:(NSNotification *)noti
+{
+    NSUInteger buttonType = [noti.userInfo[@"buttonType"] integerValue];
+    
+    switch (buttonType)
+    {
+        case WTToolBarButtonTypeLove:
+            
+            break;
+        case WTToolBarButtonTypeCollection: // 收藏话题
+        {
+            [self collectionTopic];
+            break;
+        }
+        case WTToolBarButtonTypePrev:       // 上一页
+        {
+            self.currentPage--;
+            [self setupData];
+            break;
+            
+        }
+        case WTToolBarButtonTypeNext:       // 下一页
+        {
+            self.currentPage++;
+            [self setupData];
+            break;
+        }
+        case WTToolBarButtonTypeSafari:
+            
+            break;
+        case WTToolBarButtonTypeReply:      // 回复话题
+        {
+            [self replyTopic];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+#pragma mark - 收藏话题
+- (void)collectionTopic
+{
+    [SVProgressHUD show];
+    
+    [WTTopicDetailViewModel collectionWithUrlString: self.firstTopicDetailVM.collectionUrl topicDetailUrl: self.topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
+        
+        [SVProgressHUD dismiss];
+        
+        self.firstTopicDetailVM = topicDetailVM;
+        
+        if (self.updateTopicDetailComplection)
+        {
+            self.updateTopicDetailComplection(topicDetailVM);
+        }
+        
+    }];
+}
+#pragma mark 回复话题
+- (void)replyTopic
+{
+    WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
+    
+    postReplyVC.urlString = self.replyTopicUrl;
+    postReplyVC.once = self.firstTopicDetailVM.once;
+    
+    postReplyVC.completionBlock = ^(BOOL isSuccess){
+        self.topicDetailUrl = self.lastPageUrl;
+        [self setupData];
+    };
+    
+    WTNavigationController *nav = [[WTNavigationController alloc] initWithRootViewController: postReplyVC];
+    [self presentViewController: nav animated: YES completion: nil];
 }
 
 #pragma mark - 加载数据
 - (void)setupData
 {
+    [self parseUrl];
+    
+    [SVProgressHUD show];
+    
+    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: self.topicDetailUrl success:^(NSData *data) {
+       
+        [SVProgressHUD dismiss];
+        
+        self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];
+        
+        self.firstTopicDetailVM = self.topicDetailViewModels.firstObject;
+        
+        if (self.updateTopicDetailComplection)
+        {
+            self.updateTopicDetailComplection(self.topicDetailViewModels.firstObject);
+        }
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
+
+- (void)parseUrl
+{
+    self.topicDetailUrl = @"http://www.v2ex.com/t/260116#reply22";
+    
     if (self.currentPage != 0)
     {
         NSString *url = self.topicDetailUrl;
@@ -64,22 +187,13 @@ static NSString  * const commentCellID = @"commentCellID";
         }
         
     }
-    
-    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: self.topicDetailUrl success:^(NSData *data) {
-       
-        self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];
-        
-        [self.tableView reloadData];
-        
-    } failure:^(NSError *error) {
-        
-    }];
 }
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.topicDetailViewModels.count;
+    return self.topicDetailViewModels.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,6 +210,7 @@ static NSString  * const commentCellID = @"commentCellID";
     {
         WTTopicDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier: contentCellID];
         cell.topicDetailVM = self.topicDetailViewModels.firstObject;
+        cell.delegate = self;
         self.contentCell = cell;
         
         __weak typeof(self) weakSelf = self;
@@ -140,6 +255,20 @@ static NSString  * const commentCellID = @"commentCellID";
         }];
     }
     
+}
+
+#pragma mark - 
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL
+{
+    WTWebViewViewController *webViewVC = [WTWebViewViewController new];
+    webViewVC.url = linkURL;
+    [self.navigationController pushViewController: webViewVC animated: nil];
+}
+
+#pragma mark - dealloc
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 @end

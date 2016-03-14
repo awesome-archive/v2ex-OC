@@ -81,6 +81,8 @@
 		B6A5BC4C1C95BB4E00DEE692 /* WTTopicDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5BC4B1C95BB4E00DEE692 /* WTTopicDetailCommentCell.m */; };
 		B6A5BC4F1C95D05F00DEE692 /* light.css in Resources */ = {isa = PBXBuildFile; fileRef = B6A5BC4E1C95D05F00DEE692 /* light.css */; };
 		B6A5BC521C95E1A900DEE692 /* WTParseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5BC511C95E1A900DEE692 /* WTParseTool.m */; };
+		B6AEE3101C973D2700F76D70 /* WTWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AEE30E1C973D2700F76D70 /* WTWebViewViewController.m */; };
+		B6AEE3111C973D2700F76D70 /* WTWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AEE30F1C973D2700F76D70 /* WTWebViewViewController.xib */; };
 		B6B5528A1C7B717500743ECC /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B552891C7B717500743ECC /* UIColor+Extension.m */; };
 		B6B5528D1C7C246600743ECC /* WTTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B5528C1C7C246600743ECC /* WTTipView.m */; };
 		B6B5528F1C7C247300743ECC /* WTTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B5528E1C7C247300743ECC /* WTTipView.xib */; };
@@ -252,6 +254,9 @@
 		B6A5BC4E1C95D05F00DEE692 /* light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = light.css; sourceTree = "<group>"; };
 		B6A5BC501C95E1A900DEE692 /* WTParseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTParseTool.h; sourceTree = "<group>"; };
 		B6A5BC511C95E1A900DEE692 /* WTParseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTParseTool.m; sourceTree = "<group>"; };
+		B6AEE30D1C973D2700F76D70 /* WTWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTWebViewViewController.h; sourceTree = "<group>"; };
+		B6AEE30E1C973D2700F76D70 /* WTWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTWebViewViewController.m; sourceTree = "<group>"; };
+		B6AEE30F1C973D2700F76D70 /* WTWebViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTWebViewViewController.xib; sourceTree = "<group>"; };
 		B6B552881C7B717500743ECC /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		B6B552891C7B717500743ECC /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		B6B5528B1C7C246600743ECC /* WTTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTipView.h; sourceTree = "<group>"; };
@@ -453,6 +458,9 @@
 				B6BD316C1C88C2F100CB14B9 /* ShareViewController.storyboard */,
 				B623ACA51C8DFFB5000E8CCB /* PhotoBrowserViewController.h */,
 				B623ACA61C8DFFB5000E8CCB /* PhotoBrowserViewController.m */,
+				B6AEE30D1C973D2700F76D70 /* WTWebViewViewController.h */,
+				B6AEE30E1C973D2700F76D70 /* WTWebViewViewController.m */,
+				B6AEE30F1C973D2700F76D70 /* WTWebViewViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -950,6 +958,7 @@
 				B67BE5C41C808D42008D89BB /* WTMeAllTopicCell.xib in Resources */,
 				B6B552AC1C7CEC9100743ECC /* WTMeTopView.xib in Resources */,
 				B6E2EFE51C8F187900E1D46F /* WTNodeViewController.storyboard in Resources */,
+				B6AEE3111C973D2700F76D70 /* WTWebViewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1083,7 @@
 				B6986B621C9138DC00B34888 /* WTPrivacyStatementViewController.m in Sources */,
 				B623ACAC1C8E1133000E8CCB /* PhotoBrowserCell.m in Sources */,
 				B63A5EED1C5BC5CE00D3BF8B /* WTTopicDetailViewController.m in Sources */,
+				B6AEE3101C973D2700F76D70 /* WTWebViewViewController.m in Sources */,
 				B67BE5BB1C803A5C008D89BB /* WTLoginViewController.m in Sources */,
 				B6B552AA1C7CEC8500743ECC /* WTMeTopView.m in Sources */,
 				B67BE5FE1C80B600008D89BB /* WTGroupItem.m in Sources */,

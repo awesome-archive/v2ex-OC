@@ -25,6 +25,8 @@ UIKIT_EXTERN NSString * const WTNormalColor;
 
 /** 非正常颜色*/
 UIKIT_EXTERN NSString * const WTNoNormalColor;
+/** 工具栏上按钮点击的通知 */
+UIKIT_EXTERN NSString * const WTToolBarButtonClickNotification;
 
 
 

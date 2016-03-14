@@ -41,7 +41,7 @@
                         <action selector="toolBarBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="aGO-BG-zls"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig7-Pv-8hJ">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig7-Pv-8hJ">
                     <rect key="frame" x="258" y="7" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="Xq0-CN-SHy"/>

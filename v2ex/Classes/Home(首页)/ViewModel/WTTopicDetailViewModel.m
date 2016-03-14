@@ -10,6 +10,7 @@
 #import "TFHpple.h"
 #import "WTURLConst.h"
 #import "WTParseTool.h"
+#import "NSString+Regex.h"
 @implementation WTTopicDetailViewModel
 
 #pragma mark - 根据data解析出话题数组
@@ -25,6 +26,52 @@
     [topics addObjectsFromArray: [self parseTopicCommentWithDoc: doc]];
     
     return topics;
+}
+
+#pragma mark - 发送收藏请求
++ (void)collectionWithUrlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
+{
+    
+    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: urlString success:^(NSData *data) {
+       
+        [self topicDetailWithUrlString: topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
+           
+            if (completion)
+            {
+                completion(topicDetailVM, error);
+            }
+            
+        }];
+        
+    } failure:^(NSError *error) {
+        
+        if (completion)
+        {
+            completion(nil, error);
+        }
+    }];
+}
+
+#pragma mark - 请求作者话题的详情
++ (void)topicDetailWithUrlString:(NSString *)urlString completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion
+{
+    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: urlString success:^(NSData *data) {
+        
+        TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+        
+        WTTopicDetailViewModel *topicDetailVM = [self parseTopicDetailWithDoc: doc];
+        
+        if (completion)
+        {
+            completion(topicDetailVM, nil);
+        }
+        
+    } failure:^(NSError *error) {
+        if (completion)
+        {
+            completion(nil, error);
+        }
+    }];
 }
 
 #pragma mark - 根据doc解析话题正文内容
@@ -47,6 +94,15 @@
     
     // 6、节点
     TFHppleElement *nodeElement = [headerElement searchWithXPathQuery: @"//a"][2];
+    
+    // 7、楼层
+    TFHppleElement *floorElement = [doc searchWithXPathQuery: @"//span[@class='no']"].firstObject;
+    
+    // 8、操作
+    NSArray<TFHppleElement *> *operations = [doc searchWithXPathQuery: @"//a[@class='op']"];
+    
+    // 9、once
+    TFHppleElement *onceElement = [doc searchWithXPathQuery: @"//input[@name='once']"].firstObject;
     
     WTTopicDetailViewModel *topicDetailVM = [WTTopicDetailViewModel new];
     {
@@ -78,10 +134,25 @@
         // 2、拼接HTML正文内容
         NSString *cssPath = [[NSBundle mainBundle] pathForResource: @"light.css" ofType: nil];
         NSString *cssStr = [NSString stringWithContentsOfFile: cssPath encoding: NSUTF8StringEncoding error: nil];
-        topicDetailVM.contentHTML = [NSString stringWithFormat: @"<!DOCTYPE HTML><html><head>%@</head><body>%@</body></html>", cssStr, topicDetail.content];
+        topicDetailVM.contentHTML = [NSString stringWithFormat: @"<!DOCTYPE HTML><html><meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0' name='viewport'><head>%@</head><body>%@</body></html>", cssStr, topicDetail.content];
 
         // 3、节点
         topicDetailVM.nodeText = [NSString stringWithFormat: @" %@  ", topicDetail.node];
+        
+        // 4、楼层
+        topicDetailVM.floorText = floorElement.content;
+        
+        // 5、感谢、收藏、忽略
+        if (operations.count > 0)
+        {
+            topicDetailVM.collectionUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: [operations.firstObject objectForKey: @"href"]];
+        }
+        
+        // 6、once
+        topicDetailVM.once = [onceElement objectForKey: @"value"];
+        
+        // 7、创建时间
+        topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at" string: topicDetail.createTime];
     }
     
     return topicDetailVM;
@@ -90,14 +161,16 @@
 #pragma mark - 解析评论数组
 + (NSMutableArray<WTTopicDetailViewModel *> *)parseTopicCommentWithDoc:(TFHpple *)doc
 {
+    TFHppleElement *boxElement = [doc searchWithXPathQuery: @"//div[@class='box']"][1];
+    
     NSMutableArray<WTTopicDetailViewModel *> *topicDetailVMs = [NSMutableArray array];
     
-    NSArray<TFHppleElement *> *cellArr = [doc searchWithXPathQuery: @"//div[@class='cell']"];
+    NSArray<TFHppleElement *> *cellArr = [boxElement searchWithXPathQuery: @"//table"];
     
     for (TFHppleElement *cell in cellArr)
     {
-        TFHppleElement *ContentE = [cell searchWithXPathQuery: @"//div[@class='reply_content']"].firstObject;
-        if (ContentE == nil)
+        TFHppleElement *contentE = [cell searchWithXPathQuery: @"//div[@class='reply_content']"].firstObject;
+        if (contentE == nil)
         {
             continue;
         }
@@ -114,7 +187,7 @@
         {
             WTTopicDetailNew *topicDetail = [WTTopicDetailNew new];
             
-            topicDetail.content = ContentE.content;
+            topicDetail.content = contentE.content;
             
             topicDetail.icon = [iconE objectForKey: @"src"];
             

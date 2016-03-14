@@ -104,20 +104,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nV9-Eq-Uc9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
+                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXx-NE-yGU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="JcT-yz-M24" id="tyR-a2-OwW"/>
+                                            </connections>
                                         </webView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="nV9-Eq-Uc9" firstAttribute="leading" secondItem="SaS-aW-UdH" secondAttribute="leading" id="57P-nE-NYk"/>
-                                        <constraint firstAttribute="trailing" secondItem="nV9-Eq-Uc9" secondAttribute="trailing" id="B9w-jD-oVf"/>
-                                        <constraint firstAttribute="bottom" secondItem="nV9-Eq-Uc9" secondAttribute="bottom" id="IWX-jh-eMr"/>
-                                        <constraint firstItem="nV9-Eq-Uc9" firstAttribute="top" secondItem="SaS-aW-UdH" secondAttribute="top" id="ZXv-YV-jkm"/>
+                                        <constraint firstAttribute="bottom" secondItem="yXx-NE-yGU" secondAttribute="bottom" id="Bsp-vI-XgY"/>
+                                        <constraint firstItem="yXx-NE-yGU" firstAttribute="top" secondItem="SaS-aW-UdH" secondAttribute="top" id="HzD-mb-sho"/>
+                                        <constraint firstItem="yXx-NE-yGU" firstAttribute="leading" secondItem="SaS-aW-UdH" secondAttribute="leading" id="g9V-Gi-O9w"/>
+                                        <constraint firstAttribute="trailing" secondItem="yXx-NE-yGU" secondAttribute="trailing" id="l8S-Eg-LMF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="webView" destination="nV9-Eq-Uc9" id="OGc-iv-M98"/>
+                                    <outlet property="webView" destination="yXx-NE-yGU" id="2FO-97-UVE"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCellID" rowHeight="69" id="TcO-Wa-b4W" customClass="WTTopicDetailCommentCell">

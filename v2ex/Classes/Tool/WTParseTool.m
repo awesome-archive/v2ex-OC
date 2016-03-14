@@ -19,6 +19,9 @@
  */
 + (NSURL *)parseBigImageUrlWithSmallImageUrl: (NSString *)smallImageUrl
 {
+    if (smallImageUrl.length == 0)
+        return nil;
+    
     // 1、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
     NSString *iconStr = smallImageUrl;
     if ([smallImageUrl containsString: @"normal.png"])

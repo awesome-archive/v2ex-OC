@@ -36,7 +36,7 @@
     
     self.authorLabel.text = topicDetailVM.topicDetail.author;
     
-    self.createTimeLabel.text = topicDetailVM.topicDetail.createTime;
+    self.createTimeLabel.text = topicDetailVM.createTimeText;
     
     self.titleLabel.text = topicDetailVM.topicDetail.title;
     
