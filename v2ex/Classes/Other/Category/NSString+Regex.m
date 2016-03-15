@@ -123,8 +123,11 @@
  */
 + (NSString *)subStringFromIndexWithStr:(NSString *)str string:(NSString *)string
 {
+    if (![string containsString: str])
+        return string;
+    
     NSRange range = [string rangeOfString: str];
-    return [string substringFromIndex: range.location];
+    return [string substringFromIndex: range.location + range.length];
 }
 
 /**

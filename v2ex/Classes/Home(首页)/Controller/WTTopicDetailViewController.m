@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) WTToolBarView   *toolBarView;
 
+@property (weak, nonatomic) IBOutlet UIView *tipView;
+
+@property (nonatomic, weak) UITableView     *tableView;
 @end
 
 @implementation WTTopicDetailViewController
@@ -48,6 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];
     topicVC.topicDetailUrl = self.topicViewModel.topicDetailUrl;
     [self.normalView addSubview: topicVC.tableView];
+    _tableView = topicVC.tableView;
     [self addChildViewController: topicVC];
     
     // 2、设置属性
@@ -59,10 +63,16 @@ NS_ASSUME_NONNULL_BEGIN
         make.edges.equalTo(self.normalView);
     }];
     
-    topicVC.updateTopicDetailComplection = ^(WTTopicDetailViewModel *topicDetailVM){
+    __weak typeof(self) weakSelf = self;
+    topicVC.updateTopicDetailComplection = ^(WTTopicDetailViewModel *topicDetailVM, NSError *error){
         
-        self.toolBarView.topicDetailVM = topicDetailVM;
-        
+        if (error != nil)
+        {
+            weakSelf.tipView.hidden = NO;
+            return;
+        }
+        weakSelf.tipView.hidden = YES;
+        weakSelf.toolBarView.topicDetailVM = topicDetailVM;
     };
 }
 
@@ -79,6 +89,22 @@ NS_ASSUME_NONNULL_BEGIN
         make.left.right.bottom.equalTo(self.normalView);
         make.height.equalTo(@(WTToolBarHeight));
     }];
+}
+
+#pragma mark - 事件
+- (IBAction)goLoginVCBtnClick
+{
+    WTLoginViewController *loginVC = [WTLoginViewController new];
+    loginVC.loginSuccessBlock = ^{
+        WTTopicDetailTableViewController *vc = self.childViewControllers.firstObject;
+        [vc setupData];
+    };
+    [self presentViewController: loginVC animated: YES completion: nil];
+}
+
+- (void)dealloc
+{
+    WTLog(@"WTTopicDetailViewController dealloc")
 }
 
 @end

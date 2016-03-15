@@ -107,4 +107,9 @@
     }
     return _tipView;
 }
+
+- (void)dealloc
+{
+    WTLog(@"WTLoginViewController dealloc")
+}
 @end

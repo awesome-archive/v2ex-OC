@@ -21,6 +21,13 @@
     
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
+    // 1、有些主题必须要登陆才能查看
+    TFHppleElement *messageElement = [doc peekAtSearchWithXPathQuery: @"//div[@class='message']"];
+    if (messageElement != nil)
+    {
+        return nil;
+    }
+    
     [topics addObject: [self parseTopicDetailWithDoc: doc]];
     
     [topics addObjectsFromArray: [self parseTopicCommentWithDoc: doc]];
@@ -152,7 +159,7 @@
         topicDetailVM.once = [onceElement objectForKey: @"value"];
         
         // 7、创建时间
-        topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at" string: topicDetail.createTime];
+        topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at " string: topicDetail.createTime];
     }
     
     return topicDetailVM;

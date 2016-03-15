@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfC-rt-HLe" userLabel="Login View">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfC-rt-HLe" userLabel="Tip View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiH-Ph-vHE">
@@ -29,8 +29,11 @@
                                         <state key="normal" title="查看本主题需要登录">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="goLoginVCBtnClick" destination="7eT-UX-jiu" eventType="touchUpInside" id="OOs-pE-cNm"/>
+                                        </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-OL-vzS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-OL-vzS">
                                         <rect key="frame" x="150" y="105" width="300" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="pkr-P4-rdy"/>
@@ -75,6 +78,7 @@
                     </view>
                     <connections>
                         <outlet property="normalView" destination="2TX-g9-ng4" id="8m3-S8-HgQ"/>
+                        <outlet property="tipView" destination="sfC-rt-HLe" id="5pb-b2-wYc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqJ-rQ-KWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,7 +86,4 @@
             <point key="canvasLocation" x="850" y="-22"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="login-logo" width="200" height="200"/>
-    </resources>
 </document>

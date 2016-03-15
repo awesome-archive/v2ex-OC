@@ -10,11 +10,17 @@
 #import <WebKit/WebKit.h>
 
 #define WTEstimatedProgress @"estimatedProgress"
+#define WTCanGoBack @"canGoBack"
+#define WTCanGoForward @"canGoForward"
 
 @interface WTWebViewViewController ()
 @property (weak, nonatomic) WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIButton *prevBtn;
+@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+
 @end
 @implementation WTWebViewViewController
 
@@ -23,7 +29,11 @@
     
     // 1、创建webView
     [self setupWebView];
+    
+    self.prevBtn.enabled = NO;
+    self.nextBtn.enabled = NO;
 }
+
 
 #pragma mark - 创建webView
 - (void)setupWebView
@@ -37,18 +47,49 @@
     
     // 3、为进度条添加通知
     [webView addObserver: self forKeyPath: WTEstimatedProgress options: NSKeyValueObservingOptionNew context: nil];
+    [webView addObserver: self forKeyPath: WTCanGoBack options: NSKeyValueObservingOptionNew context: nil];
+    [webView addObserver: self forKeyPath: WTCanGoForward options: NSKeyValueObservingOptionNew context: nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
-    self.progressView.progress = self.webView.estimatedProgress;
-    self.progressView.hidden = self.webView.estimatedProgress >= 1.0;
+    if ([keyPath isEqualToString: WTEstimatedProgress])
+    {
+    
+        self.progressView.progress = self.webView.estimatedProgress;
+        self.progressView.hidden = self.webView.estimatedProgress >= 1.0;
+    }
+    else if([keyPath isEqualToString: WTCanGoBack])
+    {
+        self.prevBtn.enabled = self.webView.canGoBack;
+    }
+    else if([keyPath isEqualToString: WTCanGoForward])
+    {
+        self.nextBtn.enabled = self.webView.canGoForward;
+    }
+}
+#pragma mark - 事件
+- (IBAction)refreshBtnClick
+{
+    [self.webView reload];
+}
+- (IBAction)prevBtnClick
+{
+    [self.webView goBack];
+    self.nextBtn.enabled = YES;
+}
+- (IBAction)nextBtnClick
+{
+    [self.webView goForward];
+    self.prevBtn.enabled = YES;
 }
 
 - (void)dealloc
 {
     WTLog(@"WTWebViewViewController dealloc")
     [self.webView removeObserver: self forKeyPath: WTEstimatedProgress];
+    [self.webView removeObserver: self forKeyPath: WTCanGoBack];
+    [self.webView removeObserver: self forKeyPath: WTCanGoForward];
 }
 
 @end

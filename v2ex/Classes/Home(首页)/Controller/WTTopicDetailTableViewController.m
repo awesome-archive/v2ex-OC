@@ -18,6 +18,8 @@
 #import "NSString+Regex.h"
 #import "WTNavigationController.h"
 #import "WTWebViewViewController.h"
+#import "WTAccount.h"
+#import "WTURLConst.h"
 @interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
@@ -104,6 +106,14 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - 收藏话题
 - (void)collectionTopic
 {
+    // 1、先判断是否登陆
+    if(![[WTAccount shareAccount] isLogin])
+    {
+        WTLoginViewController *loginVC = [WTLoginViewController new];
+        [self presentViewController: loginVC animated: YES completion: nil];
+        return;
+    }
+    
     [SVProgressHUD show];
     
     [WTTopicDetailViewModel collectionWithUrlString: self.firstTopicDetailVM.collectionUrl topicDetailUrl: self.topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
@@ -114,7 +124,7 @@ static NSString  * const commentCellID = @"commentCellID";
         
         if (self.updateTopicDetailComplection)
         {
-            self.updateTopicDetailComplection(topicDetailVM);
+            self.updateTopicDetailComplection(topicDetailVM, nil);
         }
         
     }];
@@ -122,6 +132,14 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark 回复话题
 - (void)replyTopic
 {
+    // 1、先判断是否登陆
+    if(![[WTAccount shareAccount] isLogin])
+    {
+        WTLoginViewController *loginVC = [WTLoginViewController new];
+        [self presentViewController: loginVC animated: YES completion: nil];
+        return;
+    }
+    
     WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
     
     postReplyVC.urlString = self.replyTopicUrl;
@@ -149,11 +167,22 @@ static NSString  * const commentCellID = @"commentCellID";
         
         self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];
         
+        // 说明帖子需要登陆
+        if (self.topicDetailViewModels.count == 0)
+        {
+            if (self.updateTopicDetailComplection)
+            {
+                NSError *error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorMessage" : @"查看本主题需要登录"}];
+                self.updateTopicDetailComplection(nil, error);
+            }
+            return;
+        }
+        
         self.firstTopicDetailVM = self.topicDetailViewModels.firstObject;
         
         if (self.updateTopicDetailComplection)
         {
-            self.updateTopicDetailComplection(self.topicDetailViewModels.firstObject);
+            self.updateTopicDetailComplection(self.topicDetailViewModels.firstObject, nil);
         }
         
         [self.tableView reloadData];
@@ -163,11 +192,9 @@ static NSString  * const commentCellID = @"commentCellID";
     }];
 }
 
-
-
 - (void)parseUrl
 {
-    self.topicDetailUrl = @"http://www.v2ex.com/t/260116#reply22";
+    self.topicDetailUrl = @"http://www.v2ex.com/t/263571#reply0";
     
     if (self.currentPage != 0)
     {
@@ -257,7 +284,7 @@ static NSString  * const commentCellID = @"commentCellID";
     
 }
 
-#pragma mark - 
+#pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL
 {
     WTWebViewViewController *webViewVC = [WTWebViewViewController new];

@@ -8,7 +8,8 @@
 
 #import "WTTopicDetailContentCell.h"
 #import "WTTopicDetailViewModel.h"
-
+#import "NSString+Regex.h"
+#import "WTURLConst.h"
 @interface WTTopicDetailContentCell() <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -41,7 +42,7 @@
 {
     _topicDetailVM = topicDetailVM;
 
-    [self.webView loadHTMLString: topicDetailVM.contentHTML baseURL: nil];
+    [self.webView loadHTMLString: topicDetailVM.contentHTML baseURL: [NSURL URLWithString: WTHTTP]];
     WTLog(@"1")
     
     self.cellHeight = self.webView.scrollView.contentSize.height;
@@ -57,11 +58,16 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString *url = request.URL.absoluteString;
-    if ([url containsString: @"about:blank"])
+    if ([url containsString: @"about:blank"] || [url containsString: @"http:/"])
     {
         return YES;
     }
     
+    if ([NSString isAccordWithRegex: @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}" string: url])
+    {
+        [[UIApplication sharedApplication] openURL: request.URL];
+        return NO;
+    }
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
     {
         [self.delegate topicDetailContentCell: self didClickedWithLinkURL: request.URL];

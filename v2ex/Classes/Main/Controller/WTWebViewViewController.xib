@@ -8,7 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WTWebViewViewController">
             <connections>
                 <outlet property="contentView" destination="39b-5a-0rq" id="Mwo-dv-R9P"/>
+                <outlet property="nextBtn" destination="LrV-AP-iyF" id="la0-lr-VTa"/>
+                <outlet property="prevBtn" destination="cSK-CR-hGD" id="NM2-dF-JxV"/>
                 <outlet property="progressView" destination="SKW-UQ-8lW" id="82x-Ib-cXg"/>
+                <outlet property="refreshBtn" destination="hYf-Uy-Rjo" id="bFF-Rg-6II"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,11 +31,14 @@
                     </constraints>
                     <items>
                         <barButtonItem style="plain" id="fEi-hR-aUW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cSK-CR-hGD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cSK-CR-hGD">
                                 <rect key="frame" x="20" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="webView_return"/>
                                 <state key="disabled" image="webView_return_disabled"/>
+                                <connections>
+                                    <action selector="prevBtnClick" destination="-1" eventType="touchUpInside" id="kdr-7B-wNV"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="KuC-FZ-A2S"/>
@@ -42,6 +48,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="webView_refresh"/>
                                 <state key="disabled" image="webView_refresh_disabled"/>
+                                <connections>
+                                    <action selector="refreshBtnClick" destination="-1" eventType="touchUpInside" id="YL1-Uw-wkm"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="R4u-Ue-OJ6"/>
@@ -51,6 +60,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="webView_next"/>
                                 <state key="disabled" image="webView_next_disabled"/>
+                                <connections>
+                                    <action selector="nextBtnClick" destination="-1" eventType="touchUpInside" id="Ka4-jy-zPl"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </items>
