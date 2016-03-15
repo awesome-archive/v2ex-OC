@@ -40,10 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
     
     // 设置话题详情数据
     [self setupTopicDetailData];
-    
-    
-    // 设置工具栏
-    [self setupToolBarView];
 }
 
 #pragma mark -设置话题详情数据
@@ -77,23 +73,26 @@ NS_ASSUME_NONNULL_BEGIN
         }
         weakSelf.tipView.hidden = YES;
         weakSelf.toolBarView.topicDetailVM = topicDetailVM;
-        
     };
 }
 
-#pragma mark - 设置工具栏
-- (void)setupToolBarView
+#pragma mark - 懒加载
+- (WTToolBarView *)toolBarView
 {
-    // 1、创建工具栏View
-    WTToolBarView *toolBarView = [WTToolBarView toolBarView];
-    [self.normalView addSubview: toolBarView];
-    _toolBarView = toolBarView;
-    
-    // 3、布局
-    [toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.normalView);
-        make.height.equalTo(@(WTToolBarHeight));
-    }];
+    if (_toolBarView == nil)
+    {
+        // 1、创建工具栏View
+        WTToolBarView *toolBarView = [WTToolBarView toolBarView];
+        [self.normalView addSubview: toolBarView];
+        _toolBarView = toolBarView;
+        
+        // 3、布局
+        [toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.normalView);
+            make.height.equalTo(@(WTToolBarHeight));
+        }];
+    }
+    return _toolBarView;
 }
 
 #pragma mark - 事件

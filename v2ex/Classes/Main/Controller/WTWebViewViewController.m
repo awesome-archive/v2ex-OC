@@ -12,6 +12,7 @@
 #define WTEstimatedProgress @"estimatedProgress"
 #define WTCanGoBack @"canGoBack"
 #define WTCanGoForward @"canGoForward"
+#define WTTitle @"title"
 
 @interface WTWebViewViewController ()
 @property (weak, nonatomic) WKWebView *webView;
@@ -45,10 +46,11 @@
     // 2、加载请求
     [webView loadRequest: [NSURLRequest requestWithURL: self.url]];
     
-    // 3、为进度条添加通知
+    // 3、为进度条、是否可以返回、是否可以前进、标题 添加通知
     [webView addObserver: self forKeyPath: WTEstimatedProgress options: NSKeyValueObservingOptionNew context: nil];
     [webView addObserver: self forKeyPath: WTCanGoBack options: NSKeyValueObservingOptionNew context: nil];
     [webView addObserver: self forKeyPath: WTCanGoForward options: NSKeyValueObservingOptionNew context: nil];
+    [webView addObserver: self forKeyPath: WTTitle options: NSKeyValueObservingOptionNew context: nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
@@ -66,6 +68,10 @@
     else if([keyPath isEqualToString: WTCanGoForward])
     {
         self.nextBtn.enabled = self.webView.canGoForward;
+    }
+    else if([keyPath isEqualToString: WTTitle])
+    {
+        self.title = self.webView.title;
     }
 }
 #pragma mark - 事件
@@ -90,6 +96,7 @@
     [self.webView removeObserver: self forKeyPath: WTEstimatedProgress];
     [self.webView removeObserver: self forKeyPath: WTCanGoBack];
     [self.webView removeObserver: self forKeyPath: WTCanGoForward];
+    [self.webView removeObserver: self forKeyPath: WTTitle];
 }
 
 @end

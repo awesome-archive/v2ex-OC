@@ -596,12 +596,7 @@ div.node:hover .node_compose {
     word-break: break-all;
     word-wrap: break-word;
 }
-.topic_content {
-    color: #000;
-    font-size: 12px;
-    line-height: 1.6;
-    word-wrap: break-word;
-}
+
 .gist {
     word-break: normal;
 }
@@ -1287,5 +1282,11 @@ a.btn_hero:hover {
     border-radius: 2px;
     line-height: 100%;
     margin-bottom: 20px;
+}
+.topic_content {
+    color: #000;
+    font-size: 15px;
+    line-height: 1.6;
+    word-wrap: break-word;
 }
 </style>

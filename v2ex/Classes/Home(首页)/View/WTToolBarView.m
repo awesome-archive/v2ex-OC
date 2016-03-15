@@ -8,6 +8,7 @@
 
 #import "WTToolBarView.h"
 #import "WTTopicDetailViewModel.h"
+#import "SVProgressHUD.h"
 @interface WTToolBarView()
 /** 上一页按钮 */
 @property (weak, nonatomic) IBOutlet UIButton           *prevButton;
@@ -78,6 +79,21 @@
 #pragma mark - toolBar上各个按钮的点击事件
 - (IBAction)toolBarBtnClick:(UIButton *)sender
 {
+    NSUInteger tag = sender.tag;
+    if (tag == 0)
+    {
+        if (_topicDetailVM.thankType == WTThankTypeAlready)
+        {
+            [SVProgressHUD showErrorWithStatus: @"不能取消感谢" maskType: SVProgressHUDMaskTypeBlack];
+            return;
+        }
+        else if(_topicDetailVM.thankType == WTThankTypeUnknown)
+        {
+            [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢" maskType: SVProgressHUDMaskTypeBlack];
+            return;
+        }
+    }
+    
     NSDictionary *userInfo = @{@"buttonType" : @(sender.tag)};
     [[NSNotificationCenter defaultCenter] postNotificationName: WTToolBarButtonClickNotification object: nil userInfo:userInfo];
 }
