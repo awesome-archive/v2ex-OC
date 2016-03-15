@@ -9,10 +9,12 @@
 #import "WTTopicViewModel.h"
 #import "TFHpple.h"
 #import "WTURLConst.h"
+#import "NSString+YYAdd.h"
+#import "WTParseTool.h"
 @implementation WTTopicViewModel
 
-#pragma mark - 根据data解析出话题数组
-+ (NSMutableArray *)topicsWithData:(NSData *)data
+#pragma mark - 根据data解析出节点话题数组
++ (NSMutableArray *)nodeTopicsWithData:(NSData *)data
 {
     NSMutableArray *topics = [NSMutableArray array];
     
@@ -27,8 +29,8 @@
             TFHppleElement *titleElement = [cellItem searchWithXPathQuery: @"//span[@class='item_title']//a"][0];
             TFHppleElement *authorElement = [cellItem searchWithXPathQuery: @"//strong"][0];
             NSArray<TFHppleElement *> *commentArray = [cellItem searchWithXPathQuery: @"//a[@class='count_livid']"];
-            TFHppleElement *timeElement = [cellItem searchWithXPathQuery: @"//span[@class='small fade']"][1];
-            TFHppleElement *icon = [cellItem searchWithXPathQuery: @"//img[@class='avatar']"][0];
+            NSArray<TFHppleElement *> *smallFadeArray = [cellItem searchWithXPathQuery: @"//span[@class='small fade']"];
+            NSArray<TFHppleElement *> *avatars = [cellItem searchWithXPathQuery: @"//img[@class='avatar']"];
             
             WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
             {
@@ -53,10 +55,27 @@
                 }
                 
                 // 6、最后回复时间
-                topic.lastReplyTime = [[timeElement.content componentsSeparatedByString: @"•"].firstObject stringByReplacingOccurrencesOfString: @" " withString: @""];
+                if (smallFadeArray.count > 1)        // 首页话题列表
+                {
+                    topic.lastReplyTime = [[smallFadeArray[1].content componentsSeparatedByString: @"•"].firstObject stringByReplacingOccurrencesOfString: @" " withString: @""];
+                }
+                else                                // 用户收藏话题列表
+                {
+                    NSString *content = smallFadeArray[0].content;
+                    NSArray *contents = [content componentsSeparatedByString: @"•"];
+                    if (contents.count > 2)
+                    {
+                        NSString *lastReplyTime = contents[2];
+                        topic.lastReplyTime = [lastReplyTime stringByTrim];
+                    }
+                    
+                }
                 
                 // 7、头像
-                topic.icon = [icon objectForKey: @"src"];
+                if (avatars.count > 0)
+                {
+                    topic.icon = [avatars.firstObject objectForKey: @"src"];
+                }
                 
                 topicViewModel.topic = topic;
                 
@@ -65,22 +84,82 @@
                 topicViewModel.topicDetailUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: topic.detailUrl];
                 
                 // 2、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
-                NSString *iconStr = topic.icon;
-                if ([topic.icon containsString: @"normal.png"])
+                if (topic.icon)
                 {
-                    iconStr = [topic.icon stringByReplacingOccurrencesOfString: @"normal.png" withString: @"large.png"];
+                    NSString *iconStr = topic.icon;
+                    if ([topic.icon containsString: @"normal.png"])
+                    {
+                        iconStr = [topic.icon stringByReplacingOccurrencesOfString: @"normal.png" withString: @"large.png"];
+                    }
+                    else if([topic.icon containsString: @"s=48"])
+                    {
+                        iconStr = [topic.icon stringByReplacingOccurrencesOfString: @"s=48" withString: @"s=96"];
+                    }
+                    topicViewModel.iconURL = [NSURL URLWithString: [WTHTTP stringByAppendingString: iconStr]];
                 }
-                else if([topic.icon containsString: @"s=48"])
-                {
-                    iconStr = [topic.icon stringByReplacingOccurrencesOfString: @"s=48" withString: @"s=96"];
-                }
-                topicViewModel.iconURL = [NSURL URLWithString: [WTHTTP stringByAppendingString: iconStr]];
             }
             
             [topics addObject: topicViewModel];
         }
     }
     return topics;
+}
+
+#pragma makr - 根据data解析出用户通知
++ (NSMutableArray<WTTopicViewModel *> *)userNotificationsWithData:(NSData *)data;
+{
+    NSMutableArray *notificationVMs = [NSMutableArray array];
+    
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    
+    NSArray<TFHppleElement *> *cellEs = [doc searchWithXPathQuery: @"//div[@class='cell']"];
+    
+    for (TFHppleElement *cellE in cellEs)
+    {
+        @autoreleasepool {
+            
+            NSArray<TFHppleElement *> *avatarEs = [cellE searchWithXPathQuery: @"//img[@class='avatar']"];
+            
+            NSArray<TFHppleElement *> *aEs = [cellE searchWithXPathQuery: @"//a"];
+            
+            NSArray<TFHppleElement *> *snowEs = [cellE searchWithXPathQuery: @"//span[@class='snow']"];
+            
+            NSArray<TFHppleElement *> *payloadEs = [cellE searchWithXPathQuery: @"//div[@class='payload']"];
+            
+            
+            
+            WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
+            {
+                WTTopicNew *topic = [WTTopicNew new];
+                
+                // 1、头像
+                topic.icon = [avatarEs.firstObject objectForKey: @"src"];
+                // 2、作者
+                topic.author = aEs[1].content;
+                // 3、标题
+                if (aEs.count > 2)
+                {
+                    topic.title = aEs[2].content;
+                    topic.detailUrl = [aEs[2] objectForKey: @"href"];
+                    topicViewModel.topicDetailUrl = [WTHTTPBaseUrl stringByAppendingString: topic.detailUrl];
+                }
+                // 4、最后回复时间
+                topic.lastReplyTime = snowEs.firstObject.content;
+                // 5、回复内容
+                topic.content = payloadEs.firstObject.content;
+                
+                
+                topicViewModel.topic = topic;
+                
+                // 1、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
+                topicViewModel.iconURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: topic.icon];
+                
+            }
+            
+            [notificationVMs addObject: topicViewModel];
+        }
+    }
+    return notificationVMs;
 }
 
 #pragma mark - 是否是 `最近`节点

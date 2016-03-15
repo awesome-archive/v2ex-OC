@@ -52,12 +52,12 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/misaka14/v2ex/v2ex/Classes/Home(%E9%A6%96%E9%A1%B5)/ViewModel/WTTopicDetailViewModel.m"
-                  timestampString = "479708480.723949"
+                  timestampString = "479723243.502409"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "69">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/misaka14/v2ex/v2ex/Classes/Home(%E9%A6%96%E9%A1%B5)/ViewModel/WTTopicDetailViewModel.m"
-                  timestampString = "479708480.724104"
+                  timestampString = "479723243.502668"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
-                  offsetFromSymbolStart = "72">
+                  offsetFromSymbolStart = "67">
                </Location>
             </Locations>
          </BreakpointContent>

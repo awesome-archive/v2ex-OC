@@ -58,7 +58,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString *url = request.URL.absoluteString;
-    if ([url containsString: @"about:blank"] || [url containsString: @"http:/"])
+    if (([url containsString: @"about:blank"] || [url containsString: @"http:/"]) && ![url containsString: @"jpg"])
     {
         return YES;
     }

@@ -17,13 +17,23 @@
 @property (nonatomic, strong) NSURL         *iconURL;
 
 /**
- *  根据data解析出话题数组
+ *  根据data解析出节点话题数组
  *
  *  @param data data
  *
  *  @return 话题数组
  */
-+ (NSMutableArray *)topicsWithData:(NSData *)data;
++ (NSMutableArray *)nodeTopicsWithData:(NSData *)data;
+
+
+/**
+ *  根据data解析出用户通知
+ *
+ *  @param data data
+ *
+ *  @return 用户通知数据
+ */
++ (NSMutableArray<WTTopicViewModel *> *)userNotificationsWithData:(NSData *)data;
 
 /**
  *  是否是 `最近`节点

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WTTopic;
-@interface WTMeAllTopicCell : UITableViewCell
+@class WTTopicViewModel;
+@interface WTUserTopicCell : UITableViewCell
 
 /** 话题模型 */
-@property (nonatomic, strong) WTTopic       *topic;
+@property (nonatomic, strong) WTTopicViewModel       *topicViewModel;
 
 @end

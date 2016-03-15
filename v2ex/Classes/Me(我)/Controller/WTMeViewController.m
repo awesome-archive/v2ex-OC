@@ -14,7 +14,7 @@
 #import "WTTopicViewController.h"
 #import "WTURLConst.h"
 #import "WTNotificationViewController.h"
-#import "WTMeAllTopicViewController.h"
+#import "WTUserTopicViewController.h"
 #import "WTReplyTopicViewController.h"
 #import "WTUserSettingViewController.h"
 #import "WTTipView.h"
@@ -166,10 +166,10 @@
         
         case WTMeMessageTypeTopic:
         {
-            WTMeAllTopicViewController *meAllTopicVC = [WTMeAllTopicViewController new];
-            meAllTopicVC.urlString = self.meTopicUrl;
-            meAllTopicVC.title = @"全部主题";
-            [self.navigationController pushViewController: meAllTopicVC animated: YES];
+            WTUserTopicViewController *userTopicVC = [WTUserTopicViewController new];
+            userTopicVC.urlString = self.meTopicUrl;
+            userTopicVC.title = @"全部主题";
+            [self.navigationController pushViewController: userTopicVC animated: YES];
             break;
         }
         case WTMeMessageTypeReply:

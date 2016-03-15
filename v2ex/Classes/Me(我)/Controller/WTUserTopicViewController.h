@@ -8,7 +8,7 @@
 
 #import "WTBaseTableViewController.h"
 @class WTTopic;
-@interface WTMeAllTopicViewController : WTBaseTableViewController
+@interface WTUserTopicViewController : WTBaseTableViewController
 /** url地址 */
 @property (nonatomic, strong) NSString      *urlString;
 

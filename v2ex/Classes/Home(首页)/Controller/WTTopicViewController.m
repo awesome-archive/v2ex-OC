@@ -72,7 +72,7 @@ static NSString *const ID = @"topicCell";
     self.page = 1;
     [[NetworkTool shareInstance] getHtmlCodeWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
         
-        self.topicViewModels = [WTTopicViewModel topicsWithData: data];
+        self.topicViewModels = [WTTopicViewModel nodeTopicsWithData: data];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         
@@ -88,7 +88,7 @@ static NSString *const ID = @"topicCell";
     
     [[NetworkTool shareInstance] getHtmlCodeWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
         
-        [self.topicViewModels addObjectsFromArray: [WTTopicViewModel topicsWithData: data]];
+        [self.topicViewModels addObjectsFromArray: [WTTopicViewModel nodeTopicsWithData: data]];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         

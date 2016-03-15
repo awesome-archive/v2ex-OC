@@ -194,7 +194,7 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)parseUrl
 {
-    self.topicDetailUrl = @"http://www.v2ex.com/t/263571#reply0";
+    //self.topicDetailUrl = @"http://www.v2ex.com/t/263571#reply0";
     
     if (self.currentPage != 0)
     {

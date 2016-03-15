@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WTAccountParam.h"
 #import "WTUser.h"
-#import "WTNotification.h"
+
 #import "WTTopic.h"
 @interface WTAccountTool : NSObject
 
@@ -40,14 +40,6 @@
  */
 + (void)getUserInfoWithUrlString:(NSString *)urlString success:(void(^)(WTUser *user))success failure:(void(^)(NSError *error))failure;
 
-/**
- *  获取用户的消息
- *
- *  @param urlString url
- *  @param success   请求成功的回调
- *  @param failure   请求失败的回调
- */
-+ (void)getNotificationWithUrlString:(NSString *)urlString success:(void(^)(NSMutableArray<WTNotification *> *notifications))success failure:(void(^)(NSError *error))failure;
 
 /**
  *  获取用户的全部话题

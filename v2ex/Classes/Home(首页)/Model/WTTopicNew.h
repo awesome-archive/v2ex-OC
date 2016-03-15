@@ -18,8 +18,6 @@
 @property (nonatomic, strong) NSString          *title;
 /** 节点名称 */
 @property (nonatomic, strong) NSString          *node;
-/** 创建时间 */
-@property (nonatomic, strong) NSString          *createTime;
 /** 内容 */
 @property (nonatomic, strong) NSString          *content;
 /** 详情链接 */

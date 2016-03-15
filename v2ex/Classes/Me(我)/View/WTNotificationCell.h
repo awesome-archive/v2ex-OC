@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WTNotification;
+@class WTTopicViewModel;
 @interface WTNotificationCell : UITableViewCell
 /** 回复消息模型 */
-@property (nonatomic, strong) WTNotification *notification;
+@property (nonatomic, strong) WTTopicViewModel *topicViewModel;
 
 @end

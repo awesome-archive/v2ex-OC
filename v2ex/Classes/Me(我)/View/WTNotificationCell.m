@@ -7,9 +7,10 @@
 //
 
 #import "WTNotificationCell.h"
-#import "WTNotification.h"
+#import "WTTopicViewModel.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Extension.h"
+
 @interface WTNotificationCell()
 /** 头像 */
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
@@ -22,20 +23,17 @@
 @end
 @implementation WTNotificationCell
 
-- (void)setNotification:(WTNotification *)notification
+- (void)setTopicViewModel:(WTTopicViewModel *)topicViewModel
 {
-    _notification = notification;
+    _topicViewModel = topicViewModel;
     
-    [self.iconImageView sd_setImageWithURL: notification.user.icon placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-        self.iconImageView.image = [image roundImage];
-    }];
+    [self.iconImageView sd_setImageWithURL: topicViewModel.iconURL placeholderImage: WTIconPlaceholderImage];
     
-    self.titleLabel.text = notification.topic.title;
+    self.titleLabel.text = topicViewModel.topic.title;
     
-    self.contentLabel.text = notification.replyContent;
+    self.contentLabel.text = topicViewModel.topic.content;
     
-    self.timeLabel.text = notification.topic.lastReplyTime;
+    self.timeLabel.text = topicViewModel.topic.lastReplyTime;
 }
 
 @end
