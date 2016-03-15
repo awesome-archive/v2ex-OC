@@ -1,51 +1,30 @@
 //
-//  WTBlog.h
+//  WTTopicNew.h
 //  v2ex
 //
-//  Created by 无头骑士 GJ on 16/1/14.
+//  Created by 无头骑士 GJ on 16/3/12.
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import "WTBaseTopic.h"
+#import <Foundation/Foundation.h>
 
-@interface WTTopic : WTBaseTopic
+@interface WTTopic : NSObject
 
-/** 最后评论人 */
-@property (nonatomic, strong) NSString                     *lastCommentsPeople;
+/** 头像*/
+@property (nonatomic, strong) NSString          *icon;
+/** 作者*/
+@property (nonatomic, strong) NSString          *author;
+/** 标题 */
+@property (nonatomic, strong) NSString          *title;
+/** 节点名称 */
+@property (nonatomic, strong) NSString          *node;
+/** 内容 */
+@property (nonatomic, strong) NSString          *content;
 /** 详情链接 */
-@property (nonatomic, strong) NSString                     *detailUrl;
-/** 回复数量 */
-@property (nonatomic, assign) NSInteger                    replyCount;
-/** 最后回复时间 */
-@property (nonatomic, strong) NSString                     *lastReplyTime;
+@property (nonatomic, strong) NSString          *detailUrl;
+/** 被评论数 */
+@property (nonatomic, strong) NSString          *commentCount;
+/** 帖子最后回复时间 */
+@property (nonatomic, strong) NSString          *lastReplyTime;
 
-// 额外属性
-/** 是否有下一页 */
-@property (nonatomic, assign, getter=isHasNextPage)BOOL    hasNextPage;
-/**
- *  是否是 `最近`节点
- *
- *  @param urlSuffix url后缀
- *
- *  @return YES 是 NO 否
- */
-+ (BOOL)isNewestNodeWithUrlSuffix:(NSString *)urlSuffix;
-
-/**
- *  根据二进制流 返回一个博客数组
- *
- *  @param data 二进制
- *
- *  @return 博客数据
- */
-+ (NSArray *)topicWithData:(NSData *)data;
-
-/**
- *  解析节点内的博客数据
- *
- *  @param data 进制
- *
- *  @return 博客数据
- */
-+ (NSArray *)TopicsNodeBlogWithData:(NSData *)data;
 @end

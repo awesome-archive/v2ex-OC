@@ -34,7 +34,7 @@
             
             WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
             {
-                WTTopicNew *topic = [WTTopicNew new];
+                WTTopic *topic = [WTTopic new];
 
                 // 1、节点
                 topic.node = nodeElement.content;
@@ -130,7 +130,7 @@
             
             WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
             {
-                WTTopicNew *topic = [WTTopicNew new];
+                WTTopic *topic = [WTTopic new];
                 
                 // 1、头像
                 topic.icon = [avatarEs.firstObject objectForKey: @"src"];
@@ -187,7 +187,7 @@
             
             WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
             {
-                WTTopicNew *topic = [WTTopicNew new];
+                WTTopic *topic = [WTTopic new];
                 
                 NSString *grayContent = grayE.content;
                 NSString *grayAContent = grayaE.content;
@@ -220,6 +220,33 @@
     if ([urlSuffix containsString: @"recent"] || [urlSuffix containsString: @"my"])
         return true;
     return false;
+}
+
+#pragma mark - 创建nodes.plist文件
++ (void)createNodesPlist
+{
+    NSDictionary *dict_0 = @{@"name" : @"最近", @"nodeURL" : @"/recent"};
+    NSDictionary *dict0 = @{@"name" : @"技术", @"nodeURL" : @"/?tab=tech"};
+    NSDictionary *dict1 = @{@"name" : @"创意", @"nodeURL" : @"/?tab=creative"};
+    NSDictionary *dict2 = @{@"name" : @"好玩", @"nodeURL" : @"/?tab=play"};
+    NSDictionary *dict3 = @{@"name" : @"Apple", @"nodeURL" : @"/?tab=apple"};
+    NSDictionary *dict4 = @{@"name" : @"酷工作", @"nodeURL" : @"/?tab=jobs"};
+    NSDictionary *dict5 = @{@"name" : @"交易", @"nodeURL" : @"/?tab=deals"};
+    NSDictionary *dict6 = @{@"name" : @"城市", @"nodeURL" : @"/?tab=city"};
+    NSDictionary *dict7 = @{@"name" : @"问与答", @"nodeURL" : @"/?tab=qna"};
+    NSDictionary *dict8 = @{@"name" : @"最热", @"nodeURL" : @"/?tab=hot"};
+    NSDictionary *dict9 = @{@"name" : @"全部", @"nodeURL" : @"/?tab=all"};
+    NSDictionary *dict10 = @{@"name" : @"R2", @"nodeURL" : @"/?tab=r2"};
+    NSArray *array = @[dict_0,dict0, dict1,dict2, dict3, dict4, dict5, dict6, dict7, dict8, dict9, dict10];
+    BOOL flag = [array writeToFile: @"/Users/wutouqishigj/Desktop/nodes.plist" atomically: YES];
+    if (flag)
+    {
+        WTLog(@"成功");
+    }
+    else
+    {
+        WTLog(@"失败");
+    }
 }
 
 @end

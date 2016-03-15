@@ -18,9 +18,6 @@
 		B63A5EEC1C5BC5CE00D3BF8B /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EB61C5BC5CE00D3BF8B /* WTHomeViewController.m */; };
 		B63A5EED1C5BC5CE00D3BF8B /* WTTopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EB81C5BC5CE00D3BF8B /* WTTopicDetailViewController.m */; };
 		B63A5EEE1C5BC5CE00D3BF8B /* WTTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EBA1C5BC5CE00D3BF8B /* WTTopicViewController.m */; };
-		B63A5EEF1C5BC5CE00D3BF8B /* WTBaseTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EBD1C5BC5CE00D3BF8B /* WTBaseTopic.m */; };
-		B63A5EF11C5BC5CE00D3BF8B /* WTTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EC11C5BC5CE00D3BF8B /* WTTopic.m */; };
-		B63A5EF21C5BC5CE00D3BF8B /* WTTopicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EC31C5BC5CE00D3BF8B /* WTTopicDetail.m */; };
 		B63A5EF31C5BC5CE00D3BF8B /* WTTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EC61C5BC5CE00D3BF8B /* WTTopicCell.m */; };
 		B63A5EF41C5BC5CE00D3BF8B /* WTTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B63A5EC71C5BC5CE00D3BF8B /* WTTopicCell.xib */; };
 		B63A5EFF1C5BC5CE00D3BF8B /* WTHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B63A5EE31C5BC5CE00D3BF8B /* WTHttpTool.m */; };
@@ -63,9 +60,9 @@
 		B682C0991C9335AC005D7B35 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0941C9335AC005D7B35 /* TFHpple.m */; };
 		B682C09A1C9335AC005D7B35 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0961C9335AC005D7B35 /* TFHppleElement.m */; };
 		B682C09B1C9335AC005D7B35 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0981C9335AC005D7B35 /* XPathQuery.m */; };
-		B682C0A21C934C90005D7B35 /* WTTopicNew.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0A11C934C90005D7B35 /* WTTopicNew.m */; };
+		B682C0A21C934C90005D7B35 /* WTTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0A11C934C90005D7B35 /* WTTopic.m */; };
 		B682C0A51C936F63005D7B35 /* WTTopicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0A41C936F63005D7B35 /* WTTopicViewModel.m */; };
-		B682C0A81C9370AA005D7B35 /* WTTopicDetailNew.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0A71C9370AA005D7B35 /* WTTopicDetailNew.m */; };
+		B682C0A81C9370AA005D7B35 /* WTTopicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0A71C9370AA005D7B35 /* WTTopicDetail.m */; };
 		B682C0AB1C937144005D7B35 /* WTTopicDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B682C0AA1C937144005D7B35 /* WTTopicDetailViewModel.m */; };
 		B694816D1C462267001ABDA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816C1C462267001ABDA3 /* main.m */; };
 		B69481701C462267001ABDA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816F1C462267001ABDA3 /* AppDelegate.m */; };
@@ -110,8 +107,6 @@
 		B6F25AC51C77786200768DEF /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25ABC1C77786200768DEF /* HTMLNode.m */; };
 		B6F25AC61C77786200768DEF /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25ABE1C77786200768DEF /* HTMLParser.m */; };
 		B6F25AC71C77786200768DEF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B6F25ABF1C77786200768DEF /* README.md */; };
-		B6F25ACE1C77838A00768DEF /* WTTopicParam.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25ACB1C77838A00768DEF /* WTTopicParam.m */; };
-		B6F25ACF1C77838A00768DEF /* WTTopicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25ACD1C77838A00768DEF /* WTTopicTool.m */; };
 		B6F25AD31C7783CC00768DEF /* WTAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AD21C7783CC00768DEF /* WTAccountTool.m */; };
 		B6F25AD71C7783F600768DEF /* WTAccountParam.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AD61C7783F600768DEF /* WTAccountParam.m */; };
 		B6F25B051C78BF1700768DEF /* WTHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25B041C78BF1700768DEF /* WTHTTPSessionManager.m */; };
@@ -140,12 +135,6 @@
 		B63A5EB81C5BC5CE00D3BF8B /* WTTopicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicDetailViewController.m; sourceTree = "<group>"; };
 		B63A5EB91C5BC5CE00D3BF8B /* WTTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicViewController.h; sourceTree = "<group>"; };
 		B63A5EBA1C5BC5CE00D3BF8B /* WTTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicViewController.m; sourceTree = "<group>"; };
-		B63A5EBC1C5BC5CE00D3BF8B /* WTBaseTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTBaseTopic.h; sourceTree = "<group>"; };
-		B63A5EBD1C5BC5CE00D3BF8B /* WTBaseTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTBaseTopic.m; sourceTree = "<group>"; };
-		B63A5EC01C5BC5CE00D3BF8B /* WTTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopic.h; sourceTree = "<group>"; };
-		B63A5EC11C5BC5CE00D3BF8B /* WTTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopic.m; sourceTree = "<group>"; };
-		B63A5EC21C5BC5CE00D3BF8B /* WTTopicDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicDetail.h; sourceTree = "<group>"; };
-		B63A5EC31C5BC5CE00D3BF8B /* WTTopicDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicDetail.m; sourceTree = "<group>"; };
 		B63A5EC51C5BC5CE00D3BF8B /* WTTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicCell.h; sourceTree = "<group>"; };
 		B63A5EC61C5BC5CE00D3BF8B /* WTTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCell.m; sourceTree = "<group>"; };
 		B63A5EC71C5BC5CE00D3BF8B /* WTTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTTopicCell.xib; sourceTree = "<group>"; };
@@ -220,12 +209,12 @@
 		B682C0961C9335AC005D7B35 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
 		B682C0971C9335AC005D7B35 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		B682C0981C9335AC005D7B35 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
-		B682C0A01C934C90005D7B35 /* WTTopicNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicNew.h; sourceTree = "<group>"; };
-		B682C0A11C934C90005D7B35 /* WTTopicNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicNew.m; sourceTree = "<group>"; };
+		B682C0A01C934C90005D7B35 /* WTTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopic.h; sourceTree = "<group>"; };
+		B682C0A11C934C90005D7B35 /* WTTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopic.m; sourceTree = "<group>"; };
 		B682C0A31C936F63005D7B35 /* WTTopicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicViewModel.h; sourceTree = "<group>"; };
 		B682C0A41C936F63005D7B35 /* WTTopicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicViewModel.m; sourceTree = "<group>"; };
-		B682C0A61C9370AA005D7B35 /* WTTopicDetailNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicDetailNew.h; sourceTree = "<group>"; };
-		B682C0A71C9370AA005D7B35 /* WTTopicDetailNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicDetailNew.m; sourceTree = "<group>"; };
+		B682C0A61C9370AA005D7B35 /* WTTopicDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicDetail.h; sourceTree = "<group>"; };
+		B682C0A71C9370AA005D7B35 /* WTTopicDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicDetail.m; sourceTree = "<group>"; };
 		B682C0A91C937144005D7B35 /* WTTopicDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicDetailViewModel.h; sourceTree = "<group>"; };
 		B682C0AA1C937144005D7B35 /* WTTopicDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicDetailViewModel.m; sourceTree = "<group>"; };
 		B69481681C462267001ABDA3 /* v2ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = v2ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,10 +290,6 @@
 		B6F25ABD1C77786200768DEF /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		B6F25ABE1C77786200768DEF /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		B6F25ABF1C77786200768DEF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B6F25ACA1C77838A00768DEF /* WTTopicParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicParam.h; sourceTree = "<group>"; };
-		B6F25ACB1C77838A00768DEF /* WTTopicParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicParam.m; sourceTree = "<group>"; };
-		B6F25ACC1C77838A00768DEF /* WTTopicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicTool.h; sourceTree = "<group>"; };
-		B6F25ACD1C77838A00768DEF /* WTTopicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicTool.m; sourceTree = "<group>"; };
 		B6F25AD11C7783CC00768DEF /* WTAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAccountTool.h; sourceTree = "<group>"; };
 		B6F25AD21C7783CC00768DEF /* WTAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAccountTool.m; sourceTree = "<group>"; };
 		B6F25AD51C7783F600768DEF /* WTAccountParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAccountParam.h; sourceTree = "<group>"; };
@@ -396,16 +381,10 @@
 		B63A5EBB1C5BC5CE00D3BF8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B63A5EBC1C5BC5CE00D3BF8B /* WTBaseTopic.h */,
-				B63A5EBD1C5BC5CE00D3BF8B /* WTBaseTopic.m */,
-				B63A5EC01C5BC5CE00D3BF8B /* WTTopic.h */,
-				B63A5EC11C5BC5CE00D3BF8B /* WTTopic.m */,
-				B63A5EC21C5BC5CE00D3BF8B /* WTTopicDetail.h */,
-				B63A5EC31C5BC5CE00D3BF8B /* WTTopicDetail.m */,
-				B682C0A01C934C90005D7B35 /* WTTopicNew.h */,
-				B682C0A11C934C90005D7B35 /* WTTopicNew.m */,
-				B682C0A61C9370AA005D7B35 /* WTTopicDetailNew.h */,
-				B682C0A71C9370AA005D7B35 /* WTTopicDetailNew.m */,
+				B682C0A01C934C90005D7B35 /* WTTopic.h */,
+				B682C0A11C934C90005D7B35 /* WTTopic.m */,
+				B682C0A61C9370AA005D7B35 /* WTTopicDetail.h */,
+				B682C0A71C9370AA005D7B35 /* WTTopicDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,7 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				B6F25AD01C7783BF00768DEF /* Account */,
-				B6F25AC81C77838A00768DEF /* Topic */,
 				B63A5EE11C5BC5CE00D3BF8B /* Http */,
 				B63A5F091C5BCEDB00D3BF8B /* WTConst.h */,
 				B63A5F0A1C5BCEDB00D3BF8B /* WTConst.m */,
@@ -839,25 +817,6 @@
 			path = "HMTL-Parse";
 			sourceTree = "<group>";
 		};
-		B6F25AC81C77838A00768DEF /* Topic */ = {
-			isa = PBXGroup;
-			children = (
-				B6F25AC91C77838A00768DEF /* Param */,
-				B6F25ACC1C77838A00768DEF /* WTTopicTool.h */,
-				B6F25ACD1C77838A00768DEF /* WTTopicTool.m */,
-			);
-			path = Topic;
-			sourceTree = "<group>";
-		};
-		B6F25AC91C77838A00768DEF /* Param */ = {
-			isa = PBXGroup;
-			children = (
-				B6F25ACA1C77838A00768DEF /* WTTopicParam.h */,
-				B6F25ACB1C77838A00768DEF /* WTTopicParam.m */,
-			);
-			path = Param;
-			sourceTree = "<group>";
-		};
 		B6F25AD01C7783BF00768DEF /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -1024,22 +983,18 @@
 				B67BE5AC1C800B50008D89BB /* WTNode.m in Sources */,
 				B6B5528A1C7B717500743ECC /* UIColor+Extension.m in Sources */,
 				B6DCB9B31C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.m in Sources */,
-				B63A5EF11C5BC5CE00D3BF8B /* WTTopic.m in Sources */,
 				B67BE6151C80B77E008D89BB /* WTBaseSettingViewController.m in Sources */,
 				B6B552981C7C3A1A00743ECC /* UIBarButtonItem+Extension.m in Sources */,
 				B63A5F051C5BC5DF00D3BF8B /* WTNavigationController.m in Sources */,
 				B6F25AAB1C774F4C00768DEF /* WTToolBarView.m in Sources */,
 				B6986B5C1C91140400B34888 /* WTFPSLabel.m in Sources */,
 				B6F25AC61C77786200768DEF /* HTMLParser.m in Sources */,
-				B63A5EF21C5BC5CE00D3BF8B /* WTTopicDetail.m in Sources */,
-				B682C0A81C9370AA005D7B35 /* WTTopicDetailNew.m in Sources */,
+				B682C0A81C9370AA005D7B35 /* WTTopicDetail.m in Sources */,
 				B6F25AC31C77786200768DEF /* UIView+Frame.m in Sources */,
 				B6B5528D1C7C246600743ECC /* WTTipView.m in Sources */,
-				B63A5EEF1C5BC5CE00D3BF8B /* WTBaseTopic.m in Sources */,
 				B67BE6061C80B632008D89BB /* WTSettingViewController.m in Sources */,
 				B63A5F001C5BC5CE00D3BF8B /* WTNetworkState.m in Sources */,
 				B6F25AD31C7783CC00768DEF /* WTAccountTool.m in Sources */,
-				B6F25ACE1C77838A00768DEF /* WTTopicParam.m in Sources */,
 				B682C0991C9335AC005D7B35 /* TFHpple.m in Sources */,
 				B6A5BC411C95B04600DEE692 /* WTTopicDetailTableViewController.m in Sources */,
 				B67BE5B21C8023AA008D89BB /* WTExtension.m in Sources */,
@@ -1091,7 +1046,7 @@
 				B67BE5FE1C80B600008D89BB /* WTGroupItem.m in Sources */,
 				B67BE5FF1C80B600008D89BB /* WTSettingItem.m in Sources */,
 				B67BE5FD1C80B600008D89BB /* WTArrowItem.m in Sources */,
-				B682C0A21C934C90005D7B35 /* WTTopicNew.m in Sources */,
+				B682C0A21C934C90005D7B35 /* WTTopic.m in Sources */,
 				B67BE5B61C8028CA008D89BB /* WTNotificationCell.m in Sources */,
 				B64167E41C81D6AD00EAF134 /* WTReplyTopicViewController.m in Sources */,
 				B6F25AC71C77786200768DEF /* README.md in Sources */,
@@ -1099,7 +1054,6 @@
 				B694816D1C462267001ABDA3 /* main.m in Sources */,
 				B682C0A51C936F63005D7B35 /* WTTopicViewModel.m in Sources */,
 				B6F25B051C78BF1700768DEF /* WTHTTPSessionManager.m in Sources */,
-				B6F25ACF1C77838A00768DEF /* WTTopicTool.m in Sources */,
 				B6B5529B1C7C4C7000743ECC /* WTAccount.m in Sources */,
 				B67BE5C71C809760008D89BB /* WTBaseTableViewController.m in Sources */,
 			);

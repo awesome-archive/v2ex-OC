@@ -33,7 +33,7 @@
 {
     _topicViewModel = topicViewModel;
     
-    WTTopicNew *topic = topicViewModel.topic;
+    WTTopic *topic = topicViewModel.topic;
     
     self.titleLabel.text = topic.title;
     self.contentLabel.text = topic.content;

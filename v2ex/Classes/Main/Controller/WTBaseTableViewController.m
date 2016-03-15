@@ -7,7 +7,7 @@
 //
 
 #import "WTBaseTableViewController.h"
-#import "WTTopic.h"
+
 @interface WTBaseTableViewController ()
 
 @end
@@ -34,16 +34,16 @@
  *  是否有下一页
  *
  */
-- (void)isHasNextPage:(WTTopic *)topic
-{
-    // 取出最后一个模型判断是有下一页
-    if (!topic.isHasNextPage)
-    {
-        self.tableView.mj_footer = nil;
-    }
-    else
-    {
-        self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
-    }
-}
+//- (void)isHasNextPage:(WTTopic *)topic
+//{
+//    // 取出最后一个模型判断是有下一页
+//    if (!topicViewModel.isHasNextPage)
+//    {
+//        self.tableView.mj_footer = nil;
+//    }
+//    else
+//    {
+//        self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
+//    }
+//}
 @end

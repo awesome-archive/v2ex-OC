@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class WTTopic, HTMLNode;
+@class HTMLNode;
 @interface WTExtension : NSObject
 /**
  *  判断是否有下一页
@@ -16,25 +16,7 @@
  *
  *  @return WTTopic
  */
-+ (WTTopic *)getIsNextPageWithData:(HTMLNode *)htmlNode;
-
-/**
- *  根据二进制获取话题数据
- *
- *  @param data 二进制
- *
- *  @return 话题数组
- */
-+ (NSMutableArray<WTTopic *> *)getMeAllTopicsWithData:(NSData *)data;
-
-/**
- *  根据二进制获取回复别人的话题数组
- *
- *  @param data 二进制
- *
- *  @return 话题数组
- */
-+ (NSMutableArray<WTTopic *> *)getReplyTopicsWithData:(NSData *)data;
+//+ (WTTopic *)getIsNextPageWithData:(HTMLNode *)htmlNode;
 
 /**
  *  获取用户的once的值

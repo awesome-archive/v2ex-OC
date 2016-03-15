@@ -145,57 +145,6 @@
     }];
 }
 
-/**
- *  根据url获取用户的全部话题
- *
- *  @param urlString url
- *  @param success   请求成功的回调
- *  @param failure   请求失败的回调
- */
-+ (void)getMeAllTopicWithUrlString:(NSString *)urlString success:(void(^)(NSMutableArray<WTTopic *> *topics))success failure:(void(^)(NSError *error))failure
-{
-    [WTHttpTool GET: urlString parameters: nil success:^(id responseObject) {
-        //NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
-        
-        NSMutableArray *topics = [WTExtension getMeAllTopicsWithData: responseObject];
-        if (success)
-        {
-            success(topics);
-        }
-    } failure:^(NSError *error) {
-        if (failure)
-        {
-            failure(error);
-        }
-    }];
-}
-
-
-/**
- *  根据urlString查找用户回复别人的话题
- *
- *  @param urlString url
- *  @param success   请求成功的回调
- *  @param failure   请求失败的回调
- */
-+ (void)getReplyTopicsWithUrlString:(NSString *)urlString success:(void(^)(NSMutableArray<WTTopic *> *topics))success failure:(void(^)(NSError *error))failure
-{
-    [WTHttpTool GET: urlString parameters: nil success:^(id responseObject) {
-    
-        //NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
-        NSMutableArray<WTTopic *> *topics = [WTExtension getReplyTopicsWithData: responseObject];
-        if (success)
-        {
-            success(topics);
-        }
-        
-    } failure:^(NSError *error) {
-        if (failure)
-        {
-            failure(error);
-        }
-    }];
-}
 
 /**
  *  根据urlString领取今日奖励

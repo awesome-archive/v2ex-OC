@@ -10,9 +10,7 @@
 #import "WTTopicCell.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTRefreshAutoNormalFooter.h"
-#import "WTTopicTool.h"
 #import "WTTopicDetailViewController.h"
-#import "WTTopic.h"
 #import "NSString+YYAdd.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "NetworkTool.h"
@@ -138,7 +136,7 @@ static NSString *const ID = @"topicCell";
  */
 - (NSString *)stitchingUrlParameter
 {
-    if ([WTTopic isNewestNodeWithUrlSuffix: _urlString])
+    if ([WTTopicViewModel isNeedNextPage: _urlString])
     {
         return [NSString stringWithFormat: @"%@?p=%ld", self.urlString, self.page];
     }

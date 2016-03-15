@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WTTopicNew.h"
+#import "WTTopic.h"
 @interface WTTopicViewModel : NSObject
 /** 话题模型 */
-@property (nonatomic, strong) WTTopicNew    *topic;
+@property (nonatomic, strong) WTTopic    *topic;
 /** 话题的详情Url */
 @property (nonatomic, strong) NSString      *topicDetailUrl;
 /** 头像 */

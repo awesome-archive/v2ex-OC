@@ -147,7 +147,7 @@
     
     WTTopicDetailViewModel *topicDetailVM = [WTTopicDetailViewModel new];
     {
-        WTTopicDetailNew *topicDetail = [WTTopicDetailNew new];
+        WTTopicDetail *topicDetail = [WTTopicDetail new];
         // 正文
         topicDetail.content = topicContentElement.raw;
     
@@ -238,7 +238,7 @@
         
         WTTopicDetailViewModel *topicDetailVM = [WTTopicDetailViewModel new];
         {
-            WTTopicDetailNew *topicDetail = [WTTopicDetailNew new];
+            WTTopicDetail *topicDetail = [WTTopicDetail new];
             
             topicDetail.content = contentE.content;
             
