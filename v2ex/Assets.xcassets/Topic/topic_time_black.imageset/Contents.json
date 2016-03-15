@@ -1,16 +1,16 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
+      "filename" : "topic_time_black.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
-      "filename" : "iconfont-qz-2.png",
+      "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
       "scale" : "3x"
     }
   ],

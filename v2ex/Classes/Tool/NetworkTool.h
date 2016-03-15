@@ -35,13 +35,22 @@ typedef NS_ENUM(NSInteger, HTTPMethodType)
 - (void)requestWithMethod:(HTTPMethodType)method url:(NSString *)url param:(NSDictionary *)param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 /**
- *  获取html源码
+ *  获取html源码 GET
  *
  *  @param urlString url
  *  @param success   请求成功的回调
  *  @param failure   请求失败的回调
  */
 - (void)getHtmlCodeWithUrlString:(NSString *)urlString success:(void (^)(NSData *data))success failure:(void(^)(NSError *error))failure;
+
+/**
+ *  获取html源码 POST
+ *
+ *  @param urlString url
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
+ */
+- (void)postHtmlCodeWithUrlString:(NSString *)urlString success:(void (^)(NSData *data))success failure:(void(^)(NSError *error))failure;
 
 /**
  *  上传单张图片

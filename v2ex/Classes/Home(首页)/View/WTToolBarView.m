@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel            *pageLabel;
 /** 加入收藏和取消收藏 */
 @property (weak, nonatomic) IBOutlet UIButton           *collectionButton;
+@property (weak, nonatomic) IBOutlet UIButton *thankButton;
 
 @end
 
@@ -49,6 +50,21 @@
 
     // 收藏按钮
     self.collectionButton.selected = [topicDetailVM.collectionUrl containsString: @"unfavorite"];
+
+    // 喜欢的按钮状态判断
+    if (topicDetailVM.thankType == WTThankTypeAlready)
+    {
+        self.thankButton.selected = YES;
+    }
+    else if(topicDetailVM.thankType == WTThankTypeUnknown)
+    {
+        self.thankButton.enabled = YES;
+    }
+    else
+    {
+        self.thankButton.selected = NO;
+        self.thankButton.enabled = YES;
+    }
 }
 
 #pragma mark - 初始化

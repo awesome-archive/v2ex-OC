@@ -36,27 +36,58 @@
 }
 
 #pragma mark - 发送收藏请求
-+ (void)collectionWithUrlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
+//+ (void)collectionWithUrlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
+//{
+//    
+//    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: urlString success:^(NSData *data) {
+//       
+//        [self topicDetailWithUrlString: topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
+//           
+//            if (completion)
+//            {
+//                completion(topicDetailVM, error);
+//            }
+//            
+//        }];
+//        
+//    } failure:^(NSError *error) {
+//        
+//        if (completion)
+//        {
+//            completion(nil, error);
+//        }
+//    }];
+//}
+
++ (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
 {
-    
-    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: urlString success:^(NSData *data) {
-       
+    void (^successBlock)(NSData *data) = ^(NSData *data){
+        
         [self topicDetailWithUrlString: topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
-           
+            
             if (completion)
             {
                 completion(topicDetailVM, error);
             }
             
         }];
-        
-    } failure:^(NSError *error) {
-        
+    };
+    
+    void (^errorBlock)(NSError *error) = ^(NSError *error){
         if (completion)
         {
             completion(nil, error);
         }
-    }];
+    };
+    
+    if (method == HTTPMethodTypeGET)
+    {
+        [[NetworkTool shareInstance] getHtmlCodeWithUrlString: urlString success: successBlock failure: errorBlock];
+    }
+    else
+    {
+        [[NetworkTool shareInstance] postHtmlCodeWithUrlString: urlString success: successBlock failure: errorBlock];
+    }
 }
 
 #pragma mark - 请求作者话题的详情
@@ -111,6 +142,9 @@
     // 9、once
     TFHppleElement *onceElement = [doc searchWithXPathQuery: @"//input[@name='once']"].firstObject;
     
+    // 10、thank 喜欢
+    TFHppleElement *topicThankE = [doc peekAtSearchWithXPathQuery: @"//div[@id='topic_thank']"];
+    
     WTTopicDetailViewModel *topicDetailVM = [WTTopicDetailViewModel new];
     {
         WTTopicDetailNew *topicDetail = [WTTopicDetailNew new];
@@ -160,8 +194,20 @@
         
         // 7、创建时间
         topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at " string: topicDetail.createTime];
+        
+        // 8、感谢
+        topicDetailVM.thankType = WTThankTypeUnknown;     // 未知原因
+        if (topicThankE != nil)
+        {
+            NSString *topicThankContent = topicThankE.content;
+            topicDetailVM.thankType = WTThankTypeAlready; // 已经感谢过
+            if ([topicThankContent isEqualToString: @"感谢"])
+            {
+                topicDetailVM.thankUrl = [WTParseTool parseThankUrlWithFavoriteUrl: topicDetailVM.collectionUrl];
+                topicDetailVM.thankType = WTThankTypeNotYet;                     // 未感谢
+            }
+        }
     }
-    
     return topicDetailVM;
 }
 

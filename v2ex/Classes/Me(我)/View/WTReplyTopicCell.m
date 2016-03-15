@@ -7,7 +7,7 @@
 //
 
 #import "WTReplyTopicCell.h"
-#import "WTTopic.h"
+#import "WTTopicViewModel.h"
 @interface WTReplyTopicCell()
 /** 标题 */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -29,9 +29,12 @@
     self.bgView.layer.masksToBounds = YES;
 }
 
-- (void)setTopic:(WTTopic *)topic
+- (void)setTopicViewModel:(WTTopicViewModel *)topicViewModel
 {
-    _topic = topic;
+    _topicViewModel = topicViewModel;
+    
+    WTTopicNew *topic = topicViewModel.topic;
+    
     self.titleLabel.text = topic.title;
     self.contentLabel.text = topic.content;
     self.authorLabel.text = topic.author;

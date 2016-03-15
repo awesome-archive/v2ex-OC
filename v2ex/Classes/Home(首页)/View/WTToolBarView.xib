@@ -118,10 +118,10 @@
             </variation>
             <connections>
                 <outlet property="collectionButton" destination="MQo-fn-Wms" id="Otg-ht-lNx"/>
-                <outlet property="loveButton" destination="pSV-hh-sFe" id="LRX-RN-Ih9"/>
                 <outlet property="nextButton" destination="OMZ-k8-BJC" id="iNp-Yx-TVb"/>
                 <outlet property="pageLabel" destination="b6n-AM-3QB" id="FHv-m5-lup"/>
                 <outlet property="prevButton" destination="ig7-Pv-8hJ" id="tYK-xm-zNa"/>
+                <outlet property="thankButton" destination="pSV-hh-sFe" id="1YO-A1-vE8"/>
             </connections>
             <point key="canvasLocation" x="256" y="-51"/>
         </view>

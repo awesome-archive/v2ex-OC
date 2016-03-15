@@ -162,6 +162,58 @@
     return notificationVMs;
 }
 
+#pragma mark - 根据data解析出用户回复的话题
++ (NSMutableArray<WTTopicViewModel *> *)userReplyTopicsWithData:(NSData *)data
+{
+    NSMutableArray *topicVMs = [NSMutableArray array];
+    
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    
+    NSArray<TFHppleElement *> *dockAreaEs = [doc searchWithXPathQuery: @"//div[@class='dock_area']"];
+    NSArray<TFHppleElement *> *innerEs = [doc searchWithXPathQuery: @"//div[@class='inner']"];
+    
+    
+    for (NSUInteger i = 0; i < dockAreaEs.count; i++)
+    {
+        @autoreleasepool {
+            
+            TFHppleElement *dockAreaE = dockAreaEs[i];
+            TFHppleElement *innerE = innerEs[i];
+            
+            TFHppleElement *grayE = [dockAreaE searchWithXPathQuery: @"//span[@class='gray']"].firstObject;
+            TFHppleElement *fadeE = [dockAreaE searchWithXPathQuery: @"//span[@class='fade']"].firstObject;
+            
+            TFHppleElement *grayaE = [grayE searchWithXPathQuery: @"//a"].firstObject;
+            
+            WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
+            {
+                WTTopicNew *topic = [WTTopicNew new];
+                
+                NSString *grayContent = grayE.content;
+                NSString *grayAContent = grayaE.content;
+                
+                // 标题
+                topic.title = grayAContent;
+                
+                // 回复内容
+                topic.content = [innerE.content stringByTrim];
+                
+                // 最后回复时间
+                topic.lastReplyTime = [fadeE.content stringByTrim];
+                
+                // 作者
+                NSString *grayContents = [grayContent stringByReplacingOccurrencesOfString: grayAContent withString: @""];
+                topic.author = [grayContents componentsSeparatedByString: @" "][1];
+                
+                topicViewModel.topic = topic;
+            }
+            [topicVMs addObject: topicViewModel];
+        }
+    }
+    
+    return topicVMs;
+}
+
 #pragma mark - 是否是 `最近`节点
 + (BOOL)isNeedNextPage:(NSString *)urlSuffix
 {

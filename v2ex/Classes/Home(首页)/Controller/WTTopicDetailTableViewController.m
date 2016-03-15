@@ -70,8 +70,10 @@ static NSString  * const commentCellID = @"commentCellID";
     switch (buttonType)
     {
         case WTToolBarButtonTypeLove:
-            
+        {
+            [self thankTopic];
             break;
+        }
         case WTToolBarButtonTypeCollection: // 收藏话题
         {
             [self collectionTopic];
@@ -103,6 +105,31 @@ static NSString  * const commentCellID = @"commentCellID";
     }
 }
 
+#pragma mark - 感谢帖子
+- (void)thankTopic
+{
+    // 1、先判断是否登陆
+    if(![[WTAccount shareAccount] isLogin])
+    {
+        WTLoginViewController *loginVC = [WTLoginViewController new];
+        [self presentViewController: loginVC animated: YES completion: nil];
+        return;
+    }
+    
+    // 2、判断是否可以感谢操作
+    if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)
+    {
+        [SVProgressHUD showErrorWithStatus: @"不能取消感谢" maskType: SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)
+    {
+        [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢" maskType: SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl];
+}
+
 #pragma mark - 收藏话题
 - (void)collectionTopic
 {
@@ -113,21 +140,7 @@ static NSString  * const commentCellID = @"commentCellID";
         [self presentViewController: loginVC animated: YES completion: nil];
         return;
     }
-    
-    [SVProgressHUD show];
-    
-    [WTTopicDetailViewModel collectionWithUrlString: self.firstTopicDetailVM.collectionUrl topicDetailUrl: self.topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
-        
-        [SVProgressHUD dismiss];
-        
-        self.firstTopicDetailVM = topicDetailVM;
-        
-        if (self.updateTopicDetailComplection)
-        {
-            self.updateTopicDetailComplection(topicDetailVM, nil);
-        }
-        
-    }];
+    [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.firstTopicDetailVM.collectionUrl];
 }
 #pragma mark 回复话题
 - (void)replyTopic
@@ -154,16 +167,35 @@ static NSString  * const commentCellID = @"commentCellID";
     [self presentViewController: nav animated: YES completion: nil];
 }
 
+#pragma mark - 帖子操作
+- (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString
+{
+    [SVProgressHUD show];
+    [WTTopicDetailViewModel topicOperationWithMethod: method urlString: urlString topicDetailUrl: self.topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
+        
+        [SVProgressHUD dismiss];
+        if (error != nil)
+        {
+            [SVProgressHUD showErrorWithStatus: @"操作异常,请稍候重试" maskType: SVProgressHUDMaskTypeBlack];
+            return;
+        }
+        
+        self.firstTopicDetailVM = topicDetailVM;
+        if (self.updateTopicDetailComplection)
+        {
+            self.updateTopicDetailComplection(topicDetailVM, nil);
+        }
+    }];
+}
+
 #pragma mark - 加载数据
 - (void)setupData
 {
     [self parseUrl];
     
-    [SVProgressHUD show];
-    
+    self.topicDetailUrl = @"http://www.v2ex.com/t/262888#reply0";
+
     [[NetworkTool shareInstance] getHtmlCodeWithUrlString: self.topicDetailUrl success:^(NSData *data) {
-       
-        [SVProgressHUD dismiss];
         
         self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];
         
@@ -194,7 +226,7 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)parseUrl
 {
-    //self.topicDetailUrl = @"http://www.v2ex.com/t/263571#reply0";
+    
     
     if (self.currentPage != 0)
     {

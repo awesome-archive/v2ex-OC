@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WTTopic;
+@class WTTopicViewModel;
 @interface WTReplyTopicCell : UITableViewCell
-/** 话题模型 */
-@property (nonatomic, strong) WTTopic   *topic;
+
+@property (nonatomic, strong) WTTopicViewModel   *topicViewModel;
 
 @end

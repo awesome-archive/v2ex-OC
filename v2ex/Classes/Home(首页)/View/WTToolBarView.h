@@ -25,9 +25,6 @@ typedef NS_ENUM(NSInteger, WTToolBarButtonType) {
 
 @property (nonatomic, strong) WTTopicDetailViewModel *topicDetailVM;
 
-/** 感谢和已经感谢  */
-@property (weak, nonatomic) IBOutlet UIButton        *loveButton;
-
 
 /**
  *  快速创建的类方法

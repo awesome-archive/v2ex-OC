@@ -36,6 +36,15 @@
 + (NSMutableArray<WTTopicViewModel *> *)userNotificationsWithData:(NSData *)data;
 
 /**
+ *  根据data解析出用户回复的话题
+ *
+ *  @param data data
+ *
+ *  @return 用户回复的话题
+ */
++ (NSMutableArray<WTTopicViewModel *> *)userReplyTopicsWithData:(NSData *)data;
+
+/**
  *  是否是 `最近`节点
  *
  *  @param urlSuffix url后缀

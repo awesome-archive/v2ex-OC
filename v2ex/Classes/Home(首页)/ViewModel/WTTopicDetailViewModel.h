@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "WTTopicDetailNew.h"
 #import "NetworkTool.h"
+
+typedef NS_ENUM(NSUInteger, WTThankType){
+    WTThankTypeNotYet,     //   还未感谢
+    WTThankTypeAlready,     //   感谢已发送
+    WTThankTypeUnknown     //   未知原因
+};
+
+
 @interface WTTopicDetailViewModel : NSObject
 /** 话题详情模型 */
 @property (nonatomic, strong) WTTopicDetailNew *topicDetail;
@@ -26,6 +34,10 @@
 @property (nonatomic, strong) NSString         *once;
 /** 创建时间Text */
 @property (nonatomic, strong) NSString         *createTimeText;
+/** 喜欢地址 */
+@property (nonatomic, strong) NSString         *thankUrl;
+/** 喜欢的状态 */
+@property (nonatomic, assign) WTThankType      thankType;
 /**
  *  根据data解析出话题数组
  *
@@ -36,10 +48,11 @@
 + (NSMutableArray<WTTopicDetailViewModel *> *)topicDetailsWithData:(NSData *)data;
 
 /**
- *  发送收藏请求
+ *  帖子操作
  *
  *  @param urlString  请求地址
  *  @param completion 完成block
  */
-+ (void)collectionWithUrlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
++ (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
+
 @end

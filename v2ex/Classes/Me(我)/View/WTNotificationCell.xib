@@ -25,7 +25,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="gengjie 在回复 学前端学 iOS？时提到了你，系统规模大了之后，想拆分再点单点登陆" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2V-D3-NkZ">
                         <rect key="frame" x="46" y="8" width="299" height="35.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLD-Ts-gmK">
@@ -97,6 +97,6 @@
     </objects>
     <resources>
         <image name="topic_delete_normal" width="32" height="32"/>
-        <image name="topic_time_normal" width="64" height="64"/>
+        <image name="topic_time_normal" width="32" height="32"/>
     </resources>
 </document>

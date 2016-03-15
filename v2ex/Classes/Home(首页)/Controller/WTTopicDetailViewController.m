@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIView *normalView;
 
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
 @property (nonatomic, weak) WTToolBarView   *toolBarView;
 
 @property (weak, nonatomic) IBOutlet UIView *tipView;
@@ -67,6 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
     __weak typeof(self) weakSelf = self;
     topicVC.updateTopicDetailComplection = ^(WTTopicDetailViewModel *topicDetailVM, NSError *error){
         
+        weakSelf.loadingView.hidden = YES;
+        
         if (error != nil)
         {
             weakSelf.tipView.hidden = NO;
@@ -74,6 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
         }
         weakSelf.tipView.hidden = YES;
         weakSelf.toolBarView.topicDetailVM = topicDetailVM;
+        
     };
 }
 

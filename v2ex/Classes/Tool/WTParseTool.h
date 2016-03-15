@@ -19,4 +19,13 @@
  */
 + (NSURL *)parseBigImageUrlWithSmallImageUrl: (NSString *)smallImageUrl;
 
+/**
+ *  把收藏的地址解析成喜欢的地址
+ *
+ *  @param favoriteUrl 收藏的地址
+ *
+ *  @return 喜欢的地址
+ */
++ (NSString *)parseThankUrlWithFavoriteUrl:(NSString *)favoriteUrl;
+
 @end

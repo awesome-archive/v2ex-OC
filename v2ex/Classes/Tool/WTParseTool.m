@@ -10,13 +10,7 @@
 #import "WTURLConst.h"
 @implementation WTParseTool
 
-/**
- *  把小图url解析成大图的Url
- *
- *  @param smallUrl 小图的Url
- *
- *  @return 大图的Url
- */
+#pragma mark - 把小图url解析成大图的Url
 + (NSURL *)parseBigImageUrlWithSmallImageUrl: (NSString *)smallImageUrl
 {
     if (smallImageUrl.length == 0)
@@ -33,6 +27,13 @@
         iconStr = [smallImageUrl stringByReplacingOccurrencesOfString: @"s=48" withString: @"s=96"];
     }
     return [NSURL URLWithString: [WTHTTP stringByAppendingString: iconStr]];
+}
+
+#pragma mark - 把收藏的地址解析成喜欢的地址
++ (NSString *)parseThankUrlWithFavoriteUrl:(NSString *)favoriteUrl
+{
+    NSString *thankUrl = [favoriteUrl stringByReplacingOccurrencesOfString: @"unfavorite" withString: @"thank"];
+    return [thankUrl stringByReplacingOccurrencesOfString: @"favorite" withString: @"thank"];
 }
 
 @end
