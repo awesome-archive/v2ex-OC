@@ -9,9 +9,9 @@
 #import "WTHomeViewController.h"
 #import "MJExtension.h"
 #import "WTURLConst.h"
-NS_ASSUME_NONNULL_BEGIN
+#import "WTTopicDetailViewController.h"
 
-@interface WTHomeViewController () 
+@interface WTHomeViewController ()  
 /** WTNode数组*/
 @property (nonatomic, strong) NSArray<WTNode *>             *nodes;
 @end
@@ -66,4 +66,4 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @end
-NS_ASSUME_NONNULL_END
+

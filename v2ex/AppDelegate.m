@@ -52,6 +52,9 @@
         }];
     }
     
+    // 设置3DTouch
+    [self setup3DTouchItems: application];
+    
     // 界面 FPS 代码
     #if DEBUG
     WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 40, 55, 50)];
@@ -59,6 +62,32 @@
     #else
     #endif
     return YES;
+}
+
+#pragma mark - 设置3DTouch
+- (void)setup3DTouchItems:(UIApplication *)application
+{
+    UIApplicationShortcutItem *publishTopicItem = [[UIApplicationShortcutItem alloc] initWithType: @"publishTopicItem" localizedTitle: @"发表话题" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Add"] userInfo: nil];
+    UIApplicationShortcutItem *hotTopicItem = [[UIApplicationShortcutItem alloc] initWithType: @"hotTopicItem" localizedTitle: @"热门话题" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Hot"] userInfo: nil];
+    UIApplicationShortcutItem *notificationItem = [[UIApplicationShortcutItem alloc] initWithType: @"notificationItem" localizedTitle: @"消息" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Notification"] userInfo: nil];
+    application.shortcutItems = @[notificationItem, hotTopicItem, publishTopicItem];
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
+{
+    NSString *type = shortcutItem.type;
+    if ([type isEqualToString: @"publishTopicItem"])
+    {
+        WTLog(@"发表话题")
+    }
+    else if([type isEqualToString: @"hotTopicItem"])
+    {
+        WTLog(@"热门话题")
+    }
+    else
+    {
+        WTLog(@"消息")
+    }
 }
 
 @end

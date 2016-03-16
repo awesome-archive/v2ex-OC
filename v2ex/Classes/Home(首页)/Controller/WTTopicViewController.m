@@ -18,11 +18,11 @@
 // ======
 #import "WTNode.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 static NSString *const ID = @"topicCell";
 
-@interface WTTopicViewController ()
+@interface WTTopicViewController () <UIViewControllerPreviewingDelegate>
 
 @property (nonatomic, strong) NSMutableArray<WTTopicViewModel *>  *topicViewModels;
 /** 当前第几页 */
@@ -43,18 +43,19 @@ static NSString *const ID = @"topicCell";
 #pragma mark - 初始化页面
 - (void)setUpView
 {
+    // 1、设置tableView一些属性
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
-    
-    // 调整tableView的内边距和滚动条内边距
+
+    // 1.1、调整tableView的内边距和滚动条内边距
     if (![self.urlString containsString: @"my"])
     {
         self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
         self.tableView.separatorInset = self.tableView.contentInset;
     }
     
-    // 只有'最近'节点需要上拉刷新
+    // 1.2只有'最近'节点需要上拉刷新
     if ([WTTopicViewModel isNeedNextPage: self.urlString])
     {
         self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
@@ -62,6 +63,12 @@ static NSString *const ID = @"topicCell";
     self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
     
     [self.tableView.mj_header beginRefreshing];
+    
+    // 2、判断3DTouch
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+    {
+        [self registerForPreviewingWithDelegate: self sourceView: self.view];
+    }
 }
 
 #pragma mark 加载最新的数据
@@ -143,5 +150,64 @@ static NSString *const ID = @"topicCell";
     return [NSString stringWithFormat: @"%@", self.urlString];
 }
 
+#pragma mark - UIViewControllerPreviewingDelegate
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
+{
+//    [self.navigationController pushViewController: viewControllerToCommit animated: YES];
+    [self showViewController: viewControllerToCommit sender: self];
+}
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: location];
+    WTTopicCell *cell = [self.tableView cellForRowAtIndexPath: indexPath];
+    if (!cell)
+        return nil;
+    
+    WTTopicViewModel *topicViewModel = cell.topicViewModel;
+    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+    topicDetailVC.topicViewModel = topicViewModel;
+    
+//    previewingContext.sourceRect = self.view.bounds;/
+    return topicDetailVC;
+}
+
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems
+{
+    // 生成UIPreviewAction
+    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"Action 1" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"Action 1 selected");
+    }];
+    
+    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"Action 2" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"Action 2 selected");
+    }];
+    
+    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"Action 3" style:UIPreviewActionStyleSelected handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"Action 3 selected");
+    }];
+    
+    UIPreviewAction *tap1 = [UIPreviewAction actionWithTitle:@"tap 1" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"tap 1 selected");
+    }];
+    
+    UIPreviewAction *tap2 = [UIPreviewAction actionWithTitle:@"tap 2" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"tap 2 selected");
+    }];
+    
+    UIPreviewAction *tap3 = [UIPreviewAction actionWithTitle:@"tap 3" style:UIPreviewActionStyleSelected handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"tap 3 selected");
+    }];
+    
+    // 塞到UIPreviewActionGroup中
+    NSArray *actions = @[action1, action2, action3];
+    NSArray *taps = @[tap1, tap2, tap3];
+    UIPreviewActionGroup *group1 = [UIPreviewActionGroup actionGroupWithTitle:@"Action Group" style:UIPreviewActionStyleDefault actions:actions];
+    UIPreviewActionGroup *group2 = [UIPreviewActionGroup actionGroupWithTitle:@"Action Group" style:UIPreviewActionStyleDefault actions:taps];
+    NSArray *group = @[group1,group2];
+    
+    return group;
+}
+
+
 @end
-NS_ASSUME_NONNULL_END
