@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WTAccount : NSObject
+
+@interface WTAccount : NSObject <NSCoding>
 /** 用户名或邮箱 */
 @property (nonatomic, strong) NSString                              *usernameOrEmail;
 /** 密码 */
@@ -17,22 +18,5 @@
 @property (nonatomic, assign, getter=isReceiveAwards) BOOL          receiveAwards;
 /** 领取奖励需要的once的值 */
 @property (nonatomic, strong) NSString                              *once;
-/**
- *  单例
- *
- */
-+ (instancetype)shareAccount;
 
-/**
- *  保存帐号到偏好设置
- */
-- (void)saveAccount;
-
-- (void)removeAccount;
-
-/**
- *  是否已经登陆过
- *
- */
-- (BOOL)isLogin;
 @end

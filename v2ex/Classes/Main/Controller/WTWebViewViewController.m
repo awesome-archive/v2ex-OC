@@ -8,6 +8,8 @@
 
 #import "WTWebViewViewController.h"
 #import <WebKit/WebKit.h>
+#import "WTShareSDKTool.h"
+#import "UIBarButtonItem+Extension.h"
 
 #define WTEstimatedProgress @"estimatedProgress"
 #define WTCanGoBack @"canGoBack"
@@ -33,6 +35,8 @@
     
     self.prevBtn.enabled = NO;
     self.nextBtn.enabled = NO;
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_share_normal"] highImage: nil frame: CGRectMake(0, 0, 25, 25) addTarget: self action: @selector(shareClick)];
 }
 
 
@@ -89,6 +93,10 @@
     [self.webView goForward];
     self.prevBtn.enabled = YES;
 }
+- (void)shareClick
+{
+    [WTShareSDKTool shareWithText: @"" url: self.url.absoluteString title: @""];
+}
 
 - (void)dealloc
 {
@@ -98,5 +106,4 @@
     [self.webView removeObserver: self forKeyPath: WTCanGoForward];
     [self.webView removeObserver: self forKeyPath: WTTitle];
 }
-
 @end

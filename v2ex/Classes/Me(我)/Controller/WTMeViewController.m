@@ -8,9 +8,11 @@
 
 #import "WTMeViewController.h"
 #import "WTLoginViewController.h"
-#import "WTAccount.h"
+#import "WTAccountViewModel.h"
 #import "WTMeTopView.h"
-#import "WTAccountTool.h"
+#import "WTUser.h"
+#import "WTAccount.h"
+#import "WTUserViewModel.h"
 #import "WTTopicViewController.h"
 #import "WTURLConst.h"
 #import "WTNotificationViewController.h"
@@ -89,11 +91,11 @@
         return;
     }
 
-    if ([[WTAccount shareAccount] isLogin]) // 登陆的情况下，加载自己的信息
+    if ([[WTAccountViewModel shareInstance] isLogin]) // 登陆的情况下，加载自己的信息
     {
         self.normalView.hidden = NO;
         self.loginView.hidden = YES;
-        self.urlString = [WTUserInfoUrl stringByAppendingPathComponent: [WTAccount shareAccount].usernameOrEmail];
+        self.urlString = [WTUserInfoUrl stringByAppendingPathComponent: [WTAccountViewModel shareInstance].account.usernameOrEmail];
         [self refreshUserInfo];
         
         return;
@@ -106,11 +108,11 @@
 {
     if (self.username.length == 0)
     {
-        if ([[WTAccount shareAccount] isLogin]) {
+        if ([[WTAccountViewModel shareInstance] isLogin]) {
             self.loginView.hidden = YES;
             self.normalView.hidden = NO;
             
-          //  [self refreshUserInfo];
+            [self refreshUserInfo];
         }
         else
         {
@@ -130,10 +132,9 @@
     [SVProgressHUD show];
     
     // 刷新用户信息请求
-    [WTAccountTool getUserInfoWithUrlString: self.urlString success:^(WTUser *user){
+    [WTUserViewModel loadUserInfoWithUsername: self.user.username success:^(WTUser *user) {
         
         [SVProgressHUD dismiss];
-        
         self.user = user;
         self.meTopView.user = user;
         
@@ -175,7 +176,7 @@
         case WTMeMessageTypeReply:
         {
             WTReplyTopicViewController *replyTopicVC = [WTReplyTopicViewController new];
-            replyTopicVC.username = self.user.username;
+//            replyTopicVC.username = self.user.username;
             replyTopicVC.title = @"全部回复";
             [self.navigationController pushViewController: replyTopicVC animated: YES];
             break;
@@ -202,26 +203,26 @@
 #pragma mark - WTMeTopViewDelegate
 - (void)meTopViewDidClickedSignButton:(WTMeTopView *)meTopView
 {
-    if ([WTAccount shareAccount].once.length > 0) {
-        
-        [SVProgressHUD show];
-        
-        // 1、请求URL
-        NSString *url = [WTReceiveAwardsUrl stringByAppendingString: [WTAccount shareAccount].once];
-        // 领取今日奖励
-        [WTAccountTool signWithUrlString: url success:^{
-            
-            [SVProgressHUD dismiss];
-            
-            [self.tipView showTipViewWithTitle: @"签到成功"];
-            self.meTopView.signButton.selected = YES;
-            
-        } failure:^(NSError *error) {
-            [SVProgressHUD dismiss];
-            [self.tipView showTipViewWithTitle: @"签到失败"];
-            self.meTopView.signButton.selected = NO;
-        }];
-    }
+//    if ([WTAccount shareAccount].once.length > 0) {
+//        
+//        [SVProgressHUD show];
+//        
+//        // 1、请求URL
+//        NSString *url = [WTReceiveAwardsUrl stringByAppendingString: [WTAccount shareAccount].once];
+//        // 领取今日奖励
+//        [WTAccountTool signWithUrlString: url success:^{
+//            
+//            [SVProgressHUD dismiss];
+//            
+//            [self.tipView showTipViewWithTitle: @"签到成功"];
+//            self.meTopView.signButton.selected = YES;
+//            
+//        } failure:^(NSError *error) {
+//            [SVProgressHUD dismiss];
+//            [self.tipView showTipViewWithTitle: @"签到失败"];
+//            self.meTopView.signButton.selected = NO;
+//        }];
+//    }
 }
 
 #pragma mark - 懒加载

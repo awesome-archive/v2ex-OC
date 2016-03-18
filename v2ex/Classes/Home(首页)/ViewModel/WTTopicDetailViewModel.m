@@ -79,7 +79,7 @@
             completion(nil, error);
         }
     };
-    
+
     if (method == HTTPMethodTypeGET)
     {
         [[NetworkTool shareInstance] getHtmlCodeWithUrlString: urlString success: successBlock failure: errorBlock];

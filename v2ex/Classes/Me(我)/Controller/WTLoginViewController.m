@@ -7,7 +7,7 @@
 //
 
 #import "WTLoginViewController.h"
-#import "WTAccountTool.h"
+#import "WTAccountViewModel.h"
 #import "WTTipView.h"
 
 @interface WTLoginViewController ()
@@ -45,21 +45,16 @@
 - (IBAction)loginButton:(UIButton *)sender
 {
     [self.loginButton setTitle: @"登陆中..." forState: UIControlStateNormal];
+
+    NSString *username = self.usernameOrEmailTextField.text;
+    NSString *password = self.passwordTextField.text;
     
-    // 请求参数
-    WTAccountParam *param = [WTAccountParam new];
-    {
-        param.u = self.usernameOrEmailTextField.text;
-        param.p = self.passwordTextField.text;
-    }
-    
-    [WTAccountTool loginWithParam: param success:^{
+    [[WTAccountViewModel shareInstance] getOnceWithUsername: username password: password success:^{
         
         if (self.loginSuccessBlock)
         {
             self.loginSuccessBlock();
         }
-        
         [self dismissViewControllerAnimated: YES completion: nil];
     } failure:^(NSError *error) {
         [self.loginButton setTitle: @"登陆" forState: UIControlStateNormal];
@@ -70,6 +65,7 @@
         }
         [self.tipView showErrorTitle: @"服务器异常，请稍候重试"];
     }];
+
 }
 - (IBAction)closeButtonClick
 {

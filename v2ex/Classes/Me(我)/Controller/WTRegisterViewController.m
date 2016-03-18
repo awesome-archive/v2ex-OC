@@ -8,6 +8,7 @@
 
 #import "WTRegisterViewController.h"
 #import "NetworkTool.h"
+#import "WTAccountViewModel.h"
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
 #import "WTTipView.h"
@@ -49,15 +50,11 @@
 #pragma mark 下载验证码图片
 - (void)DownloadCodeImage
 {
-    
-    [[NetworkTool shareInstance] getVerificationCodeUrlWithSuccess:^(NSString *codeUrl) {
-        
+    [[WTAccountViewModel shareInstance] getVerificationCodeUrlWithSuccess:^(NSString *codeUrl) {
         self.codeUrl = codeUrl;
         // 设置验证码图片
         [self setupCodeImage];
-        
     } failure:^(NSError *error) {
-       
         
     }];
 }
@@ -65,13 +62,9 @@
 #pragma mark 设置验证码图片
 - (void)setupCodeImage
 {
-    
-    //self.codeUrl = [self.codeUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    [[NetworkTool shareInstance] getDataWithUrl: self.codeUrl success:^(NSData *data) {
-       
-        //[data writeToFile: @"/Users/wutouqishigj/Desktop/1.png" atomically: YES];
+    [[NetworkTool shareInstance] getHtmlCodeWithUrlString: self.codeUrl success:^(NSData *data) {
         self.codeImageView.image = [UIImage imageWithData: data];
-        
+
     } failure:^(NSError *error) {
         WTLog(@"getDataWithUrl Error:%@", error)
     }];
@@ -107,7 +100,7 @@
     
     // 2、发起请求
     [SVProgressHUD show];
-    [[NetworkTool shareInstance] registerWithUsername: username password: password email: email c: c success:^(BOOL isSuccess) {
+    [[WTAccountViewModel shareInstance] registerWithUsername: username password: password email: email c: c success:^(BOOL isSuccess) {
         
         if (isSuccess)
         {
@@ -118,10 +111,10 @@
         
     } failure:^(NSError *error) {
         
+        WTLog(@"error:%@", error)
         [self.tipView showErrorTitle: @"服务器异常，请稍候重试"];
         
         [SVProgressHUD dismiss];
-        
     }];
     
         

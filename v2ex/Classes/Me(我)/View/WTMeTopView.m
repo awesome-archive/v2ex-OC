@@ -66,13 +66,13 @@
     if (user.isLoginUser)
     {
         // 领取过奖励
-        if ([WTAccount shareAccount].isReceiveAwards) {
-            self.signButton.hidden = YES;
-        }
-        else
-        {
-            self.signButton.hidden = NO;
-        }
+//        if ([WTAccount shareAccount].isReceiveAwards) {
+//            self.signButton.hidden = YES;
+//        }
+//        else
+//        {
+//            self.signButton.hidden = NO;
+//        }
     }
     
 }

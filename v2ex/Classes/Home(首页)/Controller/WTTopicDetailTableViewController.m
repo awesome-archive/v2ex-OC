@@ -18,7 +18,7 @@
 #import "NSString+Regex.h"
 #import "WTNavigationController.h"
 #import "WTWebViewViewController.h"
-#import "WTAccount.h"
+#import "WTAccountViewModel.h"
 #import "WTURLConst.h"
 @interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate>
 
@@ -70,8 +70,20 @@ static NSString  * const commentCellID = @"commentCellID";
     switch (buttonType)
     {
         case WTToolBarButtonTypeLove:
+        {
+            if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)
+            {
+                [SVProgressHUD showErrorWithStatus: @"不能取消感谢" maskType: SVProgressHUDMaskTypeBlack];
+                return;
+            }
+            else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)
+            {
+                [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢" maskType: SVProgressHUDMaskTypeBlack];
+                return;
+            }
             [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl];
             break;
+        }
         case WTToolBarButtonTypeCollection: // 收藏话题
             [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.firstTopicDetailVM.collectionUrl];
             break;
@@ -100,7 +112,7 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)replyTopic
 {
     // 1、先判断是否登陆
-    if(![[WTAccount shareAccount] isLogin])
+    if (![[WTAccountViewModel shareInstance] isLogin])
     {
         WTLoginViewController *loginVC = [WTLoginViewController new];
         [self presentViewController: loginVC animated: YES completion: nil];
@@ -125,12 +137,13 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString
 {
     // 1、先判断是否登陆
-    if(![[WTAccount shareAccount] isLogin])
+    if (![[WTAccountViewModel shareInstance] isLogin])
     {
         WTLoginViewController *loginVC = [WTLoginViewController new];
         [self presentViewController: loginVC animated: YES completion: nil];
         return;
     }
+    
     
     [SVProgressHUD show];
     [WTTopicDetailViewModel topicOperationWithMethod: method urlString: urlString topicDetailUrl: self.topicDetailUrl completion:^(WTTopicDetailViewModel *topicDetailVM, NSError *error) {
@@ -138,6 +151,7 @@ static NSString  * const commentCellID = @"commentCellID";
         [SVProgressHUD dismiss];
         if (error != nil)
         {
+            WTLog(@"error:%@", error)
             [SVProgressHUD showErrorWithStatus: @"操作异常,请稍候重试" maskType: SVProgressHUDMaskTypeBlack];
             return;
         }
@@ -155,7 +169,7 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     [self parseUrl];
     
-    //self.topicDetailUrl = @"http://www.v2ex.com/t/262888#reply0";
+    self.topicDetailUrl = @"http://www.v2ex.com/t/263754#reply0";
     [[NetworkTool shareInstance] getHtmlCodeWithUrlString: self.topicDetailUrl success:^(NSData *data) {
         
         self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];

@@ -12,8 +12,8 @@
 
 - (BOOL)isLoginUser
 {
-    if ([[WTAccount shareAccount].usernameOrEmail isEqualToString: self.username])
-        return true;
+   // if ([[WTAccount shareAccount].usernameOrEmail isEqualToString: self.username])
+     //   return true;
     return false;
 }
 

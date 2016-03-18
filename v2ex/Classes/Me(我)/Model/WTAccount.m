@@ -10,51 +10,26 @@
 
 #define WTUsernameOrEmail @"usernameOrEmail"
 #define WTPassword @"password"
+
 @implementation WTAccount
 
-static WTAccount *_account;
 
-+ (instancetype)shareAccount
+#pragma mark - NSCoding
+- (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    return [[self alloc] init];
-}
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _account = [super allocWithZone: zone];
-        _account.usernameOrEmail = [[NSUserDefaults standardUserDefaults] objectForKey: WTUsernameOrEmail];
-        _account.password = [[NSUserDefaults standardUserDefaults] objectForKey: WTPassword];
-    });
-    return _account;
-}
-/**
- *  保存帐号到偏好设置
- */
-- (void)saveAccount
-{
-    NSParameterAssert(_account.usernameOrEmail);
-    NSParameterAssert(_account.password);
-    [[NSUserDefaults standardUserDefaults] setObject: _account.usernameOrEmail forKey: WTUsernameOrEmail];
-    [[NSUserDefaults standardUserDefaults] setObject: _account.password forKey: WTPassword];
+    [aCoder encodeObject: self.usernameOrEmail forKey: WTUsernameOrEmail];
+    [aCoder encodeObject: self.password forKey: WTPassword];
 }
 
-- (void)removeAccount
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    _account.usernameOrEmail = @"";
-    _account.password = @"";
+    if (self = [super init])
+    {
+        self.usernameOrEmail = [aDecoder decodeObjectForKey: WTUsernameOrEmail];
+        self.password = [aDecoder decodeObjectForKey: WTPassword];
+    }
+    return self;
 }
 
-/**
- *  是否已经登陆过
- *
- */
-- (BOOL)isLogin
-{
-    if(_account.usernameOrEmail.length > 0)
-        return true;
-    return false;
-}
 
 @end

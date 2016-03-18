@@ -23,9 +23,8 @@
     */
     // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
     [navBar setBackgroundImage: [UIImage imageNamed:@"nav_background"] forBarMetrics:UIBarMetricsDefault];
-    //[navBar setShadowImage: [UIImage new]];
+    navBar.shadowImage = [[UIImage alloc] init];
     
-    // 设置标题颜色
     NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [navBar setTitleTextAttributes: textAttr];
     

@@ -20,6 +20,12 @@
 
 @implementation WTTopicDetailCommentCell
 
+- (void)awakeFromNib
+{
+    [self.iconImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(iconImageViewClick)]];
+    self.iconImageView.userInteractionEnabled = YES;
+}
+
 - (void)setTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
     _topicDetailVM = topicDetailVM;
@@ -35,5 +41,10 @@
     self.floorLabel.text = topicDetailVM.floorText;
 }
 
+#pragma mark - 事件
+- (void)iconImageViewClick
+{
+    
+}
 
 @end

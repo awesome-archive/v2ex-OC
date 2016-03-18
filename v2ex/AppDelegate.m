@@ -8,12 +8,12 @@
 
 #import "AppDelegate.h"
 #import "WTTabBarController.h"
-#import "WTAccount.h"
-#import "NSString+Regex.h"
+#import "WTAccountViewModel.h"
 #import "IQKeyboardManager.h"
-// =============
-#import "WTAccountTool.h"
 #import "WTFPSLabel.h"
+#import "WTShareSDKTool.h"
+
+
 @interface AppDelegate ()
 
 @end
@@ -37,23 +37,14 @@
     // 5、键盘呼出隐藏
     [IQKeyboardManager sharedManager].enable = YES;
     
-    // 如果之前登陆过，就自动登录
-    if ([[WTAccount shareAccount] isLogin])
-    {
-        WTAccountParam *param = [WTAccountParam new];
-        {
-            param.u = [WTAccount shareAccount].usernameOrEmail;
-            param.p = [WTAccount shareAccount].password;
-        }
-        [WTAccountTool loginWithParam: param success:^{
-            
-        } failure:^(NSError *error) {
-            
-        }];
-    }
+    // 6、自动登陆
+    [[WTAccountViewModel shareInstance] autoLogin];
     
-    // 设置3DTouch
+    // 7、设置3DTouch
     [self setup3DTouchItems: application];
+    
+    // 8、分享SDK
+    [WTShareSDKTool initShareSDK];
     
     // 界面 FPS 代码
     #if DEBUG

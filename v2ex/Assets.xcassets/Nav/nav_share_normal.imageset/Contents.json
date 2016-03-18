@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "iphone",
-      "filename" : "iconfont-fenxiang.png",
+      "filename" : "nav_share_normal.png",
       "scale" : "2x"
     },
     {
@@ -17,8 +17,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }
