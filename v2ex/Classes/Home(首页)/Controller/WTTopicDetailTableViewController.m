@@ -140,6 +140,10 @@ static NSString  * const commentCellID = @"commentCellID";
     if (![[WTAccountViewModel shareInstance] isLogin])
     {
         WTLoginViewController *loginVC = [WTLoginViewController new];
+        __weak typeof(self) weakSelf = self;
+        loginVC.loginSuccessBlock = ^(){
+            [weakSelf setupData];
+        };
         [self presentViewController: loginVC animated: YES completion: nil];
         return;
     }
@@ -169,7 +173,7 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     [self parseUrl];
     
-    self.topicDetailUrl = @"http://www.v2ex.com/t/263754#reply0";
+    //self.topicDetailUrl = @"http://www.v2ex.com/t/263754#reply0";
     [[NetworkTool shareInstance] getHtmlCodeWithUrlString: self.topicDetailUrl success:^(NSData *data) {
         
         self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];

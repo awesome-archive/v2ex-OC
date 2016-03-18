@@ -29,8 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIView   *loginView;
 /** 静态的tableView*/
 @property (nonatomic, weak) UITableView       *tableView;
-/** 用户全部主题的url */
-@property (nonatomic, strong) NSString        *meTopicUrl;
 /** 用户信息模型 */
 @property (nonatomic, strong) WTUser          *user;
 /** 用户信息URL*/
@@ -97,7 +95,7 @@
         self.loginView.hidden = YES;
         self.urlString = [WTUserInfoUrl stringByAppendingPathComponent: [WTAccountViewModel shareInstance].account.usernameOrEmail];
         [self refreshUserInfo];
-        
+        self.username = [WTAccountViewModel shareInstance].account.usernameOrEmail;
         return;
     }
     [self adjustViews];
@@ -168,7 +166,7 @@
         case WTMeMessageTypeTopic:
         {
             WTUserTopicViewController *userTopicVC = [WTUserTopicViewController new];
-            userTopicVC.urlString = self.meTopicUrl;
+            userTopicVC.urlString = [WTMeTopicUrl stringByReplacingOccurrencesOfString: @"misaka14" withString: self.username];
             userTopicVC.title = @"全部主题";
             [self.navigationController pushViewController: userTopicVC animated: YES];
             break;
@@ -176,7 +174,7 @@
         case WTMeMessageTypeReply:
         {
             WTReplyTopicViewController *replyTopicVC = [WTReplyTopicViewController new];
-//            replyTopicVC.username = self.user.username;
+            replyTopicVC.username = self.username;
             replyTopicVC.title = @"全部回复";
             [self.navigationController pushViewController: replyTopicVC animated: YES];
             break;
@@ -277,12 +275,4 @@
     return _tipView;
 }
 
-- (NSString *)meTopicUrl
-{
-    if (_meTopicUrl == nil)
-    {
-        _meTopicUrl = [WTMeTopicUrl stringByReplacingOccurrencesOfString: @"misaka14" withString: self.user.username];
-    }
-    return _meTopicUrl;
-}
 @end

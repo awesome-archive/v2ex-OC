@@ -46,6 +46,8 @@
     // 8、分享SDK
     [WTShareSDKTool initShareSDK];
     
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     // 界面 FPS 代码
     #if DEBUG
     WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 40, 55, 50)];

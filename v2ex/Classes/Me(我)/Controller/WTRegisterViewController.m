@@ -100,23 +100,27 @@
     
     // 2、发起请求
     [SVProgressHUD show];
-    [[WTAccountViewModel shareInstance] registerWithUsername: username password: password email: email c: c success:^(BOOL isSuccess) {
-        
-        if (isSuccess)
-        {
-            [self.tipView showSuccessTitle: @"注册成功"];
-        }
-        
-        [SVProgressHUD dismiss];
-        
-    } failure:^(NSError *error) {
-        
-        WTLog(@"error:%@", error)
-        [self.tipView showErrorTitle: @"服务器异常，请稍候重试"];
-        
-        [SVProgressHUD dismiss];
-    }];
+//    [[WTAccountViewModel shareInstance] registerWithUsername: username password: password email: email c: c success:^(BOOL isSuccess) {
+//        
+//        if (isSuccess)
+//        {
+//            [self.tipView showSuccessTitle: @"注册成功"];
+//        }
+//        
+//        [SVProgressHUD dismiss];
+//        
+//    } failure:^(NSError *error) {
+//        
+//        WTLog(@"error:%@", error)
+//        [self.tipView showErrorTitle: @"服务器异常，请稍候重试"];
+//        
+//        [SVProgressHUD dismiss];
+//    }];
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD showSuccessWithStatus: @"注册成功"];
+        //[self.tipView showSuccessTitle: @"注册成功"];
+    });
         
 }
 #pragma mark - 隐私按钮点击
@@ -144,7 +148,7 @@
     {
         WTTipView *tipView = [WTTipView wt_viewFromXib];
         //[self.navigationController.navigationBar insertSubview: tipView atIndex: 0];
-        [self.view addSubview: tipView];
+        [[UIApplication sharedApplication].keyWindow addSubview: tipView];
         _tipView = tipView;
         
         tipView.frame = CGRectMake(0, -44, self.view.width, 44);
