@@ -112,6 +112,15 @@ static NSString *const ID = @"topicCell";
 {
     WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
+    dispatch_queue_t queue = dispatch_queue_create("com.gengjie", DISPATCH_QUEUE_SERIAL);
+    
+    dispatch_async(queue, ^{
+        for(int i = 0; i < 10000; i++)
+        {
+            NSLog(@"%d", i);
+        }
+    });
+    
     // 设置数据
     cell.topicViewModel = self.topicViewModels[indexPath.row];
     return cell;

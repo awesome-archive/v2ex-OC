@@ -34,10 +34,13 @@
     _topicViewModel = topicViewModel;
     
     WTTopic *topic = topicViewModel.topic;
-    
+    // 标题
     self.titleLabel.text = topic.title;
+    // 回复内容
     self.contentLabel.text = topic.content;
+    // 作者
     self.authorLabel.text = topic.author;
+    // 回复时间
     self.lastReplyTimeLabel.text = topic.lastReplyTime;
 }
 
