@@ -12,7 +12,8 @@
 #import "WTTopicViewModel.h"
 #import "WTReplyTopicCell.h"
 #import "WTTopicDetailViewController.h"
-
+#import "WTRefreshAutoNormalFooter.h"
+#import "WTRefreshNormalHeader.h"
 static NSString * const ID = @"replyTopicCell";
 
 @interface WTReplyTopicViewController ()
@@ -44,10 +45,18 @@ static NSString * const ID = @"replyTopicCell";
     self.tableView.showsVerticalScrollIndicator = NO;
     
     self.view.backgroundColor = [UIColor colorWithHexString: @"#F4F4F4"];
+    
+    // 1、添加下拉刷新、上拉刷新
+    //self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
+   // self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
+    
+    // 2、开始下拉刷新
+   // [self.tableView.mj_header beginRefreshing];
+    [self loadOldData];
 }
 
 #pragma mark - 加载数据
-- (void)loadNewData
+- (void)loadOldData
 {
     self.page = 1;
     
@@ -74,12 +83,17 @@ static NSString * const ID = @"replyTopicCell";
         
         [self.tableView.mj_header endRefreshing];
         
+        if (self.completionBlock)
+        {
+            self.completionBlock();
+        }
+        
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
     }];
 }
 
-- (void)loadOldData
+- (void)loadNewData
 {
    // self.page ++;
     

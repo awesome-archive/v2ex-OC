@@ -16,6 +16,7 @@
 /** 头像 */
 @property (nonatomic, strong) NSURL         *iconURL;
 
+
 /**
  *  根据data解析出节点话题数组
  *
@@ -24,6 +25,16 @@
  *  @return 话题数组
  */
 + (NSMutableArray *)nodeTopicsWithData:(NSData *)data;
+
+/**
+ *  根据data解析出节点话题数组
+ *
+ *  @param data data
+ *  @param iconURL 头像地址
+ *
+ *  @return 话题数组
+ */
++ (NSMutableArray *)nodeTopicsWithData:(NSData *)data iconURL:(NSURL *)iconURL;
 
 
 /**

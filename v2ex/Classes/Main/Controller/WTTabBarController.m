@@ -12,6 +12,8 @@
 #import "WTNodeViewController.h"
 #import "WTMeViewController.h"
 #import "WTSettingViewController.h"
+#import "WTUserInfoViewController.h"
+
 @interface WTTabBarController ()
 
 @end
@@ -39,7 +41,7 @@
 
     
     // 我
-    WTMeViewController *meVC = [WTMeViewController new];
+    WTUserInfoViewController *meVC = [WTUserInfoViewController new];
     [self addOneChildViewController: meVC title: @"我" imageName: @"tabbar_wo_normal" selectedImageName : @"tabbar_wo_selected"];
     
     // 设置

@@ -12,18 +12,19 @@
 #import "Masonry.h"
 #import "WTToolBarView.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface WTTopicDetailViewController ()
-
-@property (weak, nonatomic) IBOutlet UIView *normalView;
-
-@property (weak, nonatomic) IBOutlet UIView *loadingView;
-@property (nonatomic, weak) WTToolBarView   *toolBarView;
-
-@property (weak, nonatomic) IBOutlet UIView *tipView;
-
-@property (nonatomic, weak) UITableView     *tableView;
+/** 已经登陆过的View */
+@property (weak, nonatomic) IBOutlet UIView             *normalView;
+/** 正在加载的View */
+@property (weak, nonatomic) IBOutlet UIView             *loadingView;
+/** 工具条的View */
+@property (nonatomic, weak) WTToolBarView               *toolBarView;
+/** 提示的View */
+@property (weak, nonatomic) IBOutlet UIView             *tipView;
+/** 帖子的tableView */
+@property (nonatomic, weak) UITableView                 *tableView;
 @end
 
 @implementation WTTopicDetailViewController
@@ -45,6 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -设置话题详情数据
 - (void)setupTopicDetailData
 {
+    UIImageView *greeenView = [[UIImageView alloc] init];
+    greeenView.image = [UIImage imageNamed: @"nav_background"];
+    [self.view addSubview: greeenView];
+    greeenView.frame = CGRectMake(0, 0, WTScreenWidth, 64);
+    
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];
     topicVC.topicDetailUrl = self.topicViewModel.topicDetailUrl;
@@ -61,6 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
         make.edges.equalTo(self.normalView);
     }];
     
+    // 4、操作帖子之后的操作
     __weak typeof(self) weakSelf = self;
     topicVC.updateTopicDetailComplection = ^(WTTopicDetailViewModel *topicDetailVM, NSError *error){
         
@@ -112,4 +119,3 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @end
-NS_ASSUME_NONNULL_END

@@ -59,6 +59,7 @@
 //    }];
 //}
 
+#pragma mark - 操作帖子请求的方法
 + (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString topicDetailUrl:(NSString *)topicDetailUrl completion:(void(^)(WTTopicDetailViewModel *topicDetailVM, NSError *error))completion;
 {
     void (^successBlock)(NSData *data) = ^(NSData *data){

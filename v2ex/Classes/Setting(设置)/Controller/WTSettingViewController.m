@@ -29,17 +29,18 @@
     // 1、创建组
     WTGroupItem *groupItem = [WTGroupItem new];
 
-    // 关注项目源代码
+    // 2、关注项目源代码
     WTArrowItem *item0 = [WTArrowItem itemWithTitle: @"关注项目源代码" action:^(NSIndexPath *indexPath) {
         [[UIApplication sharedApplication] openURL: [NSURL URLWithString: @"https://github.com/misaka14/v2ex"]];
     }];
     
+    // 3、服务条款与协议
     WTArrowItem *item1 = [WTArrowItem itemWithTitle: @"服务条款与协议" action:^(NSIndexPath *indexPath) {
        
         [self.navigationController pushViewController: [WTPrivacyStatementViewController new] animated: YES];
     }];
     
-    // 3、添加到组模型中
+    // 4、添加到组模型中
     groupItem.items = @[item0, item1];
     [self.groups addObject: groupItem];
 }

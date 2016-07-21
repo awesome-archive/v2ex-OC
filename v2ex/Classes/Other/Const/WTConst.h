@@ -28,7 +28,10 @@ UIKIT_EXTERN NSString * const WTNoNormalColor;
 /** 工具栏上按钮点击的通知 */
 UIKIT_EXTERN NSString * const WTToolBarButtonClickNotification;
 
-
-
-
+/** 用户控制器头部View的高度 */
+UIKIT_EXTERN CGFloat const WTUserInfoHeadViewHeight;
+/** 用户控制器toolBar的高度*/
+UIKIT_EXTERN CGFloat const WTUserInfoToolBarHeight;
+/** 用户控制器占位的View高度*/
+UIKIT_EXTERN CGFloat const WTUserInfoPlaceHolderViewHeight;
 

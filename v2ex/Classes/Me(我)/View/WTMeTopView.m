@@ -48,9 +48,8 @@
     _user = user;
     
     // 头像
-    [self.iconImageView sd_setImageWithURL: user.icon placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.iconImageView sd_setImageWithURL: [NSURL URLWithString: user.icon] placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.iconImageView.image = [image roundImage];
-        
     }];
     
     // 用户名

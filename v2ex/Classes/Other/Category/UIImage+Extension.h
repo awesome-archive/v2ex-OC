@@ -55,4 +55,6 @@
  *  @return 圆角图片
  */
 - (instancetype)roundImageWithCornerRadius:(CGFloat)cornerRadius;
+
+
 @end

@@ -27,7 +27,9 @@
     self.tableView.tableFooterView = [UIView new];
 }
 
-- (void)loadNewData{}
+- (void)loadNewData{
+    WTLog(@"loadNewData")
+}
 - (void)loadOldData{}
 
 /**

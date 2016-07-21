@@ -7,10 +7,10 @@
 //
 
 #import "WTAccountViewModel.h"
-#import "WTAccount.h"
 #import "TFHpple.h"
 #import "NetworkTool.h"
 #import "WTURLConst.h"
+#import "WTLoginRequestItem.h"
 
 #define WTFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent: @"account.plist"]
 
@@ -42,10 +42,12 @@ static WTAccountViewModel *_instance;
  */
 - (void)autoLogin
 {
-    if (self.isLogin)
+    if (!self.isLogin)
     {
-        NSString *username = self.account.usernameOrEmail;
-        NSString *password = self.account.password;
+        NSString *username = @"misaka15";
+        NSString *password = @"misaka15";
+//        NSString *username = self.account.usernameOrEmail;
+//        NSString *password = self.account.password;
         [[WTAccountViewModel shareInstance] getOnceWithUsername: username password: password success:^{
             
         } failure:^(NSError *error) {
@@ -92,46 +94,49 @@ static WTAccountViewModel *_instance;
     NSString *urlString = [WTHTTPBaseUrl stringByAppendingPathComponent: WTLoginUrl];
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(id responseObject) {
         
-        // 2.1、获取网页中once的值
-        NSString *once = [WTAccountViewModel getOnceWithData: responseObject];
+        // 2.1、获取表单中请求参数的key和value
+        WTLoginRequestItem *loginRequestItem = [WTAccountViewModel getLoginRequestParamWithData: responseObject];
         
-        if (once == nil)
+        if (loginRequestItem == nil)
         {
-            WTLog(@"once获取不到")
+            WTLog(@"loginRequestItem获取不到")
             return;
         }
         
-        // 2.2、请求参数
-        NSDictionary *param = @{
-                                @"u" : username,
-                                @"p" : password,
-                                @"once" : once,
-                                @"next" : @"/"
-                                };
+//        // 2.2、请求参数
+//        NSDictionary *param = @{
+//                                loginRequestItem.username : username,
+//                                loginRequestItem.password : password,
+//                                @"once"                   : loginRequestItem.once,
+//                                @"next" : @"/"
+//                                };
         
-        // 2.3、发起请求
-        [[WTAccountViewModel shareInstance] loginWithUrlString: urlString param: param success:^{
-            
+        // 2.2、登录
+        [[WTAccountViewModel shareInstance] loginWithUrlString: urlString loginRequestItem: loginRequestItem username:username password: password success:^{
             if (success)
             {
                 success();
             }
-            
         } failure: errorBlock];
-        
+       
     } failure: errorBlock];
 }
 
 /**
- *  登陆
+ *  登录
  *
- *  @param urlString url
- *  @param param     请求请求参数
- *  @param success   请求成功的回调
- *  @param failure   请求失败的回调
+ *  @param urlString        url
+ *  @param loginRequestItem 请求参数key和value
+ *  @param username         username的值
+ *  @param password         password的值
+ *  @param success          请求成功的回调
+ *  @param failure          请求失败的回调
  */
-- (void)loginWithUrlString:(NSString *)urlString param:(NSDictionary *)param success:(void (^)())success failure:(void (^)(NSError *error))failure
+- (void)loginWithUrlString:(NSString *)urlString loginRequestItem:(WTLoginRequestItem *)loginRequestItem username:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(NSError *error))failure
 {
+    // 1、请求参数
+    NSDictionary *param = [loginRequestItem getLoginRequestParam: username passwordValue: password];
+    
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: urlString param: param success:^(id responseObject) {
         
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
@@ -147,8 +152,8 @@ static WTAccountViewModel *_instance;
             {
                 
             }
-            self.account.usernameOrEmail = param[@"u"];
-            self.account.password = param[@"p"];
+            self.account.usernameOrEmail = param[loginRequestItem.usernameKey];
+            self.account.password = param[loginRequestItem.passwordKey];
             [NSKeyedArchiver archiveRootObject: self.account toFile: WTFilePath];
             
             if (success)
@@ -268,11 +273,17 @@ static WTAccountViewModel *_instance;
     }];
 }
 
-#pragma mark - 根据二进制获取once的值
-+ (NSString *)getOnceWithData:(NSData *)data
+#pragma mark - 根据二进制的值获取用户登录请求的必备参数的Key、Value
++ (WTLoginRequestItem *)getLoginRequestParamWithData:(NSData *)data
 {
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
-    return [[doc peekAtSearchWithXPathQuery: @"//input[@name='once']"] objectForKey: @"value"];
+    
+    NSString *once = [[doc peekAtSearchWithXPathQuery: @"//input[@name='once']"] objectForKey: @"value"];
+    NSArray *slArray = [doc searchWithXPathQuery: @"//input[@class='sl']"];
+    NSString *usernameKey = [slArray.firstObject objectForKey: @"name"];
+    NSString *passwordKey = [slArray.lastObject objectForKey: @"name"];
+    
+    return [WTLoginRequestItem loginRequestItemWithOnce: once usernameKey: usernameKey passwordKey: passwordKey];
 }
 
 #pragma mark - 根据二进制获取验证码url

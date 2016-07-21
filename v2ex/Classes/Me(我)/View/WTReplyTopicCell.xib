@@ -15,34 +15,51 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qj2-0S-KN0">
-                        <rect key="frame" x="8" y="8" width="359" height="75"/>
+                        <rect key="frame" x="8" y="4" width="359" height="79"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hw-Nm-ALh" userLabel="Top View">
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="27"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dock_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="ZD8-ba-vgX">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="zJ5-rv-YcO"/>
+                                        </constraints>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学前端还是学 iOS？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuu-KE-HYM">
                                         <rect key="frame" x="4" y="5" width="351" height="17"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.46666666666666667" green="0.50196078431372548" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="PEx-QJ-YYF">
+                                        <rect key="frame" x="20" y="22" width="9" height="5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="9" id="2M6-2A-HiN"/>
+                                            <constraint firstAttribute="height" constant="5" id="Zqs-lJ-C0g"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.90980392156862744" green="0.94117647058823528" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="kuu-KE-HYM" secondAttribute="trailing" constant="4" id="28A-rk-gmn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZD8-ba-vgX" secondAttribute="trailing" id="6kS-4o-5ik"/>
+                                    <constraint firstAttribute="bottom" secondItem="PEx-QJ-YYF" secondAttribute="bottom" id="QSw-c2-5gG"/>
+                                    <constraint firstItem="ZD8-ba-vgX" firstAttribute="top" secondItem="6hw-Nm-ALh" secondAttribute="top" id="VWS-bj-k7U"/>
                                     <constraint firstAttribute="bottom" secondItem="kuu-KE-HYM" secondAttribute="bottom" constant="5" id="Wa6-P2-caX"/>
                                     <constraint firstItem="kuu-KE-HYM" firstAttribute="centerY" secondItem="6hw-Nm-ALh" secondAttribute="centerY" id="bIb-Zh-qGl"/>
+                                    <constraint firstItem="ZD8-ba-vgX" firstAttribute="leading" secondItem="6hw-Nm-ALh" secondAttribute="leading" id="ckA-Rg-QuT"/>
+                                    <constraint firstItem="PEx-QJ-YYF" firstAttribute="leading" secondItem="6hw-Nm-ALh" secondAttribute="leading" constant="20" id="evv-WI-CW6"/>
                                     <constraint firstItem="kuu-KE-HYM" firstAttribute="leading" secondItem="6hw-Nm-ALh" secondAttribute="leading" constant="4" id="zTk-jz-GLd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAC-Sa-d4r" userLabel="Center View">
-                                <rect key="frame" x="0.0" y="27" width="359" height="30"/>
+                                <rect key="frame" x="0.0" y="27" width="359" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@superleexpert 不会吧，我看我同事，刚发简历，就被收走了" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTa-vn-NyQ">
-                                        <rect key="frame" x="4" y="4" width="351" height="22"/>
+                                        <rect key="frame" x="4" y="4" width="351" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -55,7 +72,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9D-ob-rWq" userLabel="Bottom View">
-                                <rect key="frame" x="0.0" y="57" width="359" height="18"/>
+                                <rect key="frame" x="0.0" y="53" width="359" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="misaka14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gb0-Rm-P7R">
                                         <rect key="frame" x="19" y="3" width="44.5" height="12"/>
@@ -113,7 +130,7 @@
                             <constraint firstAttribute="trailing" secondItem="6hw-Nm-ALh" secondAttribute="trailing" id="83v-n7-TFD"/>
                             <constraint firstItem="hAC-Sa-d4r" firstAttribute="top" secondItem="qj2-0S-KN0" secondAttribute="top" constant="27" id="HiG-C7-84U"/>
                             <constraint firstItem="V9D-ob-rWq" firstAttribute="leading" secondItem="qj2-0S-KN0" secondAttribute="leading" id="UZO-FM-3B0"/>
-                            <constraint firstAttribute="bottom" secondItem="V9D-ob-rWq" secondAttribute="bottom" id="W16-8x-CbK"/>
+                            <constraint firstAttribute="bottom" secondItem="V9D-ob-rWq" secondAttribute="bottom" constant="8" id="W16-8x-CbK"/>
                             <constraint firstAttribute="trailing" secondItem="V9D-ob-rWq" secondAttribute="trailing" id="fBh-xg-91O"/>
                             <constraint firstAttribute="trailing" secondItem="hAC-Sa-d4r" secondAttribute="trailing" id="h0T-7u-k3F"/>
                             <constraint firstItem="6hw-Nm-ALh" firstAttribute="leading" secondItem="qj2-0S-KN0" secondAttribute="leading" id="mym-Xo-LMB"/>
@@ -125,7 +142,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="qj2-0S-KN0" secondAttribute="bottom" id="SUO-js-sie"/>
-                    <constraint firstItem="qj2-0S-KN0" firstAttribute="top" secondItem="5G3-Gl-vsR" secondAttribute="top" constant="8" id="b6S-K4-ywR"/>
+                    <constraint firstItem="qj2-0S-KN0" firstAttribute="top" secondItem="5G3-Gl-vsR" secondAttribute="top" constant="4" id="b6S-K4-ywR"/>
                     <constraint firstItem="qj2-0S-KN0" firstAttribute="leading" secondItem="5G3-Gl-vsR" secondAttribute="leading" constant="8" id="e7E-ro-2AO"/>
                     <constraint firstAttribute="trailing" secondItem="qj2-0S-KN0" secondAttribute="trailing" constant="8" id="oLq-pf-xWa"/>
                 </constraints>
@@ -138,10 +155,12 @@
                 <outlet property="lastReplyTimeLabel" destination="NlJ-I5-ubr" id="q7V-DA-040"/>
                 <outlet property="titleLabel" destination="kuu-KE-HYM" id="Qcv-XZ-gV3"/>
             </connections>
-            <point key="canvasLocation" x="238.5" y="143.5"/>
+            <point key="canvasLocation" x="37.5" y="139.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrow" width="9" height="5"/>
+        <image name="dock_shadow" width="5" height="5"/>
         <image name="topic_time_black" width="64" height="64"/>
         <image name="topic_user_black" width="32" height="32"/>
     </resources>

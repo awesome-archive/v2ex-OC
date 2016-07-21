@@ -16,6 +16,12 @@
 #pragma mark - 根据data解析出节点话题数组
 + (NSMutableArray *)nodeTopicsWithData:(NSData *)data
 {
+    return [self nodeTopicsWithData: data iconURL: nil];
+}
+
+#pragma mark - 根据data解析出节点话题数组
++ (NSMutableArray *)nodeTopicsWithData:(NSData *)data iconURL:(NSURL *)iconURL
+{
     NSMutableArray *topics = [NSMutableArray array];
     
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
@@ -30,6 +36,7 @@
             TFHppleElement *authorElement = [cellItem searchWithXPathQuery: @"//strong"][0];
             NSArray<TFHppleElement *> *commentArray = [cellItem searchWithXPathQuery: @"//a[@class='count_livid']"];
             NSArray<TFHppleElement *> *smallFadeArray = [cellItem searchWithXPathQuery: @"//span[@class='small fade']"];
+            NSArray<TFHppleElement *> *countOrangeArray = [cellItem searchWithXPathQuery: @"//a[@class='count_orange']"];
             NSArray<TFHppleElement *> *avatars = [cellItem searchWithXPathQuery: @"//img[@class='avatar']"];
             
             WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
@@ -49,9 +56,13 @@
                 topic.author = authorElement.content;
                 
                 // 5、评论数
-                if (commentArray.count > 0)
+                if (commentArray.count > 0)    // 首页话题控制器的评论数
                 {
                     topic.commentCount = commentArray.firstObject.content;
+                }
+                else        // 用户话题控制器的评论数
+                {
+                    topic.commentCount = countOrangeArray.firstObject.content;
                 }
                 
                 // 6、最后回复时间
@@ -96,6 +107,10 @@
                         iconStr = [topic.icon stringByReplacingOccurrencesOfString: @"s=48" withString: @"s=96"];
                     }
                     topicViewModel.iconURL = [NSURL URLWithString: [WTHTTP stringByAppendingString: iconStr]];
+                }
+                else if(iconURL)
+                {
+                    topicViewModel.iconURL = iconURL;
                 }
             }
             
@@ -195,6 +210,9 @@
                 // 标题
                 topic.title = grayAContent;
                 
+                // 话题详情
+                topic.detailUrl = grayaE[@"href"];
+                
                 // 回复内容
                 topic.content = [innerE.content stringByTrim];
                 
@@ -206,6 +224,12 @@
                 topic.author = [grayContents componentsSeparatedByString: @" "][1];
                 
                 topicViewModel.topic = topic;
+                
+                // 1、话题详情Url
+                if (topic.detailUrl)
+                {
+                    topicViewModel.topicDetailUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: topic.detailUrl];
+                }
             }
             [topicVMs addObject: topicViewModel];
         }
@@ -214,10 +238,10 @@
     return topicVMs;
 }
 
-#pragma mark - 是否是 `最近`节点
+#pragma mark - 是否是下一页
 + (BOOL)isNeedNextPage:(NSString *)urlSuffix
 {
-    if ([urlSuffix containsString: @"recent"] || [urlSuffix containsString: @"my"])
+    if ([urlSuffix containsString: @"recent"] || [urlSuffix containsString: @"my"] || [urlSuffix containsString: @"member"])
         return true;
     return false;
 }

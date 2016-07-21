@@ -72,6 +72,6 @@
         </view>
     </objects>
     <resources>
-        <image name="avatar" width="200" height="200"/>
+        <image name="avatar" width="96" height="96"/>
     </resources>
 </document>

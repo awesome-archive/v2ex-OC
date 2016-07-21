@@ -78,7 +78,6 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler: nil];
     
-    //[alertVC setValue: @[photoAction, albumAction] forKey: @"actions"];
     [alertVC addAction: photoAction];
     [alertVC addAction: albumAction];
     [alertVC addAction: cancelAction];

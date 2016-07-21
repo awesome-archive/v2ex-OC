@@ -45,6 +45,8 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget: self.interactivePopGestureRecognizer.delegate action: @selector(handleNavigationTransition:)];
     pan.delegate = self;
     [self.view addGestureRecognizer: pan];
+    
+    self.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -73,6 +75,7 @@
 {
     return self.childViewControllers.count > 1;
 }
+
 
 - (void)handleNavigationTransition:(UIPanGestureRecognizer *)pan{}
 @end

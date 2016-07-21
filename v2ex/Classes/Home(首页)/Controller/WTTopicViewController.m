@@ -48,12 +48,10 @@ static NSString *const ID = @"topicCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
 
-    // 1.1、调整tableView的内边距和滚动条内边距
-    if (![self.urlString containsString: @"my"])
-    {
-        self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
-        self.tableView.separatorInset = self.tableView.contentInset;
-    }
+    // 设置内边距
+    self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
+    // 设置滚动条的内边距
+    self.tableView.separatorInset = self.tableView.contentInset;
     
     // 1.2只有'最近'节点需要上拉刷新
     if ([WTTopicViewModel isNeedNextPage: self.urlString])
@@ -74,7 +72,7 @@ static NSString *const ID = @"topicCell";
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    self.page = 1;
+    self.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
     [[NetworkTool shareInstance] getHtmlCodeWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
         
         self.topicViewModels = [WTTopicViewModel nodeTopicsWithData: data];
@@ -96,7 +94,7 @@ static NSString *const ID = @"topicCell";
         [self.topicViewModels addObjectsFromArray: [WTTopicViewModel nodeTopicsWithData: data]];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
-        
+               
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
     }];
@@ -150,7 +148,7 @@ static NSString *const ID = @"topicCell";
     return [NSString stringWithFormat: @"%@", self.urlString];
 }
 
-#pragma mark - UIViewControllerPreviewingDelegate
+#pragma mark - UIViewControllerPreviewingDelegate 测试数据
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
 {
 //    [self.navigationController pushViewController: viewControllerToCommit animated: YES];

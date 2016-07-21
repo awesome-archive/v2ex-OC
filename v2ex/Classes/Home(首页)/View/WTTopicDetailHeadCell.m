@@ -10,36 +10,45 @@
 #import "UIImageView+WebCache.h"
 #import "WTTopicDetailViewModel.h"
 @interface WTTopicDetailHeadCell()
-
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *createTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nodeLabel;
+/** 头像 */
+@property (weak, nonatomic) IBOutlet UIImageView    *iconImageView;
+/** 作者 */
+@property (weak, nonatomic) IBOutlet UILabel        *authorLabel;
+/** 创建时间 */
+@property (weak, nonatomic) IBOutlet UILabel        *createTimeLabel;
+/** 标题 */
+@property (weak, nonatomic) IBOutlet UILabel        *titleLabel;
+/** 节点 */
+@property (weak, nonatomic) IBOutlet UILabel        *nodeLabel;
 
 @end
 @implementation WTTopicDetailHeadCell
 
 - (void)awakeFromNib
 {
+    // 圆角
     self.nodeLabel.layer.cornerRadius = 3;
     self.nodeLabel.layer.masksToBounds = YES;
-    
+    // 取消点击
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
     _topicDetailVM = topicDetailVM;
-    
+    // 头像
     [self.iconImageView sd_setImageWithURL: topicDetailVM.iconURL placeholderImage: WTIconPlaceholderImage];
     
+    // 作者
     self.authorLabel.text = topicDetailVM.topicDetail.author;
     
+    // 创建时间
     self.createTimeLabel.text = topicDetailVM.createTimeText;
     
+    // 标题
     self.titleLabel.text = topicDetailVM.topicDetail.title;
     
+    // 节点
     self.nodeLabel.text = topicDetailVM.nodeText;
 }
 

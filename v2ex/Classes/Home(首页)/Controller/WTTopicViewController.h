@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class WTNode;
 @interface WTTopicViewController : UITableViewController
-
 /** url地址 */
 @property (nonatomic, strong) NSString          *urlString;
 

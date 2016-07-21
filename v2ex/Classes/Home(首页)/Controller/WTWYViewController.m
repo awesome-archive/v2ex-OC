@@ -261,7 +261,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 /**
- *  更改左右两边按钮属性
+ *  
+ 
  *
  *  @param offsetX scrollView的偏移量
  */

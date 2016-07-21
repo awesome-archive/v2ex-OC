@@ -16,7 +16,7 @@
 /** 加入时间 */
 @property (nonatomic, strong) NSString                                *joinTime;
 /** 头像 */
-@property (nonatomic, strong) NSURL                                   *icon;
+@property (nonatomic, strong) NSString                                *icon;
 /** 加入排名 */
 @property (nonatomic, strong) NSString                                *joinRank;
 /** 详情链接 */
@@ -25,4 +25,6 @@
 @property (nonatomic, assign, getter = isLoginUser) BOOL              loginUser;
 /** 个人签名 */
 @property (nonatomic, strong) NSString                                *signature;
+/** 是否在线 */
+@property (nonatomic, assign, getter=isOnline) BOOL                   online;
 @end

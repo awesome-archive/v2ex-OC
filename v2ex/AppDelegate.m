@@ -11,8 +11,7 @@
 #import "WTAccountViewModel.h"
 #import "IQKeyboardManager.h"
 #import "WTFPSLabel.h"
-#import "WTShareSDKTool.h"
-
+#import "WTTopWindow.h"
 
 @interface AppDelegate ()
 
@@ -32,7 +31,7 @@
     [self.window makeKeyAndVisible];
     
     // 4、全局设置状态栏颜色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+   // [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
    
     // 5、键盘呼出隐藏
     [IQKeyboardManager sharedManager].enable = YES;
@@ -44,17 +43,50 @@
     [self setup3DTouchItems: application];
     
     // 8、分享SDK
-    [WTShareSDKTool initShareSDK];
+//    [WTShareSDKTool initShareSDK];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     // 界面 FPS 代码
     #if DEBUG
-    WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 40, 55, 50)];
-    [self.window addSubview: fpsLabel];
+        WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 40, 55, 50)];
+        [self.window addSubview: fpsLabel];
     #else
+    
     #endif
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    // 9.显示顶层window
+    [WTTopWindow showWithStatusBarClickBlock:^{
+        [self searchAllScrollViewsInView: application.keyWindow];
+    }];
+    
     return YES;
+}
+
+/**
+ *  查找出view里面的所有scrollView
+ */
+- (void)searchAllScrollViewsInView:(UIView *)view
+{
+    // 如果不在keyWindow范围内（不跟window重叠），直接返回
+    if (![view wt_intersectWithView:nil]) return;
+    
+    // 遍历所有的子控件
+    for (UIView *subview in view.subviews) {
+        [self searchAllScrollViewsInView:subview];
+    }
+    
+    // 如果不是scrollView，直接返回
+    if (![view isKindOfClass:[UIScrollView class]]) return;
+    
+    // 滚动scrollView
+    UIScrollView *scrollView = (UIScrollView *)view;
+    CGPoint offset = scrollView.contentOffset;
+    offset.y = - scrollView.contentInset.top;
+    [scrollView setContentOffset:offset animated:YES];
+    
 }
 
 #pragma mark - 设置3DTouch
@@ -66,6 +98,7 @@
     application.shortcutItems = @[notificationItem, hotTopicItem, publishTopicItem];
 }
 
+#pragma mark - 处理3DTouch点击事件
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
     NSString *type = shortcutItem.type;

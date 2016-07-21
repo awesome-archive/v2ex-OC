@@ -29,7 +29,6 @@
 		B64167E91C81D73A00EAF134 /* WTReplyTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64167E81C81D73A00EAF134 /* WTReplyTopicCell.xib */; };
 		B64167ED1C81F5CE00EAF134 /* WTPostReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64167EB1C81F5CE00EAF134 /* WTPostReplyViewController.m */; };
 		B64167EE1C81F5CE00EAF134 /* WTPostReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64167EC1C81F5CE00EAF134 /* WTPostReplyViewController.xib */; };
-		B64167F11C827ECB00EAF134 /* WTUserSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64167F01C827ECB00EAF134 /* WTUserSettingViewController.m */; };
 		B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = B64168151C840BDC00EAF134 /* dribbble256_imageio.png */; };
 		B6635A001C77035E0014C20C /* WTToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66359FF1C77035E0014C20C /* WTToolBarView.xib */; };
 		B67BE5A51C7F792B008D89BB /* WTNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5A31C7F792B008D89BB /* WTNotificationViewController.m */; };
@@ -38,9 +37,6 @@
 		B67BE5B71C8028CA008D89BB /* WTNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67BE5B51C8028CA008D89BB /* WTNotificationCell.xib */; };
 		B67BE5BB1C803A5C008D89BB /* WTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5B91C803A5C008D89BB /* WTLoginViewController.m */; };
 		B67BE5BC1C803A5C008D89BB /* WTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67BE5BA1C803A5C008D89BB /* WTLoginViewController.xib */; };
-		B67BE5BF1C808D09008D89BB /* WTUserTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5BE1C808D09008D89BB /* WTUserTopicViewController.m */; };
-		B67BE5C31C808D42008D89BB /* WTUserTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5C11C808D42008D89BB /* WTUserTopicCell.m */; };
-		B67BE5C41C808D42008D89BB /* WTUserTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67BE5C21C808D42008D89BB /* WTUserTopicCell.xib */; };
 		B67BE5C71C809760008D89BB /* WTBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5C61C809760008D89BB /* WTBaseTableViewController.m */; };
 		B67BE5FD1C80B600008D89BB /* WTArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5F41C80B600008D89BB /* WTArrowItem.m */; };
 		B67BE5FE1C80B600008D89BB /* WTGroupItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B67BE5F61C80B600008D89BB /* WTGroupItem.m */; };
@@ -81,25 +77,15 @@
 		B6BD31681C888D6100CB14B9 /* WTTopicDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BD31671C888D6100CB14B9 /* WTTopicDetailViewController.storyboard */; };
 		B6BD31711C88C4AD00CB14B9 /* WTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BD316F1C88C4AD00CB14B9 /* WTRegisterViewController.m */; };
 		B6BD31721C88C4AD00CB14B9 /* WTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BD31701C88C4AD00CB14B9 /* WTRegisterViewController.xib */; };
+		B6C4901E1D40A55A00B8E949 /* WTLoginRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4901D1D40A55A00B8E949 /* WTLoginRequestItem.m */; };
+		B6C490221D40AFB900B8E949 /* WTTopicZHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C490201D40AFB900B8E949 /* WTTopicZHCell.m */; };
+		B6C490231D40AFB900B8E949 /* WTTopicZHCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6C490211D40AFB900B8E949 /* WTTopicZHCell.xib */; };
 		B6DCB9B31C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DCB9B01C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.m */; };
 		B6DCB9B41C760F8B00D8CF24 /* WTRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DCB9B21C760F8B00D8CF24 /* WTRefreshNormalHeader.m */; };
 		B6E2EFE51C8F187900E1D46F /* WTNodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E2EFE41C8F187900E1D46F /* WTNodeViewController.storyboard */; };
 		B6E2EFE91C8F1E2600E1D46F /* WTNodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2EFE71C8F1E2600E1D46F /* WTNodeCell.m */; };
 		B6E2EFEA1C8F1E2600E1D46F /* WTNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E2EFE81C8F1E2600E1D46F /* WTNodeCell.xib */; };
 		B6E888A01C99B67100BAA96B /* WTAccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E8889F1C99B67100BAA96B /* WTAccountViewModel.m */; };
-		B6E889591C99C17900BAA96B /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889371C99C17900BAA96B /* ShareSDK.framework */; };
-		B6E8895A1C99C17900BAA96B /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E8893A1C99C17900BAA96B /* ShareSDKExtension.framework */; };
-		B6E8895B1C99C17900BAA96B /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B6E8893B1C99C17900BAA96B /* ShareSDKUI.bundle */; };
-		B6E8895C1C99C17900BAA96B /* ShareSDKUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E8893C1C99C17900BAA96B /* ShareSDKUI.framework */; };
-		B6E8895D1C99C17900BAA96B /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E8893F1C99C17900BAA96B /* TencentOpenAPI.framework */; };
-		B6E8895E1C99C17900BAA96B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B6E889401C99C17900BAA96B /* TencentOpenApi_IOS_Bundle.bundle */; };
-		B6E8895F1C99C17900BAA96B /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889421C99C17900BAA96B /* libWeiboSDK.a */; };
-		B6E889601C99C17900BAA96B /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B6E8894C1C99C17900BAA96B /* WeiboSDK.bundle */; };
-		B6E889611C99C17900BAA96B /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889501C99C17900BAA96B /* libWeChatSDK.a */; };
-		B6E889621C99C17900BAA96B /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = B6E889511C99C17900BAA96B /* read_me.txt */; };
-		B6E889631C99C17900BAA96B /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889561C99C17900BAA96B /* MOBFoundation.framework */; };
-		B6E889641C99C17900BAA96B /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B6E889571C99C17900BAA96B /* ShareSDK.bundle */; };
-		B6E889651C99C17900BAA96B /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889581C99C17900BAA96B /* ShareSDKConnector.framework */; };
 		B6E8896B1C99C2EE00BAA96B /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E889681C99C2EE00BAA96B /* TFHpple.m */; };
 		B6E8896C1C99C2EE00BAA96B /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E8896A1C99C2EE00BAA96B /* TFHppleElement.m */; };
 		B6E889721C99CDAF00BAA96B /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E889711C99CDAF00BAA96B /* XPathQuery.m */; };
@@ -112,12 +98,23 @@
 		B6E889921C9B25E800BAA96B /* WTParseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E8898B1C9B25E800BAA96B /* WTParseTool.m */; };
 		B6E889931C9B25E800BAA96B /* WTShareSDKTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E8898D1C9B25E800BAA96B /* WTShareSDKTool.m */; };
 		B6E889961C9B27F300BAA96B /* WTUserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E889951C9B27F300BAA96B /* WTUserViewModel.m */; };
+		B6E889BC1C9C58A200BAA96B /* WTUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E889BB1C9C58A200BAA96B /* WTUserInfoViewController.m */; };
+		B6E889F91C9FBE0700BAA96B /* WTUserInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E889F81C9FBE0700BAA96B /* WTUserInfoHeadView.m */; };
+		B6E889FB1C9FBE1800BAA96B /* WTUserInfoHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E889FA1C9FBE1800BAA96B /* WTUserInfoHeadView.xib */; };
+		B6E889FE1C9FCB5100BAA96B /* WTTopWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E889FD1C9FCB5100BAA96B /* WTTopWindow.m */; };
 		B6F25AAB1C774F4C00768DEF /* WTToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AAA1C774F4C00768DEF /* WTToolBarView.m */; };
 		B6F25AC01C77786200768DEF /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AAF1C77786200768DEF /* NSString+Regex.m */; };
 		B6F25AC11C77786200768DEF /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AB11C77786200768DEF /* UIImage+Extension.m */; };
 		B6F25AC21C77786200768DEF /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AB31C77786200768DEF /* UILabel+StringFrame.m */; };
 		B6F25AC31C77786200768DEF /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AB51C77786200768DEF /* UIView+Frame.m */; };
 		B6F25AC41C77786200768DEF /* WTURLConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F25AB81C77786200768DEF /* WTURLConst.m */; };
+		B6F72CDA1CA04D27007B8315 /* WTUserTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F72CD91CA04D27007B8315 /* WTUserTopicViewController.m */; };
+		B6F72CE61CA0521F007B8315 /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F72CDE1CA0521F007B8315 /* UIImage+Image.m */; };
+		B6F72CE71CA0521F007B8315 /* WTPersonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F72CE01CA0521F007B8315 /* WTPersonTableViewController.m */; };
+		B6F72CE81CA0521F007B8315 /* WTPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F72CE21CA0521F007B8315 /* WTPersonViewController.m */; };
+		B6F72CE91CA0521F007B8315 /* WTPersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F72CE31CA0521F007B8315 /* WTPersonViewController.xib */; };
+		B6F72CEA1CA0521F007B8315 /* WTTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F72CE51CA0521F007B8315 /* WTTableView.m */; };
+		B6F72CED1CA07C8B007B8315 /* WTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F72CEC1CA07C8B007B8315 /* WTHomePageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,8 +159,6 @@
 		B64167EA1C81F5CE00EAF134 /* WTPostReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPostReplyViewController.h; sourceTree = "<group>"; };
 		B64167EB1C81F5CE00EAF134 /* WTPostReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPostReplyViewController.m; sourceTree = "<group>"; };
 		B64167EC1C81F5CE00EAF134 /* WTPostReplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTPostReplyViewController.xib; sourceTree = "<group>"; };
-		B64167EF1C827ECB00EAF134 /* WTUserSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserSettingViewController.h; sourceTree = "<group>"; };
-		B64167F01C827ECB00EAF134 /* WTUserSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserSettingViewController.m; sourceTree = "<group>"; };
 		B64168151C840BDC00EAF134 /* dribbble256_imageio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dribbble256_imageio.png; sourceTree = "<group>"; };
 		B66359FF1C77035E0014C20C /* WTToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTToolBarView.xib; sourceTree = "<group>"; };
 		B67BE5A21C7F792B008D89BB /* WTNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNotificationViewController.h; sourceTree = "<group>"; };
@@ -176,11 +171,6 @@
 		B67BE5B81C803A5C008D89BB /* WTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLoginViewController.h; sourceTree = "<group>"; };
 		B67BE5B91C803A5C008D89BB /* WTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLoginViewController.m; sourceTree = "<group>"; };
 		B67BE5BA1C803A5C008D89BB /* WTLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTLoginViewController.xib; sourceTree = "<group>"; };
-		B67BE5BD1C808D09008D89BB /* WTUserTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserTopicViewController.h; sourceTree = "<group>"; };
-		B67BE5BE1C808D09008D89BB /* WTUserTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserTopicViewController.m; sourceTree = "<group>"; };
-		B67BE5C01C808D42008D89BB /* WTUserTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserTopicCell.h; sourceTree = "<group>"; };
-		B67BE5C11C808D42008D89BB /* WTUserTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserTopicCell.m; sourceTree = "<group>"; };
-		B67BE5C21C808D42008D89BB /* WTUserTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTUserTopicCell.xib; sourceTree = "<group>"; };
 		B67BE5C51C809760008D89BB /* WTBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTBaseTableViewController.h; sourceTree = "<group>"; };
 		B67BE5C61C809760008D89BB /* WTBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTBaseTableViewController.m; sourceTree = "<group>"; };
 		B67BE5F31C80B600008D89BB /* WTArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTArrowItem.h; sourceTree = "<group>"; };
@@ -250,6 +240,11 @@
 		B6BD316E1C88C4AD00CB14B9 /* WTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRegisterViewController.h; sourceTree = "<group>"; };
 		B6BD316F1C88C4AD00CB14B9 /* WTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRegisterViewController.m; sourceTree = "<group>"; };
 		B6BD31701C88C4AD00CB14B9 /* WTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRegisterViewController.xib; sourceTree = "<group>"; };
+		B6C4901C1D40A55A00B8E949 /* WTLoginRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLoginRequestItem.h; sourceTree = "<group>"; };
+		B6C4901D1D40A55A00B8E949 /* WTLoginRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLoginRequestItem.m; sourceTree = "<group>"; };
+		B6C4901F1D40AFB900B8E949 /* WTTopicZHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicZHCell.h; sourceTree = "<group>"; };
+		B6C490201D40AFB900B8E949 /* WTTopicZHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicZHCell.m; sourceTree = "<group>"; };
+		B6C490211D40AFB900B8E949 /* WTTopicZHCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTTopicZHCell.xib; sourceTree = "<group>"; };
 		B6DCB9AF1C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
 		B6DCB9B01C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
 		B6DCB9B11C760F8B00D8CF24 /* WTRefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRefreshNormalHeader.h; sourceTree = "<group>"; };
@@ -263,33 +258,6 @@
 		B6E888FE1C99BD2300BAA96B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6E889001C99BD6900BAA96B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B6E889341C99BDE100BAA96B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		B6E889371C99C17900BAA96B /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
-		B6E8893A1C99C17900BAA96B /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
-		B6E8893B1C99C17900BAA96B /* ShareSDKUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKUI.bundle; sourceTree = "<group>"; };
-		B6E8893C1C99C17900BAA96B /* ShareSDKUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKUI.framework; sourceTree = "<group>"; };
-		B6E8893F1C99C17900BAA96B /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		B6E889401C99C17900BAA96B /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		B6E889421C99C17900BAA96B /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
-		B6E889431C99C17900BAA96B /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
-		B6E889441C99C17900BAA96B /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
-		B6E889451C99C17900BAA96B /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
-		B6E889461C99C17900BAA96B /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
-		B6E889471C99C17900BAA96B /* WBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBHttpRequest.h; sourceTree = "<group>"; };
-		B6E889481C99C17900BAA96B /* WBSDKBasicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKBasicButton.h; sourceTree = "<group>"; };
-		B6E889491C99C17900BAA96B /* WBSDKCommentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKCommentButton.h; sourceTree = "<group>"; };
-		B6E8894A1C99C17900BAA96B /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKRelationshipButton.h; sourceTree = "<group>"; };
-		B6E8894B1C99C17900BAA96B /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
-		B6E8894C1C99C17900BAA96B /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
-		B6E8894D1C99C17900BAA96B /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
-		B6E8894E1C99C17900BAA96B /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
-		B6E889501C99C17900BAA96B /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		B6E889511C99C17900BAA96B /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
-		B6E889521C99C17900BAA96B /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		B6E889531C99C17900BAA96B /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		B6E889541C99C17900BAA96B /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		B6E889561C99C17900BAA96B /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
-		B6E889571C99C17900BAA96B /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
-		B6E889581C99C17900BAA96B /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
 		B6E889671C99C2EE00BAA96B /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		B6E889681C99C2EE00BAA96B /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
 		B6E889691C99C2EE00BAA96B /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
@@ -314,6 +282,13 @@
 		B6E8898D1C9B25E800BAA96B /* WTShareSDKTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTShareSDKTool.m; sourceTree = "<group>"; };
 		B6E889941C9B27F300BAA96B /* WTUserViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserViewModel.h; sourceTree = "<group>"; };
 		B6E889951C9B27F300BAA96B /* WTUserViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserViewModel.m; sourceTree = "<group>"; };
+		B6E889BA1C9C58A200BAA96B /* WTUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserInfoViewController.h; sourceTree = "<group>"; };
+		B6E889BB1C9C58A200BAA96B /* WTUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserInfoViewController.m; sourceTree = "<group>"; };
+		B6E889F71C9FBE0700BAA96B /* WTUserInfoHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserInfoHeadView.h; sourceTree = "<group>"; };
+		B6E889F81C9FBE0700BAA96B /* WTUserInfoHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserInfoHeadView.m; sourceTree = "<group>"; };
+		B6E889FA1C9FBE1800BAA96B /* WTUserInfoHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTUserInfoHeadView.xib; sourceTree = "<group>"; };
+		B6E889FC1C9FCB5100BAA96B /* WTTopWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopWindow.h; sourceTree = "<group>"; };
+		B6E889FD1C9FCB5100BAA96B /* WTTopWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopWindow.m; sourceTree = "<group>"; };
 		B6F25AA91C774F4C00768DEF /* WTToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTToolBarView.h; sourceTree = "<group>"; };
 		B6F25AAA1C774F4C00768DEF /* WTToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTToolBarView.m; sourceTree = "<group>"; };
 		B6F25AAE1C77786200768DEF /* NSString+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
@@ -326,6 +301,19 @@
 		B6F25AB51C77786200768DEF /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		B6F25AB71C77786200768DEF /* WTURLConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLConst.h; sourceTree = "<group>"; };
 		B6F25AB81C77786200768DEF /* WTURLConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLConst.m; sourceTree = "<group>"; };
+		B6F72CD81CA04D27007B8315 /* WTUserTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserTopicViewController.h; sourceTree = "<group>"; };
+		B6F72CD91CA04D27007B8315 /* WTUserTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserTopicViewController.m; sourceTree = "<group>"; };
+		B6F72CDD1CA0521F007B8315 /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
+		B6F72CDE1CA0521F007B8315 /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
+		B6F72CDF1CA0521F007B8315 /* WTPersonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPersonTableViewController.h; sourceTree = "<group>"; };
+		B6F72CE01CA0521F007B8315 /* WTPersonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPersonTableViewController.m; sourceTree = "<group>"; };
+		B6F72CE11CA0521F007B8315 /* WTPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPersonViewController.h; sourceTree = "<group>"; };
+		B6F72CE21CA0521F007B8315 /* WTPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPersonViewController.m; sourceTree = "<group>"; };
+		B6F72CE31CA0521F007B8315 /* WTPersonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTPersonViewController.xib; sourceTree = "<group>"; };
+		B6F72CE41CA0521F007B8315 /* WTTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTableView.h; sourceTree = "<group>"; };
+		B6F72CE51CA0521F007B8315 /* WTTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTableView.m; sourceTree = "<group>"; };
+		B6F72CEB1CA07C8B007B8315 /* WTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomePageViewController.h; sourceTree = "<group>"; };
+		B6F72CEC1CA07C8B007B8315 /* WTHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomePageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,16 +322,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E889771C99CE4F00BAA96B /* libc++.tbd in Frameworks */,
-				B6E889631C99C17900BAA96B /* MOBFoundation.framework in Frameworks */,
-				B6E8895D1C99C17900BAA96B /* TencentOpenAPI.framework in Frameworks */,
 				826428598FF1CFB43905013D /* libPods.a in Frameworks */,
-				B6E889611C99C17900BAA96B /* libWeChatSDK.a in Frameworks */,
-				B6E8895F1C99C17900BAA96B /* libWeiboSDK.a in Frameworks */,
-				B6E889651C99C17900BAA96B /* ShareSDKConnector.framework in Frameworks */,
 				B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */,
-				B6E8895C1C99C17900BAA96B /* ShareSDKUI.framework in Frameworks */,
-				B6E889591C99C17900BAA96B /* ShareSDK.framework in Frameworks */,
-				B6E8895A1C99C17900BAA96B /* ShareSDKExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +431,9 @@
 				B6A5BC481C95B2EC00DEE692 /* WTTopicDetailContentCell.m */,
 				B6A5BC4A1C95BB4E00DEE692 /* WTTopicDetailCommentCell.h */,
 				B6A5BC4B1C95BB4E00DEE692 /* WTTopicDetailCommentCell.m */,
+				B6C4901F1D40AFB900B8E949 /* WTTopicZHCell.h */,
+				B6C490201D40AFB900B8E949 /* WTTopicZHCell.m */,
+				B6C490211D40AFB900B8E949 /* WTTopicZHCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -504,15 +487,17 @@
 				B6B552A61C7CE23600743ECC /* WTMeViewController.storyboard */,
 				B67BE5A21C7F792B008D89BB /* WTNotificationViewController.h */,
 				B67BE5A31C7F792B008D89BB /* WTNotificationViewController.m */,
-				B67BE5BD1C808D09008D89BB /* WTUserTopicViewController.h */,
-				B67BE5BE1C808D09008D89BB /* WTUserTopicViewController.m */,
 				B64167E21C81D6AD00EAF134 /* WTReplyTopicViewController.h */,
 				B64167E31C81D6AD00EAF134 /* WTReplyTopicViewController.m */,
-				B64167EF1C827ECB00EAF134 /* WTUserSettingViewController.h */,
-				B64167F01C827ECB00EAF134 /* WTUserSettingViewController.m */,
 				B6BD316E1C88C4AD00CB14B9 /* WTRegisterViewController.h */,
 				B6BD316F1C88C4AD00CB14B9 /* WTRegisterViewController.m */,
 				B6BD31701C88C4AD00CB14B9 /* WTRegisterViewController.xib */,
+				B6E889BA1C9C58A200BAA96B /* WTUserInfoViewController.h */,
+				B6E889BB1C9C58A200BAA96B /* WTUserInfoViewController.m */,
+				B6F72CD81CA04D27007B8315 /* WTUserTopicViewController.h */,
+				B6F72CD91CA04D27007B8315 /* WTUserTopicViewController.m */,
+				B6F72CEB1CA07C8B007B8315 /* WTHomePageViewController.h */,
+				B6F72CEC1CA07C8B007B8315 /* WTHomePageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -526,6 +511,8 @@
 				B63095CD1C7DF75C00C23739 /* WTUser.m */,
 				B67BE5AA1C800B50008D89BB /* WTNode.h */,
 				B67BE5AB1C800B50008D89BB /* WTNode.m */,
+				B6C4901C1D40A55A00B8E949 /* WTLoginRequestItem.h */,
+				B6C4901D1D40A55A00B8E949 /* WTLoginRequestItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,14 +526,14 @@
 				B67BE5B31C8028CA008D89BB /* WTNotificationCell.h */,
 				B67BE5B41C8028CA008D89BB /* WTNotificationCell.m */,
 				B67BE5B51C8028CA008D89BB /* WTNotificationCell.xib */,
-				B67BE5C01C808D42008D89BB /* WTUserTopicCell.h */,
-				B67BE5C11C808D42008D89BB /* WTUserTopicCell.m */,
-				B67BE5C21C808D42008D89BB /* WTUserTopicCell.xib */,
 				B64167E51C81D72600EAF134 /* WTReplyTopicCell.h */,
 				B64167E61C81D72600EAF134 /* WTReplyTopicCell.m */,
 				B64167E81C81D73A00EAF134 /* WTReplyTopicCell.xib */,
 				B682BF111C91D103005D7B35 /* WTLoginRegisterTextField.h */,
 				B682BF121C91D103005D7B35 /* WTLoginRegisterTextField.m */,
+				B6E889F71C9FBE0700BAA96B /* WTUserInfoHeadView.h */,
+				B6E889F81C9FBE0700BAA96B /* WTUserInfoHeadView.m */,
+				B6E889FA1C9FBE1800BAA96B /* WTUserInfoHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -742,6 +729,8 @@
 		B6DCB9AE1C760F7100D8CF24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B6E889FC1C9FCB5100BAA96B /* WTTopWindow.h */,
+				B6E889FD1C9FCB5100BAA96B /* WTTopWindow.m */,
 				B6DCB9AF1C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.h */,
 				B6DCB9B01C760F8B00D8CF24 /* WTRefreshAutoNormalFooter.m */,
 				B6DCB9B11C760F8B00D8CF24 /* WTRefreshNormalHeader.h */,
@@ -750,96 +739,6 @@
 				B623ACAB1C8E1133000E8CCB /* PhotoBrowserCell.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		B6E889361C99C16D00BAA96B /* ShareSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B6E889371C99C17900BAA96B /* ShareSDK.framework */,
-				B6E889381C99C17900BAA96B /* Support */,
-			);
-			path = ShareSDK;
-			sourceTree = "<group>";
-		};
-		B6E889381C99C17900BAA96B /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				B6E889391C99C17900BAA96B /* Optional */,
-				B6E8893D1C99C17900BAA96B /* PlatformSDK */,
-				B6E889551C99C17900BAA96B /* Required */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
-		B6E889391C99C17900BAA96B /* Optional */ = {
-			isa = PBXGroup;
-			children = (
-				B6E8893A1C99C17900BAA96B /* ShareSDKExtension.framework */,
-				B6E8893B1C99C17900BAA96B /* ShareSDKUI.bundle */,
-				B6E8893C1C99C17900BAA96B /* ShareSDKUI.framework */,
-			);
-			path = Optional;
-			sourceTree = "<group>";
-		};
-		B6E8893D1C99C17900BAA96B /* PlatformSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B6E8893E1C99C17900BAA96B /* QQSDK */,
-				B6E889411C99C17900BAA96B /* SinaWeiboSDK */,
-				B6E8894F1C99C17900BAA96B /* WeChatSDK */,
-			);
-			path = PlatformSDK;
-			sourceTree = "<group>";
-		};
-		B6E8893E1C99C17900BAA96B /* QQSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B6E8893F1C99C17900BAA96B /* TencentOpenAPI.framework */,
-				B6E889401C99C17900BAA96B /* TencentOpenApi_IOS_Bundle.bundle */,
-			);
-			path = QQSDK;
-			sourceTree = "<group>";
-		};
-		B6E889411C99C17900BAA96B /* SinaWeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B6E889421C99C17900BAA96B /* libWeiboSDK.a */,
-				B6E889431C99C17900BAA96B /* WBHttpRequest+WeiboGame.h */,
-				B6E889441C99C17900BAA96B /* WBHttpRequest+WeiboShare.h */,
-				B6E889451C99C17900BAA96B /* WBHttpRequest+WeiboToken.h */,
-				B6E889461C99C17900BAA96B /* WBHttpRequest+WeiboUser.h */,
-				B6E889471C99C17900BAA96B /* WBHttpRequest.h */,
-				B6E889481C99C17900BAA96B /* WBSDKBasicButton.h */,
-				B6E889491C99C17900BAA96B /* WBSDKCommentButton.h */,
-				B6E8894A1C99C17900BAA96B /* WBSDKRelationshipButton.h */,
-				B6E8894B1C99C17900BAA96B /* WeiboSDK+Statistics.h */,
-				B6E8894C1C99C17900BAA96B /* WeiboSDK.bundle */,
-				B6E8894D1C99C17900BAA96B /* WeiboSDK.h */,
-				B6E8894E1C99C17900BAA96B /* WeiboUser.h */,
-			);
-			path = SinaWeiboSDK;
-			sourceTree = "<group>";
-		};
-		B6E8894F1C99C17900BAA96B /* WeChatSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B6E889501C99C17900BAA96B /* libWeChatSDK.a */,
-				B6E889511C99C17900BAA96B /* read_me.txt */,
-				B6E889521C99C17900BAA96B /* WechatAuthSDK.h */,
-				B6E889531C99C17900BAA96B /* WXApi.h */,
-				B6E889541C99C17900BAA96B /* WXApiObject.h */,
-			);
-			path = WeChatSDK;
-			sourceTree = "<group>";
-		};
-		B6E889551C99C17900BAA96B /* Required */ = {
-			isa = PBXGroup;
-			children = (
-				B6E889561C99C17900BAA96B /* MOBFoundation.framework */,
-				B6E889571C99C17900BAA96B /* ShareSDK.bundle */,
-				B6E889581C99C17900BAA96B /* ShareSDKConnector.framework */,
-			);
-			path = Required;
 			sourceTree = "<group>";
 		};
 		B6E889661C99C2EE00BAA96B /* TFHpple */ = {
@@ -858,6 +757,7 @@
 		B6E8897E1C9B25E800BAA96B /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				B6F72CDB1CA0521F007B8315 /* WTPerson */,
 				B6E8897F1C9B25E800BAA96B /* Http */,
 				B6E889861C9B25E800BAA96B /* WTExtension.h */,
 				B6E889871C9B25E800BAA96B /* WTExtension.m */,
@@ -932,9 +832,32 @@
 			isa = PBXGroup;
 			children = (
 				B6E889661C99C2EE00BAA96B /* TFHpple */,
-				B6E889361C99C16D00BAA96B /* ShareSDK */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		B6F72CDB1CA0521F007B8315 /* WTPerson */ = {
+			isa = PBXGroup;
+			children = (
+				B6F72CDC1CA0521F007B8315 /* Category */,
+				B6F72CDF1CA0521F007B8315 /* WTPersonTableViewController.h */,
+				B6F72CE01CA0521F007B8315 /* WTPersonTableViewController.m */,
+				B6F72CE11CA0521F007B8315 /* WTPersonViewController.h */,
+				B6F72CE21CA0521F007B8315 /* WTPersonViewController.m */,
+				B6F72CE31CA0521F007B8315 /* WTPersonViewController.xib */,
+				B6F72CE41CA0521F007B8315 /* WTTableView.h */,
+				B6F72CE51CA0521F007B8315 /* WTTableView.m */,
+			);
+			path = WTPerson;
+			sourceTree = "<group>";
+		};
+		B6F72CDC1CA0521F007B8315 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B6F72CDD1CA0521F007B8315 /* UIImage+Image.h */,
+				B6F72CDE1CA0521F007B8315 /* UIImage+Image.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1002,28 +925,25 @@
 				B6B5528F1C7C247300743ECC /* WTTipView.xib in Resources */,
 				B69481781C462267001ABDA3 /* Assets.xcassets in Resources */,
 				B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */,
-				B6E889601C99C17900BAA96B /* WeiboSDK.bundle in Resources */,
-				B6E889621C99C17900BAA96B /* read_me.txt in Resources */,
 				B6A5BC431C95B05900DEE692 /* WTTopicDetailTableViewController.storyboard in Resources */,
 				B682BF0B1C91B935005D7B35 /* WTHomeViewController.storyboard in Resources */,
-				B6E8895E1C99C17900BAA96B /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				B6BD31721C88C4AD00CB14B9 /* WTRegisterViewController.xib in Resources */,
+				B6E889FB1C9FBE1800BAA96B /* WTUserInfoHeadView.xib in Resources */,
+				B6F72CE91CA0521F007B8315 /* WTPersonViewController.xib in Resources */,
 				B63A5EF41C5BC5CE00D3BF8B /* WTTopicCell.xib in Resources */,
 				B6A5BC4F1C95D05F00DEE692 /* light.css in Resources */,
 				B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */,
 				B64167E91C81D73A00EAF134 /* WTReplyTopicCell.xib in Resources */,
 				B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */,
+				B6C490231D40AFB900B8E949 /* WTTopicZHCell.xib in Resources */,
 				B6986B631C9138DC00B34888 /* WTPrivacyStatementViewController.xib in Resources */,
 				B6635A001C77035E0014C20C /* WTToolBarView.xib in Resources */,
 				B6BD31681C888D6100CB14B9 /* WTTopicDetailViewController.storyboard in Resources */,
 				B6E2EFEA1C8F1E2600E1D46F /* WTNodeCell.xib in Resources */,
 				B64167EE1C81F5CE00EAF134 /* WTPostReplyViewController.xib in Resources */,
 				B67BE5BC1C803A5C008D89BB /* WTLoginViewController.xib in Resources */,
-				B67BE5C41C808D42008D89BB /* WTUserTopicCell.xib in Resources */,
 				B6B552AC1C7CEC9100743ECC /* WTMeTopView.xib in Resources */,
-				B6E8895B1C99C17900BAA96B /* ShareSDKUI.bundle in Resources */,
 				B6E2EFE51C8F187900E1D46F /* WTNodeViewController.storyboard in Resources */,
-				B6E889641C99C17900BAA96B /* ShareSDK.bundle in Resources */,
 				B6AEE3111C973D2700F76D70 /* WTWebViewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1091,18 +1011,21 @@
 				B67BE6151C80B77E008D89BB /* WTBaseSettingViewController.m in Sources */,
 				B6E888A01C99B67100BAA96B /* WTAccountViewModel.m in Sources */,
 				B6B552981C7C3A1A00743ECC /* UIBarButtonItem+Extension.m in Sources */,
+				B6F72CEA1CA0521F007B8315 /* WTTableView.m in Sources */,
 				B63A5F051C5BC5DF00D3BF8B /* WTNavigationController.m in Sources */,
 				B6F25AAB1C774F4C00768DEF /* WTToolBarView.m in Sources */,
 				B682C0A81C9370AA005D7B35 /* WTTopicDetail.m in Sources */,
 				B6F25AC31C77786200768DEF /* UIView+Frame.m in Sources */,
 				B6B5528D1C7C246600743ECC /* WTTipView.m in Sources */,
 				B67BE6061C80B632008D89BB /* WTSettingViewController.m in Sources */,
+				B6C4901E1D40A55A00B8E949 /* WTLoginRequestItem.m in Sources */,
 				B6A5BC411C95B04600DEE692 /* WTTopicDetailTableViewController.m in Sources */,
 				B682BF101C91CEC1005D7B35 /* UITextField+Placeholder.m in Sources */,
+				B6F72CE81CA0521F007B8315 /* WTPersonViewController.m in Sources */,
 				B6A5BC461C95B2CE00DEE692 /* WTTopicDetailHeadCell.m in Sources */,
 				B6E889721C99CDAF00BAA96B /* XPathQuery.m in Sources */,
-				B67BE5C31C808D42008D89BB /* WTUserTopicCell.m in Sources */,
 				B6F25AC11C77786200768DEF /* UIImage+Extension.m in Sources */,
+				B6C490221D40AFB900B8E949 /* WTTopicZHCell.m in Sources */,
 				B6E8898E1C9B25E800BAA96B /* NetworkTool.m in Sources */,
 				B623ACA81C8DFFB5000E8CCB /* PhotoBrowserViewController.m in Sources */,
 				B6E889961C9B27F300BAA96B /* WTUserViewModel.m in Sources */,
@@ -1111,17 +1034,20 @@
 				B6E2EFE91C8F1E2600E1D46F /* WTNodeCell.m in Sources */,
 				B6A5BC491C95B2EC00DEE692 /* WTTopicDetailContentCell.m in Sources */,
 				B64167E71C81D72600EAF134 /* WTReplyTopicCell.m in Sources */,
+				B6F72CED1CA07C8B007B8315 /* WTHomePageViewController.m in Sources */,
 				B6E889911C9B25E800BAA96B /* WTFPSLabel.m in Sources */,
 				B6DCB9B41C760F8B00D8CF24 /* WTRefreshNormalHeader.m in Sources */,
 				B69481701C462267001ABDA3 /* AppDelegate.m in Sources */,
+				B6F72CDA1CA04D27007B8315 /* WTUserTopicViewController.m in Sources */,
 				B682BF131C91D103005D7B35 /* WTLoginRegisterTextField.m in Sources */,
 				B64167ED1C81F5CE00EAF134 /* WTPostReplyViewController.m in Sources */,
-				B67BE5BF1C808D09008D89BB /* WTUserTopicViewController.m in Sources */,
+				B6F72CE61CA0521F007B8315 /* UIImage+Image.m in Sources */,
 				B6E8897D1C9B25AB00BAA96B /* WTConst.m in Sources */,
 				B67BE6001C80B600008D89BB /* WTSettingCell.m in Sources */,
 				B6B552951C7C2A8200743ECC /* UIView+init.m in Sources */,
 				B623ACAF1C8E9206000E8CCB /* UIButton+Extension.m in Sources */,
 				B6A5BC4C1C95BB4E00DEE692 /* WTTopicDetailCommentCell.m in Sources */,
+				B6E889F91C9FBE0700BAA96B /* WTUserInfoHeadView.m in Sources */,
 				B6F25AC41C77786200768DEF /* WTURLConst.m in Sources */,
 				B6E8896C1C99C2EE00BAA96B /* TFHppleElement.m in Sources */,
 				B6E889901C9B25E800BAA96B /* WTExtension.m in Sources */,
@@ -1134,10 +1060,11 @@
 				B63A5EEE1C5BC5CE00D3BF8B /* WTTopicViewController.m in Sources */,
 				B63A5F191C5C680100D3BF8B /* WTMeViewController.m in Sources */,
 				B63A5F1C1C5C86FB00D3BF8B /* WTWYViewController.m in Sources */,
+				B6E889FE1C9FCB5100BAA96B /* WTTopWindow.m in Sources */,
 				B63A5F161C5C67F400D3BF8B /* WTNodeViewController.m in Sources */,
 				B67BE5A51C7F792B008D89BB /* WTNotificationViewController.m in Sources */,
+				B6E889BC1C9C58A200BAA96B /* WTUserInfoViewController.m in Sources */,
 				B63095CE1C7DF75C00C23739 /* WTUser.m in Sources */,
-				B64167F11C827ECB00EAF134 /* WTUserSettingViewController.m in Sources */,
 				B6986B621C9138DC00B34888 /* WTPrivacyStatementViewController.m in Sources */,
 				B623ACAC1C8E1133000E8CCB /* PhotoBrowserCell.m in Sources */,
 				B63A5EED1C5BC5CE00D3BF8B /* WTTopicDetailViewController.m in Sources */,
@@ -1145,6 +1072,7 @@
 				B67BE5BB1C803A5C008D89BB /* WTLoginViewController.m in Sources */,
 				B6B552AA1C7CEC8500743ECC /* WTMeTopView.m in Sources */,
 				B67BE5FE1C80B600008D89BB /* WTGroupItem.m in Sources */,
+				B6F72CE71CA0521F007B8315 /* WTPersonTableViewController.m in Sources */,
 				B67BE5FF1C80B600008D89BB /* WTSettingItem.m in Sources */,
 				B67BE5FD1C80B600008D89BB /* WTArrowItem.m in Sources */,
 				B682C0A21C934C90005D7B35 /* WTTopic.m in Sources */,

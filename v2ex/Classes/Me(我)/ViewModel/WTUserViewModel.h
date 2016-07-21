@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 @class WTUser;
 @interface WTUserViewModel : NSObject
+/** 头像URL */
+@property (nonatomic, strong) NSURL         *iconURL;
+
+@property (nonatomic, strong) WTUser        *user;
 
 /**
  *  加载用户信息
@@ -17,7 +21,7 @@
  *  @param success  请求成功的回调
  *  @param failure  请求失败的回调
  */
-+ (void)loadUserInfoWithUsername:(NSString *)username success:(void (^)(WTUser *user))success failure:(void (^)(NSError *error))failure;
++ (void)loadUserInfoWithUsername:(NSString *)username success:(void (^)(WTUserViewModel *userViewModel))success failure:(void (^)(NSError *error))failure;
 
 
 @end

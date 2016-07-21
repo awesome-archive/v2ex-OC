@@ -15,10 +15,9 @@
 #import "WTUserViewModel.h"
 #import "WTTopicViewController.h"
 #import "WTURLConst.h"
-#import "WTNotificationViewController.h"
-#import "WTUserTopicViewController.h"
+
 #import "WTReplyTopicViewController.h"
-#import "WTUserSettingViewController.h"
+
 #import "WTTipView.h"
 #import "SVProgressHUD.h"
 #import "WTRegisterViewController.h"
@@ -130,15 +129,15 @@
     [SVProgressHUD show];
     
     // 刷新用户信息请求
-    [WTUserViewModel loadUserInfoWithUsername: self.user.username success:^(WTUser *user) {
-        
-        [SVProgressHUD dismiss];
-        self.user = user;
-        self.meTopView.user = user;
-        
-    } failure:^(NSError *error) {
-        [SVProgressHUD dismiss];
-    }];
+//    [WTUserViewModel loadUserInfoWithUsername: self.user.username success:^(WTUser *user) {
+//        
+//        [SVProgressHUD dismiss];
+//        self.user = user;
+//        self.meTopView.user = user;
+//        
+//    } failure:^(NSError *error) {
+//        [SVProgressHUD dismiss];
+//    }];
 }
 
 #pragma mark - 点击事件
@@ -165,11 +164,11 @@
         
         case WTMeMessageTypeTopic:
         {
-            WTUserTopicViewController *userTopicVC = [WTUserTopicViewController new];
-            userTopicVC.urlString = [WTMeTopicUrl stringByReplacingOccurrencesOfString: @"misaka14" withString: self.username];
-            userTopicVC.title = @"全部主题";
-            [self.navigationController pushViewController: userTopicVC animated: YES];
-            break;
+//            WTUserTopicViewController *userTopicVC = [WTUserTopicViewController new];
+//            userTopicVC.urlString = [WTMeTopicUrl stringByReplacingOccurrencesOfString: @"misaka14" withString: self.username];
+//            userTopicVC.title = @"全部主题";
+//            [self.navigationController pushViewController: userTopicVC animated: YES];
+//            break;
         }
         case WTMeMessageTypeReply:
         {
@@ -181,9 +180,9 @@
         }
         case WTMeMessageTypeNotification:
         {
-            WTNotificationViewController *notificationVC = [WTNotificationViewController new];
-            [self.navigationController pushViewController: notificationVC animated: YES];
-            break;
+//            WTNotificationViewController *notificationVC = [WTNotificationViewController new];
+//            [self.navigationController pushViewController: notificationVC animated: YES];
+//            break;
         }
         case WTMeMessageTypeCollection:
         {

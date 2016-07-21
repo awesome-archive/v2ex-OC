@@ -30,4 +30,7 @@ NSString * const WTNoNormalColor = @"#25A14F";
 /** 工具栏上按钮点击的通知 */
 NSString * const WTToolBarButtonClickNotification = @"WTToolBarButtonClickNotification";
 
-
+/** 用户控制器头部View的高度 */
+CGFloat const WTUserInfoHeadViewHeight = 200;
+/** 用户控制器toolBar的高度*/
+CGFloat const WTUserInfoToolBarHeight = 44;

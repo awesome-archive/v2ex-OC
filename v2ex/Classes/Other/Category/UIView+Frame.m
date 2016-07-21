@@ -10,6 +10,15 @@
 
 @implementation UIView (Frame)
 
+- (BOOL)wt_intersectWithView:(UIView *)view
+{
+    if (view == nil) view = [UIApplication sharedApplication].keyWindow;
+    
+    CGRect rect1 = [self convertRect:self.bounds toView:nil];
+    CGRect rect2 = [view convertRect:view.bounds toView:nil];
+    return CGRectIntersectsRect(rect1, rect2);
+}
+
 - (void)setX:(CGFloat)x
 {
     CGRect frame = self.frame;
@@ -56,6 +65,25 @@
 - (CGFloat)height
 {
     return self.frame.size.height;
+}
+
+- (void)setCenterX:(CGFloat)centerX{
+    CGPoint center = self.center;
+    center.x = centerX;
+    self.center = center;
+}
+
+- (void)setCenterY:(CGFloat)centerY{
+    CGPoint center = self.center;
+    center.y = centerY;
+    self.center = center;
+}
+- (CGFloat)centerX{
+    return self.centerX;
+}
+
+- (CGFloat)centerY{
+    return self.centerY;
 }
 
 @end

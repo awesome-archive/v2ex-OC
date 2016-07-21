@@ -42,6 +42,7 @@
 
 
 #pragma mark - 事件
+#pragma mark 登陆
 - (IBAction)loginButton:(UIButton *)sender
 {
     [self.loginButton setTitle: @"登陆中..." forState: UIControlStateNormal];
@@ -67,6 +68,7 @@
     }];
 
 }
+#pragma mark 关闭
 - (IBAction)closeButtonClick
 {
     [self dismissViewControllerAnimated: YES completion: nil];
@@ -84,12 +86,14 @@
     }
 }
 
+#pragma mark textFieldEditingChanged
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing: YES];
 }
 
 #pragma mark - 懒加载
+#pragma mark tipView
 - (WTTipView *)tipView
 {
     if (_tipView == nil)

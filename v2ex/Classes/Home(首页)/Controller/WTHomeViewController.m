@@ -18,6 +18,7 @@
 
 @implementation WTHomeViewController
 
+// 重写初始化方法
 - (instancetype)init
 {
     return [UIStoryboard storyboardWithName: NSStringFromClass([WTHomeViewController class]) bundle: nil].instantiateInitialViewController;

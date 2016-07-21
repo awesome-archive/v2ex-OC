@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class WTAccount;
+#import "WTAccount.h"
 @interface WTAccountViewModel : NSObject
 
 @property (nonatomic, strong) WTAccount *account;

@@ -20,14 +20,15 @@
 #import "WTWebViewViewController.h"
 #import "WTAccountViewModel.h"
 #import "WTURLConst.h"
-@interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate>
-
+#import "WTUserInfoViewController.h"
+@interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
+/** 帖子回复ViewModel */
 @property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
-
+/** 当前页 */
 @property (nonatomic, assign) NSInteger                                currentPage;
-
+/** 帖子正文内容 */
 @property (nonatomic, strong) WTTopicDetailContentCell                 *contentCell;
-
+/** 帖子标题 */
 @property (nonatomic, strong) WTTopicDetailViewModel                   *firstTopicDetailVM;
 /** 回复话题的Url */
 @property (nonatomic, strong) NSString                                 *replyTopicUrl;
@@ -35,8 +36,11 @@
 @property (nonatomic, strong) NSString                                 *lastPageUrl;
 @end
 
+/** 帖子标题 */
 static NSString  * const headerCellID = @"headerCellID";
+/** 帖子正文 */
 static NSString  * const contentCellID = @"contentCellID";
+/** 帖子回复 */
 static NSString  * const commentCellID = @"commentCellID";
 
 @implementation WTTopicDetailTableViewController
@@ -50,15 +54,16 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     [super viewDidLoad];
     
-    // 加载数据
+    // 1、加载数据
     [self setupData];
     
-    // 添加通知
+    // 2、添加通知
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(toolbarButtonClick:) name: WTToolBarButtonClickNotification object: nil];
     
-    // 回复帖子用的url
+    // 3、回复帖子用的url
     self.replyTopicUrl = [NSString subStringToIndexWithStr: @"#" string: self.topicDetailUrl];
     
+    // 4、帖子详情url
     self.lastPageUrl = self.topicDetailUrl;
 }
 
@@ -69,14 +74,15 @@ static NSString  * const commentCellID = @"commentCellID";
     
     switch (buttonType)
     {
+        // 感谢 操作
         case WTToolBarButtonTypeLove:
         {
-            if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)
+            if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)    // 已经感谢过
             {
                 [SVProgressHUD showErrorWithStatus: @"不能取消感谢" maskType: SVProgressHUDMaskTypeBlack];
                 return;
             }
-            else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)
+            else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)    // 未知原因不能感谢
             {
                 [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢" maskType: SVProgressHUDMaskTypeBlack];
                 return;
@@ -84,16 +90,19 @@ static NSString  * const commentCellID = @"commentCellID";
             [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl];
             break;
         }
-        case WTToolBarButtonTypeCollection: // 收藏话题
+        // 收藏话题
+        case WTToolBarButtonTypeCollection:
             [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.firstTopicDetailVM.collectionUrl];
             break;
-        case WTToolBarButtonTypePrev:       // 上一页
+        // 上一页
+        case WTToolBarButtonTypePrev:
         {
             self.currentPage--;
             [self setupData];
             break;
         }
-        case WTToolBarButtonTypeNext:       // 下一页
+        // 下一页
+        case WTToolBarButtonTypeNext:
         {
             self.currentPage++;
             [self setupData];
@@ -119,11 +128,14 @@ static NSString  * const commentCellID = @"commentCellID";
         return;
     }
     
+    // 2、moda回复话题控制器
     WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
     
+    // 2.1、回复话题的必备参数
     postReplyVC.urlString = self.replyTopicUrl;
     postReplyVC.once = self.firstTopicDetailVM.once;
     
+    // 2.2、回复之后的block操作
     postReplyVC.completionBlock = ^(BOOL isSuccess){
         self.topicDetailUrl = self.lastPageUrl;
         [self setupData];
@@ -139,11 +151,15 @@ static NSString  * const commentCellID = @"commentCellID";
     // 1、先判断是否登陆
     if (![[WTAccountViewModel shareInstance] isLogin])
     {
+        // 1.1、跳转至登陆控制器
         WTLoginViewController *loginVC = [WTLoginViewController new];
+        
+        // 1.2、登陆之后的操作
         __weak typeof(self) weakSelf = self;
         loginVC.loginSuccessBlock = ^(){
             [weakSelf setupData];
         };
+        
         [self presentViewController: loginVC animated: YES completion: nil];
         return;
     }
@@ -202,6 +218,7 @@ static NSString  * const commentCellID = @"commentCellID";
     }];
 }
 
+#pragma mark - 解析url
 - (void)parseUrl
 {
     if (self.currentPage != 0)
@@ -232,13 +249,13 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
+    if (indexPath.row == 0) // 帖子标题
     {
         WTTopicDetailHeadCell *cell = [tableView dequeueReusableCellWithIdentifier: headerCellID];
         cell.topicDetailVM = self.topicDetailViewModels.firstObject;
         return cell;
     }
-    else if(indexPath.row == 1)
+    else if(indexPath.row == 1) // 帖子正文
     {
         WTTopicDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier: contentCellID];
         cell.topicDetailVM = self.topicDetailViewModels.firstObject;
@@ -256,9 +273,10 @@ static NSString  * const commentCellID = @"commentCellID";
         };
         return cell;
     }
-    else
+    else    // 帖子回复
     {
         WTTopicDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier: commentCellID];
+        cell.delegate = self;
         cell.topicDetailVM = self.topicDetailViewModels[indexPath.row - 1];
         return cell;
     }
@@ -267,18 +285,18 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
+    if (indexPath.row == 0)   // 帖子标题
     {
         return [tableView fd_heightForCellWithIdentifier: headerCellID cacheByIndexPath: indexPath configuration:^(WTTopicDetailHeadCell *cell) {
             cell.topicDetailVM = self.topicDetailViewModels.firstObject;
         }];
     }
-    else if(indexPath.row == 1)
+    else if(indexPath.row == 1) // 帖子正文
     {
         WTLog(@"contentCellHeight:%lf", self.contentCell.cellHeight)
         return self.contentCell.cellHeight;
     }
-    else
+    else        // 帖子回复
     {
         return [tableView fd_heightForCellWithIdentifier: commentCellID cacheByIndexPath: indexPath configuration:^(WTTopicDetailCommentCell *cell) {
             cell.topicDetailVM = self.topicDetailViewModels[indexPath.row - 1];
@@ -289,9 +307,19 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL
 {
+    // 跳转至自定义的网页浏览器
     WTWebViewViewController *webViewVC = [WTWebViewViewController new];
     webViewVC.url = linkURL;
     [self.navigationController pushViewController: webViewVC animated: nil];
+}
+
+#pragma mark - WTTopicDetailContentCellDelegate
+- (void)topicDetailCommentCell:(WTTopicDetailCommentCell *)cell iconImageViewClickWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
+{
+    // 用户信息控制器
+    WTUserInfoViewController *userInfoVC = [WTUserInfoViewController new];
+    userInfoVC.username = topicDetailVM.topicDetail.author;
+    [self.navigationController pushViewController: userInfoVC animated: YES];
 }
 
 #pragma mark - dealloc
