@@ -22,11 +22,13 @@
     [self addTarget: self action: @selector(endEditing) forControlEvents: UIControlEventEditingDidEnd];
 }
 
+// 开始编辑
 - (void)beginEditing
 {
     self.placeholderColor = [UIColor whiteColor];
 }
 
+// 结束编辑 
 - (void)endEditing
 {
     self.placeholderColor = [UIColor lightGrayColor];

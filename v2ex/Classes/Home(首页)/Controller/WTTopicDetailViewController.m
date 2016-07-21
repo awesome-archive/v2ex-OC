@@ -11,9 +11,6 @@
 #import "WTTopicDetailTableViewController.h"
 #import "Masonry.h"
 #import "WTToolBarView.h"
-
-
-
 @interface WTTopicDetailViewController ()
 /** 已经登陆过的View */
 @property (weak, nonatomic) IBOutlet UIView             *normalView;
