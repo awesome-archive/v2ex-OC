@@ -4,8 +4,6 @@ platform :ios, "8.0"
 
 pod 'AFNetworking', '~> 3.0'
 pod 'SDWebImage'
-
-pod 'FMDB', '~> 2.3'
 pod 'Masonry'
 pod 'MJRefresh'
 pod 'MJExtension'
