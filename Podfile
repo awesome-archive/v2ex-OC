@@ -15,3 +15,5 @@ pod 'TYAttributedLabel'
 pod 'CTAssetsPickerController'
 pod 'IQKeyboardManager'
 pod 'UITableView+FDTemplateLayoutCell'
+pod "DKNightVersion"
+pod 'FMDB'

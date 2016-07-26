@@ -17,6 +17,7 @@
 // 获取随机色
 #define WTRandomColor [UIColor colorWithRed: arc4random()%256/256.0 green: arc4random()%256/256.0 blue: arc4random()%256/256.0 alpha: 1.0]
 
+// 日志打印
 #ifdef DEBUG
 
 #define WTLog(...) NSLog(__VA_ARGS__);
@@ -27,12 +28,21 @@
 
 #endif
 
+// 代码执行时间
+#define TICK   NSDate *startTime = [NSDate date];
+#define TOCK   WTLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
+//
+#define WTIndexTitle @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"J",@"K", @"L", @"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T", @"U",@"V",@"W",@"X",@"Y",@"Z",@"#"]
+
 #endif
+
 
 #import "UIView+Frame.h"
 #import "WTConst.h"
 #import "UIColor+Extension.h"
 #import "UIView+init.h"
+#import "DKNightVersion.h"
 
 #define WTIconPlaceholderImage [UIImage imageNamed: @"avatar"]
 #define WTPrettyColor WTColor(135, 146, 177)

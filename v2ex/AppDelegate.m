@@ -12,7 +12,7 @@
 #import "IQKeyboardManager.h"
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
-
+#import "WTNodeViewModel.h"
 @interface AppDelegate ()
 
 @end
@@ -31,13 +31,14 @@
     [self.window makeKeyAndVisible];
     
     // 4、全局设置状态栏颜色
-   // [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [[UITabBar appearance] setTintColor: [UIColor colorWithHexString: WTAppLightColor]];
    
     // 5、键盘呼出隐藏
     [IQKeyboardManager sharedManager].enable = YES;
     
     // 6、自动登陆
-    [[WTAccountViewModel shareInstance] autoLogin];
+//    [[WTAccountViewModel shareInstance] autoLogin];
     
     // 7、设置3DTouch
     [self setup3DTouchItems: application];
@@ -49,21 +50,33 @@
     
     // 界面 FPS 代码
     #if DEBUG
-        WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 40, 55, 50)];
+        WTFPSLabel *fpsLabel = [[WTFPSLabel alloc] initWithFrame: CGRectMake(15, WTScreenHeight - 80, 55, 50)];
         [self.window addSubview: fpsLabel];
     #else
     
     #endif
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
     
     // 9.显示顶层window
     [WTTopWindow showWithStatusBarClickBlock:^{
         [self searchAllScrollViewsInView: application.keyWindow];
     }];
     
+    // 10.打印字体
+    //    NSArray *familyNames = [UIFont familyNames];
+    //    for( NSString *familyName in familyNames )
+    //    {
+    //        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
+    //        for( NSString *fontName in fontNames )
+    //        {
+    //            printf( "\tFont: %s \n", [fontName UTF8String] );
+    //        }
+    //    }
+
+    
     return YES;
 }
+
 
 /**
  *  查找出view里面的所有scrollView

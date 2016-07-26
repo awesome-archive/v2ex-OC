@@ -16,6 +16,21 @@ PODS:
     - AFNetworking/NSURLSession
   - CTAssetsPickerController (3.3.1):
     - PureLayout (~> 3.0.0)
+  - DKNightVersion (1.4):
+    - DKNightVersion/Core (= 1.4)
+    - DKNightVersion/CoreAnimation (= 1.4)
+    - DKNightVersion/DeallocBlockExecutor (= 1.4)
+    - DKNightVersion/UIKit (= 1.4)
+  - DKNightVersion/Core (1.4):
+    - DKNightVersion/DeallocBlockExecutor
+  - DKNightVersion/CoreAnimation (1.4):
+    - DKNightVersion/Core
+  - DKNightVersion/DeallocBlockExecutor (1.4)
+  - DKNightVersion/UIKit (1.4):
+    - DKNightVersion/Core
+  - FMDB (2.6):
+    - FMDB/standard (= 2.6)
+  - FMDB/standard (2.6)
   - IQKeyboardManager (4.0.0)
   - Masonry (0.6.4)
   - MJExtension (3.0.10)
@@ -36,6 +51,8 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CTAssetsPickerController
+  - DKNightVersion
+  - FMDB
   - IQKeyboardManager
   - Masonry
   - MJExtension
@@ -51,6 +68,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   CTAssetsPickerController: b1d1d50ab87cf6b8b13531de5f4530482e7e53ed
+  DKNightVersion: 2e3feb88a75e56c2e8973422e6aaae758055beb6
+  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548

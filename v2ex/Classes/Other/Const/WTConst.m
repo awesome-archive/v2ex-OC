@@ -21,6 +21,10 @@ CGFloat const WTToolBarHeight = 44;
 CGFloat const WTNavigationBarHeight = 20;
 /** 状态栏的高度 */
 CGFloat const WTStatusBarHeight = 44;
+
+/** App白天主色调 */
+NSString * const WTAppLightColor = @"#28AD54";
+
 /** 正常颜色*/
 NSString * const WTNormalColor = @"#515151";
 

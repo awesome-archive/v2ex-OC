@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MxS-aP-qkd">
+                    <rect key="frame" x="8" y="9" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Eye-Gs-OJ1"/>
+                        <constraint firstAttribute="height" constant="50" id="GXO-hc-rqQ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V2EX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBQ-It-W0T">
+                    <rect key="frame" x="66" y="9" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里讨论和发布关于 V2EX 站点发展。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBr-ij-YDO">
+                    <rect key="frame" x="116" y="12" width="222.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2016-07-23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgH-d9-gfw">
+                    <rect key="frame" x="249" y="38" width="79" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjQ-PX-Hmk">
+                    <rect key="frame" x="176" y="37" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-Ck-EqO">
+                    <rect key="frame" x="226" y="38" width="20" height="20"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nodeTopicCount" translatesAutoresizingMaskIntoConstraints="NO" id="ufY-9R-kbz">
+                    <rect key="frame" x="148" y="39" width="20" height="20"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nodeTopicLike" translatesAutoresizingMaskIntoConstraints="NO" id="WV2-4x-8mm">
+                    <rect key="frame" x="66" y="39" width="20" height="20"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72w-sN-0FD">
+                    <rect key="frame" x="94" y="39" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="MxS-aP-qkd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ASl-37-dtV"/>
+                <constraint firstItem="eBr-ij-YDO" firstAttribute="leading" secondItem="hBQ-It-W0T" secondAttribute="trailing" constant="8" id="Atd-QF-gUM"/>
+                <constraint firstItem="hBQ-It-W0T" firstAttribute="top" secondItem="MxS-aP-qkd" secondAttribute="top" id="HeW-0h-ooz"/>
+                <constraint firstItem="eBr-ij-YDO" firstAttribute="top" secondItem="hBQ-It-W0T" secondAttribute="top" id="NSD-Ry-b0w"/>
+                <constraint firstItem="eBr-ij-YDO" firstAttribute="bottom" secondItem="hBQ-It-W0T" secondAttribute="bottom" constant="-2" id="aI8-zg-iZ0"/>
+                <constraint firstItem="MxS-aP-qkd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="kT8-xY-0E9"/>
+                <constraint firstItem="hBQ-It-W0T" firstAttribute="leading" secondItem="MxS-aP-qkd" secondAttribute="trailing" constant="8" id="w1T-CF-6e8"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NSD-Ry-b0w"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="494" y="-88.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="nodeTopicCount" width="32" height="32"/>
+        <image name="nodeTopicLike" width="32" height="32"/>
+        <image name="time" width="32" height="32"/>
+    </resources>
+</document>

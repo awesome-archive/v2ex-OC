@@ -20,8 +20,8 @@ static NetworkTool *_instance;
         _instance = [NetworkTool manager];
         
         // 1、设置请求头
-        UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
-        NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
+        NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
         [_instance.requestSerializer setValue: userAgentMobile forHTTPHeaderField: @"User-Agent"];
         
         _instance.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -90,7 +90,7 @@ static NetworkTool *_instance;
  *  @param success   请求成功的回调
  *  @param failure   请求失败的回调
  */
-- (void)getHtmlCodeWithUrlString:(NSString *)urlString success:(void (^)(NSData *data))success failure:(void(^)(NSError *error))failure;
+- (void)GETWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure
 {
     _instance = [NetworkTool manager];
     _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
@@ -242,6 +242,11 @@ static NetworkTool *_instance;
         }
         
     }];
+}
+
+- (void)loadNodeItems
+{
+    
 }
 
 @end

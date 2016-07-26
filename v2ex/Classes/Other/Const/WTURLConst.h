@@ -28,6 +28,9 @@ UIKIT_EXTERN NSString * const WTCollectionTopicUrl;
 /** 消息URL*/
 UIKIT_EXTERN NSString * const WTNotificationUrl;
 
+/** 全部节点的URL */
+UIKIT_EXTERN NSString * const WTAllNodeUrl;
+
 /** 自己的全部主题 */
 UIKIT_EXTERN NSString * const WTMeTopicUrl;
 /** 回复别人的话题 */

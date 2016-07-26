@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, HTTPMethodType)
  *  @param success   请求成功的回调
  *  @param failure   请求失败的回调
  */
-- (void)getHtmlCodeWithUrlString:(NSString *)urlString success:(void (^)(NSData *data))success failure:(void(^)(NSError *error))failure;
+- (void)GETWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure;
 
 /**
  *  获取html源码 POST

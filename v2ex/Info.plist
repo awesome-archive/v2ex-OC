@@ -105,5 +105,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HY-QiHei50.ttf</string>
+	</array>
 </dict>
 </plist>

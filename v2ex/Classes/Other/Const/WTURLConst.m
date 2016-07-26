@@ -20,9 +20,12 @@ NSString * const WTNewestUrl = @"/recent";
 /** 登陆的URL */
 NSString * const WTLoginUrl = @"/signin";
 
+/** 全部节点的URL */
+NSString * const WTAllNodeUrl = @"https://www.v2ex.com/api/nodes/all.json";
 
 /** 收藏话题URL */
 NSString * const WTCollectionTopicUrl = @"http://www.v2ex.com/my/topics";
+
 
 
 /** 消息URL*/
