@@ -21,10 +21,8 @@
 {
     [super awakeFromNib];
     
-    self.titleLabel.font = [UIFont systemFontOfSize: 15];
+    self.titleLabel.font = [UIFont QiHeiforSize: 15];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
-    
-//    self.contentView.backgroundColor = WTRandomColor;
 }
 
 - (void)setNodeItem:(WTNodeItem *)nodeItem

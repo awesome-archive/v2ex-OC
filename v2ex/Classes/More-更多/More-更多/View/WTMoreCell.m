@@ -125,7 +125,12 @@ CGFloat const WTHeaderViewH = 44;
 #pragma mark - 事件
 - (void)moreBtnClick:(WTMoreButton *)moreBtn
 {
-
+    WTSettingItem *item = self.settingItems[moreBtn.tag];
+    
+    if (item.operationBlock)
+    {
+        item.operationBlock();
+    }
 }
 
 @end

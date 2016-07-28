@@ -37,6 +37,7 @@ PODS:
   - MJRefresh (3.1.0)
   - PureLayout (3.0.1)
   - RegexKitLite (4.0)
+  - RongCloudIMKit (2.4.9)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - RegexKitLite (~> 4.0)
+  - RongCloudIMKit (~> 2.4.9)
   - SDWebImage
   - SVProgressHUD
   - TYAttributedLabel
@@ -76,6 +78,7 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
+  RongCloudIMKit: e670867836deef44c0157f05b4a88107f1f5f8e6
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   TYAttributedLabel: 251d4cb2bf35813815d0ad632b3e56ba626c6b01

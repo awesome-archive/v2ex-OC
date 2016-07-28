@@ -6,10 +6,10 @@
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WTBaseSlidingViewController.h"
 
 @class WTNodeItem;
-@interface WTNodeTopicViewController : UIViewController
+@interface WTNodeTopicViewController : WTBaseSlidingViewController
 
 @property (nonatomic, strong) WTNodeItem *nodeItem;
 

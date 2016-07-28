@@ -6,8 +6,8 @@
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RCConversationListViewController.h"
 
-@interface WTMessageViewController : UIViewController
+@interface WTMessageViewController : RCConversationListViewController
 
 @end

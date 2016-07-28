@@ -127,8 +127,7 @@ MJCodingImplementation
                     WTNodeItem *nodeItem = [WTNodeItem new];
                     
                     nodeItem.title = [a content];
-                    nodeItem.url = [a objectForKey: @"href"];
-                    
+                    nodeItem.url = [NSString stringWithFormat: @"%@%@", WTHTTPBaseUrl, [a objectForKey: @"href"]];
                     [nodeItems addObject: nodeItem];
                 }
             }

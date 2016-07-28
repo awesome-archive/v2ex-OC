@@ -130,6 +130,7 @@
 		B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6235E431D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib */; };
 		B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6235E451D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib */; };
 		B6235E491D48BD2E00E5ECDB /* WTMoreButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E481D48BD2E00E5ECDB /* WTMoreButton.m */; };
+		B6235E4C1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E4B1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m */; };
 		B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63094561C4B8C1600E58EF8 /* nodes.plist */; };
 		B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B63176CC1C4702350071C9BF /* libxml2.2.dylib */; };
 		B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = B64168151C840BDC00EAF134 /* dribbble256_imageio.png */; };
@@ -365,6 +366,8 @@
 		B6235E451D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMoreLoginHeaderView.xib; sourceTree = "<group>"; };
 		B6235E471D48BD2E00E5ECDB /* WTMoreButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreButton.h; sourceTree = "<group>"; };
 		B6235E481D48BD2E00E5ECDB /* WTMoreButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreButton.m; sourceTree = "<group>"; };
+		B6235E4A1D49DD7D00E5ECDB /* WTBaseSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTBaseSlidingViewController.h; sourceTree = "<group>"; };
+		B6235E4B1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTBaseSlidingViewController.m; sourceTree = "<group>"; };
 		B63094561C4B8C1600E58EF8 /* nodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nodes.plist; sourceTree = "<group>"; };
 		B63176CC1C4702350071C9BF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B63176D11C47636D0071C9BF /* v2ex.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v2ex.pch; sourceTree = "<group>"; };
@@ -577,6 +580,8 @@
 				B60FA0871D45C09100F98CF3 /* WTWebViewViewController.h */,
 				B60FA0881D45C09100F98CF3 /* WTWebViewViewController.m */,
 				B60FA0891D45C09100F98CF3 /* WTWebViewViewController.xib */,
+				B6235E4A1D49DD7D00E5ECDB /* WTBaseSlidingViewController.h */,
+				B6235E4B1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1602,6 +1607,7 @@
 				B60FA1C51D45C09200F98CF3 /* NSString+Regex.m in Sources */,
 				B60FA1891D45C09200F98CF3 /* WTTopicDetailTableViewController.m in Sources */,
 				B60FA1871D45C09200F98CF3 /* WTPostReplyViewController.m in Sources */,
+				B6235E4C1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m in Sources */,
 				B60FA1D31D45C09200F98CF3 /* XPathQuery.m in Sources */,
 				B60FA1B21D45C09200F98CF3 /* WTMessageViewController.m in Sources */,
 				B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "WTMessageViewController.h"
+#import "RCConversationViewController.h"
 
 @interface WTMessageViewController ()
 
@@ -14,24 +15,28 @@
 
 @implementation WTMessageViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title = @"消息";
+    
+    //设置需要显示哪些类型的会话
+    [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
+    
+    self.conversationListTableView.tableFooterView = [UIView new];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//重写RCConversationListViewController的onSelectedTableRow事件
+- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath
+{
+    RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
+    conversationVC.conversationType = model.conversationType;
+    conversationVC.targetId = model.targetId;
+    conversationVC.title = @"想显示的会话标题";
+    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

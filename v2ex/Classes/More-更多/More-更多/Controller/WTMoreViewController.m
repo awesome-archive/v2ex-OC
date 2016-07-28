@@ -24,7 +24,7 @@ NSString * const moreCellIdentifier = @"moreCellIdentifier";
 
 CGFloat const moreHeaderViewH = 150;
 
-@interface WTMoreViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface WTMoreViewController () <UITableViewDataSource, UITableViewDelegate, WTMoreNotLoginHeaderViewDelegate>
 
 @property (nonatomic, weak) UIView *headerContentView;
 @property (nonatomic, weak) UIView *footerContentView;
@@ -40,6 +40,7 @@ CGFloat const moreHeaderViewH = 150;
 
 @implementation WTMoreViewController
 
+#pragma mark - LifeCycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -109,6 +110,7 @@ CGFloat const moreHeaderViewH = 150;
         WTMoreNotLoginHeaderView *moreNotLoginHeaderView = [WTMoreNotLoginHeaderView moreNotLoginHeaderView];
         moreNotLoginHeaderView.frame = CGRectMake(0, 0, WTScreenWidth, moreHeaderViewH);
         [self.headerContentView addSubview: moreNotLoginHeaderView];
+        moreNotLoginHeaderView.delegate = self;
     }
     
 }
@@ -170,6 +172,19 @@ CGFloat const moreHeaderViewH = 150;
     }];
 }
 
+#pragma mark - WTMoreNotLoginHeaderViewDelegate
+#pragma mark 登录按钮点击
+- (void)moreNotLoginHeaderViewDidClickedLoginBtn:(WTMoreNotLoginHeaderView *)moreNotLoginHeaderView
+{
+    [self presentViewController: [WTLoginViewController new] animated: YES completion: nil];
+}
+
+#pragma mark 注册按钮点击
+- (void)moreNotLoginHeaderViewDidClickedRegisterBtn:(WTMoreNotLoginHeaderView *)moreNotLoginHeaderView
+{
+    [self presentViewController: [WTRegisterViewController new] animated: YES completion: nil];
+}
+
 #pragma mark - Lazy Method
 - (NSMutableArray<NSArray *> *)datas
 {
@@ -200,7 +215,7 @@ CGFloat const moreHeaderViewH = 150;
                                 ]];
         
         [_datas addObject: @[
-                                [WTSettingItem settingItemWithTitle: @"鸣谢" image: [UIImage imageNamed: @"more_ad"] operationBlock: ^{
+                                [WTSettingItem settingItemWithTitle: @"广告投放" image: [UIImage imageNamed: @"more_ad"] operationBlock: ^{
             
                                     [weakSelf.navigationController pushViewController: [WTAdvertiseViewController new] animated: YES];
                                 }],

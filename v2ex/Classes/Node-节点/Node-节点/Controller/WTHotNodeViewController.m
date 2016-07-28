@@ -10,6 +10,10 @@
 #import "WTNodeViewModel.h"
 #import "WTHotNodeCell.h"
 #import "WTHotNodeReusableView.h"
+#import "WTTopicViewController.h"
+#import "WTNodeTopicViewController.h"
+
+static NSString *const ID = @"topicCell";
 
 @interface WTHotNodeViewController () <UICollectionViewDelegateFlowLayout>
 
@@ -70,7 +74,7 @@ static NSString * const headerViewReuseIdentifier = @"headerViewReuseIdentifier"
     
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - UICollectionView DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
     return self.nodeVMs.count;
@@ -98,6 +102,15 @@ static NSString * const headerViewReuseIdentifier = @"headerViewReuseIdentifier"
     hotNodeRView.title = self.nodeVMs[indexPath.section].title;
     
     return hotNodeRView;
+}
+
+#pragma mark - UICollectionView Delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    WTNodeItem *nodeItem = self.nodeVMs[indexPath.section].nodeItems[indexPath.row];
+    WTNodeTopicViewController *nodeTopicVC = [WTNodeTopicViewController new];
+    nodeTopicVC.nodeItem = nodeItem;
+    [self.navigationController pushViewController: nodeTopicVC animated: YES];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

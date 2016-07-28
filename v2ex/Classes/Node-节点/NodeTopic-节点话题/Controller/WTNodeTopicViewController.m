@@ -7,15 +7,23 @@
 //  节点话题控制器
 
 #import "WTNodeTopicViewController.h"
-#import "WTNodeTopicAPIItem.h"
+#import "WTTopicDetailViewController.h"
+#import "WTTopicViewController.h"
+
+#import "WTTopicViewModel.h"
+#import "WTNodeItem.h"
+#import "WTTopicCell.h"
 #import "WTNodeTopicCell.h"
+
+#import "WTRefreshAutoNormalFooter.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 #import "NetworkTool.h"
 #import "MJExtension.h"
-#import "WTNodeItem.h"
+
 
 CGFloat const userCenterHeaderViewH = 150;
 
-NSString * const identifier = @"identifier";
+NSString * const ID = @"ID";
 
 @interface WTNodeTopicViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,10 +32,9 @@ NSString * const identifier = @"identifier";
 
 @property (nonatomic, assign) UITableView *tableView;
 
-/** scrollView滑动时最后Y值 */
-@property (nonatomic, assign) CGFloat endY;
-
-@property (nonatomic, strong) NSMutableArray<WTNodeTopicAPIItem *> *nodeTopicAPIItems;
+@property (nonatomic, strong) NSMutableArray<WTTopicViewModel *>  *topicViewModels;
+/** 当前第几页 */
+@property (nonatomic, assign) NSInteger                           page;
 @end
 
 @implementation WTNodeTopicViewController
@@ -40,7 +47,7 @@ NSString * const identifier = @"identifier";
     [self setupView];
     
     // 加载数据
-    [self setupData];
+  //  [self setupData];
 }
 
 // 设置View
@@ -48,99 +55,103 @@ NSString * const identifier = @"identifier";
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // 1、headerView
-    UIView *headerView = [UIView new];
-    
-    {
-        headerView.frame = CGRectMake(0, 0, WTScreenWidth, WTScreenHeight - WTTabBarHeight);
-        [self.view addSubview: headerView];
-        self.headerView = headerView;
-        headerView.backgroundColor = WTColor(29, 184, 100);
-    }
-    
-    // 2、footerView
-    UIView *footerView = [UIView new];
-    
-    {
-        footerView.backgroundColor = [UIColor clearColor];
-        footerView.frame = CGRectMake(0, userCenterHeaderViewH, WTScreenWidth, WTScreenHeight - userCenterHeaderViewH);
-        [self.view addSubview: footerView];
-        self.footerView = footerView;
-        
-    }
-    
-    // 3、tableView
     UITableView *tableView = [UITableView new];
     
     {
-       
-        tableView.frame = footerView.bounds;
-        [self.footerView addSubview: tableView];
+        tableView.frame = self.footerContentView.bounds;
+        [self.footerContentView addSubview: tableView];
         self.tableView = tableView;
-        
-        tableView.dataSource = self;
-        tableView.delegate = self;
-        
-        tableView.rowHeight = 140;
-        [tableView registerNib: [UINib nibWithNibName: @"WTNodeTopicCell" bundle: nil] forCellReuseIdentifier: identifier];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
     }
+    
+    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
+    
+    if ([WTTopicViewModel isNeedNextPage: self.nodeItem.url])
+    {
+        self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
+    }
+    
+    [self loadNewData];
 }
 
-// 加载数据
-- (void)setupData
+#pragma mark 加载最新的数据
+- (void)loadNewData
 {
-    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/api/topics/show.json?node_id=%ld", self.nodeItem.uid];
-    
-    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(id responseObject) {
+    self.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
+    [[NetworkTool shareInstance] GETWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
         
-        self.nodeTopicAPIItems = [WTNodeTopicAPIItem mj_objectArrayWithKeyValuesArray: responseObject];
-        
+        self.topicViewModels = [WTTopicViewModel hotNodeTopicsWithData: data];
         [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
         
     } failure:^(NSError *error) {
-        
+        [self.tableView.mj_footer endRefreshing];
     }];
 }
 
-#pragma mark - UITableView Datasource
+#pragma mark 加载旧的数据
+- (void)loadOldData
+{
+    self.page ++;
+    
+    [[NetworkTool shareInstance] GETWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
+        
+        [self.topicViewModels addObjectsFromArray: [WTTopicViewModel nodeTopicsWithData: data]];
+        [self.tableView reloadData];
+
+        
+    } failure:^(NSError *error) {
+
+    }];
+}
+
+#pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.nodeTopicAPIItems.count;
+    return self.topicViewModels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WTNodeTopicCell *nodeTopicCell = [tableView dequeueReusableCellWithIdentifier: identifier];
+    WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
-    nodeTopicCell.nodeTopicAPIItem = self.nodeTopicAPIItems[indexPath.row];
-    
-    return nodeTopicCell;
+    // 设置数据
+    cell.topicViewModel = self.topicViewModels[indexPath.row];
+    return cell;
 }
 
-#pragma mark - UIScrollView Delegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (scrollView.contentOffset.y < 0)
-    {
-        [UIView animateWithDuration: 0.1 animations:^{
-           
-            
-            self.endY += (-scrollView.contentOffset.y) * 0.3;
-            self.footerView.y = userCenterHeaderViewH + self.endY;
-            
-        }];
-        
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }
+    // 取消选中的效果
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    // 跳转至话题详情控制器
+    WTTopicViewModel *topicViewModel = self.topicViewModels[indexPath.row];
+    WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
+    detailVC.topicViewModel = topicViewModel;
+    [self.navigationController pushViewController: detailVC animated: YES];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [UIView animateWithDuration: 0.3 animations:^{
-        
-        self.footerView.y = userCenterHeaderViewH;
-        self.endY = 0;
+    return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
+        cell.topicViewModel = self.topicViewModels[indexPath.row];
     }];
+}
+
+/**
+ *  拼接urlString的参数
+ *
+ */
+- (NSString *)stitchingUrlParameter
+{
+    if ([WTTopicViewModel isNeedNextPage: self.nodeItem.url])
+    {
+        return [NSString stringWithFormat: @"%@?p=%ld", self.nodeItem.url, self.page];
+    }
+    return [NSString stringWithFormat: @"%@", self.nodeItem.url];
 }
 
 @end

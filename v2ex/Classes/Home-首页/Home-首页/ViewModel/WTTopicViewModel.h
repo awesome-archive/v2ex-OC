@@ -27,6 +27,15 @@
 + (NSMutableArray *)nodeTopicsWithData:(NSData *)data;
 
 /**
+ *  根据data解析出热点话题数据
+ *
+ *  @param data data
+ *
+ *  @return 热点话题数组
+ */
++ (NSMutableArray *)hotNodeTopicsWithData:(NSData *)data;
+
+/**
  *  根据data解析出节点话题数组
  *
  *  @param data data

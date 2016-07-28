@@ -98,10 +98,10 @@ static NSString *const ID = @"topicCell";
         
         [self.topicViewModels addObjectsFromArray: [WTTopicViewModel nodeTopicsWithData: data]];
         [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
                
     } failure:^(NSError *error) {
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
     }];
 }
 
