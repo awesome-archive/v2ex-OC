@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTMoreViewController : UITableViewController
+@interface WTMoreViewController : UIViewController
 
 @end

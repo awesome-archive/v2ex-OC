@@ -22,10 +22,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_background" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-mA-FO5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-Xb-qCS">
                                             <rect key="frame" x="8" y="8" width="35" height="35"/>
                                             <constraints>
@@ -75,15 +71,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.15686274510000001" green="0.67843137249999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="dwT-mA-FO5" firstAttribute="leading" secondItem="FfB-S8-wCJ" secondAttribute="leading" id="0Vl-cy-pqU"/>
                                         <constraint firstAttribute="trailing" secondItem="Ix1-vY-bBk" secondAttribute="trailing" constant="8" id="1DL-B9-e6X"/>
                                         <constraint firstItem="pDC-xZ-3vP" firstAttribute="leading" secondItem="0rM-Xb-qCS" secondAttribute="trailing" constant="8" id="2g9-pv-8mP"/>
                                         <constraint firstItem="MBC-RB-knJ" firstAttribute="top" secondItem="59W-DC-OTu" secondAttribute="bottom" constant="8" id="4UK-km-9hx"/>
                                         <constraint firstItem="0rM-Xb-qCS" firstAttribute="leading" secondItem="FfB-S8-wCJ" secondAttribute="leading" constant="8" id="7Ut-LU-kWi"/>
-                                        <constraint firstAttribute="bottom" secondItem="dwT-mA-FO5" secondAttribute="bottom" id="9ZK-o5-uHz"/>
                                         <constraint firstAttribute="trailing" secondItem="JWf-hM-q45" secondAttribute="trailing" id="EAg-kr-JU5"/>
-                                        <constraint firstItem="dwT-mA-FO5" firstAttribute="top" secondItem="FfB-S8-wCJ" secondAttribute="top" id="GUc-X3-gDY"/>
                                         <constraint firstAttribute="bottom" secondItem="JWf-hM-q45" secondAttribute="bottom" id="HUv-2f-spM"/>
                                         <constraint firstItem="MBC-RB-knJ" firstAttribute="leading" secondItem="FfB-S8-wCJ" secondAttribute="leading" constant="8" id="Obz-Te-TDk"/>
                                         <constraint firstItem="59W-DC-OTu" firstAttribute="bottom" secondItem="0rM-Xb-qCS" secondAttribute="bottom" constant="1" id="UGp-qc-7TJ"/>
@@ -94,16 +88,11 @@
                                         <constraint firstAttribute="bottom" secondItem="MBC-RB-knJ" secondAttribute="bottom" constant="8" id="gXK-kC-MUA"/>
                                         <constraint firstAttribute="bottom" secondItem="0rM-Xb-qCS" secondAttribute="bottom" constant="8" id="m7R-hi-z84"/>
                                         <constraint firstItem="Ix1-vY-bBk" firstAttribute="top" secondItem="FfB-S8-wCJ" secondAttribute="top" constant="8" id="qM7-Uj-v4e"/>
-                                        <constraint firstAttribute="trailing" secondItem="dwT-mA-FO5" secondAttribute="trailing" id="sgt-8G-fak"/>
-                                        <constraint firstItem="Ix1-vY-bBk" firstAttribute="leading" secondItem="dwT-mA-FO5" secondAttribute="trailing" id="t07-ZC-LHV"/>
                                         <constraint firstAttribute="trailing" secondItem="MBC-RB-knJ" secondAttribute="trailing" constant="8" id="twn-sk-GG8"/>
-                                        <constraint firstItem="dwT-mA-FO5" firstAttribute="leading" secondItem="pDC-xZ-3vP" secondAttribute="trailing" id="zb6-uD-5Jj"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="zb6-uD-5Jj"/>
                                             <exclude reference="m7R-hi-z84"/>
-                                            <exclude reference="t07-ZC-LHV"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -234,7 +223,4 @@
             <point key="canvasLocation" x="653" y="-91"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="nav_background" width="187" height="32"/>
-    </resources>
 </document>

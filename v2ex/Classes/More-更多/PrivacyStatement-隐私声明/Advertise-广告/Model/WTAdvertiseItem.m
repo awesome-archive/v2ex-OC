@@ -10,7 +10,7 @@
 
 @implementation WTAdvertiseItem
 
-+ (instancetype)advertiseItem:(NSURL *)icon title:(NSString *)title content:(NSString *)content detailUrl:(NSString *)detailUrl;
++ (instancetype)advertiseItem:(NSURL *)icon title:(NSString *)title content:(NSString *)content detailUrl:(NSURL *)detailUrl;
 {
     WTAdvertiseItem *item = [WTAdvertiseItem new];
     

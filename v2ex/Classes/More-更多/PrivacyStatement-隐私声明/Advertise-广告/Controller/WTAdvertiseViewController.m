@@ -10,6 +10,8 @@
 #import "WTAdvertiseViewModel.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTAdvertiseCell.h"
+#import "WTWebViewViewController.h"
+#import "MJExtension.h"
 
 NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
 
@@ -37,13 +39,17 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.tableView registerNib: [UINib nibWithNibName: @"WTAdvertiseCell" bundle: nil] forCellReuseIdentifier: advertiseCellIdentifier];
-    self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
     
-    [self.tableView.mj_header beginRefreshing];
+//    self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
+//    
+//    [self.tableView.mj_header beginRefreshing];
 }
 
+// 加载最新的数据
 - (void)loadNewData
 {
+    
+    // 由于这里的数据基本上只要请求一次就行了，所以事先直接把广告的数据写入到plist中读取
     [WTAdvertiseViewModel loadAdvertiseItemsFromNetworkWithSuccess:^(NSMutableArray<WTAdvertiseItem *> *advertiseItems) {
         
         self.advertiseItems = advertiseItems;
@@ -53,9 +59,12 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
         
     } failure:^(NSError *error) {
         
+        WTLog(@"error:%@", error)
         [self.tableView.mj_header endRefreshing];
         
     }];
+    self.advertiseItems = [WTAdvertiseItem mj_objectArrayWithFilename: @""];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableView DataSource
@@ -73,5 +82,13 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
     return cell;
 }
 
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 跳转至自定义的网页浏览器
+    WTWebViewViewController *webViewVC = [WTWebViewViewController new];
+    webViewVC.url = self.advertiseItems[indexPath.row].detailUrl;
+    [self.navigationController pushViewController: webViewVC animated: nil];
+}
 
 @end

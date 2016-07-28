@@ -8,6 +8,8 @@
 
 #import "WTNavigationController.h"
 #import "UIBarButtonItem+Extension.h"
+#import "WTConst.h"
+#import "UIImage+Extension.h"
 @interface WTNavigationController () <UIGestureRecognizerDelegate>
 
 @end
@@ -22,7 +24,8 @@
     navBar.translucent = NO;
     */
     // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
-    [navBar setBackgroundImage: [UIImage imageNamed:@"nav_background"] forBarMetrics:UIBarMetricsDefault];
+    [navBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
+    //[navBar setBackgroundImage: [UIImage imageNamed: @"123"] forBarMetrics:forBarMetrics:UIBarMetricsDefault]
     navBar.shadowImage = [[UIImage alloc] init];
     
     NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};

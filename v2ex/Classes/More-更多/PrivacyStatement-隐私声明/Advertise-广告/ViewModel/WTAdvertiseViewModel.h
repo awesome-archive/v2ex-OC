@@ -18,4 +18,5 @@
  */
 + (void)loadAdvertiseItemsFromNetworkWithSuccess:(void(^)(NSMutableArray<WTAdvertiseItem *> *advertiseItems))success failure:(void(^)(NSError *error))failure;
 
+
 @end

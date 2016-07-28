@@ -124,8 +124,12 @@
 		B60FA2241D45D7E700F98CF3 /* WTPrivacyStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA2121D45D7E700F98CF3 /* WTPrivacyStatementViewController.m */; };
 		B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60FA2131D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib */; };
 		B60FA2291D45E75800F98CF3 /* WTMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA2281D45E75800F98CF3 /* WTMoreCell.m */; };
-		B60FA22C1D45E89800F98CF3 /* WTMorePhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA22B1D45E89800F98CF3 /* WTMorePhotoCell.m */; };
 		B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA22E1D45E9EA00F98CF3 /* WTSettingItem.m */; };
+		B6235E3F1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E3E1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m */; };
+		B6235E421D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E411D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m */; };
+		B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6235E431D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib */; };
+		B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6235E451D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib */; };
+		B6235E491D48BD2E00E5ECDB /* WTMoreButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E481D48BD2E00E5ECDB /* WTMoreButton.m */; };
 		B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63094561C4B8C1600E58EF8 /* nodes.plist */; };
 		B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B63176CC1C4702350071C9BF /* libxml2.2.dylib */; };
 		B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = B64168151C840BDC00EAF134 /* dribbble256_imageio.png */; };
@@ -351,10 +355,16 @@
 		B60FA2131D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTPrivacyStatementViewController.xib; sourceTree = "<group>"; };
 		B60FA2271D45E75800F98CF3 /* WTMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreCell.h; sourceTree = "<group>"; };
 		B60FA2281D45E75800F98CF3 /* WTMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreCell.m; sourceTree = "<group>"; };
-		B60FA22A1D45E89800F98CF3 /* WTMorePhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMorePhotoCell.h; sourceTree = "<group>"; };
-		B60FA22B1D45E89800F98CF3 /* WTMorePhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMorePhotoCell.m; sourceTree = "<group>"; };
 		B60FA22D1D45E9EA00F98CF3 /* WTSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSettingItem.h; sourceTree = "<group>"; };
 		B60FA22E1D45E9EA00F98CF3 /* WTSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSettingItem.m; sourceTree = "<group>"; };
+		B6235E3D1D48AA0100E5ECDB /* WTMoreLoginHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreLoginHeaderView.h; sourceTree = "<group>"; };
+		B6235E3E1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreLoginHeaderView.m; sourceTree = "<group>"; };
+		B6235E401D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreNotLoginHeaderView.h; sourceTree = "<group>"; };
+		B6235E411D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreNotLoginHeaderView.m; sourceTree = "<group>"; };
+		B6235E431D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMoreNotLoginHeaderView.xib; sourceTree = "<group>"; };
+		B6235E451D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMoreLoginHeaderView.xib; sourceTree = "<group>"; };
+		B6235E471D48BD2E00E5ECDB /* WTMoreButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreButton.h; sourceTree = "<group>"; };
+		B6235E481D48BD2E00E5ECDB /* WTMoreButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreButton.m; sourceTree = "<group>"; };
 		B63094561C4B8C1600E58EF8 /* nodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nodes.plist; sourceTree = "<group>"; };
 		B63176CC1C4702350071C9BF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B63176D11C47636D0071C9BF /* v2ex.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v2ex.pch; sourceTree = "<group>"; };
@@ -1244,8 +1254,14 @@
 			children = (
 				B60FA2271D45E75800F98CF3 /* WTMoreCell.h */,
 				B60FA2281D45E75800F98CF3 /* WTMoreCell.m */,
-				B60FA22A1D45E89800F98CF3 /* WTMorePhotoCell.h */,
-				B60FA22B1D45E89800F98CF3 /* WTMorePhotoCell.m */,
+				B6235E3D1D48AA0100E5ECDB /* WTMoreLoginHeaderView.h */,
+				B6235E3E1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m */,
+				B6235E451D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib */,
+				B6235E401D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.h */,
+				B6235E411D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m */,
+				B6235E431D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib */,
+				B6235E471D48BD2E00E5ECDB /* WTMoreButton.h */,
+				B6235E481D48BD2E00E5ECDB /* WTMoreButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1254,9 +1270,6 @@
 			isa = PBXGroup;
 			children = (
 				B60FA2101D45D7E700F98CF3 /* Controller */,
-				B60FA2141D45D7E700F98CF3 /* Model */,
-				B60FA2151D45D7E700F98CF3 /* View */,
-				B60FA2161D45D7E700F98CF3 /* ViewModel */,
 			);
 			path = "PrivacyStatement-隐私声明";
 			sourceTree = "<group>";
@@ -1269,27 +1282,6 @@
 				B60FA2131D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B60FA2141D45D7E700F98CF3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B60FA2151D45D7E700F98CF3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B60FA2161D45D7E700F98CF3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B63A5EB01C5BC5CE00D3BF8B /* Classes */ = {
@@ -1472,6 +1464,7 @@
 				B60FA1DC1D45C09200F98CF3 /* WTRegisterViewController.xib in Resources */,
 				B60FA1C21D45C09200F98CF3 /* WTNodeTopicHeaderView.xib in Resources */,
 				B60FA1971D45C09200F98CF3 /* WTWebViewViewController.xib in Resources */,
+				B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */,
 				B60FA1AE1D45C09200F98CF3 /* WTUserInfoHeadView.xib in Resources */,
 				B60FA1AC1D45C09200F98CF3 /* WTReplyTopicCell.xib in Resources */,
 				B60FA1DF1D45C09200F98CF3 /* light.css in Resources */,
@@ -1487,6 +1480,7 @@
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
 				B60FA19D1D45C09200F98CF3 /* WTMeViewController.storyboard in Resources */,
 				B60FA1A81D45C09200F98CF3 /* WTMeTopView.xib in Resources */,
+				B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */,
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
 				B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */,
 				B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */,
@@ -1568,6 +1562,7 @@
 				B60FA1A51D45C09200F98CF3 /* WTNode.m in Sources */,
 				B60FA1A11D45C09200F98CF3 /* WTUserTopicViewController.m in Sources */,
 				B60FA1BE1D45C09200F98CF3 /* WTNodeTopicAPIItem.m in Sources */,
+				B6235E421D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m in Sources */,
 				B60FA1DB1D45C09200F98CF3 /* WTRegisterViewController.m in Sources */,
 				B60FA1901D45C09200F98CF3 /* WTTopicDetailCommentCell.m in Sources */,
 				B60FA1F11D45C09200F98CF3 /* WTTableView.m in Sources */,
@@ -1577,6 +1572,7 @@
 				B60FA1EE1D45C09200F98CF3 /* WTPersonTableViewController.m in Sources */,
 				B60FA1CD1D45C09200F98CF3 /* UIView+Frame.m in Sources */,
 				B60FA1CB1D45C09200F98CF3 /* UILabel+StringFrame.m in Sources */,
+				B6235E491D48BD2E00E5ECDB /* WTMoreButton.m in Sources */,
 				B60FA1821D45C09200F98CF3 /* WTTopicCell.m in Sources */,
 				B60FA1991D45C09200F98CF3 /* WTRefreshAutoNormalFooter.m in Sources */,
 				B60FA1EB1D45C09200F98CF3 /* WTFPSLabel.m in Sources */,
@@ -1610,7 +1606,6 @@
 				B60FA1B21D45C09200F98CF3 /* WTMessageViewController.m in Sources */,
 				B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */,
 				B6DEEB7C1D46677600E3A313 /* WTAdvertiseItem.m in Sources */,
-				B60FA22C1D45E89800F98CF3 /* WTMorePhotoCell.m in Sources */,
 				B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */,
 				B60FA1A21D45C09200F98CF3 /* WTUserInfoV3ViewController.m in Sources */,
 				B60FA1CC1D45C09200F98CF3 /* UITextField+Placeholder.m in Sources */,
@@ -1641,6 +1636,7 @@
 				B60FA2231D45D7E700F98CF3 /* WTMoreViewController.m in Sources */,
 				B60FA1D21D45C09200F98CF3 /* TFHppleElement.m in Sources */,
 				B60FA1D11D45C09200F98CF3 /* TFHpple.m in Sources */,
+				B6235E3F1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m in Sources */,
 				B60FA1D91D45C09200F98CF3 /* WTAccountViewModel.m in Sources */,
 				B60FA2291D45E75800F98CF3 /* WTMoreCell.m in Sources */,
 				B60FA1EF1D45C09200F98CF3 /* WTPersonViewController.m in Sources */,

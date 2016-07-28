@@ -62,15 +62,18 @@ NSString * const identifier = @"identifier";
     UIView *footerView = [UIView new];
     
     {
+        footerView.backgroundColor = [UIColor clearColor];
         footerView.frame = CGRectMake(0, userCenterHeaderViewH, WTScreenWidth, WTScreenHeight - userCenterHeaderViewH);
         [self.view addSubview: footerView];
         self.footerView = footerView;
+        
     }
     
     // 3、tableView
     UITableView *tableView = [UITableView new];
     
     {
+       
         tableView.frame = footerView.bounds;
         [self.footerView addSubview: tableView];
         self.tableView = tableView;

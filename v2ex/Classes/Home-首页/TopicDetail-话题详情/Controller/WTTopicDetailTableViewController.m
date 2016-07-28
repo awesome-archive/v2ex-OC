@@ -54,6 +54,8 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     [super viewDidLoad];
     
+    //self.topicDetailUrl = @"http://www.v2ex.com/t/265305#reply0";
+    
     // 1、加载数据
     [self setupData];
     
@@ -62,6 +64,8 @@ static NSString  * const commentCellID = @"commentCellID";
     
     // 3、回复帖子用的url
     self.replyTopicUrl = [NSString subStringToIndexWithStr: @"#" string: self.topicDetailUrl];
+    
+    
     
     // 4、帖子详情url
     self.lastPageUrl = self.topicDetailUrl;

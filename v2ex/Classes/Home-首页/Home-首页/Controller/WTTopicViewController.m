@@ -48,10 +48,15 @@ static NSString *const ID = @"topicCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
 
-    // 设置内边距
-    self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
-    // 设置滚动条的内边距
-    self.tableView.separatorInset = self.tableView.contentInset;
+    if (self.topicType != WTTopicTypeCollection)
+    {
+        // 设置内边距
+        self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
+        // 设置滚动条的内边距
+        self.tableView.separatorInset = self.tableView.contentInset;
+    }
+    
+    
     
     // 1.2只有'最近'节点需要上拉刷新
     if ([WTTopicViewModel isNeedNextPage: self.urlString])

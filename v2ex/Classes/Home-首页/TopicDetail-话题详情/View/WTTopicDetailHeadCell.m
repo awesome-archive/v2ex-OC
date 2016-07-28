@@ -9,6 +9,7 @@
 #import "WTTopicDetailHeadCell.h"
 #import "UIImageView+WebCache.h"
 #import "WTTopicDetailViewModel.h"
+#import "WTConst.h"
 @interface WTTopicDetailHeadCell()
 /** 头像 */
 @property (weak, nonatomic) IBOutlet UIImageView    *iconImageView;
@@ -26,6 +27,8 @@
 
 - (void)awakeFromNib
 {
+    self.contentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
+    
     // 圆角
     self.nodeLabel.layer.cornerRadius = 3;
     self.nodeLabel.layer.masksToBounds = YES;

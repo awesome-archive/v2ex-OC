@@ -16,8 +16,8 @@
 
 @property (nonatomic, strong) NSString *content;
 
-@property (nonatomic, strong) NSString *detailUrl;
+@property (nonatomic, strong) NSURL *detailUrl;
 
-+ (instancetype)advertiseItem:(NSURL *)icon title:(NSString *)title content:(NSString *)content detailUrl:(NSString *)detailUrl;
++ (instancetype)advertiseItem:(NSURL *)icon title:(NSString *)title content:(NSString *)content detailUrl:(NSURL *)detailUrl;
 
 @end

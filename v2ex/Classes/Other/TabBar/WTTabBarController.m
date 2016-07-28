@@ -52,7 +52,7 @@
     
     
     // 更多
-    WTMoreViewController *moreVC = [[WTMoreViewController alloc] initWithStyle: UITableViewStyleGrouped];
+    WTMoreViewController *moreVC = [WTMoreViewController new];
     [self addOneChildViewController: moreVC title: @"更多" imageName: @"Tabbar_More_Normal" selectedImageName: nil];
     
     
