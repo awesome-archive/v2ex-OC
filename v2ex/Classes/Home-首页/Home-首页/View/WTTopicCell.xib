@@ -93,7 +93,6 @@
                     <constraint firstItem="ZTG-Da-ksk" firstAttribute="leading" secondItem="NxF-Um-cC8" secondAttribute="trailing" constant="8" id="WOY-mQ-bak"/>
                     <constraint firstItem="zT5-lE-m4n" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Wte-6P-M7m"/>
                     <constraint firstItem="Vkx-CI-hWJ" firstAttribute="top" secondItem="zT5-lE-m4n" secondAttribute="bottom" constant="8" id="Zl5-dY-IHo"/>
-                    <constraint firstAttribute="bottom" secondItem="Vkx-CI-hWJ" secondAttribute="bottom" constant="8" id="aXa-cg-rpy"/>
                     <constraint firstItem="zId-5v-aW5" firstAttribute="leading" secondItem="tsl-cJ-Cnv" secondAttribute="trailing" constant="1" id="dtc-ml-e3i"/>
                     <constraint firstItem="zId-5v-aW5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="gPD-dE-QVo"/>
                     <constraint firstAttribute="trailing" secondItem="zTs-5i-Cie" secondAttribute="trailing" id="iGm-8k-Woe"/>
@@ -105,11 +104,6 @@
                     <constraint firstItem="zId-5v-aW5" firstAttribute="top" secondItem="tsl-cJ-Cnv" secondAttribute="top" id="vy8-ze-NPV"/>
                     <constraint firstItem="zTs-5i-Cie" firstAttribute="top" secondItem="Vkx-CI-hWJ" secondAttribute="bottom" constant="8" id="ybU-d2-JuY"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="aXa-cg-rpy"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <connections>

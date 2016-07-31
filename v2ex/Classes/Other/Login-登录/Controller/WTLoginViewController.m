@@ -7,11 +7,16 @@
 //
 
 #import "WTLoginViewController.h"
-#import "WTAccountViewModel.h"
 #import "WTTipView.h"
 
+#import "WTAccountViewModel.h"
+#import "UIImage+Extension.h"
+
 @interface WTLoginViewController ()
+/** 背景图片 */
+@property (weak, nonatomic) IBOutlet UIImageView    *bgImageV;
 /** 用户名或邮箱 */
+@property (weak, nonatomic) IBOutlet UIView *loginBgView;
 @property (weak, nonatomic) IBOutlet UITextField    *usernameOrEmailTextField;
 /** 密码 */
 @property (weak, nonatomic) IBOutlet UITextField    *passwordTextField;
@@ -38,7 +43,43 @@
     [self.passwordTextField addTarget: self action: @selector(textFieldEditingChanged) forControlEvents: UIControlEventEditingChanged];
     
     self.title = @"帐号登录";
+    
+    self.loginBgView.layer.cornerRadius = 3;
+    self.loginBgView.layer.masksToBounds = YES;
+    
+    // 3、为背景图片添加动画
+    [self setBgImageVAnimation];
+    
 }
+
+/**
+ *  为背景图片添加动画
+ */
+- (void)setBgImageVAnimation
+{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration: 15 delay: 0 options: 0 animations:^{
+            
+            self.bgImageV.transform = CGAffineTransformMakeScale(1.35, 1.35);
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration: 15 delay: 1 options: 0 animations:^{
+               
+                self.bgImageV.transform = CGAffineTransformIdentity;
+                
+            } completion:^(BOOL finished) {
+                
+                [self setBgImageVAnimation];
+                
+            }];
+            
+        }];
+        
+    });
+}
+
 
 
 #pragma mark - 事件

@@ -10,4 +10,6 @@
 
 @interface WTMoreLoginHeaderView : UIView
 
++ (instancetype)moreLoginHeaderView;
+
 @end

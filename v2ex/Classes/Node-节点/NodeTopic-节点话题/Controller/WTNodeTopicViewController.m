@@ -9,11 +9,14 @@
 #import "WTNodeTopicViewController.h"
 #import "WTTopicDetailViewController.h"
 #import "WTTopicViewController.h"
+#import "WTNodeTopicHeaderView.h"
 
 #import "WTTopicViewModel.h"
 #import "WTNodeItem.h"
 #import "WTTopicCell.h"
 #import "WTNodeTopicCell.h"
+#import "WTNodeViewModel.h"
+#import "WTNodeTopicHeaderView.h"
 
 #import "WTRefreshAutoNormalFooter.h"
 #import "UITableView+FDTemplateLayoutCell.h"
@@ -21,14 +24,16 @@
 #import "MJExtension.h"
 
 
-CGFloat const userCenterHeaderViewH = 150;
+CGFloat const userCenterHeaderViewH = 170;
 
 NSString * const ID = @"ID";
 
 @interface WTNodeTopicViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, assign) UIView *headerView;
-@property (nonatomic, assign) UIView *footerView;
+@property (nonatomic, weak) UIView *headerView;
+@property (nonatomic, weak) UIView *footerView;
+
+@property (nonatomic, weak) WTNodeTopicHeaderView *nodeTopicHeaderView;
 
 @property (nonatomic, assign) UITableView *tableView;
 
@@ -47,12 +52,13 @@ NSString * const ID = @"ID";
     [self setupView];
     
     // 加载数据
-  //  [self setupData];
+    [self setupData];
 }
 
 // 设置View
 - (void)setupView
 {
+    self.headerViewH = 195;
     self.view.backgroundColor = [UIColor whiteColor];
     
     UITableView *tableView = [UITableView new];
@@ -106,6 +112,18 @@ NSString * const ID = @"ID";
     }];
 }
 
+- (void)setupData
+{
+    self.nodeTopicHeaderView.nodeItem = self.nodeItem;
+    [WTNodeViewModel getNodeItemWithNodeName: self.nodeItem.title success:^(WTNodeItem *nodeItem) {
+        
+        self.nodeTopicHeaderView.nodeItem = nodeItem;
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -130,7 +148,7 @@ NSString * const ID = @"ID";
     // 跳转至话题详情控制器
     WTTopicViewModel *topicViewModel = self.topicViewModels[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
-    detailVC.topicViewModel = topicViewModel;
+    detailVC.topicDetailUrl = topicViewModel.topicDetailUrl;
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 
@@ -152,6 +170,19 @@ NSString * const ID = @"ID";
         return [NSString stringWithFormat: @"%@?p=%ld", self.nodeItem.url, self.page];
     }
     return [NSString stringWithFormat: @"%@", self.nodeItem.url];
+}
+
+#pragma mark - Lazy Method
+- (WTNodeTopicHeaderView *)nodeTopicHeaderView
+{
+    if (_nodeTopicHeaderView == nil)
+    {
+        WTNodeTopicHeaderView *nodeTopicHeaderView = [WTNodeTopicHeaderView nodeTopicHeaderView];
+        nodeTopicHeaderView.frame = CGRectMake(0, 64, WTScreenWidth, 182);
+        [self.headerContentView addSubview: nodeTopicHeaderView];
+        _nodeTopicHeaderView = nodeTopicHeaderView;
+    }
+    return _nodeTopicHeaderView;
 }
 
 @end

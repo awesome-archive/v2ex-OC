@@ -58,14 +58,23 @@ NS_ASSUME_NONNULL_BEGIN
     self.titleLabel.text = topicViewModel.topic.title;
     
     // 3、节点
-    NSString *node = topicViewModel.topic.node;
-    // 判断是否包含中文字符串
-    if ([NSString isChineseCharactersWithString: node] || node.length > 4)
+    if (topicViewModel.topic.node.length > 0)
     {
-        //NSLog(@"中文:%@", _blog.node);
-        node = [NSString stringWithFormat: @" %@ ", topicViewModel.topic.node];
+        //self.nodeBtn.hidden = NO;
+        NSString *node = topicViewModel.topic.node;
+        // 判断是否包含中文字符串
+        if ([NSString isChineseCharactersWithString: node] || node.length > 4)
+        {
+            //NSLog(@"中文:%@", _blog.node);
+            node = [NSString stringWithFormat: @" %@ ", topicViewModel.topic.node];
+        }
+        [self.nodeBtn setTitle: node forState: UIControlStateNormal];
     }
-    [self.nodeBtn setTitle: node forState: UIControlStateNormal];
+    else
+    {
+        //self.nodeBtn.hidden = YES;
+        [self.nodeBtn setTitle: @"" forState: UIControlStateNormal];
+    }
     
     // 4、最后回复时间
     self.lastReplyTimeLabel.text = topicViewModel.topic.lastReplyTime;

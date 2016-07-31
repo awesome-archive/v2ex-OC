@@ -13,6 +13,7 @@
 #import "WTAdvertiseViewController.h"
 #import "WTTopicViewController.h"
 #import "WTMoreNotLoginHeaderView.h"
+#import "WTMoreLoginHeaderView.h"
 
 #import "WTAccountViewModel.h"
 #import "WTMoreCell.h"
@@ -29,6 +30,9 @@ CGFloat const moreHeaderViewH = 150;
 @property (nonatomic, weak) UIView *headerContentView;
 @property (nonatomic, weak) UIView *footerContentView;
 @property (nonatomic, weak) UITableView *tableView;
+
+@property (nonatomic, weak) WTMoreLoginHeaderView *moreLoginHeaderView;
+@property (nonatomic, weak) WTMoreNotLoginHeaderView *moreNotLoginHeaderView;
 
 @property (nonatomic, strong) NSMutableArray *datas;
 @property (nonatomic, strong) NSMutableArray *titles;
@@ -54,30 +58,9 @@ CGFloat const moreHeaderViewH = 150;
 {
     [self.navigationController setNavigationBarHidden: YES animated: NO];
     
-    // 1、headerView
-    UIView *headerContentView = [UIView new];
+    [self headerContentView];
     
-    {
-        headerContentView.frame = CGRectMake(0, 0, WTScreenWidth, WTScreenHeight - WTTabBarHeight);
-        [self.view addSubview: headerContentView];
-        self.headerContentView = headerContentView;
-        
-        headerContentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
-    }
-    
-    
-    // 2、footerView
-    UIView *footerContentView = [UIView new];
-    
-    {
-        footerContentView.layer.cornerRadius = 5;
-        footerContentView.layer.masksToBounds = YES;
-        footerContentView.frame = CGRectMake(0, moreHeaderViewH, WTScreenWidth, WTScreenHeight - moreHeaderViewH);
-        [self.view addSubview: footerContentView];
-        self.footerContentView = footerContentView;
-    }
-    
-    // 3、UITableView
+    // 1、UITableView
     UITableView *tableView = [UITableView new];
     
     {
@@ -97,22 +80,23 @@ CGFloat const moreHeaderViewH = 150;
         [tableView registerClass: [WTMoreCell class] forCellReuseIdentifier: moreCellIdentifier];
 
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
     
     // 4、判断是否登录，添加不同的headerView
     if ([[WTAccountViewModel shareInstance] isLogin])
     {
-        WTMoreNotLoginHeaderView *moreNotLoginHeaderView = [WTMoreNotLoginHeaderView moreNotLoginHeaderView];
-        moreNotLoginHeaderView.frame = CGRectMake(0, 0, WTScreenWidth, moreHeaderViewH);
-        [self.headerContentView addSubview: moreNotLoginHeaderView];
+        self.moreLoginHeaderView.hidden = NO;
+        self.moreNotLoginHeaderView.hidden = YES;
     }
     else
     {
-        WTMoreNotLoginHeaderView *moreNotLoginHeaderView = [WTMoreNotLoginHeaderView moreNotLoginHeaderView];
-        moreNotLoginHeaderView.frame = CGRectMake(0, 0, WTScreenWidth, moreHeaderViewH);
-        [self.headerContentView addSubview: moreNotLoginHeaderView];
-        moreNotLoginHeaderView.delegate = self;
+        self.moreLoginHeaderView.hidden = YES;
+        self.moreNotLoginHeaderView.hidden = NO;
     }
-    
 }
 
 #pragma mark - UITableView DataSource
@@ -176,6 +160,11 @@ CGFloat const moreHeaderViewH = 150;
 #pragma mark 登录按钮点击
 - (void)moreNotLoginHeaderViewDidClickedLoginBtn:(WTMoreNotLoginHeaderView *)moreNotLoginHeaderView
 {
+    WTLoginViewController *loginVC = [WTLoginViewController new];
+    
+    loginVC.loginSuccessBlock = ^{
+    
+    };
     [self presentViewController: [WTLoginViewController new] animated: YES completion: nil];
 }
 
@@ -211,7 +200,7 @@ CGFloat const moreHeaderViewH = 150;
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
-                                [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
+                                [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: nil],
                                 ]];
         
         [_datas addObject: @[
@@ -229,7 +218,9 @@ CGFloat const moreHeaderViewH = 150;
                                 
                                 [WTSettingItem settingItemWithTitle: @"关于作者" image: [UIImage imageNamed: @"more_about"] operationBlock: nil],
                                 
-                                [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
+                                [WTSettingItem settingItemWithTitle: @"退出帐号" image: [UIImage imageNamed: @"more_logout"] operationBlock: ^{
+        
+                                }],
                                 
                             ]];
     }
@@ -247,4 +238,60 @@ CGFloat const moreHeaderViewH = 150;
     return _titles;
 }
 
+- (UIView *)headerContentView
+{
+    if (_headerContentView == nil)
+    {
+        // 1、headerView
+        UIView *headerContentView = [UIView new];
+        headerContentView.frame = CGRectMake(0, 0, WTScreenWidth, WTScreenHeight - WTTabBarHeight);
+        [self.view addSubview: headerContentView];
+        
+        headerContentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
+        
+        _headerContentView = headerContentView;
+    }
+    return _headerContentView;
+}
+
+- (UIView *)footerContentView
+{
+    if(_footerContentView == nil)
+    {
+        // 2、footerView
+        UIView *footerContentView = [UIView new];
+        footerContentView.layer.cornerRadius = 5;
+        footerContentView.layer.masksToBounds = YES;
+        footerContentView.frame = CGRectMake(0, moreHeaderViewH, WTScreenWidth, WTScreenHeight - moreHeaderViewH);
+        [self.view addSubview: footerContentView];
+        _footerContentView = footerContentView;
+    }
+    return _footerContentView;
+}
+
+- (WTMoreLoginHeaderView *)moreLoginHeaderView
+{
+    if (_moreLoginHeaderView == nil)
+    {
+        WTMoreLoginHeaderView *moreLoginHeaderView = [WTMoreLoginHeaderView moreLoginHeaderView];
+        [self.headerContentView addSubview: moreLoginHeaderView];
+        _moreLoginHeaderView = moreLoginHeaderView;
+        
+        moreLoginHeaderView.frame = CGRectMake(0, 0, WTScreenWidth, moreHeaderViewH);
+    }
+    return _moreLoginHeaderView;
+}
+
+- (WTMoreNotLoginHeaderView *)moreNotLoginHeaderView
+{
+    if (_moreNotLoginHeaderView == nil)
+    {
+        WTMoreNotLoginHeaderView *moreNotLoginHeaderView = [WTMoreNotLoginHeaderView moreNotLoginHeaderView];
+        moreNotLoginHeaderView.frame = CGRectMake(0, 0, WTScreenWidth, moreHeaderViewH);
+        [self.headerContentView addSubview: moreNotLoginHeaderView];
+        moreNotLoginHeaderView.delegate = self;
+        _moreNotLoginHeaderView = moreNotLoginHeaderView;
+    }
+    return _moreNotLoginHeaderView;
+}
 @end

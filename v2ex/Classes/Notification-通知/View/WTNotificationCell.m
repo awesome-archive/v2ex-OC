@@ -7,7 +7,7 @@
 //
 
 #import "WTNotificationCell.h"
-#import "WTTopicViewModel.h"
+#import "WTNotificationItem.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Extension.h"
 
@@ -31,17 +31,25 @@
     self.bgContentView.layer.cornerRadius = 3;
 }
 
-- (void)setTopicViewModel:(WTTopicViewModel *)topicViewModel
+
+- (void)setNoticationItem:(WTNotificationItem *)noticationItem
 {
-    _topicViewModel = topicViewModel;
+    _noticationItem = noticationItem;
     
-    [self.iconImageView sd_setImageWithURL: topicViewModel.iconURL placeholderImage: WTIconPlaceholderImage];
+    [self.iconImageView sd_setImageWithURL: noticationItem.iconURL placeholderImage: WTIconPlaceholderImage];
     
-    self.titleLabel.text = topicViewModel.topic.title;
+    self.titleLabel.text = noticationItem.title;
     
-    self.contentLabel.text = topicViewModel.topic.content;
+    self.contentLabel.text = noticationItem.content;
     
-    self.timeLabel.text = [topicViewModel.topic.lastReplyTime stringByReplacingOccurrencesOfString: @" " withString: @""];
+    self.timeLabel.text = [noticationItem.lastReplyTime stringByReplacingOccurrencesOfString: @" " withString: @""];
+}
+- (IBAction)deleteBtnClick
+{
+    if ([self.delegate respondsToSelector: @selector(notificationCell:didClickWithNoticationItem:)])
+    {
+        [self.delegate notificationCell: self didClickWithNoticationItem: self.noticationItem];
+    }
 }
 
 @end

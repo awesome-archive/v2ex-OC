@@ -50,7 +50,7 @@
     
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];
-    topicVC.topicDetailUrl = self.topicViewModel.topicDetailUrl;
+    topicVC.topicDetailUrl = self.topicDetailUrl;
     [self.normalView addSubview: topicVC.tableView];
     _tableView = topicVC.tableView;
     [self addChildViewController: topicVC];

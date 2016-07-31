@@ -10,7 +10,7 @@
 @class WTTopicViewModel;
 @interface WTTopicDetailViewController : UIViewController
 
-@property (nonatomic, strong) WTTopicViewModel  *topicViewModel;
+@property (nonatomic, strong) NSString *topicDetailUrl;
 
 /**
  *  更新页数的Block

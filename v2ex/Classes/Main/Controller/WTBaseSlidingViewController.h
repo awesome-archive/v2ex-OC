@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN CGFloat const WTBaseSlidingHeaderViewH;
 
 @interface WTBaseSlidingViewController : UIViewController
 
 @property (nonatomic, weak) UIView *headerContentView;
 @property (nonatomic, weak) UIView *footerContentView;
+@property (nonatomic, assign) CGFloat headerViewH;
 
 @property (nonatomic, assign, getter=isShowTabBarFlag) BOOL showTabBarFlag;
 

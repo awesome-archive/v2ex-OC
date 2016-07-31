@@ -13,6 +13,7 @@
 #import "MJExtension.h"
 #import "NSString+Extension.h"
 #import "FMDatabase.h"
+#import "MJExtension.h"
 
 static FMDatabase *_db;
 
@@ -307,6 +308,35 @@ MJCodingImplementation
     }
     
     return newSectionsArray;
+}
+
+/**
+ *  根据节点Name获取节点详情信息
+ *
+ *  @param nodeName  nodeName
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
++ (void)getNodeItemWithNodeName:(NSString *)nodeName success:(void(^)(WTNodeItem *nodeItem))success failure:(void(^)(NSError *error))failure
+{
+    NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/api/nodes/show.json?name=%@", nodeName];
+    
+    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(NSDictionary *responseObject) {
+        
+        WTNodeItem *nodeItem = [WTNodeItem mj_objectWithKeyValues: responseObject];
+        
+        if(success)
+        {
+            success(nodeItem);
+        }
+        
+    } failure:^(NSError *error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
 }
 
 - (NSString *)description

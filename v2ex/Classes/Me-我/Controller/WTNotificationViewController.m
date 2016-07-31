@@ -138,7 +138,7 @@ static NSString * const ID = @"notificationCell";
    
     WTNotificationCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
-    cell.topicViewModel = self.topicVMs[indexPath.row];
+    //cell.topicViewModel = self.topicVMs.[indexPath.row];
     
     return cell;
 }
@@ -147,7 +147,7 @@ static NSString * const ID = @"notificationCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WTTopicDetailViewController *topDetailVC = [WTTopicDetailViewController new];
-    topDetailVC.topicViewModel = self.topicVMs[indexPath.row];
+   // topDetailVC.topicViewModel = self.topicVMs[indexPath.row];
     [self.navigationController pushViewController: topDetailVC animated: YES];
 }
 

@@ -56,5 +56,7 @@
  */
 - (instancetype)roundImageWithCornerRadius:(CGFloat)cornerRadius;
 
++ (UIImage *)coreBlurImage:(UIImage *)image withBlurNumber:(CGFloat)blur;
 
++ (UIImage *)boxblurImage:(UIImage *)image withBlurNumber:(CGFloat)blur;
 @end

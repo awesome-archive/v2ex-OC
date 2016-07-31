@@ -12,6 +12,7 @@
 #import "WTHotNodeFlowLayout.h"
 #import "WTAllNodeViewController.h"
 #import "WTConst.h"
+#import "NetworkTool.h"
 
 @interface WTNodeViewController ()
 /** 热门节点View */

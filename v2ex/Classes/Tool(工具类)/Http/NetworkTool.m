@@ -13,6 +13,8 @@
 
 static NetworkTool *_instance;
 
+
+
 + (instancetype)shareInstance
 {
     static dispatch_once_t onceToken;

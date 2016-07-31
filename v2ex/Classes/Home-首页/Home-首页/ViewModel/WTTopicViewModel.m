@@ -226,62 +226,7 @@
     return topics;
 }
 
-#pragma makr - 根据data解析出用户通知
-+ (NSMutableArray<WTTopicViewModel *> *)userNotificationsWithData:(NSData *)data;
-{
-    NSMutableArray *notificationVMs = [NSMutableArray array];
-    
-    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
-    
-    NSArray<TFHppleElement *> *cellEs = [doc searchWithXPathQuery: @"//div[@class='cell']"];
-    
-    for (TFHppleElement *cellE in cellEs)
-    {
-        @autoreleasepool {
-            
-            NSArray<TFHppleElement *> *avatarEs = [cellE searchWithXPathQuery: @"//img[@class='avatar']"];
-            
-            NSArray<TFHppleElement *> *aEs = [cellE searchWithXPathQuery: @"//a"];
-            
-            NSArray<TFHppleElement *> *snowEs = [cellE searchWithXPathQuery: @"//span[@class='snow']"];
-            
-            NSArray<TFHppleElement *> *payloadEs = [cellE searchWithXPathQuery: @"//div[@class='payload']"];
-            
-            
-            
-            WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
-            {
-                WTTopic *topic = [WTTopic new];
-                
-                // 1、头像
-                topic.icon = [avatarEs.firstObject objectForKey: @"src"];
-                // 2、作者
-                topic.author = aEs[1].content;
-                // 3、标题
-                if (aEs.count > 2)
-                {
-                    topic.title = aEs[2].content;
-                    topic.detailUrl = [aEs[2] objectForKey: @"href"];
-                    topicViewModel.topicDetailUrl = [WTHTTPBaseUrl stringByAppendingString: topic.detailUrl];
-                }
-                // 4、最后回复时间
-                topic.lastReplyTime = snowEs.firstObject.content;
-                // 5、回复内容
-                topic.content = payloadEs.firstObject.content;
-                
-                
-                topicViewModel.topic = topic;
-                
-                // 1、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
-                topicViewModel.iconURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: topic.icon];
-                
-            }
-            
-            [notificationVMs addObject: topicViewModel];
-        }
-    }
-    return notificationVMs;
-}
+
 
 #pragma mark - 根据data解析出用户回复的话题
 + (NSMutableArray<WTTopicViewModel *> *)userReplyTopicsWithData:(NSData *)data

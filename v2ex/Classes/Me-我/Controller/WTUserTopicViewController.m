@@ -109,7 +109,7 @@ static NSString *const ID = @"topicCell";
     // 跳转至话题详情控制器
     WTTopicViewModel *topicViewModel = self.topicViewModels[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
-    detailVC.topicViewModel = topicViewModel;
+    detailVC.topicDetailUrl = topicViewModel.topicDetailUrl;
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 

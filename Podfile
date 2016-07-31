@@ -18,3 +18,5 @@ pod 'UITableView+FDTemplateLayoutCell'
 pod "DKNightVersion"
 pod 'FMDB'
 pod 'RongCloudIMKit', '~> 2.4.9'
+pod 'DZNEmptyDataSet'
+

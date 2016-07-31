@@ -40,4 +40,7 @@
 
 @property (nonatomic, assign) CGFloat width;
 
+@property (nonatomic, assign) NSUInteger stars;
+
+@property (nonatomic, strong) NSString *avatar_large;
 @end

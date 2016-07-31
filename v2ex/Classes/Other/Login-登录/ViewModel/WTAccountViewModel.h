@@ -29,6 +29,8 @@
  */
 - (BOOL)isLogin;
 
+- (void)saveUsernameAndPassword;
+
 /**
  *  登陆
  *

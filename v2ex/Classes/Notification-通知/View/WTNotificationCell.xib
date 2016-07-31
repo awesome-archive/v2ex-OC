@@ -34,6 +34,9 @@
                             <constraint firstAttribute="width" constant="20" id="dfi-dV-O2F"/>
                         </constraints>
                         <state key="normal" image="topic_delete_normal"/>
+                        <connections>
+                            <action selector="deleteBtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9mG-wd-48p"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boU-m5-B2B">
                         <rect key="frame" x="46" y="62" width="299" height="19"/>

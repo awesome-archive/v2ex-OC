@@ -7,23 +7,28 @@
 //  通知控制器
 
 #import "WTUserNotificationViewController.h"
-#import "WTTopicViewModel.h"
 #import "NetworkTool.h"
 #import "WTRefreshAutoNormalFooter.h"
 #import "WTRefreshNormalHeader.h"
+#import "WTLoginViewController.h"
 #import "WTNotificationCell.h"
 #import "WTTopicViewModel.h"
 #import "WTTopicDetailViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "WTAccountViewModel.h"
+#import "WTNotificationViewModel.h"
+
 
 static NSString * const ID = @"notificationCell";
 
-@interface WTUserNotificationViewController ()
-/** 回复消息模型 */
-@property (nonatomic, strong) NSMutableArray<WTTopicViewModel *> *topicVMs;
+@interface WTUserNotificationViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, WTNotificationCellDelegate>
+/** 回复消息ViewModel */
+@property (nonatomic, strong) WTNotificationViewModel          *notificationVM;
 /** 请求地址 */
 @property (nonatomic, strong) NSString                         *urlString;
 /** 页数*/
 @property (nonatomic, assign) NSInteger                        page;
+
 @end
 
 @implementation WTUserNotificationViewController
@@ -32,8 +37,6 @@ static NSString * const ID = @"notificationCell";
 {
     [super viewDidLoad];
     
-    
-    [super viewDidLoad];
     
     self.title = @"提醒";
     
@@ -48,39 +51,37 @@ static NSString * const ID = @"notificationCell";
     // 注册cell
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTNotificationCell class]) bundle: nil] forCellReuseIdentifier: ID];
     
+    self.notificationVM = [WTNotificationViewModel new];
+    
     // 1、添加下拉刷新、上拉刷新
     self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
     self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
     
-    // 2、开始下拉刷新
-    [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    // 2、登陆过
+    if ([[WTAccountViewModel shareInstance] isLogin])
+    {
+        // 2、开始下拉刷新
+        [self.tableView.mj_header beginRefreshing];
+    }
 }
 
 #pragma mark - 加载数据
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    self.urlString = @"http://www.v2ex.com/notifications?p=1";
-    self.page = 1;
-    //    [WTAccountTool getNotificationWithUrlString: self.urlString success:^(NSMutableArray<WTNotification *> *notifications){
-    //
-    //        // 取出最后一个模型判断是有下一页
-    //        [self isHasNextPage: notifications.lastObject];
-    //
-    //        self.notifications = notifications;
-    //        // 移除最后一个模型
-    //        [self.notifications removeLastObject];
-    //
-    //        [self.tableView.mj_header endRefreshing];
-    //        [self.tableView reloadData];
-    //
-    //    } failure:^(NSError *error) {
-    //        [self.tableView.mj_header endRefreshing];
-    //    }];
     
-    [[NetworkTool shareInstance] GETWithUrlString: self.urlString success:^(NSData *data) {
-        
-        self.topicVMs = [WTTopicViewModel userNotificationsWithData: data];
+    self.notificationVM.page = 1;
+    
+    [self.notificationVM getUserNotificationsSuccess:^{
         
         [self.tableView reloadData];
         
@@ -94,58 +95,38 @@ static NSString * const ID = @"notificationCell";
 #pragma mark 加载旧的数据
 - (void)loadOldData
 {
-    self.page ++;
-    
-    NSRange range = [self.urlString rangeOfString: @"="];
-    self.urlString = [NSString stringWithFormat: @"%@%ld", [self.urlString substringWithRange: NSMakeRange(0, range.location + range.length)], self.page];
-    
-    //    [WTAccountTool getNotificationWithUrlString: self.urlString success:^(NSMutableArray<WTNotification *> *notifications){
-    //
-    //        // 取出最后一个模型判断是有下一页
-    //        [self isHasNextPage: notifications.lastObject];
-    //
-    //        [self.notifications addObjectsFromArray: notifications];
-    //        // 移除最后一个模型
-    //        [self.notifications removeLastObject];
-    //
-    //        [self.tableView.mj_footer endRefreshing];
-    //        [self.tableView reloadData];
-    //
-    //    } failure:^(NSError *error) {
-    //        [self.tableView.mj_header endRefreshing];
-    //    }];
-    
-    
+    if (self.notificationVM.isNextPage)
+    {
+        self.notificationVM.page ++;
+        
+        [self.notificationVM getUserNotificationsSuccess:^{
+            
+            [self.tableView reloadData];
+            
+            [self.tableView.mj_footer endRefreshing];
+            
+        } failure:^(NSError *error) {
+            [self.tableView.mj_footer endRefreshing];
+        }];
+    }
+    else
+    {
+        [self.tableView.mj_footer endRefreshing];
+    }
 }
-
-///**
-// *  是否有下一页
-// *
-// */
-//- (void)isHasNextPage:(WTNotification *)lastNotification
-//{
-//    // 取出最后一个模型判断是有下一页
-//    if (!lastNotification.topic.isHasNextPage)
-//    {
-//        self.tableView.mj_footer = nil;
-//    }
-//    else
-//    {
-//        self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
-//    }
-//}
-
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.topicVMs.count;
+    return self.notificationVM.notificationItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     WTNotificationCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
-    cell.topicViewModel = self.topicVMs[indexPath.row];
+    cell.noticationItem = self.notificationVM.notificationItems[indexPath.row];
+    
+    cell.delegate = self;
     
     return cell;
 }
@@ -154,8 +135,56 @@ static NSString * const ID = @"notificationCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WTTopicDetailViewController *topDetailVC = [WTTopicDetailViewController new];
-    topDetailVC.topicViewModel = self.topicVMs[indexPath.row];
+    topDetailVC.topicDetailUrl = self.notificationVM.notificationItems[indexPath.row].detailUrl;
     [self.navigationController pushViewController: topDetailVC animated: YES];
+}
+
+#pragma mark - WTNotificationCellDelegate
+- (void)notificationCell:(WTNotificationCell *)notificationCell didClickWithNoticationItem:(WTNotificationItem *)noticationItem
+{
+    __weak typeof(self) weakSelf = self;
+    // 删除通知
+    [self.notificationVM deleteNotificationByNoticationItem: noticationItem success:^{
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: [weakSelf.notificationVM.notificationItems indexOfObject: noticationItem] inSection: 0];
+        
+        [weakSelf.tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationMiddle];
+        
+        [weakSelf.notificationVM.notificationItems removeObject: noticationItem];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark - DZNEmptyDataSetSource
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"icon"];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject: [UIColor greenColor] forKey: NSForegroundColorAttributeName];
+    
+    return [[NSAttributedString alloc] initWithString: @"登录" attributes: dict];
+}
+
+#pragma mark - DZNEmptyDataSetDelegate
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+    [self presentViewController: [WTLoginViewController new] animated: YES completion: nil];
+}
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
+{
+    if ([[WTAccountViewModel shareInstance] isLogin])
+    {
+        return false;
+    }
+    return true;
 }
 
 @end

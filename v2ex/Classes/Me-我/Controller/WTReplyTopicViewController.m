@@ -156,7 +156,7 @@ static NSString * const ID = @"replyTopicCell";
 {
     // 跳转至话题详情控制器
     WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
-    topicDetailVC.topicViewModel = self.topicVMs[indexPath.row];
+    topicDetailVC.topicDetailUrl = self.topicVMs[indexPath.row].topicDetailUrl;
     [self.navigationController pushViewController: topicDetailVC animated: YES];
 }
 

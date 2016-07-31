@@ -33,4 +33,13 @@
 
 + (NSMutableArray *)queryAllNodeItemsFromCache;
 
+/**
+ *  根据节点Name获取节点详情信息
+ *
+ *  @param nodeName  nodeName
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
++ (void)getNodeItemWithNodeName:(NSString *)nodeName success:(void(^)(WTNodeItem *nodeItem))success failure:(void(^)(NSError *error))failure;
+
 @end

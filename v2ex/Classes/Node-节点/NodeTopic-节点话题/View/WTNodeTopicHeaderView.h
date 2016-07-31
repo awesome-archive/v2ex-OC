@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) WTNodeItem *nodeItem;
 
++ (instancetype)nodeTopicHeaderView;
+
 @end

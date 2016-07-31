@@ -14,6 +14,10 @@
 
 #define WTFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent: @"account.plist"]
 
+NSString * const WTUsernameOrEmailKey = @"WTUsernameOrEmailKey";
+
+NSString * const WTPasswordKey = @"WTPasswordKey";
+
 @implementation WTAccountViewModel
 
 static WTAccountViewModel *_instance;
@@ -28,11 +32,11 @@ static WTAccountViewModel *_instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone: zone];
-        _instance.account = [NSKeyedUnarchiver unarchiveObjectWithFile: WTFilePath];
-        if (_instance.account == nil)
-        {
-            _instance.account = [WTAccount new];
-        }
+        
+        _instance.account = [WTAccount new];
+        _instance.account.usernameOrEmail = [[NSUserDefaults standardUserDefaults] objectForKey: WTUsernameOrEmailKey];
+        _instance.account.password = [[NSUserDefaults standardUserDefaults] objectForKey: WTPasswordKey];
+
     });
     return _instance;
 }
@@ -44,10 +48,9 @@ static WTAccountViewModel *_instance;
 {
     if (!self.isLogin)
     {
-        NSString *username = @"misaka15";
-        NSString *password = @"misaka15";
-//        NSString *username = self.account.usernameOrEmail;
-//        NSString *password = self.account.password;
+        NSString *username = self.account.usernameOrEmail;
+        NSString *password = self.account.password;
+
         [[WTAccountViewModel shareInstance] getOnceWithUsername: username password: password success:^{
             
         } failure:^(NSError *error) {
@@ -63,6 +66,13 @@ static WTAccountViewModel *_instance;
 - (BOOL)isLogin
 {
     return [WTAccountViewModel shareInstance].account.usernameOrEmail.length > 0;
+}
+
+- (void)saveUsernameAndPassword
+{
+    [[NSUserDefaults standardUserDefaults] setObject: self.account.usernameOrEmail forKey: WTUsernameOrEmailKey];
+    [[NSUserDefaults standardUserDefaults] setObject: self.account.password forKey: WTPasswordKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 /**
@@ -102,14 +112,6 @@ static WTAccountViewModel *_instance;
             WTLog(@"loginRequestItem获取不到")
             return;
         }
-        
-//        // 2.2、请求参数
-//        NSDictionary *param = @{
-//                                loginRequestItem.username : username,
-//                                loginRequestItem.password : password,
-//                                @"once"                   : loginRequestItem.once,
-//                                @"next" : @"/"
-//                                };
         
         // 2.2、登录
         [[WTAccountViewModel shareInstance] loginWithUrlString: urlString loginRequestItem: loginRequestItem username:username password: password success:^{
@@ -154,7 +156,8 @@ static WTAccountViewModel *_instance;
             }
             self.account.usernameOrEmail = param[loginRequestItem.usernameKey];
             self.account.password = param[loginRequestItem.passwordKey];
-            [NSKeyedArchiver archiveRootObject: self.account toFile: WTFilePath];
+            //[NSKeyedArchiver archiveRootObject: self.account toFile: WTFilePath];
+            [self saveUsernameAndPassword];
             
             if (success)
             {

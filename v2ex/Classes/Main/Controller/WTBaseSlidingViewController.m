@@ -8,7 +8,6 @@
 
 #import "WTBaseSlidingViewController.h"
 
-CGFloat const WTBaseSlidingHeaderViewH = 150;
 
 @interface WTBaseSlidingViewController () <UITableViewDelegate>
 /** 记录scrollView的contentOff的Y值 */
@@ -21,29 +20,6 @@ CGFloat const WTBaseSlidingHeaderViewH = 150;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // 1、headerView
-    UIView *headerContentView = [UIView new];
-    
-    {
-        headerContentView.frame = CGRectMake(0, 0, WTScreenWidth, WTScreenHeight - WTTabBarHeight);
-        [self.view addSubview: headerContentView];
-        self.headerContentView = headerContentView;
-        
-        headerContentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
-    }
-    
-    
-    // 2、footerView
-    UIView *footerContentView = [UIView new];
-    
-    {
-        footerContentView.layer.cornerRadius = 5;
-        footerContentView.layer.masksToBounds = YES;
-        footerContentView.frame = CGRectMake(0, WTBaseSlidingHeaderViewH, WTScreenWidth, WTScreenHeight - WTBaseSlidingHeaderViewH);
-        [self.view addSubview: footerContentView];
-        self.footerContentView = footerContentView;
-    }
 }
 
 #pragma mark - UIScrollView Delegate
@@ -55,7 +31,7 @@ CGFloat const WTBaseSlidingHeaderViewH = 150;
             
             
             self.endY += (-scrollView.contentOffset.y) * 0.3;
-            self.footerContentView.y = WTBaseSlidingHeaderViewH + self.endY;
+            self.footerContentView.y = self.headerViewH + self.endY;
             
         }];
         
@@ -67,7 +43,7 @@ CGFloat const WTBaseSlidingHeaderViewH = 150;
 {
     [UIView animateWithDuration: 0.3 animations:^{
         
-        self.footerContentView.y = WTBaseSlidingHeaderViewH;
+        self.footerContentView.y = self.headerViewH;
         self.endY = 0;
     }];
 }
@@ -76,11 +52,43 @@ CGFloat const WTBaseSlidingHeaderViewH = 150;
 {
     if (showTabBarFlag)
     {
-        self.footerContentView.frame = CGRectMake(0, WTBaseSlidingHeaderViewH, WTScreenWidth, WTScreenHeight - WTBaseSlidingHeaderViewH);
+        self.footerContentView.frame = CGRectMake(0, self.headerViewH, WTScreenWidth, WTScreenHeight - self.headerViewH);
     }
     else
     {
-        self.footerContentView.frame = CGRectMake(0, WTBaseSlidingHeaderViewH, WTScreenWidth, WTScreenHeight);
+        self.footerContentView.frame = CGRectMake(0, self.headerViewH, WTScreenWidth, WTScreenHeight);
     }
+}
+
+#pragma mark -
+- (UIView *)headerContentView
+{
+    if (_headerContentView == nil) {
+        UIView *headerContentView = [UIView new];
+        headerContentView.frame = CGRectMake(0, 0, WTScreenWidth, WTScreenHeight - WTTabBarHeight);
+        [self.view addSubview: headerContentView];
+        self.headerContentView = headerContentView;
+        
+        headerContentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
+        _headerContentView = headerContentView;
+    }
+    return _headerContentView;
+}
+
+- (UIView *)footerContentView
+{
+    if (_footerContentView == nil)
+    {
+        // 2、footerView
+        UIView *footerContentView = [UIView new];
+        [self headerContentView];
+        footerContentView.layer.cornerRadius = 5;
+        footerContentView.layer.masksToBounds = YES;
+        footerContentView.frame = CGRectMake(0, self.headerViewH, WTScreenWidth, WTScreenHeight - self.headerViewH);
+        [self.view addSubview: footerContentView];
+        _footerContentView = footerContentView;
+        
+    }
+    return _footerContentView;
 }
 @end
