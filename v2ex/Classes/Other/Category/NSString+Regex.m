@@ -100,6 +100,22 @@
     return str;
 }
 
+/**
+ *  根据正则截取字符串
+ *
+ *  @param regex 正则
+ *
+ *  @return 要截取字符串
+ */
+- (NSString *)subStringWithRegex2:(NSString *)regex
+{
+    NSMutableString *str = [NSMutableString string];
+    [self enumerateRegexMatches: regex options: NSRegularExpressionCaseInsensitive usingBlock:^(NSString *match, NSRange matchRange, BOOL *stop) {
+        [str appendString: match];
+    }];
+    
+    return [str stringByReplacingOccurrencesOfString: [regex substringWithRange: NSMakeRange(regex.length-1, 1)] withString: @""];
+}
 
 /**
  *  截取到str之前的字符串

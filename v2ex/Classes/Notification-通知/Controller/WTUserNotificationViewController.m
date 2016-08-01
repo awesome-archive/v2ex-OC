@@ -148,10 +148,13 @@ static NSString * const ID = @"notificationCell";
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow: [weakSelf.notificationVM.notificationItems indexOfObject: noticationItem] inSection: 0];
         
+        [weakSelf.notificationVM.notificationItems removeObject: noticationItem];
         [weakSelf.tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationMiddle];
         
-        [weakSelf.notificationVM.notificationItems removeObject: noticationItem];
-        
+//        if (weakSelf.notificationVM.notificationItems.count == 0)
+//        {
+//            [weakSelf.tableView reloadData];
+//        }
         
     } failure:^(NSError *error) {
         

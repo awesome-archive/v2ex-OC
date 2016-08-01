@@ -59,6 +59,14 @@
 - (NSString *)subStringWithRegex:(NSString *)regex;
 
 /**
+ *  根据正则截取字符串
+ *
+ *  @param regex 正则
+ *
+ *  @return 要截取字符串
+ */
+- (NSString *)subStringWithRegex2:(NSString *)regex;
+/**
  *  截取到str之前的字符串
  *
  *  @param string 要截取字符串

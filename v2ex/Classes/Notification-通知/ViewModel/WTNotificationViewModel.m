@@ -92,11 +92,12 @@
                 // 6、uid
                 TFHppleElement *nodeE = nodeEs.firstObject;
                 NSString *onclickValue = [nodeE objectForKey: @"onclick"];
-                notificationItem.uid = [[onclickValue subStringWithRegex: @"^(//d+, $"] integerValue];
+                NSArray *onClickValues = [onclickValue componentsSeparatedByString: @","];
+                notificationItem.uid = [[onClickValues.firstObject subStringWithRegex: @"\\d"] integerValue];
                 
                 
                 // 7、once
-                notificationItem.once = [[onclickValue subStringWithRegex: @"^, //d+)$"] integerValue];
+                notificationItem.once = [[onClickValues.lastObject subStringWithRegex: @"\\d"] integerValue];
         
                 // 1、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
                 notificationItem.iconURL = [NSURL URLWithString: [NSString stringWithFormat: WTHTTPBaseUrl, [WTParseTool parseBigImageUrlWithSmallImageUrl: icon]]];
@@ -117,8 +118,15 @@
         }
     }
     if (self.page == 1)
+    {
         self.notificationItems = notifications;
-    [self.notificationItems addObjectsFromArray: notifications];
+    }
+    else
+    {
+        [self.notificationItems addObjectsFromArray: notifications];
+    }
+    
+    
 }
 
 /**
@@ -131,19 +139,22 @@
 - (void)deleteNotificationByNoticationItem:(WTNotificationItem *)notificationItem success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
     NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/delete/notification/%ld?once=%ld", notificationItem.uid, notificationItem.once];
-    
-    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(id responseObject) {
-        
-        if (success)
-        {
-            success();
-        }
-        
-    } failure:^(NSError *error) {
-        if (failure)
-        {
-            failure(error);
-        }
-    }];
+    if (success)
+    {
+        success();
+    }
+//    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: urlString param: nil success:^(id responseObject) {
+//        
+//        if (success)
+//        {
+//            success();
+//        }
+//        
+//    } failure:^(NSError *error) {
+//        if (failure)
+//        {
+//            failure(error);
+//        }
+//    }];
 }
 @end
