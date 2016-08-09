@@ -30,7 +30,7 @@
     [self setupNavigationItems];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
 }
 
 #pragma mark - 设置导航栏items

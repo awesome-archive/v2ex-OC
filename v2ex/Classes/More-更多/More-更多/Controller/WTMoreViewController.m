@@ -11,13 +11,14 @@
 #import "WTLoginViewController.h"
 #import "WTRegisterViewController.h"
 #import "WTAdvertiseViewController.h"
+#import "WTMyReplyViewController.h"
+
 #import "WTTopicViewController.h"
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
-
-#import "WTAccountViewModel.h"
 #import "WTMoreCell.h"
 
+#import "WTAccountViewModel.h"
 #import "WTSettingItem.h"
 
 
@@ -56,7 +57,7 @@ CGFloat const moreHeaderViewH = 150;
 // 设置View
 - (void)setupView
 {
-    [self.navigationController setNavigationBarHidden: YES animated: NO];
+    
     
     [self headerContentView];
     
@@ -86,6 +87,8 @@ CGFloat const moreHeaderViewH = 150;
 {
     [super viewWillAppear: animated];
     
+    [self.navigationController setNavigationBarHidden: YES animated: NO];
+    
     // 4、判断是否登录，添加不同的headerView
     if ([[WTAccountViewModel shareInstance] isLogin])
     {
@@ -97,6 +100,13 @@ CGFloat const moreHeaderViewH = 150;
         self.moreLoginHeaderView.hidden = YES;
         self.moreNotLoginHeaderView.hidden = NO;
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    
+    [self.navigationController setNavigationBarHidden: NO];
 }
 
 #pragma mark - UITableView DataSource
@@ -200,7 +210,10 @@ CGFloat const moreHeaderViewH = 150;
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
-                                [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: nil],
+                                [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{
+            
+                                        [weakSelf.navigationController pushViewController: [WTMyReplyViewController new] animated: YES];
+                                    }],
                                 ]];
         
         [_datas addObject: @[

@@ -132,6 +132,11 @@
 		B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63094561C4B8C1600E58EF8 /* nodes.plist */; };
 		B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B63176CC1C4702350071C9BF /* libxml2.2.dylib */; };
 		B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = B64168151C840BDC00EAF134 /* dribbble256_imageio.png */; };
+		B664E8441D50667F00C22480 /* WTMyReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8431D50667F00C22480 /* WTMyReplyViewController.m */; };
+		B664E8471D50668F00C22480 /* WTReplyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8461D50668F00C22480 /* WTReplyItem.m */; };
+		B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8491D50680800C22480 /* WTReplyCell.m */; };
+		B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B664E84A1D50680800C22480 /* WTReplyCell.xib */; };
+		B664E84F1D506B0B00C22480 /* WTReplyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */; };
 		B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B682BF0C1C91C69C005D7B35 /* LaunchScreen.storyboard */; };
 		B694816D1C462267001ABDA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816C1C462267001ABDA3 /* main.m */; };
 		B69481701C462267001ABDA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816F1C462267001ABDA3 /* AppDelegate.m */; };
@@ -374,6 +379,15 @@
 		B63176CC1C4702350071C9BF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B63176D11C47636D0071C9BF /* v2ex.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v2ex.pch; sourceTree = "<group>"; };
 		B64168151C840BDC00EAF134 /* dribbble256_imageio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dribbble256_imageio.png; sourceTree = "<group>"; };
+		B664E8421D50667F00C22480 /* WTMyReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyReplyViewController.h; sourceTree = "<group>"; };
+		B664E8431D50667F00C22480 /* WTMyReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyReplyViewController.m; sourceTree = "<group>"; };
+		B664E8451D50668F00C22480 /* WTReplyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyItem.h; sourceTree = "<group>"; };
+		B664E8461D50668F00C22480 /* WTReplyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyItem.m; sourceTree = "<group>"; };
+		B664E8481D50680800C22480 /* WTReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyCell.h; sourceTree = "<group>"; };
+		B664E8491D50680800C22480 /* WTReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyCell.m; sourceTree = "<group>"; };
+		B664E84A1D50680800C22480 /* WTReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTReplyCell.xib; sourceTree = "<group>"; };
+		B664E84D1D506B0B00C22480 /* WTReplyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyViewModel.h; sourceTree = "<group>"; };
+		B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyViewModel.m; sourceTree = "<group>"; };
 		B682BF0C1C91C69C005D7B35 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B69481681C462267001ABDA3 /* v2ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = v2ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B694816C1C462267001ABDA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -382,6 +396,7 @@
 		B69481771C462267001ABDA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B694817C1C462267001ABDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6B4D9C71D4A64E600E4BF93 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B6B6A9581D544E5E0038C59D /* WTReplyApiItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyApiItem.h; sourceTree = "<group>"; };
 		B6DEEB6D1D4664BB00E3A313 /* WTAdvertiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAdvertiseViewController.h; sourceTree = "<group>"; };
 		B6DEEB6E1D4664BB00E3A313 /* WTAdvertiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAdvertiseViewController.m; sourceTree = "<group>"; };
 		B6DEEB751D4665D900E3A313 /* WTAdvertiseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAdvertiseCell.h; sourceTree = "<group>"; };
@@ -1237,6 +1252,7 @@
 		B60FA1FA1D45D7E700F98CF3 /* More-更多 */ = {
 			isa = PBXGroup;
 			children = (
+				B664E8371D50659800C22480 /* MyReply-我的回复 */,
 				B6E70C361D4D8DEB000CC806 /* PersonalCenter-成员 */,
 				B6DEEB691D46648F00E3A313 /* Advertise-广告 */,
 				B60FA2091D45D7E700F98CF3 /* More-更多 */,
@@ -1323,6 +1339,55 @@
 				B60FA1411D45C09200F98CF3 /* Resource */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		B664E8371D50659800C22480 /* MyReply-我的回复 */ = {
+			isa = PBXGroup;
+			children = (
+				B664E8381D50659800C22480 /* Controller */,
+				B664E8391D50659800C22480 /* Model */,
+				B664E83A1D50659800C22480 /* View */,
+				B664E83B1D50659800C22480 /* ViewModel */,
+			);
+			path = "MyReply-我的回复";
+			sourceTree = "<group>";
+		};
+		B664E8381D50659800C22480 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B664E8421D50667F00C22480 /* WTMyReplyViewController.h */,
+				B664E8431D50667F00C22480 /* WTMyReplyViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B664E8391D50659800C22480 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B664E8451D50668F00C22480 /* WTReplyItem.h */,
+				B664E8461D50668F00C22480 /* WTReplyItem.m */,
+				B6B6A9581D544E5E0038C59D /* WTReplyApiItem.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B664E83A1D50659800C22480 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B664E8481D50680800C22480 /* WTReplyCell.h */,
+				B664E8491D50680800C22480 /* WTReplyCell.m */,
+				B664E84A1D50680800C22480 /* WTReplyCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B664E83B1D50659800C22480 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B664E84D1D506B0B00C22480 /* WTReplyViewModel.h */,
+				B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B694815F1C462267001ABDA3 = {
@@ -1543,6 +1608,7 @@
 				B60FA1BB1D45C09200F98CF3 /* WTHotNodeReusableView.xib in Resources */,
 				B60FA18F1D45C09200F98CF3 /* WTToolBarView.xib in Resources */,
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
+				B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */,
 				B60FA19D1D45C09200F98CF3 /* WTMeViewController.storyboard in Resources */,
 				B60FA1A81D45C09200F98CF3 /* WTMeTopView.xib in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
@@ -1621,6 +1687,7 @@
 				B60FA1C81D45C09200F98CF3 /* UIColor+Extension.m in Sources */,
 				B60FA1F21D45C09200F98CF3 /* WTShareSDKTool.m in Sources */,
 				B60FA1E91D45C09200F98CF3 /* WTNetworkState.m in Sources */,
+				B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */,
 				B60FA1861D45C09200F98CF3 /* WTTopicViewModel.m in Sources */,
 				B60FA17E1D45C09200F98CF3 /* WTWYViewController.m in Sources */,
 				B60FA1E81D45C09200F98CF3 /* NetworkTool.m in Sources */,
@@ -1637,6 +1704,7 @@
 				B60FA1C71D45C09200F98CF3 /* UIButton+Extension.m in Sources */,
 				B60FA1EE1D45C09200F98CF3 /* WTPersonTableViewController.m in Sources */,
 				B60FA1CD1D45C09200F98CF3 /* UIView+Frame.m in Sources */,
+				B664E84F1D506B0B00C22480 /* WTReplyViewModel.m in Sources */,
 				B60FA1CB1D45C09200F98CF3 /* UILabel+StringFrame.m in Sources */,
 				B6235E491D48BD2E00E5ECDB /* WTMoreButton.m in Sources */,
 				B60FA1821D45C09200F98CF3 /* WTTopicCell.m in Sources */,
@@ -1660,6 +1728,8 @@
 				B60FA1C31D45C09200F98CF3 /* WTUserNotificationViewController.m in Sources */,
 				B60FA1D61D45C09200F98CF3 /* WTAccount.m in Sources */,
 				B60FA1ED1D45C09200F98CF3 /* UIImage+Image.m in Sources */,
+				B664E8471D50668F00C22480 /* WTReplyItem.m in Sources */,
+				B664E8441D50667F00C22480 /* WTMyReplyViewController.m in Sources */,
 				B60FA1BD1D45C09200F98CF3 /* WTNodeTopicViewController.m in Sources */,
 				B60FA1B71D45C09200F98CF3 /* WTNodeItem.m in Sources */,
 				B6E70C4F1D4E5CE7000CC806 /* WTNotificationItem.m in Sources */,

@@ -10,6 +10,15 @@
 
 @implementation WTSettingItem
 
+/**
+ *  快速创建的方法
+ *
+ *  @param title          标题
+ *  @param image          图片
+ *  @param operationBlock 点击的操作
+ *
+ *  @return WTSettingItem
+ */
 + (instancetype)settingItemWithTitle:(NSString *)title image:(UIImage *)image operationBlock:(void(^)())operationBlock
 {
     WTSettingItem *item = [WTSettingItem new];

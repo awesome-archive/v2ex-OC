@@ -7,17 +7,20 @@
 //  通知控制器
 
 #import "WTUserNotificationViewController.h"
-#import "NetworkTool.h"
-#import "WTRefreshAutoNormalFooter.h"
-#import "WTRefreshNormalHeader.h"
 #import "WTLoginViewController.h"
-#import "WTNotificationCell.h"
-#import "WTTopicViewModel.h"
 #import "WTTopicDetailViewController.h"
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+
+#import "WTNotificationCell.h"
+#import "WTRefreshNormalHeader.h"
+#import "WTRefreshAutoNormalFooter.h"
+
+#import "NetworkTool.h"
+#import "WTTopicViewModel.h"
 #import "WTAccountViewModel.h"
 #import "WTNotificationViewModel.h"
 
+#import "UITableView+FDTemplateLayoutCell.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 static NSString * const ID = @"notificationCell";
 
@@ -158,6 +161,13 @@ static NSString * const ID = @"notificationCell";
         
     } failure:^(NSError *error) {
         
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTNotificationCell *cell) {
+        cell.noticationItem = self.notificationVM.notificationItems[indexPath.row];
     }];
 }
 
