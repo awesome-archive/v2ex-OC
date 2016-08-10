@@ -57,16 +57,29 @@
     
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
-    NSArray<TFHppleElement *> *dockAreaEs = [doc searchWithXPathQuery: @"//div[@class='dock_area']"];
-    NSArray<TFHppleElement *> *innerEs = [doc searchWithXPathQuery: @"//div[@class='inner']"];
+    TFHppleElement *mainE = [doc searchWithXPathQuery: @"//div[@id='Main']"].firstObject;
+    NSArray<TFHppleElement *> *dockAreaEs = [mainE searchWithXPathQuery: @"//div[@class='dock_area']"];
+    NSArray<TFHppleElement *> *innerEs = [mainE searchWithXPathQuery: @"//div[@class='inner']"];
     
+    NSUInteger dockAreaEsCount = dockAreaEs.count;
+    NSUInteger innerEsCount = innerEs.count;
     
-    for (NSUInteger i = 0; i < dockAreaEs.count; i++)
+    for (NSUInteger i = 0; i < dockAreaEsCount; i++)
     {
         @autoreleasepool {
             
             TFHppleElement *dockAreaE = dockAreaEs[i];
-            TFHppleElement *innerE = innerEs[i];
+            TFHppleElement *innerE;
+            
+            if (innerEsCount != dockAreaEsCount && i == dockAreaEs.count - 1)
+            {
+                NSArray<TFHppleElement *> *cellEs = [mainE searchWithXPathQuery: @"//div[@class='cell']"];
+                innerE = cellEs[cellEs.count - 2];
+            }
+            else
+            {
+                innerE = innerEs[i];
+            }
             
             TFHppleElement *grayE = [dockAreaE searchWithXPathQuery: @"//span[@class='gray']"].firstObject;
             TFHppleElement *fadeE = [dockAreaE searchWithXPathQuery: @"//span[@class='fade']"].firstObject;
