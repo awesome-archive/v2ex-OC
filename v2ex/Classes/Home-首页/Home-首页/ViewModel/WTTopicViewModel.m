@@ -228,66 +228,6 @@
 
 
 
-#pragma mark - 根据data解析出用户回复的话题
-+ (NSMutableArray<WTTopicViewModel *> *)userReplyTopicsWithData:(NSData *)data
-{
-    NSMutableArray *topicVMs = [NSMutableArray array];
-    
-    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
-    
-    NSArray<TFHppleElement *> *dockAreaEs = [doc searchWithXPathQuery: @"//div[@class='dock_area']"];
-    NSArray<TFHppleElement *> *innerEs = [doc searchWithXPathQuery: @"//div[@class='inner']"];
-    
-    
-    for (NSUInteger i = 0; i < dockAreaEs.count; i++)
-    {
-        @autoreleasepool {
-            
-            TFHppleElement *dockAreaE = dockAreaEs[i];
-            TFHppleElement *innerE = innerEs[i];
-            
-            TFHppleElement *grayE = [dockAreaE searchWithXPathQuery: @"//span[@class='gray']"].firstObject;
-            TFHppleElement *fadeE = [dockAreaE searchWithXPathQuery: @"//span[@class='fade']"].firstObject;
-            
-            TFHppleElement *grayaE = [grayE searchWithXPathQuery: @"//a"].firstObject;
-            
-            WTTopicViewModel *topicViewModel = [WTTopicViewModel new];
-            {
-                WTTopic *topic = [WTTopic new];
-                
-                NSString *grayContent = grayE.content;
-                NSString *grayAContent = grayaE.content;
-                
-                // 标题
-                topic.title = grayAContent;
-                
-                // 话题详情
-                topic.detailUrl = grayaE[@"href"];
-                
-                // 回复内容
-                topic.content = [innerE.content stringByTrim];
-                
-                // 最后回复时间
-                topic.lastReplyTime = [fadeE.content stringByTrim];
-                
-                // 作者
-                NSString *grayContents = [grayContent stringByReplacingOccurrencesOfString: grayAContent withString: @""];
-                topic.author = [grayContents componentsSeparatedByString: @" "][1];
-                
-                topicViewModel.topic = topic;
-                
-                // 1、话题详情Url
-                if (topic.detailUrl)
-                {
-                    topicViewModel.topicDetailUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: topic.detailUrl];
-                }
-            }
-            [topicVMs addObject: topicViewModel];
-        }
-    }
-    
-    return topicVMs;
-}
 
 #pragma mark - 是否是下一页
 + (BOOL)isNeedNextPage:(NSString *)urlSuffix

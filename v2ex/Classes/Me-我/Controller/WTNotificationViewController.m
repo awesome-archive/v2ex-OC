@@ -73,7 +73,7 @@ static NSString * const ID = @"notificationCell";
 
     [[NetworkTool shareInstance] GETWithUrlString: self.urlString success:^(NSData *data) {
         
-        self.topicVMs = [WTTopicViewModel userNotificationsWithData: data];
+//        self.topicVMs = [WTTopicViewModel userNotificationsWithData: data];
         
         [self.tableView reloadData];
         

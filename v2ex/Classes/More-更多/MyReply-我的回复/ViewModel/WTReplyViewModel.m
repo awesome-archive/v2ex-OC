@@ -7,6 +7,8 @@
 //
 
 #import "WTReplyViewModel.h"
+
+#import "WTHTMLExtension.h"
 #import "NetworkTool.h"
 #import "WTURLConst.h"
 
@@ -104,6 +106,9 @@
             [replyItems addObject: replyItem];
         }
     }
+    
+    
+    self.nextPage = [WTHTMLExtension isNextPage: doc];
     
     if (self.page == 1)
     {

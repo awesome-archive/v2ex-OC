@@ -83,12 +83,13 @@ static NSString  * const commentCellID = @"commentCellID";
         {
             if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)    // 已经感谢过
             {
-                [SVProgressHUD showErrorWithStatus: @"不能取消感谢" maskType: SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showErrorWithStatus: @"不能取消感谢"];
                 return;
             }
             else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)    // 未知原因不能感谢
             {
-                [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢" maskType: SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢"];
+                
                 return;
             }
             [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl];
@@ -176,7 +177,7 @@ static NSString  * const commentCellID = @"commentCellID";
         if (error != nil)
         {
             WTLog(@"error:%@", error)
-            [SVProgressHUD showErrorWithStatus: @"操作异常,请稍候重试" maskType: SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showErrorWithStatus: @"操作异常,请稍候重试"];
             return;
         }
         

@@ -12,8 +12,9 @@
 #import "WTRegisterViewController.h"
 #import "WTAdvertiseViewController.h"
 #import "WTMyReplyViewController.h"
-
+#import "WTMyFollowingViewController.h"
 #import "WTTopicViewController.h"
+
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
 #import "WTMoreCell.h"
@@ -198,7 +199,9 @@ CGFloat const moreHeaderViewH = 150;
                                 
                                 [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: nil],
                                 
-                                [WTSettingItem settingItemWithTitle: @"特别关注" image: [UIImage imageNamed: @"mine_follow"] operationBlock: nil],
+                                [WTSettingItem settingItemWithTitle: @"特别关注" image: [UIImage imageNamed: @"mine_follow"] operationBlock: ^{
+                                    [weakSelf.navigationController pushViewController: [WTMyFollowingViewController new] animated: YES];
+                                }],
                                 [WTSettingItem settingItemWithTitle: @"我的收藏" image: [UIImage imageNamed: @"more_collection"] operationBlock: ^{
             
             

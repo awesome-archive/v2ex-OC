@@ -1,5 +1,5 @@
 //
-//  WTExtension.h
+//  WTHTMLExtension.h
 //  v2ex
 //
 //  Created by 无头骑士 GJ on 16/2/26.
@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@class HTMLNode;
-@interface WTExtension : NSObject
+@class TFHpple;
+@interface WTHTMLExtension : NSObject
 /**
  *  判断是否有下一页
  *
@@ -32,6 +32,16 @@
  *
  */
 + (NSString *)getCodeUrlWithData:(NSData *)data;
+
+
+/**
+ *  是否有下一页
+ *
+ *  @param doc TFHpple
+ *
+ *  @return YES 有 NO 没有
+ */
++ (BOOL)isNextPage:(TFHpple *)doc;
 
 
 @end

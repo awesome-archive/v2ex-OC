@@ -1,17 +1,18 @@
 //
-//  WTExtension.m
+//  WTHTMLExtension.m
 //  v2ex
 //
 //  Created by 无头骑士 GJ on 16/2/26.
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import "WTExtension.h"
+#import "WTHTMLExtension.h"
 //#import "HTMLParser.h"
 //#import "HTMLNode.h"
 #import "WTURLConst.h"
+#import "TFHpple.h"
 
-@implementation WTExtension
+@implementation WTHTMLExtension
 
 ///**
 // *  判断是否有下一页
@@ -74,5 +75,13 @@
 //    }
 //    
     return nil;
+}
+
++ (BOOL)isNextPage:(TFHpple *)doc
+{
+    TFHppleElement *noNextPage = [doc peekAtSearchWithXPathQuery: @"//td[@class='super normal_page_right button disable_now']"];
+    if (noNextPage.content.length > 0)
+        return false;
+    return true;
 }
 @end

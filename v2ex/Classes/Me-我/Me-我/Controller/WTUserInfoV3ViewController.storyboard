@@ -29,8 +29,8 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="separatorLine" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-Vs-4nV">
-                                            <rect key="frame" x="66" y="39" width="534" height="1"/>
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separatorLine" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-Vs-4nV">
+                                            <rect key="frame" x="66" y="47" width="534" height="1"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="qFr-qN-9ss"/>
                                             </constraints>

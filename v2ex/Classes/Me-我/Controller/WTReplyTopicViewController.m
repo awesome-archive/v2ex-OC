@@ -82,7 +82,7 @@ static NSString * const ID = @"replyTopicCell";
 //    }];
     [[NetworkTool shareInstance] GETWithUrlString: self.urlString success:^(NSData *data) {
         
-        self.topicVMs = [WTTopicViewModel userReplyTopicsWithData: data];
+       // self.topicVMs = [WTTopicViewModel userReplyTopicsWithData: data];
         
         [self.tableView reloadData];
         
