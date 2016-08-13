@@ -74,7 +74,7 @@
                 NSString *icon = [avatarEs.firstObject objectForKey: @"src"];
                 // 2、作者
                 if (aEs.count > 0) {
-                    notificationItem.author = aEs[1].content;
+                    notificationItem.author = aEs[0].content;
                 }
                 
                 // 3、标题

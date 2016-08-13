@@ -13,7 +13,7 @@
 
 static NetworkTool *_instance;
 
-
+static NSString *_userAgentMobile;
 
 + (instancetype)shareInstance
 {
@@ -23,9 +23,9 @@ static NetworkTool *_instance;
         
         // 1、设置请求头
         UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
-        NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
-//        [_instance.requestSerializer setValue: userAgentMobile forHTTPHeaderField: @"User-Agent"];
-        [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
+        _userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+        [_instance.requestSerializer setValue: _userAgentMobile forHTTPHeaderField: @"User-Agent"];
+//        [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
         _instance.responseSerializer = [AFHTTPResponseSerializer serializer];
     });
     _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
@@ -95,6 +95,7 @@ static NetworkTool *_instance;
 - (void)GETWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure
 {
 //    _instance = [NetworkTool manager];
+    [_instance.requestSerializer setValue: _userAgentMobile forHTTPHeaderField: @"User-Agent"];
     _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
     // 1、设置请求头
 //    UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
@@ -115,6 +116,39 @@ static NetworkTool *_instance;
         }
     }];
 }
+
+
+/**
+ *  模拟火狐获取html源码
+ *
+ *  @param urlString url
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
+ */
+- (void)GETFirefoxWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure
+{
+    //    _instance = [NetworkTool manager];
+    _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
+    // 1、设置请求头
+    //    UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
+    //    NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+    [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
+    
+    _instance.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [_instance GET: urlString parameters: nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success)
+        {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
+}
+
 /**
  *  获取html源码
  *

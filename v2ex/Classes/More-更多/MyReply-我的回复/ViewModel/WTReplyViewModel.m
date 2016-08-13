@@ -27,7 +27,7 @@
 {
     NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@/replies?p=%ld", username, self.page];
     
-    [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(id data) {
+    [[NetworkTool shareInstance] GETFirefoxWithUrlString: urlString success:^(id data) {
         
         [self getReplyItemsWithData: data];
         

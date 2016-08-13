@@ -44,6 +44,15 @@ typedef NS_ENUM(NSInteger, HTTPMethodType)
 - (void)GETWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure;
 
 /**
+ *  模拟火狐获取html源码
+ *
+ *  @param urlString url
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
+ */
+- (void)GETFirefoxWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure;
+
+/**
  *  获取html源码 POST
  *
  *  @param urlString url
