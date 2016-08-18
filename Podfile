@@ -1,22 +1,26 @@
-source 'https://github.com/CocoaPods/Specs.git'
+# Uncomment this line to define a global platform for your project
+platform :ios, '8.0'
 
-platform :ios, "8.0"
+target 'v2ex' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  #use_frameworks!
 
-pod 'AFNetworking', '~> 3.0'
-pod 'SDWebImage'
-pod 'Masonry'
-pod 'MJRefresh'
-pod 'MJExtension'
-pod 'RegexKitLite', '~> 4.0'
-pod 'SVProgressHUD'
-pod "YYCategories"
-pod 'YYText'
-pod 'TYAttributedLabel'
-pod 'CTAssetsPickerController'
-pod 'IQKeyboardManager'
-pod 'UITableView+FDTemplateLayoutCell'
-pod "DKNightVersion"
-pod 'FMDB'
-pod 'RongCloudIMKit', '~> 2.4.9'
-pod 'DZNEmptyDataSet'
-
+  # Pods for v2ex
+  	pod 'AFNetworking'
+	pod 'SDWebImage'
+	pod 'Masonry'
+	pod 'MJRefresh'
+	pod 'MJExtension'
+	pod 'RegexKitLite'
+	pod 'SVProgressHUD'
+	pod "YYCategories"
+	pod 'YYText'
+	pod 'TYAttributedLabel'
+	pod 'CTAssetsPickerController'
+	pod 'IQKeyboardManager'
+	pod 'UITableView+FDTemplateLayoutCell'
+	pod "DKNightVersion"
+	pod 'FMDB'
+	pod 'RongCloudIMKit'
+	pod 'DZNEmptyDataSet'
+end

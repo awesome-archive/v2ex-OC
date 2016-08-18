@@ -7,7 +7,7 @@
 //
 
 #import "WTMessageViewController.h"
-#import "RCConversationViewController.h"
+
 
 @interface WTMessageViewController ()
 
