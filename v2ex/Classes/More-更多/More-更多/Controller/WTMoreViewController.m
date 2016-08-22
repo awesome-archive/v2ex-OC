@@ -15,6 +15,7 @@
 #import "WTMyFollowingViewController.h"
 #import "WTTopicViewController.h"
 #import "WTTopicCollectionViewController.h"
+#import "WTWebViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
@@ -216,7 +217,12 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf.navigationController pushViewController: [WTPrivacyStatementViewController new] animated: YES];
                                 }],
                                 
-                                [WTSettingItem settingItemWithTitle: @"项目源码" image: [UIImage imageNamed: @"more_project"] operationBlock: nil],
+                                [WTSettingItem settingItemWithTitle: @"项目源码" image: [UIImage imageNamed: @"more_project"] operationBlock: ^{
+        
+                                    WTWebViewController *webVC = [WTWebViewController new];
+                                    webVC.url = [NSURL URLWithString: @"https://github.com/misaka14/v2ex-OC"];
+                                    [weakSelf.navigationController pushViewController: webVC animated: YES];
+                                }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"关于作者" image: [UIImage imageNamed: @"more_about"] operationBlock: nil],
                                 

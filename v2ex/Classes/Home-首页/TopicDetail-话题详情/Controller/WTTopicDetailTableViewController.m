@@ -17,7 +17,7 @@
 #import "WTPostReplyViewController.h"
 #import "NSString+Regex.h"
 #import "WTNavigationController.h"
-#import "WTWebViewViewController.h"
+#import "WTWebViewController.h"
 #import "WTAccountViewModel.h"
 #import "WTURLConst.h"
 
@@ -313,7 +313,7 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL
 {
     // 跳转至自定义的网页浏览器
-    WTWebViewViewController *webViewVC = [WTWebViewViewController new];
+    WTWebViewController *webViewVC = [WTWebViewController new];
     webViewVC.url = linkURL;
     [self.navigationController pushViewController: webViewVC animated: nil];
 }

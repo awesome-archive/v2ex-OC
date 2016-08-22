@@ -1,5 +1,5 @@
 //
-//  WTWebViewViewController.h
+//  WTWebViewController.h
 //  v2ex
 //
 //  Created by 无头骑士 GJ on 16/3/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTWebViewViewController : UIViewController
+@interface WTWebViewController : UIViewController
 
 @property (nonatomic, strong) NSURL     *url;
 

@@ -1,12 +1,12 @@
 //
-//  WTWebViewViewController.m
+//  WTWebViewController.m
 //  v2ex
 //
 //  Created by 无头骑士 GJ on 16/3/15.
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import "WTWebViewViewController.h"
+#import "WTWebViewController.h"
 #import <WebKit/WebKit.h>
 #import "WTShareSDKTool.h"
 #import "UIBarButtonItem+Extension.h"
@@ -16,7 +16,7 @@
 #define WTCanGoForward @"canGoForward"
 #define WTTitle @"title"
 
-@interface WTWebViewViewController ()
+@interface WTWebViewController ()
 @property (weak, nonatomic) WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @end
-@implementation WTWebViewViewController
+@implementation WTWebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

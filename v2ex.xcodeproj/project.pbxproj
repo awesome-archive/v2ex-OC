@@ -41,8 +41,8 @@
 		B60FA1931D45C09200F98CF3 /* WTTopicDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0801D45C09100F98CF3 /* WTTopicDetailViewModel.m */; };
 		B60FA1941D45C09200F98CF3 /* PhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0841D45C09100F98CF3 /* PhotoBrowserViewController.m */; };
 		B60FA1951D45C09200F98CF3 /* WTBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0861D45C09100F98CF3 /* WTBaseTableViewController.m */; };
-		B60FA1961D45C09200F98CF3 /* WTWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0881D45C09100F98CF3 /* WTWebViewViewController.m */; };
-		B60FA1971D45C09200F98CF3 /* WTWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60FA0891D45C09100F98CF3 /* WTWebViewViewController.xib */; };
+		B60FA1961D45C09200F98CF3 /* WTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0881D45C09100F98CF3 /* WTWebViewController.m */; };
+		B60FA1971D45C09200F98CF3 /* WTWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60FA0891D45C09100F98CF3 /* WTWebViewController.xib */; };
 		B60FA1981D45C09200F98CF3 /* PhotoBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA08C1D45C09100F98CF3 /* PhotoBrowserCell.m */; };
 		B60FA1991D45C09200F98CF3 /* WTRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA08E1D45C09100F98CF3 /* WTRefreshAutoNormalFooter.m */; };
 		B60FA19A1D45C09200F98CF3 /* WTRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0901D45C09100F98CF3 /* WTRefreshNormalHeader.m */; };
@@ -222,9 +222,9 @@
 		B60FA0841D45C09100F98CF3 /* PhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserViewController.m; sourceTree = "<group>"; };
 		B60FA0851D45C09100F98CF3 /* WTBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTBaseTableViewController.h; sourceTree = "<group>"; };
 		B60FA0861D45C09100F98CF3 /* WTBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTBaseTableViewController.m; sourceTree = "<group>"; };
-		B60FA0871D45C09100F98CF3 /* WTWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTWebViewViewController.h; sourceTree = "<group>"; };
-		B60FA0881D45C09100F98CF3 /* WTWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTWebViewViewController.m; sourceTree = "<group>"; };
-		B60FA0891D45C09100F98CF3 /* WTWebViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTWebViewViewController.xib; sourceTree = "<group>"; };
+		B60FA0871D45C09100F98CF3 /* WTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTWebViewController.h; sourceTree = "<group>"; };
+		B60FA0881D45C09100F98CF3 /* WTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTWebViewController.m; sourceTree = "<group>"; };
+		B60FA0891D45C09100F98CF3 /* WTWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTWebViewController.xib; sourceTree = "<group>"; };
 		B60FA08B1D45C09100F98CF3 /* PhotoBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserCell.h; sourceTree = "<group>"; };
 		B60FA08C1D45C09100F98CF3 /* PhotoBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserCell.m; sourceTree = "<group>"; };
 		B60FA08D1D45C09100F98CF3 /* WTRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
@@ -662,9 +662,9 @@
 				B60FA0841D45C09100F98CF3 /* PhotoBrowserViewController.m */,
 				B60FA0851D45C09100F98CF3 /* WTBaseTableViewController.h */,
 				B60FA0861D45C09100F98CF3 /* WTBaseTableViewController.m */,
-				B60FA0871D45C09100F98CF3 /* WTWebViewViewController.h */,
-				B60FA0881D45C09100F98CF3 /* WTWebViewViewController.m */,
-				B60FA0891D45C09100F98CF3 /* WTWebViewViewController.xib */,
+				B60FA0871D45C09100F98CF3 /* WTWebViewController.h */,
+				B60FA0881D45C09100F98CF3 /* WTWebViewController.m */,
+				B60FA0891D45C09100F98CF3 /* WTWebViewController.xib */,
 				B6235E4A1D49DD7D00E5ECDB /* WTBaseSlidingViewController.h */,
 				B6235E4B1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m */,
 			);
@@ -1525,7 +1525,7 @@
 				B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */,
 				B60FA1DC1D45C09200F98CF3 /* WTRegisterViewController.xib in Resources */,
 				B60FA1C21D45C09200F98CF3 /* WTNodeTopicHeaderView.xib in Resources */,
-				B60FA1971D45C09200F98CF3 /* WTWebViewViewController.xib in Resources */,
+				B60FA1971D45C09200F98CF3 /* WTWebViewController.xib in Resources */,
 				B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */,
 				B60FA1DF1D45C09200F98CF3 /* light.css in Resources */,
 				B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */,
@@ -1650,7 +1650,7 @@
 				B60FA19B1D45C09200F98CF3 /* WTTopWindow.m in Sources */,
 				B6271D501D599AF000A66983 /* WTMyFollowingCell.m in Sources */,
 				B6271D4C1D599AC100A66983 /* WTMyFollowingItem.m in Sources */,
-				B60FA1961D45C09200F98CF3 /* WTWebViewViewController.m in Sources */,
+				B60FA1961D45C09200F98CF3 /* WTWebViewController.m in Sources */,
 				B60FA1C31D45C09200F98CF3 /* WTUserNotificationViewController.m in Sources */,
 				B60FA1D61D45C09200F98CF3 /* WTAccount.m in Sources */,
 				B60FA1ED1D45C09200F98CF3 /* UIImage+Image.m in Sources */,

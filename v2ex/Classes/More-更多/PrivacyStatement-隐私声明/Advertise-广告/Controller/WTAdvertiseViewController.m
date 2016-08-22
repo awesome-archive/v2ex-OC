@@ -10,7 +10,7 @@
 #import "WTAdvertiseViewModel.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTAdvertiseCell.h"
-#import "WTWebViewViewController.h"
+#import "WTWebViewController.h"
 #import "MJExtension.h"
 
 NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
@@ -86,7 +86,7 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 跳转至自定义的网页浏览器
-    WTWebViewViewController *webViewVC = [WTWebViewViewController new];
+    WTWebViewController *webViewVC = [WTWebViewController new];
     webViewVC.url = self.advertiseItems[indexPath.row].detailUrl;
     [self.navigationController pushViewController: webViewVC animated: nil];
 }

@@ -49,7 +49,7 @@ NSString * const WTTopicCollectionCellIdentifier = @"WTTopicCollectionCellIdenti
 - (void)setupView
 {
     
-    self.title = @"我的关注";
+    self.title = @"话题收藏 ";
     
     // tableView
     {
