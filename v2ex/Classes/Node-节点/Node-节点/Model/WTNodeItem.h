@@ -20,7 +20,7 @@
  */
 @interface WTNodeItem : NSObject
 
-@property (nonatomic, assign) NSUInteger uid;
+@property (nonatomic, strong) NSString *uid;
 
 @property (nonatomic, strong) NSString *name;
 

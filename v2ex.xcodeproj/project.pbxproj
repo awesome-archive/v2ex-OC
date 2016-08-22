@@ -18,6 +18,9 @@
 		30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */; };
 		30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8CB1D6AE971009AFA43 /* WTNodeCollectionCell.m */; };
 		30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8CC1D6AE971009AFA43 /* WTNodeCollectionCell.xib */; };
+		30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */; };
+		30A2D8D91D6B06EF009AFA43 /* light.css in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8D61D6B06EF009AFA43 /* light.css */; };
+		30A2D8DE1D6B071C009AFA43 /* nodeitem.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8DD1D6B071C009AFA43 /* nodeitem.sqlite */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
 		B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */; };
@@ -94,8 +97,6 @@
 		B60FA1DB1D45C09200F98CF3 /* WTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1391D45C09200F98CF3 /* WTRegisterViewController.m */; };
 		B60FA1DC1D45C09200F98CF3 /* WTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60FA13A1D45C09200F98CF3 /* WTRegisterViewController.xib */; };
 		B60FA1DD1D45C09200F98CF3 /* WTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1401D45C09200F98CF3 /* WTTabBarController.m */; };
-		B60FA1DE1D45C09200F98CF3 /* HY-QiHei50.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B60FA1421D45C09200F98CF3 /* HY-QiHei50.ttf */; };
-		B60FA1DF1D45C09200F98CF3 /* light.css in Resources */ = {isa = PBXBuildFile; fileRef = B60FA1431D45C09200F98CF3 /* light.css */; };
 		B60FA1E81D45C09200F98CF3 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1651D45C09200F98CF3 /* NetworkTool.m */; };
 		B60FA1E91D45C09200F98CF3 /* WTNetworkState.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1671D45C09200F98CF3 /* WTNetworkState.m */; };
 		B60FA1EA1D45C09200F98CF3 /* WTHTMLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1691D45C09200F98CF3 /* WTHTMLExtension.m */; };
@@ -187,6 +188,9 @@
 		30A2D8CA1D6AE971009AFA43 /* WTNodeCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNodeCollectionCell.h; sourceTree = "<group>"; };
 		30A2D8CB1D6AE971009AFA43 /* WTNodeCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNodeCollectionCell.m; sourceTree = "<group>"; };
 		30A2D8CC1D6AE971009AFA43 /* WTNodeCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNodeCollectionCell.xib; sourceTree = "<group>"; };
+		30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HY-QiHei50.ttf"; sourceTree = "<group>"; };
+		30A2D8D61D6B06EF009AFA43 /* light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = light.css; sourceTree = "<group>"; };
+		30A2D8DD1D6B071C009AFA43 /* nodeitem.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = nodeitem.sqlite; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
 		B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTHomeViewController.storyboard; sourceTree = "<group>"; };
@@ -323,8 +327,6 @@
 		B60FA13A1D45C09200F98CF3 /* WTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRegisterViewController.xib; sourceTree = "<group>"; };
 		B60FA13F1D45C09200F98CF3 /* WTTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTabBarController.h; sourceTree = "<group>"; };
 		B60FA1401D45C09200F98CF3 /* WTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTabBarController.m; sourceTree = "<group>"; };
-		B60FA1421D45C09200F98CF3 /* HY-QiHei50.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HY-QiHei50.ttf"; sourceTree = "<group>"; };
-		B60FA1431D45C09200F98CF3 /* light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = light.css; sourceTree = "<group>"; };
 		B60FA1641D45C09200F98CF3 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		B60FA1651D45C09200F98CF3 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
 		B60FA1661D45C09200F98CF3 /* WTNetworkState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkState.h; sourceTree = "<group>"; };
@@ -543,6 +545,16 @@
 				30A2D8CC1D6AE971009AFA43 /* WTNodeCollectionCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		30A2D8D41D6B06EF009AFA43 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				30A2D8DD1D6B071C009AFA43 /* nodeitem.sqlite */,
+				30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */,
+				30A2D8D61D6B06EF009AFA43 /* light.css */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		53DDB4C336993E1AAF8B679D /* Pods */ = {
@@ -1106,15 +1118,6 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		B60FA1411D45C09200F98CF3 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				B60FA1421D45C09200F98CF3 /* HY-QiHei50.ttf */,
-				B60FA1431D45C09200F98CF3 /* light.css */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		B60FA1621D45C09200F98CF3 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,7 +1307,7 @@
 				B60FA1621D45C09200F98CF3 /* Tool(工具类) */,
 				B60FA0811D45C09100F98CF3 /* Main */,
 				B60FA0F51D45C09200F98CF3 /* Other */,
-				B60FA1411D45C09200F98CF3 /* Resource */,
+				30A2D8D41D6B06EF009AFA43 /* Resource */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1553,18 +1556,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B60FA1DE1D45C09200F98CF3 /* HY-QiHei50.ttf in Resources */,
 				B60FA1B91D45C09200F98CF3 /* WTHotNodeCell.xib in Resources */,
 				B60FA18A1D45C09200F98CF3 /* WTTopicDetailTableViewController.storyboard in Resources */,
 				B60FA1881D45C09200F98CF3 /* WTPostReplyViewController.xib in Resources */,
 				B69481781C462267001ABDA3 /* Assets.xcassets in Resources */,
 				B6271D511D599AF000A66983 /* WTMyFollowingCell.xib in Resources */,
+				30A2D8DE1D6B071C009AFA43 /* nodeitem.sqlite in Resources */,
 				B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */,
 				B60FA1DC1D45C09200F98CF3 /* WTRegisterViewController.xib in Resources */,
 				B60FA1C21D45C09200F98CF3 /* WTNodeTopicHeaderView.xib in Resources */,
 				B60FA1971D45C09200F98CF3 /* WTWebViewController.xib in Resources */,
 				B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */,
-				B60FA1DF1D45C09200F98CF3 /* light.css in Resources */,
 				B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */,
 				B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */,
 				B6DEEB791D4665D900E3A313 /* WTAdvertiseCell.xib in Resources */,
@@ -1575,9 +1577,11 @@
 				B60FA1BB1D45C09200F98CF3 /* WTHotNodeReusableView.xib in Resources */,
 				B60FA18F1D45C09200F98CF3 /* WTToolBarView.xib in Resources */,
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
+				30A2D8D91D6B06EF009AFA43 /* light.css in Resources */,
 				B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
+				30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */,
 				B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */,
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
 				B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */,

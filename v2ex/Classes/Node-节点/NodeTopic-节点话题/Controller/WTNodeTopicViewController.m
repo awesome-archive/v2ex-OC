@@ -12,6 +12,7 @@
 #import "WTNodeTopicHeaderView.h"
 
 #import "WTTopicViewModel.h"
+#import "WTNodeViewModel.h"
 #import "WTNodeItem.h"
 #import "WTTopicCell.h"
 #import "WTNodeTopicCell.h"
@@ -69,6 +70,7 @@ NSString * const ID = @"ID";
         self.tableView = tableView;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.tableFooterView = [UIView new];
     }
     
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
@@ -115,7 +117,9 @@ NSString * const ID = @"ID";
 - (void)setupData
 {
     self.nodeTopicHeaderView.nodeItem = self.nodeItem;
-    [WTNodeViewModel getNodeItemWithNodeName: self.nodeItem.title success:^(WTNodeItem *nodeItem) {
+    self.nodeItem = [WTNodeViewModel queryNodeItemsWithNodeName: self.nodeItem.title];
+    
+    [WTNodeViewModel getNodeItemWithNodeId: self.nodeItem.uid success:^(WTNodeItem *nodeItem) {
         
         self.nodeTopicHeaderView.nodeItem = nodeItem;
         
