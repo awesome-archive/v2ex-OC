@@ -40,9 +40,9 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
     
     [self.tableView registerNib: [UINib nibWithNibName: @"WTAdvertiseCell" bundle: nil] forCellReuseIdentifier: advertiseCellIdentifier];
     
-//    self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
-//    
-//    [self.tableView.mj_header beginRefreshing];
+    self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
+    
+    [self.tableView.mj_header beginRefreshing];
 }
 
 // 加载最新的数据

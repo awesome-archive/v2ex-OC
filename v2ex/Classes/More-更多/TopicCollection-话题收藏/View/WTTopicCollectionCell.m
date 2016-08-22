@@ -1,14 +1,14 @@
 //
-//  WTBlogCell.m
+//  WTTopicCollectionCell.m
 //  v2ex
 //
-//  Created by 无头骑士 GJ on 16/1/14.
+//  Created by gengjie on 16/8/22.
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import "WTTopicCell.h"
+#import "WTTopicCollectionCell.h"
 
-#import "WTTopicViewModel.h"
+#import "WTTopicCollectionItem.h"
 
 #import "UILabel+StringFrame.h"
 #import "NSString+Regex.h"
@@ -16,10 +16,7 @@
 
 #import "UIImageView+WebCache.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface WTTopicCell ()
-
+@interface WTTopicCollectionCell()
 /** 头像*/
 @property (weak, nonatomic) IBOutlet UIImageView            *iconImageV;
 /** 标题 */
@@ -34,42 +31,42 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView            *commentCountImageView;
 /** 回复数 */
 @property (weak, nonatomic) IBOutlet UILabel                *commentCountLabel;
-
 @end
-@implementation WTTopicCell
+@implementation WTTopicCollectionCell
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     // 2、节点
     self.nodeBtn.layer.cornerRadius = 1.5;
     self.iconImageV.layer.cornerRadius = 5;
     self.iconImageV.layer.masksToBounds = YES;
 }
 
-// 重写 blog set方法，初始化数据
-- (void)setTopicViewModel:(WTTopicViewModel *)topicViewModel
+- (void)setTopicCollectionItem:(WTTopicCollectionItem *)topicCollectionItem
 {
-    _topicViewModel = topicViewModel;
-
+    _topicCollectionItem = topicCollectionItem;
+    
     // 1、头像
-    [self.iconImageV sd_setImageWithURL: topicViewModel.iconURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.iconImageV sd_setImageWithURL: topicCollectionItem.avatarURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.iconImageV.image = [image roundImageWithCornerRadius: 3];
         self.iconImageV.image = image;
     }];
     
     // 2、标题
-    self.titleLabel.text = topicViewModel.topic.title;
+    self.titleLabel.text = topicCollectionItem.title;
     
     // 3、节点
-    if (topicViewModel.topic.node.length > 0)
+    if (topicCollectionItem.node.length > 0)
     {
         //self.nodeBtn.hidden = NO;
-        NSString *node = topicViewModel.topic.node;
+        NSString *node = topicCollectionItem.node;
         // 判断是否包含中文字符串
         if ([NSString isChineseCharactersWithString: node] || node.length > 4)
         {
             //NSLog(@"中文:%@", _blog.node);
-            node = [NSString stringWithFormat: @" %@ ", topicViewModel.topic.node];
+            node = [NSString stringWithFormat: @" %@ ", topicCollectionItem.node];
         }
         [self.nodeBtn setTitle: node forState: UIControlStateNormal];
     }
@@ -80,15 +77,14 @@ NS_ASSUME_NONNULL_BEGIN
     }
     
     // 4、最后回复时间
-    self.lastReplyTimeLabel.text = topicViewModel.topic.lastReplyTime;
+    self.lastReplyTimeLabel.text = topicCollectionItem.lastReplyTime;
     
     // 6、作者
-    self.authorLabel.text = topicViewModel.topic.author;
+    self.authorLabel.text = topicCollectionItem.author;
     
     // 7、评论数
-    self.commentCountLabel.text = topicViewModel.topic.commentCount;
-    self.commentCountImageView.hidden = !(topicViewModel.topic.commentCount.length > 0);
+    self.commentCountLabel.text = topicCollectionItem.commentCount;
+    self.commentCountImageView.hidden = !(topicCollectionItem.commentCount.length > 0);
 }
 
 @end
-NS_ASSUME_NONNULL_END

@@ -20,7 +20,7 @@
 #import "WTWebViewViewController.h"
 #import "WTAccountViewModel.h"
 #import "WTURLConst.h"
-#import "WTUserInfoViewController.h"
+
 @interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
 /** 帖子回复ViewModel */
 @property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
@@ -322,9 +322,9 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)topicDetailCommentCell:(WTTopicDetailCommentCell *)cell iconImageViewClickWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
     // 用户信息控制器
-    WTUserInfoViewController *userInfoVC = [WTUserInfoViewController new];
-    userInfoVC.username = topicDetailVM.topicDetail.author;
-    [self.navigationController pushViewController: userInfoVC animated: YES];
+//    WTUserInfoViewController *userInfoVC = [WTUserInfoViewController new];
+//    userInfoVC.username = topicDetailVM.topicDetail.author;
+//    [self.navigationController pushViewController: userInfoVC animated: YES];
 }
 
 #pragma mark - dealloc

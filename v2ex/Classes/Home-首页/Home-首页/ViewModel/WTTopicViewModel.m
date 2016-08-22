@@ -13,6 +13,11 @@
 #import "WTParseTool.h"
 @implementation WTTopicViewModel
 
++ (void)getNodeTopicsWithUrlStr:(NSString *)UrlStr success:(void(^)())success failure:(void(^)(NSError *error))failure
+{
+    
+}
+
 #pragma mark - 根据data解析出节点话题数组
 + (NSMutableArray *)nodeTopicsWithData:(NSData *)data
 {

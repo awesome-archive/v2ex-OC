@@ -29,6 +29,11 @@
  */
 - (BOOL)isLogin;
 
+/**
+ *  退出登陆
+ */
+- (void)loginOut;
+
 - (void)saveUsernameAndPassword;
 
 /**

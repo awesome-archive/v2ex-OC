@@ -32,13 +32,7 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
 {
     [super viewDidLoad];
     
-    self.title = @"我的关注";
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTMyFollowingCell class]) bundle: nil] forCellReuseIdentifier: WTMyFollowingCellIdentifier];
-    
-    // 设置View
+    // 1、设置View
     [self setupView];
     
     self.myFollowingVM = [WTMyFollowingViewModel new];

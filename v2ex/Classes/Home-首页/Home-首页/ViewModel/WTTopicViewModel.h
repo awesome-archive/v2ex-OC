@@ -11,11 +11,20 @@
 @interface WTTopicViewModel : NSObject
 /** 话题模型 */
 @property (nonatomic, strong) WTTopic    *topic;
+
 /** 话题的详情Url */
 @property (nonatomic, strong) NSString      *topicDetailUrl;
 /** 头像 */
 @property (nonatomic, strong) NSURL         *iconURL;
 
+@property (nonatomic, strong) NSArray<WTTopic *> *topics;
+
+@property (nonatomic, assign) NSUInteger    page;
+
+@property (nonatomic, assign, getter=isNextPage)BOOL nextPage;
+
+
++ (void)getNodeTopicsWithUrlStr:(NSString *)UrlStr success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
 /**
  *  根据data解析出节点话题数组

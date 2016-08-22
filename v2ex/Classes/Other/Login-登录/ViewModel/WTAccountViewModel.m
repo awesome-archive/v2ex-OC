@@ -68,6 +68,19 @@ static WTAccountViewModel *_instance;
     return [WTAccountViewModel shareInstance].account.usernameOrEmail.length > 0;
 }
 
+/**
+ *  退出登陆
+ */
+- (void)loginOut
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: WTUsernameOrEmailKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: WTPasswordKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    self.account.usernameOrEmail = nil;
+    self.account.password = nil;
+}
+
 - (void)saveUsernameAndPassword
 {
     [[NSUserDefaults standardUserDefaults] setObject: self.account.usernameOrEmail forKey: WTUsernameOrEmailKey];

@@ -30,11 +30,11 @@
 //重写RCConversationListViewController的onSelectedTableRow事件
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath
 {
-    RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
-    conversationVC.conversationType = model.conversationType;
-    conversationVC.targetId = model.targetId;
-    conversationVC.title = @"想显示的会话标题";
-    [self.navigationController pushViewController:conversationVC animated:YES];
+//    RCConversationListViewController *conversationVC = [[RCConversationListViewController alloc]init];
+//    conversationVC.conversationType = model.conversationType;
+//    conversationVC.targetId = model.targetId;
+//    conversationVC.title = @"想显示的会话标题";
+//    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 
 

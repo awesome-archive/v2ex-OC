@@ -14,6 +14,7 @@
 #import "WTMyReplyViewController.h"
 #import "WTMyFollowingViewController.h"
 #import "WTTopicViewController.h"
+#import "WTTopicCollectionViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
@@ -29,18 +30,17 @@ CGFloat const moreHeaderViewH = 150;
 
 @interface WTMoreViewController () <UITableViewDataSource, UITableViewDelegate, WTMoreNotLoginHeaderViewDelegate>
 
-@property (nonatomic, weak) UIView *headerContentView;
-@property (nonatomic, weak) UIView *footerContentView;
-@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) UIView                      *headerContentView;
+@property (nonatomic, weak) UIView                      *footerContentView;
+@property (nonatomic, weak) UITableView                 *tableView;
+@property (nonatomic, weak) WTMoreLoginHeaderView       *moreLoginHeaderView;
+@property (nonatomic, weak) WTMoreNotLoginHeaderView    *moreNotLoginHeaderView;
+@property (nonatomic, strong) UIAlertController         *loginC;                        // 退出登录的对话框
 
-@property (nonatomic, weak) WTMoreLoginHeaderView *moreLoginHeaderView;
-@property (nonatomic, weak) WTMoreNotLoginHeaderView *moreNotLoginHeaderView;
+@property (nonatomic, strong) NSMutableArray            *datas;
+@property (nonatomic, strong) NSMutableArray            *titles;
 
-@property (nonatomic, strong) NSMutableArray *datas;
-@property (nonatomic, strong) NSMutableArray *titles;
-
-/** 记录scrollView的contentOff的Y值 */
-@property (nonatomic, assign) CGFloat endY;
+@property (nonatomic, assign) CGFloat                   endY;                           // 记录scrollView的contentOff的Y值
 
 @end
 
@@ -126,19 +126,6 @@ CGFloat const moreHeaderViewH = 150;
     moreCell.title = self.titles[indexPath.row];
     
     return moreCell;
-   
-}
-
-#pragma mark - UITableView Delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    WTSettingItem *item = self.datas[indexPath.section][indexPath.row];
-    if (item.operationBlock)
-    {
-        item.operationBlock();
-    }
-    
 }
 
 #pragma mark - UIScrollView Delegate
@@ -196,23 +183,22 @@ CGFloat const moreHeaderViewH = 150;
         
         [_datas addObject: @[
                              
-                                
+                             
                                 [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: nil],
                                 
                                 [WTSettingItem settingItemWithTitle: @"特别关注" image: [UIImage imageNamed: @"mine_follow"] operationBlock: ^{
                                     [weakSelf.navigationController pushViewController: [WTMyFollowingViewController new] animated: YES];
                                 }],
-                                [WTSettingItem settingItemWithTitle: @"我的收藏" image: [UIImage imageNamed: @"more_collection"] operationBlock: ^{
+                                
+                                [WTSettingItem settingItemWithTitle: @"话题收藏" image: [UIImage imageNamed: @"more_collection"] operationBlock: ^{
             
             
-                                    WTTopicViewController *topicVC = [WTTopicViewController new];
-                                    topicVC.urlString = @"http://www.v2ex.com/my/topics";
-                                    topicVC.title = @"话题收藏";
-                                    topicVC.topicType = WTTopicTypeCollection;
-                                    [weakSelf.navigationController pushViewController: topicVC animated: YES];
+                                    WTTopicCollectionViewController *topicCollectionVC = [WTTopicCollectionViewController new];
+                                    [weakSelf.navigationController pushViewController: topicCollectionVC animated: YES];
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
+                                
                                 [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{
             
                                         [weakSelf.navigationController pushViewController: [WTMyReplyViewController new] animated: YES];
@@ -236,6 +222,7 @@ CGFloat const moreHeaderViewH = 150;
                                 
                                 [WTSettingItem settingItemWithTitle: @"退出帐号" image: [UIImage imageNamed: @"more_logout"] operationBlock: ^{
         
+                                    [weakSelf presentViewController: weakSelf.loginC animated: YES completion: nil];
                                 }],
                                 
                             ]];
@@ -310,4 +297,30 @@ CGFloat const moreHeaderViewH = 150;
     }
     return _moreNotLoginHeaderView;
 }
+
+- (UIAlertController *)loginC
+{
+    if (_loginC == nil)
+    {
+        
+        UIAlertController *loginC = [UIAlertController alertControllerWithTitle: @"提示" message: @"您确定要退出吗?" preferredStyle: UIAlertControllerStyleAlert];
+        
+        UIAlertAction *sureAction = [UIAlertAction actionWithTitle: @"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            
+            // 清除帐号
+            [[WTAccountViewModel shareInstance] loginOut];
+            [self viewWillAppear: YES];
+            
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"手滑了" style: UIAlertActionStyleCancel handler: nil];
+        
+        [loginC addAction: sureAction];
+        [loginC addAction: cancelAction];
+
+        _loginC = loginC;
+    }
+    return _loginC;
+}
+
 @end

@@ -80,7 +80,7 @@
 + (BOOL)isNextPage:(TFHpple *)doc
 {
     TFHppleElement *noNextPage = [doc peekAtSearchWithXPathQuery: @"//td[@class='super normal_page_right button disable_now']"];
-    if (noNextPage.content.length > 0)
+    if (noNextPage == nil)
         return false;
     return true;
 }
