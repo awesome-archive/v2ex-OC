@@ -16,6 +16,7 @@
 #import "WTTopicViewController.h"
 #import "WTTopicCollectionViewController.h"
 #import "WTWebViewController.h"
+#import "WTNodeCollectionViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
@@ -173,6 +174,20 @@ CGFloat const moreHeaderViewH = 150;
     [self presentViewController: [WTRegisterViewController new] animated: YES completion: nil];
 }
 
+#pragma mark - Private Method
+// 判断是否登陆，如果登录正常跳转转，否则跳转至登陆页面
+- (void)checkIsLoginWithViewController:(UIViewController *)vc
+{
+    if ([WTAccountViewModel shareInstance].isLogin)
+    {
+        [self.navigationController pushViewController: vc animated: YES];
+    }
+    else
+    {
+        [self presentViewController: [WTLoginViewController new] animated: YES completion: nil];
+    }
+}
+
 #pragma mark - Lazy Method
 - (NSMutableArray<NSArray *> *)datas
 {
@@ -185,29 +200,31 @@ CGFloat const moreHeaderViewH = 150;
         [_datas addObject: @[
                              
                              
-                                [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: nil],
-                                
+                             [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: ^{
+            
+                                    [weakSelf checkIsLoginWithViewController: [WTNodeCollectionViewController new]];
+                                }],
+            
                                 [WTSettingItem settingItemWithTitle: @"特别关注" image: [UIImage imageNamed: @"mine_follow"] operationBlock: ^{
-                                    [weakSelf.navigationController pushViewController: [WTMyFollowingViewController new] animated: YES];
+            
+                                    [weakSelf checkIsLoginWithViewController: [WTMyFollowingViewController new]];
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"话题收藏" image: [UIImage imageNamed: @"more_collection"] operationBlock: ^{
             
-            
-                                    WTTopicCollectionViewController *topicCollectionVC = [WTTopicCollectionViewController new];
-                                    [weakSelf.navigationController pushViewController: topicCollectionVC animated: YES];
+                                    [weakSelf checkIsLoginWithViewController: [WTTopicCollectionViewController new]];
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
                                 
                                 [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{
             
-                                        [weakSelf.navigationController pushViewController: [WTMyReplyViewController new] animated: YES];
-                                    }],
-                                ]];
+                                    [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
+                                }],
+                            ]];
         
         [_datas addObject: @[
-                                [WTSettingItem settingItemWithTitle: @"广告投放" image: [UIImage imageNamed: @"more_ad"] operationBlock: ^{
+                                [WTSettingItem settingItemWithTitle: @"广告中心" image: [UIImage imageNamed: @"more_ad"] operationBlock: ^{
             
                                     [weakSelf.navigationController pushViewController: [WTAdvertiseViewController new] animated: YES];
                                 }],

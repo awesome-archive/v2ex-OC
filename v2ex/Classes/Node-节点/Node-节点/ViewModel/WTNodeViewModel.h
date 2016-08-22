@@ -42,4 +42,12 @@
  */
 + (void)getNodeItemWithNodeName:(NSString *)nodeName success:(void(^)(WTNodeItem *nodeItem))success failure:(void(^)(NSError *error))failure;
 
+/**
+ *  获取我的节点收藏
+ *
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)getMyNodeCollectionItemsWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure;
+
 @end

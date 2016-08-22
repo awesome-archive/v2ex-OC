@@ -32,7 +32,7 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
 // 加载View
 - (void)setupView
 {
-    self.title = @"鸣谢";
+    self.title = @"广告中心";
     
     self.tableView.estimatedRowHeight = 180;
     self.tableView.rowHeight = UITableViewAutomaticDimension;

@@ -42,5 +42,5 @@
 
 @property (nonatomic, assign) NSUInteger stars;
 
-@property (nonatomic, strong) NSString *avatar_large;
+@property (nonatomic, strong) NSURL *avatar_large;
 @end

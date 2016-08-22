@@ -339,6 +339,73 @@ MJCodingImplementation
     }];
 }
 
+/**
+ *  获取我的节点收藏
+ *
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)getMyNodeCollectionItemsWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure
+{
+    NSString *urlStr = @"http://www.v2ex.com/my/nodes";
+    
+    [[NetworkTool shareInstance] GETWithUrlString: urlStr success:^(NSData *data) {
+        
+        [self getMyNodeCollectionItemsWithData: data];
+        
+        if (success)
+        {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+        
+    }];
+}
+
+- (void)getMyNodeCollectionItemsWithData:(NSData *)data
+{
+    NSMutableArray *nodeCollectionItems = [NSMutableArray array];
+    
+    NSLog(@"data:%@", [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding]);
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    
+    NSArray *gridItemEs = [doc searchWithXPathQuery: @"//a[@class='grid_item']"];
+    
+    for (TFHppleElement *gridItemE in gridItemEs)
+    {
+        @autoreleasepool {
+            
+            WTNodeItem *nodeItem = [WTNodeItem new];
+        
+            NSString *icon = [[gridItemE searchWithXPathQuery: @"//img"].firstObject objectForKey: @"src"];
+            
+            NSArray *contents = [gridItemE.content componentsSeparatedByString: @" "];
+        
+            // 有些节点是没有图片的
+            if (![icon containsString: @"static"])
+            {
+                nodeItem.avatar_large = [NSURL URLWithString: [WTHTTP stringByAppendingString: icon]];
+            }
+            else
+            {
+                nodeItem.avatar_large = [NSURL URLWithString: [WTHTTPBaseUrl stringByAppendingString: icon]];
+            }
+            
+            nodeItem.title = contents.firstObject;
+            nodeItem.stars = [contents.lastObject integerValue];
+            
+            [nodeCollectionItems addObject: nodeItem];
+        }
+    }
+    self.nodeItems = nodeCollectionItems;
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"nodeItems:%@, title:%@", self.nodeItems, self.title];
