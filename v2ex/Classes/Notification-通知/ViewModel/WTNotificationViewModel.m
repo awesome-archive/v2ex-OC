@@ -139,22 +139,19 @@
 - (void)deleteNotificationByNoticationItem:(WTNotificationItem *)notificationItem success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
     NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/delete/notification/%ld?once=%ld", notificationItem.uid, notificationItem.once];
-    if (success)
-    {
-        success();
-    }
-//    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: urlString param: nil success:^(id responseObject) {
-//        
-//        if (success)
-//        {
-//            success();
-//        }
-//        
-//    } failure:^(NSError *error) {
-//        if (failure)
-//        {
-//            failure(error);
-//        }
-//    }];
+
+    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: urlString param: nil success:^(id responseObject) {
+        
+        if (success)
+        {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
 }
 @end
