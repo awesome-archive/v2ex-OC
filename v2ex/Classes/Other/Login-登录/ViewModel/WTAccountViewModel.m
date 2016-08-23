@@ -79,6 +79,13 @@ static WTAccountViewModel *_instance;
     
     self.account.usernameOrEmail = nil;
     self.account.password = nil;
+    
+    // 1、切换帐号有缓存问题
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies])
+    {
+        [storage deleteCookie:cookie];
+    }
 }
 
 - (void)saveUsernameAndPassword

@@ -25,7 +25,7 @@
  */
 - (void)getUserNotificationsSuccess:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/notifications?p=%ld", self.page];
+    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/notifications?p=%ld", self.page];
     
     [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(NSData *data) {
         

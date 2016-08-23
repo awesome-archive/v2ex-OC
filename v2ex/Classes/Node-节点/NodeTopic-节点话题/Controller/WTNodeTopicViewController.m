@@ -73,7 +73,9 @@ NSString * const ID = @"ID";
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        self.tableView.tableFooterView = [UIView new];
+        UIView *footerView = [UIView new];
+        footerView.backgroundColor = WTColor(242, 243, 245);
+        self.tableView.tableFooterView = footerView;
     }
     
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
@@ -91,6 +93,11 @@ NSString * const ID = @"ID";
 {
     self.topicVM.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
     [self.topicVM getNodeTopicWithUrlStr: self.nodeItem.url topicType: WTTopicTypeHot success:^{
+        
+        if (!self.topicVM.nextPage)
+        {
+            self.tableView.mj_footer = nil;
+        }
         
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];

@@ -41,8 +41,8 @@
     [self addOneChildViewController: nodeVC title: @"节点" imageName: @"Tabbar_Discover_Normal" selectedImageName: nil];
     
     // 消息
-    WTMessageViewController *messageVC = [WTMessageViewController new];
-    [self addOneChildViewController: messageVC title: @"消息" imageName: @"Tabbar_Messages_Normal" selectedImageName: nil];
+    //WTMessageViewController *messageVC = [WTMessageViewController new];
+    //[self addOneChildViewController: messageVC title: @"消息" imageName: @"Tabbar_Messages_Normal" selectedImageName: nil];
     
     // 通知
     WTUserNotificationViewController *notificationVC = [WTUserNotificationViewController new];

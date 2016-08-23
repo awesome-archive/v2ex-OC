@@ -75,6 +75,11 @@ static NSString * const ID = @"notificationCell";
         // 2、开始下拉刷新
         [self.tableView.mj_header beginRefreshing];
     }
+    else
+    {
+        [self.notificationVM.notificationItems removeAllObjects];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - 加载数据
@@ -174,13 +179,13 @@ static NSString * const ID = @"notificationCell";
 #pragma mark - DZNEmptyDataSetSource
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIImage imageNamed:@"icon"];
+    return nil;
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
 {
     NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject: [UIColor greenColor] forKey: NSForegroundColorAttributeName];
+    [dict setObject: [UIColor colorWithHexString: WTNormalColor] forKey: NSForegroundColorAttributeName];
     
     return [[NSAttributedString alloc] initWithString: @"登录" attributes: dict];
 }

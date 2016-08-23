@@ -9,6 +9,7 @@
 #import "WTNodeTopicHeaderView.h"
 #import "WTNodeItem.h"
 #import "WTURLConst.h"
+#import "NSString+YYAdd.h"
 
 #import "UIImageView+WebCache.h"
 
@@ -42,6 +43,12 @@
     _nodeItem = nodeItem;
     
     self.titleLabel.text = nodeItem.title;
+    
+    
+//    [nodeItem.title enumerateRegexMatches: @"<a[^>]*>([^<]*)</a>" options: NSRegularExpressionCaseInsensitive usingBlock:^(NSString * _Nonnull match, NSRange matchRange, BOOL * _Nonnull stop) {
+//    
+//        NSLog(@"match:%@", match);
+//    }];
     if (nodeItem.header.length > 0)
     {
         self.footerLabel.text = nodeItem.header;

@@ -215,8 +215,10 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf checkIsLoginWithViewController: [WTTopicCollectionViewController new]];
                                 }],
                                 
-                                [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: nil],
-                                
+                             [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: ^{
+                                    [weakSelf presentViewController: weakSelf.loginC animated: YES completion: nil];
+                                }],
+            
                                 [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{
             
                                     [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
@@ -241,7 +243,11 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf.navigationController pushViewController: webVC animated: YES];
                                 }],
                                 
-                                [WTSettingItem settingItemWithTitle: @"关于作者" image: [UIImage imageNamed: @"more_about"] operationBlock: nil],
+                                [WTSettingItem settingItemWithTitle: @"关于V2EX" image: [UIImage imageNamed: @"more_about"] operationBlock: ^{
+                                        WTWebViewController *webVC = [WTWebViewController new];
+                                        webVC.url = [NSURL URLWithString: @"https://www.v2ex.com/about"];
+                                        [weakSelf.navigationController pushViewController: webVC animated: YES];
+                                }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"退出帐号" image: [UIImage imageNamed: @"more_logout"] operationBlock: ^{
         
