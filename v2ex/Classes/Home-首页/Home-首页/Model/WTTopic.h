@@ -11,7 +11,7 @@
 @interface WTTopic : NSObject
 
 /** 头像*/
-@property (nonatomic, strong) NSString          *icon;
+@property (nonatomic, strong) NSURL             *iconURL;
 /** 作者*/
 @property (nonatomic, strong) NSString          *author;
 /** 标题 */

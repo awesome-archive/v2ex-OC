@@ -8,51 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import "WTTopic.h"
+
+/** 话题类型 */
+typedef NS_ENUM(NSUInteger, WTTopicType) {
+    WTTopicTypeNormal,
+    WTTopicTypeHot
+};
+
 @interface WTTopicViewModel : NSObject
-/** 话题模型 */
-@property (nonatomic, strong) WTTopic    *topic;
 
-/** 话题的详情Url */
-@property (nonatomic, strong) NSString      *topicDetailUrl;
-/** 头像 */
-@property (nonatomic, strong) NSURL         *iconURL;
+@property (nonatomic, strong) NSMutableArray<WTTopic *>     *topics;
 
-@property (nonatomic, strong) NSArray<WTTopic *> *topics;
+@property (nonatomic, assign) NSUInteger                    page;
 
-@property (nonatomic, assign) NSUInteger    page;
-
-@property (nonatomic, assign, getter=isNextPage)BOOL nextPage;
-
-
-+ (void)getNodeTopicsWithUrlStr:(NSString *)UrlStr success:(void(^)())success failure:(void(^)(NSError *error))failure;
+@property (nonatomic, assign, getter=isNextPage)BOOL        nextPage;
 
 /**
- *  根据data解析出节点话题数组
+ *  根据url和话题type获取节点话题
  *
- *  @param data data
- *
- *  @return 话题数组
+ *  @param url       url
+ *  @param topicType 话题type
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
  */
-+ (NSMutableArray *)nodeTopicsWithData:(NSData *)data;
+- (void)getNodeTopicWithUrlStr:(NSString *)url topicType:(WTTopicType)topicType success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
-/**
- *  根据data解析出热点话题数据
- *
- *  @param data data
- *
- *  @return 热点话题数组
- */
-+ (NSMutableArray *)hotNodeTopicsWithData:(NSData *)data;
-
-/**
- *  根据data解析出节点话题数组
- *
- *  @param data data
- *  @param iconURL 头像地址
- *
- *  @return 话题数组
- */
-+ (NSMutableArray *)nodeTopicsWithData:(NSData *)data iconURL:(NSURL *)iconURL;
 
 
 /**

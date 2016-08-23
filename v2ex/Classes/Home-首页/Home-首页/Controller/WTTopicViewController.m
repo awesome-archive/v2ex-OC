@@ -18,15 +18,11 @@
 // ======
 #import "WTNode.h"
 
-
-
 static NSString *const ID = @"topicCell";
 
 @interface WTTopicViewController () <UIViewControllerPreviewingDelegate>
 
-@property (nonatomic, strong) NSMutableArray<WTTopicViewModel *>  *topicViewModels;
-/** 当前第几页 */
-@property (nonatomic, assign) NSInteger                           page;
+@property (nonatomic, strong) WTTopicViewModel                    *topicVM;
 
 @end
 
@@ -36,6 +32,8 @@ static NSString *const ID = @"topicCell";
 {
     [super viewDidLoad];
 
+    self.topicVM = [WTTopicViewModel new];
+    
     // 初始化页面
     [self setUpView];
 }
@@ -48,14 +46,10 @@ static NSString *const ID = @"topicCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
 
-    if (self.topicType != WTTopicTypeCollection)
-    {
-        // 设置内边距
-        self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
-        // 设置滚动条的内边距
-        self.tableView.separatorInset = self.tableView.contentInset;
-    }
-    
+    // 设置内边距
+    self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
+    // 设置滚动条的内边距
+    self.tableView.separatorInset = self.tableView.contentInset;
     
     
     // 1.2只有'最近'节点需要上拉刷新
@@ -77,14 +71,15 @@ static NSString *const ID = @"topicCell";
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    self.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
-    [[NetworkTool shareInstance] GETWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
+    self.topicVM.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
+    
+    [self.topicVM getNodeTopicWithUrlStr: self.urlString topicType: WTTopicTypeNormal success:^{
         
-        self.topicViewModels = [WTTopicViewModel nodeTopicsWithData: data];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         
     } failure:^(NSError *error) {
+        
         [self.tableView.mj_header endRefreshing];
     }];
 }
@@ -92,15 +87,15 @@ static NSString *const ID = @"topicCell";
 #pragma mark 加载旧的数据
 - (void)loadOldData
 {
-    self.page ++;
+    self.topicVM.page ++;
     
-    [[NetworkTool shareInstance] GETWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
+    [self.topicVM getNodeTopicWithUrlStr: self.urlString topicType: WTTopicTypeNormal success:^{
         
-        [self.topicViewModels addObjectsFromArray: [WTTopicViewModel nodeTopicsWithData: data]];
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
-               
+        
     } failure:^(NSError *error) {
+        
         [self.tableView.mj_footer endRefreshing];
     }];
 }
@@ -108,7 +103,7 @@ static NSString *const ID = @"topicCell";
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.topicViewModels.count;
+    return self.topicVM.topics.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +111,7 @@ static NSString *const ID = @"topicCell";
     WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
     // 设置数据
-    cell.topicViewModel = self.topicViewModels[indexPath.row];
+    cell.topic = self.topicVM.topics[indexPath.row];
     return cell;
 }
 
@@ -127,30 +122,17 @@ static NSString *const ID = @"topicCell";
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     
     // 跳转至话题详情控制器
-    WTTopicViewModel *topicViewModel = self.topicViewModels[indexPath.row];
+    WTTopic *topic = self.topicVM.topics[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
-    detailVC.topicDetailUrl = topicViewModel.topicDetailUrl;
+    detailVC.topicDetailUrl = topic.detailUrl;
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
-        cell.topicViewModel = self.topicViewModels[indexPath.row];
+        cell.topic = self.topicVM.topics[indexPath.row];
     }];
-}
-
-/**
- *  拼接urlString的参数
- *
- */
-- (NSString *)stitchingUrlParameter
-{
-    if ([WTTopicViewModel isNeedNextPage: _urlString])
-    {
-        return [NSString stringWithFormat: @"%@?p=%ld", self.urlString, self.page];
-    }
-    return [NSString stringWithFormat: @"%@", self.urlString];
 }
 
 #pragma mark - UIViewControllerPreviewingDelegate 测试数据
@@ -167,9 +149,9 @@ static NSString *const ID = @"topicCell";
     if (!cell)
         return nil;
     
-    WTTopicViewModel *topicViewModel = cell.topicViewModel;
+    WTTopic *topic = cell.topic;
     WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
-    topicDetailVC.topicDetailUrl = topicViewModel.topicDetailUrl;
+    topicDetailVC.topicDetailUrl = topic.detailUrl;
     
 //    previewingContext.sourceRect = self.view.bounds;/
     return topicDetailVC;

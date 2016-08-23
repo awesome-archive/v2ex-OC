@@ -8,7 +8,7 @@
 
 #import "WTTopicCell.h"
 
-#import "WTTopicViewModel.h"
+#import "WTTopic.h"
 
 #import "UILabel+StringFrame.h"
 #import "NSString+Regex.h"
@@ -34,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView            *commentCountImageView;
 /** 回复数 */
 @property (weak, nonatomic) IBOutlet UILabel                *commentCountLabel;
+/** 节点宽度约束 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint     *nodeBtnWidthLayoutCons;
+/** 最后回复时间的leading距离 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint     *lastReplyTimeLabelLeadingLayoutCons;
 
 @end
 @implementation WTTopicCell
@@ -46,48 +50,61 @@ NS_ASSUME_NONNULL_BEGIN
     self.iconImageV.layer.masksToBounds = YES;
 }
 
-// 重写 blog set方法，初始化数据
-- (void)setTopicViewModel:(WTTopicViewModel *)topicViewModel
+- (void)setTopic:(WTTopic *)topic
 {
-    _topicViewModel = topicViewModel;
-
+    _topic = topic;
+    
     // 1、头像
-    [self.iconImageV sd_setImageWithURL: topicViewModel.iconURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.iconImageV sd_setImageWithURL: topic.iconURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.iconImageV.image = [image roundImageWithCornerRadius: 3];
         self.iconImageV.image = image;
     }];
     
     // 2、标题
-    self.titleLabel.text = topicViewModel.topic.title;
+    self.titleLabel.text = topic.title;
     
     // 3、节点
-    if (topicViewModel.topic.node.length > 0)
+    if (topic.node.length > 0)
     {
         //self.nodeBtn.hidden = NO;
-        NSString *node = topicViewModel.topic.node;
+        NSString *node = topic.node;
         // 判断是否包含中文字符串
         if ([NSString isChineseCharactersWithString: node] || node.length > 4)
         {
             //NSLog(@"中文:%@", _blog.node);
-            node = [NSString stringWithFormat: @" %@ ", topicViewModel.topic.node];
+            node = [NSString stringWithFormat: @" %@ ", topic.node];
         }
         [self.nodeBtn setTitle: node forState: UIControlStateNormal];
+        self.lastReplyTimeLabelLeadingLayoutCons.constant = 8;
+        [self.nodeBtn sizeToFit];
     }
     else
     {
-        //self.nodeBtn.hidden = YES;
+        self.nodeBtnWidthLayoutCons.constant = 0;
+        self.lastReplyTimeLabelLeadingLayoutCons.constant = 0;
         [self.nodeBtn setTitle: @"" forState: UIControlStateNormal];
     }
     
     // 4、最后回复时间
-    self.lastReplyTimeLabel.text = topicViewModel.topic.lastReplyTime;
+    self.lastReplyTimeLabel.text = topic.lastReplyTime;
     
     // 6、作者
-    self.authorLabel.text = topicViewModel.topic.author;
+    self.authorLabel.text = topic.author;
     
     // 7、评论数
-    self.commentCountLabel.text = topicViewModel.topic.commentCount;
-    self.commentCountImageView.hidden = !(topicViewModel.topic.commentCount.length > 0);
+    self.commentCountLabel.text = topic.commentCount;
+    self.commentCountImageView.hidden = !(topic.commentCount.length > 0);
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (self.nodeBtn.titleLabel.text.length > 0)
+    {
+        self.nodeBtnWidthLayoutCons.constant = self.nodeBtn.width;
+        self.nodeBtn.height = 15;
+    }
 }
 
 @end

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTTopicViewModel;
+@class WTTopic;
 @interface WTTopicCell : UITableViewCell
 
-@property (nonatomic, strong) WTTopicViewModel            *topicViewModel;
+@property (nonatomic, strong) WTTopic                     *topic;
 
 @end

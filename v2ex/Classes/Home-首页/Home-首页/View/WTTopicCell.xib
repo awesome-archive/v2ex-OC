@@ -45,6 +45,7 @@
                         <color key="backgroundColor" red="0.2901960784" green="0.6705882353" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="KpC-kt-IlY"/>
+                            <constraint firstAttribute="width" constant="96" id="r9x-42-IBr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <state key="normal" title="Google App Engine ">
@@ -112,7 +113,9 @@
                 <outlet property="commentCountLabel" destination="zId-5v-aW5" id="XaG-r6-Dp7"/>
                 <outlet property="iconImageV" destination="zT5-lE-m4n" id="Njf-01-cPh"/>
                 <outlet property="lastReplyTimeLabel" destination="ZTG-Da-ksk" id="1JR-zD-fab"/>
+                <outlet property="lastReplyTimeLabelLeadingLayoutCons" destination="WOY-mQ-bak" id="fL9-UK-gMI"/>
                 <outlet property="nodeBtn" destination="NxF-Um-cC8" id="w9X-5m-mb6"/>
+                <outlet property="nodeBtnWidthLayoutCons" destination="r9x-42-IBr" id="SW7-8B-Mft"/>
                 <outlet property="titleLabel" destination="Vkx-CI-hWJ" id="9us-tg-lGr"/>
             </connections>
             <point key="canvasLocation" x="430.5" y="278"/>

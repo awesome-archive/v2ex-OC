@@ -28,8 +28,8 @@
 {
     self.backgroundColor = [UIColor clearColor];
 
-    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;
-    self.avatarImageV.layer.masksToBounds = YES;
+//    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;
+//    self.avatarImageV.layer.masksToBounds = YES;
 }
 
 + (instancetype)nodeTopicHeaderView
@@ -53,7 +53,7 @@
     self.createdLabel.text = nodeItem.created;
     self.starsLabel.text = [NSString stringWithFormat: @"%ld", nodeItem.stars];
     self.topicsLabel.text = [NSString stringWithFormat: @"%ld", nodeItem.topics];
-    [self.avatarImageV sd_setImageWithURL: [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, nodeItem.avatar_large]]];
+    [self.avatarImageV sd_setImageWithURL: [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, nodeItem.avatar_large]] placeholderImage: [UIImage imageNamed: @"node_large_default"]];
 }
 
 - (IBAction)collectionBtnClick:(UIButton *)sender

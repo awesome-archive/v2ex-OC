@@ -31,14 +31,14 @@ NSString * const ID = @"ID";
 
 @interface WTNodeTopicViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, weak) UIView *headerView;
-@property (nonatomic, weak) UIView *footerView;
+@property (nonatomic, weak) UIView                                *headerView;
+@property (nonatomic, weak) UIView                                *footerView;
 
-@property (nonatomic, weak) WTNodeTopicHeaderView *nodeTopicHeaderView;
+@property (nonatomic, weak) WTNodeTopicHeaderView                 *nodeTopicHeaderView;
 
-@property (nonatomic, assign) UITableView *tableView;
+@property (nonatomic, assign) UITableView                         *tableView;
 
-@property (nonatomic, strong) NSMutableArray<WTTopicViewModel *>  *topicViewModels;
+@property (nonatomic, strong) WTTopicViewModel                    *topicVM;
 /** 当前第几页 */
 @property (nonatomic, assign) NSInteger                           page;
 @end
@@ -48,6 +48,8 @@ NSString * const ID = @"ID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.topicVM = [WTTopicViewModel new];
     
     // 设置View
     [self setupView];
@@ -68,6 +70,7 @@ NSString * const ID = @"ID";
         tableView.frame = self.footerContentView.bounds;
         [self.footerContentView addSubview: tableView];
         self.tableView = tableView;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.tableFooterView = [UIView new];
@@ -75,10 +78,10 @@ NSString * const ID = @"ID";
     
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
     
-    if ([WTTopicViewModel isNeedNextPage: self.nodeItem.url])
-    {
-        self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
-    }
+    
+    
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
+    
     
     [self loadNewData];
 }
@@ -86,31 +89,31 @@ NSString * const ID = @"ID";
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    self.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
-    [[NetworkTool shareInstance] GETWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
+    self.topicVM.page = 1; // 由于是抓取数据的原因，每次下拉刷新直接重头开始加载
+    [self.topicVM getNodeTopicWithUrlStr: self.nodeItem.url topicType: WTTopicTypeHot success:^{
         
-        self.topicViewModels = [WTTopicViewModel hotNodeTopicsWithData: data];
         [self.tableView reloadData];
-        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
         
     } failure:^(NSError *error) {
-        [self.tableView.mj_footer endRefreshing];
+        
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
 #pragma mark 加载旧的数据
 - (void)loadOldData
 {
-    self.page ++;
+    self.topicVM.page ++;
     
-    [[NetworkTool shareInstance] GETWithUrlString: [self stitchingUrlParameter] success:^(NSData *data) {
+    [self.topicVM getNodeTopicWithUrlStr: self.nodeItem.url topicType: WTTopicTypeHot success:^{
         
-        [self.topicViewModels addObjectsFromArray: [WTTopicViewModel nodeTopicsWithData: data]];
         [self.tableView reloadData];
-
+        [self.tableView.mj_footer endRefreshing];
         
     } failure:^(NSError *error) {
-
+        
+        [self.tableView.mj_footer endRefreshing];
     }];
 }
 
@@ -126,12 +129,14 @@ NSString * const ID = @"ID";
     } failure:^(NSError *error) {
         
     }];
+    
+    
 }
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.topicViewModels.count;
+    return self.topicVM.topics.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,7 +144,7 @@ NSString * const ID = @"ID";
     WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
     
     // 设置数据
-    cell.topicViewModel = self.topicViewModels[indexPath.row];
+    cell.topic = self.topicVM.topics[indexPath.row];
     return cell;
 }
 
@@ -150,16 +155,16 @@ NSString * const ID = @"ID";
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     
     // 跳转至话题详情控制器
-    WTTopicViewModel *topicViewModel = self.topicViewModels[indexPath.row];
+    WTTopic *topic = self.topicVM.topics[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
-    detailVC.topicDetailUrl = topicViewModel.topicDetailUrl;
+    detailVC.topicDetailUrl = topic.detailUrl;
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
-        cell.topicViewModel = self.topicViewModels[indexPath.row];
+        cell.topic = self.topicVM.topics[indexPath.row];
     }];
 }
 
