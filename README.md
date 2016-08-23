@@ -6,11 +6,11 @@
 
 ##截图
 ![](http://ww2.sinaimg.cn/bmiddle/699150eagw1f1s9ehqdsqj20ku112jxv.jpg)
-![](http://ww1.sinaimg.cn/bmiddle/699150eagw1f1s9eo3iw3j20ku1120u9.jpg)
-![](http://ww2.sinaimg.cn/bmiddle/699150eagw1f1srigx6x1j20pv1a0wgd.jpg)
+![](http://ww3.sinaimg.cn/bmiddle/699150eagw1f73rz3rfohj20ku1120vk.jpg)
+![](http://ww3.sinaimg.cn/bmiddle/699150eagw1f73rz53vddj20ku112q7b.jpg)
 ![](http://ww1.sinaimg.cn/bmiddle/699150eagw1f1s9l975y1j20ku112dgq.jpg)
 ![](http://ww4.sinaimg.cn/bmiddle/699150eagw1f1s9dsdgp4j20ku112kbq.jpg)
-![](http://ww3.sinaimg.cn/bmiddle/699150eagw1f1s9enq21bj20ku112jx4.jpg)
+![](http://ww3.sinaimg.cn/http://ww3.sinaimg.cn/mw690/699150eagw1f73s19czntj20ku1127gk.jpg/699150eagw1f73s19czntj20ku1127gk.jpg)
 
 ##期待
 其实整个项目没有任何难点,项目中当然也存在着些许错误与设计上不合理的地方，如果您有任何好的想法、建议、意见。欢迎您联系我(misaka14@163.com)。我们共同学习。
@@ -25,17 +25,11 @@
 * 1、刚刚注册的用户是有一段时间不能对话题做处理的，这时候对帖子操作是有问题的。
 * 2、注册不成功错误提示优化。
 * 3、评论列表中的图文混排，点击优化。
-* 4、添加节点的模块。
-* 5、搜索话题的功能。
-* 6、添加夜间模式、换肤。
-* 7、可以对别的用户进行添加关注和忽略。
-* 8、用户可以上传高清头像。
+* 4、搜索话题的功能。
+* 5、可以对别的用户进行添加关注和忽略。
+* 6、用户可以上传高清头像   
+* 7、添加聊天的功能
+* 8、用户详情模块的添加
 
-##0316
-* 1、突发奇想加个`3DTouch`功能, 虽然用的并不多，但是对新技术的渴望，就马上加了(其实吧，图片素材是我从知乎扣下来的--。，以下是效果图)。
 
-![](http://ww1.sinaimg.cn/bmiddle/699150eagw1f1y3y9byg6j20ku112q40.jpg)
-![](http://ww4.sinaimg.cn/bmiddle/699150eagw1f1y3y7xvb7j20hr0vkq97.jpg)
 
-##0319
-正在进行代码重构，会有部分功能不能使用或者错误
