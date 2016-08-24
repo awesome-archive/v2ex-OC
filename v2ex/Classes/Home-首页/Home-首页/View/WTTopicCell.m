@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
     
     // 4、最后回复时间
-    self.lastReplyTimeLabel.text = topic.lastReplyTime;
+    self.lastReplyTimeLabel.text = topic.lastReplyTime ? topic.lastReplyTime :  @" ";
     
     // 6、作者
     self.authorLabel.text = topic.author;

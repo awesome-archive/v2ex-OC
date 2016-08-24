@@ -26,5 +26,7 @@
 @property (nonatomic, strong) NSString          *commentCount;
 /** 帖子最后回复时间 */
 @property (nonatomic, strong) NSString          *lastReplyTime;
+/** 最后回复人 */
+@property (nonatomic, strong) NSString          *lastReplyPeople;
 
 @end

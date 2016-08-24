@@ -7,19 +7,24 @@
 //
 
 #import "WTTopicDetailTableViewController.h"
-#import "WTTopicDetailViewModel.h"
+#import "WTWebViewController.h"
+#import "WTNavigationController.h"
+#import "WTPostReplyViewController.h"
+#import "WTMemberDetailViewController.h"
+
+#import "WTToolBarView.h"
 #import "WTTopicDetailHeadCell.h"
 #import "WTTopicDetailContentCell.h"
 #import "WTTopicDetailCommentCell.h"
-#import "UITableView+FDTemplateLayoutCell.h"
-#import "WTToolBarView.h"
-#import "SVProgressHUD.h"
-#import "WTPostReplyViewController.h"
-#import "NSString+Regex.h"
-#import "WTNavigationController.h"
-#import "WTWebViewController.h"
-#import "WTAccountViewModel.h"
+
+#import "WTTopicDetailViewModel.h"
+
 #import "WTURLConst.h"
+#import "NSString+Regex.h"
+#import "WTAccountViewModel.h"
+
+#import "SVProgressHUD.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
 /** 帖子回复ViewModel */
@@ -309,6 +314,12 @@ static NSString  * const commentCellID = @"commentCellID";
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    [self.navigationController pushViewController: memeberDetailVC animated: YES];
+}
+
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL
 {
@@ -321,10 +332,10 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailCommentCell:(WTTopicDetailCommentCell *)cell iconImageViewClickWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
-    // 用户信息控制器
-//    WTUserInfoViewController *userInfoVC = [WTUserInfoViewController new];
-//    userInfoVC.username = topicDetailVM.topicDetail.author;
-//    [self.navigationController pushViewController: userInfoVC animated: YES];
+    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    memeberDetailVC.topicDetailVM = topicDetailVM;
+    [self.navigationController pushViewController: memeberDetailVC animated: YES];
+
 }
 
 #pragma mark - dealloc

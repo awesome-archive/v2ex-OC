@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, WTThankType){
 
 @interface WTTopicDetailViewModel : NSObject
 /** 话题详情模型 */
-@property (nonatomic, strong) WTTopicDetail *topicDetail;
+@property (nonatomic, strong) WTTopicDetail    *topicDetail;
 /** 头像 */
 @property (nonatomic, strong) NSURL            *iconURL;
 /** 正文HTML版 */

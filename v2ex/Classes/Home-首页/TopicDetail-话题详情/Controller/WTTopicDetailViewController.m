@@ -11,6 +11,8 @@
 #import "WTTopicDetailTableViewController.h"
 #import "Masonry.h"
 #import "WTToolBarView.h"
+
+#import "UIImage+Extension.h"
 @interface WTTopicDetailViewController ()
 /** 已经登陆过的View */
 @property (weak, nonatomic) IBOutlet UIView             *normalView;
@@ -44,9 +46,10 @@
 - (void)setupTopicDetailData
 {
     UIImageView *greeenView = [[UIImageView alloc] init];
-    greeenView.image = [UIImage imageNamed: @"nav_background"];
+    greeenView.image = [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]];
     [self.view addSubview: greeenView];
     greeenView.frame = CGRectMake(0, 0, WTScreenWidth, 64);
+
     
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];
