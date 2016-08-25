@@ -26,7 +26,7 @@
 #import "SVProgressHUD.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
-@interface WTTopicDetailTableViewController () <WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
+@interface WTTopicDetailTableViewController () <WTTopicDetailHeadCellDelegate, WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
 /** 帖子回复ViewModel */
 @property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
 /** 当前页 */
@@ -263,6 +263,7 @@ static NSString  * const commentCellID = @"commentCellID";
     {
         WTTopicDetailHeadCell *cell = [tableView dequeueReusableCellWithIdentifier: headerCellID];
         cell.topicDetailVM = self.topicDetailViewModels.firstObject;
+        cell.delegate = self;
         return cell;
     }
     else if(indexPath.row == 1) // 帖子正文
@@ -316,7 +317,14 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    //[self.navigationController pushViewController: memeberDetailVC animated: YES];
+}
+
+- (void)topicDetailHeadCell:(WTTopicDetailHeadCell *)topDetailHeadCell didClickiconImageViewWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
+{
     WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    memeberDetailVC.topicDetailVM = topicDetailVM;
     [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
 

@@ -31,6 +31,8 @@
 		30A2D9381D6D3073009AFA43 /* WTMemberTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D9371D6D3073009AFA43 /* WTMemberTopicViewController.m */; };
 		30A2D93C1D6D34DD009AFA43 /* WTMemberReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D93B1D6D34DD009AFA43 /* WTMemberReplyViewController.m */; };
 		30A2D93F1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D93E1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m */; };
+		30A2D9421D6E8B0A009AFA43 /* WTNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D9411D6E8B0A009AFA43 /* WTNoDataView.m */; };
+		30A2D9441D6E8B1A009AFA43 /* WTNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D9431D6E8B1A009AFA43 /* WTNoDataView.xib */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
 		B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */; };
@@ -221,6 +223,9 @@
 		30A2D93B1D6D34DD009AFA43 /* WTMemberReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMemberReplyViewController.m; sourceTree = "<group>"; };
 		30A2D93D1D6D3C0F009AFA43 /* WTMemberTopicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMemberTopicViewModel.h; sourceTree = "<group>"; };
 		30A2D93E1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMemberTopicViewModel.m; sourceTree = "<group>"; };
+		30A2D9401D6E8B0A009AFA43 /* WTNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNoDataView.h; sourceTree = "<group>"; };
+		30A2D9411D6E8B0A009AFA43 /* WTNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNoDataView.m; sourceTree = "<group>"; };
+		30A2D9431D6E8B1A009AFA43 /* WTNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNoDataView.xib; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
 		B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTHomeViewController.storyboard; sourceTree = "<group>"; };
@@ -873,6 +878,9 @@
 				B60FA0901D45C09100F98CF3 /* WTRefreshNormalHeader.m */,
 				B60FA0911D45C09100F98CF3 /* WTTopWindow.h */,
 				B60FA0921D45C09100F98CF3 /* WTTopWindow.m */,
+				30A2D9401D6E8B0A009AFA43 /* WTNoDataView.h */,
+				30A2D9411D6E8B0A009AFA43 /* WTNoDataView.m */,
+				30A2D9431D6E8B1A009AFA43 /* WTNoDataView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1724,6 +1732,7 @@
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
 				30A2D8D91D6B06EF009AFA43 /* light.css in Resources */,
 				B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */,
+				30A2D9441D6E8B1A009AFA43 /* WTNoDataView.xib in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
 				30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */,
@@ -1804,6 +1813,7 @@
 				B60FA1E91D45C09200F98CF3 /* WTNetworkState.m in Sources */,
 				B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */,
 				B6271D541D599CC700A66983 /* WTMyFollowingViewModel.m in Sources */,
+				30A2D9421D6E8B0A009AFA43 /* WTNoDataView.m in Sources */,
 				B60FA1861D45C09200F98CF3 /* WTTopicViewModel.m in Sources */,
 				B60FA17E1D45C09200F98CF3 /* WTWYViewController.m in Sources */,
 				B60FA1E81D45C09200F98CF3 /* NetworkTool.m in Sources */,

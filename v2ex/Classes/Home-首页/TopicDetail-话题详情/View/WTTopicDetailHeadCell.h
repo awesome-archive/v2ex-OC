@@ -7,9 +7,18 @@
 //  帖子标题
 
 #import <UIKit/UIKit.h>
-@class WTTopicDetailViewModel;
+@class WTTopicDetailViewModel, WTTopicDetailHeadCell;
+
+@protocol WTTopicDetailHeadCellDelegate <NSObject>
+
+- (void)topicDetailHeadCell:(WTTopicDetailHeadCell *)topDetailHeadCell didClickiconImageViewWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM;
+
+@end
+
 @interface WTTopicDetailHeadCell : UITableViewCell
 
 @property (nonatomic, strong) WTTopicDetailViewModel *topicDetailVM;
+
+@property (nonatomic, weak) id<WTTopicDetailHeadCellDelegate> delegate;
 
 @end

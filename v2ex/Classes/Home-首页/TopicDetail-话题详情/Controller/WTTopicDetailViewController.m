@@ -33,13 +33,25 @@
     return [UIStoryboard storyboardWithName: NSStringFromClass([self class]) bundle: nil].instantiateInitialViewController;
 }
 
-#pragma mark - 初始化
+#pragma mark - Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // 设置话题详情数据
     [self setupTopicDetailData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+
+    /*
+     navBar.barTintColor = WTColor(42, 183, 103);
+     navBar.translucent = NO;
+     */
+    // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark -设置话题详情数据

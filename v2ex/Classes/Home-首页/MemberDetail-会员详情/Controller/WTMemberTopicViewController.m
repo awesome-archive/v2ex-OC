@@ -9,6 +9,7 @@
 #import "WTMemberTopicViewController.h"
 #import "WTTopicDetailViewController.h"
 
+#import "WTNoDataView.h"
 #import "WTTopicCell.h"
 
 #import "WTTopicDetailViewModel.h"
@@ -18,15 +19,17 @@
 #import "WTRefreshAutoNormalFooter.h"
 
 #import "UITableView+FDTemplateLayoutCell.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
 
-@interface WTMemberTopicViewController ()
+@interface WTMemberTopicViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) WTMemberTopicViewModel *memberTopicVM;
 @end
 
 @implementation WTMemberTopicViewController
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,6 +38,14 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     // 设置View
     [self setupView];
     
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.tableView.width = WTScreenWidth;
+    self.tableView.height = WTScreenHeight;
 }
 
 // 设置View
@@ -57,11 +68,11 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
         self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
         
         // 空白tableView
-        //        self.tableView.emptyDataSetSource = self;
-        //        self.tableView.emptyDataSetDelegate = self;
+        self.tableView.emptyDataSetSource = self;
     }
     
     [self loadNewData];
+//    [self.tableView reloadData];
 }
 
 #pragma mark - 加载数据
@@ -137,5 +148,13 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 
+#pragma mark - DZNEmptyDataSetSource
+- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
+{
+    WTNoDataView *noDataView = [WTNoDataView noDataView];
+    noDataView.tipImageView.image = [UIImage imageNamed:@"no_topic"];
+    noDataView.tipTitleLabel.text = @"还没有发表过话题";
+    return noDataView;
+}
 
 @end

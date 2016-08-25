@@ -10,6 +10,7 @@
 #import "WTTopicDetailViewController.h"
 
 #import "WTReplyCell.h"
+#import "WTNoDataView.h"
 
 #import "WTTopicDetailViewModel.h"
 #import "WTReplyViewModel.h"
@@ -18,10 +19,11 @@
 #import "WTRefreshAutoNormalFooter.h"
 
 #import "UITableView+FDTemplateLayoutCell.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 
-@interface WTMemberReplyViewController ()
+@interface WTMemberReplyViewController () <DZNEmptyDataSetSource>
 @property (nonatomic, strong) WTReplyViewModel *replyVM;
 @end
 
@@ -58,8 +60,8 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
         self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
         
         // 空白tableView
-//        self.tableView.emptyDataSetSource = self;
-//        self.tableView.emptyDataSetDelegate = self;
+        self.tableView.emptyDataSetSource = self;
+
     }
     
     [self loadNewData];
@@ -135,4 +137,12 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
     [self.navigationController pushViewController: topicDetailVC animated: YES];
 }
 
+#pragma mark - DZNEmptyDataSetSource
+- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
+{
+    WTNoDataView *noDataView = [WTNoDataView noDataView];
+    noDataView.tipImageView.image = [UIImage imageNamed:@"no_topic"];
+    noDataView.tipTitleLabel.text = @"还没有回复过话题";
+    return noDataView;
+}
 @end

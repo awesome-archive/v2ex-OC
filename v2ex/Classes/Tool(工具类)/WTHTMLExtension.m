@@ -79,9 +79,14 @@
 
 + (BOOL)isNextPage:(TFHpple *)doc
 {
-    TFHppleElement *noNextPage = [doc peekAtSearchWithXPathQuery: @"//td[@class='super normal_page_right button disable_now']"];
-    if (noNextPage == nil)
-        return false;
-    return true;
+    // 电脑端
+    TFHppleElement *noNextPageWeb = [doc peekAtSearchWithXPathQuery: @"//td[@class='super normal_page_right button disable_now']"];
+    // 手机端
+    TFHppleElement *noNextPageMobile = [doc searchWithXPathQuery: @"//input[@class='super normal button']"].lastObject;
+    
+    NSString *noNextPageMobileValue = [noNextPageMobile objectForKey: @"value"];
+    if (noNextPageWeb ||  [noNextPageMobileValue containsString: @"下一页"])
+        return true;
+    return false;
 }
 @end

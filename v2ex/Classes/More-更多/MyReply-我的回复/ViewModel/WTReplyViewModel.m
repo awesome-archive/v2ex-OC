@@ -27,7 +27,7 @@
 {
     NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@/replies?p=%ld", username, self.page];
     
-    [[NetworkTool shareInstance] GETFirefoxWithUrlString: urlString success:^(id data) {
+    [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(id data) {
         
         [self getReplyItemsWithData: data];
         
@@ -57,7 +57,7 @@
     
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
-    TFHppleElement *mainE = [doc searchWithXPathQuery: @"//div[@id='Main']"].firstObject;
+    TFHppleElement *mainE = [doc searchWithXPathQuery: @"//div[@id='Wrapper']"].firstObject;
     NSArray<TFHppleElement *> *dockAreaEs = [mainE searchWithXPathQuery: @"//div[@class='dock_area']"];
     NSArray<TFHppleElement *> *innerEs = [mainE searchWithXPathQuery: @"//div[@class='inner']"];
     
@@ -71,10 +71,14 @@
             TFHppleElement *dockAreaE = dockAreaEs[i];
             TFHppleElement *innerE;
             
-            if (innerEsCount != dockAreaEsCount && i == dockAreaEs.count - 1)
+            if (innerEsCount == dockAreaEsCount && i == dockAreaEs.count - 1)
             {
                 NSArray<TFHppleElement *> *cellEs = [mainE searchWithXPathQuery: @"//div[@class='cell']"];
-                innerE = cellEs[cellEs.count - 2];
+//                if (cellEs.count > 2) {
+                
+                    innerE = cellEs[0];
+//                }
+                
             }
             else
             {

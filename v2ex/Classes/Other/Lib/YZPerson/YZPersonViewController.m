@@ -20,7 +20,6 @@
 @property (nonatomic, weak) UIButton *selectedBtn;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tabBarHeightLayoutCons;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeightLayoutCons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headViewCons;
 
 /** 各种控制器的offSet的值 */
@@ -256,6 +255,11 @@
     }
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 
+
+}
 
 @end

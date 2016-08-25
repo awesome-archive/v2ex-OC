@@ -34,6 +34,9 @@
     self.nodeLabel.layer.masksToBounds = YES;
     // 取消点击
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    self.iconImageView.userInteractionEnabled = YES;
+    [self.iconImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(iconImageViewClick)]];
 }
 
 - (void)setTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
@@ -53,6 +56,15 @@
     
     // 节点
     self.nodeLabel.text = topicDetailVM.nodeText;
+}
+
+#pragma mark - 事件
+- (void)iconImageViewClick
+{
+    if ([self.delegate respondsToSelector: @selector(topicDetailHeadCell:didClickiconImageViewWithTopicDetailVM:)])
+    {
+        [self.delegate topicDetailHeadCell: self didClickiconImageViewWithTopicDetailVM: self.topicDetailVM];
+    }
 }
 
 @end

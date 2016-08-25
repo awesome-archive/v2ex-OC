@@ -10,6 +10,7 @@
 #import "WTMemberTopicViewController.h"
 #import "WTMemberReplyViewController.h"
 
+#import "WTMemberTopicViewModel.h"
 #import "WTTopicDetailViewModel.h"
 
 #import "UIImage+Extension.h"
@@ -17,6 +18,8 @@
 #import "UIImageView+WebCache.h"
 
 @interface WTMemberDetailViewController ()
+
+@property (nonatomic, strong) WTMemberTopicViewModel *memberTopicVM;
 
 @end
 
@@ -27,6 +30,13 @@
 {
     [super viewDidLoad];
     
+    [self initView];
+    
+    [self initData];
+}
+
+- (void)initView
+{
     // 设置个人头像
     [self.personIconView sd_setImageWithURL: self.topicDetailVM.iconURL];
     
@@ -43,16 +53,17 @@
     [self addChildViewController: memberReplyVC];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)initData
 {
-    [super viewWillDisappear: animated];
+    self.memberTopicVM = [WTMemberTopicViewModel new];
     
-    /*
-     navBar.barTintColor = WTColor(42, 183, 103);
-     navBar.translucent = NO;
-     */
-    // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
-    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.memberTopicVM getMemberItemWithUsername: self.topicDetailVM.topicDetail.author success:^{
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end

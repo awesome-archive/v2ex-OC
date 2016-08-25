@@ -15,5 +15,7 @@
 
 // 个人明信片控件
 @property (weak, nonatomic) IBOutlet UIImageView *personCardView;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @end

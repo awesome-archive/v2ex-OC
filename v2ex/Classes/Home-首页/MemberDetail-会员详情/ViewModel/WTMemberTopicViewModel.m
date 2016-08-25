@@ -49,6 +49,37 @@
     }];
 }
 
+
+/**
+ *  根据用户名获取用户的信息
+ *
+ *  @param username 用户名
+ *  @param success  请求成功的回调
+ *  @param failure  请求失败的加高
+ */
+- (void)getMemberItemWithUsername:(NSString *)username success:(void(^)())success failure:(void(^)(NSError *error))failure
+{
+    NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@", username];
+    
+    [[NetworkTool shareInstance] GETFirefoxWithUrlString: urlString success:^(id data) {
+        
+        [self getMemberItemWithData: data];
+        
+        if (success)
+        {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+        
+    }];
+}
+
 /**
      <div class="cell item" style="">
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -142,6 +173,11 @@
     {
         [self.topics addObjectsFromArray: topics];
     }
+}
+
+- (void)getMemberItemWithData:(NSData *)data
+{
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
 }
 
 @end

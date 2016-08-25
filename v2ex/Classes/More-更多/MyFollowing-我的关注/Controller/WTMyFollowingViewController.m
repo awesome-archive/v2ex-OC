@@ -157,5 +157,4 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
     return true;
 }
 
-
 @end

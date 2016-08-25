@@ -34,7 +34,7 @@
 
 - (void)wt_placeholder:(NSString *)placeholder
 {
-    [self setPlaceholder: placeholder];
+    [self wt_placeholder: placeholder];
     
     self.placeholderColor = self.placeholderColor;
 }
