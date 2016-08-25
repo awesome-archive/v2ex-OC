@@ -32,23 +32,23 @@
 * 8、用户详情模块的添加
 
 ##第三方框架
-  * pod 'AFNetworking'
-  * pod 'SDWebImage'
-  * pod 'Masonry'
-  * pod 'MJRefresh'
-  * pod 'MJExtension'
-  * pod 'RegexKitLite'
-  * pod 'SVProgressHUD'
-  * pod "YYCategories"
-  * pod 'YYText'
-  * pod 'TYAttributedLabel'
-  * pod 'CTAssetsPickerController'
-  * pod 'IQKeyboardManager'
-  * pod 'UITableView+FDTemplateLayoutCell'
-  * pod "DKNightVersion"                      暂时没用，准备加入换肤功能
-  * pod 'FMDB'                               
-  * pod 'RongCloudIMKit'                      暂时没用，准备加入聊天功能
-  * pod 'DZNEmptyDataSet'
+  * `AFNetworking`
+  * `SDWebImage`
+  * `Masonry`
+  * `MJRefresh`
+  * `MJExtension`
+  * `RegexKitLite`
+  * `SVProgressHUD`
+  * `YYCategories`
+  * `YYText`				 暂时没用，准备加入MarkDown编辑器
+  * `TYAttributedLabel`
+  * `CTAssetsPickerController`
+  * `IQKeyboardManager`
+  * `UITableView+FDTemplateLayoutCell`
+  * `DKNightVersion`                      暂时没用，准备加入换肤功能
+  * `FMDB`                               
+  * `RongCloudIMKit`                      暂时没用，准备加入聊天功能
+  * `DZNEmptyDataSet`
 	
 
 
