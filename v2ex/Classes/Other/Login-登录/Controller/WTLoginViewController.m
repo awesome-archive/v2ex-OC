@@ -25,6 +25,8 @@
 /** 提示框View */
 @property (nonatomic, weak) WTTipView               *tipView;
 
+@property (nonatomic, strong) NSTimer               *timer;
+
 @end
 
 @implementation WTLoginViewController
@@ -50,6 +52,7 @@
     // 3、为背景图片添加动画
     [self setBgImageVAnimation];
     
+    [self timer];
 }
 
 /**
@@ -69,23 +72,23 @@
                
                 self.bgImageV.transform = CGAffineTransformIdentity;
                 
-            } completion:^(BOOL finished) {
-                
-                [self setBgImageVAnimation];
-                
-            }];
+            } completion: nil];
             
         }];
         
     });
 }
 
-
+- (void)stopTimer
+{
+    [self.timer invalidate];
+}
 
 #pragma mark - 事件
 #pragma mark 登陆
 - (IBAction)loginButton:(UIButton *)sender
 {
+    [self.view endEditing: YES];
     [self.loginButton setTitle: @"登陆中..." forState: UIControlStateNormal];
 
     NSString *username = self.usernameOrEmailTextField.text;
@@ -98,7 +101,7 @@
             self.loginSuccessBlock();
         }
         
-        [self dismissViewControllerAnimated: YES completion: nil];
+        [self closeButtonClick];
         
         
     } failure:^(NSError *error) {
@@ -115,6 +118,7 @@
 #pragma mark 关闭
 - (IBAction)closeButtonClick
 {
+    [self stopTimer];
     [self dismissViewControllerAnimated: YES completion: nil];
 }
 
@@ -151,6 +155,18 @@
     }
     return _tipView;
 }
+
+- (NSTimer *)timer
+{
+    if (_timer == nil)
+    {
+        _timer = [NSTimer scheduledTimerWithTimeInterval: 31 target: self selector: @selector(setBgImageVAnimation) userInfo: nil repeats: YES];
+        
+//        [_timer fire];
+    }
+    return _timer;
+}
+
 
 - (void)dealloc
 {
