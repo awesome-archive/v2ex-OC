@@ -20,7 +20,7 @@
 
 ##后续工作
 
-由于时间有限，目前只有v2ex的部分功能，我在后续的时间会逐渐的补上，目前主要工作为对项目代码的整理，使其代码更加优雅。大致欠缺内容
+由于时间有限，目前只有v2ex的部分功能，我在后续的时间会逐渐的补上，目前主要工作为对项目代码的整理，使其代码更加优雅。大致欠缺内容。项目中虽然有很多公共的部分，但是为了方便阅读代码，还是把各个模块独立出来了。
 
 * 1、刚刚注册的用户是有一段时间不能对话题做处理的，这时候对帖子操作是有问题的。
 * 2、注册不成功错误提示优化。
@@ -30,6 +30,26 @@
 * 6、用户可以上传高清头像   
 * 7、添加聊天的功能
 * 8、用户详情模块的添加
+
+##第三方框架
+  pod 'AFNetworking'
+	pod 'SDWebImage'
+	pod 'Masonry'
+	pod 'MJRefresh'
+	pod 'MJExtension'
+	pod 'RegexKitLite'
+	pod 'SVProgressHUD'
+	pod "YYCategories"
+	pod 'YYText'
+	pod 'TYAttributedLabel'
+	pod 'CTAssetsPickerController'
+	pod 'IQKeyboardManager'
+	pod 'UITableView+FDTemplateLayoutCell'
+	pod "DKNightVersion"                      暂时没用，准备加入换肤功能
+	pod 'FMDB'                               
+	pod 'RongCloudIMKit'                      暂时没用，准备加入聊天功能
+	pod 'DZNEmptyDataSet'
+	
 
 
 
