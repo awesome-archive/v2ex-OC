@@ -13,7 +13,7 @@
 
 #import "WTToolBarView.h"
 
-#import "UIImage+Extension.h"
+#import "UIViewController+Extension.h"
 
 #import "Masonry.h"
 
@@ -50,22 +50,15 @@
 {
     [super viewDidAppear: animated];
 
-    /*
-     navBar.barTintColor = WTColor(42, 183, 103);
-     navBar.translucent = NO;
-     */
-    // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
-    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
+    // 设置导航栏背景图片
+    [self setNavBackgroundImage];
 }
 
 #pragma mark -设置话题详情数据
 - (void)setupTopicDetailData
 {
-    UIImageView *greeenView = [[UIImageView alloc] init];
-    greeenView.image = [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]];
-    [self.view addSubview: greeenView];
-    greeenView.frame = CGRectMake(0, 0, WTScreenWidth, 64);
-
+    // 设置导航栏的View
+    [self setTempNavImageView];
     
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];

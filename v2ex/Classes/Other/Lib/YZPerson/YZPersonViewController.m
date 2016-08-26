@@ -58,7 +58,7 @@
     }];
     
     self.personIconView.layer.cornerRadius = 73 * 0.5;
- 
+    self.personIconView.layer.masksToBounds = YES;
     self.contentOffsetDict = [NSMutableDictionary dictionary];
 }
 
@@ -141,9 +141,9 @@
         
         [btn setTitle:childVc.title forState:UIControlStateNormal];
         
-        [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [btn setTitleColor: WTColor(111, 111, 111) forState:UIControlStateNormal];
         
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+        [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
         
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchDown];
         

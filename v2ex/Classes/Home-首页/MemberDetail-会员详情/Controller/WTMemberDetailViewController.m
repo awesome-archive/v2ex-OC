@@ -53,7 +53,6 @@
         self.iconURL = self.topicDetailVM.iconURL;
     }
     
-    
     // 设置个人头像
     [self.personIconView sd_setImageWithURL: self.iconURL];
     self.usernameLabel.text = self.author;

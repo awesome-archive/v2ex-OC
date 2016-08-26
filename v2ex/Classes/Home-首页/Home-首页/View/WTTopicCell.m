@@ -48,11 +48,13 @@ NS_ASSUME_NONNULL_BEGIN
     self.nodeBtn.layer.cornerRadius = 1.5;
     self.iconImageV.layer.cornerRadius = 5;
     self.iconImageV.layer.masksToBounds = YES;
+
     
-    // 3、添加点击手势
-    UITapGestureRecognizer *memeberDetailTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(tap)];
-    [self.iconImageV addGestureRecognizer: memeberDetailTap];
-    [self.authorLabel addGestureRecognizer: memeberDetailTap];
+    // 之前添加点击手势失效，所以才用两个按钮辅助添加点击事件
+//    // 3、添加点击手势
+//    UITapGestureRecognizer *memeberDetailTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(tap)];
+//    [self.iconImageV addGestureRecognizer: memeberDetailTap];
+//    [self.authorLabel addGestureRecognizer: memeberDetailTap];
 }
 
 - (void)setTopic:(WTTopic *)topic

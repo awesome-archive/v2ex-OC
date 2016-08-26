@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V2EX 第 30886 号会员，加入于 2012-12-19 11:39:54 +08:00，今日活跃度排名 9" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXK-Zx-La9">
-                            <rect key="frame" x="47.5" y="165" width="280" height="24"/>
+                            <rect key="frame" x="47" y="165" width="280" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="wQu-Wt-3o2"/>
                             </constraints>
@@ -79,32 +79,33 @@
                         <constraint firstAttribute="height" constant="44" id="GqX-mH-jZm"/>
                     </constraints>
                 </view>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bo-0I-hi7">
+                    <rect key="frame" x="0.0" y="243" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="JDk-hF-qfR"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="8bo-0I-hi7" firstAttribute="bottom" secondItem="mhe-Zi-tgj" secondAttribute="bottom" id="1EJ-rb-YUx"/>
                 <constraint firstItem="eWi-HB-Bjv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NlQ-Hm-mPo"/>
                 <constraint firstAttribute="bottom" secondItem="eWi-HB-Bjv" secondAttribute="bottom" id="Qjv-UJ-MwJ"/>
                 <constraint firstItem="QTc-8B-cDU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="T2O-dD-kmq"/>
                 <constraint firstAttribute="trailing" secondItem="mhe-Zi-tgj" secondAttribute="trailing" id="eR2-kv-GU9"/>
                 <constraint firstItem="mhe-Zi-tgj" firstAttribute="top" secondItem="QTc-8B-cDU" secondAttribute="bottom" id="eyB-zb-501"/>
                 <constraint firstItem="mhe-Zi-tgj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iJK-z6-Qq2"/>
+                <constraint firstAttribute="trailing" secondItem="8bo-0I-hi7" secondAttribute="trailing" id="lcX-Js-02V"/>
                 <constraint firstAttribute="trailing" secondItem="QTc-8B-cDU" secondAttribute="trailing" id="pZM-lB-yIA"/>
                 <constraint firstAttribute="trailing" secondItem="eWi-HB-Bjv" secondAttribute="trailing" id="vcQ-Vk-iHK"/>
                 <constraint firstItem="eWi-HB-Bjv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="w8X-kO-YBo"/>
                 <constraint firstItem="QTc-8B-cDU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xVl-In-OGf"/>
+                <constraint firstItem="8bo-0I-hi7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="z3C-Sm-PRF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="240.5" y="214.5"/>
         </view>
-        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hM0-eP-hu4" customClass="YZTableView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <connections>
-                <outlet property="tabBar" destination="mhe-Zi-tgj" id="FJA-3m-Nb5"/>
-            </connections>
-            <point key="canvasLocation" x="789" y="36"/>
-        </tableView>
     </objects>
     <resources>
         <image name="member_detail_normal" width="800" height="600"/>
