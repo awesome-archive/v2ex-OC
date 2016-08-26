@@ -24,9 +24,4 @@ target 'v2ex' do
 	pod 'RongCloudIMKit'
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
-	pod 'ShareSDK3'
-	pod 'ShareSDK3/ShareSDKUI'
-	pod 'ShareSDK3/ShareSDKPlatforms/QQ'
- 	pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
- 	pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
 end

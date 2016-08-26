@@ -49,4 +49,14 @@
 
 // 返回按钮
 + (UIBarButtonItem *)backItemWithImage:(UIImage *)image highImage:(UIImage *)highImage target:( id)target action:(SEL)action title:(NSString *)title;
+
+/**
+ *  创建分享按钮
+ *
+ *  @param target target
+ *  @param action action
+ *
+ *  @return barButtonItem
+ */
++ (UIBarButtonItem *)createShareItemWithTarget:(id)target action:(SEL)action;
 @end

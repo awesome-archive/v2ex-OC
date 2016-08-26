@@ -150,6 +150,7 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     WTTopic *topic = self.memberTopicVM.topics[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
     detailVC.topicDetailUrl = topic.detailUrl;
+    detailVC.topicTitle = topic.title;
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 

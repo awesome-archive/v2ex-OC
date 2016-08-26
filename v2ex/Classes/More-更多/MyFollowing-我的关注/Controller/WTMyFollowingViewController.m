@@ -138,7 +138,9 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
-    topicDetailVC.topicDetailUrl = self.myFollowingVM.myFollowingItems[indexPath.row].detailUrl;
+    WTMyFollowingItem *myFollowingItem = self.myFollowingVM.myFollowingItems[indexPath.row];
+    topicDetailVC.topicDetailUrl = myFollowingItem.detailUrl;
+    topicDetailVC.topicTitle = myFollowingItem.title;
     [self.navigationController pushViewController: topicDetailVC animated: YES];
 }
 

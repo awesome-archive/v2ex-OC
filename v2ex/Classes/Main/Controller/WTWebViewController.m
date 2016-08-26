@@ -11,6 +11,7 @@
 #import "WTShareSDKTool.h"
 #import "UIBarButtonItem+Extension.h"
 
+
 #define WTEstimatedProgress @"estimatedProgress"
 #define WTCanGoBack @"canGoBack"
 #define WTCanGoForward @"canGoForward"
@@ -36,7 +37,7 @@
     self.prevBtn.enabled = NO;
     self.nextBtn.enabled = NO;
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_share_normal"] highImage: nil frame: CGRectMake(0, 0, 25, 25) addTarget: self action: @selector(shareClick)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareClick)];
 }
 
 

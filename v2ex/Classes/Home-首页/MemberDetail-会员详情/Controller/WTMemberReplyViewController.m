@@ -133,7 +133,9 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
-    topicDetailVC.topicDetailUrl = self.replyVM.replyItems[indexPath.row].detailUrl;
+    WTReplyItem *replyItem = self.replyVM.replyItems[indexPath.row];
+    topicDetailVC.topicDetailUrl = replyItem.detailUrl;
+    topicDetailVC.topicTitle = replyItem.title;
     [self.navigationController pushViewController: topicDetailVC animated: YES];
 }
 

@@ -11,8 +11,10 @@
 
 #import "WTTopicViewModel.h"
 
+#import "WTShareSDKTool.h"
 #import "WTToolBarView.h"
 
+#import "UIBarButtonItem+Extension.h"
 #import "UIViewController+Extension.h"
 
 #import "Masonry.h"
@@ -59,6 +61,8 @@
 {
     // 设置导航栏的View
     [self setTempNavImageView];
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareItemClick)];
     
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];
@@ -120,6 +124,14 @@
         [vc setupData];
     };
     [self presentViewController: loginVC animated: YES completion: nil];
+}
+
+- (void)shareItemClick
+{
+    NSString *url = [self.topicDetailUrl stringByReplacingOccurrencesOfString: @"http:/" withString: @""];
+    
+    NSString *text = [self.topicTitle stringByAppendingString: [NSString stringWithFormat: @"http://%@", url]];
+    [WTShareSDKTool shareWithText: text url: url title: @"v2ex客户端"];
 }
 
 - (void)dealloc

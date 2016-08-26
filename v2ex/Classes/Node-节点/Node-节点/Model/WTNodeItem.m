@@ -27,7 +27,7 @@ MJCodingImplementation
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"uid:%ld, title:%@", self.uid, self.title];
+    return [NSString stringWithFormat:@"uid:%@, title:%@", self.uid, self.title];
 }
 
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WTTopicViewModel;
-@interface WTTopicDetailViewController : UIViewController
 
+@interface WTTopicDetailViewController : UIViewController
+/** 帖子URL */
 @property (nonatomic, strong) NSString *topicDetailUrl;
+/** 帖子标题 */
+@property (nonatomic, strong) NSString *topicTitle;
 
 /**
  *  更新页数的Block

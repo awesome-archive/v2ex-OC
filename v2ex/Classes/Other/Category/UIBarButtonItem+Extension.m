@@ -122,4 +122,9 @@
     return [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
 }
+
++ (UIBarButtonItem *)createShareItemWithTarget:(id)target action:(SEL)action
+{
+    return [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_share_normal"] highImage: nil frame: CGRectMake(0, 0, 25, 25) addTarget: target action: action];
+}
 @end

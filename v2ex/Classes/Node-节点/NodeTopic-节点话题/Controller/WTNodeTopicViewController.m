@@ -165,6 +165,7 @@ NSString * const ID = @"ID";
     WTTopic *topic = self.topicVM.topics[indexPath.row];
     WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
     detailVC.topicDetailUrl = topic.detailUrl;
+    detailVC.topicTitle = topic.title;
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 
