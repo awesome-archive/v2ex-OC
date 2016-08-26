@@ -44,6 +44,13 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - ShareSDK3 (3.4.0):
+    - ShareSDK3/ShareSDK (= 3.4.0)
+  - ShareSDK3/ShareSDK (3.4.0)
+  - ShareSDK3/ShareSDKPlatforms/QQ (3.4.0)
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.4.0)
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.4.0)
+  - ShareSDK3/ShareSDKUI (3.4.0)
   - SVProgressHUD (2.0.3)
   - TYAttributedLabel (2.6.1)
   - UITableView+FDTemplateLayoutCell (1.4)
@@ -66,6 +73,11 @@ DEPENDENCIES:
   - RegexKitLite
   - RongCloudIMKit
   - SDWebImage
+  - ShareSDK3
+  - ShareSDK3/ShareSDKPlatforms/QQ
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo
+  - ShareSDK3/ShareSDKPlatforms/WeChat
+  - ShareSDK3/ShareSDKUI
   - SVProgressHUD
   - TYAttributedLabel
   - UITableView+FDTemplateLayoutCell
@@ -87,12 +99,13 @@ SPEC CHECKSUMS:
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RongCloudIMKit: 880e0eefb689051a754f1e10a19c735fcf3049a4
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  ShareSDK3: df89140111729eae7a2bf06688372af969322a37
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   TYAttributedLabel: 4785820dc8d7935446f49f1de4daa0f99ebcba8a
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
   YYCategories: 0fd4d9eb0994d8d0e355beb4081c8f7202a82b7b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: 57d72301ab74896d2390d5c968a22ee5e9d6a59c
+PODFILE CHECKSUM: cbbd92c08ef0a0cc24656c3138842ecb17b8dd2c
 
 COCOAPODS: 1.0.1

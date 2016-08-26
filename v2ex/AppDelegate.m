@@ -7,13 +7,19 @@
 //
 
 #import "AppDelegate.h"
+
 #import "WTTabBarController.h"
+
+#import "WTNodeViewModel.h"
 #import "WTAccountViewModel.h"
-#import "IQKeyboardManager.h"
+
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
-#import "WTNodeViewModel.h"
+#import "WTShareSDKTool.h"
+
+#import "IQKeyboardManager.h"
 #import <RongIMKit/RongIMKit.h>
+
 @interface AppDelegate ()
 
 @end
@@ -45,7 +51,7 @@
     [self setup3DTouchItems: application];
     
     // 8、分享SDK
-//    [WTShareSDKTool initShareSDK];
+    [WTShareSDKTool initShareSDK];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
