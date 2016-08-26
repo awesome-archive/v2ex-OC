@@ -24,4 +24,6 @@
 
 @property (nonatomic, strong) NSString *location;
 
+@property (nonatomic, strong) NSString *detail;
+
 @end

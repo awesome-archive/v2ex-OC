@@ -68,6 +68,7 @@ CGFloat const moreHeaderViewH = 150;
     UITableView *tableView = [UITableView new];
     
     {
+        self.footerContentView.height = WTScreenHeight -  moreHeaderViewH - WTTabBarHeight;
         tableView.frame = self.footerContentView.bounds;
         [self.footerContentView addSubview: tableView];
         self.tableView = tableView;
@@ -294,7 +295,7 @@ CGFloat const moreHeaderViewH = 150;
         UIView *footerContentView = [UIView new];
         footerContentView.layer.cornerRadius = 5;
         footerContentView.layer.masksToBounds = YES;
-        footerContentView.frame = CGRectMake(0, moreHeaderViewH, WTScreenWidth, WTScreenHeight - moreHeaderViewH);
+        footerContentView.frame = CGRectMake(0, moreHeaderViewH, WTScreenWidth, WTScreenHeight - moreHeaderViewH - WTTabBarHeight);
         [self.view addSubview: footerContentView];
         _footerContentView = footerContentView;
     }

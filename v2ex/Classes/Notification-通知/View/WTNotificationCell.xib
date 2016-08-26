@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -46,10 +46,19 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@misaka14 目前人非常之多" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPf-ri-pUl">
                         <rect key="frame" x="51" y="64" width="269" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="oxO-u2-vXp">
+                        <rect key="frame" x="61" y="57" width="9" height="5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="9" id="GmO-Ae-bgN"/>
+                            <constraint firstAttribute="height" constant="5" id="pE7-1a-7PQ"/>
+                        </constraints>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topic_time_normal" translatesAutoresizingMaskIntoConstraints="NO" id="VTY-55-zU2">
                         <rect key="frame" x="46" y="89" width="14" height="14"/>
                         <constraints>
@@ -72,11 +81,13 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="boU-m5-B2B" firstAttribute="top" secondItem="oxO-u2-vXp" secondAttribute="bottom" id="3po-l2-Qqa"/>
                     <constraint firstItem="boU-m5-B2B" firstAttribute="top" secondItem="X2V-D3-NkZ" secondAttribute="bottom" constant="7.5" id="5z4-Pg-82J"/>
                     <constraint firstItem="boU-m5-B2B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="46" id="7Il-Fn-yIV"/>
                     <constraint firstAttribute="trailing" secondItem="X2V-D3-NkZ" secondAttribute="trailing" constant="30" id="9FM-ZX-TAk"/>
                     <constraint firstAttribute="trailing" secondItem="aLD-Ts-gmK" secondAttribute="trailing" constant="8" id="B6b-gR-1Nv"/>
                     <constraint firstItem="X2V-D3-NkZ" firstAttribute="top" secondItem="l99-dq-gFW" secondAttribute="top" id="BpG-U9-CZo"/>
+                    <constraint firstItem="boU-m5-B2B" firstAttribute="top" secondItem="oxO-u2-vXp" secondAttribute="bottom" id="DDb-tA-8K6"/>
                     <constraint firstItem="aLD-Ts-gmK" firstAttribute="leading" secondItem="zX0-EV-O03" secondAttribute="trailing" id="FxS-Cb-egc"/>
                     <constraint firstItem="l99-dq-gFW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="GLx-6k-1gH"/>
                     <constraint firstItem="zX0-EV-O03" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="H8G-vZ-RfE"/>
@@ -84,6 +95,7 @@
                     <constraint firstItem="X2V-D3-NkZ" firstAttribute="leading" secondItem="l99-dq-gFW" secondAttribute="trailing" constant="8" id="Jep-SU-tCu"/>
                     <constraint firstItem="hPf-ri-pUl" firstAttribute="trailing" secondItem="boU-m5-B2B" secondAttribute="trailing" constant="-5" id="Kvu-5T-fmf"/>
                     <constraint firstItem="VTY-55-zU2" firstAttribute="leading" secondItem="boU-m5-B2B" secondAttribute="leading" id="PMX-uI-dWF"/>
+                    <constraint firstItem="oxO-u2-vXp" firstAttribute="leading" secondItem="hPf-ri-pUl" secondAttribute="leading" constant="10" id="REZ-F4-FFH"/>
                     <constraint firstItem="l99-dq-gFW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="RqT-EP-Bia"/>
                     <constraint firstItem="hPf-ri-pUl" firstAttribute="top" secondItem="boU-m5-B2B" secondAttribute="top" constant="2" id="TA8-wi-PY3"/>
                     <constraint firstItem="aLD-Ts-gmK" firstAttribute="trailing" secondItem="uoG-VM-78M" secondAttribute="trailing" constant="10" id="UzI-Rq-N48"/>
@@ -103,6 +115,7 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="3po-l2-Qqa"/>
                         <exclude reference="wzs-kh-0hM"/>
                         <exclude reference="FxS-Cb-egc"/>
                     </mask>
@@ -119,6 +132,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="reply_arrow" width="4" height="2"/>
         <image name="topic_delete_normal" width="32" height="32"/>
         <image name="topic_time_normal" width="32" height="32"/>
     </resources>

@@ -178,6 +178,15 @@
 - (void)getMemberItemWithData:(NSData *)data
 {
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    
+    TFHppleElement *grayE = [doc peekAtSearchWithXPathQuery: @"//span[@class='gray']"];
+    
+    
+    WTMemberItem *memberItem = [WTMemberItem new];
+    
+    memberItem.detail = [grayE.content stringByReplacingOccurrencesOfString: @"+08:00" withString: @""];
+    
+    self.memberItem = memberItem;
 }
 
 @end

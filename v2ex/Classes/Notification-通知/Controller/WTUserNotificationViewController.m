@@ -10,6 +10,7 @@
 #import "WTLoginViewController.h"
 #import "WTTopicDetailViewController.h"
 
+#import "WTNoDataView.h"
 #import "WTNotificationCell.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTRefreshAutoNormalFooter.h"
@@ -31,6 +32,10 @@ static NSString * const ID = @"notificationCell";
 @property (nonatomic, strong) NSString                         *urlString;
 /** 页数*/
 @property (nonatomic, assign) NSInteger                        page;
+
+@property (nonatomic, assign) WTTableViewType                  tableViewType;
+/** 记录第一次进入APP登录的状态 */
+@property (nonatomic, assign, getter=isLogin) BOOL             login;
 
 @end
 
@@ -63,6 +68,7 @@ static NSString * const ID = @"notificationCell";
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,13 +76,17 @@ static NSString * const ID = @"notificationCell";
     [super viewWillAppear: animated];
     
     // 2、登陆过
-    if ([[WTAccountViewModel shareInstance] isLogin])
+    if ([[WTAccountViewModel shareInstance] isLogin] && self.login == NO)
     {
+        self.login = YES;
         // 2、开始下拉刷新
         [self.tableView.mj_header beginRefreshing];
+        
     }
     else
     {
+        self.tableViewType = WTTableViewTypeLogout;
+        self.login = NO;
         [self.notificationVM.notificationItems removeAllObjects];
         [self.tableView reloadData];
     }
@@ -177,32 +187,24 @@ static NSString * const ID = @"notificationCell";
 }
 
 #pragma mark - DZNEmptyDataSetSource
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return nil;
-}
-
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject: [UIColor colorWithHexString: WTNormalColor] forKey: NSForegroundColorAttributeName];
-    
-    return [[NSAttributedString alloc] initWithString: @"登录" attributes: dict];
-}
-
-#pragma mark - DZNEmptyDataSetDelegate
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
-{
-    [self presentViewController: [WTLoginViewController new] animated: YES completion: nil];
-}
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    if ([[WTAccountViewModel shareInstance] isLogin])
+    UIView *view;
+    if (self.tableViewType == WTTableViewTypeLogout)
     {
-        return false;
+        WTNoDataView *noDataView = [WTNoDataView noDataView];
+        noDataView.tipImageView.image = [UIImage imageNamed:@"no_notification"];
+        noDataView.tipTitleLabel.text = @"快去发表主题吧";
+        view = noDataView;
     }
-    return true;
+    else if(self.tableViewType == WTTableViewTypeNoData)
+    {
+        UIButton *loginBtn = [UIButton new];
+        loginBtn.width = 100;
+        loginBtn.height = 30;
+        [loginBtn setTitle: @"登陆" forState: UIControlStateNormal];
+        view = loginBtn;
+    }
+    return view;
 }
-
 @end

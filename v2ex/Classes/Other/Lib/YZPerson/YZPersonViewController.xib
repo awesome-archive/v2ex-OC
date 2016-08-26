@@ -30,7 +30,7 @@
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTc-8B-cDU" userLabel="头部视图">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member_detail_normal2" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-nh-r6o">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member_detail_normal" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-nh-r6o">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
@@ -44,16 +44,16 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="misaka15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyw-rj-lqD">
                             <rect key="frame" x="157" y="144" width="59.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V2EX 第 179675 号会员，加入于 2016-06-30 12:21:19 +08:00，今日活跃度排名" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXK-Zx-La9">
-                            <rect key="frame" x="47.5" y="169" width="280" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V2EX 第 30886 号会员，加入于 2012-12-19 11:39:54 +08:00，今日活跃度排名 9" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXK-Zx-La9">
+                            <rect key="frame" x="47.5" y="165" width="280" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="wQu-Wt-3o2"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -61,7 +61,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="iiy-nh-r6o" secondAttribute="trailing" id="0m9-V2-fkp"/>
                         <constraint firstItem="iiy-nh-r6o" firstAttribute="leading" secondItem="QTc-8B-cDU" secondAttribute="leading" id="0vY-dx-xTj"/>
-                        <constraint firstItem="ZXK-Zx-La9" firstAttribute="top" secondItem="vyw-rj-lqD" secondAttribute="bottom" constant="8" id="9Q1-sW-Eoh"/>
+                        <constraint firstItem="ZXK-Zx-La9" firstAttribute="top" secondItem="vyw-rj-lqD" secondAttribute="bottom" constant="4" id="9Q1-sW-Eoh"/>
                         <constraint firstItem="iiy-nh-r6o" firstAttribute="top" secondItem="QTc-8B-cDU" secondAttribute="top" id="F0z-ld-3Sm"/>
                         <constraint firstItem="vyw-rj-lqD" firstAttribute="top" secondItem="K2I-6b-DOy" secondAttribute="bottom" constant="8" id="H1g-jv-dXK"/>
                         <constraint firstItem="vyw-rj-lqD" firstAttribute="centerX" secondItem="QTc-8B-cDU" secondAttribute="centerX" id="Sji-OT-7Lg"/>
@@ -107,7 +107,7 @@
         </tableView>
     </objects>
     <resources>
-        <image name="member_detail_normal2" width="800" height="800"/>
+        <image name="member_detail_normal" width="800" height="600"/>
         <image name="timo" width="200" height="200"/>
     </resources>
 </document>

@@ -23,4 +23,5 @@ target 'v2ex' do
 	pod 'FMDB'
 	pod 'RongCloudIMKit'
 	pod 'DZNEmptyDataSet'
+	pod 'pop'
 end
