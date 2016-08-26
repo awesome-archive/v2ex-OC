@@ -7,20 +7,24 @@
 //  话题控制器
 
 #import "WTTopicViewController.h"
-#import "WTTopicCell.h"
-#import "WTRefreshNormalHeader.h"
-#import "WTRefreshAutoNormalFooter.h"
+#import "WTMemberDetailViewController.h"
 #import "WTTopicDetailViewController.h"
-#import "NSString+YYAdd.h"
-#import "UITableView+FDTemplateLayoutCell.h"
+
+#import "WTTopicCell.h"
+
 #import "NetworkTool.h"
 #import "WTTopicViewModel.h"
+#import "WTRefreshNormalHeader.h"
+#import "WTRefreshAutoNormalFooter.h"
+
+#import "NSString+YYAdd.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 // ======
 #import "WTNode.h"
 
 static NSString *const ID = @"topicCell";
 
-@interface WTTopicViewController () <UIViewControllerPreviewingDelegate>
+@interface WTTopicViewController () <UIViewControllerPreviewingDelegate, WTTopicCellDelegate>
 
 @property (nonatomic, strong) WTTopicViewModel                    *topicVM;
 
@@ -109,7 +113,7 @@ static NSString *const ID = @"topicCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WTTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: ID];
-    
+    cell.delegate = self;
     // 设置数据
     cell.topic = self.topicVM.topics[indexPath.row];
     return cell;
@@ -133,6 +137,14 @@ static NSString *const ID = @"topicCell";
     return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
         cell.topic = self.topicVM.topics[indexPath.row];
     }];
+}
+
+#pragma mark - WTTopicCellDelegate
+- (void)topicCell:(WTTopicCell *)topicCell didClickMemberDetailAreaWithTopic:(WTTopic *)topic
+{
+    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    memeberDetailVC.topic = topic;
+    [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
 
 #pragma mark - UIViewControllerPreviewingDelegate 测试数据

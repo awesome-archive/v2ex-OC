@@ -7,9 +7,10 @@
 //
 
 #import "YZPersonTableViewController.h"
-@class WTTopicDetailViewModel;
+
 @interface WTMemberReplyViewController : YZPersonTableViewController
 
-@property (nonatomic, strong) WTTopicDetailViewModel *topicDetailVM;
+@property (nonatomic, strong) NSString *author;
+
 
 @end

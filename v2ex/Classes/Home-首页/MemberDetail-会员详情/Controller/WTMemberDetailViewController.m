@@ -22,6 +22,10 @@
 
 @property (nonatomic, strong) WTMemberTopicViewModel *memberTopicVM;
 
+@property (nonatomic, strong) NSString *author;
+
+@property (nonatomic, strong) NSURL    *iconURL;
+
 @end
 
 @implementation WTMemberDetailViewController
@@ -38,9 +42,21 @@
 
 - (void)initView
 {
+    if (self.topicDetailVM == nil)
+    {
+        self.author = self.topic.author;
+        self.iconURL = self.topic.iconURL;
+    }
+    else
+    {
+        self.author = self.topicDetailVM.topicDetail.author;
+        self.iconURL = self.topicDetailVM.iconURL;
+    }
+    
+    
     // 设置个人头像
-    [self.personIconView sd_setImageWithURL: self.topicDetailVM.iconURL];
-    self.usernameLabel.text = self.topicDetailVM.topicDetail.author;
+    [self.personIconView sd_setImageWithURL: self.iconURL];
+    self.usernameLabel.text = self.author;
     self.detailLabel.alpha = 0;
     self.personIconView.alpha = 0;
     self.usernameLabel.alpha = 0;
@@ -48,13 +64,14 @@
     // 1、添加主题控制器
     WTMemberTopicViewController *memberTopicVC = [[WTMemberTopicViewController alloc] init];
     memberTopicVC.title = @"主题";
-    memberTopicVC.topicDetailVM = self.topicDetailVM;
+    memberTopicVC.author = self.author;
+    memberTopicVC.iconURL = self.iconURL;
     [self addChildViewController: memberTopicVC];
     
     // 2、添加回复控制器
     WTMemberReplyViewController *memberReplyVC = [[WTMemberReplyViewController alloc] init];
     memberReplyVC.title = @"回复";
-    memberReplyVC.topicDetailVM = self.topicDetailVM;
+    memberReplyVC.author = self.author;
     [self addChildViewController: memberReplyVC];
 }
 
@@ -63,7 +80,7 @@
     self.memberTopicVM = [WTMemberTopicViewModel new];
     
     __weak typeof(self) weakSelf = self;
-    [self.memberTopicVM getMemberItemWithUsername: self.topicDetailVM.topicDetail.author success:^{
+    [self.memberTopicVM getMemberItemWithUsername: self.author success:^{
         
         [weakSelf setMemberDetailInfo];
         
@@ -96,7 +113,7 @@
     alphaAnim.duration = 0.5;
     alphaAnim.toValue = @1.0;
     
-    // 3、添加动画
+    
     [self.detailLabel pop_addAnimation: scaleAnim forKey: kPOPViewScaleXY];
     [self.detailLabel pop_addAnimation: alphaAnim forKey: kPOPViewAlpha];
     

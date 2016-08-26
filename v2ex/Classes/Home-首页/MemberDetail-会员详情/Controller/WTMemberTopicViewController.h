@@ -7,7 +7,11 @@
 //
 
 #import "YZPersonTableViewController.h"
-@class WTTopicDetailViewModel;
+
 @interface WTMemberTopicViewController : YZPersonTableViewController
-@property (nonatomic, strong) WTTopicDetailViewModel *topicDetailVM;
+
+@property (nonatomic, strong) NSString *author;
+
+@property (nonatomic, strong) NSURL    *iconURL;
+
 @end

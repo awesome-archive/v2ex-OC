@@ -7,12 +7,16 @@
 //  话题详情控制器
 
 #import "WTTopicDetailViewController.h"
-#import "WTTopicViewModel.h"
 #import "WTTopicDetailTableViewController.h"
-#import "Masonry.h"
+
+#import "WTTopicViewModel.h"
+
 #import "WTToolBarView.h"
 
 #import "UIImage+Extension.h"
+
+#import "Masonry.h"
+
 @interface WTTopicDetailViewController ()
 /** 已经登陆过的View */
 @property (weak, nonatomic) IBOutlet UIView             *normalView;

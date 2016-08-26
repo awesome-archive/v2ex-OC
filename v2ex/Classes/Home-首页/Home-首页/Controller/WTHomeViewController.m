@@ -7,9 +7,13 @@
 //  首页控制器
 
 #import "WTHomeViewController.h"
-#import "MJExtension.h"
-#import "WTURLConst.h"
 #import "WTTopicDetailViewController.h"
+
+#import "WTURLConst.h"
+
+#import "UIImage+Extension.h"
+
+#import "MJExtension.h"
 
 @interface WTHomeViewController ()  
 /** WTNode数组*/
@@ -17,12 +21,6 @@
 @end
 
 @implementation WTHomeViewController
-
-// 重写初始化方法
-- (instancetype)init
-{
-    return [UIStoryboard storyboardWithName: NSStringFromClass([WTHomeViewController class]) bundle: nil].instantiateInitialViewController;
-}
 
 - (void)viewDidLoad
 {
@@ -35,8 +33,25 @@
     [self setupAllChildViewControllers];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIImageView *greeenView = [[UIImageView alloc] init];
+    greeenView.image = [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]];
+    [self.view addSubview: greeenView];
+    greeenView.frame = CGRectMake(0, 0, WTScreenWidth, 64);
 
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    /*
+     navBar.barTintColor = WTColor(42, 183, 103);
+     navBar.translucent = NO;
+     */
+    // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
+}
+
 #pragma mark - Lazy method
 #pragma mark nodes
 - (NSArray<WTNode *> *)nodes

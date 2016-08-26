@@ -48,6 +48,11 @@ NS_ASSUME_NONNULL_BEGIN
     self.nodeBtn.layer.cornerRadius = 1.5;
     self.iconImageV.layer.cornerRadius = 5;
     self.iconImageV.layer.masksToBounds = YES;
+    
+    // 3、添加点击手势
+    UITapGestureRecognizer *memeberDetailTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(tap)];
+    [self.iconImageV addGestureRecognizer: memeberDetailTap];
+    [self.authorLabel addGestureRecognizer: memeberDetailTap];
 }
 
 - (void)setTopic:(WTTopic *)topic
@@ -57,7 +62,6 @@ NS_ASSUME_NONNULL_BEGIN
     // 1、头像
     [self.iconImageV sd_setImageWithURL: topic.iconURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.iconImageV.image = [image roundImageWithCornerRadius: 3];
-        self.iconImageV.image = image;
     }];
     
     // 2、标题
@@ -106,6 +110,17 @@ NS_ASSUME_NONNULL_BEGIN
         self.nodeBtn.height = 15;
     }
 }
+
+#pragma mark - 事件
+#pragma mark 用户详情点击事件
+- (IBAction)memeberDetailBtnClick
+{
+    if ([self.delegate respondsToSelector: @selector(topicCell:didClickMemberDetailAreaWithTopic:)])
+    {
+        [self.delegate topicCell: self didClickMemberDetailAreaWithTopic: self.topic];
+    }
+}
+
 
 @end
 NS_ASSUME_NONNULL_END

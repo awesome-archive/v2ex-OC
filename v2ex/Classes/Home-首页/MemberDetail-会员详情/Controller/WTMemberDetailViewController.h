@@ -7,9 +7,11 @@
 //
 
 #import "YZPersonViewController.h"
-@class WTTopicDetailViewModel;
+@class WTTopicDetailViewModel, WTTopic;
 @interface WTMemberDetailViewController : YZPersonViewController
 
 @property (nonatomic, strong) WTTopicDetailViewModel *topicDetailVM;
+
+@property (nonatomic, strong) WTTopic                *topic;
 
 @end

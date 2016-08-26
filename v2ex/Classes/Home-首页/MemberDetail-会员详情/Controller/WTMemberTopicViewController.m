@@ -85,7 +85,7 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     self.tableViewType = WTTableViewTypeRefresh;
     
     __weak typeof (self) weakSelf = self;
-    [self.memberTopicVM getMemberTopicsWithUsername: self.topicDetailVM.topicDetail.author iconURL: self.topicDetailVM.iconURL success:^{
+    [self.memberTopicVM getMemberTopicsWithUsername: self.author iconURL: self.iconURL success:^{
         
         weakSelf.tableViewType = weakSelf.memberTopicVM.topics.count == 0 ? WTTableViewTypeNoData : WTTableViewTypeNormal;
         [weakSelf.tableView reloadData];
@@ -102,7 +102,7 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
 {
     if (self.memberTopicVM.isNextPage)
     {
-        [self.memberTopicVM getMemberTopicsWithUsername: self.topicDetailVM.topicDetail.author iconURL: self.topicDetailVM.iconURL success:^{
+        [self.memberTopicVM getMemberTopicsWithUsername: self.author iconURL: self.iconURL success:^{
             
             [self.tableView reloadData];
             

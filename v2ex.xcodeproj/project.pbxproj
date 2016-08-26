@@ -37,7 +37,6 @@
 		30E497AF1D6FE6C000C2A6DA /* WTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
-		B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */; };
 		B60FA17D1D45C09200F98CF3 /* WTTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0531D45C09100F98CF3 /* WTTopicViewController.m */; };
 		B60FA17E1D45C09200F98CF3 /* WTWYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0551D45C09100F98CF3 /* WTWYViewController.m */; };
 		B60FA17F1D45C09200F98CF3 /* WTTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0581D45C09100F98CF3 /* WTTopic.m */; };
@@ -233,7 +232,6 @@
 		30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRefreshView.xib; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
-		B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTHomeViewController.storyboard; sourceTree = "<group>"; };
 		B60FA0521D45C09100F98CF3 /* WTTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicViewController.h; sourceTree = "<group>"; };
 		B60FA0531D45C09100F98CF3 /* WTTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicViewController.m; sourceTree = "<group>"; };
 		B60FA0541D45C09100F98CF3 /* WTWYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTWYViewController.h; sourceTree = "<group>"; };
@@ -744,7 +742,6 @@
 			children = (
 				B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */,
 				B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */,
-				B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */,
 				B60FA0521D45C09100F98CF3 /* WTTopicViewController.h */,
 				B60FA0531D45C09100F98CF3 /* WTTopicViewController.m */,
 				B60FA0541D45C09100F98CF3 /* WTWYViewController.h */,
@@ -1722,7 +1719,6 @@
 				B69481781C462267001ABDA3 /* Assets.xcassets in Resources */,
 				B6271D511D599AF000A66983 /* WTMyFollowingCell.xib in Resources */,
 				30A2D8DE1D6B071C009AFA43 /* nodeitem.sqlite in Resources */,
-				B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */,
 				B60FA1DC1D45C09200F98CF3 /* WTRegisterViewController.xib in Resources */,
 				B60FA1C21D45C09200F98CF3 /* WTNodeTopicHeaderView.xib in Resources */,
 				B60FA1971D45C09200F98CF3 /* WTWebViewController.xib in Resources */,

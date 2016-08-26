@@ -73,7 +73,7 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 {
     self.replyVM.page = 1;
     
-    [self.replyVM getReplyItemsWithUsername: self.topicDetailVM.topicDetail.author success:^{
+    [self.replyVM getReplyItemsWithUsername: self.author success:^{
         
         [self.tableView reloadData];
         
@@ -91,7 +91,7 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
     {
         self.replyVM.page ++;
         
-        [self.replyVM getReplyItemsWithUsername: self.topicDetailVM.topicDetail.author success:^{
+        [self.replyVM getReplyItemsWithUsername: self.author success:^{
             
             [self.tableView reloadData];
             
