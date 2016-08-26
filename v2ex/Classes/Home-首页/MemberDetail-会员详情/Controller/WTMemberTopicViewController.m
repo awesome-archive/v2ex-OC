@@ -9,9 +9,9 @@
 #import "WTMemberTopicViewController.h"
 #import "WTTopicDetailViewController.h"
 
-#import "WTNoDataView.h"
 #import "WTTopicCell.h"
 
+#import "WTConst.h"
 #import "WTTopicDetailViewModel.h"
 #import "WTMemberTopicViewModel.h"
 
@@ -24,7 +24,9 @@
 NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
 
 @interface WTMemberTopicViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+
 @property (nonatomic, strong) WTMemberTopicViewModel *memberTopicVM;
+
 @end
 
 @implementation WTMemberTopicViewController
@@ -80,15 +82,18 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
 - (void)loadNewData
 {
     self.memberTopicVM.page = 1;
+    self.tableViewType = WTTableViewTypeRefresh;
     
+    __weak typeof (self) weakSelf = self;
     [self.memberTopicVM getMemberTopicsWithUsername: self.topicDetailVM.topicDetail.author iconURL: self.topicDetailVM.iconURL success:^{
         
-        [self.tableView reloadData];
+        weakSelf.tableViewType = weakSelf.memberTopicVM.topics.count == 0 ? WTTableViewTypeNoData : WTTableViewTypeNormal;
+        [weakSelf.tableView reloadData];
         
-        [self.tableView.mj_header endRefreshing];
         
     } failure:^(NSError *error) {
-        [self.tableView.mj_header endRefreshing];
+        
+        
     }];
 }
 
@@ -151,10 +156,18 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
 #pragma mark - DZNEmptyDataSetSource
 - (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
 {
-    WTNoDataView *noDataView = [WTNoDataView noDataView];
-    noDataView.tipImageView.image = [UIImage imageNamed:@"no_topic"];
-    noDataView.tipTitleLabel.text = @"还没有发表过话题";
-    return noDataView;
+    if(self.tableViewType == WTTableViewTypeNoData)
+    {
+        [self.refreshView stopAnim];
+        self.noDataView.tipTitleLabel.text = @"还没有发表过主题";
+        return self.noDataView;
+    }
+    else if(self.tableViewType == WTTableViewTypeRefresh)
+    {
+        [self.refreshView startAnim];
+        return self.refreshView;
+    }
+    return nil;
 }
 
 @end

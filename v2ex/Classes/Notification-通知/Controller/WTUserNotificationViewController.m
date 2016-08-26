@@ -15,6 +15,7 @@
 #import "WTRefreshNormalHeader.h"
 #import "WTRefreshAutoNormalFooter.h"
 
+#import "WTConst.h"
 #import "NetworkTool.h"
 #import "WTTopicViewModel.h"
 #import "WTAccountViewModel.h"

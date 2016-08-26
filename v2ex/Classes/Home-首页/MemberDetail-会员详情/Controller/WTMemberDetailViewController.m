@@ -39,7 +39,7 @@
 - (void)initView
 {
     // 设置个人头像
-//    [self.personIconView sd_setImageWithURL: self.topicDetailVM.iconURL];
+    [self.personIconView sd_setImageWithURL: self.topicDetailVM.iconURL];
     self.usernameLabel.text = self.topicDetailVM.topicDetail.author;
     self.detailLabel.alpha = 0;
     self.personIconView.alpha = 0;

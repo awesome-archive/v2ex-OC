@@ -140,9 +140,17 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 #pragma mark - DZNEmptyDataSetSource
 - (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
 {
-    WTNoDataView *noDataView = [WTNoDataView noDataView];
-    noDataView.tipImageView.image = [UIImage imageNamed:@"no_topic"];
-    noDataView.tipTitleLabel.text = @"还没有回复过话题";
-    return noDataView;
+    if(self.tableViewType == WTTableViewTypeNoData)
+    {
+        [self.refreshView stopAnim];
+        self.noDataView.tipTitleLabel.text = @"还没有回复过话题";
+        return self.noDataView;
+    }
+    else if(self.tableViewType == WTTableViewTypeRefresh)
+    {
+        [self.refreshView startAnim];
+        return self.refreshView;
+    }
+    return nil;
 }
 @end

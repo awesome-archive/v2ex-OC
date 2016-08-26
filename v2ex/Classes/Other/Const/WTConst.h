@@ -7,6 +7,14 @@
 //
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSUInteger, WTTableViewType) {
+    WTTableViewTypeRefresh,
+    WTTableViewTypeNoData,
+    WTTableViewTypeLogout,
+    WTTableViewTypeNormal,
+    WTTableViewTypeError,
+};
 /** 标题View的高度 */
 UIKIT_EXTERN CGFloat const WTTitleViewHeight;
 /** 导航栏的Y的最大值  */

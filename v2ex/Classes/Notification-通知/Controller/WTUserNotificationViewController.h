@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, WTTableViewType) {
-    WTTableViewTypeNoData,
-    WTTableViewTypeLogout,
-};
+
 
 @interface WTUserNotificationViewController : UITableViewController
 

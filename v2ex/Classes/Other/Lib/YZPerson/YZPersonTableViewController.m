@@ -86,4 +86,27 @@
     
 }
 
+#pragma mark - Lazy Method
+- (WTNoDataView *)noDataView
+{
+    if (_noDataView == nil)
+    {
+        WTNoDataView *noDataView = [WTNoDataView noDataView];
+        noDataView.tipImageView.image = [UIImage imageNamed:@"no_topic"];
+        noDataView.tipTitleLabel.text = @"还没有发表过话题";
+        
+        self.noDataView = noDataView;
+    }
+    return _noDataView;
+}
+
+- (WTRefreshView *)refreshView
+{
+    if (_refreshView == nil)
+    {
+        WTRefreshView *refreshView = [WTRefreshView refreshView];
+        self.refreshView = refreshView;
+    }
+    return _refreshView;
+}
 @end

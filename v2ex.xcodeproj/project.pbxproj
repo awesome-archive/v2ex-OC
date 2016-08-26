@@ -33,6 +33,8 @@
 		30A2D93F1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D93E1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m */; };
 		30A2D9421D6E8B0A009AFA43 /* WTNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D9411D6E8B0A009AFA43 /* WTNoDataView.m */; };
 		30A2D9441D6E8B1A009AFA43 /* WTNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D9431D6E8B1A009AFA43 /* WTNoDataView.xib */; };
+		30E497AD1D6FE6AB00C2A6DA /* WTRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E497AC1D6FE6AB00C2A6DA /* WTRefreshView.m */; };
+		30E497AF1D6FE6C000C2A6DA /* WTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
 		B60FA17C1D45C09200F98CF3 /* WTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */; };
@@ -226,6 +228,9 @@
 		30A2D9401D6E8B0A009AFA43 /* WTNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNoDataView.h; sourceTree = "<group>"; };
 		30A2D9411D6E8B0A009AFA43 /* WTNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNoDataView.m; sourceTree = "<group>"; };
 		30A2D9431D6E8B1A009AFA43 /* WTNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNoDataView.xib; sourceTree = "<group>"; };
+		30E497AB1D6FE6AB00C2A6DA /* WTRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRefreshView.h; sourceTree = "<group>"; };
+		30E497AC1D6FE6AB00C2A6DA /* WTRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRefreshView.m; sourceTree = "<group>"; };
+		30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRefreshView.xib; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
 		B60FA0511D45C09100F98CF3 /* WTHomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTHomeViewController.storyboard; sourceTree = "<group>"; };
@@ -881,6 +886,9 @@
 				30A2D9401D6E8B0A009AFA43 /* WTNoDataView.h */,
 				30A2D9411D6E8B0A009AFA43 /* WTNoDataView.m */,
 				30A2D9431D6E8B1A009AFA43 /* WTNoDataView.xib */,
+				30E497AB1D6FE6AB00C2A6DA /* WTRefreshView.h */,
+				30E497AC1D6FE6AB00C2A6DA /* WTRefreshView.m */,
+				30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1737,6 +1745,7 @@
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
 				30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */,
 				B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */,
+				30E497AF1D6FE6C000C2A6DA /* WTRefreshView.xib in Resources */,
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
 				B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */,
 				B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */,
@@ -1850,6 +1859,7 @@
 				B60FA1C61D45C09200F98CF3 /* UIBarButtonItem+Extension.m in Sources */,
 				B60FA1931D45C09200F98CF3 /* WTTopicDetailViewModel.m in Sources */,
 				30A2D9351D6D2EE1009AFA43 /* YZTableView.m in Sources */,
+				30E497AD1D6FE6AB00C2A6DA /* WTRefreshView.m in Sources */,
 				B60FA1DA1D45C09200F98CF3 /* WTNavigationController.m in Sources */,
 				B60FA19B1D45C09200F98CF3 /* WTTopWindow.m in Sources */,
 				30A2D9311D6D2EE1009AFA43 /* UIImage+Image.m in Sources */,
