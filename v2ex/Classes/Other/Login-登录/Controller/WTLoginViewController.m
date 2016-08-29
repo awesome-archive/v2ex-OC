@@ -161,8 +161,6 @@
     if (_timer == nil)
     {
         _timer = [NSTimer scheduledTimerWithTimeInterval: 31 target: self selector: @selector(setBgImageVAnimation) userInfo: nil repeats: YES];
-        
-//        [_timer fire];
     }
     return _timer;
 }

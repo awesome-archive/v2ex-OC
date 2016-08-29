@@ -34,6 +34,7 @@
     [self.loginBtn setTitleColor: [UIColor colorWithHexString: WTAppLightColor] forState: UIControlStateNormal];
     self.loginBtn.backgroundColor = [UIColor whiteColor];
     self.loginBtn.layer.cornerRadius = 3;
+    
 }
 
 #pragma mark - 事件

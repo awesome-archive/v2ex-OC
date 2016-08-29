@@ -145,6 +145,38 @@ static WTAccountViewModel *_instance;
 }
 
 /**
+ *  签到
+ *
+ */
+- (void)pastWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure
+{
+    NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: self.account.pastUrl];
+    
+    [[NetworkTool shareInstance] GETFirefoxWithUrlString: url success:^(id data) {
+        
+        NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+        
+        if ([html containsString: @"查看我的账户余额"])
+        {
+            if (success)
+            {
+                success();
+            }
+            
+            self.account.pastUrl = nil;
+        }
+        
+    } failure:^(NSError *error) {
+        
+        if (error)
+        {
+            failure(error);
+        }
+        
+    }];
+}
+
+/**
  *  登录
  *
  *  @param urlString        url
@@ -180,6 +212,9 @@ static WTAccountViewModel *_instance;
             self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
             
             [self saveUsernameAndPassword];
+            
+            // 获取签名状态
+            [self getPastState];
             
             if (success)
             {
@@ -341,14 +376,49 @@ static WTAccountViewModel *_instance;
 {
     WTLog(@"data:%@", [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding])
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
-    NSString *signature = [doc peekAtSearchWithXPathQuery: @"//span[@class='fade']"].content;
+    NSArray<TFHppleElement *> *fadeEs = [doc searchWithXPathQuery: @"//div[@id='Rightbar']//span[@class='fade']"];
     NSString *avatar = [[doc peekAtSearchWithXPathQuery: @"//img[@class='avatar']"] objectForKey: @"src"];
     
     WTAccount *account = [WTAccount new];
     account.usernameOrEmail = usernameOrEmail;
     account.password = password;
-    account.signature = signature;
+    
+    if(fadeEs.count == 8)
+    {
+        account.signature = fadeEs.firstObject.content;
+    }
+//
     account.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, avatar]];
     return account;
 }
+
+/**
+ *  获取领取奖励的Url
+ */
+- (void)getPastState
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [[NetworkTool shareInstance] GETWithUrlString: @"http://www.v2ex.com/mission/daily" success:^(id data) {
+            
+            self.account.pastUrl = [self getPastStateWithData: data];
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    });
+}
+
+- (NSString *)getPastStateWithData:(NSData *)data
+{
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    TFHppleElement *inputE = [doc peekAtSearchWithXPathQuery: @"//input[@class='super normal button']"];
+    NSString *value = [inputE objectForKey: @"value"];
+    if (![value isEqualToString: @"查看我的账户余额"])
+    {
+        NSString *onclickValue = [inputE objectForKey: @"onclick"];
+        return [[onclickValue stringByReplacingOccurrencesOfString: @"location.href = '" withString: @""] stringByReplacingOccurrencesOfString: @"';" withString: @""];
+    }
+    return nil;
+}
+
 @end

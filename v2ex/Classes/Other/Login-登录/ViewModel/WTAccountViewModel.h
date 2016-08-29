@@ -66,4 +66,9 @@
  *  @param failure  请求失败的回调
  */
 - (void)registerWithUsername:(NSString *)username password:(NSString *)password email:(NSString *)email c:(NSString *)c success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure;
+
+/**
+ *  签到
+ */
+- (void)pastWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure;
 @end
