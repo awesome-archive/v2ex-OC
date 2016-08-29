@@ -9,6 +9,7 @@
 #import "WTReplyCell.h"
 #import "WTReplyItem.h"
 
+#import "UIImageView+WebCache.h"
 
 @interface WTReplyCell()
 
@@ -30,6 +31,8 @@
     self.replyTimeLabel.textColor = [UIColor colorWithHexString: @"#737373"];
     self.replyContentBgView.backgroundColor = [UIColor colorWithHexString: @"#F3F3F5"];
     self.replyContentBgView.layer.cornerRadius = 3;
+    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;
+    self.avatarImageV.layer.masksToBounds = YES;
 }
 
 - (void)setReplyItem:(WTReplyItem *)replyItem
@@ -43,6 +46,8 @@
     self.replyTimeLabel.text = replyItem.replyTime;
     
     self.replyContentLabel.text = replyItem.replyContent;
+    
+    [self.avatarImageV sd_setImageWithURL: replyItem.avatarURL placeholderImage: WTIconPlaceholderImage];
 }
 
 @end

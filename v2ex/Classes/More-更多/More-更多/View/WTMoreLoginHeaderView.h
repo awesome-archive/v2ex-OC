@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class WTAccount;
 @interface WTMoreLoginHeaderView : UIView
+
+@property (nonatomic, strong) WTAccount *account;
 
 + (instancetype)moreLoginHeaderView;
 

@@ -33,7 +33,15 @@ typedef NS_ENUM(NSUInteger, WTTopicType) {
  */
 - (void)getNodeTopicWithUrlStr:(NSString *)url topicType:(WTTopicType)topicType success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
-
+/**
+ *  根据url和话题type获取节点话题
+ *
+ *  @param url       url
+ *  @param topicType 话题type
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)getNodeTopicWithUrlStr:(NSString *)url topicType:(WTTopicType)topicType avartorURL:(NSURL *)avartorURL success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
 /**
  *  是否是 `最近`节点

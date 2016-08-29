@@ -8,6 +8,9 @@
 
 #import "WTMoreLoginHeaderView.h"
 
+#import "WTAccount.h"
+
+#import "UIImageView+WebCache.h"
 @interface WTMoreLoginHeaderView ()
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView1;
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView2;
@@ -33,6 +36,17 @@
     self.onlineView.layer.cornerRadius = self.onlineView.width * 0.5;
     self.avatarbgView1.layer.cornerRadius = self.avatarbgView1.width * 0.5;
     self.avatarbgView2.layer.cornerRadius = self.avatarbgView2.width * 0.5;
+    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;
+    self.avatarImageV.layer.masksToBounds = YES;
+}
+
+- (void)setAccount:(WTAccount *)account
+{
+    _account = account;
+    
+    self.usernameLabel.text = account.usernameOrEmail;
+    self.bioLabel.text = account.signature;
+    [self.avatarImageV sd_setImageWithURL: account.avatarURL placeholderImage: WTIconPlaceholderImage];
 }
 
 @end

@@ -45,7 +45,7 @@
     [IQKeyboardManager sharedManager].enable = YES;
     
     // 6、自动登陆
-//    [[WTAccountViewModel shareInstance] autoLogin];
+    [[WTAccountViewModel shareInstance] autoLogin];
     
     // 7、设置3DTouch
     [self setup3DTouchItems: application];

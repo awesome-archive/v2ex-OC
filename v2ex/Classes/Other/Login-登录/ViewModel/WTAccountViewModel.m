@@ -46,7 +46,7 @@ static WTAccountViewModel *_instance;
  */
 - (void)autoLogin
 {
-    if (!self.isLogin)
+    if (self.isLogin)
     {
         NSString *username = self.account.usernameOrEmail;
         NSString *password = self.account.password;
@@ -159,9 +159,11 @@ static WTAccountViewModel *_instance;
     // 1、请求参数
     NSDictionary *param = [loginRequestItem getLoginRequestParam: username passwordValue: password];
     
-    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: urlString param: param success:^(id responseObject) {
+    [[NetworkTool shareInstance] requestFirefoxWithMethod: HTTPMethodTypePOST url: urlString param: param success:^(id responseObject) {
         
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
+        
+
         
         // 判断是否登陆成功
         if ([html containsString: @"notifications"])        // 登陆成功
@@ -174,15 +176,16 @@ static WTAccountViewModel *_instance;
             {
                 
             }
-            self.account.usernameOrEmail = param[loginRequestItem.usernameKey];
-            self.account.password = param[loginRequestItem.passwordKey];
-            //[NSKeyedArchiver archiveRootObject: self.account toFile: WTFilePath];
+            
+            self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
+            
             [self saveUsernameAndPassword];
             
             if (success)
             {
                 success();
             }
+            
             return;
         }
         
@@ -323,5 +326,29 @@ static WTAccountViewModel *_instance;
     }
     
     return nil;
+}
+
+/**
+ *  获取用户的信息
+ *
+ *  @param data            二进制
+ *  @param usernameOrEmail 用户名
+ *  @param password        密码
+ *
+ *  @return WTAccount
+ */
+- (WTAccount *)getUserInfoWithData:(NSData *)data usernameOrEmail:(NSString *)usernameOrEmail password:(NSString *)password
+{
+    WTLog(@"data:%@", [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding])
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    NSString *signature = [doc peekAtSearchWithXPathQuery: @"//span[@class='fade']"].content;
+    NSString *avatar = [[doc peekAtSearchWithXPathQuery: @"//img[@class='avatar']"] objectForKey: @"src"];
+    
+    WTAccount *account = [WTAccount new];
+    account.usernameOrEmail = usernameOrEmail;
+    account.password = password;
+    account.signature = signature;
+    account.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, avatar]];
+    return account;
 }
 @end

@@ -86,6 +86,64 @@ static NSString *_userAgentMobile;
 }
 
 /**
+ *  发起请求
+ *
+ *  @param method  请求方法
+ *  @param url     url地址
+ *  @param param   参数
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)requestFirefoxWithMethod:(HTTPMethodType)method url:(NSString *)url param:(NSDictionary *)param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
+{
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    // 1、成功的回调
+    void (^successBlock)(id responseObject) = ^(id responseObject){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        success(responseObject);
+    };
+    
+    // 2、失败的回调
+    void (^failureBlock)(NSError *error) = ^(NSError *error){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        failure(error);
+    };
+    
+    _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
+    // 1、设置请求头
+    //    UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
+    //    NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+    [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
+    [_instance.requestSerializer setValue: url forHTTPHeaderField: @"Referer"];
+    
+    // 3、发起请求
+    if (method == HTTPMethodTypeGET)            // GET请求
+    {
+        [_instance GET: url parameters: param progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            successBlock(responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            failureBlock(error);
+        }];
+    }
+    else if(method == HTTPMethodTypePOST)       // POST请求
+    {
+        [_instance POST: url parameters: param progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            successBlock(responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            failureBlock(error);
+        }];
+    }
+    
+}
+
+/**
  *  获取html源码
  *
  *  @param urlString url

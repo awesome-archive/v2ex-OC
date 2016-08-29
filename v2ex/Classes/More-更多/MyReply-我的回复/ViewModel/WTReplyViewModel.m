@@ -19,17 +19,18 @@
 /**
  *  根据用户名获取某个的回复
  *
- *  @param username 用户名
- *  @param success  请求成功的回调
- *  @param failure  请求失败的回调
+ *  @param username  用户名
+ *  @param avatarURL 头像
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
  */
-- (void)getReplyItemsWithUsername:(NSString *)username success:(void(^)())success failure:(void(^)(NSError *error))failure
+- (void)getReplyItemsWithUsername:(NSString *)username avatarURL:(NSURL *)avatarURL success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
     NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@/replies?p=%ld", username, self.page];
     
     [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(id data) {
         
-        [self getReplyItemsWithData: data];
+        [self getReplyItemsWithData: data avatarURL: avatarURL];
         
         if (success)
         {
@@ -51,7 +52,7 @@
  *
  *  @param data 二进制
  */
-- (void)getReplyItemsWithData:(NSData *)data
+- (void)getReplyItemsWithData:(NSData *)data avatarURL:(NSURL *)avatarURL
 {
     NSMutableArray *replyItems = [NSMutableArray array];
     
@@ -119,6 +120,8 @@
                 {
                     replyItem.detailUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: replyItem.detailUrl];
                 }
+                
+                replyItem.avatarURL = avatarURL;
             }
             [replyItems addObject: replyItem];
         }

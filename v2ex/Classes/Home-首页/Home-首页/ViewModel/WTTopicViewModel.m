@@ -29,33 +29,43 @@
  */
 - (void)getNodeTopicWithUrlStr:(NSString *)url topicType:(WTTopicType)topicType success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
+    [self getNodeTopicWithUrlStr: url topicType: topicType avartorURL: nil success: success failure: failure];
+}
+
+
+/**
+ *  根据url和话题type获取节点话题
+ *
+ *  @param url       url
+ *  @param topicType 话题type
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)getNodeTopicWithUrlStr:(NSString *)url topicType:(WTTopicType)topicType avartorURL:(NSURL *)avartorURL success:(void(^)())success failure:(void(^)(NSError *error))failure
+{
     url = [NSString stringWithFormat: @"%@?p=%zd", url, self.page];
     
-    
-    
-        [[NetworkTool shareInstance] GETWithUrlString: url success:^(NSData *data) {
-            
-            [self nodeTopicsWithData: data topicType: topicType];
-            if (success)
-            {
-                success();
-            }
-            
-            
-        } failure:^(NSError *error) {
-            
-            if (failure)
-            {
-                failure(error);
-            }
-            
-        }];
-    
-    
+    [[NetworkTool shareInstance] GETWithUrlString: url success:^(NSData *data) {
+        
+        [self nodeTopicsWithData: data topicType: topicType avartorURL: avartorURL];
+        if (success)
+        {
+            success();
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+        
+    }];
 }
 
 #pragma mark 根据data解析出节点话题数组
-- (void)nodeTopicsWithData:(NSData *)data topicType:(WTTopicType)topicType
+- (void)nodeTopicsWithData:(NSData *)data topicType:(WTTopicType)topicType avartorURL:(NSURL *)avartorURL
 {
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
@@ -136,7 +146,11 @@
             }
             
             // 7、头像
-            if (avatars.count > 0)
+            if (avartorURL != nil)
+            {
+                topic.iconURL = avartorURL;
+            }
+            else if (avatars.count > 0)
             {
                 NSString *icon = [avatars.firstObject objectForKey: @"src"];
                 

@@ -80,7 +80,8 @@ NSString * const WTReplyCellIdentifier = @"WTReplyCellIdentifier";
 {
     self.replyVM.page = 1;
 
-    [self.replyVM getReplyItemsWithUsername: [WTAccountViewModel shareInstance].account.usernameOrEmail success:^{
+    WTAccount *account = [WTAccountViewModel shareInstance].account;
+    [self.replyVM getReplyItemsWithUsername: account.usernameOrEmail avatarURL: account.avatarURL success:^{
         
         [self.tableView reloadData];
         
@@ -98,7 +99,8 @@ NSString * const WTReplyCellIdentifier = @"WTReplyCellIdentifier";
     {
         self.replyVM.page ++;
         
-        [self.replyVM getReplyItemsWithUsername: [WTAccountViewModel shareInstance].account.usernameOrEmail success:^{
+        WTAccount *account = [WTAccountViewModel shareInstance].account;
+        [self.replyVM getReplyItemsWithUsername: account.usernameOrEmail avatarURL: account.avatarURL success:^{
             
             [self.tableView reloadData];
             

@@ -15,6 +15,7 @@
 		304B4EE61D6A9B3900F7DD09 /* WTTopicCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE51D6A9B3900F7DD09 /* WTTopicCollectionViewController.m */; };
 		304B4EE91D6A9B7F00F7DD09 /* WTTopicCollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */; };
 		304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */; };
+		3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3050F8481D73C719004069B2 /* WTMyTopicViewController.m */; };
 		30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */; };
 		30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8CB1D6AE971009AFA43 /* WTNodeCollectionCell.m */; };
 		30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8CC1D6AE971009AFA43 /* WTNodeCollectionCell.xib */; };
@@ -194,6 +195,8 @@
 		304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionItem.m; sourceTree = "<group>"; };
 		304B4EEA1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicCollectionViewModel.h; sourceTree = "<group>"; };
 		304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionViewModel.m; sourceTree = "<group>"; };
+		3050F8471D73C719004069B2 /* WTMyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyTopicViewController.h; sourceTree = "<group>"; };
+		3050F8481D73C719004069B2 /* WTMyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyTopicViewController.m; sourceTree = "<group>"; };
 		309E321A1D657A8E00BE3DBC /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
 		309E321B1D657A8E00BE3DBC /* libCTAssetsPickerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCTAssetsPickerController.a; path = "Pods/../build/Debug-iphoneos/CTAssetsPickerController/libCTAssetsPickerController.a"; sourceTree = "<group>"; };
 		309E321C1D657A8E00BE3DBC /* libDKNightVersion.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDKNightVersion.a; path = "Pods/../build/Debug-iphoneos/DKNightVersion/libDKNightVersion.a"; sourceTree = "<group>"; };
@@ -607,6 +610,23 @@
 				304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3050F8431D73C656004069B2 /* MyTopic-我的话题 */ = {
+			isa = PBXGroup;
+			children = (
+				3050F8441D73C656004069B2 /* Controller */,
+			);
+			path = "MyTopic-我的话题";
+			sourceTree = "<group>";
+		};
+		3050F8441D73C656004069B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3050F8471D73C719004069B2 /* WTMyTopicViewController.h */,
+				3050F8481D73C719004069B2 /* WTMyTopicViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		30A2D8BC1D6AE5E9009AFA43 /* NodeCollection-节点收藏 */ = {
@@ -1477,6 +1497,7 @@
 		B60FA1FA1D45D7E700F98CF3 /* More-更多 */ = {
 			isa = PBXGroup;
 			children = (
+				3050F8431D73C656004069B2 /* MyTopic-我的话题 */,
 				30A2D8BC1D6AE5E9009AFA43 /* NodeCollection-节点收藏 */,
 				304B4EDF1D6A9B2400F7DD09 /* TopicCollection-话题收藏 */,
 				B6271D421D59992900A66983 /* MyFollowing-我的关注 */,
@@ -1978,6 +1999,7 @@
 				B60FA1BC1D45C09200F98CF3 /* WTNodeViewModel.m in Sources */,
 				B60FA1BE1D45C09200F98CF3 /* WTNodeTopicAPIItem.m in Sources */,
 				30A2D93F1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m in Sources */,
+				3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */,
 				B6235E421D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m in Sources */,
 				B60FA1DB1D45C09200F98CF3 /* WTRegisterViewController.m in Sources */,
 				B60FA1901D45C09200F98CF3 /* WTTopicDetailCommentCell.m in Sources */,

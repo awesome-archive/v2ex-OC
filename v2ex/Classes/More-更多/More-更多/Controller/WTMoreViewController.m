@@ -17,6 +17,7 @@
 #import "WTTopicCollectionViewController.h"
 #import "WTWebViewController.h"
 #import "WTNodeCollectionViewController.h"
+#import "WTMyTopicViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
@@ -98,6 +99,7 @@ CGFloat const moreHeaderViewH = 150;
     {
         self.moreLoginHeaderView.hidden = NO;
         self.moreNotLoginHeaderView.hidden = YES;
+        self.moreLoginHeaderView.account = [WTAccountViewModel shareInstance].account;
     }
     else
     {
@@ -216,8 +218,10 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf checkIsLoginWithViewController: [WTTopicCollectionViewController new]];
                                 }],
                                 
-                             [WTSettingItem settingItemWithTitle: @"主题选择" image: [UIImage imageNamed: @"mine_theme"] operationBlock: ^{
-                                    [weakSelf presentViewController: weakSelf.loginC animated: YES completion: nil];
+                             [WTSettingItem settingItemWithTitle: @"我的话题" image: [UIImage imageNamed: @"mine_topic"] operationBlock: ^{
+                                    WTMyTopicViewController *myTopicVC = [WTMyTopicViewController new];
+            
+                                    [weakSelf checkIsLoginWithViewController: myTopicVC];
                                 }],
             
                                 [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{

@@ -19,10 +19,11 @@
 /**
  *  根据用户名获取某个的回复
  *
- *  @param username 用户名
- *  @param success  请求成功的回调
- *  @param failure  请求失败的回调
+ *  @param username  用户名
+ *  @param avatarURL 头像
+ *  @param success   请求成功的回调
+ *  @param failure   请求失败的回调
  */
-- (void)getReplyItemsWithUsername:(NSString *)username success:(void(^)())success failure:(void(^)(NSError *error))failure;
+- (void)getReplyItemsWithUsername:(NSString *)username avatarURL:(NSURL *)avatarURL success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
 @end

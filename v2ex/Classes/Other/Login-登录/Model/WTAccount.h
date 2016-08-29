@@ -18,5 +18,9 @@
 @property (nonatomic, assign, getter=isReceiveAwards) BOOL          receiveAwards;
 /** 领取奖励需要的once的值 */
 @property (nonatomic, strong) NSString                              *once;
+/** 签名 */
+@property (nonatomic, strong) NSString                              *signature;
+/** 头像*/
+@property (nonatomic, strong) NSURL                                 *avatarURL;
 
 @end
