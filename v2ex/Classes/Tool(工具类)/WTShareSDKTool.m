@@ -62,8 +62,8 @@
               switch (platformType)
               {
                   case SSDKPlatformTypeWechat:
-                      [appInfo SSDKSetupWeChatByAppId:@"wxe9fbcf88debfce4c"
-                                            appSecret:@"39c2b811a2535dc84acf00997fb17768"];
+                      [appInfo SSDKSetupWeChatByAppId:@"wxf790e33d29332bf2"
+                                            appSecret:@"dc3131f1a5d51cc9287dc3500064f4cb"];
                       break;
                   case SSDKPlatformTypeQQ:
                       [appInfo SSDKSetupQQByAppId:@"1105260400"

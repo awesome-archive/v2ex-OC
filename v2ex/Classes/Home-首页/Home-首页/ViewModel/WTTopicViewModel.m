@@ -43,7 +43,10 @@
  */
 - (void)getNodeTopicWithUrlStr:(NSString *)url topicType:(WTTopicType)topicType avartorURL:(NSURL *)avartorURL success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    url = [NSString stringWithFormat: @"%@?p=%zd", url, self.page];
+    if (![url containsString: @"/?"])
+    {
+        url = [NSString stringWithFormat: @"%@?p=%zd", url, self.page];
+    }
     
     [[NetworkTool shareInstance] GETWithUrlString: url success:^(NSData *data) {
         
