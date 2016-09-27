@@ -27,6 +27,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // 头像点击手势添加
     [self.iconImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(iconImageViewClick)]];
     self.iconImageView.userInteractionEnabled = YES;

@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // 2、节点
     self.nodeBtn.layer.cornerRadius = 1.5;
     self.iconImageV.layer.cornerRadius = 5;

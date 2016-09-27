@@ -27,6 +27,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.backgroundColor = [UIColor clearColor];
 
 //    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;

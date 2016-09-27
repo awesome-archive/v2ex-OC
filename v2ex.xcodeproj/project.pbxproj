@@ -16,6 +16,9 @@
 		304B4EE91D6A9B7F00F7DD09 /* WTTopicCollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */; };
 		304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */; };
 		3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3050F8481D73C719004069B2 /* WTMyTopicViewController.m */; };
+		307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F062C1D965D6500881C28 /* WTAppDelegateTool.m */; };
+		3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */; };
+		3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */; };
 		30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */; };
 		30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8CB1D6AE971009AFA43 /* WTNodeCollectionCell.m */; };
 		30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8CC1D6AE971009AFA43 /* WTNodeCollectionCell.xib */; };
@@ -161,7 +164,6 @@
 		B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8491D50680800C22480 /* WTReplyCell.m */; };
 		B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B664E84A1D50680800C22480 /* WTReplyCell.xib */; };
 		B664E84F1D506B0B00C22480 /* WTReplyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */; };
-		B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B682BF0C1C91C69C005D7B35 /* LaunchScreen.storyboard */; };
 		B694816D1C462267001ABDA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816C1C462267001ABDA3 /* main.m */; };
 		B69481701C462267001ABDA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816F1C462267001ABDA3 /* AppDelegate.m */; };
 		B69481781C462267001ABDA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B69481771C462267001ABDA3 /* Assets.xcassets */; };
@@ -197,6 +199,11 @@
 		304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionViewModel.m; sourceTree = "<group>"; };
 		3050F8471D73C719004069B2 /* WTMyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyTopicViewController.h; sourceTree = "<group>"; };
 		3050F8481D73C719004069B2 /* WTMyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyTopicViewController.m; sourceTree = "<group>"; };
+		307F062B1D965D6500881C28 /* WTAppDelegateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAppDelegateTool.h; sourceTree = "<group>"; };
+		307F062C1D965D6500881C28 /* WTAppDelegateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAppDelegateTool.m; sourceTree = "<group>"; };
+		3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3099B5491D9AA22E00B2DA46 /* WTGoogleSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTGoogleSearchController.h; sourceTree = "<group>"; };
+		3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTGoogleSearchController.m; sourceTree = "<group>"; };
 		309E321A1D657A8E00BE3DBC /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
 		309E321B1D657A8E00BE3DBC /* libCTAssetsPickerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCTAssetsPickerController.a; path = "Pods/../build/Debug-iphoneos/CTAssetsPickerController/libCTAssetsPickerController.a"; sourceTree = "<group>"; };
 		309E321C1D657A8E00BE3DBC /* libDKNightVersion.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDKNightVersion.a; path = "Pods/../build/Debug-iphoneos/DKNightVersion/libDKNightVersion.a"; sourceTree = "<group>"; };
@@ -474,7 +481,6 @@
 		B664E84A1D50680800C22480 /* WTReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTReplyCell.xib; sourceTree = "<group>"; };
 		B664E84D1D506B0B00C22480 /* WTReplyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyViewModel.h; sourceTree = "<group>"; };
 		B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyViewModel.m; sourceTree = "<group>"; };
-		B682BF0C1C91C69C005D7B35 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B69481681C462267001ABDA3 /* v2ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = v2ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B694816C1C462267001ABDA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B694816E1C462267001ABDA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -627,6 +633,46 @@
 				3050F8481D73C719004069B2 /* WTMyTopicViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3099B5441D9A9D4D00B2DA46 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		3099B5451D9AA1A600B2DA46 /* Search-搜索 */ = {
+			isa = PBXGroup;
+			children = (
+				3099B5461D9AA1A600B2DA46 /* Controller */,
+				3099B5471D9AA1A600B2DA46 /* Model */,
+				3099B5481D9AA1A600B2DA46 /* View */,
+			);
+			path = "Search-搜索";
+			sourceTree = "<group>";
+		};
+		3099B5461D9AA1A600B2DA46 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3099B5491D9AA22E00B2DA46 /* WTGoogleSearchController.h */,
+				3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3099B5471D9AA1A600B2DA46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3099B5481D9AA1A600B2DA46 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		30A2D8BC1D6AE5E9009AFA43 /* NodeCollection-节点收藏 */ = {
@@ -882,6 +928,7 @@
 		B60FA04C1D45C09100F98CF3 /* Home-首页 */ = {
 			isa = PBXGroup;
 			children = (
+				3099B5451D9AA1A600B2DA46 /* Search-搜索 */,
 				30A2D8F41D6C5101009AFA43 /* MemberDetail-会员详情 */,
 				30A2D8EC1D6C4F7A009AFA43 /* HotTopic-热门节点 */,
 				B60FA04D1D45C09100F98CF3 /* Home-首页 */,
@@ -1455,6 +1502,8 @@
 				B60FA16E1D45C09200F98CF3 /* WTPerson */,
 				B60FA1791D45C09200F98CF3 /* WTShareSDKTool.h */,
 				B60FA17A1D45C09200F98CF3 /* WTShareSDKTool.m */,
+				307F062B1D965D6500881C28 /* WTAppDelegateTool.h */,
+				307F062C1D965D6500881C28 /* WTAppDelegateTool.m */,
 			);
 			path = "Tool(工具类)";
 			sourceTree = "<group>";
@@ -1624,6 +1673,7 @@
 		B63A5EB01C5BC5CE00D3BF8B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3099B5441D9A9D4D00B2DA46 /* Watch */,
 				B60FA04C1D45C09100F98CF3 /* Home-首页 */,
 				B60FA0C81D45C09100F98CF3 /* Node-节点 */,
 				B60FA0EF1D45C09200F98CF3 /* Notification-通知 */,
@@ -1716,6 +1766,7 @@
 		B694816B1C462267001ABDA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */,
 				B64168151C840BDC00EAF134 /* dribbble256_imageio.png */,
 				B63094561C4B8C1600E58EF8 /* nodes.plist */,
 				B694817C1C462267001ABDA3 /* Info.plist */,
@@ -1724,7 +1775,6 @@
 				B694816F1C462267001ABDA3 /* AppDelegate.m */,
 				B694816C1C462267001ABDA3 /* main.m */,
 				B63176D11C47636D0071C9BF /* v2ex.pch */,
-				B682BF0C1C91C69C005D7B35 /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1849,12 +1899,13 @@
 		B69481601C462267001ABDA3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "无头骑士 GJ";
 				TargetAttributes = {
 					B69481671C462267001ABDA3 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = ZD2FW4SQ72;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1891,6 +1942,7 @@
 				B60FA1C21D45C09200F98CF3 /* WTNodeTopicHeaderView.xib in Resources */,
 				B60FA1971D45C09200F98CF3 /* WTWebViewController.xib in Resources */,
 				B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */,
+				3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */,
 				30E4987C1D70424100C2A6DA /* ShareSDK.bundle in Resources */,
 				B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */,
 				B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */,
@@ -1917,7 +1969,6 @@
 				B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */,
 				30E497AF1D6FE6C000C2A6DA /* WTRefreshView.xib in Resources */,
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
-				B682BF0D1C91C69C005D7B35 /* LaunchScreen.storyboard in Resources */,
 				B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */,
 				B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */,
 			);
@@ -2059,6 +2110,7 @@
 				B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */,
 				B6DEEB7C1D46677600E3A313 /* WTAdvertiseItem.m in Sources */,
 				303CF23D1D6AA1C300D697F7 /* WTNode.m in Sources */,
+				3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */,
 				B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */,
 				B60FA1CC1D45C09200F98CF3 /* UITextField+Placeholder.m in Sources */,
 				30A2D8F31D6C4F88009AFA43 /* WTHotTopicViewController.m in Sources */,
@@ -2077,6 +2129,7 @@
 				B60FA1EC1D45C09200F98CF3 /* WTParseTool.m in Sources */,
 				B60FA1B51D45C09200F98CF3 /* WTHotNodeViewController.m in Sources */,
 				B60FA1801D45C09200F98CF3 /* WTTipView.m in Sources */,
+				307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */,
 				B60FA1CF1D45C09200F98CF3 /* WTConst.m in Sources */,
 				B6E70C471D4E55B3000CC806 /* WTNotificationViewModel.m in Sources */,
 				B60FA1D71D45C09200F98CF3 /* WTLoginRequestItem.m in Sources */,
@@ -2116,8 +2169,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2159,8 +2214,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2189,8 +2246,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2199,6 +2257,7 @@
 					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib/ShareSDK/Support/Optional",
 					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = v2ex/v2ex.pch;
@@ -2242,7 +2301,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6dfc2704-534e-4283-9ec3-fef781a60490";
+				PROVISIONING_PROFILE_SPECIFIER = v2exDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "v2ex/Classes/Home(首页)/Controller/v2ex-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
@@ -2256,8 +2316,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 384BYGYQSF;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2266,6 +2327,7 @@
 					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib/ShareSDK/Support/Optional",
 					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/v2ex/Classes/Other/Lib",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = v2ex/v2ex.pch;
@@ -2308,7 +2370,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c634fbcd-6638-48c7-8808-018fd82026c8";
+				PROVISIONING_PROFILE_SPECIFIER = v2exAppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "v2ex/Classes/Home(首页)/Controller/v2ex-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 				VALID_ARCHS = "armv7 armv7s arm64";

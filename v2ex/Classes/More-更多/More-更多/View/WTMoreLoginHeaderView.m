@@ -44,6 +44,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     self.backgroundColor = [UIColor clearColor];
     
     self.onlineView.layer.cornerRadius = self.onlineView.width * 0.5;
@@ -61,8 +63,7 @@
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRect: self.pastBtn.bounds];
     [path moveToPoint: CGPointMake(0, self.pastBtn.height)];
-    
-//    self.pastBtn.layer.shadowPath = path.CGPath;
+
 }
 
 - (void)setAccount:(WTAccount *)account
@@ -74,7 +75,11 @@
     self.bioLabel.text = account.signature != nil ? account.signature : @"未设置签名";
     [self.avatarImageV sd_setImageWithURL: account.avatarURL placeholderImage: WTIconPlaceholderImage];
     
-    NSString *past = account.pastUrl.length > 0 ? @"签到" : @"已签到";
+    NSString *past = @"签到";
+    if (account.pastUrl.length == 0 || account.pastUrl == nil)
+    {
+        past = @"已签到";
+    }
     [self.pastBtn setTitle: past forState: UIControlStateNormal];
 }
 #pragma mark - 事件
@@ -144,5 +149,9 @@
     });
 }
 
+//- (void)dealloc
+//{
+//    [[WTAccountViewModel shareInstance].account removeObserver: self forKeyPath: @"pastUrl"];
+//}
 
 @end

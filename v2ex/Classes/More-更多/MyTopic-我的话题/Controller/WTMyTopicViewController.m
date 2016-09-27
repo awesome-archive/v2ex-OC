@@ -36,7 +36,7 @@ static NSString *const ID = @"myTopicCell";
     
     self.title = @"我的话题";
     
-    self.urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@/topics", [WTAccountViewModel shareInstance].account.usernameOrEmail];
+    self.urlString = [NSString stringWithFormat: @"https://www.v2ex.com/member/%@/topics", [WTAccountViewModel shareInstance].account.usernameOrEmail];
     
     self.topicVM = [WTTopicViewModel new];
     

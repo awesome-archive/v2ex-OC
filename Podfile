@@ -24,4 +24,5 @@ target 'v2ex' do
 	pod 'RongCloudIMKit'
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
+	pod "tingyunApp"
 end

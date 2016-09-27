@@ -9,10 +9,10 @@
 #import "WTURLConst.h"
 
 /** 协议头 */
-NSString * const WTHTTP = @"http:";
+NSString * const WTHTTP = @"https:";
 
 /** base URL */
-NSString * const WTHTTPBaseUrl = @"http://www.v2ex.com";
+NSString * const WTHTTPBaseUrl = @"https://www.v2ex.com";
 
 /** 最新节点的URL */
 NSString * const WTNewestUrl = @"/recent";
@@ -24,25 +24,25 @@ NSString * const WTLoginUrl = @"/signin";
 NSString * const WTAllNodeUrl = @"https://www.v2ex.com/api/nodes/all.json";
 
 /** 收藏话题URL */
-NSString * const WTCollectionTopicUrl = @"http://www.v2ex.com/my/topics";
+NSString * const WTCollectionTopicUrl = @"https://www.v2ex.com/my/topics";
 
 
 
 /** 消息URL*/
-NSString * const WTNotificationUrl = @"http://www.v2ex.com/notifications";
+NSString * const WTNotificationUrl = @"https://www.v2ex.com/notifications";
 
 /** 自己的全部主题 */
-NSString * const WTMeTopicUrl = @"http://www.v2ex.com/member/misaka14/topics";
+NSString * const WTMeTopicUrl = @"https://www.v2ex.com/member/misaka14/topics";
 
 /** 回复别人的话题 */
-NSString * const WTReplyTopicUrl = @"http://www.v2ex.com/member/misaka14/replies?p=1";
+NSString * const WTReplyTopicUrl = @"https://www.v2ex.com/member/misaka14/replies?p=1";
 
 /** 领取今日奖励 */
-NSString * const WTReceiveAwardsUrl = @"http://www.v2ex.com/mission/daily/redeem?once=";
+NSString * const WTReceiveAwardsUrl = @"https://www.v2ex.com/mission/daily/redeem?once=";
 /** 用户信息URL */
-NSString * const WTUserInfoUrl = @"http://www.v2ex.com/member";
+NSString * const WTUserInfoUrl = @"https://www.v2ex.com/member";
 /** 上传图片 */
-NSString * const WTUploadPictureUrl = @"http://pic.xiaojianjian.net/webtools/picbed/upload.htm";
+NSString * const WTUploadPictureUrl = @"https://pic.xiaojianjian.net/webtools/picbed/upload.htm";
 
 /** 注册 */
 NSString * const WTRegisterUrl = @"signup";

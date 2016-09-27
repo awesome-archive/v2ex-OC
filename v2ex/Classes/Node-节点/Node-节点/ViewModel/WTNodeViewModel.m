@@ -228,7 +228,7 @@ static FMDatabase *_db;
  */
 + (void)getNodeItemWithNodeId:(NSString *)nodeId success:(void(^)(WTNodeItem *nodeItem))success failure:(void(^)(NSError *error))failure;
 {
-    NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/api/nodes/show.json?id=%@", nodeId];
+    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/api/nodes/show.json?id=%@", nodeId];
     
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(NSDictionary *responseObject) {
         
@@ -256,7 +256,7 @@ static FMDatabase *_db;
  */
 - (void)getMyNodeCollectionItemsWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlStr = @"http://www.v2ex.com/my/nodes";
+    NSString *urlStr = @"https://www.v2ex.com/my/nodes";
     
     [[NetworkTool shareInstance] GETWithUrlString: urlStr success:^(NSData *data) {
         

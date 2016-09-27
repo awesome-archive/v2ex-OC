@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dos-iX-Q6h">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="dkv-WN-ZvO">
+            <objects>
+                <viewController id="Dos-iX-Q6h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yZb-PD-bHS"/>
+                        <viewControllerLayoutGuide type="bottom" id="jYT-B9-2b2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1V5-ox-rUh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch01" translatesAutoresizingMaskIntoConstraints="NO" id="MdB-VO-amu"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v2ex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64c-kL-JHr">
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创意工作者们的社区 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60F-rS-JYp">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="60F-rS-JYp" firstAttribute="centerX" secondItem="1V5-ox-rUh" secondAttribute="centerX" id="7nh-Wx-Z9X"/>
+                            <constraint firstAttribute="trailing" secondItem="MdB-VO-amu" secondAttribute="trailing" id="9Qa-11-rjl"/>
+                            <constraint firstItem="jYT-B9-2b2" firstAttribute="top" secondItem="64c-kL-JHr" secondAttribute="bottom" constant="82" id="9aZ-8S-qRq"/>
+                            <constraint firstItem="MdB-VO-amu" firstAttribute="top" secondItem="1V5-ox-rUh" secondAttribute="top" id="AZp-Tb-bFB"/>
+                            <constraint firstItem="MdB-VO-amu" firstAttribute="leading" secondItem="1V5-ox-rUh" secondAttribute="leading" id="Dvo-VE-cgU"/>
+                            <constraint firstItem="60F-rS-JYp" firstAttribute="top" secondItem="64c-kL-JHr" secondAttribute="bottom" constant="8" id="P5i-FE-MUp"/>
+                            <constraint firstItem="64c-kL-JHr" firstAttribute="centerX" secondItem="1V5-ox-rUh" secondAttribute="centerX" id="cDm-fA-mi0"/>
+                            <constraint firstAttribute="bottom" secondItem="MdB-VO-amu" secondAttribute="bottom" id="nQL-oV-yuQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7B-0u-gcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="-346"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch01" width="643" height="998"/>
+    </resources>
+</document>

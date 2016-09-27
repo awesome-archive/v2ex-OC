@@ -47,3 +47,4 @@
 #define WTIconPlaceholderImage [UIImage imageNamed: @"topic_avatar_normal"]
 #define WTPrettyColor WTColor(135, 146, 177)
 #define WTPrettyGreenColor WTColor(42, 183, 103)
+#define WTLightColor [UIColor colorWithHexString: WTAppLightColor]

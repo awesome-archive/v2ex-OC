@@ -25,6 +25,7 @@
 #pragma mark - LifeCycle
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.backgroundColor = [UIColor clearColor];
     
     [self.registerBtn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];

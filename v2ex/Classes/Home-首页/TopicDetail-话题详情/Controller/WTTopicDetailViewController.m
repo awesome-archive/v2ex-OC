@@ -128,9 +128,9 @@
 
 - (void)shareItemClick
 {
-    NSString *url = [self.topicDetailUrl stringByReplacingOccurrencesOfString: @"http:/" withString: @""];
+    NSString *url = [self.topicDetailUrl stringByReplacingOccurrencesOfString: @"https:/" withString: @""];
     
-    NSString *text = [self.topicTitle stringByAppendingString: [NSString stringWithFormat: @"http://%@", url]];
+    NSString *text = [self.topicTitle stringByAppendingString: [NSString stringWithFormat: @"https://%@", url]];
     [WTShareSDKTool shareWithText: text url: url title: @"v2ex客户端"];
 }
 

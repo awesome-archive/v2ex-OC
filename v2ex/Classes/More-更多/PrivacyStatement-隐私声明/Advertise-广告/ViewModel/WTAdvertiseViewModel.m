@@ -22,7 +22,7 @@
  */
 + (void)loadAdvertiseItemsFromNetworkWithSuccess:(void(^)(NSMutableArray<WTAdvertiseItem *> *advertiseItems))success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlString = @"http://www.v2ex.com/advertise/2016.html";
+    NSString *urlString = @"https://www.v2ex.com/advertise/2016.html";
     
     [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(id data) {
         

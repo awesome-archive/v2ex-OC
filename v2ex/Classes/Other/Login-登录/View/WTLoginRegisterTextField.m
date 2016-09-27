@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // 光标设置为白色
     self.tintColor = [UIColor whiteColor];
     

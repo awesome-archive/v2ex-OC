@@ -16,41 +16,42 @@ PODS:
     - AFNetworking/NSURLSession
   - CTAssetsPickerController (3.3.1):
     - PureLayout (~> 3.0.0)
-  - DKNightVersion (2.3.1):
-    - DKNightVersion/Core (= 2.3.1)
-    - DKNightVersion/CoreAnimation (= 2.3.1)
-    - DKNightVersion/UIKit (= 2.3.1)
-  - DKNightVersion/Core (2.3.1):
-    - DKNightVersion/Core/DeallocBlockExecutor (= 2.3.1)
-    - DKNightVersion/Core/extobjc (= 2.3.1)
-  - DKNightVersion/Core/DeallocBlockExecutor (2.3.1)
-  - DKNightVersion/Core/extobjc (2.3.1)
-  - DKNightVersion/CoreAnimation (2.3.1):
+  - DKNightVersion (2.4.0):
+    - DKNightVersion/Core (= 2.4.0)
+    - DKNightVersion/CoreAnimation (= 2.4.0)
+    - DKNightVersion/UIKit (= 2.4.0)
+  - DKNightVersion/Core (2.4.0):
+    - DKNightVersion/Core/DeallocBlockExecutor (= 2.4.0)
+    - DKNightVersion/Core/extobjc (= 2.4.0)
+  - DKNightVersion/Core/DeallocBlockExecutor (2.4.0)
+  - DKNightVersion/Core/extobjc (2.4.0)
+  - DKNightVersion/CoreAnimation (2.4.0):
     - DKNightVersion/Core
-  - DKNightVersion/UIKit (2.3.1):
+  - DKNightVersion/UIKit (2.4.0):
     - DKNightVersion/Core
   - DZNEmptyDataSet (1.8.1)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - IQKeyboardManager (4.0.4)
-  - Masonry (1.0.1)
+  - IQKeyboardManager (4.0.6)
+  - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - pop (1.0.9)
   - PureLayout (3.0.2)
   - RegexKitLite (4.0)
-  - RongCloudIMKit (2.6.11)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - RongCloudIMKit (2.7.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.0.3)
-  - TYAttributedLabel (2.6.1)
+  - tingyunApp (2.4.1)
+  - TYAttributedLabel (2.6.2)
   - UITableView+FDTemplateLayoutCell (1.4)
-  - YYCategories (1.0.3):
-    - YYCategories/no-arc (= 1.0.3)
-  - YYCategories/no-arc (1.0.3)
-  - YYText (1.0.5)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - AFNetworking
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - RongCloudIMKit
   - SDWebImage
   - SVProgressHUD
+  - tingyunApp
   - TYAttributedLabel
   - UITableView+FDTemplateLayoutCell
   - YYCategories
@@ -75,24 +77,25 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CTAssetsPickerController: b1d1d50ab87cf6b8b13531de5f4530482e7e53ed
-  DKNightVersion: a777bb22a9a68837d89ddd724e1fcaf65581dde4
+  DKNightVersion: a46e6623767216cbff843192f9eac1a5aa177a44
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  RongCloudIMKit: 880e0eefb689051a754f1e10a19c735fcf3049a4
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  RongCloudIMKit: 9dcdee89da511bf1fa375ac0646754783cdb9c9e
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  TYAttributedLabel: 4785820dc8d7935446f49f1de4daa0f99ebcba8a
+  tingyunApp: bf9074313164f2b3595b5c2b422c8159cee03a58
+  TYAttributedLabel: 1c1f1e7604043ba584e005d4fd3aee8a1a7a2020
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
-  YYCategories: 0fd4d9eb0994d8d0e355beb4081c8f7202a82b7b
-  YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 57d72301ab74896d2390d5c968a22ee5e9d6a59c
+PODFILE CHECKSUM: bab2f331e8e977081e42be76d4e07b042cc45145
 
 COCOAPODS: 1.0.1

@@ -59,7 +59,7 @@
  */
 - (void)getMemberItemWithUsername:(NSString *)username success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@", username];
+    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/member/%@", username];
     
     [[NetworkTool shareInstance] GETFirefoxWithUrlString: urlString success:^(id data) {
         

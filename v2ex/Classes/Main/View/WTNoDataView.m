@@ -17,6 +17,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.backgroundColor = [UIColor redColor];
     self.tipTitleLabel.textColor = WTColor(219, 218, 232);
 }

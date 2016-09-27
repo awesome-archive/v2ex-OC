@@ -19,6 +19,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // 取消反弹
     self.webView.scrollView.bounces = NO;
     // 监听scrollView的contentSize
@@ -62,7 +63,7 @@
 {
     NSString *url = request.URL.absoluteString;
     // 第一次加载
-    if (([url containsString: @"about:blank"] || [url isEqualToString: @"http:/"]) && ![url containsString: @"jpg"])
+    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:/"] | [url isEqualToString: @"http:/"]) && ![url containsString: @"jpg"])
     {
         return YES;
     }

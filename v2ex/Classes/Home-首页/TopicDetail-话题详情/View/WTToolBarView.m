@@ -70,6 +70,7 @@
 #pragma mark - 初始化
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.backgroundColor = [UIColor colorWithHexString: @"#292A2A"];
     
     // 1、KVO，监听 self.pageLabel的text属性的值的变化

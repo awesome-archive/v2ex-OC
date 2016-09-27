@@ -8,6 +8,7 @@
 
 #import "WTHomeViewController.h"
 #import "WTTopicDetailViewController.h"
+#import "WTGoogleSearchController.h"
 
 #import "WTURLConst.h"
 #import "UIViewController+Extension.h"
@@ -59,6 +60,8 @@
 - (void)setupNav
 {
     self.navigationItem.title = @"v2ex";
+    
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_search"] style: UIBarButtonItemStyleDone target: self action: @selector(rightBarButtonItemClick)];
 }
 
 #pragma mark 添加子控制器
@@ -71,6 +74,12 @@
         topicVC.urlString = [WTHTTPBaseUrl stringByAppendingString: node.nodeURL];
         [self addChildViewController: topicVC];
     }
+}
+
+#pragma mark - 事件
+- (void)rightBarButtonItemClick
+{
+    [self presentViewController: [WTGoogleSearchController new] animated: YES completion: nil];
 }
 
 @end

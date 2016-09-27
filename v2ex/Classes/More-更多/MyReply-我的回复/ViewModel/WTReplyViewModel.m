@@ -26,7 +26,7 @@
  */
 - (void)getReplyItemsWithUsername:(NSString *)username avatarURL:(NSURL *)avatarURL success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"http://www.v2ex.com/member/%@/replies?p=%ld", username, self.page];
+    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/member/%@/replies?p=%ld", username, self.page];
     
     [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(id data) {
         

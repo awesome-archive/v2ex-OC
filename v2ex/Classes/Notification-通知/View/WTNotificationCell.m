@@ -27,6 +27,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.bgContentView.backgroundColor = [UIColor colorWithHexString: @"#F3F3F5"];
     self.bgContentView.layer.cornerRadius = 3;
 }

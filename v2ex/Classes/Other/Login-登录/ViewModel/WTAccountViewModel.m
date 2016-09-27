@@ -113,12 +113,12 @@ static WTAccountViewModel *_instance;
     };
     
     
-    // 1、切换帐号有缓存问题
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (NSHTTPCookie *cookie in [storage cookies])
-    {
-        [storage deleteCookie:cookie];
-    }
+//    // 1、切换帐号有缓存问题
+//    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//    for (NSHTTPCookie *cookie in [storage cookies])
+//    {
+//        [storage deleteCookie:cookie];
+//    }
     
     // 2、获取网页中once的值
     NSString *urlString = [WTHTTPBaseUrl stringByAppendingPathComponent: WTLoginUrl];
@@ -209,17 +209,23 @@ static WTAccountViewModel *_instance;
                 
             }
             
-            self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
-            
-            [self saveUsernameAndPassword];
-            
-            // 获取签名状态
-            [self getPastState];
-            
-            if (success)
-            {
-                success();
-            }
+            // 获取签到的网址
+            [[NetworkTool shareInstance] GETWithUrlString: @"https://www.v2ex.com/mission/daily" success:^(id data) {
+                self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
+                
+                [self saveUsernameAndPassword];
+                self.account.pastUrl = [self getPastStateWithData: data];
+                if (success)
+                {
+                    success();
+                }
+                
+            } failure:^(NSError *error) {
+                if (error)
+                {
+                    failure(error);
+                }
+            }];
             
             return;
         }
@@ -398,13 +404,7 @@ static WTAccountViewModel *_instance;
 - (void)getPastState
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [[NetworkTool shareInstance] GETWithUrlString: @"http://www.v2ex.com/mission/daily" success:^(id data) {
-            
-            self.account.pastUrl = [self getPastStateWithData: data];
-            
-        } failure:^(NSError *error) {
-            
-        }];
+        
     });
 }
 
