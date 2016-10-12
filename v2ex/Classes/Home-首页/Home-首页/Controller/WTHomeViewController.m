@@ -61,7 +61,7 @@
 {
     self.navigationItem.title = @"v2ex";
     
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_search"] style: UIBarButtonItemStyleDone target: self action: @selector(rightBarButtonItemClick)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_search"] style: UIBarButtonItemStyleDone target: self action: @selector(rightBarButtonItemClick)];
 }
 
 #pragma mark 添加子控制器

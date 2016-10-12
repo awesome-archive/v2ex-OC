@@ -6,10 +6,10 @@
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WTBaseTableViewController.h"
 
 @class WTNode;
-@interface WTTopicViewController : UITableViewController
+@interface WTTopicViewController : WTBaseTableViewController
 /** url地址 */
 @property (nonatomic, strong) NSString          *urlString;
 

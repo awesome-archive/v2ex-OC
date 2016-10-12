@@ -86,23 +86,26 @@ static NSString  * const commentCellID = @"commentCellID";
         // 感谢 操作
         case WTToolBarButtonTypeLove:
         {
-            if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)    // 已经感谢过
-            {
-                [SVProgressHUD showErrorWithStatus: @"不能取消感谢"];
-                return;
-            }
-            else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)    // 未知原因不能感谢
-            {
-                [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢"];
-                
-                return;
-            }
-            [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl];
+            [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl allowOperation:^{
+                if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)    // 已经感谢过
+                {
+                    [SVProgressHUD showErrorWithStatus: @"不能取消感谢"];
+                    return NO;
+                }
+                else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)    // 未知原因不能感谢
+                {
+                    [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢"];
+                    
+                    return NO;
+                }
+                return YES;
+            }];
+        
             break;
         }
         // 收藏话题
         case WTToolBarButtonTypeCollection:
-            [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.firstTopicDetailVM.collectionUrl];
+            [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.firstTopicDetailVM.collectionUrl allowOperation: nil];
             break;
         // 上一页
         case WTToolBarButtonTypePrev:
@@ -156,7 +159,7 @@ static NSString  * const commentCellID = @"commentCellID";
 }
 
 #pragma mark - 帖子操作
-- (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString
+- (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString allowOperation:(BOOL(^)())allowOperation
 {
     // 1、先判断是否登陆
     if (![[WTAccountViewModel shareInstance] isLogin])
@@ -172,6 +175,16 @@ static NSString  * const commentCellID = @"commentCellID";
         
         [self presentViewController: loginVC animated: YES completion: nil];
         return;
+    }
+    
+    // 允许登陆之后的操作
+    if (allowOperation)
+    {
+        BOOL isAllow = allowOperation();
+        if (!isAllow)
+        {
+            return;
+        }
     }
     
     
@@ -192,6 +205,7 @@ static NSString  * const commentCellID = @"commentCellID";
             self.updateTopicDetailComplection(topicDetailVM, nil);
         }
     }];
+    
 }
 
 #pragma mark - 加载数据

@@ -11,4 +11,6 @@
 #import "WTRefreshNormalHeader.h"
 @interface WTBaseTableViewController : UITableViewController
 
+@property (nonatomic, assign) WTTableViewType                  tableViewType;
+
 @end

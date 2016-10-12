@@ -25,7 +25,7 @@
  */
 - (void)getUserNotificationsSuccess:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/notifications?p=%ld", self.page];
+    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/notifications?p=%zd", self.page];
     
     [[NetworkTool shareInstance] GETWithUrlString: urlString success:^(NSData *data) {
         
@@ -138,7 +138,7 @@
  */
 - (void)deleteNotificationByNoticationItem:(WTNotificationItem *)notificationItem success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/delete/notification/%ld?once=%ld", notificationItem.uid, notificationItem.once];
+    NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/delete/notification/%zd?once=%ld", notificationItem.uid, notificationItem.once];
 
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: urlString param: nil success:^(id responseObject) {
         

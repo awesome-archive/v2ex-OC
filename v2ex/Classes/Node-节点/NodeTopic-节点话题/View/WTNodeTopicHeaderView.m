@@ -59,8 +59,8 @@
         self.footerLabel.text = nodeItem.footer;
     }
     self.createdLabel.text = nodeItem.created;
-    self.starsLabel.text = [NSString stringWithFormat: @"%ld", nodeItem.stars];
-    self.topicsLabel.text = [NSString stringWithFormat: @"%ld", nodeItem.topics];
+    self.starsLabel.text = [NSString stringWithFormat: @"%lu", nodeItem.stars];
+    self.topicsLabel.text = [NSString stringWithFormat: @"%d", nodeItem.topics];
     [self.avatarImageV sd_setImageWithURL: [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, nodeItem.avatar_large]] placeholderImage: [UIImage imageNamed: @"node_large_default"]];
 }
 

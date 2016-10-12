@@ -4,6 +4,12 @@
 <array>
 	<dict>
 		<key>name</key>
+		<string>全部</string>
+		<key>nodeURL</key>
+		<string>/?tab=all</string>
+	</dict>
+	<dict>
+		<key>name</key>
 		<string>最近</string>
 		<key>nodeURL</key>
 		<string>/recent</string>
@@ -61,12 +67,6 @@
 		<string>最热</string>
 		<key>nodeURL</key>
 		<string>/?tab=hot</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>全部</string>
-		<key>nodeURL</key>
-		<string>/?tab=all</string>
 	</dict>
 	<dict>
 		<key>name</key>

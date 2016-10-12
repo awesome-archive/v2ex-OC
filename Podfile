@@ -25,4 +25,5 @@ target 'v2ex' do
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
 	pod "tingyunApp"
+	pod 'OneAPM', '~> 2.2.4.0'
 end

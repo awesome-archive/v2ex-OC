@@ -19,12 +19,13 @@
 
 #import "NSString+YYAdd.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 // ======
 #import "WTNode.h"
 
 static NSString *const ID = @"topicCell";
 
-@interface WTTopicViewController () <UIViewControllerPreviewingDelegate, WTTopicCellDelegate>
+@interface WTTopicViewController () <UIViewControllerPreviewingDelegate, WTTopicCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) WTTopicViewModel                    *topicVM;
 
@@ -46,6 +47,8 @@ static NSString *const ID = @"topicCell";
 - (void)setUpView
 {
     // 1、设置tableView一些属性
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
@@ -61,9 +64,12 @@ static NSString *const ID = @"topicCell";
     {
         self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
     }
-    self.tableView.mj_header = [WTRefreshNormalHeader headerWithRefreshingTarget: self refreshingAction: @selector(loadNewData)];
+    else
+    {
+        self.tableView.mj_footer = nil;
+    }
     
-    [self.tableView.mj_header beginRefreshing];
+//    [self.tableView.mj_header beginRefreshing];
     
     // 2、判断3DTouch
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
@@ -207,5 +213,18 @@ static NSString *const ID = @"topicCell";
     return group;
 }
 
+#pragma mark - DZNEmptyDataSetSource
+//- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
+//{
+//    UIView *view;
+//    if (self.tableViewType == WTTableViewTypeLogout)
+//    {
+//        WTNoDataView *noDataView = [WTNoDataView noDataView];
+//        noDataView.tipImageView.image = [UIImage imageNamed:@"no_notification"];
+//        noDataView.tipTitleLabel.text = @"快去发表主题吧";
+//        view = noDataView;
+//    }
+//    return view;
+//}
 
 @end

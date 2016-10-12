@@ -14,7 +14,7 @@
 {
     [super viewDidLoad];
     
-    self.searchController.searchResultsUpdater = self;
+
 }
 
 @end
