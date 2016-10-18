@@ -14,6 +14,14 @@
  初始化第三方SDK
  */
 + (void)initAppSDK;
+
+/**
+ openURL
+ 
+ @param url url
+ */
++ (void)openURL:(NSURL *)url;
+
 /**
  设置3D Touch按钮
 

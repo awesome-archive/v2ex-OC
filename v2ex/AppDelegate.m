@@ -87,41 +87,15 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    NSString *prefix = @"v2exclient://skip=";
-    NSString *urlStr = [url absoluteString];
-    
-    // 跳转的URL
-    if ([urlStr rangeOfString: prefix].location != NSNotFound)
-    {
-        
-        NSString *skip = [urlStr substringFromIndex: prefix.length];
-        
-        // 跳转至话题详情
-        if ([skip containsString: @"topicDetail"])
-        {
-            [SVProgressHUD showSuccessWithStatus: @"成功进入啦"];
-            NSString *topicDetailPrefix = @"v2exclient://skip=topicDetail?urlString=";
-            WTLog(@"topicDetail");
-            NSString *topicDetailUrl = [[url absoluteString] substringFromIndex: topicDetailPrefix.length];
-
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
-                topicDetailVC.topicDetailUrl = topicDetailUrl;
-                [[WTAppDelegateTool currentNavigationController] pushViewController:topicDetailVC animated: YES];
-            });
-            
-        }
-    }
-    
+    // iOS10
+    [WTAppDelegateTool openURL: url];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSString *action = url.relativePath;
-    [SVProgressHUD showSuccessWithStatus: @"openURL下面"];
-    WTLog(@"sourceApplication");
-    
+    // iOS10以下
+    [WTAppDelegateTool openURL: url];
     return YES;
 }
 

@@ -39,7 +39,12 @@ static NSString *const TodayCellIdentifier = @"TodayCellIdentifier";
 {
     [super viewDidLoad];
     
-    self.preferredContentSize = CGSizeMake(0, 500);
+    self.preferredContentSize = CGSizeMake(0, 44 * 3);
+    
+    #ifdef __IPHONE_10_0 //因为是iOS10才有的，还请记得适配
+    //如果需要折叠
+    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+    #endif
     
     [self initData];
 }
@@ -98,6 +103,18 @@ static NSString *const TodayCellIdentifier = @"TodayCellIdentifier";
     WTTopicApiItem *item = self.topicApiItems[indexPath.row];
     NSString *urlStr = [NSString stringWithFormat: @"v2exclient://skip=topicDetail?urlString=%@", item.url];
     [self.extensionContext openURL: [NSURL URLWithString: urlStr] completionHandler: nil];
+}
+
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
+{
+    if (activeDisplayMode == NCWidgetDisplayModeExpanded)
+    {
+        self.preferredContentSize = CGSizeMake(0, 44 * self.topicApiItems.count);
+    }
+    else
+    {
+        self.preferredContentSize = CGSizeMake(0, 44 * 3);
+    }
 }
 
 @end

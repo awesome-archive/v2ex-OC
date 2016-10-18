@@ -14,6 +14,7 @@
 #import "WTShareSDKTool.h"
 #import <Bugly/Bugly.h>
 #import "IQKeyboardManager.h"
+#import "WTTopicDetailViewController.h"
 
 @implementation WTAppDelegateTool
 
@@ -104,6 +105,40 @@
         //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
         WTLog(@"token错误");
     }];
+}
+
+
+/**
+ openURL
+
+ @param url url
+ */
++ (void)openURL:(NSURL *)url
+{
+    NSString *prefix = @"v2exclient://skip=";
+    NSString *urlStr = [url absoluteString];
+    
+    // 跳转的URL
+    if ([urlStr rangeOfString: prefix].location != NSNotFound)
+    {
+        
+        NSString *skip = [urlStr substringFromIndex: prefix.length];
+        
+        // 跳转至话题详情
+        if ([skip containsString: @"topicDetail"])
+        {
+            NSString *topicDetailPrefix = @"v2exclient://skip=topicDetail?urlString=";
+            WTLog(@"topicDetail");
+            NSString *topicDetailUrl = [[url absoluteString] substringFromIndex: topicDetailPrefix.length];
+            
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+                topicDetailVC.topicDetailUrl = topicDetailUrl;
+                [[WTAppDelegateTool currentNavigationController] pushViewController:topicDetailVC animated: YES];
+//            });
+            
+        }
+    }
 }
 
 /**
