@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3009C6361DAF764300461B2F /* WTTopicApiItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3009C6351DAF764300461B2F /* WTTopicApiItem.m */; };
+		3009C6391DAF776400461B2F /* WTNodeApiItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3009C6381DAF776400461B2F /* WTNodeApiItem.m */; };
+		302E5F9B1DB0C4D80036EAEF /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
+		302E5F9C1DB0C5510036EAEF /* libPods-v2ex.a in Sources */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
+		302E5F9F1DB0C8740036EAEF /* WTTopicApiItem.h in Sources */ = {isa = PBXBuildFile; fileRef = 3009C6341DAF764300461B2F /* WTTopicApiItem.h */; };
+		302E5FA01DB0C8740036EAEF /* WTTopicApiItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3009C6351DAF764300461B2F /* WTTopicApiItem.m */; };
+		302E5FA21DB0C87A0036EAEF /* WTNodeApiItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3009C6381DAF776400461B2F /* WTNodeApiItem.m */; };
+		302E5FA31DB0C8870036EAEF /* WTMemberAPIItem.h in Sources */ = {isa = PBXBuildFile; fileRef = 303CF2411D6AA25800D697F7 /* WTMemberAPIItem.h */; };
+		302E5FA41DB0C8870036EAEF /* WTMemberAPIItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 303CF2421D6AA25800D697F7 /* WTMemberAPIItem.m */; };
+		302E5FA71DB0C8BB0036EAEF /* TodayNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 302E5FA61DB0C8BB0036EAEF /* TodayNetworkTool.m */; };
+		302E5FAA1DB0C9EF0036EAEF /* TodayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 302E5FA91DB0C9EF0036EAEF /* TodayCell.m */; };
+		302E5FAB1DB0CD290036EAEF /* WTNodeTopicAPIItem.h in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0E51D45C09200F98CF3 /* WTNodeTopicAPIItem.h */; };
+		302E5FAC1DB0CD290036EAEF /* WTNodeTopicAPIItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0E61D45C09200F98CF3 /* WTNodeTopicAPIItem.m */; };
 		303CF23D1D6AA1C300D697F7 /* WTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 303CF23C1D6AA1C300D697F7 /* WTNode.m */; };
 		303CF2401D6AA1ED00D697F7 /* WTMemberItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 303CF23F1D6AA1ED00D697F7 /* WTMemberItem.m */; };
 		303CF2431D6AA25800D697F7 /* WTMemberAPIItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 303CF2421D6AA25800D697F7 /* WTMemberAPIItem.m */; };
@@ -17,6 +30,10 @@
 		304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */; };
 		3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3050F8481D73C719004069B2 /* WTMyTopicViewController.m */; };
 		307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F062C1D965D6500881C28 /* WTAppDelegateTool.m */; };
+		3082C3F61DAE6CD700090AE6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082C3F51DAE6CD700090AE6 /* NotificationCenter.framework */; };
+		3082C3FA1DAE6CD700090AE6 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3082C3F91DAE6CD700090AE6 /* TodayViewController.m */; };
+		3082C3FD1DAE6CD700090AE6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3082C3FB1DAE6CD700090AE6 /* MainInterface.storyboard */; };
+		3082C4011DAE6CD700090AE6 /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3082C3F41DAE6CD700090AE6 /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */; };
 		3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */; };
 		30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */; };
@@ -178,10 +195,47 @@
 		B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E70C4A1D4E5CD6000CC806 /* WTNotificationCell.xib */; };
 		B6E70C4F1D4E5CE7000CC806 /* WTNotificationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E70C4E1D4E5CE7000CC806 /* WTNotificationItem.m */; };
 		B6E889771C99CE4F00BAA96B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889341C99BDE100BAA96B /* libc++.tbd */; };
+		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3082C3FF1DAE6CD700090AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B69481601C462267001ABDA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3082C3F31DAE6CD700090AE6;
+			remoteInfo = Today;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3082C4051DAE6CD700090AE6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3082C4011DAE6CD700090AE6 /* Today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1023E25F7BBA307BD51DD38A /* Pods-v2ex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.release.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.release.xcconfig"; sourceTree = "<group>"; };
+		3009C6341DAF764300461B2F /* WTTopicApiItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicApiItem.h; sourceTree = "<group>"; };
+		3009C6351DAF764300461B2F /* WTTopicApiItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicApiItem.m; sourceTree = "<group>"; };
+		3009C6371DAF776400461B2F /* WTNodeApiItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNodeApiItem.h; sourceTree = "<group>"; };
+		3009C6381DAF776400461B2F /* WTNodeApiItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNodeApiItem.m; sourceTree = "<group>"; };
+		3009C6431DAF7C3500461B2F /* libMJExtension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJExtension.a; path = "Pods/../build/Debug-iphoneos/MJExtension/libMJExtension.a"; sourceTree = "<group>"; };
+		3009C6451DAF7C7D00461B2F /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../Library/Developer/Xcode/DerivedData/v2ex-glnkyvcfagagaqeraszclmynacso/Build/Products/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
+		3009C6471DAF7C8700461B2F /* libMJExtension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJExtension.a; path = "../../../Library/Developer/Xcode/DerivedData/v2ex-glnkyvcfagagaqeraszclmynacso/Build/Products/Debug-iphoneos/MJExtension/libMJExtension.a"; sourceTree = "<group>"; };
+		302E5FA51DB0C8BB0036EAEF /* TodayNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayNetworkTool.h; sourceTree = "<group>"; };
+		302E5FA61DB0C8BB0036EAEF /* TodayNetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayNetworkTool.m; sourceTree = "<group>"; };
+		302E5FA81DB0C9EF0036EAEF /* TodayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayCell.h; sourceTree = "<group>"; };
+		302E5FA91DB0C9EF0036EAEF /* TodayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayCell.m; sourceTree = "<group>"; };
 		303CF23B1D6AA1C300D697F7 /* WTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNode.h; sourceTree = "<group>"; };
 		303CF23C1D6AA1C300D697F7 /* WTNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNode.m; sourceTree = "<group>"; };
 		303CF23E1D6AA1ED00D697F7 /* WTMemberItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMemberItem.h; sourceTree = "<group>"; };
@@ -201,6 +255,14 @@
 		3050F8481D73C719004069B2 /* WTMyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyTopicViewController.m; sourceTree = "<group>"; };
 		307F062B1D965D6500881C28 /* WTAppDelegateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAppDelegateTool.h; sourceTree = "<group>"; };
 		307F062C1D965D6500881C28 /* WTAppDelegateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAppDelegateTool.m; sourceTree = "<group>"; };
+		3080282D1DB0E2450059E9E3 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
+		3080282E1DB0E2940059E9E3 /* v2ex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = v2ex.entitlements; sourceTree = "<group>"; };
+		3082C3F41DAE6CD700090AE6 /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3082C3F51DAE6CD700090AE6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		3082C3F81DAE6CD700090AE6 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		3082C3F91DAE6CD700090AE6 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		3082C3FC1DAE6CD700090AE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3082C3FE1DAE6CD700090AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3099B5491D9AA22E00B2DA46 /* WTGoogleSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTGoogleSearchController.h; sourceTree = "<group>"; };
 		3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTGoogleSearchController.m; sourceTree = "<group>"; };
@@ -285,6 +347,7 @@
 		30E4986D1D70424100C2A6DA /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		30E4986E1D70424100C2A6DA /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		30E4986F1D70424100C2A6DA /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
+		81BD77B1D9E6F005EABD0B77 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
 		B60FA0521D45C09100F98CF3 /* WTTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicViewController.h; sourceTree = "<group>"; };
@@ -513,10 +576,21 @@
 		B6E889731C99CDEF00BAA96B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B6E889751C99CE2C00BAA96B /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3082C3F11DAE6CD700090AE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302E5F9B1DB0C4D80036EAEF /* libPods-v2ex.a in Frameworks */,
+				3082C3F61DAE6CD700090AE6 /* NotificationCenter.framework in Frameworks */,
+				F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B69481651C462267001ABDA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,6 +615,9 @@
 		0E6955286EB2121E6761E58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3009C6471DAF7C8700461B2F /* libMJExtension.a */,
+				3009C6451DAF7C7D00461B2F /* libAFNetworking.a */,
+				3009C6431DAF7C3500461B2F /* libMJExtension.a */,
 				309E321A1D657A8E00BE3DBC /* libAFNetworking.a */,
 				309E321B1D657A8E00BE3DBC /* libCTAssetsPickerController.a */,
 				309E321C1D657A8E00BE3DBC /* libDKNightVersion.a */,
@@ -566,6 +643,8 @@
 				B6E888FE1C99BD2300BAA96B /* SystemConfiguration.framework */,
 				B63176CC1C4702350071C9BF /* libxml2.2.dylib */,
 				CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */,
+				3082C3F51DAE6CD700090AE6 /* NotificationCenter.framework */,
+				0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -633,6 +712,22 @@
 				3050F8481D73C719004069B2 /* WTMyTopicViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3082C3F71DAE6CD700090AE6 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				3080282D1DB0E2450059E9E3 /* Today.entitlements */,
+				3082C3F81DAE6CD700090AE6 /* TodayViewController.h */,
+				3082C3F91DAE6CD700090AE6 /* TodayViewController.m */,
+				3082C3FB1DAE6CD700090AE6 /* MainInterface.storyboard */,
+				3082C3FE1DAE6CD700090AE6 /* Info.plist */,
+				302E5FA51DB0C8BB0036EAEF /* TodayNetworkTool.h */,
+				302E5FA61DB0C8BB0036EAEF /* TodayNetworkTool.m */,
+				302E5FA81DB0C9EF0036EAEF /* TodayCell.h */,
+				302E5FA91DB0C9EF0036EAEF /* TodayCell.m */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		3099B5441D9A9D4D00B2DA46 /* Watch */ = {
@@ -921,6 +1016,8 @@
 			children = (
 				D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */,
 				1023E25F7BBA307BD51DD38A /* Pods-v2ex.release.xcconfig */,
+				D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */,
+				81BD77B1D9E6F005EABD0B77 /* Pods-Today.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -968,6 +1065,10 @@
 				303CF23C1D6AA1C300D697F7 /* WTNode.m */,
 				B60FA0571D45C09100F98CF3 /* WTTopic.h */,
 				B60FA0581D45C09100F98CF3 /* WTTopic.m */,
+				3009C6341DAF764300461B2F /* WTTopicApiItem.h */,
+				3009C6351DAF764300461B2F /* WTTopicApiItem.m */,
+				3009C6371DAF776400461B2F /* WTNodeApiItem.h */,
+				3009C6381DAF776400461B2F /* WTNodeApiItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1740,6 +1841,7 @@
 			isa = PBXGroup;
 			children = (
 				B694816A1C462267001ABDA3 /* v2ex */,
+				3082C3F71DAE6CD700090AE6 /* Today */,
 				B69481691C462267001ABDA3 /* Products */,
 				0E6955286EB2121E6761E58E /* Frameworks */,
 				53DDB4C336993E1AAF8B679D /* Pods */,
@@ -1750,6 +1852,7 @@
 			isa = PBXGroup;
 			children = (
 				B69481681C462267001ABDA3 /* v2ex.app */,
+				3082C3F41DAE6CD700090AE6 /* Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1757,6 +1860,7 @@
 		B694816A1C462267001ABDA3 /* v2ex */ = {
 			isa = PBXGroup;
 			children = (
+				3080282E1DB0E2940059E9E3 /* v2ex.entitlements */,
 				B63A5EB01C5BC5CE00D3BF8B /* Classes */,
 				B694816B1C462267001ABDA3 /* Supporting Files */,
 			);
@@ -1873,6 +1977,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3082C3F31DAE6CD700090AE6 /* Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3082C4041DAE6CD700090AE6 /* Build configuration list for PBXNativeTarget "Today" */;
+			buildPhases = (
+				238A8945B104336C7498A6AE /* [CP] Check Pods Manifest.lock */,
+				3082C3F01DAE6CD700090AE6 /* Sources */,
+				3082C3F11DAE6CD700090AE6 /* Frameworks */,
+				3082C3F21DAE6CD700090AE6 /* Resources */,
+				C59B21DB7788E4CFF8E3ED52 /* [CP] Embed Pods Frameworks */,
+				F6CC1872697782A1C6D49B4B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Today;
+			productName = Today;
+			productReference = 3082C3F41DAE6CD700090AE6 /* Today.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B69481671C462267001ABDA3 /* v2ex */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B694817F1C462267001ABDA3 /* Build configuration list for PBXNativeTarget "v2ex" */;
@@ -1883,10 +2007,12 @@
 				B69481661C462267001ABDA3 /* Resources */,
 				56F992CFE94A09BD8D77F54B /* [CP] Embed Pods Frameworks */,
 				5D11587F66D1AE12E99B9540 /* [CP] Copy Pods Resources */,
+				3082C4051DAE6CD700090AE6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3082C4001DAE6CD700090AE6 /* PBXTargetDependency */,
 			);
 			name = v2ex;
 			productName = v2ex;
@@ -1902,10 +2028,28 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "无头骑士 GJ";
 				TargetAttributes = {
+					3082C3F31DAE6CD700090AE6 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ZD2FW4SQ72;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					B69481671C462267001ABDA3 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = ZD2FW4SQ72;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1923,11 +2067,20 @@
 			projectRoot = "";
 			targets = (
 				B69481671C462267001ABDA3 /* v2ex */,
+				3082C3F31DAE6CD700090AE6 /* Today */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3082C3F21DAE6CD700090AE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3082C3FD1DAE6CD700090AE6 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B69481661C462267001ABDA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1992,6 +2145,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		238A8945B104336C7498A6AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		56F992CFE94A09BD8D77F54B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2022,9 +2190,57 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-v2ex/Pods-v2ex-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C59B21DB7788E4CFF8E3ED52 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Today/Pods-Today-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6CC1872697782A1C6D49B4B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Today/Pods-Today-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3082C3F01DAE6CD700090AE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302E5FAB1DB0CD290036EAEF /* WTNodeTopicAPIItem.h in Sources */,
+				302E5FAC1DB0CD290036EAEF /* WTNodeTopicAPIItem.m in Sources */,
+				302E5FA31DB0C8870036EAEF /* WTMemberAPIItem.h in Sources */,
+				302E5FA41DB0C8870036EAEF /* WTMemberAPIItem.m in Sources */,
+				302E5FAA1DB0C9EF0036EAEF /* TodayCell.m in Sources */,
+				302E5FA21DB0C87A0036EAEF /* WTNodeApiItem.m in Sources */,
+				302E5F9F1DB0C8740036EAEF /* WTTopicApiItem.h in Sources */,
+				302E5FA01DB0C8740036EAEF /* WTTopicApiItem.m in Sources */,
+				302E5F9C1DB0C5510036EAEF /* libPods-v2ex.a in Sources */,
+				302E5FA71DB0C8BB0036EAEF /* TodayNetworkTool.m in Sources */,
+				3082C3FA1DAE6CD700090AE6 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B69481641C462267001ABDA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2054,6 +2270,7 @@
 				B6235E421D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m in Sources */,
 				B60FA1DB1D45C09200F98CF3 /* WTRegisterViewController.m in Sources */,
 				B60FA1901D45C09200F98CF3 /* WTTopicDetailCommentCell.m in Sources */,
+				3009C6391DAF776400461B2F /* WTNodeApiItem.m in Sources */,
 				B60FA1F11D45C09200F98CF3 /* WTTableView.m in Sources */,
 				B60FA19A1D45C09200F98CF3 /* WTRefreshNormalHeader.m in Sources */,
 				B60FA1951D45C09200F98CF3 /* WTBaseTableViewController.m in Sources */,
@@ -2129,6 +2346,7 @@
 				B60FA1EC1D45C09200F98CF3 /* WTParseTool.m in Sources */,
 				B60FA1B51D45C09200F98CF3 /* WTHotNodeViewController.m in Sources */,
 				B60FA1801D45C09200F98CF3 /* WTTipView.m in Sources */,
+				3009C6361DAF764300461B2F /* WTTopicApiItem.m in Sources */,
 				307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */,
 				B60FA1CF1D45C09200F98CF3 /* WTConst.m in Sources */,
 				B6E70C471D4E55B3000CC806 /* WTNotificationViewModel.m in Sources */,
@@ -2155,7 +2373,68 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3082C4001DAE6CD700090AE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3082C3F31DAE6CD700090AE6 /* Today */;
+			targetProxy = 3082C3FF1DAE6CD700090AE6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3082C3FB1DAE6CD700090AE6 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3082C3FC1DAE6CD700090AE6 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		3082C4021DAE6CD700090AE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
+				INFOPLIST_FILE = Today/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3082C4031DAE6CD700090AE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81BD77B1D9E6F005EABD0B77 /* Pods-Today.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
+				INFOPLIST_FILE = Today/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		B694817D1C462267001ABDA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2246,6 +2525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = v2ex/v2ex.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -2316,6 +2596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = v2ex/v2ex.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -2381,6 +2662,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3082C4041DAE6CD700090AE6 /* Build configuration list for PBXNativeTarget "Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3082C4021DAE6CD700090AE6 /* Debug */,
+				3082C4031DAE6CD700090AE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B69481631C462267001ABDA3 /* Build configuration list for PBXProject "v2ex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

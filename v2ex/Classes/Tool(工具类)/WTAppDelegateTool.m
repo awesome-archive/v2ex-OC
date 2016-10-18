@@ -12,7 +12,7 @@
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
 #import "WTShareSDKTool.h"
-
+#import <Bugly/Bugly.h>
 #import "IQKeyboardManager.h"
 
 @implementation WTAppDelegateTool
@@ -45,6 +45,9 @@
     
     // 3、初始化融云
     //[WTAppDelegateTool initRCIM];
+    
+    // 4、腾讯Buglye
+    [Bugly startWithAppId:@"adabbd65ef"];
 }
 
 /**
@@ -101,5 +104,49 @@
         //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
         WTLog(@"token错误");
     }];
+}
+
+/**
+ 获取当前显示的控制器
+ 
+ */
++ (UIViewController *)currentViewController
+{
+    UIWindow *keyWindow  = [UIApplication sharedApplication].keyWindow;
+    
+    UIViewController *currentVC = [self getCurrentVC: keyWindow.rootViewController];
+    return currentVC;
+}
+
++ (UIViewController *)getCurrentVC:(UIViewController *)vc
+{
+    if ([vc isKindOfClass: [UITabBarController class]])
+    {
+        UITabBarController *tabVC = (UITabBarController *)vc;
+        UIViewController *selectVC = tabVC.selectedViewController;
+        return [self getCurrentVC: selectVC];
+    }
+    else if([vc isKindOfClass: [UINavigationController class]])
+    {
+        UINavigationController *navVC = (UINavigationController *)vc;
+        UIViewController *topVC = navVC.topViewController;
+        return [self getCurrentVC: topVC];
+    }
+    else if(vc.presentedViewController)
+    {
+        UIViewController *presentedVC = vc.presentedViewController;
+        return [self getCurrentVC: presentedVC];
+    }
+    
+    return vc;
+}
+
+/**
+ 获取当前显示的导航控制器
+ 
+ */
++ (UINavigationController *)currentNavigationController;
+{
+    return [self currentViewController].navigationController;
 }
 @end

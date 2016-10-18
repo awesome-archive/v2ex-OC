@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, WTTopicType) {
     WTTopicTypeHot
 };
 
+
 @interface WTTopicViewModel : NSObject
 
 @property (nonatomic, strong) NSMutableArray<WTTopic *>     *topics;
@@ -51,5 +52,6 @@ typedef NS_ENUM(NSUInteger, WTTopicType) {
  *  @return YES 是 NO 否
  */
 + (BOOL)isNeedNextPage:(NSString *)urlSuffix;
+
 
 @end

@@ -146,6 +146,9 @@
     // 10、thank 喜欢
     TFHppleElement *topicThankE = [doc peekAtSearchWithXPathQuery: @"//div[@id='topic_thank']"];
     
+    // 11、当前的页数
+    TFHppleElement *currentPageE = [doc peekAtSearchWithXPathQuery: @"//span[@class='page_current']"];
+    
     WTTopicDetailViewModel *topicDetailVM = [WTTopicDetailViewModel new];
     {
         WTTopicDetail *topicDetail = [WTTopicDetail new];
@@ -208,14 +211,20 @@
                 topicDetailVM.thankType = WTThankTypeNotYet;                     // 未感谢
             }
         }
+        
+        // 9、页数
+        topicDetailVM.currentPage = [currentPageE.content integerValue];
     }
+    
+    
+    
     return topicDetailVM;
 }
 
 #pragma mark - 解析评论数组
 + (NSMutableArray<WTTopicDetailViewModel *> *)parseTopicCommentWithDoc:(TFHpple *)doc
 {
-    TFHppleElement *boxElement = [doc searchWithXPathQuery: @"//div[@class='box']"][1];
+    TFHppleElement *boxElement = [[doc searchWithXPathQuery: @"//div[@class='box']"] objectAtIndex: 1];
     
     NSMutableArray<WTTopicDetailViewModel *> *topicDetailVMs = [NSMutableArray array];
     

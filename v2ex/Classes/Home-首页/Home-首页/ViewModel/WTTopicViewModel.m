@@ -11,7 +11,9 @@
 #import "WTURLConst.h"
 #import "WTParseTool.h"
 #import "NetworkTool.h"
+#import "WTTopicApiItem.h"
 #import "WTHTMLExtension.h"
+
 
 #import "TFHpple.h"
 #import "NSString+YYAdd.h"

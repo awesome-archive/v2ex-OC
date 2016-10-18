@@ -26,4 +26,20 @@
  */
 + (void)searchAllScrollViewsInView:(UIView *)view;
 
+
+/**
+ 获取当前显示的控制器
+
+ */
++ (UIViewController *)currentViewController;
+
+
+/**
+ 获取当前显示的导航控制器
+
+ */
++ (UINavigationController *)currentNavigationController;
+
+
+
 @end

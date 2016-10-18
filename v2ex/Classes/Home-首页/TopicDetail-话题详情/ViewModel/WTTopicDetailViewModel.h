@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, WTThankType){
 };
 
 
+
 @interface WTTopicDetailViewModel : NSObject
 /** 话题详情模型 */
 @property (nonatomic, strong) WTTopicDetail    *topicDetail;
@@ -38,6 +39,8 @@ typedef NS_ENUM(NSUInteger, WTThankType){
 @property (nonatomic, strong) NSString         *thankUrl;
 /** 喜欢的状态 */
 @property (nonatomic, assign) WTThankType      thankType;
+/** 当前的页数 */
+@property (nonatomic, assign) NSUInteger       currentPage;
 /**
  *  根据data解析出话题数组
  *

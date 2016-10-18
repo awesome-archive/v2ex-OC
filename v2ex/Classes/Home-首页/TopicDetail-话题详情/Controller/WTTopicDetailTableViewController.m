@@ -68,9 +68,14 @@ static NSString  * const commentCellID = @"commentCellID";
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(toolbarButtonClick:) name: WTToolBarButtonClickNotification object: nil];
     
     // 3、回复帖子用的url
-    self.replyTopicUrl = [NSString subStringToIndexWithStr: @"#" string: self.topicDetailUrl];
-    
-    
+    if ([self.topicDetailUrl containsString: @"#"]) {
+        
+        self.replyTopicUrl = [NSString subStringToIndexWithStr: @"#" string: self.topicDetailUrl];
+    }
+    else
+    {
+        self.replyTopicUrl = self.topicDetailUrl;
+    }
     
     // 4、帖子详情url
     self.lastPageUrl = self.topicDetailUrl;
@@ -218,6 +223,9 @@ static NSString  * const commentCellID = @"commentCellID";
         
         self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];
         
+        // 更新页数
+        self.currentPage = self.topicDetailViewModels.firstObject.currentPage;
+        
         // 说明帖子需要登陆
         if (self.topicDetailViewModels.count == 0)
         {
@@ -245,16 +253,25 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - 解析url
 - (void)parseUrl
 {
-    if (self.currentPage != 0)
+    if (self.currentPage > 0)
     {
         NSString *url = self.topicDetailUrl;
         NSRange range = [url rangeOfString: @"#" options: NSBackwardsSearch];
         // 说明没查找到#号
-        if (range.location > url.length)
+        if (range.location == NSNotFound)
         {
             range = [url rangeOfString: @"=" options: NSBackwardsSearch];
-            url = [url substringToIndex: range.location];
-            self.topicDetailUrl = [url stringByAppendingFormat: @"=%ld", self.currentPage];
+            
+            if (range.location != NSNotFound)
+            {
+                url = [url substringToIndex: range.location];
+                self.topicDetailUrl = [url stringByAppendingFormat: @"=%ld", self.currentPage];
+            }
+            else
+            {
+                self.topicDetailUrl = [url stringByAppendingFormat: @"?p=%ld", self.currentPage];
+            }
+            
         }
         else
         {

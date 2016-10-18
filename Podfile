@@ -25,5 +25,18 @@ target 'v2ex' do
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
 	pod "tingyunApp"
-	pod 'OneAPM', '~> 2.2.4.0'
+	pod 'Bugly'
 end
+
+target 'Today' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  #use_frameworks!
+
+  # Pods for v2ex
+  	pod 'AFNetworking'
+	pod 'SDWebImage'
+	pod 'MJExtension'
+	pod 'YYCache'
+end
+
+
