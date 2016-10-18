@@ -13,15 +13,16 @@
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
 #import "WTAppDelegateTool.h"
-#import "SVProgressHUD.h"
-#import "WTTopicDetailViewController.h"
 
-@interface AppDelegate ()
+static WTAppDelegateTool *_appDelegateTool;
 
-@end
 
 @implementation AppDelegate
 
++ (void)load
+{
+    _appDelegateTool = [WTAppDelegateTool new];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -55,17 +56,18 @@
     // 7、显示顶层window
     [WTTopWindow showWithStatusBarClickBlock:^{
         
-        [WTAppDelegateTool searchAllScrollViewsInView: application.keyWindow];
+        [_appDelegateTool searchAllScrollViewsInView: application.keyWindow];
     }];
     
     // 8、设置3DTouch 按钮
-    [WTAppDelegateTool setup3DTouchItems: application];
+    [_appDelegateTool setup3DTouchItems: application];
     
     // 9、初始化第三方SDK
-    [WTAppDelegateTool initAppSDK];
+    [_appDelegateTool initAppSDKWithDidFinishLaunchingWithOptions: launchOptions];
     
     return YES;
 }
+
 
 #pragma mark - 处理3DTouch点击事件
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
@@ -88,17 +90,32 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
     // iOS10
-    [WTAppDelegateTool openURL: url];
+    [_appDelegateTool openURL: url];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     // iOS10以下
-    [WTAppDelegateTool openURL: url];
+    [_appDelegateTool openURL: url];
     return YES;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [application setApplicationIconBadgeNumber:0];
+    [application cancelAllLocalNotifications];
+}
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler: (void (^)(UIBackgroundFetchResult))completionHandler
+{
+    [_appDelegateTool didReceiveRemoteNotification: userInfo fetchCompletionHandler: completionHandler];
+}
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [_appDelegateTool didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
 
 @end

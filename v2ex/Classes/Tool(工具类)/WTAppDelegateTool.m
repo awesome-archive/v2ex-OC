@@ -15,14 +15,21 @@
 #import <Bugly/Bugly.h>
 #import "IQKeyboardManager.h"
 #import "WTTopicDetailViewController.h"
+#import "JPUSHService.h"
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
+
+@interface WTAppDelegateTool()<JPUSHRegisterDelegate>
+
+@end
 
 @implementation WTAppDelegateTool
 
-
-/**
- 初始化第三方SDK
- */
-+ (void)initAppSDK
+#pragma mark - Public Method
+#pragma mark 初始化第三方SDK
+- (void)initAppSDKWithDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // 1、键盘呼出隐藏
     [IQKeyboardManager sharedManager].enable = YES;
@@ -45,18 +52,18 @@
     
     
     // 3、初始化融云
-    //[WTAppDelegateTool initRCIM];
+    //[self initRCIM];
     
     // 4、腾讯Buglye
     [Bugly startWithAppId:@"adabbd65ef"];
+    
+    
+    // 5、初始化极光推送
+    [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
 }
 
-/**
- 设置3D Touch按钮
- 
- @param application application
- */
-+ (void)setup3DTouchItems:(UIApplication *)application
+#pragma mark 设置3D Touch按钮
+- (void)setup3DTouchItems:(UIApplication *)application
 {
     UIApplicationShortcutItem *publishTopicItem = [[UIApplicationShortcutItem alloc] initWithType: @"publishTopicItem" localizedTitle: @"发表话题" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Add"] userInfo: nil];
     UIApplicationShortcutItem *hotTopicItem = [[UIApplicationShortcutItem alloc] initWithType: @"hotTopicItem" localizedTitle: @"热门话题" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Hot"] userInfo: nil];
@@ -67,7 +74,7 @@
 /**
  *  查找出view里面的所有scrollView
  */
-+ (void)searchAllScrollViewsInView:(UIView *)view
+- (void)searchAllScrollViewsInView:(UIView *)view
 {
     // 如果不在keyWindow范围内（不跟window重叠），直接返回
     if (![view wt_intersectWithView:nil]) return;
@@ -88,10 +95,9 @@
     
 }
 
-/**
- *  初始化融云
- */
-+ (void)initRCIM
+
+#pragma mark 初始化融云
+- (void)initRCIM
 {
     [[RCIM sharedRCIM] initWithAppKey:@"ik1qhw0911lep"];
     
@@ -107,13 +113,47 @@
     }];
 }
 
+#pragma mark - 注册DeviceToken
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    WTLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken])
+    [JPUSHService registerDeviceToken:deviceToken];
+}
 
-/**
- openURL
+#pragma mark - iOS10以下系统接收通知
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    [JPUSHService handleRemoteNotification:userInfo];
+    WTLog(@"iOS7及以上系统，收到通知:%@", [self logDic:userInfo])
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 
- @param url url
- */
-+ (void)openURL:(NSURL *)url
+
+- (void)initJPushWithDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+        entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
+        [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+#endif
+    } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //可以添加自定义categories
+        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                          UIUserNotificationTypeSound |
+                                                          UIUserNotificationTypeAlert)
+                                              categories:nil];
+    }
+    
+    //如不需要使用IDFA，advertisingIdentifier 可为nil
+    [JPUSHService setupWithOption: launchOptions appKey: @"ee0077cf29d6b3aa6f40f280"
+                          channel: nil
+                 apsForProduction: NO
+            advertisingIdentifier: nil];
+}
+
+#pragma mark - OpenURL
+- (void)openURL:(NSURL *)url
 {
     NSString *prefix = @"v2exclient://skip=";
     NSString *urlStr = [url absoluteString];
@@ -134,18 +174,15 @@
 //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
                 topicDetailVC.topicDetailUrl = topicDetailUrl;
-                [[WTAppDelegateTool currentNavigationController] pushViewController:topicDetailVC animated: YES];
+                [[self currentNavigationController] pushViewController:topicDetailVC animated: YES];
 //            });
             
         }
     }
 }
 
-/**
- 获取当前显示的控制器
- 
- */
-+ (UIViewController *)currentViewController
+#pragma mark - 获取当前显示的控制器
+- (UIViewController *)currentViewController
 {
     UIWindow *keyWindow  = [UIApplication sharedApplication].keyWindow;
     
@@ -153,7 +190,7 @@
     return currentVC;
 }
 
-+ (UIViewController *)getCurrentVC:(UIViewController *)vc
+- (UIViewController *)getCurrentVC:(UIViewController *)vc
 {
     if ([vc isKindOfClass: [UITabBarController class]])
     {
@@ -180,8 +217,87 @@
  获取当前显示的导航控制器
  
  */
-+ (UINavigationController *)currentNavigationController;
+- (UINavigationController *)currentNavigationController;
 {
     return [self currentViewController].navigationController;
 }
+
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#pragma mark- JPUSHRegisterDelegate
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    
+    UNNotificationRequest *request = notification.request; // 收到推送的请求
+    UNNotificationContent *content = request.content; // 收到推送的消息内容
+    
+    NSNumber *badge = content.badge;  // 推送消息的角标
+    NSString *body = content.body;    // 推送消息体
+    UNNotificationSound *sound = content.sound;  // 推送消息的声音
+    NSString *subtitle = content.subtitle;  // 推送消息的副标题
+    NSString *title = content.title;  // 推送消息的标题
+    
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]])
+    {
+        [JPUSHService handleRemoteNotification:userInfo];
+        WTLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
+    }
+    else
+    {
+        // 判断为本地通知
+        WTLog(@"iOS10 前台收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
+    }
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
+}
+
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    UNNotificationRequest *request = response.notification.request; // 收到推送的请求
+    UNNotificationContent *content = request.content; // 收到推送的消息内容
+    
+    NSNumber *badge = content.badge;  // 推送消息的角标
+    NSString *body = content.body;    // 推送消息体
+    UNNotificationSound *sound = content.sound;  // 推送消息的声音
+    NSString *subtitle = content.subtitle;  // 推送消息的副标题
+    NSString *title = content.title;  // 推送消息的标题
+    
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]])
+    {
+        [JPUSHService handleRemoteNotification:userInfo];
+        WTLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
+    }
+    else
+    {
+        // 判断为本地通知
+        WTLog(@"iOS10 收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
+    }
+    
+    completionHandler();  // 系统要求执行这个方法
+}
+
+#endif
+// log NSSet with UTF8
+// if not ,log will be \Uxxx
+- (NSString *)logDic:(NSDictionary *)dic {
+    if (![dic count]) {
+        return nil;
+    }
+    NSString *tempStr1 =
+    [[dic description] stringByReplacingOccurrencesOfString:@"\\u"
+                                                 withString:@"\\U"];
+    NSString *tempStr2 =
+    [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    NSString *tempStr3 =
+    [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *str =
+    [NSPropertyListSerialization propertyListFromData:tempData
+                                     mutabilityOption:NSPropertyListImmutable
+                                               format:NULL
+                                     errorDescription:NULL];
+    return str;
+}
+
+
+
 @end

@@ -26,6 +26,7 @@ target 'v2ex' do
 	pod 'pop'
 	pod "tingyunApp"
 	pod 'Bugly'
+	pod 'JPush'
 end
 
 target 'Today' do
