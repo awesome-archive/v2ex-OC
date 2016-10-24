@@ -26,4 +26,6 @@
 
 @property (nonatomic, strong) NSString *detail;
 
+@property (nonatomic, strong) NSString *bio;
+
 @end

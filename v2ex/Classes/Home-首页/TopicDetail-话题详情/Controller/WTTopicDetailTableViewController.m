@@ -335,7 +335,7 @@ static NSString  * const commentCellID = @"commentCellID";
     }
     else if(indexPath.row == 1) // 帖子正文
     {
-        WTLog(@"contentCellHeight:%lf", self.contentCell.cellHeight)
+        //WTLog(@"contentCellHeight:%lf", self.contentCell.cellHeight)
         return self.contentCell.cellHeight;
     }
     else        // 帖子回复

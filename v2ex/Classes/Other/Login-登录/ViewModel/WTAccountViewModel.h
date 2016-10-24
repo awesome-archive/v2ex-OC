@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "WTAccount.h"
+#import "WTUserItem.h"
 @interface WTAccountViewModel : NSObject
 
 @property (nonatomic, strong) WTAccount *account;
+
+@property (nonatomic, strong) WTUserItem *userItem;
 
 /**
  *  单例
@@ -28,6 +31,12 @@
  *
  */
 - (BOOL)isLogin;
+
+/**
+ *  是否登陆过
+ *
+ */
+- (BOOL)isMasakaLogin;
 
 /**
  *  退出登陆
@@ -71,4 +80,23 @@
  *  签到
  */
 - (void)pastWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure;
+
+
+/**
+ 登陆至misaka14
+
+ @param success 请求成功的回调
+ @param failure 请求失败的回调
+ */
+- (void)loginToMisaka14WithUserItem:(WTUserItem *)userItem success:(void(^)(WTUserItem *loginUserItem))success failure:(void(^)(NSError *error))failure;
+
+
+/**
+ 获取用户信息
+ 
+ @param userId  WTUserItem
+ @param success 请求成功的回调
+ @param failure 请求失败的回调
+ */
++ (void)getUserInfoFromMisaka14WithUserItem:(WTUserItem *)userItem success:(void(^)(WTUserItem *userItem))success failure:(void(^)(NSError *error))failure;
 @end

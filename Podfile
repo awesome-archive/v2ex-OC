@@ -27,6 +27,7 @@ target 'v2ex' do
 	pod "tingyunApp"
 	pod 'Bugly'
 	pod 'JPush'
+	pod 'AMapLocation-NO-IDFA'
 end
 
 target 'Today' do

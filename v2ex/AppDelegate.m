@@ -21,7 +21,7 @@ static WTAppDelegateTool *_appDelegateTool;
 
 + (void)load
 {
-    _appDelegateTool = [WTAppDelegateTool new];
+    _appDelegateTool = [WTAppDelegateTool shareAppDelegateTool];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

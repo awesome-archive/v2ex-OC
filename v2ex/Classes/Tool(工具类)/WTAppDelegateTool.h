@@ -11,11 +11,18 @@
 
 @interface WTAppDelegateTool : NSObject
 
++ (instancetype)shareAppDelegateTool;
+
 /**
  初始化第三方SDK
  */
 - (void)initAppSDKWithDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
+
+/**
+ 初始化融云
+ */
+- (void)initRCIM;
 
 /**
  注册deviceToken

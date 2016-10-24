@@ -86,6 +86,58 @@ static NSString *_userAgentMobile;
 }
 
 /**
+ *  发起请求 返回值为JSON
+ *
+ *  @param method  请求方法
+ *  @param url     url地址
+ *  @param param   参数
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)requestJSONWithMethod:(HTTPMethodType)method url:(NSString *)url param:(NSDictionary *)param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    // 1、成功的回调
+    void (^successBlock)(id responseObject) = ^(id responseObject){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        success(responseObject);
+    };
+    
+    // 2、失败的回调
+    void (^failureBlock)(NSError *error) = ^(NSError *error){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        failure(error);
+    };
+    
+    [_instance.requestSerializer setValue: url forHTTPHeaderField: @"Referer"];
+    _instance.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    // 3、发起请求
+    if (method == HTTPMethodTypeGET)            // GET请求
+    {
+        [_instance GET: url parameters: param progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            successBlock(responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            failureBlock(error);
+        }];
+    }
+    else if(method == HTTPMethodTypePOST)       // POST请求
+    {
+        [_instance POST: url parameters: param progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            successBlock(responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            failureBlock(error);
+        }];
+    }
+}
+
+/**
  *  发起请求
  *
  *  @param method  请求方法

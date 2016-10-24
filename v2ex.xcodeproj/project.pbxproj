@@ -34,6 +34,16 @@
 		3082C3FA1DAE6CD700090AE6 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3082C3F91DAE6CD700090AE6 /* TodayViewController.m */; };
 		3082C3FD1DAE6CD700090AE6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3082C3FB1DAE6CD700090AE6 /* MainInterface.storyboard */; };
 		3082C4011DAE6CD700090AE6 /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3082C3F41DAE6CD700090AE6 /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		30884B5F1DB9C512008FF94F /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B5E1DB9C512008FF94F /* MJExtensionConfig.m */; };
+		30884B621DB9DED5008FF94F /* WTConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B611DB9DED5008FF94F /* WTConversationViewController.m */; };
+		30884B651DB9E7E9008FF94F /* WTMemberInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B641DB9E7E9008FF94F /* WTMemberInfoViewController.m */; };
+		30884B671DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30884B661DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard */; };
+		30884B6A1DB9F89A008FF94F /* MisakaNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B691DB9F89A008FF94F /* MisakaNetworkTool.m */; };
+		30884B6D1DBA0A4A008FF94F /* UITableViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B6C1DBA0A4A008FF94F /* UITableViewController+Extension.m */; };
+		30884B701DBA13FA008FF94F /* WTMemberInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B6F1DBA13FA008FF94F /* WTMemberInfoTableViewController.m */; };
+		30884B721DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30884B711DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard */; };
+		30884B751DBA1926008FF94F /* WTConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B741DBA1926008FF94F /* WTConversationListViewController.m */; };
+		30884B771DBA1AE3008FF94F /* WTMessageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30884B761DBA1AE3008FF94F /* WTMessageViewController.storyboard */; };
 		3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */; };
 		3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */; };
 		30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */; };
@@ -71,6 +81,8 @@
 		30E4987B1D70424100C2A6DA /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E4986D1D70424100C2A6DA /* MOBFoundation.framework */; };
 		30E4987C1D70424100C2A6DA /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30E4986E1D70424100C2A6DA /* ShareSDK.bundle */; };
 		30E4987D1D70424100C2A6DA /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E4986F1D70424100C2A6DA /* ShareSDKConnector.framework */; };
+		30FE1B301DB6FD5900621E51 /* WTUserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FE1B2F1DB6FD5900621E51 /* WTUserItem.m */; };
+		30FE1B381DB7182D00621E51 /* v2exTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FE1B371DB7182D00621E51 /* v2exTests.m */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
 		B60FA17D1D45C09200F98CF3 /* WTTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0531D45C09100F98CF3 /* WTTopicViewController.m */; };
@@ -206,6 +218,13 @@
 			remoteGlobalIDString = 3082C3F31DAE6CD700090AE6;
 			remoteInfo = Today;
 		};
+		30FE1B3A1DB7182D00621E51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B69481601C462267001ABDA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B69481671C462267001ABDA3;
+			remoteInfo = v2ex;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -263,6 +282,23 @@
 		3082C3F91DAE6CD700090AE6 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		3082C3FC1DAE6CD700090AE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3082C3FE1DAE6CD700090AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30884B5D1DB9C512008FF94F /* MJExtensionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConfig.h; sourceTree = "<group>"; };
+		30884B5E1DB9C512008FF94F /* MJExtensionConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConfig.m; sourceTree = "<group>"; };
+		30884B601DB9DED5008FF94F /* WTConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTConversationViewController.h; sourceTree = "<group>"; };
+		30884B611DB9DED5008FF94F /* WTConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTConversationViewController.m; sourceTree = "<group>"; };
+		30884B631DB9E7E9008FF94F /* WTMemberInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMemberInfoViewController.h; sourceTree = "<group>"; };
+		30884B641DB9E7E9008FF94F /* WTMemberInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMemberInfoViewController.m; sourceTree = "<group>"; };
+		30884B661DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTMemberInfoViewController.storyboard; sourceTree = "<group>"; };
+		30884B681DB9F89A008FF94F /* MisakaNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MisakaNetworkTool.h; sourceTree = "<group>"; };
+		30884B691DB9F89A008FF94F /* MisakaNetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisakaNetworkTool.m; sourceTree = "<group>"; };
+		30884B6B1DBA0A4A008FF94F /* UITableViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Extension.h"; sourceTree = "<group>"; };
+		30884B6C1DBA0A4A008FF94F /* UITableViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Extension.m"; sourceTree = "<group>"; };
+		30884B6E1DBA13FA008FF94F /* WTMemberInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMemberInfoTableViewController.h; sourceTree = "<group>"; };
+		30884B6F1DBA13FA008FF94F /* WTMemberInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMemberInfoTableViewController.m; sourceTree = "<group>"; };
+		30884B711DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTMemberInfoTableViewController.storyboard; sourceTree = "<group>"; };
+		30884B731DBA1926008FF94F /* WTConversationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTConversationListViewController.h; sourceTree = "<group>"; };
+		30884B741DBA1926008FF94F /* WTConversationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTConversationListViewController.m; sourceTree = "<group>"; };
+		30884B761DBA1AE3008FF94F /* WTMessageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTMessageViewController.storyboard; sourceTree = "<group>"; };
 		3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3099B5491D9AA22E00B2DA46 /* WTGoogleSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTGoogleSearchController.h; sourceTree = "<group>"; };
 		3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTGoogleSearchController.m; sourceTree = "<group>"; };
@@ -347,6 +383,11 @@
 		30E4986D1D70424100C2A6DA /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		30E4986E1D70424100C2A6DA /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		30E4986F1D70424100C2A6DA /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
+		30FE1B2E1DB6FD5900621E51 /* WTUserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUserItem.h; sourceTree = "<group>"; };
+		30FE1B2F1DB6FD5900621E51 /* WTUserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUserItem.m; sourceTree = "<group>"; };
+		30FE1B351DB7182D00621E51 /* v2exTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = v2exTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30FE1B371DB7182D00621E51 /* v2exTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = v2exTests.m; sourceTree = "<group>"; };
+		30FE1B391DB7182D00621E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BD77B1D9E6F005EABD0B77 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
@@ -588,6 +629,13 @@
 				302E5F9B1DB0C4D80036EAEF /* libPods-v2ex.a in Frameworks */,
 				3082C3F61DAE6CD700090AE6 /* NotificationCenter.framework in Frameworks */,
 				F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30FE1B321DB7182D00621E51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,6 +917,12 @@
 				30A2D9371D6D3073009AFA43 /* WTMemberTopicViewController.m */,
 				30A2D93A1D6D34DD009AFA43 /* WTMemberReplyViewController.h */,
 				30A2D93B1D6D34DD009AFA43 /* WTMemberReplyViewController.m */,
+				30884B631DB9E7E9008FF94F /* WTMemberInfoViewController.h */,
+				30884B641DB9E7E9008FF94F /* WTMemberInfoViewController.m */,
+				30884B661DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard */,
+				30884B6E1DBA13FA008FF94F /* WTMemberInfoTableViewController.h */,
+				30884B6F1DBA13FA008FF94F /* WTMemberInfoTableViewController.m */,
+				30884B711DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1009,6 +1063,15 @@
 				30E4986F1D70424100C2A6DA /* ShareSDKConnector.framework */,
 			);
 			path = Required;
+			sourceTree = "<group>";
+		};
+		30FE1B361DB7182D00621E51 /* v2exTests */ = {
+			isa = PBXGroup;
+			children = (
+				30FE1B371DB7182D00621E51 /* v2exTests.m */,
+				30FE1B391DB7182D00621E51 /* Info.plist */,
+			);
+			path = v2exTests;
 			sourceTree = "<group>";
 		};
 		53DDB4C336993E1AAF8B679D /* Pods */ = {
@@ -1217,6 +1280,11 @@
 			children = (
 				B60FA0C41D45C09100F98CF3 /* WTMessageViewController.h */,
 				B60FA0C51D45C09100F98CF3 /* WTMessageViewController.m */,
+				30884B601DB9DED5008FF94F /* WTConversationViewController.h */,
+				30884B611DB9DED5008FF94F /* WTConversationViewController.m */,
+				30884B731DBA1926008FF94F /* WTConversationListViewController.h */,
+				30884B741DBA1926008FF94F /* WTConversationListViewController.m */,
+				30884B761DBA1AE3008FF94F /* WTMessageViewController.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1430,6 +1498,8 @@
 				B60FA10C1D45C09200F98CF3 /* UIView+init.m */,
 				30E497B01D701E2000C2A6DA /* UIViewController+Extension.h */,
 				30E497B11D701E2000C2A6DA /* UIViewController+Extension.m */,
+				30884B6B1DBA0A4A008FF94F /* UITableViewController+Extension.h */,
+				30884B6C1DBA0A4A008FF94F /* UITableViewController+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1508,6 +1578,8 @@
 				B60FA12A1D45C09200F98CF3 /* WTAccount.m */,
 				B60FA12B1D45C09200F98CF3 /* WTLoginRequestItem.h */,
 				B60FA12C1D45C09200F98CF3 /* WTLoginRequestItem.m */,
+				30FE1B2E1DB6FD5900621E51 /* WTUserItem.h */,
+				30FE1B2F1DB6FD5900621E51 /* WTUserItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1616,6 +1688,8 @@
 				B60FA1651D45C09200F98CF3 /* NetworkTool.m */,
 				B60FA1661D45C09200F98CF3 /* WTNetworkState.h */,
 				B60FA1671D45C09200F98CF3 /* WTNetworkState.m */,
+				30884B681DB9F89A008FF94F /* MisakaNetworkTool.h */,
+				30884B691DB9F89A008FF94F /* MisakaNetworkTool.m */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1842,6 +1916,7 @@
 			children = (
 				B694816A1C462267001ABDA3 /* v2ex */,
 				3082C3F71DAE6CD700090AE6 /* Today */,
+				30FE1B361DB7182D00621E51 /* v2exTests */,
 				B69481691C462267001ABDA3 /* Products */,
 				0E6955286EB2121E6761E58E /* Frameworks */,
 				53DDB4C336993E1AAF8B679D /* Pods */,
@@ -1853,6 +1928,7 @@
 			children = (
 				B69481681C462267001ABDA3 /* v2ex.app */,
 				3082C3F41DAE6CD700090AE6 /* Today.appex */,
+				30FE1B351DB7182D00621E51 /* v2exTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1879,6 +1955,8 @@
 				B694816F1C462267001ABDA3 /* AppDelegate.m */,
 				B694816C1C462267001ABDA3 /* main.m */,
 				B63176D11C47636D0071C9BF /* v2ex.pch */,
+				30884B5D1DB9C512008FF94F /* MJExtensionConfig.h */,
+				30884B5E1DB9C512008FF94F /* MJExtensionConfig.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1997,6 +2075,24 @@
 			productReference = 3082C3F41DAE6CD700090AE6 /* Today.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		30FE1B341DB7182D00621E51 /* v2exTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30FE1B3E1DB7182D00621E51 /* Build configuration list for PBXNativeTarget "v2exTests" */;
+			buildPhases = (
+				30FE1B311DB7182D00621E51 /* Sources */,
+				30FE1B321DB7182D00621E51 /* Frameworks */,
+				30FE1B331DB7182D00621E51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30FE1B3B1DB7182D00621E51 /* PBXTargetDependency */,
+			);
+			name = v2exTests;
+			productName = v2exTests;
+			productReference = 30FE1B351DB7182D00621E51 /* v2exTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B69481671C462267001ABDA3 /* v2ex */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B694817F1C462267001ABDA3 /* Build configuration list for PBXNativeTarget "v2ex" */;
@@ -2038,12 +2134,21 @@
 							};
 						};
 					};
+					30FE1B341DB7182D00621E51 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ZD2FW4SQ72;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B69481671C462267001ABDA3;
+					};
 					B69481671C462267001ABDA3 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = ZD2FW4SQ72;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Keychain = {
@@ -2071,6 +2176,7 @@
 			targets = (
 				B69481671C462267001ABDA3 /* v2ex */,
 				3082C3F31DAE6CD700090AE6 /* Today */,
+				30FE1B341DB7182D00621E51 /* v2exTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2081,6 +2187,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3082C3FD1DAE6CD700090AE6 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30FE1B331DB7182D00621E51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2101,6 +2214,7 @@
 				3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */,
 				30E4987C1D70424100C2A6DA /* ShareSDK.bundle in Resources */,
 				B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */,
+				30884B721DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard in Resources */,
 				B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */,
 				B6DEEB791D4665D900E3A313 /* WTAdvertiseCell.xib in Resources */,
 				B60FA1F01D45C09200F98CF3 /* WTPersonViewController.xib in Resources */,
@@ -2114,6 +2228,8 @@
 				B60FA18F1D45C09200F98CF3 /* WTToolBarView.xib in Resources */,
 				30A2D9341D6D2EE1009AFA43 /* YZPersonViewController.xib in Resources */,
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
+				30884B671DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard in Resources */,
+				30884B771DBA1AE3008FF94F /* WTMessageViewController.storyboard in Resources */,
 				30A2D8D91D6B06EF009AFA43 /* light.css in Resources */,
 				30E498771D70424100C2A6DA /* WeiboSDK.bundle in Resources */,
 				B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */,
@@ -2244,6 +2360,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30FE1B311DB7182D00621E51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30FE1B381DB7182D00621E51 /* v2exTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B69481641C462267001ABDA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2260,7 +2384,9 @@
 				B60FA1F21D45C09200F98CF3 /* WTShareSDKTool.m in Sources */,
 				30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */,
 				B60FA1E91D45C09200F98CF3 /* WTNetworkState.m in Sources */,
+				30884B6A1DB9F89A008FF94F /* MisakaNetworkTool.m in Sources */,
 				B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */,
+				30884B701DBA13FA008FF94F /* WTMemberInfoTableViewController.m in Sources */,
 				B6271D541D599CC700A66983 /* WTMyFollowingViewModel.m in Sources */,
 				30A2D9421D6E8B0A009AFA43 /* WTNoDataView.m in Sources */,
 				B60FA1861D45C09200F98CF3 /* WTTopicViewModel.m in Sources */,
@@ -2300,6 +2426,7 @@
 				B60FA1D01D45C09200F98CF3 /* WTURLConst.m in Sources */,
 				B60FA1C61D45C09200F98CF3 /* UIBarButtonItem+Extension.m in Sources */,
 				B60FA1931D45C09200F98CF3 /* WTTopicDetailViewModel.m in Sources */,
+				30FE1B301DB6FD5900621E51 /* WTUserItem.m in Sources */,
 				30A2D9351D6D2EE1009AFA43 /* YZTableView.m in Sources */,
 				30E497AD1D6FE6AB00C2A6DA /* WTRefreshView.m in Sources */,
 				B60FA1DA1D45C09200F98CF3 /* WTNavigationController.m in Sources */,
@@ -2311,6 +2438,7 @@
 				30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */,
 				B60FA1C31D45C09200F98CF3 /* WTUserNotificationViewController.m in Sources */,
 				B60FA1D61D45C09200F98CF3 /* WTAccount.m in Sources */,
+				30884B621DB9DED5008FF94F /* WTConversationViewController.m in Sources */,
 				B60FA1ED1D45C09200F98CF3 /* UIImage+Image.m in Sources */,
 				B664E8471D50668F00C22480 /* WTReplyItem.m in Sources */,
 				B664E8441D50667F00C22480 /* WTMyReplyViewController.m in Sources */,
@@ -2325,6 +2453,7 @@
 				B6235E4C1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m in Sources */,
 				B6271D461D59999800A66983 /* WTMyFollowingViewController.m in Sources */,
 				30E497B21D701E2000C2A6DA /* UIViewController+Extension.m in Sources */,
+				30884B751DBA1926008FF94F /* WTConversationListViewController.m in Sources */,
 				B60FA1D31D45C09200F98CF3 /* XPathQuery.m in Sources */,
 				B60FA1B21D45C09200F98CF3 /* WTMessageViewController.m in Sources */,
 				B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */,
@@ -2334,6 +2463,7 @@
 				B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */,
 				B60FA1CC1D45C09200F98CF3 /* UITextField+Placeholder.m in Sources */,
 				30A2D8F31D6C4F88009AFA43 /* WTHotTopicViewController.m in Sources */,
+				30884B6D1DBA0A4A008FF94F /* UITableViewController+Extension.m in Sources */,
 				B6E70C4B1D4E5CD6000CC806 /* WTNotificationCell.m in Sources */,
 				B60FA1C91D45C09200F98CF3 /* UIFont+Extension.m in Sources */,
 				304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */,
@@ -2345,6 +2475,7 @@
 				B60FA1941D45C09200F98CF3 /* PhotoBrowserViewController.m in Sources */,
 				30A2D9331D6D2EE1009AFA43 /* YZPersonViewController.m in Sources */,
 				304B4EE91D6A9B7F00F7DD09 /* WTTopicCollectionItem.m in Sources */,
+				30884B5F1DB9C512008FF94F /* MJExtensionConfig.m in Sources */,
 				B60FA1921D45C09200F98CF3 /* WTTopicDetailHeadCell.m in Sources */,
 				B60FA1EC1D45C09200F98CF3 /* WTParseTool.m in Sources */,
 				B60FA1B51D45C09200F98CF3 /* WTHotNodeViewController.m in Sources */,
@@ -2358,6 +2489,7 @@
 				B60FA1D41D45C09200F98CF3 /* WTLoginViewController.m in Sources */,
 				B60FA1BA1D45C09200F98CF3 /* WTHotNodeReusableView.m in Sources */,
 				B60FA1EA1D45C09200F98CF3 /* WTHTMLExtension.m in Sources */,
+				30884B651DB9E7E9008FF94F /* WTMemberInfoViewController.m in Sources */,
 				B60FA1CA1D45C09200F98CF3 /* UIImage+Extension.m in Sources */,
 				B60FA2231D45D7E700F98CF3 /* WTMoreViewController.m in Sources */,
 				B60FA1D21D45C09200F98CF3 /* TFHppleElement.m in Sources */,
@@ -2381,6 +2513,11 @@
 			isa = PBXTargetDependency;
 			target = 3082C3F31DAE6CD700090AE6 /* Today */;
 			targetProxy = 3082C3FF1DAE6CD700090AE6 /* PBXContainerItemProxy */;
+		};
+		30FE1B3B1DB7182D00621E51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B69481671C462267001ABDA3 /* v2ex */;
+			targetProxy = 30FE1B3A1DB7182D00621E51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2435,6 +2572,40 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		30FE1B3C1DB7182D00621E51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
+				INFOPLIST_FILE = v2exTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2exTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/v2ex.app/v2ex";
+			};
+			name = Debug;
+		};
+		30FE1B3D1DB7182D00621E51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
+				INFOPLIST_FILE = v2exTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2exTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/v2ex.app/v2ex";
 			};
 			name = Release;
 		};
@@ -2670,6 +2841,15 @@
 			buildConfigurations = (
 				3082C4021DAE6CD700090AE6 /* Debug */,
 				3082C4031DAE6CD700090AE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30FE1B3E1DB7182D00621E51 /* Build configuration list for PBXNativeTarget "v2exTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30FE1B3C1DB7182D00621E51 /* Debug */,
+				30FE1B3D1DB7182D00621E51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,6 +9,7 @@
 #import "WTAppDelegateTool.h"
 #import <RongIMKit/RongIMKit.h>
 
+#import "WTAccountViewModel.h"
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
 #import "WTShareSDKTool.h"
@@ -16,16 +17,29 @@
 #import "IQKeyboardManager.h"
 #import "WTTopicDetailViewController.h"
 #import "JPUSHService.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
 
 
-@interface WTAppDelegateTool()<JPUSHRegisterDelegate>
+@interface WTAppDelegateTool()<JPUSHRegisterDelegate, RCIMUserInfoDataSource>
 
 @end
 
+static WTAppDelegateTool *_appDelegateTool;
+
 @implementation WTAppDelegateTool
+
+#pragma mark - 单例
++ (instancetype)shareAppDelegateTool
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _appDelegateTool = [WTAppDelegateTool new];
+    });
+    return _appDelegateTool;
+}
 
 #pragma mark - Public Method
 #pragma mark 初始化第三方SDK
@@ -60,6 +74,9 @@
     
     // 5、初始化极光推送
     [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
+    
+    // 6、初始化高德地图
+    [AMapServices sharedServices].apiKey = @"837660a1b113cc1edc65353e38414c2b";
 }
 
 #pragma mark 设置3D Touch按钮
@@ -99,9 +116,13 @@
 #pragma mark 初始化融云
 - (void)initRCIM
 {
-    [[RCIM sharedRCIM] initWithAppKey:@"ik1qhw0911lep"];
+    NSString *token = [WTAccountViewModel shareInstance].userItem.rongToken;
     
-    [[RCIM sharedRCIM] connectWithToken:@"5FVhtz+r/klA0CcIp15yTluDsCLSc3F6u5FW34vAd9UufPHenWZiUmKJ0nx5tPt3/6aC6bJuMVBUIIlf7wppFw==" success:^(NSString *userId) {
+    [[RCIM sharedRCIM] initWithAppKey: @"ik1qhw0911lep"];
+    
+    [[RCIM sharedRCIM] setUserInfoDataSource: self];
+    
+    [[RCIM sharedRCIM] connectWithToken: token success:^(NSString *userId) {
         WTLog(@"登陆成功。当前登录的用户ID：%@", userId);
     } error:^(RCConnectErrorCode status) {
         WTLog(@"登陆的错误码为:%ld", status);
@@ -273,6 +294,21 @@
     }
     
     completionHandler();  // 系统要求执行这个方法
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion
+{
+    WTUserItem *userItem = [WTUserItem new];
+    userItem.uid = [userId integerValue];
+    [WTAccountViewModel getUserInfoFromMisaka14WithUserItem: userItem success:^(WTUserItem *userItem) {
+        
+        RCUserInfo *userInfo = [[RCUserInfo alloc] initWithUserId: [NSString stringWithFormat: @"%ld", userItem.uid] name: userItem.username portrait: userItem.avatarUrl];
+        
+        completion(userInfo);
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #endif

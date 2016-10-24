@@ -9,7 +9,9 @@
 #import "WTMemberDetailViewController.h"
 #import "WTMemberTopicViewController.h"
 #import "WTMemberReplyViewController.h"
+#import "WTMemberInfoViewController.h"
 
+#import "WTAccountViewModel.h"
 #import "WTMemberTopicViewModel.h"
 #import "WTTopicDetailViewModel.h"
 
@@ -22,10 +24,18 @@
 
 @property (nonatomic, strong) WTMemberTopicViewModel *memberTopicVM;
 
+@property (nonatomic, strong) WTUserItem *userItem;
+
 @property (nonatomic, strong) NSString *author;
 
 @property (nonatomic, strong) NSURL    *iconURL;
 
+/** 放大缩小动画 */
+@property (nonatomic, strong) POPSpringAnimation *scaleAnim;
+/** 透明动画 */
+@property (nonatomic, strong) POPBasicAnimation *alphaAnim;
+
+@property (nonatomic, weak) UIButton *personIconBtn;
 @end
 
 @implementation WTMemberDetailViewController
@@ -38,6 +48,13 @@
     [self initView];
     
     [self initData];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.personIconBtn.frame = self.personIconView.frame;
 }
 
 - (void)initView
@@ -54,11 +71,12 @@
     }
     
     // 设置个人头像
-    [self.personIconView sd_setImageWithURL: self.iconURL];
+    [self.personIconView sd_setImageWithURL: self.iconURL placeholderImage: WTIconPlaceholderImage];
     self.usernameLabel.text = self.author;
     self.detailLabel.alpha = 0;
     self.personIconView.alpha = 0;
     self.usernameLabel.alpha = 0;
+    [self.personIconBtn addTarget: self action: @selector(personIconBtnClick) forControlEvents: UIControlEventTouchUpInside];
     
     // 1、添加主题控制器
     WTMemberTopicViewController *memberTopicVC = [[WTMemberTopicViewController alloc] init];
@@ -72,6 +90,7 @@
     memberReplyVC.title = @"回复";
     memberReplyVC.author = self.author;
     [self addChildViewController: memberReplyVC];
+    
 }
 
 - (void)initData
@@ -86,41 +105,96 @@
     } failure:^(NSError *error) {
         
     }];
+    
+    WTUserItem *userItem = [WTUserItem new];
+    userItem.username = @"misaka15";
+    [WTAccountViewModel getUserInfoFromMisaka14WithUserItem: userItem success:^(WTUserItem *resultUserItem){
+        
+        [weakSelf setVipWithUserItem: resultUserItem];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 // 设置用户详细信息
 - (void)setMemberDetailInfo
 {
+    self.memberTopicVM.memberItem.avatarURL = self.iconURL;
+    self.memberTopicVM.memberItem.username = self.author;
     self.detailLabel.text = self.memberTopicVM.memberItem.detail;
     [self.detailLabel sizeToFit];
     
-    [self startAnim];
+    [self.detailLabel pop_addAnimation: self.scaleAnim forKey: kPOPViewScaleXY];
+    [self.detailLabel pop_addAnimation: self.alphaAnim forKey: kPOPViewAlpha];
+    
+    [self.usernameLabel pop_addAnimation: self.scaleAnim forKey:kPOPViewScaleXY];
+    [self.usernameLabel pop_addAnimation: self.alphaAnim forKey: kPOPViewAlpha];
+    
+    [self.personIconView pop_addAnimation: self.scaleAnim forKey: kPOPViewScaleXY];
+    [self.personIconView pop_addAnimation: self.alphaAnim forKey: kPOPViewAlpha];
 }
 
-// 添加动画
-- (void)startAnim
+// 设置用户Vip信息
+- (void)setVipWithUserItem:(WTUserItem *)userItem
 {
-    // 1、缩小动画
-    POPSpringAnimation *scaleAnim = [POPSpringAnimation animationWithPropertyNamed: kPOPViewScaleXY];
-    scaleAnim.springSpeed = 5;
-    scaleAnim.springBounciness = 10;
-    scaleAnim.fromValue = [NSValue valueWithCGPoint: CGPointMake(1.5, 1.5)];
-    scaleAnim.toValue = [NSValue valueWithCGPoint: CGPointMake(1.0, 1.0)];
+    self.userItem = userItem;
     
-    // 2、透明动画
-    POPBasicAnimation *alphaAnim = [POPBasicAnimation animationWithPropertyNamed: kPOPViewAlpha];
-    alphaAnim.duration = 0.5;
-    alphaAnim.toValue = @1.0;
-    
-    
-    [self.detailLabel pop_addAnimation: scaleAnim forKey: kPOPViewScaleXY];
-    [self.detailLabel pop_addAnimation: alphaAnim forKey: kPOPViewAlpha];
-    
-    [self.usernameLabel pop_addAnimation: scaleAnim forKey:kPOPViewScaleXY];
-    [self.usernameLabel pop_addAnimation: alphaAnim forKey: kPOPViewAlpha];
-    
-    [self.personIconView pop_addAnimation: scaleAnim forKey: kPOPViewScaleXY];
-    [self.personIconView pop_addAnimation: alphaAnim forKey: kPOPViewAlpha];
+    // 是VIP
+    if (userItem.isVip)
+    {
+        self.vipImageV.hidden = NO;
+        [self.vipImageV pop_addAnimation: self.scaleAnim forKey: kPOPViewScaleXY];
+        [self.vipImageV pop_addAnimation: self.alphaAnim forKey: kPOPViewAlpha];
+    }
 }
 
+#pragma mark - 事件
+- (void)personIconBtnClick
+{
+    WTMemberInfoViewController *memberInfoVC = [[WTMemberInfoViewController alloc] initWithMemberItem: self.memberTopicVM.memberItem userItem: self.userItem];
+    [self.navigationController pushViewController: memberInfoVC animated: YES];
+}
+
+
+#pragma mark - Lazy Method
+- (POPSpringAnimation *)scaleAnim
+{
+    if (_scaleAnim == nil)
+    {
+        POPSpringAnimation *scaleAnim = [POPSpringAnimation animationWithPropertyNamed: kPOPViewScaleXY];
+        scaleAnim.springSpeed = 5;
+        scaleAnim.springBounciness = 10;
+        scaleAnim.fromValue = [NSValue valueWithCGPoint: CGPointMake(1.5, 1.5)];
+        scaleAnim.toValue = [NSValue valueWithCGPoint: CGPointMake(1.0, 1.0)];
+        
+        _scaleAnim = scaleAnim;
+    }
+    return _scaleAnim;
+}
+
+- (POPBasicAnimation *)alphaAnim
+{
+    if (_alphaAnim == nil)
+    {
+        POPBasicAnimation *alphaAnim = [POPBasicAnimation animationWithPropertyNamed: kPOPViewAlpha];
+        alphaAnim.duration = 0.5;
+        alphaAnim.toValue = @1.0;
+        
+        _alphaAnim = alphaAnim;
+    }
+    return _alphaAnim;
+}
+
+- (UIButton *)personIconBtn
+{
+    if (_personIconBtn == nil)
+    {
+        UIButton *personIconBtn = [UIButton buttonWithType: UIButtonTypeCustom];
+        
+        [self.headerView addSubview: personIconBtn];
+        _personIconBtn = personIconBtn;
+    }
+    return _personIconBtn;
+}
 @end

@@ -181,10 +181,15 @@
     
     TFHppleElement *grayE = [doc peekAtSearchWithXPathQuery: @"//span[@class='gray']"];
     
+    TFHppleElement *biggerE = [doc peekAtSearchWithXPathQuery: @"//span[@class='bigger']"];
     
     WTMemberItem *memberItem = [WTMemberItem new];
     
     memberItem.detail = [grayE.content stringByReplacingOccurrencesOfString: @"+08:00" withString: @""];
+    if (biggerE)
+    {
+        memberItem.bio = biggerE.content;
+    }
     
     self.memberItem = memberItem;
 }

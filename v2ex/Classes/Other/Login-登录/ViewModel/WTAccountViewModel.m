@@ -9,8 +9,12 @@
 #import "WTAccountViewModel.h"
 #import "TFHpple.h"
 #import "NetworkTool.h"
+#import "MisakaNetworkTool.h"
 #import "WTURLConst.h"
 #import "WTLoginRequestItem.h"
+#import "MJExtension.h"
+#import "WTAppDelegateTool.h"
+
 
 #define WTFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent: @"account.plist"]
 
@@ -34,6 +38,7 @@ static WTAccountViewModel *_instance;
         _instance = [super allocWithZone: zone];
         
         _instance.account = [WTAccount new];
+        _instance.userItem = [WTUserItem new];
         _instance.account.usernameOrEmail = [[NSUserDefaults standardUserDefaults] objectForKey: WTUsernameOrEmailKey];
         _instance.account.password = [[NSUserDefaults standardUserDefaults] objectForKey: WTPasswordKey];
 
@@ -69,6 +74,15 @@ static WTAccountViewModel *_instance;
 }
 
 /**
+ *  是否登陆过
+ *
+ */
+- (BOOL)isMasakaLogin
+{
+    return [WTAccountViewModel shareInstance].userItem.uid > 0;
+}
+
+/**
  *  退出登陆
  */
 - (void)loginOut
@@ -79,6 +93,7 @@ static WTAccountViewModel *_instance;
     
     self.account.usernameOrEmail = nil;
     self.account.password = nil;
+    self.userItem = nil;
     
     // 1、切换帐号有缓存问题
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -209,23 +224,9 @@ static WTAccountViewModel *_instance;
                 
             }
             
-            // 获取签到的网址
-            [[NetworkTool shareInstance] GETWithUrlString: @"https://www.v2ex.com/mission/daily" success:^(id data) {
-                self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
-                
-                [self saveUsernameAndPassword];
-                self.account.pastUrl = [self getPastStateWithData: data];
-                if (success)
-                {
-                    success();
-                }
-                
-            } failure:^(NSError *error) {
-                if (error)
-                {
-                    failure(error);
-                }
-            }];
+            // 登陆成功获取用户的信息
+            [self getUserInfoWithResponseObject: responseObject param: param loginRequestItem: loginRequestItem success: success failure: failure];
+            
             
             return;
         }
@@ -255,6 +256,52 @@ static WTAccountViewModel *_instance;
         }
     }];
 }
+
+
+/**
+ 获取用户的详细信息
+
+ @param responseObject   responseObject
+ @param param            请求参数
+ @param loginRequestItem 请求参数
+ @param success          请求成功的回调
+ @param failure          请求失败的回调
+ */
+- (void)getUserInfoWithResponseObject:(NSData *)responseObject param:(NSDictionary *)param loginRequestItem:(WTLoginRequestItem *)loginRequestItem success:(void (^)())success failure:(void (^)(NSError *error))failure
+{
+    // 获取签到的网址
+    [[NetworkTool shareInstance] GETWithUrlString: @"https://www.v2ex.com/mission/daily" success:^(id data) {
+        self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
+        
+        [self saveUsernameAndPassword];
+        self.account.pastUrl = [self getPastStateWithData: data];
+        
+        // 登陆misaka14服务器
+        WTUserItem *userItem = [WTUserItem new];
+        userItem.avatarUrl = [self.account.avatarURL absoluteString];
+        userItem.username = self.account.usernameOrEmail;
+        [self loginToMisaka14WithUserItem: userItem success:^(WTUserItem *loginUserItem) {
+            
+            self.userItem = loginUserItem;
+            
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        if (success)
+        {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (error)
+        {
+            failure(error);
+        }
+    }];
+}
+
 
 /**
  *  获取验证码图片的url
@@ -380,7 +427,7 @@ static WTAccountViewModel *_instance;
  */
 - (WTAccount *)getUserInfoWithData:(NSData *)data usernameOrEmail:(NSString *)usernameOrEmail password:(NSString *)password
 {
-    WTLog(@"data:%@", [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding])
+    //WTLog(@"data:%@", [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding])
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     NSArray<TFHppleElement *> *fadeEs = [doc searchWithXPathQuery: @"//div[@id='Rightbar']//span[@class='fade']"];
     NSString *avatar = [[doc peekAtSearchWithXPathQuery: @"//img[@class='avatar']"] objectForKey: @"src"];
@@ -421,4 +468,75 @@ static WTAccountViewModel *_instance;
     return nil;
 }
 
+
+/**
+ 登陆至misaka14
+ 
+ @param success 请求成功的回调
+ @param failure 请求失败的回调
+ */
+- (void)loginToMisaka14WithUserItem:(WTUserItem *)userItem success:(void(^)(WTUserItem *loginUserItem))success failure:(void(^)(NSError *error))failure;
+{
+    NSString *url = [WTMisaka14Domain stringByAppendingPathComponent: @"user/login"];
+    [[MisakaNetworkTool shareInstance] requestWithMethod: MisakaHTTPMethodTypePOST url: url param: userItem.mj_keyValues success:^(id responseObject) {
+        
+        if ([[responseObject objectForKey: @"code"] integerValue]  == 200)
+        {
+            WTUserItem *loginUserItem = [WTUserItem mj_objectWithKeyValues: [responseObject objectForKey: @"result"]];
+            
+            self.userItem = loginUserItem;
+            
+//            WTAppDelegateTool *appDelegateTool = [WTAppDelegateTool new];
+            
+            // 初始化融云
+            [[WTAppDelegateTool shareAppDelegateTool] initRCIM];
+            
+            if (success)
+            {
+                success(loginUserItem);
+            }
+        }
+        
+        
+        
+        
+    } failure:^(NSError *error) {
+        WTLog(@"loginToMisaka14WithSuccess Error:%@", error)
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
+}
+
+/**
+ 获取用户信息
+ 
+ @param userId  WTUserItem
+ @param success 请求成功的回调
+ @param failure 请求失败的回调
+ */
++ (void)getUserInfoFromMisaka14WithUserItem:(WTUserItem *)userItem success:(void(^)(WTUserItem *userItem))success failure:(void(^)(NSError *error))failure
+{
+    NSString *url = [WTMisaka14Domain stringByAppendingPathComponent: @"user/userInfo"];
+    [[MisakaNetworkTool shareInstance] requestWithMethod: MisakaHTTPMethodTypePOST url: url param: userItem.mj_keyValues success:^(id responseObject) {
+        
+        if ([[responseObject objectForKey: @"code"] integerValue]  == 200)
+        {
+            WTUserItem *resultUserItem = [WTUserItem mj_objectWithKeyValues: [responseObject objectForKey: @"result"]];
+        
+            if (success)
+            {
+                success(resultUserItem);
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        WTLog(@"loginToMisaka14WithSuccess Error:%@", error)
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
+}
 @end

@@ -18,4 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *vipImageV;
+
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @end

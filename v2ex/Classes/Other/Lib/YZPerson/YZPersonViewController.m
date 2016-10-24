@@ -57,11 +57,11 @@
         
     }];
     
+    
     self.personIconView.layer.cornerRadius = 73 * 0.5;
     self.personIconView.layer.masksToBounds = YES;
     self.contentOffsetDict = [NSMutableDictionary dictionary];
 }
-
 // 设置导航条
 - (void)setUpNav
 {
@@ -262,4 +262,6 @@
 
 }
 
+- (IBAction)personCardViewGes:(UITapGestureRecognizer *)sender {
+}
 @end

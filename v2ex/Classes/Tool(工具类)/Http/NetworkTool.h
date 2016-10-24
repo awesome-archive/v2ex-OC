@@ -33,6 +33,18 @@ typedef NS_ENUM(NSInteger, HTTPMethodType)
  */
 - (void)requestWithMethod:(HTTPMethodType)method url:(NSString *)url param:(NSDictionary *)param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
+
+/**
+ *  发起请求 返回值为JSON
+ *
+ *  @param method  请求方法
+ *  @param url     url地址
+ *  @param param   参数
+ *  @param success 请求成功的回调
+ *  @param failure 请求失败的回调
+ */
+- (void)requestJSONWithMethod:(HTTPMethodType)method url:(NSString *)url param:(NSDictionary *)param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
 /**
  *  发起请求
  *

@@ -19,8 +19,8 @@
 
 // 日志打印
 #ifdef DEBUG
-
-#define WTLog(...) NSLog(__VA_ARGS__);
+#define WTString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define WTLog(...) printf("%s 第%d行: %s\n\n",[WTString UTF8String] ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
 
 #else
 
