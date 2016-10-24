@@ -17,6 +17,7 @@
 #import "IQKeyboardManager.h"
 #import "WTTopicDetailViewController.h"
 #import "JPUSHService.h"
+#import "WTConversationViewController.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -45,8 +46,9 @@ static WTAppDelegateTool *_appDelegateTool;
 #pragma mark 初始化第三方SDK
 - (void)initAppSDKWithDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     // 1、键盘呼出隐藏
-    [IQKeyboardManager sharedManager].enable = YES;
+    [[IQKeyboardManager sharedManager] setEnable:YES];
     
     // 2、分享SDK
     [WTShareSDKTool initShareSDK];

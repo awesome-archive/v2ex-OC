@@ -354,8 +354,7 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)topicDetailHeadCell:(WTTopicDetailHeadCell *)topDetailHeadCell didClickiconImageViewWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
-    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
-    memeberDetailVC.topicDetailVM = topicDetailVM;
+    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithtopicDetailVM: topicDetailVM];
     [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
 
@@ -371,8 +370,7 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailCommentCell:(WTTopicDetailCommentCell *)cell iconImageViewClickWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {
-    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
-    memeberDetailVC.topicDetailVM = topicDetailVM;
+    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithtopicDetailVM: topicDetailVM];
     [self.navigationController pushViewController: memeberDetailVC animated: YES];
 
 }

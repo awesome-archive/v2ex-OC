@@ -8,6 +8,8 @@
 
 #import "WTConversationListViewController.h"
 #import "WTConversationViewController.h"
+#import "WTMemberDetailViewController.h"
+#import "UIViewController+Extension.h"
 @interface WTConversationListViewController ()
 
 @end
@@ -19,17 +21,39 @@
     [super viewDidLoad];
     self.title = @"消息";
     
+    // 设置导航栏的View
+    [self setTempNavImageView];
+    
     //设置需要显示哪些类型的会话
     [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
     
     self.conversationListTableView.tableFooterView = [UIView new];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    // 设置导航栏背景图片
+    [self setNavBackgroundImage];
+}
+
+/*!
+ 点击Cell头像的回调
+ 
+ @param model   会话Cell的数据模型
+ */
+- (void)didTapCellPortrait:(RCConversationModel *)model
+{
+    WTMemberDetailViewController *memberInfoVC = [[WTMemberDetailViewController alloc] initWithUsername: model.conversationTitle];
+    [self.navigationController pushViewController: memberInfoVC animated: YES];
+}
+
 //重写RCConversationListViewController的onSelectedTableRow事件
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath
 {
     WTConversationViewController  *conversationVC = [[WTConversationViewController alloc] initWithConversationType: model.conversationType targetId: model.targetId];
-    conversationVC.title = @"想显示的会话标题";
+    conversationVC.title = model.conversationTitle;
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
 

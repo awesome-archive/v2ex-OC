@@ -73,8 +73,14 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 {
     self.replyVM.page = 1;
     
+    if ([self.author isEqualToString: WTNoExistMemberTip]) {
+        self.tableViewType = WTTableViewTypeNoData;
+        return;
+    }
+    
+    __weak typeof(self) weakSelf = self;
     [self.replyVM getReplyItemsWithUsername: self.author avatarURL: nil success:^{
-        
+        weakSelf.tableViewType = weakSelf.replyVM.replyItems.count == 0 ? WTTableViewTypeNoData : WTTableViewTypeNormal;
         [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];

@@ -9,9 +9,12 @@
 #import "WTMessageViewController.h"
 #import "WTConversationListViewController.h"
 #import "WTLoginViewController.h"
+#import "WTMemberDetailViewController.h"
+#import "WTProgressHUD.h"
 
 #import "WTAccountViewModel.h"
-@interface WTMessageViewController ()
+#import "NSString+YYAdd.h"
+@interface WTMessageViewController () <UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (nonatomic, weak) WTConversationListViewController *conversationListVC;
@@ -28,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_search"] style: UIBarButtonItemStyleDone target: self action: @selector(rightBarButtonItemClick)];
+    [self initView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,6 +46,17 @@
         self.emptyView.hidden = NO;
         self.contentView.hidden = YES;
     }
+}
+
+- (void)initView
+{
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame: CGRectMake(0, 10, WTScreenWidth - 20, 40)];
+    searchBar.keyboardType = UIKeyboardTypeASCIICapable;
+    [searchBar setValue:[UIColor greenColor] forKeyPath:@"_searchField._placeholderLabel.textColor"];
+    searchBar.delegate = self;
+    searchBar.placeholder = @"请输入用户昵称";
+    self.navigationItem.titleView = searchBar;
+    
 }
 
 - (void)showMessageView
@@ -64,7 +78,26 @@
     [self presentViewController: loginVC animated: YES completion: nil];
 }
 
-#pragma mark - 事件
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *username = [searchBar.text stringByTrim];
+    
+    // 检验-> 不允许用户输入中文
+    if (![username matchesRegex: @"^[A-Za-z0-9]" options: NSRegularExpressionCaseInsensitive])
+    {
+        [[WTProgressHUD shareProgressHUD] errorWithMessage: @"只能输入英文和数字"];
+        return;
+    }
+    
+    
+    if (username.length == 0) {
+        return;
+    }
+    
+    WTMemberDetailViewController *memberDetailVC = [[WTMemberDetailViewController alloc] initWithUsername: username];
+    [self.navigationController pushViewController: memberDetailVC animated: YES];
+}
+
 - (void)rightBarButtonItemClick
 {
     [self presentViewController: [UIViewController new] animated: YES completion: nil];

@@ -134,8 +134,7 @@ static NSString *const ID = @"myTopicCell";
 #pragma mark - WTTopicCellDelegate
 - (void)topicCell:(WTTopicCell *)topicCell didClickMemberDetailAreaWithTopic:(WTTopic *)topic
 {
-    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
-    memeberDetailVC.topic = topic;
+    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController new] initWithTopic: topic];
     [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
 

@@ -10,8 +10,10 @@
 @class WTTopicDetailViewModel, WTTopic;
 @interface WTMemberDetailViewController : YZPersonViewController
 
-@property (nonatomic, strong) WTTopicDetailViewModel *topicDetailVM;
 
-@property (nonatomic, strong) WTTopic                *topic;
+- (instancetype)initWithtopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM;
 
+- (instancetype)initWithTopic:(WTTopic *)topic;
+
+- (instancetype)initWithUsername:(NSString *)username;
 @end

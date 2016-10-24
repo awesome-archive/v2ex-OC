@@ -28,6 +28,7 @@
 		304B4EE61D6A9B3900F7DD09 /* WTTopicCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE51D6A9B3900F7DD09 /* WTTopicCollectionViewController.m */; };
 		304B4EE91D6A9B7F00F7DD09 /* WTTopicCollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */; };
 		304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */; };
+		304E47D31DBDF5A60094FAD8 /* WTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */; };
 		3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3050F8481D73C719004069B2 /* WTMyTopicViewController.m */; };
 		307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F062C1D965D6500881C28 /* WTAppDelegateTool.m */; };
 		3082C3F61DAE6CD700090AE6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082C3F51DAE6CD700090AE6 /* NotificationCenter.framework */; };
@@ -270,6 +271,8 @@
 		304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionItem.m; sourceTree = "<group>"; };
 		304B4EEA1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicCollectionViewModel.h; sourceTree = "<group>"; };
 		304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionViewModel.m; sourceTree = "<group>"; };
+		304E47D11DBDF5A60094FAD8 /* WTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProgressHUD.h; sourceTree = "<group>"; };
+		304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProgressHUD.m; sourceTree = "<group>"; };
 		3050F8471D73C719004069B2 /* WTMyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyTopicViewController.h; sourceTree = "<group>"; };
 		3050F8481D73C719004069B2 /* WTMyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyTopicViewController.m; sourceTree = "<group>"; };
 		307F062B1D965D6500881C28 /* WTAppDelegateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAppDelegateTool.h; sourceTree = "<group>"; };
@@ -1261,6 +1264,8 @@
 				30E497AB1D6FE6AB00C2A6DA /* WTRefreshView.h */,
 				30E497AC1D6FE6AB00C2A6DA /* WTRefreshView.m */,
 				30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */,
+				304E47D11DBDF5A60094FAD8 /* WTProgressHUD.h */,
+				304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2439,6 +2444,7 @@
 				B60FA1C31D45C09200F98CF3 /* WTUserNotificationViewController.m in Sources */,
 				B60FA1D61D45C09200F98CF3 /* WTAccount.m in Sources */,
 				30884B621DB9DED5008FF94F /* WTConversationViewController.m in Sources */,
+				304E47D31DBDF5A60094FAD8 /* WTProgressHUD.m in Sources */,
 				B60FA1ED1D45C09200F98CF3 /* UIImage+Image.m in Sources */,
 				B664E8471D50668F00C22480 /* WTReplyItem.m in Sources */,
 				B664E8441D50667F00C22480 /* WTMyReplyViewController.m in Sources */,

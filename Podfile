@@ -28,6 +28,7 @@ target 'v2ex' do
 	pod 'Bugly'
 	pod 'JPush'
 	pod 'AMapLocation-NO-IDFA'
+	pod 'JGProgressHUD'
 end
 
 target 'Today' do

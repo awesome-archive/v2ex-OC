@@ -24,6 +24,9 @@
 
 @property (nonatomic, strong) WTMemberTopicViewModel *memberTopicVM;
 
+@property (nonatomic, weak) WTMemberTopicViewController *memberTopicVC;
+@property (nonatomic, weak) WTMemberReplyViewController *memberReplyVC;
+
 @property (nonatomic, strong) WTUserItem *userItem;
 
 @property (nonatomic, strong) NSString *author;
@@ -36,9 +39,34 @@
 @property (nonatomic, strong) POPBasicAnimation *alphaAnim;
 
 @property (nonatomic, weak) UIButton *personIconBtn;
+
 @end
 
 @implementation WTMemberDetailViewController
+
+#pragma mark - init
+- (instancetype)initWithtopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
+{
+    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    memeberDetailVC.author = topicDetailVM.topicDetail.author;
+    memeberDetailVC.iconURL = topicDetailVM.iconURL;
+    return memeberDetailVC;
+}
+
+- (instancetype)initWithTopic:(WTTopic *)topic
+{
+    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    memeberDetailVC.author = topic.author;
+    memeberDetailVC.iconURL = topic.iconURL;
+    return memeberDetailVC;
+}
+
+- (instancetype)initWithUsername:(NSString *)username
+{
+    WTMemberDetailViewController *memeberDetailVC = [WTMemberDetailViewController new];
+    memeberDetailVC.author = username;
+    return memeberDetailVC;
+}
 
 #pragma mark - Life Cycle
 - (void)viewDidLoad
@@ -59,19 +87,12 @@
 
 - (void)initView
 {
-    if (self.topicDetailVM == nil)
+    if (self.iconURL)
     {
-        self.author = self.topic.author;
-        self.iconURL = self.topic.iconURL;
-    }
-    else
-    {
-        self.author = self.topicDetailVM.topicDetail.author;
-        self.iconURL = self.topicDetailVM.iconURL;
+        // 设置个人头像
+        [self.personIconView sd_setImageWithURL: self.iconURL placeholderImage: WTIconPlaceholderImage];
     }
     
-    // 设置个人头像
-    [self.personIconView sd_setImageWithURL: self.iconURL placeholderImage: WTIconPlaceholderImage];
     self.usernameLabel.text = self.author;
     self.detailLabel.alpha = 0;
     self.personIconView.alpha = 0;
@@ -83,12 +104,14 @@
     memberTopicVC.title = @"主题";
     memberTopicVC.author = self.author;
     memberTopicVC.iconURL = self.iconURL;
+    self.memberTopicVC = memberTopicVC;
     [self addChildViewController: memberTopicVC];
     
     // 2、添加回复控制器
     WTMemberReplyViewController *memberReplyVC = [[WTMemberReplyViewController alloc] init];
     memberReplyVC.title = @"回复";
     memberReplyVC.author = self.author;
+    self.memberReplyVC = memberReplyVC;
     [self addChildViewController: memberReplyVC];
     
 }
@@ -103,7 +126,10 @@
         [weakSelf setMemberDetailInfo];
         
     } failure:^(NSError *error) {
-        
+        if (error.code == -1011)
+        {
+            [weakSelf setNoExistsMemberInfo];
+        }
     }];
     
     WTUserItem *userItem = [WTUserItem new];
@@ -120,11 +146,36 @@
 // 设置用户详细信息
 - (void)setMemberDetailInfo
 {
-    self.memberTopicVM.memberItem.avatarURL = self.iconURL;
-    self.memberTopicVM.memberItem.username = self.author;
+    if (!self.iconURL) {
+        // 设置个人头像
+        [self.personIconView sd_setImageWithURL: self.memberTopicVM.memberItem.avatarURL placeholderImage: WTIconPlaceholderImage];
+        self.memberTopicVC.iconURL = self.memberTopicVM.memberItem.avatarURL;
+        [self.memberTopicVC reloadAvatar];
+    
+    }
+    
+//    self.memberTopicVM.memberItem.avatarURL = self.iconURL;
+//    self.memberTopicVM.memberItem.username = self.author;
     self.detailLabel.text = self.memberTopicVM.memberItem.detail;
     [self.detailLabel sizeToFit];
     
+    [self startAnim];
+}
+
+// 设置不存在的用户信息
+- (void)setNoExistsMemberInfo
+{
+    self.usernameLabel.text = WTNoExistMemberTip;
+    self.detailLabel.hidden = YES;
+    self.personIconBtn.userInteractionEnabled = NO;
+    
+ 
+    [self startAnim];
+}
+
+// 开始动画
+- (void)startAnim
+{
     [self.detailLabel pop_addAnimation: self.scaleAnim forKey: kPOPViewScaleXY];
     [self.detailLabel pop_addAnimation: self.alphaAnim forKey: kPOPViewAlpha];
     
@@ -146,6 +197,7 @@
         self.vipImageV.hidden = NO;
         [self.vipImageV pop_addAnimation: self.scaleAnim forKey: kPOPViewScaleXY];
         [self.vipImageV pop_addAnimation: self.alphaAnim forKey: kPOPViewAlpha];
+        self.memberReplyVC.author = WTNoExistMemberTip;
     }
 }
 

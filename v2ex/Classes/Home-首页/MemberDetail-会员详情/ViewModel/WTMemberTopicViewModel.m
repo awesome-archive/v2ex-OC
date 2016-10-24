@@ -59,6 +59,7 @@
  */
 - (void)getMemberItemWithUsername:(NSString *)username success:(void(^)())success failure:(void(^)(NSError *error))failure
 {
+    
     NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/member/%@", username];
     
     [[NetworkTool shareInstance] GETFirefoxWithUrlString: urlString success:^(id data) {
@@ -183,6 +184,8 @@
     
     TFHppleElement *biggerE = [doc peekAtSearchWithXPathQuery: @"//span[@class='bigger']"];
     
+    TFHppleElement *avatarE = [doc peekAtSearchWithXPathQuery: @"//img[@class='avatar']"];
+    
     WTMemberItem *memberItem = [WTMemberItem new];
     
     memberItem.detail = [grayE.content stringByReplacingOccurrencesOfString: @"+08:00" withString: @""];
@@ -190,7 +193,7 @@
     {
         memberItem.bio = biggerE.content;
     }
-    
+    memberItem.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, [avatarE objectForKey: @"src"]]];
     self.memberItem = memberItem;
 }
 

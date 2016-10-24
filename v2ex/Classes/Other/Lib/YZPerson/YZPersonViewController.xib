@@ -34,7 +34,7 @@
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member_detail_normal" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-nh-r6o">
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timo" translatesAutoresizingMaskIntoConstraints="NO" id="K2I-6b-DOy">
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topic_avatar_normal" translatesAutoresizingMaskIntoConstraints="NO" id="K2I-6b-DOy">
                             <constraints>
                                 <constraint firstAttribute="width" constant="73" id="U1j-gb-Kil"/>
                                 <constraint firstAttribute="height" constant="73" id="lWS-XK-KMf"/>
@@ -53,7 +53,7 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip" translatesAutoresizingMaskIntoConstraints="NO" id="Zaz-tY-l4W">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip" translatesAutoresizingMaskIntoConstraints="NO" id="Zaz-tY-l4W">
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="BKM-5b-f3s"/>
                                 <constraint firstAttribute="height" constant="32" id="YjV-6I-eSQ"/>
@@ -111,7 +111,7 @@
     </objects>
     <resources>
         <image name="member_detail_normal" width="800" height="600"/>
-        <image name="timo" width="200" height="200"/>
+        <image name="topic_avatar_normal" width="36" height="36"/>
         <image name="vip" width="64" height="64"/>
     </resources>
 </document>

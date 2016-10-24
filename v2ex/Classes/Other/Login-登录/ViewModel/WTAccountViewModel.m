@@ -488,6 +488,8 @@ static WTAccountViewModel *_instance;
             
 //            WTAppDelegateTool *appDelegateTool = [WTAppDelegateTool new];
             
+            WTLog(@"misaka14服务器登陆成功UserID:%lu", loginUserItem.uid)
+            
             // 初始化融云
             [[WTAppDelegateTool shareAppDelegateTool] initRCIM];
             

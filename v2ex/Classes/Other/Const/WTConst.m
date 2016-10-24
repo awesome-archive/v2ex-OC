@@ -33,6 +33,8 @@ NSString * const WTNormalColor = @"#515151";
 /** 非正常颜色*/
 NSString * const WTNoNormalColor = @"#25A14F";
 
+NSString * const WTNoExistMemberTip = @"不存在这个用户";
+
 /** 工具栏上按钮点击的通知 */
 NSString * const WTToolBarButtonClickNotification = @"WTToolBarButtonClickNotification";
 

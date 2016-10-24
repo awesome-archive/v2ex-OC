@@ -14,4 +14,10 @@
 
 @property (nonatomic, strong) NSURL    *iconURL;
 
+
+/**
+ 刷新头像
+ */
+- (void)reloadAvatar;
+
 @end

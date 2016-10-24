@@ -88,6 +88,7 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     [self.memberTopicVM getMemberTopicsWithUsername: self.author iconURL: self.iconURL success:^{
         
         weakSelf.tableViewType = weakSelf.memberTopicVM.topics.count == 0 ? WTTableViewTypeNoData : WTTableViewTypeNormal;
+        [self reloadAvatar];
         [weakSelf.tableView reloadData];
         
         
@@ -103,6 +104,7 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     if (self.memberTopicVM.isNextPage)
     {
         [self.memberTopicVM getMemberTopicsWithUsername: self.author iconURL: self.iconURL success:^{
+
             
             [self.tableView reloadData];
             
@@ -117,6 +119,25 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
         [self.tableView.mj_footer endRefreshing];
     }
 }
+
+/**
+ 刷新头像
+ */
+- (void)reloadAvatar
+{
+    NSUInteger count = self.memberTopicVM.topics.count;
+    if (count > 0)
+    {
+        for (NSUInteger i = 0; i < count; i++)
+        {
+            WTTopic *topic = [self.memberTopicVM.topics objectAtIndex: i];
+            topic.iconURL = self.iconURL;
+        }
+        [self.tableView reloadData];
+    }
+    
+}
+
 
 #pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
