@@ -18,6 +18,7 @@
 #import "WTWebViewController.h"
 #import "WTNodeCollectionViewController.h"
 #import "WTMyTopicViewController.h"
+#import "WTV2GroupViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
@@ -61,8 +62,6 @@ CGFloat const moreHeaderViewH = 150;
 // 设置View
 - (void)setupView
 {
-    
-    
     [self headerContentView];
     
     // 1、UITableView
@@ -203,7 +202,7 @@ CGFloat const moreHeaderViewH = 150;
         [_datas addObject: @[
                              
                              
-                             [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: ^{
+                                [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: ^{
             
                                     [weakSelf checkIsLoginWithViewController: [WTNodeCollectionViewController new]];
                                 }],
@@ -218,7 +217,7 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf checkIsLoginWithViewController: [WTTopicCollectionViewController new]];
                                 }],
                                 
-                             [WTSettingItem settingItemWithTitle: @"我的话题" image: [UIImage imageNamed: @"mine_topic"] operationBlock: ^{
+                                [WTSettingItem settingItemWithTitle: @"我的话题" image: [UIImage imageNamed: @"mine_topic"] operationBlock: ^{
                                     WTMyTopicViewController *myTopicVC = [WTMyTopicViewController new];
             
                                     [weakSelf checkIsLoginWithViewController: myTopicVC];
@@ -228,6 +227,11 @@ CGFloat const moreHeaderViewH = 150;
             
                                     [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
                                 }],
+                                [WTSettingItem settingItemWithTitle: @"v2小组" image: [UIImage imageNamed: @"more_group"] operationBlock: ^{
+            
+                                    [weakSelf checkIsLoginWithViewController: [WTV2GroupViewController new]];
+                                }],
+                                
                             ]];
         
         [_datas addObject: @[

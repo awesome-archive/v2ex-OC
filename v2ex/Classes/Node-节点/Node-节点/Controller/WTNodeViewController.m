@@ -96,7 +96,7 @@
 {
     if (_allNodeTableView == nil)
     {
-        WTAllNodeViewController *allNodeVC = [[WTAllNodeViewController alloc] initWithStyle: UITableViewStyleGrouped];
+        WTAllNodeViewController *allNodeVC = [[WTAllNodeViewController alloc] init];
         [self addChildViewController: allNodeVC];
         
         _allNodeTableView = allNodeVC.tableView;

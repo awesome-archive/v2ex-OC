@@ -29,6 +29,8 @@
 		304B4EE91D6A9B7F00F7DD09 /* WTTopicCollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */; };
 		304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */; };
 		304E47D31DBDF5A60094FAD8 /* WTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */; };
+		304E47DA1DBDFE280094FAD8 /* WTV2GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E47D91DBDFE280094FAD8 /* WTV2GroupViewController.m */; };
+		304E48321DC083BA0094FAD8 /* WTLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E48311DC083BA0094FAD8 /* WTLocationTool.m */; };
 		3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3050F8481D73C719004069B2 /* WTMyTopicViewController.m */; };
 		307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F062C1D965D6500881C28 /* WTAppDelegateTool.m */; };
 		3082C3F61DAE6CD700090AE6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082C3F51DAE6CD700090AE6 /* NotificationCenter.framework */; };
@@ -273,6 +275,10 @@
 		304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionViewModel.m; sourceTree = "<group>"; };
 		304E47D11DBDF5A60094FAD8 /* WTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProgressHUD.h; sourceTree = "<group>"; };
 		304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProgressHUD.m; sourceTree = "<group>"; };
+		304E47D81DBDFE280094FAD8 /* WTV2GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTV2GroupViewController.h; sourceTree = "<group>"; };
+		304E47D91DBDFE280094FAD8 /* WTV2GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTV2GroupViewController.m; sourceTree = "<group>"; };
+		304E48301DC083BA0094FAD8 /* WTLocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLocationTool.h; sourceTree = "<group>"; };
+		304E48311DC083BA0094FAD8 /* WTLocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLocationTool.m; sourceTree = "<group>"; };
 		3050F8471D73C719004069B2 /* WTMyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyTopicViewController.h; sourceTree = "<group>"; };
 		3050F8481D73C719004069B2 /* WTMyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyTopicViewController.m; sourceTree = "<group>"; };
 		307F062B1D965D6500881C28 /* WTAppDelegateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAppDelegateTool.h; sourceTree = "<group>"; };
@@ -746,6 +752,39 @@
 				304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		304E47D41DBDFE170094FAD8 /* V2Group-V2ex小组 */ = {
+			isa = PBXGroup;
+			children = (
+				304E47D51DBDFE170094FAD8 /* Controller */,
+				304E47D61DBDFE170094FAD8 /* Model */,
+				304E47D71DBDFE170094FAD8 /* View */,
+			);
+			path = "V2Group-V2ex小组";
+			sourceTree = "<group>";
+		};
+		304E47D51DBDFE170094FAD8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				304E47D81DBDFE280094FAD8 /* WTV2GroupViewController.h */,
+				304E47D91DBDFE280094FAD8 /* WTV2GroupViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		304E47D61DBDFE170094FAD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		304E47D71DBDFE170094FAD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3050F8431D73C656004069B2 /* MyTopic-我的话题 */ = {
@@ -1682,6 +1721,8 @@
 				B60FA17A1D45C09200F98CF3 /* WTShareSDKTool.m */,
 				307F062B1D965D6500881C28 /* WTAppDelegateTool.h */,
 				307F062C1D965D6500881C28 /* WTAppDelegateTool.m */,
+				304E48301DC083BA0094FAD8 /* WTLocationTool.h */,
+				304E48311DC083BA0094FAD8 /* WTLocationTool.m */,
 			);
 			path = "Tool(工具类)";
 			sourceTree = "<group>";
@@ -1726,6 +1767,7 @@
 		B60FA1FA1D45D7E700F98CF3 /* More-更多 */ = {
 			isa = PBXGroup;
 			children = (
+				304E47D41DBDFE170094FAD8 /* V2Group-V2ex小组 */,
 				3050F8431D73C656004069B2 /* MyTopic-我的话题 */,
 				30A2D8BC1D6AE5E9009AFA43 /* NodeCollection-节点收藏 */,
 				304B4EDF1D6A9B2400F7DD09 /* TopicCollection-话题收藏 */,
@@ -2484,6 +2526,7 @@
 				30884B5F1DB9C512008FF94F /* MJExtensionConfig.m in Sources */,
 				B60FA1921D45C09200F98CF3 /* WTTopicDetailHeadCell.m in Sources */,
 				B60FA1EC1D45C09200F98CF3 /* WTParseTool.m in Sources */,
+				304E48321DC083BA0094FAD8 /* WTLocationTool.m in Sources */,
 				B60FA1B51D45C09200F98CF3 /* WTHotNodeViewController.m in Sources */,
 				B60FA1801D45C09200F98CF3 /* WTTipView.m in Sources */,
 				3009C6361DAF764300461B2F /* WTTopicApiItem.m in Sources */,
@@ -2491,6 +2534,7 @@
 				B60FA1CF1D45C09200F98CF3 /* WTConst.m in Sources */,
 				B6E70C471D4E55B3000CC806 /* WTNotificationViewModel.m in Sources */,
 				B60FA1D71D45C09200F98CF3 /* WTLoginRequestItem.m in Sources */,
+				304E47DA1DBDFE280094FAD8 /* WTV2GroupViewController.m in Sources */,
 				B60FA1BF1D45C09200F98CF3 /* WTNodeTopicCell.m in Sources */,
 				B60FA1D41D45C09200F98CF3 /* WTLoginViewController.m in Sources */,
 				B60FA1BA1D45C09200F98CF3 /* WTHotNodeReusableView.m in Sources */,
@@ -2708,7 +2752,7 @@
 				CODE_SIGN_ENTITLEMENTS = v2ex/v2ex.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2779,7 +2823,7 @@
 				CODE_SIGN_ENTITLEMENTS = v2ex/v2ex.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZD2FW4SQ72;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (

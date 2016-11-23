@@ -14,9 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AMapFoundation-NO-IDFA (1.3.0)
-  - AMapLocation-NO-IDFA (2.1.1):
-    - AMapFoundation-NO-IDFA (~> 1.2)
+  - AMap2DMap (4.3.0):
+    - AMapFoundation (~> 1.2)
+  - AMapFoundation (1.3.0)
+  - AMapLocation (2.1.1):
+    - AMapFoundation (~> 1.2)
   - Bugly (2.4.0)
   - CTAssetsPickerController (3.3.1):
     - PureLayout (~> 3.0.0)
@@ -62,7 +64,8 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - AMapLocation-NO-IDFA
+  - AMap2DMap
+  - AMapLocation
   - Bugly
   - CTAssetsPickerController
   - DKNightVersion
@@ -88,8 +91,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AMapFoundation-NO-IDFA: 051cf263c00c2938044193d4aeca3b16e4f8af95
-  AMapLocation-NO-IDFA: 7fb76d64268ddb8a97433bbfd8e45cd44a76d16f
+  AMap2DMap: f3f0fc5cdbf0242ff22da0c8605f24f8d7187b35
+  AMapFoundation: 95799945466ccabfe1d3d5d9c1d524501c327b90
+  AMapLocation: dd203f76b034ef5cb546600f4e1ffad2a3a14072
   Bugly: 3b56d8365c5687f74fd6fbb50c5b7ede3cdac96c
   CTAssetsPickerController: b1d1d50ab87cf6b8b13531de5f4530482e7e53ed
   DKNightVersion: a46e6623767216cbff843192f9eac1a5aa177a44
@@ -114,6 +118,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: b5cc588c0345b78307f3943521329f80f20657dc
+PODFILE CHECKSUM: 46795dc7ebbd0517bdfea311f0c736d56aa596ad
 
 COCOAPODS: 1.0.1

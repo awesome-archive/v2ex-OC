@@ -51,4 +51,4 @@ NSString * const WTRegisterUrl = @"signup";
 NSString * const WTDomain = @"com.miaska14.com";
 
 /** www.misaka14.com服务器 */
-NSString * const WTMisaka14Domain = @"http://172.16.1.31:8080/v2ex";
+NSString * const WTMisaka14Domain = @"http://172.16.1.45:8080/v2ex";

@@ -35,6 +35,9 @@ NSString * const reuseIdentifier = @"reuseIdentifier";
 - (void)setupView
 {
     [self.tableView registerClass: [UITableViewCell class] forCellReuseIdentifier: reuseIdentifier];
+    
+    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
+    self.tableView.sectionHeaderHeight = 22;
 }
 
 // 加载数据
@@ -70,13 +73,11 @@ NSString * const reuseIdentifier = @"reuseIdentifier";
 {
     UILabel *label = [UILabel new];
     
-    label.textColor = [UIColor blueColor];
-    
     label.text = WTIndexTitle[section];
     
     label.frame = CGRectMake(0, 0, WTScreenWidth, 20);
     
-    label.backgroundColor = [UIColor grayColor];
+    label.backgroundColor = WTColor(242, 242, 242);
     
     return label;
 }
