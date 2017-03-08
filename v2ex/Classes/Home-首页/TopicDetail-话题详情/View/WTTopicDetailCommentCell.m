@@ -28,6 +28,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.iconImageView.layer.cornerRadius = 5;
+    self.iconImageView.layer.masksToBounds = YES;
+    
     // 头像点击手势添加
     [self.iconImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(iconImageViewClick)]];
     self.iconImageView.userInteractionEnabled = YES;

@@ -33,6 +33,9 @@
     // 圆角
     self.nodeLabel.layer.cornerRadius = 3;
     self.nodeLabel.layer.masksToBounds = YES;
+    
+    self.iconImageView.layer.cornerRadius = 5;
+    self.iconImageView.layer.masksToBounds = YES;
     // 取消点击
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
