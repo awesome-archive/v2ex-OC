@@ -62,6 +62,8 @@ CGFloat const moreHeaderViewH = 150;
 // 设置View
 - (void)setupView
 {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self headerContentView];
     
     // 1、UITableView
