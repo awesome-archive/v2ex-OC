@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel            *pageLabel;
 /** 加入收藏和取消收藏 */
 @property (weak, nonatomic) IBOutlet UIButton           *collectionButton;
-@property (weak, nonatomic) IBOutlet UIButton *thankButton;
+/** 谢谢　*/
+@property (weak, nonatomic) IBOutlet UIButton           *thankButton;
 
 @end
 
@@ -71,7 +72,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.backgroundColor = [UIColor colorWithHexString: @"#292A2A"];
+    self.backgroundColor = [UIColor blackColor];
     
     // 1、KVO，监听 self.pageLabel的text属性的值的变化
     [self.pageLabel addObserver: self forKeyPath: @"text" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context: nil];

@@ -19,4 +19,6 @@
  */
 @property (nonatomic, strong) void(^updatePageBlock)(NSUInteger index);
 
++ (instancetype)topicDetailViewController;
+
 @end

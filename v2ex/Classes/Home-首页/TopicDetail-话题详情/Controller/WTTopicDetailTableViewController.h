@@ -17,6 +17,7 @@
 /** 话题数据更新完成的Block */
 @property (nonatomic, strong) void(^updateTopicDetailComplection)(WTTopicDetailViewModel *topicDetailVM, NSError *error);
 
++ (instancetype)topicDetailTableViewController;
 
 - (void)setupData;
 @end

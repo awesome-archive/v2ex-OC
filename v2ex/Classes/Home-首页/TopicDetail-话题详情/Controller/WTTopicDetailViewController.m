@@ -34,7 +34,7 @@
 
 @implementation WTTopicDetailViewController
 
-- (instancetype)init
++ (instancetype)topicDetailViewController
 {
     return [UIStoryboard storyboardWithName: NSStringFromClass([self class]) bundle: nil].instantiateInitialViewController;
 }
@@ -65,7 +65,7 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareItemClick)];
     
     // 1、创建话题详情数据控制器
-    WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController new];
+    WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController topicDetailTableViewController];
     topicVC.topicDetailUrl = self.topicDetailUrl;
     [self.normalView addSubview: topicVC.tableView];
     _tableView = topicVC.tableView;

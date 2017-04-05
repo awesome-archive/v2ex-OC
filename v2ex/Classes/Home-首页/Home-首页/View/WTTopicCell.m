@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.nodeBtn.layer.cornerRadius = 1.5;
     self.iconImageV.layer.cornerRadius = 5;
     self.iconImageV.layer.masksToBounds = YES;
-
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     // 之前添加点击手势失效，所以才用两个按钮辅助添加点击事件
 //    // 3、添加点击手势

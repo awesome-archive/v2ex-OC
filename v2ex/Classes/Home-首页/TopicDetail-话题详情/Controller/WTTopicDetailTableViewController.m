@@ -50,7 +50,7 @@ static NSString  * const commentCellID = @"commentCellID";
 
 @implementation WTTopicDetailTableViewController
 
-- (instancetype)init
++ (instancetype)topicDetailTableViewController
 {
     return [UIStoryboard storyboardWithName: NSStringFromClass([WTTopicDetailTableViewController class]) bundle: nil].instantiateInitialViewController;
 }
@@ -292,14 +292,14 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     if (indexPath.row == 0) // 帖子标题
     {
-        WTTopicDetailHeadCell *cell = [tableView dequeueReusableCellWithIdentifier: headerCellID];
+        WTTopicDetailHeadCell *cell = [tableView dequeueReusableCellWithIdentifier: headerCellID forIndexPath: indexPath];
         cell.topicDetailVM = self.topicDetailViewModels.firstObject;
         cell.delegate = self;
         return cell;
     }
     else if(indexPath.row == 1) // 帖子正文
     {
-        WTTopicDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier: contentCellID];
+        WTTopicDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier: contentCellID forIndexPath: indexPath];
         cell.topicDetailVM = self.topicDetailViewModels.firstObject;
         cell.delegate = self;
         self.contentCell = cell;
@@ -317,7 +317,7 @@ static NSString  * const commentCellID = @"commentCellID";
     }
     else    // 帖子回复
     {
-        WTTopicDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier: commentCellID];
+        WTTopicDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier: commentCellID forIndexPath: indexPath];
         cell.delegate = self;
         cell.topicDetailVM = self.topicDetailViewModels[indexPath.row - 1];
         return cell;
@@ -335,7 +335,6 @@ static NSString  * const commentCellID = @"commentCellID";
     }
     else if(indexPath.row == 1) // 帖子正文
     {
-        //WTLog(@"contentCellHeight:%lf", self.contentCell.cellHeight)
         return self.contentCell.cellHeight;
     }
     else        // 帖子回复
