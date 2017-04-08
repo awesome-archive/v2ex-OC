@@ -1,36 +1,44 @@
 <script>
+
+// 初始化样式
+initCss();
+// 初始化头像点击
+initAvatarOnclick();
+
+function initAvatarOnclick()
+{
+    var avatars = document.getElementsByClassName("avatar");
+    
+    for (var i = 0; i < avatars.length; i++)
+    {
+        avatars[i].onclick = function(){
+            
+            var html = this.parentNode.parentNode.innerHTML;
+            
+            window.location.href= "userId://" + html.match(/member\/(\S*)"/)[1];
+        }
+    }
+}
+                                                           
+
+
+function initCss()
+{
+    var topic_content = document.getElementsByClassName("topic_content")[0];
+    var markdown_body = topic_content.getElementsByClassName("markdown_body");
+    if (markdown_body.length == 0)
+    {
+        topic_content.style.padding = "10px";
+    }
+}
+
 window.onload = function(){
     
-    // 初始化样式
-    initCss();
     
-    // 初始化头像点击
-    initAvatarOnclick();
-    
-    function initCss()
-    {
-        var topic_content = document.getElementsByClassName("topic_content")[0];
-        var markdown_body = topic_content.getElementsByClassName("markdown_body");
-        if (markdown_body.length == 0)
-        {
-            topic_content.style.padding = "10px";
-        }
-    }
-    
-    function initAvatarOnclick()
-    {
-        var avatars = document.getElementsByClassName("avatar");
-        
-        for (var i = 0; i < avatars.length; i++)
-        {
-            avatars[i].onclick = function(){
-                
-                var html = this.parentNode.parentNode.innerHTML;
-                
-                window.location.href= "userId://" + html.match(/member\/(\S*)"/)[1];
-            }
-        }
-    }
+   var code = document.querySelector('#code');
+   var worker = new Worker('highlight.js');
+   worker.onmessage = function(event) { code.innerHTML = event.data; }
+   worker.postMessage(code.textContent);
 
     
     var topic_content_images = document.getElementsByClassName("topic_content")[0].getElementsByTagName("img");
@@ -75,5 +83,7 @@ window.onload = function(){
     
     
 }
+                                                           
+
 
 </script>

@@ -28,7 +28,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.contentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
+  //  self.contentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
     
     // 圆角
     self.nodeLabel.layer.cornerRadius = 3;

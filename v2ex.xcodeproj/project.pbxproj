@@ -87,6 +87,7 @@
 		30FE1B301DB6FD5900621E51 /* WTUserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FE1B2F1DB6FD5900621E51 /* WTUserItem.m */; };
 		30FE1B381DB7182D00621E51 /* v2exTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FE1B371DB7182D00621E51 /* v2exTests.m */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
+		B60136041E9937E3003A3CB4 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = B60136031E9937E3003A3CB4 /* highlight.js */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
 		B60FA17D1D45C09200F98CF3 /* WTTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0531D45C09100F98CF3 /* WTTopicViewController.m */; };
 		B60FA17E1D45C09200F98CF3 /* WTWYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0551D45C09100F98CF3 /* WTWYViewController.m */; };
@@ -399,6 +400,7 @@
 		30FE1B371DB7182D00621E51 /* v2exTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = v2exTests.m; sourceTree = "<group>"; };
 		30FE1B391DB7182D00621E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BD77B1D9E6F005EABD0B77 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
+		B60136031E9937E3003A3CB4 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
 		B60FA0521D45C09100F98CF3 /* WTTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicViewController.h; sourceTree = "<group>"; };
@@ -897,6 +899,7 @@
 				30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */,
 				30A2D8D61D6B06EF009AFA43 /* light.css */,
 				B6E6306D1E9532E30084EAD0 /* v2ex.js */,
+				B60136031E9937E3003A3CB4 /* highlight.js */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -2293,6 +2296,7 @@
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
 				B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */,
 				B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */,
+				B60136041E9937E3003A3CB4 /* highlight.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -158,7 +158,11 @@
     
     TFHppleElement *contentE = boxEs.firstObject;
     contentE = [contentE searchWithXPathQuery: @"//div[@class='cell']"].firstObject;
-    NSMutableString *contentHTML = [[NSMutableString alloc] initWithString: contentE.raw];
+    NSMutableString *contentHTML = [[NSMutableString alloc] init];
+    if (contentE.raw != nil)
+    {
+        [contentHTML appendString: contentE.raw];
+    }
     
     // 2、正文附加内容
     NSArray *subtleEs = [boxEs.firstObject searchWithXPathQuery: @"//div[@class='subtle']"];
@@ -170,13 +174,21 @@
     
     //
     NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
-    newContentHTML = [newContentHTML stringByReplacingOccurrencesOfString: @"<script><![CDATA[<![CDATA[<![CDATA[<![CDATA[hljs.initHighlightingOnLoad();]]]]]]]]><![CDATA[><![CDATA[><![CDATA[>]]]]]]><![CDATA[><![CDATA[>]]]]><![CDATA[>]]></script>" withString: @""];
+    newContentHTML = [newContentHTML stringByReplacingOccurrencesOfString: @"<script><![CDATA[<![CDATA[<![CDATA[<![CDATA[hljs.initHighlightingOnLoad();]]]]]]]]><![CDATA[><![CDATA[><![CDATA[>]]]]]]><![CDATA[><![CDATA[>]]]]><![CDATA[>]]></script>" withString: @"<script>hljs.initHighlightingOnLoad();</script>"];
     
     
     // 2、加载评论
-    TFHppleElement *commentRootEs = [boxEs objectAtIndex: 1];
-    NSArray<TFHppleElement *> *commentCellEs = [commentRootEs searchWithXPathQuery: @"//div[@class='cell']"];
-    NSArray<TFHppleElement *> *commentInnerEs = [commentRootEs searchWithXPathQuery: @"//div[@class='inner']"];
+    NSArray<TFHppleElement *> *commentCellEs;
+    NSArray<TFHppleElement *> *commentInnerEs;
+    // 可能一条评论没有
+    if (boxEs.count > 1)
+    {
+        TFHppleElement *commentRootEs = [boxEs objectAtIndex: 1];
+        commentCellEs = [commentRootEs searchWithXPathQuery: @"//div[@class='cell']"];
+        commentInnerEs = [commentRootEs searchWithXPathQuery: @"//div[@class='inner']"];
+    }
+    
+    
     
     // 3、加载JS、CSS
     NSString *cssPath = [[NSBundle mainBundle] pathForResource: @"light.css" ofType: nil];
@@ -185,15 +197,17 @@
     NSString *jsPath = [[NSBundle mainBundle] pathForResource: @"v2ex.js" ofType: nil];
     NSString *js = [NSString stringWithContentsOfFile: jsPath encoding: NSUTF8StringEncoding error: nil];
     
+    NSString *highlightJsPath = [[NSBundle mainBundle] pathForResource: @"highlight.js" ofType: nil];
+    NSString *highlightJs = [NSString stringWithContentsOfFile: highlightJsPath encoding: NSUTF8StringEncoding error: nil];
     
     // 4、拼接成新的HTML
     NSMutableString *html = [NSMutableString string];
     
-    [html appendString: @"<!DOCTYPE html><html><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\"><head><title></title>"];
+    [html appendString: @"<!DOCTYPE html><html><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\"><head><title></title>"];
     
     [html appendString: css];
     
-    [html appendString: js];
+    [html appendString: highlightJs];
      
     [html appendString: @"</head><body>"];
     
@@ -216,6 +230,10 @@
     }
     
     html = [WTHTMLExtension topicDetailParseAvatarWithHTML: html];
+    
+    [html appendString: js];
+    
+    
     
     [html appendString: @"</body></html>"];
     
