@@ -121,7 +121,7 @@ static NSString  * const commentCellID = @"commentCellID";
         }
         // 收藏话题
         case WTToolBarButtonTypeCollection:
-            [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.firstTopicDetailVM.collectionUrl allowOperation: nil];
+            [self topicOperationWithMethod: HTTPMethodTypeGET urlString: self.topicDetailVM.collectionUrl allowOperation: nil];
             break;
         // 上一页
         case WTToolBarButtonTypePrev:
@@ -215,7 +215,7 @@ static NSString  * const commentCellID = @"commentCellID";
             return;
         }
         
-        self.firstTopicDetailVM = topicDetailVM;
+        self.topicDetailVM = topicDetailVM;
         if (self.updateTopicDetailComplection)
         {
             self.updateTopicDetailComplection(topicDetailVM, nil);
