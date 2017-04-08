@@ -40,7 +40,7 @@
             images[i].onclick = function(){
 
                 var parentNode = this.parentNode;
-                if (parentNode.href.length > 0)
+                if (parentNode.href != undefined)
                 {
                     parentNode.href="javascript:;";
                     parentNode.target = "";
