@@ -73,34 +73,79 @@
     // 5、节点
     TFHppleElement *nodeElement = [headerElement searchWithXPathQuery: @"//a"][2];
     
+    // 7、楼层
+    TFHppleElement *floorElement = [doc searchWithXPathQuery: @"//span[@class='no']"].firstObject;
+    
+    // 8、操作
+    NSArray<TFHppleElement *> *operations = [doc searchWithXPathQuery: @"//a[@class='op']"];
+    
+    // 9、once
+    TFHppleElement *onceElement = [doc searchWithXPathQuery: @"//input[@name='once']"].firstObject;
+    
+    // 10、thank 喜欢
+    TFHppleElement *topicThankE = [doc peekAtSearchWithXPathQuery: @"//div[@id='topic_thank']"];
+    
+    // 11、当前的页数
+    TFHppleElement *currentPageE = [doc peekAtSearchWithXPathQuery: @"//span[@class='page_current']"];
+    
     {
         WTTopicDetail *topicDetail = [WTTopicDetail new];
-        // 创建时间
+        // 1、创建时间
         topicDetail.createTime = timeArray.firstObject.content;
-        // 头像
+        
+        
+        
+        // 2、头像
         topicDetail.icon = [iconElement objectForKey: @"src"];
         
-        // 作者
+        // 3、作者
         topicDetail.author = authorElement.content;
         
-        // 标题
+        // 4、标题
         topicDetail.title = titleElement.content;
         
-        // 节点
+        // 5、节点
         topicDetail.node = nodeElement.content;
         
-        // 头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
-        topicDetailVM.iconURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: topicDetail.icon];
-        
-       
-        // 节点
-        topicDetailVM.nodeText = [NSString stringWithFormat: @" %@  ", topicDetail.node];
-        
-
-        // 创建时间
-        topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at " string: topicDetail.createTime];
         
         topicDetailVM.topicDetail = topicDetail;
+        
+        // 1、节点
+        topicDetailVM.nodeText = [NSString stringWithFormat: @" %@  ", topicDetail.node];
+        
+        // 2、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
+        topicDetailVM.iconURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: topicDetail.icon];
+        
+        // 3、创建时间
+        topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at " string: topicDetail.createTime];
+        
+        // 4、感谢、收藏、忽略
+        if (operations.count > 0)
+        {
+            topicDetailVM.collectionUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: [operations.firstObject objectForKey: @"href"]];
+        }
+        
+        // 5、once
+        topicDetailVM.once = [onceElement objectForKey: @"value"];
+        
+        // 6、感谢
+        topicDetailVM.thankType = WTThankTypeUnknown;     // 未知原因
+        if (topicThankE != nil)
+        {
+            NSString *topicThankContent = topicThankE.content;
+            topicDetailVM.thankType = WTThankTypeAlready; // 已经感谢过
+            if ([topicThankContent isEqualToString: @"感谢"])
+            {
+                topicDetailVM.thankUrl = [WTParseTool parseThankUrlWithFavoriteUrl: topicDetailVM.collectionUrl];
+                topicDetailVM.thankType = WTThankTypeNotYet;                     // 未感谢
+            }
+        }
+        
+        // 7、页数
+        topicDetailVM.currentPage = [currentPageE.content integerValue];
+        
+        // 8、楼层
+        topicDetailVM.floorText = floorElement.content;
     }
     
     
@@ -114,7 +159,7 @@
     contentE = [contentE searchWithXPathQuery: @"//div[@class='cell']"].firstObject;
     NSMutableString *contentHTML = [[NSMutableString alloc] initWithString: contentE.raw];
     
-    // 正文附加内容
+    // 2、正文附加内容
     NSArray *subtleEs = [boxEs.firstObject searchWithXPathQuery: @"//div[@class='subtle']"];
     for (TFHppleElement *e in subtleEs)
     {
@@ -122,6 +167,7 @@
         [contentHTML appendString: subtleHTML];
     }
     
+    //
     NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
     newContentHTML = [newContentHTML stringByReplacingOccurrencesOfString: @"<script><![CDATA[<![CDATA[<![CDATA[<![CDATA[hljs.initHighlightingOnLoad();]]]]]]]]><![CDATA[><![CDATA[><![CDATA[>]]]]]]><![CDATA[><![CDATA[>]]]]><![CDATA[>]]></script>" withString: @""];
     
@@ -137,19 +183,8 @@
     NSString *jsPath = [[NSBundle mainBundle] pathForResource: @"v2ex.js" ofType: nil];
     NSString *js = [NSString stringWithContentsOfFile: jsPath encoding: NSUTF8StringEncoding error: nil];
     
-    //NSArray *contentImages = [contentE searchWithXPathQuery: @"img"];
-//    for (TFHppleElement *e in contentImages)
-//    {
-//        NSString *imageUrl = [e objectForKey: @"src"];
-//        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL: [NSURL URLWithString: imageUrl] options: SDWebImageDownloaderLowPriority progress: nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-//            
-//            WTLog(@"thread:%@", [NSThread mainThread])
-//            
-//    
-//            
-//        }];
-//    }
     
+    // 4、拼接成新的HTML
     NSMutableString *html = [NSMutableString string];
     
     [html appendString: @"<!DOCTYPE html><html><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\"><head><title></title>"];
@@ -175,8 +210,6 @@
             commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"s=24" withString: @"s=44"];
             
             commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"normal.png" withString: @"large.png"];
-            
-            
             
             [html appendString: commentHTML];
         }
