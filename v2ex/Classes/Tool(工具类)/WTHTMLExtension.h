@@ -43,5 +43,12 @@
  */
 + (BOOL)isNextPage:(TFHpple *)doc;
 
+/**
+ 解析HTML　头像变成清晰的
+ 
+ @param html 要解析html
+ @return 解析后的html
+ */
++ (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html;
 
 @end

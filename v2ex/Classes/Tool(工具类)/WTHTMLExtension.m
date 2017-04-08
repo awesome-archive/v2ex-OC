@@ -89,4 +89,24 @@
         return true;
     return false;
 }
+
+
+/**
+ 解析HTML　头像变成清晰的
+
+ @param html 要解析html
+ @return 解析后的html
+ */
++ (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html
+{
+    NSString *newHTML =  [html stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 44px; max-height: 44px;"];
+    
+    newHTML = [newHTML stringByReplacingOccurrencesOfString: @"width=\"24\"" withString: @"width=\"44\""];
+    
+    newHTML = [newHTML stringByReplacingOccurrencesOfString: @"s=24" withString: @"s=44"];
+    
+    newHTML = [newHTML stringByReplacingOccurrencesOfString: @"normal.png" withString: @"large.png"];
+    
+    return [[NSMutableString alloc] initWithString: newHTML];
+}
 @end

@@ -13,6 +13,7 @@
 #import "NSString+Regex.h"
 #import "SDWebImageDownloader.h"
 #import "SDImageCache.h"
+#import "WTHTMLExtension.h"
 @implementation WTTopicDetailViewModel
 
 #pragma mark - 根据data解析出话题数组
@@ -174,7 +175,8 @@
     
     // 2、加载评论
     TFHppleElement *commentRootEs = [boxEs objectAtIndex: 1];
-    NSArray<TFHppleElement *> *commentEs = [commentRootEs searchWithXPathQuery: @"//div[@class='cell']"];
+    NSArray<TFHppleElement *> *commentCellEs = [commentRootEs searchWithXPathQuery: @"//div[@class='cell']"];
+    NSArray<TFHppleElement *> *commentInnerEs = [commentRootEs searchWithXPathQuery: @"//div[@class='inner']"];
     
     // 3、加载JS、CSS
     NSString *cssPath = [[NSBundle mainBundle] pathForResource: @"light.css" ofType: nil];
@@ -197,23 +199,23 @@
     
     [html appendString: newContentHTML];
     
-    for (TFHppleElement *e in commentEs)
+    for (TFHppleElement *e in commentCellEs)
     {
         if([e objectForKey: @"id"])
         {
-            NSString *commentHTML = e.raw;
-            
-            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 44px; max-height: 44px;"];
-            
-            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"width=\"24\"" withString: @"width=\"44\""];
-            
-            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"s=24" withString: @"s=44"];
-            
-            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"normal.png" withString: @"large.png"];
-            
-            [html appendString: commentHTML];
+            [html appendString: e.raw];
         }
     }
+    
+    for (TFHppleElement *e in commentInnerEs)
+    {
+        if([e objectForKey: @"id"])
+        {
+            [html appendString: e.raw];
+        }
+    }
+    
+    html = [WTHTMLExtension topicDetailParseAvatarWithHTML: html];
     
     [html appendString: @"</body></html>"];
     
