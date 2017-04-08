@@ -31,6 +31,7 @@ target 'v2ex' do
 	pod 'JGProgressHUD'
 	pod 'AMapLocation'
 	pod 'IDMPhotoBrowser'
+	pod 'MarqueeLabel'
 end
 
 target 'Today' do
