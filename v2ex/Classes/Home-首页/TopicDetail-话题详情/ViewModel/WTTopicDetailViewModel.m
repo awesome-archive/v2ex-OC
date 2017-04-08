@@ -11,6 +11,8 @@
 #import "WTURLConst.h"
 #import "WTParseTool.h"
 #import "NSString+Regex.h"
+#import "SDWebImageDownloader.h"
+#import "SDImageCache.h"
 @implementation WTTopicDetailViewModel
 
 #pragma mark - 根据data解析出话题数组
@@ -28,11 +30,165 @@
         return nil;
     }
     
+    //[self parseHTMLWithDoc: doc];
     [topics addObject: [self parseTopicDetailWithDoc: doc]];
     
     [topics addObjectsFromArray: [self parseTopicCommentWithDoc: doc]];
     
     return topics;
+}
+
++ (WTTopicDetailViewModel *)topicDetailWithData:(NSData *)data
+{
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    
+    // 1、有些主题必须要登陆才能查看
+    TFHppleElement *messageElement = [doc peekAtSearchWithXPathQuery: @"//div[@class='message']"];
+    if (messageElement != nil)
+    {
+        return nil;
+    }
+    
+    return [self parseHTMLWithDoc: doc];
+}
+
+
+
++ (WTTopicDetailViewModel *)parseHTMLWithDoc:(TFHpple *)doc
+{
+    WTTopicDetailViewModel *topicDetailVM = [WTTopicDetailViewModel new];
+    
+    // 1、时间数组
+    NSArray<TFHppleElement *> *timeArray = [doc searchWithXPathQuery: @"//small[@class='gray']"];
+    
+    TFHppleElement *headerElement = [doc peekAtSearchWithXPathQuery: @"//div[@class='header']"];
+    // 2、头像
+    TFHppleElement *iconElement = [headerElement searchWithXPathQuery: @"//img[@class='avatar']"].firstObject;
+    // 3、作者
+    TFHppleElement *authorElement = [headerElement searchWithXPathQuery: @"//small[@class='gray']//a"].firstObject;
+    
+    // 4、标题
+    TFHppleElement *titleElement = [headerElement searchWithXPathQuery: @"//h1"].firstObject;
+    
+    // 5、节点
+    TFHppleElement *nodeElement = [headerElement searchWithXPathQuery: @"//a"][2];
+    
+    {
+        WTTopicDetail *topicDetail = [WTTopicDetail new];
+        // 创建时间
+        topicDetail.createTime = timeArray.firstObject.content;
+        // 头像
+        topicDetail.icon = [iconElement objectForKey: @"src"];
+        
+        // 作者
+        topicDetail.author = authorElement.content;
+        
+        // 标题
+        topicDetail.title = titleElement.content;
+        
+        // 节点
+        topicDetail.node = nodeElement.content;
+        
+        // 头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
+        topicDetailVM.iconURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: topicDetail.icon];
+        
+       
+        // 节点
+        topicDetailVM.nodeText = [NSString stringWithFormat: @" %@  ", topicDetail.node];
+        
+
+        // 创建时间
+        topicDetailVM.createTimeText = [NSString subStringFromIndexWithStr: @"at " string: topicDetail.createTime];
+        
+        topicDetailVM.topicDetail = topicDetail;
+    }
+    
+    
+    // 1、正文
+    TFHppleElement *wrapperE = [doc peekAtSearchWithXPathQuery: @"//div[@id='Wrapper']"];
+    TFHppleElement *rootE = [wrapperE searchWithXPathQuery: @"//div[@class='content']"].firstObject;
+    
+    NSArray<TFHppleElement *> *boxEs = [rootE searchWithXPathQuery: @"//div[@class='box']"];
+    
+    TFHppleElement *contentE = boxEs.firstObject;
+    contentE = [contentE searchWithXPathQuery: @"//div[@class='cell']"].firstObject;
+    NSMutableString *contentHTML = [[NSMutableString alloc] initWithString: contentE.raw];
+    
+    // 正文附加内容
+    NSArray *subtleEs = [boxEs.firstObject searchWithXPathQuery: @"//div[@class='subtle']"];
+    for (TFHppleElement *e in subtleEs)
+    {
+        NSString *subtleHTML = [e.raw stringByReplacingOccurrencesOfString: @"<div class=\"sep5\"/>" withString: @""];
+        [contentHTML appendString: subtleHTML];
+    }
+    
+    NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
+    newContentHTML = [newContentHTML stringByReplacingOccurrencesOfString: @"<script><![CDATA[<![CDATA[<![CDATA[<![CDATA[hljs.initHighlightingOnLoad();]]]]]]]]><![CDATA[><![CDATA[><![CDATA[>]]]]]]><![CDATA[><![CDATA[>]]]]><![CDATA[>]]></script>" withString: @""];
+    
+    
+    // 2、加载评论
+    TFHppleElement *commentRootEs = [boxEs objectAtIndex: 1];
+    NSArray<TFHppleElement *> *commentEs = [commentRootEs searchWithXPathQuery: @"//div[@class='cell']"];
+    
+    // 3、加载JS、CSS
+    NSString *cssPath = [[NSBundle mainBundle] pathForResource: @"light.css" ofType: nil];
+    NSString *css = [NSString stringWithContentsOfFile: cssPath encoding: NSUTF8StringEncoding error: nil];
+    
+    NSString *jsPath = [[NSBundle mainBundle] pathForResource: @"v2ex.js" ofType: nil];
+    NSString *js = [NSString stringWithContentsOfFile: jsPath encoding: NSUTF8StringEncoding error: nil];
+    
+    //NSArray *contentImages = [contentE searchWithXPathQuery: @"img"];
+//    for (TFHppleElement *e in contentImages)
+//    {
+//        NSString *imageUrl = [e objectForKey: @"src"];
+//        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL: [NSURL URLWithString: imageUrl] options: SDWebImageDownloaderLowPriority progress: nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+//            
+//            WTLog(@"thread:%@", [NSThread mainThread])
+//            
+//    
+//            
+//        }];
+//    }
+    
+    NSMutableString *html = [NSMutableString string];
+    
+    [html appendString: @"<!DOCTYPE html><html><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\"><head><title></title>"];
+    
+    [html appendString: css];
+    
+    [html appendString: js];
+     
+    [html appendString: @"</head><body>"];
+    
+    [html appendString: newContentHTML];
+    
+    for (TFHppleElement *e in commentEs)
+    {
+        if([e objectForKey: @"id"])
+        {
+            NSString *commentHTML = e.raw;
+            
+            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 44px; max-height: 44px;"];
+            
+            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"width=\"24\"" withString: @"width=\"44\""];
+            
+            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"s=24" withString: @"s=44"];
+            
+            commentHTML = [commentHTML stringByReplacingOccurrencesOfString: @"normal.png" withString: @"large.png"];
+            
+            
+            
+            [html appendString: commentHTML];
+        }
+    }
+    
+    [html appendString: @"</body></html>"];
+    
+    topicDetailVM.contentHTML = html;
+    
+    WTLog(@"html:%@", html)
+    
+    return topicDetailVM;
 }
 
 #pragma mark - 发送收藏请求

@@ -23,6 +23,7 @@
 #import "NSString+Regex.h"
 #import "WTAccountViewModel.h"
 
+#import "IDMPhotoBrowser.h"
 #import "SVProgressHUD.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
@@ -39,6 +40,8 @@
 @property (nonatomic, strong) NSString                                 *replyTopicUrl;
 /** 最后一页的Url */
 @property (nonatomic, strong) NSString                                 *lastPageUrl;
+
+@property (nonatomic, strong) WTTopicDetailViewModel                   *topicDetailVM;
 @end
 
 /** 帖子标题 */
@@ -60,6 +63,13 @@ static NSString  * const commentCellID = @"commentCellID";
     [super viewDidLoad];
     
     //self.topicDetailUrl = @"http://www.v2ex.com/t/265305#reply0";
+    
+     //self.topicDetailUrl = @"https:/www.v2ex.com/t/346214#reply79";
+    
+    //self.topicDetailUrl = @"https:/www.v2ex.com/t/352921#reply5";
+    
+    // 附言
+    self.topicDetailUrl = @"https://www.v2ex.com/t/351304#reply19";
     
     // 1、加载数据
     [self setupData];
@@ -221,13 +231,16 @@ static NSString  * const commentCellID = @"commentCellID";
     //self.topicDetailUrl = @"http://www.v2ex.com/t/263754#reply0";
     [[NetworkTool shareInstance] GETWithUrlString: self.topicDetailUrl success:^(NSData *data) {
         
-        self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailsWithData: data];
+        //self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailWithData: data];
+        
+        self.topicDetailVM = [WTTopicDetailViewModel topicDetailWithData: data];
+        
         
         // 更新页数
         self.currentPage = self.topicDetailViewModels.firstObject.currentPage;
         
         // 说明帖子需要登陆
-        if (self.topicDetailViewModels.count == 0)
+        /*if (self.topicDetailViewModels.count == 0)
         {
             if (self.updateTopicDetailComplection)
             {
@@ -243,7 +256,11 @@ static NSString  * const commentCellID = @"commentCellID";
         {
             self.updateTopicDetailComplection(self.topicDetailViewModels.firstObject, nil);
         }
-        
+        */
+        if (self.updateTopicDetailComplection)
+        {
+            self.updateTopicDetailComplection(self.topicDetailVM, nil);
+        }
         [self.tableView reloadData];
         
     } failure:^(NSError *error) {
@@ -285,7 +302,7 @@ static NSString  * const commentCellID = @"commentCellID";
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.topicDetailViewModels.count + 1;
+    return self.topicDetailVM ? 2 : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -293,14 +310,14 @@ static NSString  * const commentCellID = @"commentCellID";
     if (indexPath.row == 0) // 帖子标题
     {
         WTTopicDetailHeadCell *cell = [tableView dequeueReusableCellWithIdentifier: headerCellID forIndexPath: indexPath];
-        cell.topicDetailVM = self.topicDetailViewModels.firstObject;
+        cell.topicDetailVM = self.topicDetailVM;
         cell.delegate = self;
         return cell;
     }
     else if(indexPath.row == 1) // 帖子正文
     {
         WTTopicDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier: contentCellID forIndexPath: indexPath];
-        cell.topicDetailVM = self.topicDetailViewModels.firstObject;
+        cell.topicDetailVM = self.topicDetailVM;
         cell.delegate = self;
         self.contentCell = cell;
         
@@ -315,13 +332,7 @@ static NSString  * const commentCellID = @"commentCellID";
         };
         return cell;
     }
-    else    // 帖子回复
-    {
-        WTTopicDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier: commentCellID forIndexPath: indexPath];
-        cell.delegate = self;
-        cell.topicDetailVM = self.topicDetailViewModels[indexPath.row - 1];
-        return cell;
-    }
+    return nil;
 }
 
 #pragma mark - Table view delegate
@@ -330,19 +341,14 @@ static NSString  * const commentCellID = @"commentCellID";
     if (indexPath.row == 0)   // 帖子标题
     {
         return [tableView fd_heightForCellWithIdentifier: headerCellID cacheByIndexPath: indexPath configuration:^(WTTopicDetailHeadCell *cell) {
-            cell.topicDetailVM = self.topicDetailViewModels.firstObject;
+            cell.topicDetailVM = self.topicDetailVM;
         }];
     }
     else if(indexPath.row == 1) // 帖子正文
     {
         return self.contentCell.cellHeight;
     }
-    else        // 帖子回复
-    {
-        return [tableView fd_heightForCellWithIdentifier: commentCellID cacheByIndexPath: indexPath configuration:^(WTTopicDetailCommentCell *cell) {
-            cell.topicDetailVM = self.topicDetailViewModels[indexPath.row - 1];
-        }];
-    }
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -357,6 +363,9 @@ static NSString  * const commentCellID = @"commentCellID";
     [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
 
+
+- (void)_updateVisibleContentRects {}
+
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL
 {
@@ -364,6 +373,19 @@ static NSString  * const commentCellID = @"commentCellID";
     WTWebViewController *webViewVC = [WTWebViewController new];
     webViewVC.url = linkURL;
     [self.navigationController pushViewController: webViewVC animated: nil];
+}
+
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithContentImages:(NSMutableArray *)images currentIndex:(NSUInteger)currentIndex
+{
+    NSMutableArray *photos = [NSMutableArray new];
+    
+    for (NSURL *url in images) {
+        IDMPhoto *photo = [IDMPhoto photoWithURL:url];
+        [photos addObject:photo];
+    }
+    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos: photos];
+    [self presentViewController:browser animated: YES completion: nil];
+    
 }
 
 #pragma mark - WTTopicDetailContentCellDelegate

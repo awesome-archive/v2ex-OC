@@ -14,6 +14,7 @@
 // 点击帖子详情的链接
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL;
 
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithContentImages:(NSMutableArray *)images currentIndex:(NSUInteger)currentIndex;
 @end
 
 @interface WTTopicDetailContentCell : UITableViewCell

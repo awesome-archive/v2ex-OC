@@ -1,4 +1,15 @@
 <style type="text/css">
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+}
+
 h1 {
     font-size: 24px;
     font-weight: 500;
@@ -360,13 +371,18 @@ ol {
     background-repeat: repeat-x;
     padding: 0;
 }
+
+
 .cell {
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid #EAEAEA;
     font-size: 12px;
     line-height: 120%;
     padding: 10px;
     text-align: left;
 }
+
+
+
 .cell_tabs {
     border-bottom: 1px solid #e2e2e2;
     padding: 10px 10px 0;
@@ -541,18 +557,18 @@ div.node:hover .node_compose {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
     outline: medium none;
 }
-.sep20 {
-    height: 20px;
-}
-.sep10 {
-    height: 10px;
-}
-.sep5 {
-    height: 5px;
-}
-.sep3 {
-    height: 3px;
-}
+/*.sep20 {*/
+/*    height: 20px;*/
+/*}*/
+/*.sep10 {*/
+/*    height: 10px;*/
+/*}*/
+/*.sep5 {*/
+/*    height: 5px;*/
+/*}*/
+/*.sep3 {*/
+/*    height: 3px;*/
+/*}*/
 .c {
     clear: both;
 }
@@ -581,7 +597,7 @@ div.node:hover .node_compose {
 }
 .no {
     background-color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 2px;
     color: #ccc;
     display: inline-block;
     font-size: 9px;
@@ -1266,6 +1282,10 @@ a.btn_hero:hover {
 .note > *:last-child, .markdown_body > *:last-child, .problem > *:last-child, .page > *:last-child {
     margin-bottom: 0 !important;
 }
+.topic_content img{
+    max-width: 100%;
+}
+
 .markdown_body > p > img {
     max-width: 100%;
 }
@@ -1288,5 +1308,23 @@ a.btn_hero:hover {
     font-size: 15px;
     line-height: 1.6;
     word-wrap: break-word;
+    
 }
+
+
+
+.cell:first-child{
+    padding: 0;
+}
+
+.cell:first-child p{
+    padding: 10px;
+}
+
+.reply_content img{
+    max-width: 100%;
+}
+
+
+
 </style>

@@ -22,10 +22,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSV-hh-sFe">
-                    <rect key="frame" x="8" y="7" width="30" height="30"/>
+                    <rect key="frame" x="8" y="9.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="N6V-WM-Ezn"/>
-                        <constraint firstAttribute="width" constant="30" id="Zk3-XG-ZRI"/>
+                        <constraint firstAttribute="height" constant="25" id="N6V-WM-Ezn"/>
+                        <constraint firstAttribute="width" constant="25" id="Zk3-XG-ZRI"/>
                     </constraints>
                     <state key="normal" backgroundImage="love_normal"/>
                     <state key="selected" backgroundImage="love_selected"/>
@@ -34,10 +34,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQo-fn-Wms">
-                    <rect key="frame" x="46" y="7" width="30" height="30"/>
+                    <rect key="frame" x="41" y="9.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="Sxd-dy-1hB"/>
-                        <constraint firstAttribute="height" constant="30" id="k8X-lY-YAK"/>
+                        <constraint firstAttribute="width" constant="25" id="Sxd-dy-1hB"/>
+                        <constraint firstAttribute="height" constant="25" id="k8X-lY-YAK"/>
                     </constraints>
                     <state key="normal" backgroundImage="collection_normal"/>
                     <state key="selected" backgroundImage="collection_selected"/>
@@ -46,10 +46,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig7-Pv-8hJ">
-                    <rect key="frame" x="258" y="7" width="30" height="30"/>
+                    <rect key="frame" x="263" y="9.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="Xq0-CN-SHy"/>
-                        <constraint firstAttribute="height" constant="30" id="xYR-5w-3No"/>
+                        <constraint firstAttribute="width" constant="25" id="Xq0-CN-SHy"/>
+                        <constraint firstAttribute="height" constant="25" id="xYR-5w-3No"/>
                     </constraints>
                     <state key="normal" backgroundImage="prev_normal"/>
                     <connections>
@@ -57,10 +57,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMZ-k8-BJC">
-                    <rect key="frame" x="312" y="7" width="30" height="30"/>
+                    <rect key="frame" x="312" y="9.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="CIi-rS-xQA"/>
-                        <constraint firstAttribute="width" constant="30" id="e03-VW-xz4"/>
+                        <constraint firstAttribute="height" constant="25" id="CIi-rS-xQA"/>
+                        <constraint firstAttribute="width" constant="25" id="e03-VW-xz4"/>
                     </constraints>
                     <state key="normal" backgroundImage="next_normal"/>
                     <state key="selected" backgroundImage="collection_selected"/>
@@ -69,10 +69,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AV-yn-dsp">
-                    <rect key="frame" x="524" y="7" width="30" height="30"/>
+                    <rect key="frame" x="534" y="9.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="BeV-Ar-IKz"/>
-                        <constraint firstAttribute="height" constant="30" id="m4M-dZ-OZW"/>
+                        <constraint firstAttribute="width" constant="25" id="BeV-Ar-IKz"/>
+                        <constraint firstAttribute="height" constant="25" id="m4M-dZ-OZW"/>
                     </constraints>
                     <state key="normal" backgroundImage="refresh_normal"/>
                     <state key="selected" backgroundImage="collection_selected"/>
@@ -81,10 +81,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BH-f1-nxz">
-                    <rect key="frame" x="562" y="9" width="30" height="30"/>
+                    <rect key="frame" x="567" y="11.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="hvt-Ni-101"/>
-                        <constraint firstAttribute="width" constant="30" id="vhh-sg-Tly"/>
+                        <constraint firstAttribute="height" constant="25" id="hvt-Ni-101"/>
+                        <constraint firstAttribute="width" constant="25" id="vhh-sg-Tly"/>
                     </constraints>
                     <state key="normal" backgroundImage="reply_normal"/>
                     <state key="selected" backgroundImage="reply_normal"/>
@@ -136,7 +136,7 @@
         <image name="love_normal" width="32" height="32"/>
         <image name="love_selected" width="32" height="32"/>
         <image name="next_normal" width="32" height="32"/>
-        <image name="prev_normal" width="64" height="64"/>
+        <image name="prev_normal" width="32" height="32"/>
         <image name="refresh_normal" width="32" height="32"/>
         <image name="reply_normal" width="32" height="32"/>
     </resources>

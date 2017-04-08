@@ -50,6 +50,10 @@ typedef NS_ENUM(NSUInteger, WTThankType){
  */
 + (NSMutableArray<WTTopicDetailViewModel *> *)topicDetailsWithData:(NSData *)data;
 
++ (WTTopicDetailViewModel *)topicDetailWithData:(NSData *)data;
+
++ (void)getTopicDetailImages;
+
 /**
  *  帖子操作
  *

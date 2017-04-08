@@ -30,6 +30,7 @@ target 'v2ex' do
 	pod 'AMap2DMap'
 	pod 'JGProgressHUD'
 	pod 'AMapLocation'
+	pod 'IDMPhotoBrowser'
 end
 
 target 'Today' do

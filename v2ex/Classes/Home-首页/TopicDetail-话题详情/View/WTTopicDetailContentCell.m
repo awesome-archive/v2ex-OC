@@ -62,8 +62,10 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString *url = request.URL.absoluteString;
+    WTLog(@"url:%@", url)
+    
     // 第一次加载
-    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:/"] | [url isEqualToString: @"http:/"]) && ![url containsString: @"jpg"])
+    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:"] | [url isEqualToString: @"http:/"]) && ![url containsString: @"jpg"])
     {
         return YES;
     }
@@ -74,11 +76,47 @@
         [[UIApplication sharedApplication] openURL: request.URL];
         return NO;
     }
+    // 与JS交互
+    if ([url containsString:@"images://"])
+    {
+        NSMutableArray *images = [NSMutableArray array];
+        NSUInteger currentIndex = 0;
+        NSString *currentImage = [[url componentsSeparatedByString: @"--"] objectAtIndex: 1];
+        NSArray *allImages = [url componentsSeparatedByString: @"::"];
+        
+        for (NSUInteger i = 0; i < allImages.count; i++)
+        {
+            NSString *image = [allImages objectAtIndex: i];
+            if ([image containsString: currentImage])
+            {
+                currentIndex = i;
+                if ([currentImage containsString: @"https//"])
+                {
+                    currentImage = [currentImage stringByReplacingOccurrencesOfString: @"https" withString: @"https:"];
+                }
+                [images addObject: [NSURL URLWithString: currentImage]];
+                continue;
+            }
+            if ([image containsString: @"https//"]) {
+                image = [image stringByReplacingOccurrencesOfString: @"https" withString: @"https:"];
+            }
+            [images addObject: [NSURL URLWithString: image]];
+        }
+        
+        if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithContentImages:currentIndex:)])
+        {
+            [self.delegate topicDetailContentCell: self didClickedWithContentImages: images currentIndex: currentIndex];
+        }
+        return NO;
+    }
+
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
     {
         [self.delegate topicDetailContentCell: self didClickedWithLinkURL: request.URL];
     }
+    
+    
     return NO;
 }
 
