@@ -49,6 +49,10 @@ NSString * const WTRegisterUrl = @"signup";
 
 /** domain*/
 NSString * const WTDomain = @"com.miaska14.com";
+/** code */
+CGFloat const WTErrorCode = -1011;
+/** errorMessage的key */
+NSString * const WTErrorMessageKey = @"message";
 
 /** www.misaka14.com服务器 */
 NSString * const WTMisaka14Domain = @"http://172.16.1.45:8080/v2ex";

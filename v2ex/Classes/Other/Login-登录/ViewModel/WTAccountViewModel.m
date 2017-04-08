@@ -167,7 +167,7 @@ static WTAccountViewModel *_instance;
 {
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: self.account.pastUrl];
     
-    [[NetworkTool shareInstance] GETFirefoxWithUrlString: url success:^(id data) {
+    [[NetworkTool shareInstance] GETWithUrlString: url success:^(id data) {
         
         NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
         
@@ -181,9 +181,14 @@ static WTAccountViewModel *_instance;
             self.account.pastUrl = nil;
         }
         
+        if (failure)
+        {
+            failure([[NSError alloc] initWithDomain: WTDomain code: WTErrorCode userInfo: @{WTErrorMessageKey: @"其他错误"}]);
+        }
+        
     } failure:^(NSError *error) {
         
-        if (error)
+        if (failure)
         {
             failure(error);
         }

@@ -13,6 +13,7 @@
 
 #import "POP.h"
 #import "UIImageView+WebCache.h"
+#import "SVProgressHUD.h"
 @interface WTMoreLoginHeaderView () <POPAnimationDelegate>
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView1;
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView2;
@@ -89,9 +90,6 @@
     if ([self.pastBtn.titleLabel.text isEqualToString: @"已签到"]) 
         return;
     
-    // 动画
-    [self startAnim];
-    
     // 签到
     [self past];
 }
@@ -103,7 +101,12 @@
 {
     [[WTAccountViewModel shareInstance] pastWithSuccess:^{
         
+        // 动画
+        [self startAnim];
+        
     } failure:^(NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus: @"操作异常,请稍候重试"];
         
     }];
 }

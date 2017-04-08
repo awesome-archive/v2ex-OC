@@ -46,6 +46,12 @@ UIKIT_EXTERN NSString * const WTRegisterUrl;
 /** domain*/
 UIKIT_EXTERN NSString * const WTDomain;
 
+/** code */
+UIKIT_EXTERN CGFloat const WTErrorCode;
+
+/** errorMessage的key */
+UIKIT_EXTERN NSString * const WTErrorMessageKey;
+
 UIKIT_EXTERN NSString * const WTMisaka14Domain;
 
 NS_ASSUME_NONNULL_END
