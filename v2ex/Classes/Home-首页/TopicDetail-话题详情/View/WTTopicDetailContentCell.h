@@ -14,7 +14,11 @@
 // 点击帖子详情的链接
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithLinkURL:(NSURL *)linkURL;
 
+// 帖子详情的图片点击
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithContentImages:(NSMutableArray *)images currentIndex:(NSUInteger)currentIndex;
+
+// 评论人的头像点击
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithCommentAvatar:(NSString *)userName;
 @end
 
 @interface WTTopicDetailContentCell : UITableViewCell

@@ -388,6 +388,12 @@ static NSString  * const commentCellID = @"commentCellID";
     
 }
 
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithCommentAvatar:(NSString *)username
+{
+    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithUsername: username];
+    [self.navigationController pushViewController: memeberDetailVC animated: YES];
+}
+
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailCommentCell:(WTTopicDetailCommentCell *)cell iconImageViewClickWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {

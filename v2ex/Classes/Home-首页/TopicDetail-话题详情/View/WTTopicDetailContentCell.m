@@ -76,7 +76,7 @@
         [[UIApplication sharedApplication] openURL: request.URL];
         return NO;
     }
-    // 与JS交互
+    // 图片点击
     if ([url containsString:@"images://"])
     {
         NSMutableArray *images = [NSMutableArray array];
@@ -110,6 +110,16 @@
         return NO;
     }
 
+    // 头像点击
+    if ([url containsString:@"userid://"])
+    {
+        NSString *username = [url stringByReplacingOccurrencesOfString: @"userid://" withString: @""];
+        if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithCommentAvatar:)])
+        {
+            [self.delegate topicDetailContentCell: self didClickedWithCommentAvatar: username];
+        }
+        return NO;
+    }
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
     {
