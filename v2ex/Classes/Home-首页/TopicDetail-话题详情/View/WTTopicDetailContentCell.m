@@ -79,6 +79,7 @@
     // 图片点击
     if ([url containsString:@"images://"])
     {
+    
         NSMutableArray *images = [NSMutableArray array];
         NSUInteger currentIndex = 0;
         NSString *currentImage = [[url componentsSeparatedByString: @"--"] objectAtIndex: 1];
@@ -100,7 +101,12 @@
             if ([image containsString: @"https//"]) {
                 image = [image stringByReplacingOccurrencesOfString: @"https" withString: @"https:"];
             }
-            [images addObject: [NSURL URLWithString: image]];
+            
+            if ([image containsString: @"https:"])
+            {
+                [images addObject: [NSURL URLWithString: image]];
+            }
+            
         }
         
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithContentImages:currentIndex:)])
