@@ -10,7 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "WTShareSDKTool.h"
 #import "UIBarButtonItem+Extension.h"
-
+#import "MarqueeLabel.h"
 
 #define WTEstimatedProgress @"estimatedProgress"
 #define WTCanGoBack @"canGoBack"
@@ -19,6 +19,7 @@
 
 @interface WTWebViewController ()
 @property (weak, nonatomic) WKWebView *webView;
+@property (weak, nonatomic) MarqueeLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIButton *prevBtn;
@@ -44,9 +45,10 @@
 #pragma mark - 创建webView
 - (void)setupWebView
 {
-    WKWebView *webView = [[WKWebView alloc] initWithFrame: [UIScreen mainScreen].bounds];
-    _webView = webView;
+    WKWebView *webView = [[WKWebView alloc] init];
+    webView.frame = self.contentView.bounds;
     [self.contentView addSubview: webView];
+    self.webView = webView;
     
     // 2、加载请求
     [webView loadRequest: [NSURLRequest requestWithURL: self.url]];
@@ -76,7 +78,7 @@
     }
     else if([keyPath isEqualToString: WTTitle])
     {
-        self.title = self.webView.title;
+        self.titleLabel.text = self.webView.title;
     }
 }
 #pragma mark - 事件
@@ -106,5 +108,22 @@
     [self.webView removeObserver: self forKeyPath: WTCanGoBack];
     [self.webView removeObserver: self forKeyPath: WTCanGoForward];
     [self.webView removeObserver: self forKeyPath: WTTitle];
+}
+
+#pragma mark - Lazy Method
+- (MarqueeLabel *)titleLabel
+{
+    if (_titleLabel == nil)
+    {
+        MarqueeLabel *titleLabel = [[MarqueeLabel alloc] init];
+        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.scrollDuration = 15;
+        titleLabel.fadeLength = 30;
+        titleLabel.width = WTScreenWidth - 100;
+        titleLabel.height = 30;
+        _titleLabel = titleLabel;
+        self.navigationItem.titleView = titleLabel;
+    }
+    return _titleLabel;
 }
 @end

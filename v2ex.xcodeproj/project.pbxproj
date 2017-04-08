@@ -87,6 +87,7 @@
 		30FE1B301DB6FD5900621E51 /* WTUserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FE1B2F1DB6FD5900621E51 /* WTUserItem.m */; };
 		30FE1B381DB7182D00621E51 /* v2exTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FE1B371DB7182D00621E51 /* v2exTests.m */; };
 		48C897653E29BF7BBB425F0B /* libPods-v2ex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */; };
+		B60136021E98EC7F003A3CB4 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60136011E98EC7F003A3CB4 /* MarqueeLabel.m */; };
 		B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */; };
 		B60FA17D1D45C09200F98CF3 /* WTTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0531D45C09100F98CF3 /* WTTopicViewController.m */; };
 		B60FA17E1D45C09200F98CF3 /* WTWYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA0551D45C09100F98CF3 /* WTWYViewController.m */; };
@@ -399,6 +400,8 @@
 		30FE1B371DB7182D00621E51 /* v2exTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = v2exTests.m; sourceTree = "<group>"; };
 		30FE1B391DB7182D00621E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BD77B1D9E6F005EABD0B77 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
+		B60136001E98EC7F003A3CB4 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		B60136011E98EC7F003A3CB4 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		B60FA04F1D45C09100F98CF3 /* WTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHomeViewController.h; sourceTree = "<group>"; };
 		B60FA0501D45C09100F98CF3 /* WTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHomeViewController.m; sourceTree = "<group>"; };
 		B60FA0521D45C09100F98CF3 /* WTTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTopicViewController.h; sourceTree = "<group>"; };
@@ -1130,6 +1133,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B60135FF1E98EC7F003A3CB4 /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B60136001E98EC7F003A3CB4 /* MarqueeLabel.h */,
+				B60136011E98EC7F003A3CB4 /* MarqueeLabel.m */,
+			);
+			path = MarqueeLabel;
+			sourceTree = "<group>";
+		};
 		B60FA04C1D45C09100F98CF3 /* Home-首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1565,6 +1577,7 @@
 		B60FA1121D45C09200F98CF3 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B60135FF1E98EC7F003A3CB4 /* MarqueeLabel */,
 				30E4984C1D70424100C2A6DA /* ShareSDK */,
 				30A2D9261D6D2EE1009AFA43 /* YZPerson */,
 				B60FA1131D45C09200F98CF3 /* HMTL-Parse */,
@@ -2502,6 +2515,7 @@
 				30884B6D1DBA0A4A008FF94F /* UITableViewController+Extension.m in Sources */,
 				B6E70C4B1D4E5CD6000CC806 /* WTNotificationCell.m in Sources */,
 				B60FA1C91D45C09200F98CF3 /* UIFont+Extension.m in Sources */,
+				B60136021E98EC7F003A3CB4 /* MarqueeLabel.m in Sources */,
 				304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */,
 				B60FA18D1D45C09200F98CF3 /* WTTopicDetail.m in Sources */,
 				B69481701C462267001ABDA3 /* AppDelegate.m in Sources */,
