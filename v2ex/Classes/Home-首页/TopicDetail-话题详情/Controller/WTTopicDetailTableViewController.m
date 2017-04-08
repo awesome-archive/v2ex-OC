@@ -102,13 +102,13 @@ static NSString  * const commentCellID = @"commentCellID";
         // 感谢 操作
         case WTToolBarButtonTypeLove:
         {
-            [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.firstTopicDetailVM.thankUrl allowOperation:^{
-                if (self.firstTopicDetailVM.thankType == WTThankTypeAlready)    // 已经感谢过
+            [self topicOperationWithMethod: HTTPMethodTypePOST urlString: self.topicDetailVM.thankUrl allowOperation:^{
+                if (self.topicDetailVM.thankType == WTThankTypeAlready)    // 已经感谢过
                 {
                     [SVProgressHUD showErrorWithStatus: @"不能取消感谢"];
                     return NO;
                 }
-                else if(self.firstTopicDetailVM.thankType == WTThankTypeUnknown)    // 未知原因不能感谢
+                else if(self.topicDetailVM.thankType == WTThankTypeUnknown)    // 未知原因不能感谢
                 {
                     [SVProgressHUD showErrorWithStatus: @"未知原因不能感谢"];
                     
