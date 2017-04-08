@@ -64,12 +64,12 @@ static NSString  * const commentCellID = @"commentCellID";
     
     //self.topicDetailUrl = @"http://www.v2ex.com/t/265305#reply0";
     
-     //self.topicDetailUrl = @"https:/www.v2ex.com/t/346214#reply79";
+     self.topicDetailUrl = @"https:/www.v2ex.com/t/346214#reply79";
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/352921#reply5";
     
     // 附言
-    self.topicDetailUrl = @"https://www.v2ex.com/t/351304#reply19";
+    //self.topicDetailUrl = @"https://www.v2ex.com/t/351304#reply19";
     
     // 1、加载数据
     [self setupData];
