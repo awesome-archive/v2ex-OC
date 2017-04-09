@@ -285,6 +285,7 @@ static WTAccountViewModel *_instance;
         WTUserItem *userItem = [WTUserItem new];
         userItem.avatarUrl = [self.account.avatarURL absoluteString];
         userItem.username = self.account.usernameOrEmail;
+#if Test == 0
         [self loginToMisaka14WithUserItem: userItem success:^(WTUserItem *loginUserItem) {
             
             self.userItem = loginUserItem;
@@ -293,6 +294,11 @@ static WTAccountViewModel *_instance;
         } failure:^(NSError *error) {
             
         }];
+#else
+        
+#endif
+        
+        
         
         if (success)
         {

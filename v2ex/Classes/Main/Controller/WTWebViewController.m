@@ -117,6 +117,7 @@
     {
         MarqueeLabel *titleLabel = [[MarqueeLabel alloc] init];
         titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.scrollDuration = 15;
         titleLabel.fadeLength = 30;
         titleLabel.width = WTScreenWidth - 100;

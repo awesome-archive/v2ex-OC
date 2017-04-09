@@ -74,7 +74,7 @@ a.dark:link, a.dark:visited, a.dark:active {
     text-decoration: none;
 }
 a.dark:hover {
-    color: #385f8a;
+/*    color: #385f8a;*/
     text-decoration: none;
 }
 a.gray:link, a.gray:visited, a.gray:active {

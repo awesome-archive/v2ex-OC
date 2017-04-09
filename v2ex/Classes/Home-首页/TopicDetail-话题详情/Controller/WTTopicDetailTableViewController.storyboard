@@ -14,7 +14,7 @@
         <scene sceneID="pJS-rp-xc8">
             <objects>
                 <tableViewController id="VaB-r9-qvK" customClass="WTTopicDetailTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" id="sq9-cL-fgX">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" id="sq9-cL-fgX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,7 +52,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DaoCloud 启动 2016 新一年招聘" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBC-RB-knJ">
-                                            <rect key="frame" x="8" y="52" width="359" height="32"/>
+                                            <rect key="frame" x="8" y="59" width="359" height="18"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Ix1-vY-bBk" secondAttribute="trailing" constant="8" id="1DL-B9-e6X"/>
                                         <constraint firstItem="pDC-xZ-3vP" firstAttribute="leading" secondItem="0rM-Xb-qCS" secondAttribute="trailing" constant="8" id="2g9-pv-8mP"/>
-                                        <constraint firstItem="MBC-RB-knJ" firstAttribute="top" secondItem="59W-DC-OTu" secondAttribute="bottom" constant="8" id="4UK-km-9hx"/>
+                                        <constraint firstItem="MBC-RB-knJ" firstAttribute="top" secondItem="59W-DC-OTu" secondAttribute="bottom" constant="15" id="4UK-km-9hx"/>
                                         <constraint firstItem="0rM-Xb-qCS" firstAttribute="leading" secondItem="FfB-S8-wCJ" secondAttribute="leading" constant="8" id="7Ut-LU-kWi"/>
                                         <constraint firstAttribute="trailing" secondItem="JWf-hM-q45" secondAttribute="trailing" id="EAg-kr-JU5"/>
                                         <constraint firstAttribute="bottom" secondItem="JWf-hM-q45" secondAttribute="bottom" id="HUv-2f-spM"/>
@@ -89,7 +89,7 @@
                                         <constraint firstItem="0rM-Xb-qCS" firstAttribute="top" secondItem="FfB-S8-wCJ" secondAttribute="top" constant="8" id="dfX-Ab-Uhy"/>
                                         <constraint firstItem="JWf-hM-q45" firstAttribute="leading" secondItem="FfB-S8-wCJ" secondAttribute="leading" id="duH-1W-h6h"/>
                                         <constraint firstItem="59W-DC-OTu" firstAttribute="leading" secondItem="pDC-xZ-3vP" secondAttribute="leading" id="e2J-5K-59x"/>
-                                        <constraint firstAttribute="bottom" secondItem="MBC-RB-knJ" secondAttribute="bottom" constant="8" id="gXK-kC-MUA"/>
+                                        <constraint firstAttribute="bottom" secondItem="MBC-RB-knJ" secondAttribute="bottom" constant="15" id="gXK-kC-MUA"/>
                                         <constraint firstAttribute="bottom" secondItem="0rM-Xb-qCS" secondAttribute="bottom" constant="8" id="m7R-hi-z84"/>
                                         <constraint firstItem="Ix1-vY-bBk" firstAttribute="top" secondItem="FfB-S8-wCJ" secondAttribute="top" constant="8" id="qM7-Uj-v4e"/>
                                         <constraint firstAttribute="trailing" secondItem="MBC-RB-knJ" secondAttribute="trailing" constant="8" id="twn-sk-GG8"/>

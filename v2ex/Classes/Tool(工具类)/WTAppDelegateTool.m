@@ -71,14 +71,19 @@ static WTAppDelegateTool *_appDelegateTool;
     //[self initRCIM];
     
     // 4、腾讯Buglye
-    [Bugly startWithAppId:@"adabbd65ef"];
+    [Bugly startWithAppId:@"f20a87e6ba"];
     
     
+#if Test == 0
     // 5、初始化极光推送
     [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
     
     // 6、初始化高德地图
     [AMapServices sharedServices].apiKey = @"837660a1b113cc1edc65353e38414c2b";
+#else
+    
+#endif
+    
 }
 
 #pragma mark 设置3D Touch按钮
@@ -195,7 +200,7 @@ static WTAppDelegateTool *_appDelegateTool;
             NSString *topicDetailUrl = [[url absoluteString] substringFromIndex: topicDetailPrefix.length];
             
 //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+                WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController topicDetailViewController];
                 topicDetailVC.topicDetailUrl = topicDetailUrl;
                 [[self currentNavigationController] pushViewController:topicDetailVC animated: YES];
 //            });

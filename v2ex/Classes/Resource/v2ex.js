@@ -5,6 +5,8 @@
     // 初始化头像点击
     initAvatarOnclick();
 
+    initUsernameOnclick();
+
     function initAvatarOnclick()
     {
         var avatars = document.getElementsByClassName("avatar");
@@ -16,6 +18,20 @@
                 var html = this.parentNode.parentNode.innerHTML;
 
                 window.location.href= "userId://" + html.match(/member\/(\S*)"/)[1];
+            }
+        }
+    }
+
+    function initUsernameOnclick()
+    {
+        var usernames = document.getElementsByClassName("dark");
+        for(var i = 0; i < usernames.length; i++)
+        {
+            usernames[i].onclick = function(){
+
+
+                this.href="javascript:;";
+                window.location.href="userId://" + this.innerHTML;
             }
         }
     }
