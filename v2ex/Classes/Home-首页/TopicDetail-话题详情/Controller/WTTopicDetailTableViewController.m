@@ -401,6 +401,11 @@ static NSString  * const commentCellID = @"commentCellID";
     [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
 
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName
+{
+    
+}
+    
 #pragma mark - WTTopicDetailContentCellDelegate
 - (void)topicDetailCommentCell:(WTTopicDetailCommentCell *)cell iconImageViewClickWithTopicDetailVM:(WTTopicDetailViewModel *)topicDetailVM
 {

@@ -19,6 +19,8 @@
 
 // 评论人的头像点击
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithCommentAvatar:(NSString *)userName;
+    
+- (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName;
 @end
 
 @interface WTTopicDetailContentCell : UITableViewCell

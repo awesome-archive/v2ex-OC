@@ -189,6 +189,7 @@
 		B6271D501D599AF000A66983 /* WTMyFollowingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6271D4E1D599AF000A66983 /* WTMyFollowingCell.m */; };
 		B6271D511D599AF000A66983 /* WTMyFollowingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6271D4F1D599AF000A66983 /* WTMyFollowingCell.xib */; };
 		B6271D541D599CC700A66983 /* WTMyFollowingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6271D531D599CC700A66983 /* WTMyFollowingViewModel.m */; };
+		B62EC4CA1E9A62BE00976561 /* WTPublishTopicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B62EC4C91E9A62BE00976561 /* WTPublishTopicItem.m */; };
 		B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63094561C4B8C1600E58EF8 /* nodes.plist */; };
 		B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B63176CC1C4702350071C9BF /* libxml2.2.dylib */; };
 		B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = B64168151C840BDC00EAF134 /* dribbble256_imageio.png */; };
@@ -200,6 +201,10 @@
 		B694816D1C462267001ABDA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816C1C462267001ABDA3 /* main.m */; };
 		B69481701C462267001ABDA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816F1C462267001ABDA3 /* AppDelegate.m */; };
 		B69481781C462267001ABDA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B69481771C462267001ABDA3 /* Assets.xcassets */; };
+		B6BB73271E9A33780098F634 /* WTPublishTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB73251E9A33780098F634 /* WTPublishTopicViewController.m */; };
+		B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BB73261E9A33780098F634 /* WTPublishTopicViewController.xib */; };
+		B6BB732B1E9A5C680098F634 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB732A1E9A5C680098F634 /* UITextView+Placeholder.m */; };
+		B6BB732E1E9A623C0098F634 /* WTPublishTopicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB732D1E9A623C0098F634 /* WTPublishTopicViewModel.m */; };
 		B6DEEB6F1D4664BB00E3A313 /* WTAdvertiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DEEB6E1D4664BB00E3A313 /* WTAdvertiseViewController.m */; };
 		B6DEEB781D4665D900E3A313 /* WTAdvertiseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DEEB761D4665D900E3A313 /* WTAdvertiseCell.m */; };
 		B6DEEB791D4665D900E3A313 /* WTAdvertiseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DEEB771D4665D900E3A313 /* WTAdvertiseCell.xib */; };
@@ -585,6 +590,8 @@
 		B6271D4F1D599AF000A66983 /* WTMyFollowingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyFollowingCell.xib; sourceTree = "<group>"; };
 		B6271D521D599CC700A66983 /* WTMyFollowingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyFollowingViewModel.h; sourceTree = "<group>"; };
 		B6271D531D599CC700A66983 /* WTMyFollowingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyFollowingViewModel.m; sourceTree = "<group>"; };
+		B62EC4C81E9A62BE00976561 /* WTPublishTopicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPublishTopicItem.h; sourceTree = "<group>"; };
+		B62EC4C91E9A62BE00976561 /* WTPublishTopicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPublishTopicItem.m; sourceTree = "<group>"; };
 		B63094561C4B8C1600E58EF8 /* nodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nodes.plist; sourceTree = "<group>"; };
 		B63176CC1C4702350071C9BF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B63176D11C47636D0071C9BF /* v2ex.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v2ex.pch; sourceTree = "<group>"; };
@@ -605,6 +612,13 @@
 		B694817C1C462267001ABDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6B4D9C71D4A64E600E4BF93 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B6B6A9581D544E5E0038C59D /* WTReplyApiItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyApiItem.h; sourceTree = "<group>"; };
+		B6BB73241E9A33780098F634 /* WTPublishTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPublishTopicViewController.h; sourceTree = "<group>"; };
+		B6BB73251E9A33780098F634 /* WTPublishTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPublishTopicViewController.m; sourceTree = "<group>"; };
+		B6BB73261E9A33780098F634 /* WTPublishTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTPublishTopicViewController.xib; sourceTree = "<group>"; };
+		B6BB73291E9A5C680098F634 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		B6BB732A1E9A5C680098F634 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
+		B6BB732C1E9A623C0098F634 /* WTPublishTopicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPublishTopicViewModel.h; sourceTree = "<group>"; };
+		B6BB732D1E9A623C0098F634 /* WTPublishTopicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPublishTopicViewModel.m; sourceTree = "<group>"; };
 		B6DEEB6D1D4664BB00E3A313 /* WTAdvertiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAdvertiseViewController.h; sourceTree = "<group>"; };
 		B6DEEB6E1D4664BB00E3A313 /* WTAdvertiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAdvertiseViewController.m; sourceTree = "<group>"; };
 		B6DEEB751D4665D900E3A313 /* WTAdvertiseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAdvertiseCell.h; sourceTree = "<group>"; };
@@ -1136,6 +1150,7 @@
 		B60FA04C1D45C09100F98CF3 /* Home-首页 */ = {
 			isa = PBXGroup;
 			children = (
+				B6BB731F1E9A335D0098F634 /* PublishTopic-发表帖子 */,
 				3099B5451D9AA1A600B2DA46 /* Search-搜索 */,
 				30A2D8F41D6C5101009AFA43 /* MemberDetail-会员详情 */,
 				30A2D8EC1D6C4F7A009AFA43 /* HotTopic-热门节点 */,
@@ -1524,6 +1539,8 @@
 		B60FA0F61D45C09200F98CF3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B6BB73291E9A5C680098F634 /* UITextView+Placeholder.h */,
+				B6BB732A1E9A5C680098F634 /* UITextView+Placeholder.m */,
 				B60FA0F71D45C09200F98CF3 /* NSString+Extension.h */,
 				B60FA0F81D45C09200F98CF3 /* NSString+Extension.m */,
 				B60FA0F91D45C09200F98CF3 /* NSString+Regex.h */,
@@ -2014,6 +2031,52 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B6BB731F1E9A335D0098F634 /* PublishTopic-发表帖子 */ = {
+			isa = PBXGroup;
+			children = (
+				B6BB73201E9A335D0098F634 /* Controller */,
+				B6BB73211E9A335D0098F634 /* Model */,
+				B6BB73221E9A335D0098F634 /* View */,
+				B6BB73231E9A335D0098F634 /* ViewModel */,
+			);
+			path = "PublishTopic-发表帖子";
+			sourceTree = "<group>";
+		};
+		B6BB73201E9A335D0098F634 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B6BB73241E9A33780098F634 /* WTPublishTopicViewController.h */,
+				B6BB73251E9A33780098F634 /* WTPublishTopicViewController.m */,
+				B6BB73261E9A33780098F634 /* WTPublishTopicViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B6BB73211E9A335D0098F634 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B62EC4C81E9A62BE00976561 /* WTPublishTopicItem.h */,
+				B62EC4C91E9A62BE00976561 /* WTPublishTopicItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B6BB73221E9A335D0098F634 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6BB73231E9A335D0098F634 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B6BB732C1E9A623C0098F634 /* WTPublishTopicViewModel.h */,
+				B6BB732D1E9A623C0098F634 /* WTPublishTopicViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B6DEEB691D46648F00E3A313 /* Advertise-广告 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2290,6 +2353,7 @@
 				30E498721D70424100C2A6DA /* ShareSDKUI.bundle in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
+				B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */,
 				30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */,
 				B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */,
 				30E497AF1D6FE6C000C2A6DA /* WTRefreshView.xib in Resources */,
@@ -2450,6 +2514,7 @@
 				B664E84F1D506B0B00C22480 /* WTReplyViewModel.m in Sources */,
 				30A2D8FB1D6C5117009AFA43 /* WTMemberDetailViewController.m in Sources */,
 				30A2D93C1D6D34DD009AFA43 /* WTMemberReplyViewController.m in Sources */,
+				B6BB732B1E9A5C680098F634 /* UITextView+Placeholder.m in Sources */,
 				30A2D9381D6D3073009AFA43 /* WTMemberTopicViewController.m in Sources */,
 				B60FA1CB1D45C09200F98CF3 /* UILabel+StringFrame.m in Sources */,
 				B6235E491D48BD2E00E5ECDB /* WTMoreButton.m in Sources */,
@@ -2490,9 +2555,11 @@
 				B60FA1C51D45C09200F98CF3 /* NSString+Regex.m in Sources */,
 				B60FA1891D45C09200F98CF3 /* WTTopicDetailTableViewController.m in Sources */,
 				B60FA1871D45C09200F98CF3 /* WTPostReplyViewController.m in Sources */,
+				B62EC4CA1E9A62BE00976561 /* WTPublishTopicItem.m in Sources */,
 				B6235E4C1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m in Sources */,
 				B6271D461D59999800A66983 /* WTMyFollowingViewController.m in Sources */,
 				30E497B21D701E2000C2A6DA /* UIViewController+Extension.m in Sources */,
+				B6BB732E1E9A623C0098F634 /* WTPublishTopicViewModel.m in Sources */,
 				30884B751DBA1926008FF94F /* WTConversationListViewController.m in Sources */,
 				B60FA1D31D45C09200F98CF3 /* XPathQuery.m in Sources */,
 				B60FA1B21D45C09200F98CF3 /* WTMessageViewController.m in Sources */,
@@ -2511,6 +2578,7 @@
 				B69481701C462267001ABDA3 /* AppDelegate.m in Sources */,
 				B60FA1B61D45C09200F98CF3 /* WTNodeViewController.m in Sources */,
 				B60FA2241D45D7E700F98CF3 /* WTPrivacyStatementViewController.m in Sources */,
+				B6BB73271E9A33780098F634 /* WTPublishTopicViewController.m in Sources */,
 				B694816D1C462267001ABDA3 /* main.m in Sources */,
 				B60FA1941D45C09200F98CF3 /* PhotoBrowserViewController.m in Sources */,
 				30A2D9331D6D2EE1009AFA43 /* YZPersonViewController.m in Sources */,

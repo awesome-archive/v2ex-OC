@@ -7,6 +7,8 @@
 
     initUsernameOnclick();
 
+    initCellOnClick();
+
     function initAvatarOnclick()
     {
         var avatars = document.getElementsByClassName("avatar");
@@ -30,9 +32,27 @@
             usernames[i].onclick = function(){
 
 
-                this.href="javascript:;";
-                window.location.href="userId://" + this.innerHTML;
+                this.href = "javascript:;";
+                window.location.href= "userId://" + this.innerHTML;
             }
+        }
+    }
+
+    function initCellOnClick()
+    {
+        var cells = document.getElementsByClassName("cell");
+
+        for (var i = 0; i < cells.length; i++)
+        {
+            if (cells[i].hasAttribute("id"))
+            {
+                cells[i].onclick = function(){
+
+                    var dark = this.getElementsByClassName("dark")[0];
+                    window.location.href= "replyusername://@" + dark.innerHTML+" ";
+                }
+            }
+
         }
     }
 

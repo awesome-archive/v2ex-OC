@@ -91,18 +91,14 @@
             if ([image containsString: currentImage])
             {
                 currentIndex = i;
-                if ([currentImage containsString: @"https//"])
-                {
-                    currentImage = [currentImage stringByReplacingOccurrencesOfString: @"https" withString: @"https:"];
-                }
+                currentImage = [self parseImageUrl: currentImage];
                 [images addObject: [NSURL URLWithString: currentImage]];
                 continue;
             }
-            if ([image containsString: @"https//"]) {
-                image = [image stringByReplacingOccurrencesOfString: @"https" withString: @"https:"];
-            }
             
-            if ([image containsString: @"https:"])
+            image = [self parseImageUrl: image];
+            
+            if ([image containsString: @"http"])
             {
                 [images addObject: [NSURL URLWithString: image]];
             }
@@ -126,6 +122,17 @@
         }
         return NO;
     }
+    
+    if ([url containsString: @"replyusername://"])
+    {
+        NSString *username = [url stringByReplacingOccurrencesOfString: @"replyusername://" withString: @""];
+        if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedCellWithUsername:)])
+        {
+            [self.delegate topicDetailContentCell: self didClickedCellWithUsername: username];
+        }
+        return NO;
+    }
+    
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
     {
@@ -134,6 +141,18 @@
     
     
     return NO;
+}
+    
+- (NSString *)parseImageUrl:(NSString *)url
+{
+    if ([url containsString: @"https//"]) {
+        url = [url stringByReplacingOccurrencesOfString: @"https" withString: @"https:"];
+    }
+    else if([url containsString: @"http//"])
+    {
+        url = [url stringByReplacingOccurrencesOfString: @"http" withString: @"http:"];
+    }
+    return url;
 }
 
 @end

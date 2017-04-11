@@ -41,6 +41,10 @@
  */
 - (void)setupView
 {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     // 0、设置nav的titleView
     UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems: @[@"最热", @"全部"]];
     control.selectedSegmentIndex = 0;
@@ -59,7 +63,7 @@
     [self addChildViewController: hotNodeVC];
     self.hotNodeCollectionView = hotNodeVC.collectionView;
     [self.view addSubview: self.hotNodeCollectionView];
-    self.hotNodeCollectionView.frame = self.view.bounds;
+    self.hotNodeCollectionView.frame = CGRectMake(0, WTNavigationBarMaxY, WTScreenWidth, WTScreenHeight - WTNavigationBarMaxY - WTTabBarHeight);
 }
 
 /**

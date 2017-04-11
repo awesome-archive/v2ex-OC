@@ -96,12 +96,14 @@
     
     [[WTAccountViewModel shareInstance] getOnceWithUsername: username password: password success:^{
         
+        [self closeButtonClick];
+        
         if (self.loginSuccessBlock)
         {
             self.loginSuccessBlock();
         }
         
-        [self closeButtonClick];
+        
         
         
     } failure:^(NSError *error) {

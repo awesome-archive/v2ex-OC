@@ -34,6 +34,9 @@ NSString * const reuseIdentifier = @"reuseIdentifier";
 // 加载View
 - (void)setupView
 {
+    
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    
     [self.tableView registerClass: [UITableViewCell class] forCellReuseIdentifier: reuseIdentifier];
     
     self.tableView.sectionFooterHeight = CGFLOAT_MIN;
