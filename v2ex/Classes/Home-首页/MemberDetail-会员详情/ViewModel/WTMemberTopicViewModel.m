@@ -10,6 +10,7 @@
 
 #import "WTURLConst.h"
 #import "NetworkTool.h"
+#import "WTParseTool.h"
 #import "WTHTMLExtension.h"
 
 #import "TFHpple.h"
@@ -193,7 +194,9 @@
     {
         memberItem.bio = biggerE.content;
     }
-    memberItem.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, [avatarE objectForKey: @"src"]]];
+    
+    NSString *avatar = [NSString stringWithFormat: @"%@%@", WTHTTP, [avatarE objectForKey: @"src"]];
+    memberItem.avatarURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: avatar];
     self.memberItem = memberItem;
 }
 

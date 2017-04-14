@@ -78,6 +78,9 @@ static NSString  * const commentCellID = @"commentCellID";
    // self.topicDetailUrl = @"https://www.v2ex.com/t/353501#reply0"; //代码高亮显示
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/353464#reply24"; //多图，测试图片点击的
+    
+    self.topicDetailUrl = @"https://www.v2ex.com/t/354606#reply70"; //需要会员登陆
+    
     // 1、加载数据
     [self setupData];
     
@@ -235,10 +238,8 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     [self parseUrl];
     
-    //self.topicDetailUrl = @"http://www.v2ex.com/t/263754#reply0";
+    
     [[NetworkTool shareInstance] GETWithUrlString: self.topicDetailUrl success:^(NSData *data) {
-        
-        //self.topicDetailViewModels = [WTTopicDetailViewModel topicDetailWithData: data];
         
         self.topicDetailVM = [WTTopicDetailViewModel topicDetailWithData: data];
         
@@ -247,28 +248,23 @@ static NSString  * const commentCellID = @"commentCellID";
         self.currentPage = self.topicDetailVM.currentPage;
         
         // 说明帖子需要登陆
-        /*if (self.topicDetailViewModels.count == 0)
+        if (self.topicDetailViewModels == nil)
         {
             if (self.updateTopicDetailComplection)
             {
                 NSError *error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorMessage" : @"查看本主题需要登录"}];
                 self.updateTopicDetailComplection(nil, error);
             }
-            return;
+            
         }
-        
-        self.firstTopicDetailVM = self.topicDetailViewModels.firstObject;
-        
-        if (self.updateTopicDetailComplection)
+        else
         {
-            self.updateTopicDetailComplection(self.topicDetailViewModels.firstObject, nil);
+            if (self.updateTopicDetailComplection)
+                self.updateTopicDetailComplection(self.topicDetailVM, nil);
+            
+            [self.tableView reloadData];
         }
-        */
-        if (self.updateTopicDetailComplection)
-        {
-            self.updateTopicDetailComplection(self.topicDetailVM, nil);
-        }
-        [self.tableView reloadData];
+
         
     } failure:^(NSError *error) {
     }];
