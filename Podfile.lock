@@ -63,9 +63,9 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SVProgressHUD (2.1.2)
-  - tingyunApp (2.5.4)
   - TYAttributedLabel (2.6.2)
   - UITableView+FDTemplateLayoutCell (1.4)
+  - UMengAnalytics-NO-IDFA (4.2.5)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -94,9 +94,9 @@ DEPENDENCIES:
   - RongCloudIMKit
   - SDWebImage
   - SVProgressHUD
-  - tingyunApp
   - TYAttributedLabel
   - UITableView+FDTemplateLayoutCell
+  - UMengAnalytics-NO-IDFA
   - YYCache
   - YYCategories
   - YYText
@@ -127,13 +127,13 @@ SPEC CHECKSUMS:
   RongCloudIMKit: bc83889f5b7fbb82c104d778ca6633b3681e81d5
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  tingyunApp: 0b40b74f1325fad5557f47c842416bf7ce0de123
   TYAttributedLabel: 1c1f1e7604043ba584e005d4fd3aee8a1a7a2020
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: f3faea959d7c8d342d9657fe9ef240516b87a349
+PODFILE CHECKSUM: 86880b37d4c50df8c0a19d9cb3a70ca9298447fb
 
 COCOAPODS: 1.2.0

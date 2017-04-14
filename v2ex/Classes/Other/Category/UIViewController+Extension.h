@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/message.h>
 
 @interface UIViewController (Extension)
+
 
 
 /** 设置导航栏的imageView */
@@ -16,4 +18,6 @@
 
 /** 设置导航栏的背景图片 */
 - (void)setNavBackgroundImage;
+
+
 @end

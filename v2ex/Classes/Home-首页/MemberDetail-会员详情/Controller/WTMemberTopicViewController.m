@@ -58,6 +58,7 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     
     // tableView
     {
+        self.tableView.backgroundColor = [UIColor colorWithHexString: @"F2F3F5"];
         // 自动计算行高
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 128.5;

@@ -49,8 +49,6 @@ static NSString * const ID = @"notificationCell";
     
     self.title = @"提醒";
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     self.tableView.tableFooterView = [UIView new];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

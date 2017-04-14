@@ -7,7 +7,7 @@
 
     initUsernameOnclick();
 
-    initCellOnClick();
+//    initCellOnClick();
 
     function initAvatarOnclick()
     {
@@ -19,7 +19,7 @@
 
                 var html = this.parentNode.parentNode.innerHTML;
 
-                window.location.href= "userId://" + html.match(/member\/(\S*)"/)[1];
+                window.location.href= "userId://" + html.match(/member\/(\S*)\"/)[1];
             }
         }
     }

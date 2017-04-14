@@ -8,6 +8,8 @@
 
 #import "WTAppDelegateTool.h"
 #import <RongIMKit/RongIMKit.h>
+#import "UMMobClick/MobClick.h"
+
 
 #import "WTAccountViewModel.h"
 #import "WTFPSLabel.h"
@@ -74,6 +76,7 @@ static WTAppDelegateTool *_appDelegateTool;
     [Bugly startWithAppId:@"f20a87e6ba"];
     
     
+    
 #if Test == 0
     // 5、初始化极光推送
     [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
@@ -83,6 +86,9 @@ static WTAppDelegateTool *_appDelegateTool;
 #else
     
 #endif
+    
+    // 7、初始化友盟
+    [self initMobClick];
     
 }
 
@@ -139,6 +145,19 @@ static WTAppDelegateTool *_appDelegateTool;
         //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
         WTLog(@"token错误");
     }];
+}
+
+#pragma mark - 初始化友盟统计
+- (void)initMobClick
+{
+    UMConfigInstance.appKey = @"56e97541e0f55a8b7900237a";
+#if Test == 0
+    UMConfigInstance.channelId = @"Test";
+#else
+    UMConfigInstance.channelId = @"App Store";
+#endif
+    
+    [MobClick startWithConfigure:UMConfigInstance];
 }
 
 #pragma mark - 注册DeviceToken
@@ -309,7 +328,7 @@ static WTAppDelegateTool *_appDelegateTool;
     userItem.uid = [userId integerValue];
     [WTAccountViewModel getUserInfoFromMisaka14WithUserItem: userItem success:^(WTUserItem *userItem) {
         
-        RCUserInfo *userInfo = [[RCUserInfo alloc] initWithUserId: [NSString stringWithFormat: @"%ld", userItem.uid] name: userItem.username portrait: userItem.avatarUrl];
+        RCUserInfo *userInfo = [[RCUserInfo alloc] initWithUserId: [NSString stringWithFormat: @"%zd", userItem.uid] name: userItem.username portrait: userItem.avatarUrl];
         
         completion(userInfo);
         

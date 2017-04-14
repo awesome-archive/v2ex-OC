@@ -24,7 +24,6 @@ target 'v2ex' do
 	pod 'RongCloudIMKit'
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
-	pod "tingyunApp"
 	pod 'Bugly'
 	pod 'JPush'
 	pod 'AMap2DMap'
@@ -32,6 +31,7 @@ target 'v2ex' do
 	pod 'AMapLocation'
 	pod 'IDMPhotoBrowser'
 	pod 'MarqueeLabel'
+	pod 'UMengAnalytics-NO-IDFA'
 end
 
 target 'Today' do

@@ -65,7 +65,7 @@ static NSString  * const commentCellID = @"commentCellID";
     //self.topicDetailUrl = @"http://www.v2ex.com/t/265305#reply0";
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/353374#reply148";  // 超过1百条评论
-    // self.topicDetailUrl = @"https:/www.v2ex.com/t/346214#reply79";
+     //self.topicDetailUrl = @"https:/www.v2ex.com/t/346214#reply79";
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/352921#reply5";
     
@@ -403,7 +403,8 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName
 {
-    
+    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithUsername: userName];
+    [self.navigationController pushViewController: memeberDetailVC animated: YES];
 }
     
 #pragma mark - WTTopicDetailContentCellDelegate
