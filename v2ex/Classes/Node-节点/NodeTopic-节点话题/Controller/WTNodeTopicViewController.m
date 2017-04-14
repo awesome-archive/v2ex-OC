@@ -62,20 +62,23 @@ NSString * const ID = @"ID";
 - (void)setupView
 {
     self.headerViewH = 195;
-    self.view.backgroundColor = [UIColor whiteColor];
+    
     
     UITableView *tableView = [UITableView new];
     
     {
         tableView.frame = self.footerContentView.bounds;
         [self.footerContentView addSubview: tableView];
-        self.tableView = tableView;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.backgroundColor = [UIColor colorWithHexString: @"F2F3F5"];
+        
         UIView *footerView = [UIView new];
-        footerView.backgroundColor = WTColor(242, 243, 245);
-        self.tableView.tableFooterView = footerView;
+        footerView.backgroundColor =  [UIColor colorWithHexString: @"F2F3F5"];
+        tableView.tableFooterView = footerView;
+        self.tableView = tableView;
+        
     }
     
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];

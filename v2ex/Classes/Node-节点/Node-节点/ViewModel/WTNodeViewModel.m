@@ -230,7 +230,7 @@ static FMDatabase *_db;
 {
     NSString *urlString = [NSString stringWithFormat: @"https://www.v2ex.com/api/nodes/show.json?id=%@", nodeId];
     
-    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(NSData *responseObject) {
         
         WTNodeItem *nodeItem = [WTNodeItem mj_objectWithKeyValues: responseObject];
         

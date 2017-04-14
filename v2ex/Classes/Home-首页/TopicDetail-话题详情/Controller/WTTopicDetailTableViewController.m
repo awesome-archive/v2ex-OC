@@ -79,7 +79,7 @@ static NSString  * const commentCellID = @"commentCellID";
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/353464#reply24"; //多图，测试图片点击的
     
-    self.topicDetailUrl = @"https://www.v2ex.com/t/354606#reply70"; //需要会员登陆
+    //self.topicDetailUrl = @"https://www.v2ex.com/t/354606#reply70"; //需要会员登陆
     
     // 1、加载数据
     [self setupData];

@@ -10,6 +10,7 @@
 #import "WTNodeItem.h"
 #import "WTURLConst.h"
 #import "NSString+YYAdd.h"
+#import "NSDate+YYAdd.h"
 
 #import "UIImageView+WebCache.h"
 
@@ -45,11 +46,6 @@
     
     self.titleLabel.text = nodeItem.title;
     
-    
-//    [nodeItem.title enumerateRegexMatches: @"<a[^>]*>([^<]*)</a>" options: NSRegularExpressionCaseInsensitive usingBlock:^(NSString * _Nonnull match, NSRange matchRange, BOOL * _Nonnull stop) {
-//    
-//        NSLog(@"match:%@", match);
-//    }];
     if (nodeItem.header.length > 0)
     {
         self.footerLabel.text = nodeItem.header;
@@ -58,7 +54,9 @@
     {
         self.footerLabel.text = nodeItem.footer;
     }
-    self.createdLabel.text = nodeItem.created;
+    
+    NSDate *createDate = [NSDate dateWithTimeIntervalSince1970: nodeItem.created];
+    self.createdLabel.text = [createDate stringWithFormat: @"yyyy-MM-dd"];
     self.starsLabel.text = [NSString stringWithFormat: @"%lu", nodeItem.stars];
     self.topicsLabel.text = [NSString stringWithFormat: @"%lu", nodeItem.topics];
     [self.avatarImageV sd_setImageWithURL: [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, nodeItem.avatar_large]] placeholderImage: [UIImage imageNamed: @"node_large_default"]];

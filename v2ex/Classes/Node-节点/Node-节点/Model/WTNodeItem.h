@@ -36,7 +36,7 @@
 
 @property (nonatomic, strong) NSString *footer;
 
-@property (nonatomic, strong) NSString *created;
+@property (nonatomic, assign) NSTimeInterval created;
 
 @property (nonatomic, assign) CGFloat width;
 

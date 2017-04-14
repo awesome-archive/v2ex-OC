@@ -84,7 +84,7 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Home-%E9%A6%96%E9%A1%B5/TopicDetail-%E8%AF%9D%E9%A2%98%E8%AF%A6%E6%83%85/Controller/WTTopicDetailTableViewController.m"
-                  timestampString = "513850739.28892"
+                  timestampString = "513853645.780325"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -99,7 +99,7 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Home-%E9%A6%96%E9%A1%B5/TopicDetail-%E8%AF%9D%E9%A2%98%E8%AF%A6%E6%83%85/Controller/WTTopicDetailTableViewController.m"
-                  timestampString = "513850739.291772"
+                  timestampString = "513853645.781795"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -227,13 +227,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/TopicDetail-&#x8bdd;&#x9898;&#x8be6;&#x60c5;/Controller/WTTopicDetailTableViewController.m"
-            timestampString = "513849994.643695"
+            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/MemberDetail-&#x4f1a;&#x5458;&#x8be6;&#x60c5;/ViewModel/WTMemberTopicViewModel.m"
+            timestampString = "513850547.167017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-getMemberItemWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -243,13 +243,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/MemberDetail-&#x4f1a;&#x5458;&#x8be6;&#x60c5;/ViewModel/WTMemberTopicViewModel.m"
-            timestampString = "513850547.167017"
+            filePath = "v2ex/Classes/Node-&#x8282;&#x70b9;/Node-&#x8282;&#x70b9;/ViewModel/WTNodeViewModel.m"
+            timestampString = "513853096.567276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-getMemberItemWithData:"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "+getNodeItemWithNodeId:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "v2ex/Classes/Node-&#x8282;&#x70b9;/NodeTopic-&#x8282;&#x70b9;&#x8bdd;&#x9898;/View/WTNodeTopicHeaderView.m"
+            timestampString = "513853572.538757"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-setNodeItem:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
