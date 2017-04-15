@@ -138,7 +138,7 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController topicDetailViewController];
     WTReplyItem *replyItem = self.replyVM.replyItems[indexPath.row];
     topicDetailVC.topicDetailUrl = replyItem.detailUrl;
     topicDetailVC.topicTitle = replyItem.title;

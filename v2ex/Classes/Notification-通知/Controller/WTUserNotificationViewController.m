@@ -153,7 +153,7 @@ static NSString * const ID = @"notificationCell";
 #pragma mark - Table view data source
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController topicDetailViewController];
     WTNotificationItem *notificationItem = self.notificationVM.notificationItems[indexPath.row];
     topicDetailVC.topicDetailUrl = notificationItem.detailUrl;
     topicDetailVC.topicTitle = notificationItem.title;

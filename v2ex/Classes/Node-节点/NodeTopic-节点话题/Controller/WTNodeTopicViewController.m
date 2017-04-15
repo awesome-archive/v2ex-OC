@@ -166,7 +166,7 @@ NSString * const ID = @"ID";
     
     // 跳转至话题详情控制器
     WTTopic *topic = self.topicVM.topics[indexPath.row];
-    WTTopicDetailViewController *detailVC = [WTTopicDetailViewController new];
+    WTTopicDetailViewController *detailVC = [WTTopicDetailViewController topicDetailViewController];
     detailVC.topicDetailUrl = topic.detailUrl;
     detailVC.topicTitle = topic.title;
     [self.navigationController pushViewController: detailVC animated: YES];

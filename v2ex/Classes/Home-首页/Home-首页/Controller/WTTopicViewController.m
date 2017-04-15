@@ -167,7 +167,7 @@ static NSString *const ID = @"topicCell";
         return nil;
     
     WTTopic *topic = cell.topic;
-    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController topicDetailViewController];
     topicDetailVC.topicDetailUrl = topic.detailUrl;
     
 //    previewingContext.sourceRect = self.view.bounds;/

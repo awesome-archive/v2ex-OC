@@ -137,7 +137,7 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController new];
+    WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController topicDetailViewController];
     WTMyFollowingItem *myFollowingItem = self.myFollowingVM.myFollowingItems[indexPath.row];
     topicDetailVC.topicDetailUrl = myFollowingItem.detailUrl;
     topicDetailVC.topicTitle = myFollowingItem.title;
