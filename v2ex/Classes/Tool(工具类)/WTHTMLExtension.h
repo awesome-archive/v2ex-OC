@@ -51,4 +51,13 @@
  */
 + (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html;
 
+
+/**
+ 解析HTML　视频解析
+
+ @param html 要解析html
+ @return 解析生的html
+ */
++ (NSString *)topicDetailParseVideoWithHTML:(NSString *)html;
+
 @end

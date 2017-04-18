@@ -133,6 +133,11 @@
         return NO;
     }
     
+    if ([url containsString: @"www.youtube.com"])
+    {
+        return NO;
+    }
+    
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
     {

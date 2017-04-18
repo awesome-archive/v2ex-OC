@@ -18,10 +18,8 @@
 #import "WTRefreshAutoNormalFooter.h"
 
 #import "NSString+YYAdd.h"
-#import "UITableView+FDTemplateLayoutCell.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-// ======
-#import "WTNode.h"
+
 
 static NSString *const ID = @"topicCell";
 
@@ -47,19 +45,22 @@ static NSString *const ID = @"topicCell";
 - (void)setUpView
 {
     // 1、设置tableView一些属性
+    self.tableView.rowHeight = 90;
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
-    self.tableView.tableFooterView = [UIView new];
+    UIView *footerView = [UIView new];
+    footerView.backgroundColor = WTTableViewBackgroundColor;
+    self.tableView.tableFooterView = footerView;
+    self.tableView.backgroundColor = WTTableViewBackgroundColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
 
     // 设置内边距
     self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
     // 设置滚动条的内边距
-    self.tableView.separatorInset = self.tableView.contentInset;
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
-    
-    // 1.2只有'最近'节点需要上拉刷新
+    // 1.2只有'最近',　全部节点需要上拉刷新
     if ([WTTopicViewModel isNeedNextPage: self.urlString])
     {
         self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
@@ -139,12 +140,6 @@ static NSString *const ID = @"topicCell";
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
-        cell.topic = self.topicVM.topics[indexPath.row];
-    }];
-}
 
 #pragma mark - WTTopicCellDelegate
 - (void)topicCell:(WTTopicCell *)topicCell didClickMemberDetailAreaWithTopic:(WTTopic *)topic

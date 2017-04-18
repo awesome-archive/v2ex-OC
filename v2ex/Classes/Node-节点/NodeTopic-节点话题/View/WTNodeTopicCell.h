@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTNodeTopicAPIItem;
+@class WTNodeTopicAPIItem, WTNodeTopicCell;
+
+
 @interface WTNodeTopicCell : UITableViewCell
 
 /** 节点话题 */

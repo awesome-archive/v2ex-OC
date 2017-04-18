@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "webView_refresh_disabled.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "webView_refresh_disabled.png",
       "scale" : "2x"
     },
     {

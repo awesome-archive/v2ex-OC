@@ -109,4 +109,16 @@
     
     return [[NSMutableString alloc] initWithString: newHTML];
 }
+
+
+/**
+ 解析HTML　视频解析
+ 
+ @param html 要解析html
+ @return 解析生的html
+ */
++ (NSString *)topicDetailParseVideoWithHTML:(NSString *)html
+{
+    return nil;
+}
 @end

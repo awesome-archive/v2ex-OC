@@ -217,6 +217,11 @@
     {
         if([e objectForKey: @"id"])
         {
+            // 把视频过滤掉，暂时方法，有BUG
+            if ([e.raw containsString: @"embedded_video_wrapper"])
+            {
+                continue;
+            }
             [html appendString: e.raw];
         }
     }

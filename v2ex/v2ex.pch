@@ -48,6 +48,6 @@
 #define WTPrettyColor WTColor(135, 146, 177)
 #define WTPrettyGreenColor WTColor(42, 183, 103)
 #define WTLightColor [UIColor colorWithHexString: WTAppLightColor]
-
+#define WTTableViewBackgroundColor [UIColor colorWithHexString: @"F2F3F5"]
 
 #define Test   1

@@ -9,6 +9,7 @@
 #import "WTNodeTopicViewController.h"
 #import "WTTopicDetailViewController.h"
 #import "WTTopicViewController.h"
+#import "WTMemberDetailViewController.h"
 #import "WTNodeTopicHeaderView.h"
 
 #import "WTTopicViewModel.h"
@@ -29,7 +30,7 @@ CGFloat const userCenterHeaderViewH = 170;
 
 NSString * const ID = @"ID";
 
-@interface WTNodeTopicViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface WTNodeTopicViewController () <UITableViewDataSource, UITableViewDelegate, WTTopicCellDelegate>
 
 @property (nonatomic, weak) UIView                                *headerView;
 @property (nonatomic, weak) UIView                                *footerView;
@@ -155,6 +156,7 @@ NSString * const ID = @"ID";
     
     // 设置数据
     cell.topic = self.topicVM.topics[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -178,6 +180,13 @@ NSString * const ID = @"ID";
         cell.topic = self.topicVM.topics[indexPath.row];
     }];
 }
+
+- (void)topicCell:(WTTopicCell *)topicCell didClickMemberDetailAreaWithTopic:(WTTopic *)topic
+{
+    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithTopic: topic];
+    [self.navigationController pushViewController: memeberDetailVC animated: YES];
+}
+
 
 /**
  *  拼接urlString的参数

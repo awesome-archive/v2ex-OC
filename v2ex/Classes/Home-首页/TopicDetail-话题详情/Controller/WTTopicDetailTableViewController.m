@@ -81,6 +81,10 @@ static NSString  * const commentCellID = @"commentCellID";
     
     //self.topicDetailUrl = @"https://www.v2ex.com/t/354606#reply70"; //需要会员登陆
     
+    
+    //self.topicDetailUrl = @"https:/www.v2ex.com/t/354985#reply25"; //重复跳转
+    
+    self.topicDetailUrl = @"https:/www.v2ex.com/t/355539#reply116"; // 评论中的爱心换行了
     // 1、加载数据
     [self setupData];
     
@@ -248,7 +252,7 @@ static NSString  * const commentCellID = @"commentCellID";
         self.currentPage = self.topicDetailVM.currentPage;
         
         // 说明帖子需要登陆
-        if (self.topicDetailViewModels == nil)
+        if (self.topicDetailVM == nil)
         {
             if (self.updateTopicDetailComplection)
             {
