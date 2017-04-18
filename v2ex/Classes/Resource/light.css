@@ -1397,6 +1397,10 @@ a.btn_hero:hover {
     padding: 10px;
 }
 
+.cell:first-child h1, .cell:first-child h2, .cell:first-child h3, .cell:first-child h4,.cell:first-child h5, .cell:first-child h6{
+    padding: 10px;
+}
+
 .reply_content img{
     max-width: 100%;
 }

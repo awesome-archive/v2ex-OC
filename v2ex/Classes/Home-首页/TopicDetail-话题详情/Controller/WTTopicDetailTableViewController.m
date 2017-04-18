@@ -84,7 +84,11 @@ static NSString  * const commentCellID = @"commentCellID";
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/354985#reply25"; //重复跳转
     
-    self.topicDetailUrl = @"https:/www.v2ex.com/t/355539#reply116"; // 评论中的爱心换行了
+    
+    
+    //self.topicDetailUrl = @"https:/www.v2ex.com/t/355494#reply14";
+    
+    //self.topicDetailUrl = @"https:/www.v2ex.com/t/355539#reply116"; // 评论中的爱心换行了
     // 1、加载数据
     [self setupData];
     
@@ -391,6 +395,7 @@ static NSString  * const commentCellID = @"commentCellID";
         [photos addObject:photo];
     }
     IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos: photos];
+    [browser setInitialPageIndex: currentIndex];
     [self presentViewController:browser animated: YES completion: nil];
     
 }

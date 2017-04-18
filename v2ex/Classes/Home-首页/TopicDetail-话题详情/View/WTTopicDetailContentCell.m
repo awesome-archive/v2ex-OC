@@ -107,7 +107,7 @@
         
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithContentImages:currentIndex:)])
         {
-            [self.delegate topicDetailContentCell: self didClickedWithContentImages: images currentIndex: currentIndex];
+            [self.delegate topicDetailContentCell: self didClickedWithContentImages: images currentIndex: currentIndex - 1];
         }
         return NO;
     }

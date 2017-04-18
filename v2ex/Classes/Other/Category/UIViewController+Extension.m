@@ -30,23 +30,39 @@
 {
     Method wt_viewWillAppear = class_getInstanceMethod(self, @selector(wt_viewWillAppear:));
     
+    Method viewWillAppear = class_getInstanceMethod(self, @selector(viewWillAppear:));
+    
     Method wt_viewWillDisappear = class_getInstanceMethod(self, @selector(wt_viewWillDisappear:));
     
-    method_exchangeImplementations(wt_viewWillAppear, wt_viewWillDisappear);
+    Method viewWillDisappear = class_getInstanceMethod(self, @selector(viewWillDisappear:));
+    
+    method_exchangeImplementations(wt_viewWillAppear, viewWillAppear);
+    
+    method_exchangeImplementations(wt_viewWillDisappear, viewWillDisappear);
 }
 
 - (void)wt_viewWillAppear:(BOOL)animated
 {
-    [self viewWillAppear: animated];
+    [self wt_viewWillAppear: animated];
+   
     
-    [MobClick beginLogPageView: NSStringFromClass([self class])];
+    if (![self isMemberOfClass: [UINavigationController class]] || ![self isMemberOfClass: [UITabBarController class]])
+    {
+         WTLog(@"%@ wt_viewWillAppear", NSStringFromClass([self class]))
+        [MobClick beginLogPageView: NSStringFromClass([self class])];
+    }
+    
+    
 }
 
 - (void)wt_viewWillDisappear:(BOOL)animated
 {
-    [self viewWillDisappear: animated];
-    
-    [MobClick endLogPageView: NSStringFromClass([self class])];
+    [self wt_viewWillDisappear: animated];
+    if (![self isMemberOfClass: [UINavigationController class]] || ![self isMemberOfClass: [UITabBarController class]])
+    {
+        WTLog(@"%@ wt_viewWillDisappear", NSStringFromClass([self class]))
+        [MobClick endLogPageView: NSStringFromClass([self class])];
+    }
 }
 
 @end

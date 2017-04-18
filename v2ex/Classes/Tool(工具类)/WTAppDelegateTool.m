@@ -153,11 +153,12 @@ static WTAppDelegateTool *_appDelegateTool;
     UMConfigInstance.appKey = @"56e97541e0f55a8b7900237a";
 #if Test == 0
     UMConfigInstance.channelId = @"Test";
+    UMConfigInstance.ePolicy = REALTIME;
 #else
     UMConfigInstance.channelId = @"App Store";
 #endif
     
-    [MobClick startWithConfigure:UMConfigInstance];
+    [MobClick startWithConfigure: UMConfigInstance];
 }
 
 #pragma mark - 注册DeviceToken

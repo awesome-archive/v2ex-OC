@@ -23,7 +23,8 @@ static NSString *_userAgentMobile;
         
         // 1、设置请求头
         UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
-        _userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+//        _userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+        _userAgentMobile = @"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Mobile/14E304";
         [_instance.requestSerializer setValue: _userAgentMobile forHTTPHeaderField: @"User-Agent"];
 //        [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
         _instance.responseSerializer = [AFHTTPResponseSerializer serializer];

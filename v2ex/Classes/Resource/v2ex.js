@@ -86,7 +86,7 @@
 
                 if (images.length == 1)
                 {
-                    window.location.href=("images://--" + this.src+"--");
+                    window.location.href="images://--" + this.src+"--";
                     return;
                 }
 
@@ -102,7 +102,7 @@
                     }
 
                 }
-                window.location.href=("images://" + imagesUrl);
+                window.location.href="images://" + imagesUrl;
             }
         }
     }

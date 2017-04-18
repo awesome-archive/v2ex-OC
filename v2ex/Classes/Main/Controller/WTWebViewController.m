@@ -11,6 +11,7 @@
 #import "WTShareSDKTool.h"
 #import "UIBarButtonItem+Extension.h"
 #import "MarqueeLabel.h"
+#import "Masonry.h"
 
 #define WTEstimatedProgress @"estimatedProgress"
 #define WTCanGoBack @"canGoBack"
@@ -46,8 +47,11 @@
 - (void)setupWebView
 {
     WKWebView *webView = [[WKWebView alloc] init];
-    webView.frame = self.contentView.bounds;
+    
     [self.contentView addSubview: webView];
+    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsZero);
+    }];
     self.webView = webView;
     
     // 2、加载请求

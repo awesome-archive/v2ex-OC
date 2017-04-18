@@ -65,6 +65,7 @@ static WTAppDelegateTool *_appDelegateTool;
     
     // 9、初始化第三方SDK
     [_appDelegateTool initAppSDKWithDidFinishLaunchingWithOptions: launchOptions];
+
     
     return YES;
 }

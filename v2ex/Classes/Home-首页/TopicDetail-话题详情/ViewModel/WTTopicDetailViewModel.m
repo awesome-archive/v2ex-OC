@@ -244,7 +244,7 @@
     
     topicDetailVM.contentHTML = html;
     
-    WTLog(@"html:%@", html)
+   // WTLog(@"html:%@", html)
     
     return topicDetailVM;
 }
