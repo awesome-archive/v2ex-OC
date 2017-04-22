@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WTAccount.h"
 #import "WTUserItem.h"
+@class WTRegisterReqItem;
 @interface WTAccountViewModel : NSObject
 
 @property (nonatomic, strong) WTAccount *account;
@@ -57,24 +58,22 @@
  */
 - (void)getOnceWithUsername:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
+
 /**
- *  获取验证码图片的url
+ *  获取注册的请求参数
  *
  *  @param success 请求成功的回调
  *  @param failure 请求失败的回调
  */
-- (void)getVerificationCodeUrlWithSuccess:(void (^)(NSString *codeUrl))success failure:(void (^)(NSError *error))failure;
+- (void)getRegisterReqItemWithSuccess:(void (^)(WTRegisterReqItem *item))success failure:(void (^)(NSError *error))failure;
 /**
  *  注册
  *
- *  @param username 用户名
- *  @param password 密码
- *  @param email    邮箱
- *  @param c        验证码
+ *  @param item     注册请求参数
  *  @param success  请求成功的回调
  *  @param failure  请求失败的回调
  */
-- (void)registerWithUsername:(NSString *)username password:(NSString *)password email:(NSString *)email c:(NSString *)c success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure;
+- (void)registerWithRegisterReqItem:(WTRegisterReqItem *)item success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure;
 
 /**
  *  签到

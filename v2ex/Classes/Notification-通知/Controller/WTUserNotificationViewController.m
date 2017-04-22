@@ -84,7 +84,7 @@ static NSString * const ID = @"notificationCell";
         [self.tableView.mj_header beginRefreshing];
         
     }
-    else
+    else if(![[WTAccountViewModel shareInstance] isLogin])
     {
         self.tableViewType = WTTableViewTypeLogout;
         self.login = NO;
@@ -133,6 +133,14 @@ static NSString * const ID = @"notificationCell";
         [self.tableView.mj_footer endRefreshing];
     }
 }
+
+#pragma mark - 事件
+- (void)goToLoginVC
+{
+    WTLoginViewController *loginVC = [WTLoginViewController new];
+    [self presentViewController: loginVC animated: YES completion: nil];
+}
+
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -193,19 +201,21 @@ static NSString * const ID = @"notificationCell";
 - (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
 {
     UIView *view;
-    if (self.tableViewType == WTTableViewTypeLogout)
+    if (self.tableViewType == WTTableViewTypeNoData)
     {
         WTNoDataView *noDataView = [WTNoDataView noDataView];
         noDataView.tipImageView.image = [UIImage imageNamed:@"no_notification"];
         noDataView.tipTitleLabel.text = @"快去发表主题吧";
         view = noDataView;
     }
-    else if(self.tableViewType == WTTableViewTypeNoData)
+    else if(self.tableViewType == WTTableViewTypeLogout)
     {
-        UIButton *loginBtn = [UIButton new];
+        UIButton *loginBtn = [UIButton buttonWithType: UIButtonTypeCustom];
         loginBtn.width = 100;
         loginBtn.height = 30;
         [loginBtn setTitle: @"登陆" forState: UIControlStateNormal];
+        [loginBtn setTitleColor: [UIColor blueColor] forState: UIControlStateNormal];
+        [loginBtn addTarget: self action: @selector(goToLoginVC) forControlEvents: UIControlEventTouchUpInside];
         view = loginBtn;
     }
     return view;

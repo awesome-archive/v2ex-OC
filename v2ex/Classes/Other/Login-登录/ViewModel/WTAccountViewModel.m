@@ -14,7 +14,8 @@
 #import "WTLoginRequestItem.h"
 #import "MJExtension.h"
 #import "WTAppDelegateTool.h"
-
+#import "WTRegisterReqItem.h"
+#import "NSString+YYAdd.h"
 
 #define WTFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent: @"account.plist"]
 
@@ -316,23 +317,23 @@ static WTAccountViewModel *_instance;
 
 
 /**
- *  获取验证码图片的url
+ *  获取注册的请求参数
  *
  *  @param success 请求成功的回调
  *  @param failure 请求失败的回调
  */
-- (void)getVerificationCodeUrlWithSuccess:(void (^)(NSString *codeUrl))success failure:(void (^)(NSError *error))failure
+- (void)getRegisterReqItemWithSuccess:(void (^)(WTRegisterReqItem *item))success failure:(void (^)(NSError *error))failure
 {
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTRegisterUrl];
     
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: url param: nil success:^(id responseObject) {
        
-        NSString *codeUrl = [self getVerificationCodeUrlWithData: responseObject];
-        if (codeUrl != nil)
+        WTRegisterReqItem *item = [self getRegisterReqItemWithData: responseObject];
+        if (item.verificationCode != nil)
         {
             if (success)
             {
-                success([WTHTTPBaseUrl stringByAppendingPathComponent: codeUrl]);
+                success(item);
                 return;
             }
         }
@@ -353,21 +354,19 @@ static WTAccountViewModel *_instance;
 /**
  *  注册
  *
- *  @param username 用户名
- *  @param password 密码
- *  @param email    邮箱
- *  @param c        验证码
+ *  @param item     注册请求参数
  *  @param success  请求成功的回调
  *  @param failure  请求失败的回调
  */
-- (void)registerWithUsername:(NSString *)username password:(NSString *)password email:(NSString *)email c:(NSString *)c success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure
+- (void)registerWithRegisterReqItem:(WTRegisterReqItem *)item success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure
 {
     // 1、拼接参数
     NSDictionary *param = @{
-                            @"username" : username,
-                            @"password" : password,
-                            @"email" : email,
-                            @"c" : c
+                            item.usernameKey : item.usernameValue,
+                            item.passwordKey : item.passwordValue,
+                            item.emailKey : item.emailValue,
+                            item.verificationCodeKey : item.verificationCodeValue,
+                            item.onceKey : item.onceValue
                             };
     
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTRegisterUrl];
@@ -385,9 +384,26 @@ static WTAccountViewModel *_instance;
             return;
         }
         
+        NSError *error = nil;
+        if ([html containsString: @"注册过程中遇到一些问题："])
+        {
+            if ([html containsString: @"电子邮件地址"])
+            {
+                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"该邮箱已被注册过"}];
+            }
+            else if([html containsString: @"输入的验证码不正确"])
+            {
+                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"输入的验证码不正确"}];
+            }
+            else if([html containsString: @"用户名"])
+            {
+                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"用户名已经被注册过"}];
+            }
+        }
+        
         if (failure)
         {
-            failure([[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"未知错误"}]);
+            failure(error);
         }
         
     } failure:^(NSError *error) {
@@ -412,20 +428,42 @@ static WTAccountViewModel *_instance;
     return [WTLoginRequestItem loginRequestItemWithOnce: once usernameKey: usernameKey passwordKey: passwordKey];
 }
 
-#pragma mark - 根据二进制获取验证码url
-- (NSString *)getVerificationCodeUrlWithData:(NSData *)data
+#pragma mark - 根据二进制获取请求参数
+- (WTRegisterReqItem *)getRegisterReqItemWithData:(NSData *)data
 {
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
     NSArray<TFHppleElement *> *trE = [doc searchWithXPathQuery: @"//form[@action='/signup']//table//tr"];
     
+    NSArray<TFHppleElement *> *slE = [doc searchWithXPathQuery: @"//input[@class='sl']"];
+    
+    
+    WTRegisterReqItem *item = [WTRegisterReqItem new];
+    
     if (trE.count > 3)
     {
         NSArray *imgEs = [trE[3] searchWithXPathQuery: @"//img"];
-        return imgEs.count > 0 ? [imgEs[0] objectForKey: @"src"] : nil;
+        item.verificationCode = imgEs.count > 0 ? [imgEs[0] objectForKey: @"src"] : nil;
+        if (item.verificationCode != nil)
+        {
+            item.verificationCode = [WTHTTPBaseUrl stringByAppendingPathComponent: item.verificationCode];
+        }
     }
     
-    return nil;
+    if (slE.count > 3)
+    {
+        item.usernameKey = [[slE objectAtIndex: 0] objectForKey: @"name"];
+        
+        item.passwordKey = [[slE objectAtIndex: 1] objectForKey: @"name"];
+        
+        item.emailKey = [[slE objectAtIndex: 2] objectForKey: @"name"];
+        
+        item.verificationCodeKey = [[slE objectAtIndex: 3] objectForKey: @"name"];
+    }
+    
+    
+    
+    return item;
 }
 
 /**

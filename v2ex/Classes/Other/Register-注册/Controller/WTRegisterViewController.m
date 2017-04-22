@@ -12,6 +12,8 @@
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
 #import "WTTipView.h"
+#import "WTRegisterReqItem.h"
+#import "NSString+YYAdd.h"
 #import "WTPrivacyStatementViewController.h"
 
 @interface WTRegisterViewController ()
@@ -27,8 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *codeTextF;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
-/** 验证码图片Url */
-@property (nonatomic, strong) NSString           *codeUrl;
+/** 注册请求模型　*/
+@property (nonatomic, strong) WTRegisterReqItem *registerReqItem;
 /** 提示框View */
 @property (nonatomic, weak) WTTipView            *tipView;
 @end
@@ -39,21 +41,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // 1、设置验证码图片
-    [self DownloadCodeImage];
+    // 1、加载请求参数
+    [self loadResiterItemReq];
     
     // 2、设置view
     [self setupView];
 }
 
 #pragma mark - 自定义方法
-#pragma mark 下载验证码图片
-- (void)DownloadCodeImage
+#pragma mark 加载请求参数
+- (void)loadResiterItemReq
 {
-    [[WTAccountViewModel shareInstance] getVerificationCodeUrlWithSuccess:^(NSString *codeUrl) {
-        self.codeUrl = codeUrl;
-        // 设置验证码图片
+
+    [[WTAccountViewModel shareInstance] getRegisterReqItemWithSuccess:^(WTRegisterReqItem *item) {
+        
+        self.codeTextF.text = @"";
+        self.registerReqItem = item;
         [self setupCodeImage];
+        
     } failure:^(NSError *error) {
         
     }];
@@ -62,7 +67,7 @@
 #pragma mark 设置验证码图片
 - (void)setupCodeImage
 {
-    [[NetworkTool shareInstance] GETWithUrlString: self.codeUrl success:^(NSData *data) {
+    [[NetworkTool shareInstance] GETWithUrlString: self.registerReqItem.verificationCode success:^(NSData *data) {
         self.codeImageView.image = [UIImage imageWithData: data];
 
     } failure:^(NSError *error) {
@@ -94,34 +99,68 @@
     NSString *username = self.usernameTextF.text;
     NSString *password = self.passwordTextF.text;
     NSString *email = self.emailTextF.text;
-    NSString *c = self.codeTextF.text;
-    if (username.length == 0 || password.length == 0 || email.length == 0 || c.length == 0)
-        return
+    NSString *verificationCode = self.codeTextF.text;
+
+    if ([username stringByTrim].length == 0)
+    {
+        [SVProgressHUD showErrorWithStatus: @"用户名不能为空"];
+        return;
+    }
+    
+    if ([password stringByTrim].length == 0)
+    {
+        [SVProgressHUD showErrorWithStatus: @"密码不能为空"];
+        return;
+    }
+    
+    if ([email stringByTrim].length == 0)
+    {
+        [SVProgressHUD showErrorWithStatus: @"邮箱不能为空"];
+        return;
+    }
+    
+    if ([verificationCode stringByTrim].length == 0)
+    {
+        [SVProgressHUD showErrorWithStatus: @"验证码不能为空"];
+        return;
+    }
     
     // 2、发起请求
     [SVProgressHUD show];
-//    [[WTAccountViewModel shareInstance] registerWithUsername: username password: password email: email c: c success:^(BOOL isSuccess) {
-//        
-//        if (isSuccess)
-//        {
-//            [self.tipView showSuccessTitle: @"注册成功"];
-//        }
-//        
-//        [SVProgressHUD dismiss];
-//        
-//    } failure:^(NSError *error) {
-//        
-//        WTLog(@"error:%@", error)
-//        [self.tipView showErrorTitle: @"服务器异常，请稍候重试"];
-//        
-//        [SVProgressHUD dismiss];
-//    }];
+
+    self.registerReqItem.usernameValue = username;
+    self.registerReqItem.passwordValue = password;
+    self.registerReqItem.emailValue = email;
+    self.registerReqItem.verificationCodeValue = verificationCode;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD showSuccessWithStatus: @"注册成功"];
-        //[self.tipView showSuccessTitle: @"注册成功"];
-    });
+    [[WTAccountViewModel shareInstance] registerWithRegisterReqItem: self.registerReqItem success:^(BOOL isSuccess) {
         
+        if (isSuccess)
+        {
+            [self.tipView showSuccessTitle: @"注册成功"];
+        }
+        
+        [SVProgressHUD dismiss];
+        
+    } failure:^(NSError *error) {
+        
+        [SVProgressHUD dismiss];
+        WTLog(@"error:%@", error)
+        if (error.code == 400 || error.code == -1011)
+        {
+            [self.tipView showErrorTitle: error.userInfo[@"errorInfo"]];
+        }
+        else
+        {
+            [self.tipView showErrorTitle: @"服务器异常，请稍候重试"];
+        }
+        
+        [self loadResiterItemReq];
+        
+       
+        
+    }];
+    
 }
 #pragma mark - 隐私按钮点击
 - (IBAction)privacyButtonClick

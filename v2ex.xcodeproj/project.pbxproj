@@ -217,6 +217,9 @@
 		B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E70C4A1D4E5CD6000CC806 /* WTNotificationCell.xib */; };
 		B6E70C4F1D4E5CE7000CC806 /* WTNotificationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E70C4E1D4E5CE7000CC806 /* WTNotificationItem.m */; };
 		B6E889771C99CE4F00BAA96B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889341C99BDE100BAA96B /* libc++.tbd */; };
+		B6E9B8461EAB201F000120FA /* WTNoLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B8451EAB201F000120FA /* WTNoLoginView.m */; };
+		B6E9B8481EAB202D000120FA /* WTNoLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */; };
+		B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */; };
 		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
 /* End PBXBuildFile section */
 
@@ -643,6 +646,11 @@
 		B6E889341C99BDE100BAA96B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		B6E889731C99CDEF00BAA96B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B6E889751C99CE2C00BAA96B /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		B6E9B8441EAB201F000120FA /* WTNoLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNoLoginView.h; sourceTree = "<group>"; };
+		B6E9B8451EAB201F000120FA /* WTNoLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNoLoginView.m; sourceTree = "<group>"; };
+		B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNoLoginView.xib; sourceTree = "<group>"; };
+		B6E9B8491EAB78B9000120FA /* WTRegisterReqItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTRegisterReqItem.h; path = v2ex/Classes/Main/View/WTRegisterReqItem.h; sourceTree = SOURCE_ROOT; };
+		B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTRegisterReqItem.m; path = v2ex/Classes/Main/View/WTRegisterReqItem.m; sourceTree = SOURCE_ROOT; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1326,6 +1334,9 @@
 				30E497AE1D6FE6C000C2A6DA /* WTRefreshView.xib */,
 				304E47D11DBDF5A60094FAD8 /* WTProgressHUD.h */,
 				304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */,
+				B6E9B8441EAB201F000120FA /* WTNoLoginView.h */,
+				B6E9B8451EAB201F000120FA /* WTNoLoginView.m */,
+				B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1702,6 +1713,8 @@
 		B60FA13B1D45C09200F98CF3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B6E9B8491EAB78B9000120FA /* WTRegisterReqItem.h */,
+				B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2328,6 +2341,7 @@
 				B60FA1971D45C09200F98CF3 /* WTWebViewController.xib in Resources */,
 				B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */,
 				3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */,
+				B6E9B8481EAB202D000120FA /* WTNoLoginView.xib in Resources */,
 				30E4987C1D70424100C2A6DA /* ShareSDK.bundle in Resources */,
 				B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */,
 				30884B721DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard in Resources */,
@@ -2484,6 +2498,7 @@
 				B60FA1B81D45C09200F98CF3 /* WTHotNodeCell.m in Sources */,
 				B60FA1C81D45C09200F98CF3 /* UIColor+Extension.m in Sources */,
 				303CF2471D6AA37D00D697F7 /* WTTopicCollectionCell.m in Sources */,
+				B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */,
 				B60FA1F21D45C09200F98CF3 /* WTShareSDKTool.m in Sources */,
 				30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */,
 				B60FA1E91D45C09200F98CF3 /* WTNetworkState.m in Sources */,
@@ -2554,6 +2569,7 @@
 				B6DEEB801D4667F600E3A313 /* WTAdvertiseViewModel.m in Sources */,
 				B60FA1C51D45C09200F98CF3 /* NSString+Regex.m in Sources */,
 				B60FA1891D45C09200F98CF3 /* WTTopicDetailTableViewController.m in Sources */,
+				B6E9B8461EAB201F000120FA /* WTNoLoginView.m in Sources */,
 				B60FA1871D45C09200F98CF3 /* WTPostReplyViewController.m in Sources */,
 				B62EC4CA1E9A62BE00976561 /* WTPublishTopicItem.m in Sources */,
 				B6235E4C1D49DD7D00E5ECDB /* WTBaseSlidingViewController.m in Sources */,
