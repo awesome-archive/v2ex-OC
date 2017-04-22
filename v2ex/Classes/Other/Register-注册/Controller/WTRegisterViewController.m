@@ -48,6 +48,13 @@
     [self setupView];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    
+    [SVProgressHUD dismiss];
+}
+
 #pragma mark - 自定义方法
 #pragma mark 加载请求参数
 - (void)loadResiterItemReq

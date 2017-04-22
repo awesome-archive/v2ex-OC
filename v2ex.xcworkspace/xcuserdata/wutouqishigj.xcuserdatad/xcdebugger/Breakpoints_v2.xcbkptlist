@@ -308,22 +308,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "514554795.909663"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "-loginWithUrlString:loginRequestItem:username:password:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
             timestampString = "514556931.496294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
