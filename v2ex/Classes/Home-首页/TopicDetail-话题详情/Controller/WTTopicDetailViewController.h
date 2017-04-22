@@ -13,7 +13,8 @@
 @property (nonatomic, strong) NSString *topicDetailUrl;
 /** 帖子标题 */
 @property (nonatomic, strong) NSString *topicTitle;
-
+/** 是否展示导航 */
+@property (nonatomic, assign, getter=isHideNav) BOOL hideNav;
 /**
  *  更新页数的Block
  */

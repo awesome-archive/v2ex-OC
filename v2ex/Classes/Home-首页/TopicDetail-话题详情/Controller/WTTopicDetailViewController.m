@@ -53,15 +53,19 @@
     [super viewDidAppear: animated];
 
     // 设置导航栏背景图片
+    
     [self setNavBackgroundImage];
+
 }
 
 #pragma mark -设置话题详情数据
 - (void)setupTopicDetailData
 {
-    // 设置导航栏的View
-    [self setTempNavImageView];
-    
+    if (self.isHideNav == NO)
+    {
+        // 设置导航栏的View
+        [self setTempNavImageView];
+    }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareItemClick)];
     
     // 1、创建话题详情数据控制器

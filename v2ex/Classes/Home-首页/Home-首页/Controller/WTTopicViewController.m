@@ -180,9 +180,8 @@ static NSString *const ID = @"topicCell";
     
     WTTopic *topic = cell.topic;
     WTTopicDetailViewController *topicDetailVC = [WTTopicDetailViewController topicDetailViewController];
+    topicDetailVC.hideNav = YES;
     topicDetailVC.topicDetailUrl = topic.detailUrl;
-    
-//    previewingContext.sourceRect = self.view.bounds;/
     return topicDetailVC;
 }
 
