@@ -103,12 +103,11 @@
             self.loginSuccessBlock();
         }
         
-        
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName: WTLoginSuccessNotification object: nil];
         
     } failure:^(NSError *error) {
         [self.loginButton setTitle: @"登陆" forState: UIControlStateNormal];
-        if (error.code == 400 || error.code == 1001)
+        if (error.code == 400 || error.code == -1011)
         {
             [self.tipView showErrorTitle: error.userInfo[@"message"]];
             return;
@@ -149,7 +148,6 @@
     if (_tipView == nil)
     {
         WTTipView *tipView = [WTTipView wt_viewFromXib];
-        //[self.navigationController.navigationBar insertSubview: tipView atIndex: 0];
         [self.view addSubview: tipView];
         _tipView = tipView;
         

@@ -84,6 +84,7 @@
 {
     CGRect frame = self.frame;
 
+    self.hidden = NO;
     [UIView animateWithDuration: 1.5 animations:^{
         
         self.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
@@ -94,8 +95,12 @@
             
             self.frame = frame;
             
-        } completion: nil];
-        
+            
+        } completion: ^(BOOL finished) {
+            
+            self.hidden = YES;
+            
+        }];
     }];
 }
 

@@ -39,6 +39,14 @@ static NSString *const ID = @"topicCell";
     
     // 初始化页面
     [self setUpView];
+    
+    // 注册通知
+    [self initNoti];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 #pragma mark - 初始化页面
@@ -46,11 +54,11 @@ static NSString *const ID = @"topicCell";
 {
     // 1、设置tableView一些属性
     self.tableView.rowHeight = 90;
-    self.tableView.emptyDataSetSource = self;
-    self.tableView.emptyDataSetDelegate = self;
-    UIView *footerView = [UIView new];
-    footerView.backgroundColor = WTTableViewBackgroundColor;
-    self.tableView.tableFooterView = footerView;
+//    self.tableView.emptyDataSetSource = self;
+//    self.tableView.emptyDataSetDelegate = self;
+//    UIView *footerView = [UIView new];
+//    footerView.backgroundColor = WTTableViewBackgroundColor;
+//    self.tableView.tableFooterView = footerView;
     self.tableView.backgroundColor = WTTableViewBackgroundColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
@@ -76,6 +84,15 @@ static NSString *const ID = @"topicCell";
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
     {
         [self registerForPreviewingWithDelegate: self sourceView: self.view];
+    }
+}
+
+#pragma mark - 注册通知
+- (void)initNoti
+{
+    if ([self.title isEqualToString: @"最近"])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadNewData) name: WTLoginSuccessNotification object: nil];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "TodayCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIImage+Extension.h"
 #import "WTTopicApiItem.h"
 #import "WTMemberAPIItem.h"
 #define HTTPS @"https:"
@@ -23,6 +24,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.avatarImageV.layer.cornerRadius = 1;
+    self.avatarImageV.layer.masksToBounds = YES;
 }
 
 -(void)setTopicApiItem:(WTTopicApiItem *)topicApiItem

@@ -138,6 +138,11 @@
         return NO;
     }
     
+    if ([url containsString: @"itunes.apple.com"])
+    {
+        [[UIApplication sharedApplication] openURL: request.URL];
+    }
+    
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
     {

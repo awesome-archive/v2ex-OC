@@ -24,7 +24,7 @@
     // 2、开始下拉刷新
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.tableFooterView = [UIView new];
+//    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)loadNewData{

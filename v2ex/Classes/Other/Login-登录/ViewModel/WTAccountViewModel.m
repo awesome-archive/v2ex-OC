@@ -179,6 +179,7 @@ static WTAccountViewModel *_instance;
             }
             
             self.account.pastUrl = nil;
+            return;
         }
         
         if (failure)
