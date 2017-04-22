@@ -22,7 +22,7 @@ static NSString *_userAgentMobile;
         _instance = [NetworkTool manager];
         
         // 1、设置请求头
-        UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
+       // UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
 //        _userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
         _userAgentMobile = @"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Mobile/14E304";
         [_instance.requestSerializer setValue: _userAgentMobile forHTTPHeaderField: @"User-Agent"];

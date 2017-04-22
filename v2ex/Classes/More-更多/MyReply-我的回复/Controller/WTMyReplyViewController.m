@@ -131,13 +131,6 @@ NSString * const WTReplyCellIdentifier = @"WTReplyCellIdentifier";
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: WTReplyCellIdentifier cacheByIndexPath: indexPath configuration:^(WTReplyCell *cell) {
-        cell.replyItem = self.replyVM.replyItems[indexPath.row];
-    }];
-}
-
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

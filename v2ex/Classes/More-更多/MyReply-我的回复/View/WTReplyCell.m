@@ -9,6 +9,7 @@
 #import "WTReplyCell.h"
 #import "WTReplyItem.h"
 
+#import "UIImage+Extension.h"
 #import "UIImageView+WebCache.h"
 
 @interface WTReplyCell()
@@ -27,12 +28,15 @@
 {
     [super awakeFromNib];
     
-    self.authorLabel.textColor = [UIColor colorWithHexString: @"#576B95"];
+    self.authorLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    
+    self.titleLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    
     self.replyTimeLabel.textColor = [UIColor colorWithHexString: @"#737373"];
     self.replyContentBgView.backgroundColor = [UIColor colorWithHexString: @"#F3F3F5"];
     self.replyContentBgView.layer.cornerRadius = 3;
-    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;
-    self.avatarImageV.layer.masksToBounds = YES;
+//    self.avatarImageV.layer.cornerRadius = self.avatarImageV.width * 0.5;
+//    self.avatarImageV.layer.masksToBounds = YES;
 }
 
 - (void)setReplyItem:(WTReplyItem *)replyItem
@@ -47,7 +51,9 @@
     
     self.replyContentLabel.text = replyItem.replyContent;
     
-    [self.avatarImageV sd_setImageWithURL: replyItem.avatarURL placeholderImage: WTIconPlaceholderImage];
+    [self.avatarImageV sd_setImageWithURL: replyItem.avatarURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.avatarImageV.image = [image roundImageWithCornerRadius: 3];
+    }];
 }
 
 @end

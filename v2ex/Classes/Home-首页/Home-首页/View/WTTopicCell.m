@@ -45,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.authorLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    
+    self.titleLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    
     // 2、节点
     self.nodeBtn.layer.cornerRadius = 1.5;
     self.iconImageV.layer.cornerRadius = 5;

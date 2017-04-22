@@ -99,9 +99,9 @@
  */
 + (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html
 {
-    NSString *newHTML =  [html stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 44px; max-height: 44px;"];
+    NSString *newHTML =  [html stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 35px; max-height: 35px;"];
     
-    newHTML = [newHTML stringByReplacingOccurrencesOfString: @"width=\"24\"" withString: @"width=\"44\""];
+    newHTML = [newHTML stringByReplacingOccurrencesOfString: @"width=\"24\"" withString: @"width=\"35\""];
     
     newHTML = [newHTML stringByReplacingOccurrencesOfString: @"s=24" withString: @"s=44"];
     
@@ -120,5 +120,17 @@
 + (NSString *)topicDetailParseVideoWithHTML:(NSString *)html
 {
     return nil;
+}
+
+
+/**
+　过滤垃圾数据
+
+ @param html html
+ @return 过滤之后的数据
+ */
++ (NSString *)filterGarbageData:(NSString *)html
+{
+    return [html stringByReplacingOccurrencesOfString: @"<img src=\"/static/img/reply@2x.png\" width=\"20\" height=\"16\" align=\"absmiddle\" border=\"0\" alt=\"Reply\"/>" withString: @""];
 }
 @end

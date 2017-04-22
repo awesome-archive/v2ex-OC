@@ -529,8 +529,9 @@ div.node:hover .node_compose {
 }
 .thank_area {
     display: inline-block;
-    line-height: 12px;
-    padding: 2px 5px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
 .thanked {
     background-color: #f9f9f9;
@@ -1407,6 +1408,22 @@ a.btn_hero:hover {
 
 .cell:first-child ul{
     padding: 10px;
+}
+
+.cell .fr a{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.cell .fr {
+    position: relative;
+}
+
+.cell .fr span{
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 

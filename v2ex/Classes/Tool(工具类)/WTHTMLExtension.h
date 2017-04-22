@@ -60,4 +60,13 @@
  */
 + (NSString *)topicDetailParseVideoWithHTML:(NSString *)html;
 
+
+/**
+ 　过滤垃圾数据
+ 
+ @param html html
+ @return 过滤之后的数据
+ */
++ (NSString *)filterGarbageData:(NSString *)html;
+
 @end

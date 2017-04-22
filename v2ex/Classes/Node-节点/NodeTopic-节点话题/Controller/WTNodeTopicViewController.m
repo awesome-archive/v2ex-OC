@@ -65,6 +65,8 @@ NSString * const ID = @"ID";
     self.headerViewH = 195;
     
     
+    
+    
     UITableView *tableView = [UITableView new];
     
     {
@@ -90,6 +92,8 @@ NSString * const ID = @"ID";
     
     
     [self loadNewData];
+    
+    
 }
 
 #pragma mark 加载最新的数据
@@ -210,6 +214,11 @@ NSString * const ID = @"ID";
         nodeTopicHeaderView.frame = CGRectMake(0, 64, WTScreenWidth, 182);
         [self.headerContentView addSubview: nodeTopicHeaderView];
         _nodeTopicHeaderView = nodeTopicHeaderView;
+        
+//        UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"lol"]];
+//        bgImageView.frame = self.view.bounds;
+//        bgImageView.contentMode = UIViewContentModeScaleAspectFill;
+//        [self.view addSubview: bgImageView];
     }
     return _nodeTopicHeaderView;
 }

@@ -163,6 +163,10 @@
     {
         [contentHTML appendString: contentE.raw];
     }
+    else
+    {
+        [contentHTML appendFormat: @"<div class=\"cell\"><div class=\"topic_content\"><div class=\"markdown_body\"><pre><code>未发表内容</code></pre></div></div></div>"];
+    }
     
     // 2、正文附加内容
     NSArray *subtleEs = [boxEs.firstObject searchWithXPathQuery: @"//div[@class='subtle']"];
@@ -222,7 +226,7 @@
             {
                 continue;
             }
-            [html appendString: e.raw];
+            [html appendString: [WTHTMLExtension filterGarbageData: e.raw]];
         }
     }
     
@@ -230,7 +234,7 @@
     {
         if([e objectForKey: @"id"])
         {
-            [html appendString: e.raw];
+            [html appendString: [WTHTMLExtension filterGarbageData: e.raw]];
         }
     }
     

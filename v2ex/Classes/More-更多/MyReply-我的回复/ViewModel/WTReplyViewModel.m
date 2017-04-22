@@ -99,7 +99,7 @@
                 NSString *grayAContent = grayaE.content;
                 
                 // 标题
-                replyItem.title = grayAContent;
+                replyItem.title = [grayAContent stringByTrim];
                 
                 // 话题详情
                 replyItem.detailUrl = grayaE[@"href"];

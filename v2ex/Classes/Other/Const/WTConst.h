@@ -51,3 +51,5 @@ UIKIT_EXTERN CGFloat const WTUserInfoPlaceHolderViewHeight;
 /** 不存在这个用户的提示 */
 UIKIT_EXTERN NSString * const WTNoExistMemberTip;
 
+/** 话题主颜色　*/
+UIKIT_EXTERN NSString * const WTTopicCellMainColor;
