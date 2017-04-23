@@ -49,7 +49,6 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
     // tableView
     {
         // 自动计算行高
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 128.5;
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -128,10 +127,10 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: WTMemberReplyCellIdentifier cacheByIndexPath: indexPath configuration:^(WTReplyCell *cell) {
-        cell.replyItem = self.replyVM.replyItems[indexPath.row];
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [tableView fd_heightForCellWithIdentifier: WTMemberReplyCellIdentifier cacheByIndexPath:indexPath configuration:^(id cell) {
+        
     }];
 }
 

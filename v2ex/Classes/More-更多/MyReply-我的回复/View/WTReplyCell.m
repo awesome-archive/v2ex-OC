@@ -51,9 +51,13 @@
     
     self.replyContentLabel.text = replyItem.replyContent;
     
-    [self.avatarImageV sd_setImageWithURL: replyItem.avatarURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        self.avatarImageV.image = [image roundImageWithCornerRadius: 3];
-    }];
+    
+    if (replyItem.avatarURL != nil)
+    {
+        [self.avatarImageV sd_setImageWithURL: replyItem.avatarURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            self.avatarImageV.image = [image roundImageWithCornerRadius: 3];
+        }];
+    }  
 }
 
 @end

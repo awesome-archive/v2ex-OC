@@ -192,7 +192,6 @@
 		B62EC4CA1E9A62BE00976561 /* WTPublishTopicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B62EC4C91E9A62BE00976561 /* WTPublishTopicItem.m */; };
 		B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63094561C4B8C1600E58EF8 /* nodes.plist */; };
 		B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B63176CC1C4702350071C9BF /* libxml2.2.dylib */; };
-		B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = B64168151C840BDC00EAF134 /* dribbble256_imageio.png */; };
 		B664E8441D50667F00C22480 /* WTMyReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8431D50667F00C22480 /* WTMyReplyViewController.m */; };
 		B664E8471D50668F00C22480 /* WTReplyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8461D50668F00C22480 /* WTReplyItem.m */; };
 		B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8491D50680800C22480 /* WTReplyCell.m */; };
@@ -598,7 +597,6 @@
 		B63094561C4B8C1600E58EF8 /* nodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nodes.plist; sourceTree = "<group>"; };
 		B63176CC1C4702350071C9BF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B63176D11C47636D0071C9BF /* v2ex.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v2ex.pch; sourceTree = "<group>"; };
-		B64168151C840BDC00EAF134 /* dribbble256_imageio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dribbble256_imageio.png; sourceTree = "<group>"; };
 		B664E8431D50667F00C22480 /* WTMyReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyReplyViewController.m; sourceTree = "<group>"; };
 		B664E8451D50668F00C22480 /* WTReplyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyItem.h; sourceTree = "<group>"; };
 		B664E8461D50668F00C22480 /* WTReplyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyItem.m; sourceTree = "<group>"; };
@@ -2030,7 +2028,6 @@
 			isa = PBXGroup;
 			children = (
 				3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */,
-				B64168151C840BDC00EAF134 /* dribbble256_imageio.png */,
 				B63094561C4B8C1600E58EF8 /* nodes.plist */,
 				B694817C1C462267001ABDA3 /* Info.plist */,
 				B69481771C462267001ABDA3 /* Assets.xcassets */,
@@ -2373,7 +2370,6 @@
 				30E497AF1D6FE6C000C2A6DA /* WTRefreshView.xib in Resources */,
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
 				B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */,
-				B64168161C840BDC00EAF134 /* dribbble256_imageio.png in Resources */,
 				B60136041E9937E3003A3CB4 /* highlight.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2892,7 +2888,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "v2ex/Classes/Home(首页)/Controller/v2ex-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -2962,7 +2958,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "v2ex/Classes/Home(首页)/Controller/v2ex-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
