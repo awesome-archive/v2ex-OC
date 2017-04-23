@@ -5,7 +5,7 @@
 本项目纯属学习，没有任何其他恶意用途，若有任何侵犯到您的权益，请您在第一时间联系我。我会尽快删除。
 
 ##截图
-![](http://ww2.sinaimg.cn/bmiddle/699150eagw1f1s9ehqdsqj20ku112jxv.jpg)
+![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4532.PNG)
 ![](http://ww3.sinaimg.cn/bmiddle/699150eagw1f73rz3rfohj20ku1120vk.jpg)
 ![](http://ww3.sinaimg.cn/bmiddle/699150eagw1f73rz53vddj20ku112q7b.jpg)
 ![](http://ww1.sinaimg.cn/bmiddle/699150eagw1f1s9l975y1j20ku112dgq.jpg)
