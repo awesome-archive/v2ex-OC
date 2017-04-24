@@ -2,7 +2,9 @@
 创意工作者们的社区 
 
 ## AppStore
-![](http://ww2.sinaimg.cn/large/0060lm7Tgw1f1hgrs1ebwj308102q0sp.jpg)
+<a href="https://itunes.apple.com/app/id1078157349">
+<img src="https://camo.githubusercontent.com/8359d14f23ef45a69be24997e9b26fab31438d56/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f303036306c6d3754677731663168677273316562776a333038313032713073702e6a7067" width="144" height="49" data-canonical-src="http://ww2.sinaimg.cn/large/0060lm7Tgw1f1hgrs1ebwj308102q0sp.jpg" style="max-width:100%;">
+</a>
 
 ## 声明
 本项目纯属学习，没有任何其他恶意用途，若有任何侵犯到您的权益，请您在第一时间联系我。我会尽快删除。
