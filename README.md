@@ -2,7 +2,7 @@
 创意工作者们的社区 
 
 ## AppStore
-<a href="https://itunes.apple.com/app/id1078157349">
+<a href="https://itunes.apple.com/cn/app/v2ex-%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E8%80%85%E4%BB%AC%E7%9A%84%E7%A4%BE%E5%8C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/id1091339486?mt=8">
 <img src="https://camo.githubusercontent.com/8359d14f23ef45a69be24997e9b26fab31438d56/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f303036306c6d3754677731663168677273316562776a333038313032713073702e6a7067" width="144" height="49" data-canonical-src="http://ww2.sinaimg.cn/large/0060lm7Tgw1f1hgrs1ebwj308102q0sp.jpg" style="max-width:100%;">
 </a>
 
