@@ -465,4 +465,9 @@ static FMDatabase *_db;
 {
     return [NSString stringWithFormat:@"nodeItems:%@, title:%@", self.nodeItems, self.title];
 }
+
++ (NSDictionary *)mj_objectClassInArray
+{
+    return @{@"nodeItems" : NSStringFromClass([WTNodeItem class])};
+}
 @end

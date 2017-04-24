@@ -14,6 +14,8 @@
                 <outlet property="contentTextView" destination="oaJ-jh-A6g" id="VOZ-KH-LIt"/>
                 <outlet property="titleTextF" destination="mHO-RK-FFb" id="Gj4-Mz-fJa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="ZmG-Db-ZV5" id="OzO-9g-w4T"/>
+                <outlet property="webViewTopLayoutCons" destination="lTq-ir-7Li" id="hCQ-Xh-LZu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,17 +24,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入标题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHO-RK-FFb">
-                    <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                    <rect key="frame" x="8" y="22" width="359" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="h1Y-eh-pDz"/>
                     </constraints>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oaJ-jh-A6g">
-                    <rect key="frame" x="0.0" y="104" width="375" height="519"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="72" width="375" height="551"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -42,25 +46,40 @@
                         <constraint firstAttribute="height" constant="44" id="YyQ-fP-rQf"/>
                     </constraints>
                     <items>
-                        <barButtonItem title="Item" id="JHz-JH-Yff"/>
+                        <barButtonItem image="nav_preview" id="JHz-JH-Yff">
+                            <connections>
+                                <action selector="previewItemClick:" destination="-1" id="bjP-aG-eis"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmG-Db-ZV5">
+                    <rect key="frame" x="0.0" y="667" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0039215686274509803" green="0.098039215686274508" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ZmG-Db-ZV5" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="DtB-py-w0g"/>
+                <constraint firstAttribute="trailing" secondItem="ZmG-Db-ZV5" secondAttribute="trailing" id="EmC-Vy-GEn"/>
                 <constraint firstAttribute="bottom" secondItem="wWH-fc-DVe" secondAttribute="bottom" id="Hp3-PD-hHR"/>
                 <constraint firstItem="oaJ-jh-A6g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MIE-jL-mYQ"/>
                 <constraint firstItem="wWH-fc-DVe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="McH-qq-zyQ"/>
-                <constraint firstItem="oaJ-jh-A6g" firstAttribute="top" secondItem="mHO-RK-FFb" secondAttribute="bottom" id="UKG-Yf-Idc"/>
+                <constraint firstItem="oaJ-jh-A6g" firstAttribute="top" secondItem="mHO-RK-FFb" secondAttribute="bottom" constant="10" id="UKG-Yf-Idc"/>
                 <constraint firstAttribute="trailing" secondItem="wWH-fc-DVe" secondAttribute="trailing" id="UQ2-NC-eYn"/>
                 <constraint firstAttribute="bottom" secondItem="oaJ-jh-A6g" secondAttribute="bottom" constant="44" id="a9g-Pg-hc0"/>
-                <constraint firstItem="mHO-RK-FFb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="ayw-dU-SJt"/>
-                <constraint firstItem="mHO-RK-FFb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lm5-oa-0Kl"/>
-                <constraint firstAttribute="trailing" secondItem="mHO-RK-FFb" secondAttribute="trailing" id="tkg-MQ-TbC"/>
+                <constraint firstItem="mHO-RK-FFb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="22" id="ayw-dU-SJt"/>
+                <constraint firstItem="ZmG-Db-ZV5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gFk-vN-nwO"/>
+                <constraint firstAttribute="bottom" secondItem="ZmG-Db-ZV5" secondAttribute="top" id="lTq-ir-7Li"/>
+                <constraint firstItem="mHO-RK-FFb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lm5-oa-0Kl"/>
+                <constraint firstAttribute="trailing" secondItem="mHO-RK-FFb" secondAttribute="trailing" constant="8" id="tkg-MQ-TbC"/>
                 <constraint firstAttribute="trailing" secondItem="oaJ-jh-A6g" secondAttribute="trailing" id="wZK-6K-79f"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="34.5" y="144.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="nav_preview" width="32" height="32"/>
+    </resources>
 </document>

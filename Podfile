@@ -32,6 +32,7 @@ target 'v2ex' do
 	pod 'IDMPhotoBrowser'
 	pod 'MarqueeLabel'
 	pod 'UMengAnalytics-NO-IDFA'
+	pod 'GHMarkdownParser'
 end
 
 target 'Today' do

@@ -9,8 +9,10 @@
 #import "WTHomeViewController.h"
 #import "WTTopicDetailViewController.h"
 #import "WTGoogleSearchController.h"
+#import "WTPublishTopicViewController.h"
 
 #import "WTURLConst.h"
+#import "UIBarButtonItem+Extension.h"
 #import "UIViewController+Extension.h"
 
 #import "MJExtension.h"
@@ -60,8 +62,10 @@
 - (void)setupNav
 {
     self.navigationItem.title = @"v2ex";
+
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_search"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(leftBarButtonItemClick)];
     
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_search"] style: UIBarButtonItemStyleDone target: self action: @selector(rightBarButtonItemClick)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_write"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(rightBarButtonItemClick)];
 }
 
 #pragma mark 添加子控制器
@@ -77,9 +81,16 @@
 }
 
 #pragma mark - 事件
-- (void)rightBarButtonItemClick
+- (void)leftBarButtonItemClick
 {
     [self presentViewController: [WTGoogleSearchController new] animated: YES completion: nil];
+}
+
+- (void)rightBarButtonItemClick
+{
+    
+    
+    [self presentViewController: [WTPublishTopicViewController new] animated: YES completion: nil];
 }
 
 @end

@@ -40,6 +40,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - GHMarkdownParser (0.1.2)
   - IDMPhotoBrowser (1.11.1):
     - DACircularProgress
     - pop
@@ -81,6 +82,7 @@ DEPENDENCIES:
   - DKNightVersion
   - DZNEmptyDataSet
   - FMDB
+  - GHMarkdownParser
   - IDMPhotoBrowser
   - IQKeyboardManager
   - JGProgressHUD
@@ -112,6 +114,7 @@ SPEC CHECKSUMS:
   DKNightVersion: eaa80cc4014b4bae7d4b535fd87ecc6a3c2767b3
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
   IDMPhotoBrowser: 14505b91019a96e36479606cb582f864446dae01
   IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
   JCore: 2210a789c8efb7dc2a46b1c24d2209b995b18ad2
@@ -134,6 +137,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 86880b37d4c50df8c0a19d9cb3a70ca9298447fb
+PODFILE CHECKSUM: 7c96f9bf6393b22085ad40d4af09582c74b49c8b
 
 COCOAPODS: 1.2.0

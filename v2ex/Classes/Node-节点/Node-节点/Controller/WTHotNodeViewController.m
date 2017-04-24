@@ -12,6 +12,7 @@
 #import "WTHotNodeReusableView.h"
 #import "WTTopicViewController.h"
 #import "WTNodeTopicViewController.h"
+#import "MJExtension.h"
 
 static NSString *const ID = @"topicCell";
 
@@ -59,18 +60,31 @@ static NSString * const headerViewReuseIdentifier = @"headerViewReuseIdentifier"
  */
 - (void)setupData
 {
-    self.nodeVM = [WTNodeViewModel new];
+//    self.nodeVM = [WTNodeViewModel new];
     
-    __weak typeof(self) weakSelf = self;
-    [self.nodeVM getNodeItemsWithSuccess:^(NSMutableArray<WTNodeViewModel *> *nodeVMs) {
+    self.nodeVMs = [WTNodeViewModel mj_objectArrayWithFilename: @"hotNode.plist"];
     
-        weakSelf.nodeVMs = nodeVMs;
-        
-        [self.collectionView reloadData];
-        
-    } failure:^(NSError *error) {
-        
-    }];
+    // 从网络上读取最热节点并，写入plist文件中
+//    __weak typeof(self) weakSelf = self;
+//    [self.nodeVM getNodeItemsWithSuccess:^(NSMutableArray<WTNodeViewModel *> *nodeVMs) {
+//    
+//        weakSelf.nodeVMs = nodeVMs;
+//        
+//
+//        NSArray *arr = [WTNodeViewModel keyValuesArrayWithObjectArray: nodeVMs];
+//        NSURL *fileUrl = [NSURL fileURLWithPath: @"/Users/wutouqishigj/Desktop/hotNode.plist"];
+//        BOOL flag = [arr writeToURL: fileUrl atomically: NO];
+//        if (flag)
+//        {
+//            WTLog(@"写入成功")
+//        }
+//        
+//        [self.collectionView reloadData];
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+    
     
 }
 
