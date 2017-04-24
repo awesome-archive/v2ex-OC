@@ -5,10 +5,10 @@
 本项目纯属学习，没有任何其他恶意用途，若有任何侵犯到您的权益，请您在第一时间联系我。我会尽快删除。
 
 ## 截图
-![首页](http://oowgzw8c2.bkt.clouddn.com/IMG_4532.PNG?imageMogr2/thumbnail/!60p)
-![节点](http://oowgzw8c2.bkt.clouddn.com/IMG_4533.PNG?imageMogr2/thumbnail/!70p) 
+![首页](http://oowgzw8c2.bkt.clouddn.com/IMG_4532.PNG?imageMogr2/thumbnail/!50p)
+![节点](http://oowgzw8c2.bkt.clouddn.com/IMG_4533.PNG?imageMogr2/thumbnail/!50p) 
 ![话题详情](http://oowgzw8c2.bkt.clouddn.com/IMG_4534.PNG?imageMogr2/thumbnail/!50p)
-![会员详情](http://oowgzw8c2.bkt.clouddn.com/IMG_4535.PNG?imageMogr2/thumbnail/!60p)
+![会员详情](http://oowgzw8c2.bkt.clouddn.com/IMG_4535.PNG?imageMogr2/thumbnail/!50p)
 
 ## 期待
 其实整个项目没有任何难点,项目中当然也存在着些许错误与设计上不合理的地方，如果您有任何好的想法、建议、意见。欢迎您联系我(misaka14@163.com)。我们共同学习。
