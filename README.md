@@ -5,7 +5,7 @@
 本项目纯属学习，没有任何其他恶意用途，若有任何侵犯到您的权益，请您在第一时间联系我。我会尽快删除。
 
 ## 截图
-![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4532.PNG)
+![](http://oowgzw8c2.bkt.clouddn.com/IMG_4533.PNG)
 ![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4533.PNG)
 ![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4534.PNG)
 ![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4535.PNG)
