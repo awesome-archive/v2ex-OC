@@ -192,6 +192,7 @@
 		B62EC4CA1E9A62BE00976561 /* WTPublishTopicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B62EC4C91E9A62BE00976561 /* WTPublishTopicItem.m */; };
 		B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63094561C4B8C1600E58EF8 /* nodes.plist */; };
 		B63176CD1C4702350071C9BF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B63176CC1C4702350071C9BF /* libxml2.2.dylib */; };
+		B64977281EB343AF00BA6AFD /* WTCellAnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B64977271EB343AF00BA6AFD /* WTCellAnimationTool.m */; };
 		B664E8441D50667F00C22480 /* WTMyReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8431D50667F00C22480 /* WTMyReplyViewController.m */; };
 		B664E8471D50668F00C22480 /* WTReplyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8461D50668F00C22480 /* WTReplyItem.m */; };
 		B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8491D50680800C22480 /* WTReplyCell.m */; };
@@ -609,6 +610,8 @@
 		B63094561C4B8C1600E58EF8 /* nodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nodes.plist; sourceTree = "<group>"; };
 		B63176CC1C4702350071C9BF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B63176D11C47636D0071C9BF /* v2ex.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v2ex.pch; sourceTree = "<group>"; };
+		B64977261EB343AF00BA6AFD /* WTCellAnimationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCellAnimationTool.h; sourceTree = "<group>"; };
+		B64977271EB343AF00BA6AFD /* WTCellAnimationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCellAnimationTool.m; sourceTree = "<group>"; };
 		B664E8431D50667F00C22480 /* WTMyReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyReplyViewController.m; sourceTree = "<group>"; };
 		B664E8451D50668F00C22480 /* WTReplyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyItem.h; sourceTree = "<group>"; };
 		B664E8461D50668F00C22480 /* WTReplyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyItem.m; sourceTree = "<group>"; };
@@ -1793,6 +1796,8 @@
 				307F062C1D965D6500881C28 /* WTAppDelegateTool.m */,
 				304E48301DC083BA0094FAD8 /* WTLocationTool.h */,
 				304E48311DC083BA0094FAD8 /* WTLocationTool.m */,
+				B64977261EB343AF00BA6AFD /* WTCellAnimationTool.h */,
+				B64977271EB343AF00BA6AFD /* WTCellAnimationTool.m */,
 			);
 			path = "Tool(工具类)";
 			sourceTree = "<group>";
@@ -2579,6 +2584,7 @@
 				B60FA1E81D45C09200F98CF3 /* NetworkTool.m in Sources */,
 				B60FA1BC1D45C09200F98CF3 /* WTNodeViewModel.m in Sources */,
 				B60FA1BE1D45C09200F98CF3 /* WTNodeTopicAPIItem.m in Sources */,
+				B64977281EB343AF00BA6AFD /* WTCellAnimationTool.m in Sources */,
 				B6A273331EACDFB1000B3A87 /* MMMarkdown.m in Sources */,
 				30A2D93F1D6D3C0F009AFA43 /* WTMemberTopicViewModel.m in Sources */,
 				3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */,

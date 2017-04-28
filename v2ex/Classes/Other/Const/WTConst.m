@@ -10,7 +10,7 @@
 
 
 /** 标题View的高度 */
-CGFloat const WTTitleViewHeight = 44;
+CGFloat const WTTitleViewHeight = 64;
 /** 导航栏的Y的最大值  */
 CGFloat const WTNavigationBarMaxY = 64;
 /** TabBar的高度*/
@@ -47,3 +47,4 @@ NSString * const WTLoginSuccessNotification = @"WTLoginSuccessNotification";
 CGFloat const WTUserInfoHeadViewHeight = 200;
 /** 用户控制器toolBar的高度*/
 CGFloat const WTUserInfoToolBarHeight = 44;
+

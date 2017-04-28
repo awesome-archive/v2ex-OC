@@ -12,10 +12,12 @@
 
 #import "WTTopicCell.h"
 
+#import "WTCellAnimationTool.h"
 #import "NetworkTool.h"
 #import "WTTopicViewModel.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTRefreshAutoNormalFooter.h"
+
 
 #import "NSString+YYAdd.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
@@ -53,20 +55,32 @@ static NSString *const ID = @"topicCell";
 - (void)setUpView
 {
     // 1、设置tableView一些属性
-    self.tableView.rowHeight = 90;
 //    self.tableView.emptyDataSetSource = self;
 //    self.tableView.emptyDataSetDelegate = self;
-//    UIView *footerView = [UIView new];
-//    footerView.backgroundColor = WTTableViewBackgroundColor;
-//    self.tableView.tableFooterView = footerView;
+    // 1、headerView
+    {
+        UIView *headerView = [UIView new];
+        headerView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+        headerView.width = WTScreenWidth;
+        headerView.height = 10;
+        self.tableView.tableHeaderView = headerView;
+    }
+    
+    // 2、自动计算
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+    
+    // 3、其他属性
     self.tableView.backgroundColor = WTTableViewBackgroundColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
-
     // 设置内边距
-    self.tableView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY + WTTitleViewHeight, 0, WTTabBarHeight, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(WTTitleViewHeight, 0, WTTabBarHeight, 0);
     // 设置滚动条的内边距
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    // 4、注册cell
+    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
+    
     
     // 1.2只有'最近',　全部节点需要上拉刷新
     if ([WTTopicViewModel isNeedNextPage: self.urlString])
@@ -105,6 +119,24 @@ static NSString *const ID = @"topicCell";
         
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
+//        NSArray *cellArray = self.tableView.visibleCells;
+//        
+//        //  延迟
+//        CGFloat delay =0.05;
+//        for (UITableViewCell *cell in cellArray) {
+//            cell.transform = CGAffineTransformMakeTranslation(0, self.view.bounds.size.height);
+//        }
+//        
+//        for (int i = 0; i<cellArray.count; i++) {
+//            UITableViewCell *cell = cellArray[i];
+//            CGFloat cellDelay = delay *i;
+//            
+//            [UIView animateWithDuration:1.0 delay:cellDelay usingSpringWithDamping:0.5 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//                cell.transform =  CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
+//            } completion:^(BOOL finished) {
+//                
+//            }];
+//        }
         
     } failure:^(NSError *error) {
         
@@ -155,6 +187,11 @@ static NSString *const ID = @"topicCell";
     detailVC.topicDetailUrl = topic.detailUrl;
     detailVC.topicTitle = topic.title;
     [self.navigationController pushViewController: detailVC animated: YES];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    // cell显示动效果
+    [WTCellAnimationTool animation01WithCell: cell];
 }
 
 

@@ -36,15 +36,18 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    
+    [self.navigationController setNavigationBarHidden: YES];
+    self.navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
     // 设置导航栏的View
-    [self setTempNavImageView];
+//    [self setTempNavImageView];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
     
     // 设置导航栏背景图片
-    [self setNavBackgroundImage];
+//    [self setNavBackgroundImage];
 }
 
 #pragma mark - Lazy method
