@@ -18,7 +18,7 @@
 
 + (void)load
 {
-    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses: @[[self class]]];
+//    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses: @[[self class]]];
     /*
     navBar.barTintColor = WTColor(42, 183, 103);
     navBar.translucent = NO;
@@ -28,8 +28,8 @@
 //    //[navBar setBackgroundImage: [UIImage imageNamed: @"123"] forBarMetrics:forBarMetrics:UIBarMetricsDefault]
 //    navBar.shadowImage = [[UIImage alloc] init];
     
-    NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    [navBar setTitleTextAttributes: textAttr];
+//    NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+//    [navBar setTitleTextAttributes: textAttr];
     
 }
 

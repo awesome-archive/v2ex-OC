@@ -29,6 +29,7 @@ static NSString *const ID = @"topicCell";
 
 @property (nonatomic, strong) WTTopicViewModel                    *topicVM;
 
+
 @end
 
 @implementation WTTopicViewController
@@ -60,7 +61,7 @@ static NSString *const ID = @"topicCell";
     // 1、headerView
     {
         UIView *headerView = [UIView new];
-        headerView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+        headerView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
         headerView.width = WTScreenWidth;
         headerView.height = 10;
         self.tableView.tableHeaderView = headerView;
@@ -71,7 +72,7 @@ static NSString *const ID = @"topicCell";
     self.tableView.estimatedRowHeight = 100;
     
     // 3、其他属性
-    self.tableView.backgroundColor = WTTableViewBackgroundColor;
+    self.tableView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 设置内边距
     self.tableView.contentInset = UIEdgeInsetsMake(WTTitleViewHeight, 0, WTTabBarHeight, 0);
@@ -85,7 +86,7 @@ static NSString *const ID = @"topicCell";
     // 1.2只有'最近',　全部节点需要上拉刷新
     if ([WTTopicViewModel isNeedNextPage: self.urlString])
     {
-        self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
+        self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingTarget: self refreshingAction: @selector(loadOldData)];
     }
     else
     {

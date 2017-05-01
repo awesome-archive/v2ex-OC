@@ -47,7 +47,18 @@ NS_ASSUME_NONNULL_BEGIN
 {
     [super awakeFromNib];
     
-    self.titleLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    self.contentView.dk_backgroundColorPicker =  DKColorPickerWithKey(UITableViewBackgroundColor);
+    self.bgView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewCellBgViewBackgroundColor);
+    
+    self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+    
+    self.authorLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
+    
+    self.lastReplyTimeLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
+    
+    [self.nodeBtn dk_setTitleColorPicker: DKColorPickerWithKey(WTTopicCellLabelColor) forState: UIControlStateNormal];
+    
+    self.commentCountLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
     
     // 2、节点
     self.nodeBtn.layer.cornerRadius = 1.5;

@@ -27,6 +27,12 @@
     
     // 添加所有的子控制器
     [self addChildViewControllers];
+    
+    self.tabBar.dk_barTintColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+
+    self.tabBar.dk_tintColorPicker =  DKColorPickerWithKey(UITabbarTintColor);
+    
+    self.tabBar.translucent = NO;
 }
 
 #pragma mark - 添加所有的子控制器

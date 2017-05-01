@@ -54,7 +54,7 @@
 
     // 设置导航栏背景图片
     
-    [self setNavBackgroundImage];
+//    [self setNavBackgroundImage];
 
 }
 
@@ -64,7 +64,7 @@
     if (self.isHideNav == NO)
     {
         // 设置导航栏的View
-        [self setTempNavImageView];
+//        [self setTempNavImageView];
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareItemClick)];
     

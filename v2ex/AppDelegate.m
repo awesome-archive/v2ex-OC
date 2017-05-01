@@ -42,9 +42,8 @@ static WTAppDelegateTool *_appDelegateTool;
     
     
     // 5、全局设置状态栏颜色
-    application.statusBarStyle = UIStatusBarStyleLightContent;
+    //application.statusBarStyle = UIStatusBarStyleLightContent;
     application.applicationIconBadgeNumber = 0;
-    [UITabBar appearance].tintColor = WTLightColor_3;
     
     // 6、界面 FPS 代码
 #if DEBUG

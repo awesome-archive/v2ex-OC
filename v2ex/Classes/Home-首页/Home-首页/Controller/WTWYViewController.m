@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
     //CGFloat y = 0;
     titleScrollView.frame = CGRectMake(0, y, WTScreenWidth, WTTitleViewHeight);
     
-    titleScrollView.backgroundColor = WTColor(239, 239, 239);
+    titleScrollView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
 }
 
 #pragma mark 设置内容滚动视图
@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)initLineView
 {
     UIView *lineView = [UIView new];
-    lineView.backgroundColor = [UIColor lightGrayColor];
+    lineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
     lineView.alpha = 0.3;
     lineView.frame = CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), WTScreenWidth, 1);
     [self.view addSubview: lineView];
@@ -213,7 +213,7 @@ NS_ASSUME_NONNULL_BEGIN
     // 1、设置按钮颜色
     self.selectedBtn.backgroundColor = [UIColor clearColor];
     [self.selectedBtn setTitleColor: [UIColor lightGrayColor] forState: UIControlStateNormal];
-    selectedBtn.backgroundColor = WTLightColor_3;
+    selectedBtn.dk_backgroundColorPicker =  DKColorPickerWithKey(WTNodeSelectedColor);
     [selectedBtn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
     
     // 2、让标题居中

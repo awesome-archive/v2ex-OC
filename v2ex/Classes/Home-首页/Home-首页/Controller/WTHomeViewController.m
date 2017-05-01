@@ -34,11 +34,10 @@
     // 添加子控制器
     [self setupAllChildViewControllers];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
     
     
-    [self.navigationController setNavigationBarHidden: YES];
-    self.navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
+    
     // 设置导航栏的View
 //    [self setTempNavImageView];
 }
@@ -46,8 +45,13 @@
 {
     [super viewDidAppear: animated];
     
-    // 设置导航栏背景图片
-//    [self setNavBackgroundImage];
+    [self.navigationController setNavigationBarHidden: YES animated: YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    [self.navigationController setNavigationBarHidden: NO animated: YES];
 }
 
 #pragma mark - Lazy method
@@ -66,9 +70,9 @@
 {
     self.navigationItem.title = @"v2ex";
 
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_search"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(leftBarButtonItemClick)];
+    //self.navigationItem.leftBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_search"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(leftBarButtonItemClick)];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_write"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(rightBarButtonItemClick)];
+    //self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_write"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(rightBarButtonItemClick)];
 }
 
 #pragma mark 添加子控制器
