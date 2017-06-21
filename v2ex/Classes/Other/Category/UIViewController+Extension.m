@@ -48,7 +48,7 @@
     
     if (![self isMemberOfClass: [UINavigationController class]] || ![self isMemberOfClass: [UITabBarController class]])
     {
-         WTLog(@"%@ wt_viewWillAppear", NSStringFromClass([self class]))
+//         WTLog(@"%@ wt_viewWillAppear", NSStringFromClass([self class]))
         [MobClick beginLogPageView: NSStringFromClass([self class])];
     }
     
@@ -60,7 +60,7 @@
     [self wt_viewWillDisappear: animated];
     if (![self isMemberOfClass: [UINavigationController class]] || ![self isMemberOfClass: [UITabBarController class]])
     {
-        WTLog(@"%@ wt_viewWillDisappear", NSStringFromClass([self class]))
+//        WTLog(@"%@ wt_viewWillDisappear", NSStringFromClass([self class]))
         [MobClick endLogPageView: NSStringFromClass([self class])];
     }
 }

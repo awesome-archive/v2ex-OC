@@ -14,12 +14,25 @@
 #import "WTShareSDKTool.h"
 #import "WTToolBarView.h"
 
+#import "UIImage+Extension.h"
 #import "UIBarButtonItem+Extension.h"
 #import "UIViewController+Extension.h"
 
+#import "UIImageView+WebCache.h"
 #import "Masonry.h"
 
+static CGFloat const WTNavViewHeight = 64;
+
 @interface WTTopicDetailViewController ()
+/** 导航栏*/
+@property (weak, nonatomic) IBOutlet UIView             *navView;
+/** 导航栏用户信息ContentView */
+@property (weak, nonatomic) IBOutlet UIView             *navUserInfoContentView;
+
+/** 用户名　*/
+@property (weak, nonatomic) IBOutlet UILabel            *titleLabel;
+@property (weak, nonatomic) IBOutlet UIView *navLineView;
+
 /** 已经登陆过的View */
 @property (weak, nonatomic) IBOutlet UIView             *normalView;
 /** 正在加载的View */
@@ -40,32 +53,41 @@
 }
 
 #pragma mark - Life Cycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // 设置话题详情数据
     [self setupTopicDetailData];
+    
+    // 初始化View
+    [self initView];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+#pragma mark - 初始化View
+- (void)initView
 {
-    [super viewDidAppear: animated];
-
-    // 设置导航栏背景图片
+    self.navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
     
-//    [self setNavBackgroundImage];
+    self.navUserInfoContentView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    
+    self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    
+    self.navLineView.alpha = 0.3;
 
 }
 
 #pragma mark -设置话题详情数据
 - (void)setupTopicDetailData
 {
-    if (self.isHideNav == NO)
-    {
-        // 设置导航栏的View
-//        [self setTempNavImageView];
-    }
+
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareItemClick)];
     
     // 1、创建话题详情数据控制器
@@ -88,16 +110,70 @@
     __weak typeof(self) weakSelf = self;
     topicVC.updateTopicDetailComplection = ^(WTTopicDetailViewModel *topicDetailVM, NSError *error){
         
-        weakSelf.loadingView.hidden = YES;
+        // 请求到帖子详情的之后的操作
+        [weakSelf updateUIWithTOpicDetailVM: topicDetailVM error: error];
         
-        if (error != nil)
-        {
-            weakSelf.tipView.hidden = NO;
-            return;
-        }
-        weakSelf.tipView.hidden = YES;
-        weakSelf.toolBarView.topicDetailVM = topicDetailVM;
     };
+    
+    // 5、tableView的offsetY值发生变化的Block
+    topicVC.updateScrollViewOffsetComplecation = ^(CGFloat offset) {
+      
+        [weakSelf updateScrollViewOffset: offset];
+    };
+}
+
+
+/**
+ 请求到帖子详情的之后的操作
+
+ @param vm 帖子详情
+ @param error 错误
+ */
+- (void)updateUIWithTOpicDetailVM:(WTTopicDetailViewModel *)vm error:(NSError *)error
+{
+    self.loadingView.hidden = YES;
+    
+    if (error != nil)
+    {
+        self.tipView.hidden = NO;
+        return;
+    }
+    
+//    // 更新头像
+//    [self.avatarImageV sd_setImageWithURL: vm.iconURL placeholderImage: WTIconPlaceholderImage completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//       
+//        self.avatarImageV.image = [image roundImageWithCornerRadius: 3.0];
+//        
+//    }];
+//    // 用户名
+//    self.usernameLabel.text = vm.topicDetail.author;
+
+    self.titleLabel.text = vm.topicDetail.title;
+    
+    self.tipView.hidden = YES;
+    self.toolBarView.topicDetailVM = vm;
+}
+
+
+/**
+　topicDetail tableView的offsetY值发生变化的Block
+
+ @param offset offsetY
+ */
+- (void)updateScrollViewOffset:(CGFloat)offset
+{
+    if (offset > WTNavViewHeight)
+    {
+        [UIView animateWithDuration: 0.5 animations:^{
+            self.navUserInfoContentView.alpha = 1;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration: 0.5 animations:^{
+            self.navUserInfoContentView.alpha = 0;
+        }];
+    }
 }
 
 #pragma mark - 懒加载
@@ -120,6 +196,12 @@
 }
 
 #pragma mark - 事件
+#pragma mark - 返回
+- (IBAction)backBtnClick
+{
+    [self.navigationController popViewControllerAnimated: YES];
+}
+
 - (IBAction)goLoginVCBtnClick
 {
     WTLoginViewController *loginVC = [WTLoginViewController new];

@@ -67,6 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.bgView.layer.cornerRadius = 3;
+    
 }
 
 - (void)setTopic:(WTTopic *)topic

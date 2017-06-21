@@ -131,6 +131,29 @@
  */
 + (NSString *)filterGarbageData:(NSString *)html
 {
+    // 特殊情况1
+    
+        // https://www.v2ex.com/t/369999#reply2
+    html = [html stringByReplacingOccurrencesOfString: @"<div class=\"badge_mod\"/>" withString: @""];
+    
+    // 特殊情况2
+    
+    html = [html stringByReplacingOccurrencesOfString: @"<div class=\"sep3\"/>" withString: @"<div class=\"sep3\"></div>"];
+    
+    // 特殊情况3
+    
+    html = [html stringByReplacingOccurrencesOfString: @"<div class=\"sep5\"/>" withString: @"<div class=\"sep5\"></div>"];
+    
+    
+    
+    html = [html stringByReplacingOccurrencesOfString: @"<td width=\"10\" valign=\"top\"/>" withString: @"<td width=\"14\" valign=\"top\"></td>"];
+    
+    
+    
+    html = [html stringByReplacingOccurrencesOfString: @"class=\"inner\"" withString: @"class=\"cell\""];
+
+    
+    
     return [html stringByReplacingOccurrencesOfString: @"<img src=\"/static/img/reply@2x.png\" width=\"20\" height=\"16\" align=\"absmiddle\" border=\"0\" alt=\"Reply\"/>" withString: @""];
 }
 @end

@@ -178,6 +178,10 @@
 		B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60FA2131D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib */; };
 		B60FA2291D45E75800F98CF3 /* WTMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA2281D45E75800F98CF3 /* WTMoreCell.m */; };
 		B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA22E1D45E9EA00F98CF3 /* WTSettingItem.m */; };
+		B6179FB81ECFC0FE00B17036 /* backImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6179FB21ECFC0FE00B17036 /* backImage@2x.png */; };
+		B6179FB91ECFC0FE00B17036 /* backImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6179FB31ECFC0FE00B17036 /* backImage@3x.png */; };
+		B6179FBA1ECFC0FE00B17036 /* JTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6179FB51ECFC0FE00B17036 /* JTNavigationController.m */; };
+		B6179FBB1ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B6179FB71ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m */; };
 		B6235E3F1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E3E1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m */; };
 		B6235E421D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6235E411D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.m */; };
 		B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6235E431D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib */; };
@@ -586,6 +590,12 @@
 		B60FA2281D45E75800F98CF3 /* WTMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreCell.m; sourceTree = "<group>"; };
 		B60FA22D1D45E9EA00F98CF3 /* WTSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSettingItem.h; sourceTree = "<group>"; };
 		B60FA22E1D45E9EA00F98CF3 /* WTSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSettingItem.m; sourceTree = "<group>"; };
+		B6179FB21ECFC0FE00B17036 /* backImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backImage@2x.png"; sourceTree = "<group>"; };
+		B6179FB31ECFC0FE00B17036 /* backImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backImage@3x.png"; sourceTree = "<group>"; };
+		B6179FB41ECFC0FE00B17036 /* JTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTNavigationController.h; sourceTree = "<group>"; };
+		B6179FB51ECFC0FE00B17036 /* JTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTNavigationController.m; sourceTree = "<group>"; };
+		B6179FB61ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JTNavigationExtension.h"; sourceTree = "<group>"; };
+		B6179FB71ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JTNavigationExtension.m"; sourceTree = "<group>"; };
 		B6235E3D1D48AA0100E5ECDB /* WTMoreLoginHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreLoginHeaderView.h; sourceTree = "<group>"; };
 		B6235E3E1D48AA0100E5ECDB /* WTMoreLoginHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMoreLoginHeaderView.m; sourceTree = "<group>"; };
 		B6235E401D48AA2300E5ECDB /* WTMoreNotLoginHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMoreNotLoginHeaderView.h; sourceTree = "<group>"; };
@@ -1632,6 +1642,7 @@
 		B60FA1121D45C09200F98CF3 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B6179FB11ECFC0FE00B17036 /* JTNavigationController */,
 				B6A2731A1EACDFB1000B3A87 /* MMMarkdown */,
 				30E4984C1D70424100C2A6DA /* ShareSDK */,
 				30A2D9261D6D2EE1009AFA43 /* YZPerson */,
@@ -1917,6 +1928,19 @@
 				B60FA2131D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B6179FB11ECFC0FE00B17036 /* JTNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				B6179FB21ECFC0FE00B17036 /* backImage@2x.png */,
+				B6179FB31ECFC0FE00B17036 /* backImage@3x.png */,
+				B6179FB41ECFC0FE00B17036 /* JTNavigationController.h */,
+				B6179FB51ECFC0FE00B17036 /* JTNavigationController.m */,
+				B6179FB61ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.h */,
+				B6179FB71ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m */,
+			);
+			path = JTNavigationController;
 			sourceTree = "<group>";
 		};
 		B6271D421D59992900A66983 /* MyFollowing-我的关注 */ = {
@@ -2431,11 +2455,13 @@
 				B6A273431EACFB3E000B3A87 /* WTSelectNodeViewController.xib in Resources */,
 				30884B671DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard in Resources */,
 				30884B771DBA1AE3008FF94F /* WTMessageViewController.storyboard in Resources */,
+				B6179FB91ECFC0FE00B17036 /* backImage@3x.png in Resources */,
 				30A2D8D91D6B06EF009AFA43 /* light.css in Resources */,
 				30E498771D70424100C2A6DA /* WeiboSDK.bundle in Resources */,
 				B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */,
 				30A2D9441D6E8B1A009AFA43 /* WTNoDataView.xib in Resources */,
 				30E498721D70424100C2A6DA /* ShareSDKUI.bundle in Resources */,
+				B6179FB81ECFC0FE00B17036 /* backImage@2x.png in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
 				B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */,
@@ -2661,6 +2687,7 @@
 				B6DEEB7C1D46677600E3A313 /* WTAdvertiseItem.m in Sources */,
 				303CF23D1D6AA1C300D697F7 /* WTNode.m in Sources */,
 				3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */,
+				B6179FBB1ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m in Sources */,
 				B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */,
 				B60FA1CC1D45C09200F98CF3 /* UITextField+Placeholder.m in Sources */,
 				30A2D8F31D6C4F88009AFA43 /* WTHotTopicViewController.m in Sources */,
@@ -2697,6 +2724,7 @@
 				B60FA1EA1D45C09200F98CF3 /* WTHTMLExtension.m in Sources */,
 				30884B651DB9E7E9008FF94F /* WTMemberInfoViewController.m in Sources */,
 				B60FA1CA1D45C09200F98CF3 /* UIImage+Extension.m in Sources */,
+				B6179FBA1ECFC0FE00B17036 /* JTNavigationController.m in Sources */,
 				B60FA2231D45D7E700F98CF3 /* WTMoreViewController.m in Sources */,
 				B60FA1D21D45C09200F98CF3 /* TFHppleElement.m in Sources */,
 				B60FA1D11D45C09200F98CF3 /* TFHpple.m in Sources */,

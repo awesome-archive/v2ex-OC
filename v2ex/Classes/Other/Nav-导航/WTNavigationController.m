@@ -31,6 +31,7 @@
 //    NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 //    [navBar setTitleTextAttributes: textAttr];
     
+    
 }
 
 - (void)viewDidLoad {
@@ -50,10 +51,14 @@
     [self.view addGestureRecognizer: pan];
     
     self.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
+    self.navigationBar.hidden = YES;
+    
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    
     // 非根控制器隐藏tabBar
     if (self.childViewControllers.count >= 1)
     {
@@ -64,6 +69,7 @@
         viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage: [UIImage imageNamed:@"nav_back_normal"] highImage: nil target: self action: @selector(back) title: nil];
     }
     viewController.extendedLayoutIncludesOpaqueBars = YES;
+    
     [super pushViewController: viewController animated: animated];
 }
 

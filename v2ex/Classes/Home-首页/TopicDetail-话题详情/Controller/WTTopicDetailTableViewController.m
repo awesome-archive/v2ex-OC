@@ -94,6 +94,9 @@ static NSString  * const commentCellID = @"commentCellID";
     // 1、加载数据
     [self setupData];
     
+    // 2、加载 View
+    [self setupView];
+    
     // 2、添加通知
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(toolbarButtonClick:) name: WTToolBarButtonClickNotification object: nil];
     
@@ -109,6 +112,49 @@ static NSString  * const commentCellID = @"commentCellID";
     
     // 4、帖子详情url
     self.lastPageUrl = self.topicDetailUrl;
+}
+
+#pragma mark 设置View
+- (void)setupView
+{
+    self.tableView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+}
+
+#pragma mark - 加载数据
+- (void)setupData
+{
+    [self parseUrl];
+    
+    
+    [[NetworkTool shareInstance] GETWithUrlString: self.topicDetailUrl success:^(NSData *data) {
+        
+        self.topicDetailVM = [WTTopicDetailViewModel topicDetailWithData: data];
+        
+        
+        // 更新页数
+        self.currentPage = self.topicDetailVM.currentPage;
+        
+        // 说明帖子需要登陆
+        if (self.topicDetailVM == nil)
+        {
+            if (self.updateTopicDetailComplection)
+            {
+                NSError *error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorMessage" : @"查看本主题需要登录"}];
+                self.updateTopicDetailComplection(nil, error);
+            }
+            
+        }
+        else
+        {
+            if (self.updateTopicDetailComplection)
+                self.updateTopicDetailComplection(self.topicDetailVM, nil);
+            
+            [self.tableView reloadData];
+        }
+        
+        
+    } failure:^(NSError *error) {
+    }];
 }
 
 #pragma mark - 事件
@@ -243,42 +289,7 @@ static NSString  * const commentCellID = @"commentCellID";
     
 }
 
-#pragma mark - 加载数据
-- (void)setupData
-{
-    [self parseUrl];
-    
-    
-    [[NetworkTool shareInstance] GETWithUrlString: self.topicDetailUrl success:^(NSData *data) {
-        
-        self.topicDetailVM = [WTTopicDetailViewModel topicDetailWithData: data];
-        
-        
-        // 更新页数
-        self.currentPage = self.topicDetailVM.currentPage;
-        
-        // 说明帖子需要登陆
-        if (self.topicDetailVM == nil)
-        {
-            if (self.updateTopicDetailComplection)
-            {
-                NSError *error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorMessage" : @"查看本主题需要登录"}];
-                self.updateTopicDetailComplection(nil, error);
-            }
-            
-        }
-        else
-        {
-            if (self.updateTopicDetailComplection)
-                self.updateTopicDetailComplection(self.topicDetailVM, nil);
-            
-            [self.tableView reloadData];
-        }
 
-        
-    } failure:^(NSError *error) {
-    }];
-}
 
 #pragma mark - 解析url
 - (void)parseUrl
@@ -349,6 +360,14 @@ static NSString  * const commentCellID = @"commentCellID";
 }
 
 #pragma mark - Table view delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.updateScrollViewOffsetComplecation)
+    {
+        self.updateScrollViewOffsetComplecation(scrollView.contentOffset.y);
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)   // 帖子标题

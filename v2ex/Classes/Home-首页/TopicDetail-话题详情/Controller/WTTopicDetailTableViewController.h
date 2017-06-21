@@ -16,6 +16,8 @@
 
 /** 话题数据更新完成的Block */
 @property (nonatomic, strong) void(^updateTopicDetailComplection)(WTTopicDetailViewModel *topicDetailVM, NSError *error);
+/** tableView滑动的Block */
+@property (nonatomic, strong) void(^updateScrollViewOffsetComplecation)(CGFloat offset);
 
 + (instancetype)topicDetailTableViewController;
 

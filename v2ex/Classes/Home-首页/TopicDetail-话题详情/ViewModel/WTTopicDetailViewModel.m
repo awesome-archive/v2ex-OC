@@ -217,6 +217,7 @@
     
     [html appendString: newContentHTML];
     
+    NSUInteger tempI = 0;
     for (TFHppleElement *e in commentCellEs)
     {
         if([e objectForKey: @"id"])
@@ -225,20 +226,35 @@
             if ([e.raw containsString: @"embedded_video_wrapper"])
             {
                 continue;
+            
             }
-            [html appendString: [WTHTMLExtension filterGarbageData: e.raw]];
+            
+            NSString *raw = [WTHTMLExtension filterGarbageData: e.raw];
+            
+            if (tempI==0)
+                raw = [raw stringByReplacingOccurrencesOfString: @"class=\"cell\"" withString: @"class=\"cell\"  style=\"padding-top:10px\""];
+            
+            [html appendString: raw];
+            
+            tempI++;
         }
+        
     }
     
     for (TFHppleElement *e in commentInnerEs)
     {
         if([e objectForKey: @"id"])
         {
-            [html appendString: [WTHTMLExtension filterGarbageData: e.raw]];
+            NSString *raw = [WTHTMLExtension filterGarbageData: e.raw];
+            
+            if (tempI == 0)
+                raw = [raw stringByReplacingOccurrencesOfString: @"class=\"cell\"" withString: @"class=\"cell\"  style=\"padding-top:10px\""];
+            
+            [html appendString: raw];
         }
     }
     
-    html = [WTHTMLExtension topicDetailParseAvatarWithHTML: html];
+    //html = [WTHTMLExtension topicDetailParseAvatarWithHTML: html];
     
     [html appendString: js];
     
@@ -248,7 +264,7 @@
     
     topicDetailVM.contentHTML = html;
     
-   // WTLog(@"html:%@", html)
+    WTLog(@"html:%@", html)
     
     return topicDetailVM;
 }

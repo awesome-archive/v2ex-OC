@@ -20,6 +20,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.contentView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    
     // 取消反弹
     self.webView.scrollView.bounces = NO;
     // 监听scrollView的contentSize

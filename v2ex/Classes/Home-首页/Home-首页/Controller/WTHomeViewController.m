@@ -35,24 +35,8 @@
     [self setupAllChildViewControllers];
     
     self.view.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
-    
-    
-    
-    // 设置导航栏的View
-//    [self setTempNavImageView];
-}
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear: animated];
-    
-    [self.navigationController setNavigationBarHidden: YES animated: YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear: animated];
-    [self.navigationController setNavigationBarHidden: NO animated: YES];
-}
 
 #pragma mark - Lazy method
 #pragma mark nodes
@@ -68,7 +52,9 @@
 #pragma mark - 初始化导航栏
 - (void)setupNav
 {
-    self.navigationItem.title = @"v2ex";
+    
+    [self.navigationController setNavigationBarHidden: YES animated: NO];
+//    self.navigationItem.title = @"v2ex";
 
     //self.navigationItem.leftBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_search"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(leftBarButtonItemClick)];
     
