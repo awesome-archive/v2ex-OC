@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTTopicCollectionViewController : UITableViewController
+@interface WTTopicCollectionViewController : UIViewController
 
 @end

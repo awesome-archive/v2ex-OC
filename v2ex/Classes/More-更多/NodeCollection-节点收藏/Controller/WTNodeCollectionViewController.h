@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTNodeCollectionViewController : UICollectionViewController
+@interface WTNodeCollectionViewController : UIViewController
 
 @end

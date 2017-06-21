@@ -7,6 +7,7 @@
 //  节点收藏控制器
 
 #import "WTNodeCollectionViewController.h"
+#import "UIViewController+Extension.h"
 
 #import "WTNodeCollectionCell.h"
 
@@ -22,19 +23,11 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
 
 @property (nonatomic, strong) WTNodeViewModel *nodeVM;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @end
 
 @implementation WTNodeCollectionViewController
-
-#pragma mark - Init Method
-- (instancetype)init
-{
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    
-    layout.itemSize = CGSizeMake(100, 138);
-    
-    return [[WTNodeCollectionViewController alloc] initWithCollectionViewLayout: layout];
-}
 
 #pragma mark - Life Cycle
 - (void)viewDidLoad
@@ -48,7 +41,10 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
 
 - (void)setupView
 {
-    self.title = @"节点收藏";
+    [self navViewWithTitle: @"节点收藏"];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.itemSize = CGSizeMake(100, 138);
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
@@ -62,12 +58,12 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
     [self.collectionView.mj_header beginRefreshing];
 }
 
+
 #pragma mark - 加载数据
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    
-    
+
     [self.nodeVM getMyNodeCollectionItemsWithSuccess:^{
         
         [self.collectionView reloadData];

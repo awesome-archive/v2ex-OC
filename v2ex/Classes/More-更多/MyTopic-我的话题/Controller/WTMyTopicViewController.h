@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTMyTopicViewController : UITableViewController
+@interface WTMyTopicViewController : UIViewController
 
 @end

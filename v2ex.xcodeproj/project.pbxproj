@@ -238,6 +238,11 @@
 		B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */; };
 		B6ED4FED1EFAA87E005B1C5D /* WTNodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */; };
 		B6ED4FEF1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */; };
+		B6ED4FF11EFAD5F8005B1C5D /* WTTopicCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF01EFAD5F8005B1C5D /* WTTopicCollectionViewController.xib */; };
+		B6ED4FF31EFAD6C2005B1C5D /* WTMyTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF21EFAD6C2005B1C5D /* WTMyTopicViewController.xib */; };
+		B6ED4FF51EFAD75B005B1C5D /* WTNodeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF41EFAD75B005B1C5D /* WTNodeCollectionViewController.xib */; };
+		B6ED4FF71EFADB08005B1C5D /* WTMyFollowingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF61EFADB08005B1C5D /* WTMyFollowingViewController.xib */; };
+		B6ED4FF91EFADBB2005B1C5D /* WTMyReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */; };
 		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
 /* End PBXBuildFile section */
 
@@ -701,6 +706,11 @@
 		B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTRegisterReqItem.m; path = v2ex/Classes/Main/View/WTRegisterReqItem.m; sourceTree = SOURCE_ROOT; };
 		B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNodeViewController.xib; sourceTree = "<group>"; };
 		B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTUserNotificationViewController.xib; sourceTree = "<group>"; };
+		B6ED4FF01EFAD5F8005B1C5D /* WTTopicCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTTopicCollectionViewController.xib; sourceTree = "<group>"; };
+		B6ED4FF21EFAD6C2005B1C5D /* WTMyTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyTopicViewController.xib; sourceTree = "<group>"; };
+		B6ED4FF41EFAD75B005B1C5D /* WTNodeCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNodeCollectionViewController.xib; sourceTree = "<group>"; };
+		B6ED4FF61EFADB08005B1C5D /* WTMyFollowingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyFollowingViewController.xib; sourceTree = "<group>"; };
+		B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyReplyViewController.xib; sourceTree = "<group>"; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -798,6 +808,7 @@
 			children = (
 				304B4EE41D6A9B3900F7DD09 /* WTTopicCollectionViewController.h */,
 				304B4EE51D6A9B3900F7DD09 /* WTTopicCollectionViewController.m */,
+				B6ED4FF01EFAD5F8005B1C5D /* WTTopicCollectionViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -876,6 +887,7 @@
 			children = (
 				3050F8471D73C719004069B2 /* WTMyTopicViewController.h */,
 				3050F8481D73C719004069B2 /* WTMyTopicViewController.m */,
+				B6ED4FF21EFAD6C2005B1C5D /* WTMyTopicViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -950,6 +962,7 @@
 			children = (
 				30A2D8C11D6AE5FF009AFA43 /* WTNodeCollectionViewController.h */,
 				30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */,
+				B6ED4FF41EFAD75B005B1C5D /* WTNodeCollectionViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1965,6 +1978,7 @@
 			children = (
 				B6271D441D59999800A66983 /* WTMyFollowingViewController.h */,
 				B6271D451D59999800A66983 /* WTMyFollowingViewController.m */,
+				B6ED4FF61EFADB08005B1C5D /* WTMyFollowingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2030,6 +2044,7 @@
 			children = (
 				30A2D9391D6D349D009AFA43 /* WTMyReplyViewController.h */,
 				B664E8431D50667F00C22480 /* WTMyReplyViewController.m */,
+				B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2448,15 +2463,19 @@
 				B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */,
 				B6DEEB791D4665D900E3A313 /* WTAdvertiseCell.xib in Resources */,
 				B60FA1F01D45C09200F98CF3 /* WTPersonViewController.xib in Resources */,
+				B6ED4FF91EFADBB2005B1C5D /* WTMyReplyViewController.xib in Resources */,
 				30E498791D70424100C2A6DA /* read_me.txt in Resources */,
 				B60FA18C1D45C09200F98CF3 /* WTTopicDetailViewController.storyboard in Resources */,
 				30E4987A1D70424100C2A6DA /* README.txt in Resources */,
 				B60FA1831D45C09200F98CF3 /* WTTopicCell.xib in Resources */,
+				B6ED4FF71EFADB08005B1C5D /* WTMyFollowingViewController.xib in Resources */,
+				B6ED4FF11EFAD5F8005B1C5D /* WTTopicCollectionViewController.xib in Resources */,
 				303CF2481D6AA37D00D697F7 /* WTTopicCollectionCell.xib in Resources */,
 				B60FA1BB1D45C09200F98CF3 /* WTHotNodeReusableView.xib in Resources */,
 				30E498751D70424100C2A6DA /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				B60FA18F1D45C09200F98CF3 /* WTToolBarView.xib in Resources */,
 				30A2D9341D6D2EE1009AFA43 /* YZPersonViewController.xib in Resources */,
+				B6ED4FF51EFAD75B005B1C5D /* WTNodeCollectionViewController.xib in Resources */,
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
 				B6ED4FED1EFAA87E005B1C5D /* WTNodeViewController.xib in Resources */,
 				B6A273431EACFB3E000B3A87 /* WTSelectNodeViewController.xib in Resources */,
@@ -2467,6 +2486,7 @@
 				30A2D8D91D6B06EF009AFA43 /* light.css in Resources */,
 				30E498771D70424100C2A6DA /* WeiboSDK.bundle in Resources */,
 				B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */,
+				B6ED4FF31EFAD6C2005B1C5D /* WTMyTopicViewController.xib in Resources */,
 				30A2D9441D6E8B1A009AFA43 /* WTNoDataView.xib in Resources */,
 				30E498721D70424100C2A6DA /* ShareSDKUI.bundle in Resources */,
 				B6179FB81ECFC0FE00B17036 /* backImage@2x.png in Resources */,

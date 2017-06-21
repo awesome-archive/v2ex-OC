@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTMyFollowingViewController : UITableViewController
+@interface WTMyFollowingViewController : UIViewController
 
 @end

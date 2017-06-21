@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTMyReplyViewController : UITableViewController
+@interface WTMyReplyViewController : UIViewController
 
 @end

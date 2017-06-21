@@ -574,9 +574,9 @@ div.node:hover .node_compose {
 /*.sep10 {*/
 /*    height: 10px;*/
 /*}*/
-/*.sep5 {*/
-/*    height: 5px;*/
-/*}*/
+.sep5 {
+    height: 5px;
+}
 /*.sep3 {*/
 /*    height: 3px;*/
 /*}*/
@@ -1294,8 +1294,9 @@ a.btn_hero:hover {
 .note > *:last-child, .markdown_body > *:last-child, .problem > *:last-child, .page > *:last-child {
     margin-bottom: 0 !important;
 }
-.topic_content img{
-    max-width: 100%;
+.topic_content>img{
+    max-width: 95%;
+    padding-left: 10px;
 }
 
 .markdown_body > p > img {
@@ -1447,5 +1448,9 @@ a.btn_hero:hover {
     padding-top: 8px;
 }
 
+.markdown_body>img{
+    padding-left: 10px;
+    max-width: 95%;
+}
 
 </style>

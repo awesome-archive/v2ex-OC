@@ -177,7 +177,8 @@
     }
     
     //
-    NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
+//    NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
+    NSString *newContentHTML = contentHTML;
     newContentHTML = [newContentHTML stringByReplacingOccurrencesOfString: @"<script><![CDATA[<![CDATA[<![CDATA[<![CDATA[hljs.initHighlightingOnLoad();]]]]]]]]><![CDATA[><![CDATA[><![CDATA[>]]]]]]><![CDATA[><![CDATA[>]]]]><![CDATA[>]]></script>" withString: @"<script>hljs.initHighlightingOnLoad();</script>"];
     
     

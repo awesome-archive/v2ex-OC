@@ -8,6 +8,7 @@
 
 #import "WTMyFollowingViewController.h"
 #import "WTTopicDetailViewController.h"
+#import "UIViewController+Extension.h"
 #import "WTLoginViewController.h"
 
 #import "WTMyFollowingCell.h"
@@ -24,6 +25,9 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
 
 @interface WTMyFollowingViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) WTMyFollowingViewModel *myFollowingVM;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation WTMyFollowingViewController
@@ -48,8 +52,8 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
 // 设置View
 - (void)setupView
 {
-    
-    self.title = @"我的关注";
+    [self navViewWithTitle: @"特别关注"];
+
     
     // tableView
     {
@@ -70,6 +74,9 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
     }
     
 }
+
+
+
 
 #pragma mark - 加载数据
 #pragma mark 加载最新的数据
@@ -127,12 +134,12 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: WTMyFollowingCellIdentifier cacheByIndexPath: indexPath configuration:^(WTMyFollowingCell *cell) {
-        cell.myFollowingItem = self.myFollowingVM.myFollowingItems[indexPath.row];
-    }];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [tableView fd_heightForCellWithIdentifier: WTMyFollowingCellIdentifier cacheByIndexPath: indexPath configuration:^(WTMyFollowingCell *cell) {
+//        cell.myFollowingItem = self.myFollowingVM.myFollowingItems[indexPath.row];
+//    }];
+//}
 
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
