@@ -80,7 +80,7 @@ static CGFloat const WTNavViewHeight = 64;
     
     self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
     
-    self.navLineView.alpha = 0.3;
+    self.titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
 
 }
 

@@ -38,6 +38,10 @@ static NSString * const ID = @"notificationCell";
 /** 记录第一次进入APP登录的状态 */
 @property (nonatomic, assign, getter=isLogin) BOOL             login;
 
+@property (weak, nonatomic) IBOutlet UIView                    *navView;
+@property (weak, nonatomic) IBOutlet UIView *navLineView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITableView               *tableView;
 @end
 
 @implementation WTUserNotificationViewController
@@ -47,7 +51,13 @@ static NSString * const ID = @"notificationCell";
     [super viewDidLoad];
     
     
-    self.title = @"提醒";
+    self.titleLabel.text = @"提醒";
+    self.titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor); 
+    
+    self.navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    
+    self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    
     
     self.tableView.tableFooterView = [UIView new];
     
@@ -190,12 +200,6 @@ static NSString * const ID = @"notificationCell";
     }];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTNotificationCell *cell) {
-        cell.noticationItem = self.notificationVM.notificationItems[indexPath.row];
-    }];
-}
 
 #pragma mark - DZNEmptyDataSetSource
 - (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView

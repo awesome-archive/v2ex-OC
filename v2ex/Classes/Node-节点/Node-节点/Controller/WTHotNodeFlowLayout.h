@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN const CGFloat WTHotNodeSectionLeft;
+
+UIKIT_EXTERN const CGFloat WTHotNodeCellSpacing;
+
+UIKIT_EXTERN const CGFloat WTHotNodeMinimumInteritemSpacing;
+
 @interface WTHotNodeFlowLayout : UICollectionViewFlowLayout
 
 @end

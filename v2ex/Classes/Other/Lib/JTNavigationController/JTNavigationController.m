@@ -155,7 +155,7 @@ static NSValue *jt_tabBarRectValue;
 
 + (void)load
 {
-    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses: @[[self class]]];
+//    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses: @[[self class]]];
     /*
      navBar.barTintColor = WTColor(42, 183, 103);
      navBar.translucent = NO;

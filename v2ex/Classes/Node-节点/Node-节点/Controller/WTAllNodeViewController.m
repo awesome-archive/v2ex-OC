@@ -41,6 +41,8 @@ NSString * const reuseIdentifier = @"reuseIdentifier";
     
     self.tableView.sectionFooterHeight = CGFLOAT_MIN;
     self.tableView.sectionHeaderHeight = 22;
+    
+    self.tableView.bounces = NO;
 }
 
 // 加载数据

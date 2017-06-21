@@ -100,7 +100,7 @@
                 notificationItem.once = [[onClickValues.lastObject subStringWithRegex: @"\\d"] integerValue];
         
                 // 1、头像 (由于v2ex抓下来的都不是清晰的头像，替换字符串转换成相对清晰的URL)
-                notificationItem.iconURL = [NSURL URLWithString: [NSString stringWithFormat: WTHTTPBaseUrl, [WTParseTool parseBigImageUrlWithSmallImageUrl: icon]]];
+                notificationItem.iconURL = [WTParseTool parseBigImageUrlWithSmallImageUrl: icon];
                 
             }
             

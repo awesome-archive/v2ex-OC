@@ -85,7 +85,7 @@
     //NSDictionary *textAttrSelected = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
     //[vc.tabBarItem setTitleTextAttributes: textAttrSelected forState: UIControlStateSelected];
     
-    JTNavigationController *nav = [[JTNavigationController alloc] initWithRootViewController: vc];
+    WTNavigationController *nav = [[WTNavigationController alloc] initWithRootViewController: vc];
     [self addChildViewController: nav];
 }
 

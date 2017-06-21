@@ -236,6 +236,8 @@
 		B6E9B8461EAB201F000120FA /* WTNoLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B8451EAB201F000120FA /* WTNoLoginView.m */; };
 		B6E9B8481EAB202D000120FA /* WTNoLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */; };
 		B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */; };
+		B6ED4FED1EFAA87E005B1C5D /* WTNodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */; };
+		B6ED4FEF1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */; };
 		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
 /* End PBXBuildFile section */
 
@@ -697,6 +699,8 @@
 		B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNoLoginView.xib; sourceTree = "<group>"; };
 		B6E9B8491EAB78B9000120FA /* WTRegisterReqItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTRegisterReqItem.h; path = v2ex/Classes/Main/View/WTRegisterReqItem.h; sourceTree = SOURCE_ROOT; };
 		B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTRegisterReqItem.m; path = v2ex/Classes/Main/View/WTRegisterReqItem.m; sourceTree = SOURCE_ROOT; };
+		B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNodeViewController.xib; sourceTree = "<group>"; };
+		B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTUserNotificationViewController.xib; sourceTree = "<group>"; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1456,6 +1460,7 @@
 				B60FA0D01D45C09200F98CF3 /* WTHotNodeViewController.m */,
 				B60FA0D11D45C09200F98CF3 /* WTNodeViewController.h */,
 				B60FA0D21D45C09200F98CF3 /* WTNodeViewController.m */,
+				B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1556,6 +1561,7 @@
 			children = (
 				B60FA0F11D45C09200F98CF3 /* WTUserNotificationViewController.h */,
 				B60FA0F21D45C09200F98CF3 /* WTUserNotificationViewController.m */,
+				B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2452,7 +2458,9 @@
 				B60FA18F1D45C09200F98CF3 /* WTToolBarView.xib in Resources */,
 				30A2D9341D6D2EE1009AFA43 /* YZPersonViewController.xib in Resources */,
 				B60FA1811D45C09200F98CF3 /* WTTipView.xib in Resources */,
+				B6ED4FED1EFAA87E005B1C5D /* WTNodeViewController.xib in Resources */,
 				B6A273431EACFB3E000B3A87 /* WTSelectNodeViewController.xib in Resources */,
+				B6ED4FEF1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib in Resources */,
 				30884B671DB9EBEB008FF94F /* WTMemberInfoViewController.storyboard in Resources */,
 				30884B771DBA1AE3008FF94F /* WTMessageViewController.storyboard in Resources */,
 				B6179FB91ECFC0FE00B17036 /* backImage@3x.png in Resources */,

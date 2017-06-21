@@ -19,11 +19,21 @@
 @property (nonatomic, weak) UICollectionView *hotNodeCollectionView;
 /** 所有节点View */
 @property (nonatomic, weak) UITableView *allNodeTableView;
+/** 导航栏 */
+@property (weak, nonatomic) IBOutlet UIView *navView;
+/** 导航栏线条 */
+@property (weak, nonatomic) IBOutlet UIView *navLineView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
 @implementation WTNodeViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    //self.navigationController.navigationBar.hidden = YES;
+}
 
 - (void)viewDidLoad
 {
@@ -41,6 +51,12 @@
  */
 - (void)setupView
 {
+    self.navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    
+    self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -49,21 +65,24 @@
     UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems: @[@"最热", @"全部"]];
     control.selectedSegmentIndex = 0;
     control.width = 150;
-    control.tintColor = [UIColor whiteColor];
+    control.x = (WTScreenWidth - control.width) * 0.5;
+    control.y = (WTTitleViewHeight - control.height) * 0.5 + 10;
+    control.tintColor = WTSelectedColor;
     
-    [control setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]} forState: UIControlStateNormal];
-    [control setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor colorWithHexString: WTAppLightColor]} forState:UIControlStateSelected];
+    [control setTitleTextAttributes: @{NSForegroundColorAttributeName : WTSelectedColor} forState: UIControlStateNormal];
+    [control setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateSelected];
     
     [control addTarget: self action: @selector(segmentedControlValueChanged:) forControlEvents: UIControlEventValueChanged];
     
-    self.navigationItem.titleView = control;
+    
+    [self.navView addSubview: control];
     
     // 1、添加热点节点控制器
     WTHotNodeViewController *hotNodeVC = [[WTHotNodeViewController alloc] initWithCollectionViewLayout: [WTHotNodeFlowLayout new]];
     [self addChildViewController: hotNodeVC];
     self.hotNodeCollectionView = hotNodeVC.collectionView;
-    [self.view addSubview: self.hotNodeCollectionView];
-    self.hotNodeCollectionView.frame = CGRectMake(0, WTNavigationBarMaxY, WTScreenWidth, WTScreenHeight - WTNavigationBarMaxY - WTTabBarHeight);
+    [self.contentView addSubview: self.hotNodeCollectionView];
+    self.hotNodeCollectionView.frame = self.contentView.bounds;
 }
 
 /**
@@ -85,12 +104,12 @@
     if (control.selectedSegmentIndex == 0)
     {
         [self.allNodeTableView removeFromSuperview];
-        [self.view addSubview: self.hotNodeCollectionView];
+        [self.contentView addSubview: self.hotNodeCollectionView];
     }
     else
     {
         [self.hotNodeCollectionView removeFromSuperview];
-        [self.view addSubview: self.allNodeTableView];
+        [self.contentView addSubview: self.allNodeTableView];
 
     }
 }
@@ -104,8 +123,8 @@
         [self addChildViewController: allNodeVC];
         
         _allNodeTableView = allNodeVC.tableView;
-        _allNodeTableView.frame = CGRectMake(0, WTNavigationBarMaxY, WTScreenWidth, WTScreenHeight - WTNavigationBarMaxY - WTTabBarHeight);
-        [self.view addSubview: _allNodeTableView];
+        _allNodeTableView.frame = self.contentView.bounds;
+        [self.contentView addSubview: _allNodeTableView];
     }
     return _allNodeTableView;
 }
