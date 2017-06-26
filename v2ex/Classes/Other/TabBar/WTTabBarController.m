@@ -9,7 +9,6 @@
 #import "WTTabBarController.h"
 #import "WTHomeViewController.h"
 #import "WTNavigationController.h"
-#import "JTNavigationController.h"
 #import "WTNodeViewController.h"
 #import "WTMoreViewController.h"
 #import "WTNodeViewController.h"
@@ -71,7 +70,7 @@
 #pragma mark - 添加单个子控制器
 - (void)addOneChildViewController:(UIViewController *)vc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
-    vc.edgesForExtendedLayout = UIRectEdgeNone;
+//    vc.edgesForExtendedLayout = UIRectEdgeNone;
     vc.tabBarItem.title = title;
     vc.tabBarItem.image = [UIImage imageNamed: imageName];
    // vc.tabBarItem.selectedImage = [UIImage imageNamed: selectedImageName];

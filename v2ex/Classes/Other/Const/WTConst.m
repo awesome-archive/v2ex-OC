@@ -40,8 +40,8 @@ NSString * const WTNoExistMemberTip = @"不存在这个用户";
 
 /** 工具栏上按钮点击的通知 */
 NSString * const WTToolBarButtonClickNotification = @"WTToolBarButtonClickNotification";
-/** 登陆成功的通知　*/
-NSString * const WTLoginSuccessNotification = @"WTLoginSuccessNotification";
+/** 登陆状态发生变化 通知　*/
+NSString * const WTLoginStateChangeNotification = @"WTLoginStateChangesNotification";
 
 /** 用户控制器头部View的高度 */
 CGFloat const WTUserInfoHeadViewHeight = 200;

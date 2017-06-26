@@ -28,17 +28,18 @@
     [super viewDidLoad];
     
     self.contentTextView.placeholder = @"请输入正文";
-    self.contentTextView.placeholderColor = [UIColor whiteColor];
         
 }
 
 #pragma mark - 事件
+#pragma mark 预览
 - (IBAction)previewItemClick:(id)sender
 {
     if (self.webViewTopLayoutCons.constant == 0)
     {
         NSString *markdown = self.contentTextView.text;
-        WTLog(@"html:%@", markdown.HTMLStringFromMarkdown)
+        
+        markdown = @"# 1312 ## 1231";
         
         NSString *cssPath = [[NSBundle mainBundle] pathForResource: @"light.css" ofType: nil];
         NSString *css = [NSString stringWithContentsOfFile: cssPath encoding: NSUTF8StringEncoding error: nil];
@@ -88,6 +89,11 @@
     {
         self.webViewTopLayoutCons.constant = 0;
     }
+}
+#pragma mark 发表
+- (IBAction)publishBtnClick:(UIBarButtonItem *)sender
+{
+
 }
 
 

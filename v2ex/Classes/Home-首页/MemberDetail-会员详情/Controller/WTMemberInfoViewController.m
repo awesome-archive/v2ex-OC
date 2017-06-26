@@ -27,7 +27,7 @@
 @implementation WTMemberInfoViewController
 
 #pragma mark - Init
-- (instancetype)init
++ (instancetype)memberInfoVC
 {
     return [UIStoryboard storyboardWithName: NSStringFromClass([WTMemberInfoViewController class]) bundle: nil].instantiateInitialViewController;
 }
@@ -42,7 +42,7 @@
  */
 - (instancetype)initWithMemberItem:(WTMemberItem *)memberItem userItem:(WTUserItem *)userItem
 {
-    WTMemberInfoViewController *memberInfoVC = [WTMemberInfoViewController new];
+    WTMemberInfoViewController *memberInfoVC = [WTMemberInfoViewController memberInfoVC];
     memberInfoVC.memberItem = memberItem;
     memberInfoVC.userItem = userItem;
     return memberInfoVC;

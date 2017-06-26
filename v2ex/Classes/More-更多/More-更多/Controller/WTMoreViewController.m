@@ -9,6 +9,7 @@
 #import "WTMoreViewController.h"
 #import "WTPrivacyStatementViewController.h"
 #import "WTLoginViewController.h"
+#import "WTConst.h"
 #import "WTRegisterViewController.h"
 #import "WTAdvertiseViewController.h"
 #import "WTMyReplyViewController.h"
@@ -92,8 +93,6 @@ CGFloat const moreHeaderViewH = 150;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    
-    [self.navigationController setNavigationBarHidden: YES animated: NO];
     
     // 4、判断是否登录，添加不同的headerView
     if ([[WTAccountViewModel shareInstance] isLogin])
@@ -351,6 +350,7 @@ CGFloat const moreHeaderViewH = 150;
         
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle: @"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             
+            [[NSNotificationCenter defaultCenter] postNotificationName: WTLoginStateChangeNotification object: nil];
             // 清除帐号
             [[WTAccountViewModel shareInstance] loginOut];
             [self viewWillAppear: YES];

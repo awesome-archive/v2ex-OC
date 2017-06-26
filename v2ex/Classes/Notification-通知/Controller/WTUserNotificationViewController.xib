@@ -11,10 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WTUserNotificationViewController">
             <connections>
-                <outlet property="navLineView" destination="msU-Td-d7b" id="B6O-b2-WZH"/>
-                <outlet property="navView" destination="h0Z-wl-r0N" id="MkS-R6-U1w"/>
                 <outlet property="tableView" destination="kS5-PI-Ylj" id="dxN-2n-z3i"/>
-                <outlet property="titleLabel" destination="ScJ-Np-Zcr" id="ZGO-I1-6kq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="JVI-1e-Btp"/>
             </connections>
         </placeholder>
@@ -23,30 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-wl-r0N">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScJ-Np-Zcr">
-                            <rect key="frame" x="169.5" y="31.5" width="35" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="ScJ-Np-Zcr" firstAttribute="centerX" secondItem="h0Z-wl-r0N" secondAttribute="centerX" id="H0J-la-ZwI"/>
-                        <constraint firstAttribute="height" constant="64" id="Xqx-PH-Dql"/>
-                        <constraint firstItem="ScJ-Np-Zcr" firstAttribute="centerY" secondItem="h0Z-wl-r0N" secondAttribute="centerY" constant="10" id="tjo-S0-C9l"/>
-                    </constraints>
-                </view>
-                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msU-Td-d7b">
-                    <rect key="frame" x="0.0" y="63" width="375" height="1"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="cqS-P5-dXm"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kS5-PI-Ylj">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,15 +32,9 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="kS5-PI-Ylj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4uC-1o-w1M"/>
-                <constraint firstItem="msU-Td-d7b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Bp5-Fy-jYT"/>
-                <constraint firstItem="h0Z-wl-r0N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VgU-Oc-4CE"/>
-                <constraint firstAttribute="trailing" secondItem="h0Z-wl-r0N" secondAttribute="trailing" id="bCc-v0-elw"/>
-                <constraint firstItem="kS5-PI-Ylj" firstAttribute="top" secondItem="h0Z-wl-r0N" secondAttribute="bottom" id="fF0-Is-ibz"/>
-                <constraint firstItem="msU-Td-d7b" firstAttribute="bottom" secondItem="h0Z-wl-r0N" secondAttribute="bottom" id="gEJ-Ai-RoO"/>
                 <constraint firstAttribute="trailing" secondItem="kS5-PI-Ylj" secondAttribute="trailing" id="jVO-O7-gs5"/>
-                <constraint firstAttribute="trailing" secondItem="msU-Td-d7b" secondAttribute="trailing" id="p5C-sn-qiH"/>
-                <constraint firstItem="h0Z-wl-r0N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qvt-C4-XV4"/>
                 <constraint firstAttribute="bottom" secondItem="kS5-PI-Ylj" secondAttribute="bottom" id="t7b-zL-74P"/>
+                <constraint firstItem="kS5-PI-Ylj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="unQ-fH-SLA"/>
             </constraints>
         </view>
     </objects>

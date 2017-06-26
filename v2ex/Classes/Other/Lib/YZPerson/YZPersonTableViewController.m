@@ -82,7 +82,9 @@
     [_titleLabel setTextColor:alphaColor];
     
     // 设置导航条背景图片
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString: WTAppLightColor alpha: alpha]] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.y = 0;
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString: WTAppLightColor alpha: alpha]] forBarMetrics:UIBarMetricsDefault];
     
 }
 

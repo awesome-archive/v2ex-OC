@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,15 +16,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfk-ZV-zqz">
-                    <rect key="frame" x="171.5" y="318.5" width="31" height="30"/>
+                    <rect key="frame" x="50" y="411.5" width="275" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="qxm-wD-7RH"/>
+                    </constraints>
                     <state key="normal" title="登陆"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Rfk-ZV-zqz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2U3-I9-4bE"/>
-                <constraint firstItem="Rfk-ZV-zqz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nsD-Xa-zWs"/>
+                <constraint firstAttribute="trailing" secondItem="Rfk-ZV-zqz" secondAttribute="trailing" constant="50" id="lzm-gY-Br2"/>
+                <constraint firstItem="Rfk-ZV-zqz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="100" id="nsD-Xa-zWs"/>
+                <constraint firstItem="Rfk-ZV-zqz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="wPM-fC-eYz"/>
             </constraints>
+            <connections>
+                <outlet property="loginBtn" destination="Rfk-ZV-zqz" id="Apq-gO-HGa"/>
+            </connections>
         </view>
     </objects>
 </document>

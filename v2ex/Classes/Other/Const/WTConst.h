@@ -41,8 +41,8 @@ UIKIT_EXTERN NSString * const WTNoNormalColor;
 /** 工具栏上按钮点击的通知 */
 UIKIT_EXTERN NSString * const WTToolBarButtonClickNotification;
 
-/** 登陆成功的通知　*/
-UIKIT_EXTERN NSString * const WTLoginSuccessNotification;
+/** 登陆状态发生变化 通知　*/
+UIKIT_EXTERN NSString * const WTLoginStateChangeNotification;
 
 /** 用户控制器头部View的高度 */
 UIKIT_EXTERN CGFloat const WTUserInfoHeadViewHeight;

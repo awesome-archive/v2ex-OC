@@ -103,7 +103,7 @@
             self.loginSuccessBlock();
         }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName: WTLoginSuccessNotification object: nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName: WTLoginStateChangeNotification object: nil];
         
     } failure:^(NSError *error) {
         [self.loginButton setTitle: @"登陆" forState: UIControlStateNormal];

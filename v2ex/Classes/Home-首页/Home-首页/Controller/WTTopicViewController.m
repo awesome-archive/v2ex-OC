@@ -107,7 +107,7 @@ static NSString *const ID = @"topicCell";
 {
     if ([self.title isEqualToString: @"最近"])
     {
-        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadNewData) name: WTLoginSuccessNotification object: nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadNewData) name: WTLoginStateChangeNotification object: nil];
     }
 }
 

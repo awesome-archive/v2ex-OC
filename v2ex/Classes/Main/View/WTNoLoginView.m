@@ -7,15 +7,25 @@
 //
 
 #import "WTNoLoginView.h"
-
+#import "WTLoginViewController.h"
+#import "UIViewController+Extension.h"
+@interface WTNoLoginView()
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@end
 @implementation WTNoLoginView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.loginBtn.layer.cornerRadius = 5;
+    self.loginBtn.backgroundColor = WTSelectedColor;
+    [self.loginBtn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
+    [self.loginBtn addTarget: self action: @selector(loginBtnClick) forControlEvents: UIControlEventTouchUpInside];
 }
-*/
+- (void)loginBtnClick
+{
+    WTLoginViewController *loginVC = [WTLoginViewController new];
+    [[UIViewController topVC] presentViewController: loginVC animated: YES completion: nil];
+}
 
 @end

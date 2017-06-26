@@ -24,7 +24,7 @@
 /** 设置导航栏的背景图片 */
 - (void)setNavBackgroundImage
 {
-//    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
 }
 
 + (void)load
@@ -67,7 +67,7 @@
     }
 }
 
-- (void)navViewWithTitle:(NSString *)title
+- (void)navViewWithTitle:(NSString *)title hideBack:(BOOL)hideBack
 {
     UIView *navView = [UIView new];
     navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
@@ -97,15 +97,24 @@
         make.centerX.offset(0);
     }];
     
- 
-    UIButton *backBtn = [UIButton new];
-    [backBtn setImage: [UIImage imageNamed: @"nav_back_normal"] forState: UIControlStateNormal];
-    [backBtn sizeToFit];
-    [navView addSubview: backBtn];
-    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(8);
-        make.centerY.offset(10);
-    }];
+    if (hideBack == NO)
+    {
+        UIButton *backBtn = [UIButton new];
+        [backBtn setImage: [UIImage imageNamed: @"nav_back_normal"] forState: UIControlStateNormal];
+        [backBtn sizeToFit];
+        [navView addSubview: backBtn];
+        [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(8);
+            make.centerY.offset(10);
+        }];
+    }
+   
+
+}
+
+- (void)navViewWithTitle:(NSString *)title
+{
+    [self navViewWithTitle: title hideBack: NO];
 }
 
 static char *titleLabelName = "titleLabelName";
@@ -120,4 +129,32 @@ static char *titleLabelName = "titleLabelName";
     return objc_getAssociatedObject(self, titleLabelName);
 }
 
++ (UIViewController *)topVC
+{
+    return UIApplication.sharedApplication.keyWindow.rootViewController.frontViewController;
+}
+
+- (UIViewController *)frontViewController
+{
+    if ([self isKindOfClass:[UINavigationController class]])
+    {
+        return [((UINavigationController *)self).topViewController frontViewController];
+    }
+    else if ([self isKindOfClass:[UITabBarController class]])
+    {
+        return [((UITabBarController *)self).selectedViewController frontViewController];
+    }
+    else if (self.navigationController && self != self.navigationController.visibleViewController)
+    {
+        return [self.navigationController.visibleViewController frontViewController];
+    }
+    else if (self.presentedViewController)
+    {
+        return [self.presentedViewController frontViewController];
+    }
+    else
+    {
+        return self;
+    }
+}
 @end

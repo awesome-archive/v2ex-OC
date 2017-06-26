@@ -10,10 +10,12 @@
 #import "WTLoginViewController.h"
 #import "WTTopicDetailViewController.h"
 
+#import "WTNoLoginView.h"
 #import "WTNoDataView.h"
 #import "WTNotificationCell.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTRefreshAutoNormalFooter.h"
+#import "UIViewController+Extension.h"
 
 #import "WTConst.h"
 #import "NetworkTool.h"
@@ -35,12 +37,8 @@ static NSString * const ID = @"notificationCell";
 @property (nonatomic, assign) NSInteger                        page;
 
 @property (nonatomic, assign) WTTableViewType                  tableViewType;
-/** 记录第一次进入APP登录的状态 */
-@property (nonatomic, assign, getter=isLogin) BOOL             login;
 
-@property (weak, nonatomic) IBOutlet UIView                    *navView;
-@property (weak, nonatomic) IBOutlet UIView *navLineView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UITableView               *tableView;
 @end
 
@@ -52,12 +50,8 @@ static NSString * const ID = @"notificationCell";
     
     
     self.titleLabel.text = @"提醒";
-    self.titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor); 
     
-    self.navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
-    
-    self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
-    
+    [self navViewWithTitle: @"提醒" hideBack: YES];
     
     self.tableView.tableFooterView = [UIView new];
     
@@ -80,24 +74,24 @@ static NSString * const ID = @"notificationCell";
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadData) name: WTLoginStateChangeNotification object: nil];
+    
+    [self loadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)loadData
 {
-    [super viewWillAppear: animated];
     
     // 2、登陆过
-    if ([[WTAccountViewModel shareInstance] isLogin] && self.login == NO)
+    if ([[WTAccountViewModel shareInstance] isLogin])
     {
-        self.login = YES;
         // 2、开始下拉刷新
         [self.tableView.mj_header beginRefreshing];
         
     }
-    else if(![[WTAccountViewModel shareInstance] isLogin])
+    else
     {
         self.tableViewType = WTTableViewTypeLogout;
-        self.login = NO;
         [self.notificationVM.notificationItems removeAllObjects];
         [self.tableView reloadData];
     }
@@ -111,6 +105,11 @@ static NSString * const ID = @"notificationCell";
     self.notificationVM.page = 1;
     
     [self.notificationVM getUserNotificationsSuccess:^{
+        
+        if (self.notificationVM.notificationItems.count == 0)
+            self.tableViewType = WTTableViewTypeNoData;
+        else
+            self.tableViewType = WTTableViewTypeNormal;
         
         [self.tableView reloadData];
         
@@ -215,13 +214,21 @@ static NSString * const ID = @"notificationCell";
     else if(self.tableViewType == WTTableViewTypeLogout)
     {
         UIButton *loginBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-        loginBtn.width = 100;
-        loginBtn.height = 30;
+        loginBtn.backgroundColor = WTSelectedColor;
+        loginBtn.width = WTScreenWidth - 100;
+        loginBtn.height = 44;
+        loginBtn.layer.cornerRadius = 5;
         [loginBtn setTitle: @"登陆" forState: UIControlStateNormal];
-        [loginBtn setTitleColor: [UIColor blueColor] forState: UIControlStateNormal];
+        [loginBtn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
         [loginBtn addTarget: self action: @selector(goToLoginVC) forControlEvents: UIControlEventTouchUpInside];
         view = loginBtn;
+//        view = [WTNoLoginView wt_viewFromXib];
     }
     return view;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
+{
+    return YES;
 }
 @end
