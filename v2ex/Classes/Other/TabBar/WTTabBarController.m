@@ -9,6 +9,7 @@
 #import "WTTabBarController.h"
 #import "WTHomeViewController.h"
 #import "WTNavigationController.h"
+#import "WTHotTopicViewController.h"
 #import "WTNodeViewController.h"
 #import "WTMoreViewController.h"
 #import "WTNodeViewController.h"
@@ -53,6 +54,8 @@
 #else
     
 #endif
+    WTHotTopicViewController *discoveryVC = [WTHotTopicViewController new];
+    [self addOneChildViewController: discoveryVC title: @"发现" imageName: @"Tabbar_Messages_Normal" selectedImageName: nil];
     
     
     // 通知

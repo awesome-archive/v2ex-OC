@@ -39,10 +39,9 @@ static WTAppDelegateTool *_appDelegateTool;
     // 3、显示窗口
     [self.window makeKeyAndVisible];
     
-    
-    
     // 5、全局设置状态栏颜色
-    //application.statusBarStyle = UIStatusBarStyleLightContent;
+//    application.statusBarStyle = UIStatusBarStyleLightContent;
+    
     application.applicationIconBadgeNumber = 0;
     
     // 6、界面 FPS 代码
@@ -64,7 +63,8 @@ static WTAppDelegateTool *_appDelegateTool;
     
     // 9、初始化第三方SDK
     [_appDelegateTool initAppSDKWithDidFinishLaunchingWithOptions: launchOptions];
-
+    
+//    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(dkNightVersionThemeChanging) name: DKNightVersionThemeChangingNotification object: nil];
     
     return YES;
 }

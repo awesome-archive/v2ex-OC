@@ -22,6 +22,8 @@
     [super awakeFromNib];
 //    self.backgroundColor = WTRandomColor;
     self.titleLabel.font = [UIFont QiHeiforSize: 15];
+    
+    self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
 }
 
 - (void)setNodeItem:(WTNodeItem *)nodeItem

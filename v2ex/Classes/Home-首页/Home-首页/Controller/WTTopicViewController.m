@@ -73,6 +73,7 @@ static NSString *const ID = @"topicCell";
     
     // 3、其他属性
     self.tableView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 设置内边距
     self.tableView.contentInset = UIEdgeInsetsMake(WTTitleViewHeight, 0, WTTabBarHeight, 0);

@@ -10,12 +10,6 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>最近</string>
-		<key>nodeURL</key>
-		<string>/recent</string>
-	</dict>
-	<dict>
-		<key>name</key>
 		<string>技术</string>
 		<key>nodeURL</key>
 		<string>/?tab=tech</string>

@@ -55,4 +55,6 @@ CGFloat const WTErrorCode = -1011;
 NSString * const WTErrorMessageKey = @"message";
 
 /** www.misaka14.com服务器 */
-NSString * const WTMisaka14Domain = @"http://172.16.1.45:8080/v2ex";
+NSString * const WTMisaka14Domain = @"http://192.168.3.41:8080/V2EX_JAVA/";
+/** 搜索话题 */
+NSString * const WTSearchTopicUrl = @"worm?method=searchTopic";

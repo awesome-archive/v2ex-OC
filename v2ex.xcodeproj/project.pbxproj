@@ -55,7 +55,6 @@
 		30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */; };
 		30A2D8D91D6B06EF009AFA43 /* light.css in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8D61D6B06EF009AFA43 /* light.css */; };
 		30A2D8DE1D6B071C009AFA43 /* nodeitem.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8DD1D6B071C009AFA43 /* nodeitem.sqlite */; };
-		30A2D8F31D6C4F88009AFA43 /* WTHotTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8F21D6C4F88009AFA43 /* WTHotTopicViewController.m */; };
 		30A2D8FB1D6C5117009AFA43 /* WTMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8FA1D6C5117009AFA43 /* WTMemberDetailViewController.m */; };
 		30A2D9311D6D2EE1009AFA43 /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D9291D6D2EE1009AFA43 /* UIImage+Image.m */; };
 		30A2D9321D6D2EE1009AFA43 /* YZPersonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D92B1D6D2EE1009AFA43 /* YZPersonTableViewController.m */; };
@@ -217,6 +216,14 @@
 		B6A273421EACFB3E000B3A87 /* WTSelectNodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A273401EACFB3E000B3A87 /* WTSelectNodeViewController.m */; };
 		B6A273431EACFB3E000B3A87 /* WTSelectNodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A273411EACFB3E000B3A87 /* WTSelectNodeViewController.xib */; };
 		B6A273451EAD02EE000B3A87 /* hotNode.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A273441EAD02EE000B3A87 /* hotNode.plist */; };
+		B6B2B3A51F1258740074B56A /* WTHotTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B3991F1258740074B56A /* WTHotTopicViewController.m */; };
+		B6B2B3A61F1258740074B56A /* WTHotTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B2B39A1F1258740074B56A /* WTHotTopicViewController.xib */; };
+		B6B2B3A71F1258740074B56A /* WTSearchTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B39D1F1258740074B56A /* WTSearchTopic.m */; };
+		B6B2B3A81F1258740074B56A /* WTSearchTopicRsp.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B39F1F1258740074B56A /* WTSearchTopicRsp.m */; };
+		B6B2B3AC1F1267380074B56A /* WTHotTopicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B3AB1F1267380074B56A /* WTHotTopicViewModel.m */; };
+		B6B2B3AF1F1267600074B56A /* WTSearchTopicReq.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B3AE1F1267600074B56A /* WTSearchTopicReq.m */; };
+		B6B2B3B31F1276D90074B56A /* WTSearchTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B3B11F1276D90074B56A /* WTSearchTopicCell.m */; };
+		B6B2B3B41F1276D90074B56A /* WTSearchTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B2B3B21F1276D90074B56A /* WTSearchTopicCell.xib */; };
 		B6BB73271E9A33780098F634 /* WTPublishTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB73251E9A33780098F634 /* WTPublishTopicViewController.m */; };
 		B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BB73261E9A33780098F634 /* WTPublishTopicViewController.xib */; };
 		B6BB732B1E9A5C680098F634 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB732A1E9A5C680098F634 /* UITextView+Placeholder.m */; };
@@ -369,8 +376,6 @@
 		30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HY-QiHei50.ttf"; sourceTree = "<group>"; };
 		30A2D8D61D6B06EF009AFA43 /* light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = light.css; sourceTree = "<group>"; };
 		30A2D8DD1D6B071C009AFA43 /* nodeitem.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = nodeitem.sqlite; sourceTree = "<group>"; };
-		30A2D8F11D6C4F88009AFA43 /* WTHotTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHotTopicViewController.h; sourceTree = "<group>"; };
-		30A2D8F21D6C4F88009AFA43 /* WTHotTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHotTopicViewController.m; sourceTree = "<group>"; };
 		30A2D8F91D6C5117009AFA43 /* WTMemberDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMemberDetailViewController.h; sourceTree = "<group>"; };
 		30A2D8FA1D6C5117009AFA43 /* WTMemberDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMemberDetailViewController.m; sourceTree = "<group>"; };
 		30A2D9281D6D2EE1009AFA43 /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
@@ -666,6 +671,20 @@
 		B6A273401EACFB3E000B3A87 /* WTSelectNodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSelectNodeViewController.m; sourceTree = "<group>"; };
 		B6A273411EACFB3E000B3A87 /* WTSelectNodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTSelectNodeViewController.xib; sourceTree = "<group>"; };
 		B6A273441EAD02EE000B3A87 /* hotNode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotNode.plist; sourceTree = "<group>"; };
+		B6B2B3981F1258740074B56A /* WTHotTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHotTopicViewController.h; sourceTree = "<group>"; };
+		B6B2B3991F1258740074B56A /* WTHotTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHotTopicViewController.m; sourceTree = "<group>"; };
+		B6B2B39A1F1258740074B56A /* WTHotTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTHotTopicViewController.xib; sourceTree = "<group>"; };
+		B6B2B39C1F1258740074B56A /* WTSearchTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSearchTopic.h; sourceTree = "<group>"; };
+		B6B2B39D1F1258740074B56A /* WTSearchTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSearchTopic.m; sourceTree = "<group>"; };
+		B6B2B39E1F1258740074B56A /* WTSearchTopicRsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSearchTopicRsp.h; sourceTree = "<group>"; };
+		B6B2B39F1F1258740074B56A /* WTSearchTopicRsp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSearchTopicRsp.m; sourceTree = "<group>"; };
+		B6B2B3AA1F1267380074B56A /* WTHotTopicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHotTopicViewModel.h; sourceTree = "<group>"; };
+		B6B2B3AB1F1267380074B56A /* WTHotTopicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHotTopicViewModel.m; sourceTree = "<group>"; };
+		B6B2B3AD1F1267600074B56A /* WTSearchTopicReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSearchTopicReq.h; sourceTree = "<group>"; };
+		B6B2B3AE1F1267600074B56A /* WTSearchTopicReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSearchTopicReq.m; sourceTree = "<group>"; };
+		B6B2B3B01F1276D90074B56A /* WTSearchTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSearchTopicCell.h; sourceTree = "<group>"; };
+		B6B2B3B11F1276D90074B56A /* WTSearchTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSearchTopicCell.m; sourceTree = "<group>"; };
+		B6B2B3B21F1276D90074B56A /* WTSearchTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTSearchTopicCell.xib; sourceTree = "<group>"; };
 		B6B4D9C71D4A64E600E4BF93 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B6B6A9581D544E5E0038C59D /* WTReplyApiItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyApiItem.h; sourceTree = "<group>"; };
 		B6BB73241E9A33780098F634 /* WTPublishTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPublishTopicViewController.h; sourceTree = "<group>"; };
@@ -908,13 +927,6 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
-		3099B5441D9A9D4D00B2DA46 /* Watch */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Watch;
-			sourceTree = "<group>";
-		};
 		3099B5451D9AA1A600B2DA46 /* Search-搜索 */ = {
 			isa = PBXGroup;
 			children = (
@@ -987,47 +999,6 @@
 				B60136031E9937E3003A3CB4 /* highlight.js */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		30A2D8EC1D6C4F7A009AFA43 /* HotTopic-热门节点 */ = {
-			isa = PBXGroup;
-			children = (
-				30A2D8ED1D6C4F7A009AFA43 /* Controller */,
-				30A2D8EE1D6C4F7A009AFA43 /* Model */,
-				30A2D8EF1D6C4F7A009AFA43 /* View */,
-				30A2D8F01D6C4F7A009AFA43 /* ViewModel */,
-			);
-			path = "HotTopic-热门节点";
-			sourceTree = "<group>";
-		};
-		30A2D8ED1D6C4F7A009AFA43 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				30A2D8F11D6C4F88009AFA43 /* WTHotTopicViewController.h */,
-				30A2D8F21D6C4F88009AFA43 /* WTHotTopicViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		30A2D8EE1D6C4F7A009AFA43 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		30A2D8EF1D6C4F7A009AFA43 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		30A2D8F01D6C4F7A009AFA43 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		30A2D8F41D6C5101009AFA43 /* MemberDetail-会员详情 */ = {
@@ -1224,7 +1195,6 @@
 				B6BB731F1E9A335D0098F634 /* PublishTopic-发表帖子 */,
 				3099B5451D9AA1A600B2DA46 /* Search-搜索 */,
 				30A2D8F41D6C5101009AFA43 /* MemberDetail-会员详情 */,
-				30A2D8EC1D6C4F7A009AFA43 /* HotTopic-热门节点 */,
 				B60FA04D1D45C09100F98CF3 /* Home-首页 */,
 				B60FA0661D45C09100F98CF3 /* TopicDetail-话题详情 */,
 			);
@@ -2014,11 +1984,11 @@
 		B63A5EB01C5BC5CE00D3BF8B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3099B5441D9A9D4D00B2DA46 /* Watch */,
 				B60FA04C1D45C09100F98CF3 /* Home-首页 */,
 				B60FA0C81D45C09100F98CF3 /* Node-节点 */,
 				B60FA0EF1D45C09200F98CF3 /* Notification-通知 */,
 				B60FA0C21D45C09100F98CF3 /* Message-消息 */,
+				B6B2B3951F1258740074B56A /* Discovery-发现 */,
 				B60FA1FA1D45D7E700F98CF3 /* More-更多 */,
 				B60FA1621D45C09200F98CF3 /* Tool(工具类) */,
 				B60FA0811D45C09100F98CF3 /* Main */,
@@ -2152,6 +2122,67 @@
 				B6A2732D1EACDFB1000B3A87 /* MMSpanParser.m */,
 			);
 			path = MMMarkdown;
+			sourceTree = "<group>";
+		};
+		B6B2B3951F1258740074B56A /* Discovery-发现 */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2B3961F1258740074B56A /* Hot-最热 */,
+			);
+			path = "Discovery-发现";
+			sourceTree = "<group>";
+		};
+		B6B2B3961F1258740074B56A /* Hot-最热 */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2B3A91F1267260074B56A /* ViewModel */,
+				B6B2B3971F1258740074B56A /* Controller */,
+				B6B2B39B1F1258740074B56A /* Model */,
+				B6B2B3A01F1258740074B56A /* View */,
+			);
+			path = "Hot-最热";
+			sourceTree = "<group>";
+		};
+		B6B2B3971F1258740074B56A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2B3981F1258740074B56A /* WTHotTopicViewController.h */,
+				B6B2B3991F1258740074B56A /* WTHotTopicViewController.m */,
+				B6B2B39A1F1258740074B56A /* WTHotTopicViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B6B2B39B1F1258740074B56A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2B39C1F1258740074B56A /* WTSearchTopic.h */,
+				B6B2B39D1F1258740074B56A /* WTSearchTopic.m */,
+				B6B2B39E1F1258740074B56A /* WTSearchTopicRsp.h */,
+				B6B2B39F1F1258740074B56A /* WTSearchTopicRsp.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B6B2B3A01F1258740074B56A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2B3B01F1276D90074B56A /* WTSearchTopicCell.h */,
+				B6B2B3B11F1276D90074B56A /* WTSearchTopicCell.m */,
+				B6B2B3B21F1276D90074B56A /* WTSearchTopicCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6B2B3A91F1267260074B56A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2B3AA1F1267380074B56A /* WTHotTopicViewModel.h */,
+				B6B2B3AB1F1267380074B56A /* WTHotTopicViewModel.m */,
+				B6B2B3AD1F1267600074B56A /* WTSearchTopicReq.h */,
+				B6B2B3AE1F1267600074B56A /* WTSearchTopicReq.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B6BB731F1E9A335D0098F634 /* PublishTopic-发表帖子 */ = {
@@ -2490,6 +2521,7 @@
 				30A2D9441D6E8B1A009AFA43 /* WTNoDataView.xib in Resources */,
 				30E498721D70424100C2A6DA /* ShareSDKUI.bundle in Resources */,
 				B6179FB81ECFC0FE00B17036 /* backImage@2x.png in Resources */,
+				B6B2B3A61F1258740074B56A /* WTHotTopicViewController.xib in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
 				B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */,
@@ -2499,6 +2531,7 @@
 				B60FA1C01D45C09200F98CF3 /* WTNodeTopicCell.xib in Resources */,
 				B60FA2251D45D7E700F98CF3 /* WTPrivacyStatementViewController.xib in Resources */,
 				B60136041E9937E3003A3CB4 /* highlight.js in Resources */,
+				B6B2B3B41F1276D90074B56A /* WTSearchTopicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2626,6 +2659,7 @@
 				B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */,
 				B60FA1F21D45C09200F98CF3 /* WTShareSDKTool.m in Sources */,
 				30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */,
+				B6B2B3AC1F1267380074B56A /* WTHotTopicViewModel.m in Sources */,
 				B60FA1E91D45C09200F98CF3 /* WTNetworkState.m in Sources */,
 				30884B6A1DB9F89A008FF94F /* MisakaNetworkTool.m in Sources */,
 				B6A2732F1EACDFB1000B3A87 /* MMDocument.m in Sources */,
@@ -2653,6 +2687,7 @@
 				B60FA1C71D45C09200F98CF3 /* UIButton+Extension.m in Sources */,
 				B60FA1EE1D45C09200F98CF3 /* WTPersonTableViewController.m in Sources */,
 				B60FA1CD1D45C09200F98CF3 /* UIView+Frame.m in Sources */,
+				B6B2B3A51F1258740074B56A /* WTHotTopicViewController.m in Sources */,
 				B6A273321EACDFB1000B3A87 /* MMHTMLParser.m in Sources */,
 				303CF2431D6AA25800D697F7 /* WTMemberAPIItem.m in Sources */,
 				B6A273421EACFB3E000B3A87 /* WTSelectNodeViewController.m in Sources */,
@@ -2708,17 +2743,18 @@
 				B6271D461D59999800A66983 /* WTMyFollowingViewController.m in Sources */,
 				30E497B21D701E2000C2A6DA /* UIViewController+Extension.m in Sources */,
 				B6BB732E1E9A623C0098F634 /* WTPublishTopicViewModel.m in Sources */,
+				B6B2B3A71F1258740074B56A /* WTSearchTopic.m in Sources */,
 				30884B751DBA1926008FF94F /* WTConversationListViewController.m in Sources */,
 				B60FA1D31D45C09200F98CF3 /* XPathQuery.m in Sources */,
 				B60FA1B21D45C09200F98CF3 /* WTMessageViewController.m in Sources */,
 				B60FA22F1D45E9EA00F98CF3 /* WTSettingItem.m in Sources */,
+				B6B2B3A81F1258740074B56A /* WTSearchTopicRsp.m in Sources */,
 				B6DEEB7C1D46677600E3A313 /* WTAdvertiseItem.m in Sources */,
 				303CF23D1D6AA1C300D697F7 /* WTNode.m in Sources */,
 				3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */,
 				B6179FBB1ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m in Sources */,
 				B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */,
 				B60FA1CC1D45C09200F98CF3 /* UITextField+Placeholder.m in Sources */,
-				30A2D8F31D6C4F88009AFA43 /* WTHotTopicViewController.m in Sources */,
 				30884B6D1DBA0A4A008FF94F /* UITableViewController+Extension.m in Sources */,
 				B6A273351EACDFB1000B3A87 /* MMScanner.m in Sources */,
 				B6E70C4B1D4E5CD6000CC806 /* WTNotificationCell.m in Sources */,
@@ -2726,6 +2762,7 @@
 				304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */,
 				B60FA18D1D45C09200F98CF3 /* WTTopicDetail.m in Sources */,
 				B69481701C462267001ABDA3 /* AppDelegate.m in Sources */,
+				B6B2B3B31F1276D90074B56A /* WTSearchTopicCell.m in Sources */,
 				B6A273361EACDFB1000B3A87 /* MMSpanParser.m in Sources */,
 				B60FA1B61D45C09200F98CF3 /* WTNodeViewController.m in Sources */,
 				B60FA2241D45D7E700F98CF3 /* WTPrivacyStatementViewController.m in Sources */,
@@ -2740,6 +2777,7 @@
 				304E48321DC083BA0094FAD8 /* WTLocationTool.m in Sources */,
 				B60FA1B51D45C09200F98CF3 /* WTHotNodeViewController.m in Sources */,
 				B60FA1801D45C09200F98CF3 /* WTTipView.m in Sources */,
+				B6B2B3AF1F1267600074B56A /* WTSearchTopicReq.m in Sources */,
 				3009C6361DAF764300461B2F /* WTTopicApiItem.m in Sources */,
 				307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */,
 				B60FA1CF1D45C09200F98CF3 /* WTConst.m in Sources */,

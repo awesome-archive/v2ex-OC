@@ -54,4 +54,7 @@ UIKIT_EXTERN NSString * const WTErrorMessageKey;
 
 UIKIT_EXTERN NSString * const WTMisaka14Domain;
 
+/** 搜索话题 */
+UIKIT_EXTERN NSString * const WTSearchTopicUrl;
+
 NS_ASSUME_NONNULL_END

@@ -70,6 +70,7 @@
 - (void)navViewWithTitle:(NSString *)title hideBack:(BOOL)hideBack
 {
     UIView *navView = [UIView new];
+    self.nav_View = navView;
     navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
     [self.view addSubview: navView];
     [navView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,16 +87,21 @@
         make.left.bottom.right.offset(0);
     }];
     
-    UILabel *titleLabel = [UILabel new];
-    titleLabel.text = title;
-    self.titleLabel = titleLabel;
-    titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
-    [titleLabel sizeToFit];
-    [navView addSubview: titleLabel];
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.offset(10);
-        make.centerX.offset(0);
-    }];
+    if (self.title)
+    {
+        UILabel *titleLabel = [UILabel new];
+        titleLabel.text = title;
+        self.titleLabel = titleLabel;
+        titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
+        [titleLabel sizeToFit];
+        [navView addSubview: titleLabel];
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.offset(10);
+            make.centerX.offset(0);
+        }];
+    }
+    
+    
     
     if (hideBack == NO)
     {
@@ -117,7 +123,14 @@
     [self navViewWithTitle: title hideBack: NO];
 }
 
+- (void)navView
+{
+    [self navViewWithTitle: nil hideBack: YES];
+}
+
 static char *titleLabelName = "titleLabelName";
+
+static char *nav_ViewName = "nav_ViewName";
 
 - (void)setTitleLabel:(UILabel *)titleLabel
 {
@@ -128,6 +141,17 @@ static char *titleLabelName = "titleLabelName";
 {
     return objc_getAssociatedObject(self, titleLabelName);
 }
+
+- (void)setNav_View:(UIView *)nav_View
+{
+    objc_setAssociatedObject(self, nav_ViewName, nav_View, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIView *)nav_View
+{
+    return objc_getAssociatedObject(self, nav_ViewName);
+}
+
 
 + (UIViewController *)topVC
 {

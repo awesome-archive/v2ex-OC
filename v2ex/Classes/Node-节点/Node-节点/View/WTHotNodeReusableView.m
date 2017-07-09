@@ -18,8 +18,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+
+    self.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewCellBgViewBackgroundColor);
     
-    self.backgroundColor = WTColor(242, 243, 245);
+    self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
 }
 
 - (void)setTitle:(NSString *)title

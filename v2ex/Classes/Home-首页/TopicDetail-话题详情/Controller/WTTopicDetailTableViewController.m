@@ -75,8 +75,8 @@ static NSString  * const commentCellID = @"commentCellID";
     //self.topicDetailUrl = @"https://www.v2ex.com/t/353492#reply0";  //可以回复的
     
    //self.topicDetailUrl = @"https:/www.v2ex.com/t/353415#reply11";
-   // self.topicDetailUrl = @"https://www.v2ex.com/t/353501#reply0"; //代码高亮显示
-    
+    //self.topicDetailUrl = @"https://www.v2ex.com/t/353501#reply0"; //代码高亮显示
+    //self.topicDetailUrl = @"https://www.v2ex.com/t/372577#reply5"; // 图片不显示
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/353464#reply24"; //多图，测试图片点击的
     
     //self.topicDetailUrl = @"https://www.v2ex.com/t/354606#reply70"; //需要会员登陆

@@ -230,6 +230,11 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
                                 }],
                                 
+                                [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{
+            
+                                    [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
+                                }],
+                                
 #if Test == 0
                                 [WTSettingItem settingItemWithTitle: @"v2小组" image: [UIImage imageNamed: @"more_group"] operationBlock: ^{
             
