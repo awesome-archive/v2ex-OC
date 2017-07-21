@@ -31,6 +31,11 @@
     
 }
 
+- (void)setPublished_time:(NSString *)published_time
+{
+    _published_time = [[published_time stringByReplacingOccurrencesOfString: @"T" withString: @" "] stringByReplacingOccurrencesOfString: @"Z" withString: @" "];
+}
+
 @end
 
 @implementation WTSearchTopicPagemap;

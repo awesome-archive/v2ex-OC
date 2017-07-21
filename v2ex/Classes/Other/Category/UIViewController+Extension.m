@@ -87,7 +87,7 @@
         make.left.bottom.right.offset(0);
     }];
     
-    if (self.title)
+    if (title)
     {
         UILabel *titleLabel = [UILabel new];
         titleLabel.text = title;
@@ -113,9 +113,15 @@
             make.left.offset(8);
             make.centerY.offset(10);
         }];
+        [backBtn addTarget: self action: @selector(backBtnClick) forControlEvents: UIControlEventTouchUpInside];
     }
    
 
+}
+
+- (void)backBtnClick
+{
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (void)navViewWithTitle:(NSString *)title

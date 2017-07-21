@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSString *keywords;
 
+@property (nonatomic, assign) NSUInteger currentPage;
+
 @end

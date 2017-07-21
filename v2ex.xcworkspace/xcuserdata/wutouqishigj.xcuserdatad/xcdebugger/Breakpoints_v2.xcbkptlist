@@ -100,7 +100,7 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Home-%E9%A6%96%E9%A1%B5/PublishTopic-%E5%8F%91%E8%A1%A8%E5%B8%96%E5%AD%90/Controller/WTPublishTopicViewController.m"
-                  timestampString = "521308620.565885"
+                  timestampString = "522317787.835153"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
@@ -115,7 +115,7 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Home-%E9%A6%96%E9%A1%B5/PublishTopic-%E5%8F%91%E8%A1%A8%E5%B8%96%E5%AD%90/Controller/WTPublishTopicViewController.m"
-                  timestampString = "521308620.567348"
+                  timestampString = "522317787.836678"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -138,38 +138,6 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "-previewItemClick:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Main/View/WTNoLoginView.m"
-            timestampString = "520139640.159086"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "-awakeFromNib"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Notification-&#x901a;&#x77e5;/Controller/WTUserNotificationViewController.m"
-            timestampString = "520145931.955599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -308,7 +276,7 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Discovery-%E5%8F%91%E7%8E%B0/Hot-%E6%9C%80%E7%83%AD/ViewModel/WTHotTopicViewModel.m"
-                  timestampString = "521308620.600657"
+                  timestampString = "522317787.863028"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
@@ -323,7 +291,7 @@
                   moduleName = "v2ex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Discovery-%E5%8F%91%E7%8E%B0/Hot-%E6%9C%80%E7%83%AD/ViewModel/WTHotTopicViewModel.m"
-                  timestampString = "521308620.602116"
+                  timestampString = "522317787.864589"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
@@ -340,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "v2ex/Classes/Discovery-&#x53d1;&#x73b0;/Hot-&#x6700;&#x70ed;/Model/WTSearchTopic.m"
-            timestampString = "521308282.439299"
+            timestampString = "522340124.205156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "+mj_replacedKeyFromPropertyName"
             landmarkType = "7">
          </BreakpointContent>
@@ -355,13 +323,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/MJExtension/MJExtension/NSObject+MJProperty.m"
-            timestampString = "521308667.508863"
+            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/TopicDetail-&#x8bdd;&#x9898;&#x8be6;&#x60c5;/Controller/WTTopicDetailTableViewController.m"
+            timestampString = "522179273.083417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "+propertyKey:"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "v2ex/Classes/Discovery-&#x53d1;&#x73b0;/Hot-&#x6700;&#x70ed;/Controller/WTHotTopicViewController.m"
+            timestampString = "522339216.729438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

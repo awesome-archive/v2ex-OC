@@ -10,6 +10,8 @@
 @class WTSearchTopic;
 @interface WTSearchTopicCell : UITableViewCell
 
+@property (nonatomic, strong) NSString *keywords;
+
 @property (nonatomic, strong) WTSearchTopic *searchTopic;
 
 @end

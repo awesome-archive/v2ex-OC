@@ -8,7 +8,7 @@
 
 #import "WTPublishTopicViewController.h"
 #import "UITextView+Placeholder.h"
-#import "NSString+GHMarkdownParser.h"
+//#import "NSString+GHMarkdownParser.h"
 #import "UIBarButtonItem+Extension.h"
 #import "NetworkTool.h"
 @interface WTPublishTopicViewController ()

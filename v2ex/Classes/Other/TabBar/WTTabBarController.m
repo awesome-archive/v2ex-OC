@@ -16,7 +16,7 @@
 #import "WTMessageViewController.h"
 #import "WTUserNotificationViewController.h"
 
-@interface WTTabBarController ()
+@interface WTTabBarController () <UITabBarDelegate>
 
 @end
 
@@ -34,6 +34,7 @@
     self.tabBar.dk_tintColorPicker =  DKColorPickerWithKey(UITabbarTintColor);
     
     self.tabBar.translucent = NO;
+    
 }
 
 #pragma mark - 添加所有的子控制器
@@ -90,5 +91,6 @@
     WTNavigationController *nav = [[WTNavigationController alloc] initWithRootViewController: vc];
     [self addChildViewController: nav];
 }
+
 
 @end

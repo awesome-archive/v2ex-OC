@@ -40,6 +40,7 @@ static NSString * const ID = @"notificationCell";
 
 
 @property (weak, nonatomic) IBOutlet UITableView               *tableView;
+
 @end
 
 @implementation WTUserNotificationViewController
@@ -201,34 +202,49 @@ static NSString * const ID = @"notificationCell";
 
 
 #pragma mark - DZNEmptyDataSetSource
-- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    UIView *view;
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    NSString *text = nil;
     if (self.tableViewType == WTTableViewTypeNoData)
     {
-        WTNoDataView *noDataView = [WTNoDataView noDataView];
-        noDataView.tipImageView.image = [UIImage imageNamed:@"no_notification"];
-        noDataView.tipTitleLabel.text = @"快去发表主题吧";
-        view = noDataView;
+        text = @"还没有收到通知";
+        [attributes setObject: [UIColor colorWithHexString: @"#BDBDBD"] forKey: NSForegroundColorAttributeName];
+        return [[NSAttributedString alloc] initWithString: text attributes:attributes];
     }
-    else if(self.tableViewType == WTTableViewTypeLogout)
-    {
-        UIButton *loginBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-        loginBtn.backgroundColor = WTSelectedColor;
-        loginBtn.width = WTScreenWidth - 100;
-        loginBtn.height = 44;
-        loginBtn.layer.cornerRadius = 5;
-        [loginBtn setTitle: @"登陆" forState: UIControlStateNormal];
-        [loginBtn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
-        [loginBtn addTarget: self action: @selector(goToLoginVC) forControlEvents: UIControlEventTouchUpInside];
-        view = loginBtn;
-//        view = [WTNoLoginView wt_viewFromXib];
-    }
-    return view;
+    
+    return nil;
 }
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+        return [UIImage imageNamed:@"no_notification"];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    [attributes setObject: WTSelectedColor forKey: NSForegroundColorAttributeName];
+    [attributes setObject: [UIFont systemFontOfSize: 18 weight: UIFontWeightMedium] forKey: NSFontAttributeName];
+    return [[NSAttributedString alloc] initWithString: @"登陆" attributes:attributes];
+}
+
 
 - (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
 {
     return YES;
 }
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+    WTLoginViewController *loginVC = [WTLoginViewController new];
+    __weak typeof(self) weakSelf = self;
+    loginVC.loginSuccessBlock = ^{
+        [weakSelf loadNewData];
+    };
+    [[UIViewController topVC] presentViewController: loginVC animated: YES completion: nil];
+}
+
+#pragma mark - Lazy
+
 @end

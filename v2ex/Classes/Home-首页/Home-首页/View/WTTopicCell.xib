@@ -75,7 +75,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="百度统计已被客户 pass，网站流量分析求助百度统计已被客户 pass，网站流量分析求助网站流量分析求" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkx-CI-hWJ">
                         <rect key="frame" x="16" y="50" width="343" height="19.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <color key="textColor" red="0.28627450980392155" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,27 +24,39 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fU1-RL-MVk">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FcT-ap-9mc">
-                            <rect key="frame" x="177" y="291" width="20" height="20"/>
+                            <rect key="frame" x="177" y="266.5" width="20" height="20"/>
                         </activityIndicatorView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在载入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A2-dB-8yG">
-                            <rect key="frame" x="163.5" y="319" width="49.5" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在搬运" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A2-dB-8yG">
+                            <rect key="frame" x="153" y="294.5" width="49.5" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="AWx-K5-CMn"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.61561751365661621" green="0.61572593450546265" blue="0.61561065912246704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery_loading_run" translatesAutoresizingMaskIntoConstraints="NO" id="1D9-Cw-cRh">
+                            <rect key="frame" x="206.5" y="294.5" width="15" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="1D9-Cw-cRh" secondAttribute="height" multiplier="1:1" id="avI-Rg-kJp"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="7A2-dB-8yG" firstAttribute="top" secondItem="FcT-ap-9mc" secondAttribute="bottom" constant="8" id="0vj-o7-A9d"/>
-                        <constraint firstItem="7A2-dB-8yG" firstAttribute="centerX" secondItem="fU1-RL-MVk" secondAttribute="centerX" id="9cC-mg-l7q"/>
+                        <constraint firstItem="1D9-Cw-cRh" firstAttribute="bottom" secondItem="7A2-dB-8yG" secondAttribute="bottom" id="2Eg-h4-qBb"/>
+                        <constraint firstItem="1D9-Cw-cRh" firstAttribute="top" secondItem="7A2-dB-8yG" secondAttribute="top" id="2JA-EJ-5gW"/>
+                        <constraint firstItem="7A2-dB-8yG" firstAttribute="centerX" secondItem="fU1-RL-MVk" secondAttribute="centerX" constant="-10" id="9cC-mg-l7q"/>
                         <constraint firstItem="FcT-ap-9mc" firstAttribute="centerX" secondItem="fU1-RL-MVk" secondAttribute="centerX" id="LRS-cr-58V"/>
+                        <constraint firstItem="1D9-Cw-cRh" firstAttribute="leading" secondItem="7A2-dB-8yG" secondAttribute="trailing" constant="4" id="R0Z-ws-fny"/>
                         <constraint firstItem="FcT-ap-9mc" firstAttribute="centerY" secondItem="fU1-RL-MVk" secondAttribute="centerY" id="s5e-GL-b6z"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DWa-0S-H0D">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DWa-0S-H0D">
                     <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -69,8 +82,11 @@
                 <constraint firstItem="fU1-RL-MVk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="hNE-cv-W69"/>
                 <constraint firstAttribute="trailing" secondItem="DWa-0S-H0D" secondAttribute="trailing" id="io0-Xw-J06"/>
                 <constraint firstItem="eBJ-58-iPc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mto-OU-GvC"/>
-                <constraint firstAttribute="bottom" secondItem="fU1-RL-MVk" secondAttribute="bottom" id="r0p-VU-bFX"/>
+                <constraint firstAttribute="bottom" secondItem="fU1-RL-MVk" secondAttribute="bottom" constant="49" id="r0p-VU-bFX"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="discovery_loading_run" width="32" height="24"/>
+    </resources>
 </document>

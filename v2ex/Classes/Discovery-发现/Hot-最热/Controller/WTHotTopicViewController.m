@@ -7,19 +7,29 @@
 //
 
 #import "WTHotTopicViewController.h"
+#import "WTLoginViewController.h"
+#import "WTRegisterViewController.h"
+#import "WTTopicDetailViewController.h"
 #import "WTTopicViewController.h"
 
+#import "WTNoLoginView.h"
 #import "WTSearchTopicCell.h"
 
 #import "WTURLConst.h"
+#import "WTAccountViewModel.h"
 #import "WTHotTopicViewModel.h"
 
 #import "UIViewController+Extension.h"
 
+#import "WTProgressHUD.h"
 #import "NSString+YYAdd.h"
 #import "Masonry.h"
 
 static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentifier";
+
+static NSTimeInterval const WTSearchTopicAnimationDuration = 0.3f;
+
+static CGFloat const WTSearchBarNormalMargin = 10;
 
 @interface WTHotTopicViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -28,10 +38,15 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
 @property (weak, nonatomic) IBOutlet UIView *topicContentView;
 /** 加载的View */
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
+/** 没有登陆的提示页面 */
+@property (nonatomic, weak) WTNoLoginView *noLoginView;
+
 /** 搜索话题的tableView */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /** 搜索栏 */
 @property (nonatomic, weak) UISearchBar *searchBar;
+/** 取消按钮 */
+@property (nonatomic, weak) UIButton *cancelBtn;
 
 /************************* 控制器 *************************/
 /** 话题控制器 */
@@ -40,12 +55,23 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
 /************************* 数据源 *************************/
 /** 搜索话题数组*/
 @property (nonatomic, strong) NSMutableArray<WTSearchTopic *> *searchTopics;
+/** 当前页数 */
+@property (nonatomic, assign) NSUInteger currentPage;
 
 @end
 
 @implementation WTHotTopicViewController
 
 #pragma mark - Life Cycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    if (![WTAccountViewModel shareInstance].isLogin)
+        [self.view bringSubviewToFront: self.noLoginView];
+        
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,7 +82,8 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
     // 2、添加子控制器
     [self addChildViewControllers];
     
-    
+    // 3、注册通知
+    [self initNoti];
 }
 
 #pragma mark - Private
@@ -76,10 +103,24 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
         [self.nav_View addSubview: searchBar];
         [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
            
-            make.center.offset(10);
-            make.left.offset(10);
-            make.right.offset(-10);
+            make.centerY.offset(10);
+            make.left.offset(WTSearchBarNormalMargin);
+            make.right.offset(-WTSearchBarNormalMargin);
             
+        }];
+        
+        UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeCustom];
+        [cancelBtn setTitle: @"取消" forState: UIControlStateNormal];
+        [cancelBtn setTitleColor: WTSelectedColor forState: UIControlStateNormal];
+        [cancelBtn addTarget: self action: @selector(cancelBtnClick) forControlEvents: UIControlEventTouchUpInside];
+        cancelBtn.alpha = 0;
+        self.cancelBtn = cancelBtn;
+        [self.nav_View addSubview: cancelBtn];
+        [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.offset(40);
+            make.height.offset(20);
+            make.centerY.offset(10);
+            make.right.offset(-10);
         }];
     }
     
@@ -92,8 +133,19 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 100;
         
+        // 背景颜色
+        self.tableView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+        
+        // 下拉刷新
+        __weak typeof(self) weakSelf = self;
+        self.tableView.mj_footer = [WTRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf searchTopicWithKeywords: self.searchBar.text isShowLoadingView: NO];
+        }];
     }
+    
+    self.currentPage = 0;
 }
+
 
 #pragma mark 添加子控制器
 - (void)addChildViewControllers
@@ -104,31 +156,103 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
     [self addChildViewController: vc];
     [self.topicContentView addSubview: vc.view];
     vc.view.frame = self.topicContentView.bounds;
-    vc.view.y = vc.view.y - 20;
+    self.topicVC = vc;
+}
+
+#pragma mark 通知
+- (void)initNoti
+{
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loginStateChange) name: WTLoginStateChangeNotification object: nil];
 }
 
 #pragma mark 搜索话题
-- (void)searchTopicWithKeywords:(NSString *)keywords
+- (void)searchTopicWithKeywords:(NSString *)keywords isShowLoadingView:(BOOL)isShowLoadingView
 {
-    [self.view bringSubviewToFront: self.loadingView];
+    if (isShowLoadingView)
+        [self bringSubviewToFront: self.loadingView];
  
     __weak typeof(self) weakSelf = self;
     void (^successBlock)(NSMutableArray<WTSearchTopic *> *searchTopics) = ^(NSMutableArray<WTSearchTopic *> *searchTopics){
     
-        weakSelf.searchTopics = searchTopics;
+        weakSelf.currentPage++;
         
-        [weakSelf.view bringSubviewToFront: weakSelf.tableView];
-    
+        if (isShowLoadingView)
+            weakSelf.searchTopics = searchTopics;
+        else
+            [weakSelf.searchTopics addObjectsFromArray: searchTopics];
+        
+        [weakSelf bringSubviewToFront: weakSelf.tableView];
+        
         [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_footer endRefreshing];
     };
     
     void(^failureBlock)(NSError *error) = ^(NSError *error){
-    
+        
+        [[WTProgressHUD shareProgressHUD] errorWithMessage: @"服务器异常"];
+        
+        [weakSelf.tableView.mj_footer endRefreshing];
+        
     };
     
     WTSearchTopicReq *req = [WTSearchTopicReq new];
     req.keywords = keywords;
+    req.currentPage = self.currentPage;
     [WTHotTopicViewModel searchTopicWithSearchTopicReq: req success: successBlock failure: failureBlock];
+}
+
+- (void)bringSubviewToFront:(UIView *)view
+{
+    [self.view bringSubviewToFront: view];
+    [self.view bringSubviewToFront: self.nav_View];
+}
+
+#pragma mark - 事件
+- (void)loginStateChange
+{
+    if ([WTAccountViewModel shareInstance].isLogin)
+    {
+        [self bringSubviewToFront: self.topicContentView];
+        [self.topicVC loadNewData];
+    }
+    else
+    {
+        [self.view bringSubviewToFront: self.noLoginView];
+    }
+}
+
+- (void)cancelBtnClick
+{
+    [self.view endEditing: YES];
+    
+    [self bringSubviewToFront: self.topicContentView];
+    
+    self.searchBar.text = @"";
+    
+    [self.searchBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_offset(-WTSearchBarNormalMargin);
+    }];
+    
+    [UIView animateWithDuration: WTSearchTopicAnimationDuration animations:^{
+        
+        [self.view layoutIfNeeded];
+        
+        self.cancelBtn.alpha = 0;
+    }];
+}
+- (IBAction)buttonBtnClick
+{
+    __weak typeof(self) weakSelf = self;
+    WTLoginViewController *vc = [WTLoginViewController new];
+    vc.loginSuccessBlock = ^(){
+        [weakSelf.topicVC loadNewData];
+    };
+    [self presentViewController: vc animated: YES completion: nil];
+}
+- (IBAction)registerBtnClick
+{
+    [self presentViewController: [WTRegisterViewController new] animated: YES completion: nil];
 }
 
 #pragma mark - UISearchBar delegate
@@ -140,9 +264,27 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
     [self.view endEditing: YES];
     
     // 搜索话题
-    [self searchTopicWithKeywords: keywords];
-    
+    self.currentPage = 0;
+    [self searchTopicWithKeywords: keywords isShowLoadingView: YES];
 }
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    [self.searchBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_offset(-50);
+    }];
+    
+    [UIView animateWithDuration: WTSearchTopicAnimationDuration animations:^{
+        
+        [self.view layoutIfNeeded];
+        
+        self.cancelBtn.alpha = 1;
+    }];
+    
+    return YES;
+}
+
+
 
 #pragma mark - UITableView datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -154,9 +296,44 @@ static NSString * const WTSearchTopicCellIdentifier = @"WTSearchTopicCellIdentif
 {
     WTSearchTopicCell *cell = [tableView dequeueReusableCellWithIdentifier: WTSearchTopicCellIdentifier];
     
+    cell.keywords = self.searchBar.text;
     cell.searchTopic = [self.searchTopics objectAtIndex: indexPath.row];
     
     return cell;
+}
+
+#pragma mark - UITableView delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WTSearchTopic *searchTopic = [self.searchTopics objectAtIndex: indexPath.row];
+
+    WTTopicDetailViewController *detailVC = [WTTopicDetailViewController topicDetailViewController];
+    detailVC.topicDetailUrl = searchTopic.link;
+    detailVC.topicTitle = searchTopic.title;
+    [self.navigationController pushViewController: detailVC animated: YES];
+}
+
+#pragma mark - Lazy 
+- (WTNoLoginView *)noLoginView
+{
+    if (_noLoginView == nil)
+    {
+        WTNoLoginView *noLoginView = [WTNoLoginView wt_viewFromXib];
+        noLoginView.frame = self.view.bounds;
+        [self.view addSubview: noLoginView];
+        _noLoginView = noLoginView;
+        
+        noLoginView.title = @"登录后，可以使用搜索功能，查看全部的v2ex的帖子";
+        __weak typeof(self) weakSelf = self;
+        noLoginView.loginSuccessBlock = ^{
+            
+            [weakSelf.topicVC loadNewData];
+            
+            [weakSelf bringSubviewToFront: weakSelf.topicContentView];
+            
+        };
+    }
+    return _noLoginView;
 }
 
 @end

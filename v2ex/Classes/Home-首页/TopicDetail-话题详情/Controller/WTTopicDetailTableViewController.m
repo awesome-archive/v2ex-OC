@@ -91,6 +91,9 @@ static NSString  * const commentCellID = @"commentCellID";
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/355539#reply116"; // 评论中的爱心换行了
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/356410#reply59";
+    
+    // BUG:
+        // https:/www.v2ex.com/t/376552#reply1
     // 1、加载数据
     [self setupData];
     

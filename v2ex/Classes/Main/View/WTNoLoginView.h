@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WTNoLoginView : UIView
-
+/** 登陆成功的回调 */
+@property (nonatomic, copy) void (^loginSuccessBlock)();
+/** 标题 */
+@property (nonatomic, strong) NSString *title;
 @end
