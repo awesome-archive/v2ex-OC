@@ -10,11 +10,12 @@
 
 #import "WTConst.h"
 #import "WTAccountViewModel.h"
+#import "UIViewController+Extension.h"
 
 #import "POP.h"
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
-@interface WTMoreLoginHeaderView () <POPAnimationDelegate>
+@interface WTMoreLoginHeaderView () <POPAnimationDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView1;
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView2;
 
@@ -33,7 +34,8 @@
 /** 签到 */
 @property (weak, nonatomic) IBOutlet UIButton *pastBtn;
 
-
+/** 相册选择器 */
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
 @end
 
 @implementation WTMoreLoginHeaderView
@@ -151,10 +153,59 @@
         [self.pastBtn setTitle: @"已签到" forState: UIControlStateNormal];
     });
 }
+- (IBAction)avatarBtnClick
+{
+    
+    
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle: @"上传图片"
+                                                                         message: nil
+                                                                  preferredStyle: UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *photoAction = [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            self.imagePicker.allowsEditing = YES;
+            [[UIViewController topVC] presentViewController: self.imagePicker animated: YES completion: nil];
+            
+        }];
+        
+        
+        UIAlertAction *albumAction = [UIAlertAction actionWithTitle: @"从相册中选择" style: UIAlertActionStyleDefault handler: ^(UIAlertAction * _Nonnull action) {
+            WTLog(@"albumAction");
+            
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            [[UIViewController topVC] presentViewController: self.imagePicker animated: YES completion: nil];
+            
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler: nil];
+        
+        [alertVC addAction: photoAction];
+        [alertVC addAction: albumAction];
+        [alertVC addAction: cancelAction];
+        [[UIViewController topVC] presentViewController: alertVC animated: YES completion: nil];
+}
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    WTLog(@"info:%@", info);
+    
+    [[UIViewController topVC] dismissViewControllerAnimated: YES completion: nil];
+    //先把图片转成NSData
+    UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
+    
+    // 上传图片
+//    [self uploadImage: image];
+}
 
-//- (void)dealloc
-//{
-//    [[WTAccountViewModel shareInstance].account removeObserver: self forKeyPath: @"pastUrl"];
-//}
-
+- (UIImagePickerController *)imagePicker
+{
+    if (_imagePicker == nil)
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        _imagePicker = imagePicker;
+    }
+    return _imagePicker;
+}
 @end
