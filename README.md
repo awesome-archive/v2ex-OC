@@ -11,6 +11,7 @@
 
 ## 截图
 ![首页](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4532.PNG)
+![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_5010.PNG)
 ![节点](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4533.PNG) 
 ![话题详情](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4534.PNG)
 ![会员详情](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4535.PNG)
@@ -29,11 +30,11 @@
 * 1、刚刚注册的用户是有一段时间不能对话题做处理的，这时候对帖子操作是有问题的。
 * 2、注册不成功错误提示优化。　　　　　　已完成
 * 3、评论列表中的图文混排，点击优化。　　已完成
-* 4、搜索话题的功能。
+* 4、搜索话题的功能。	            已完成
 * 5、可以对别的用户进行添加关注和忽略。
 * 6、用户可以上传高清头像   
 * 7、添加聊天的功能
-* 8、用户详情模块的添加 已完成
+* 8、用户详情模块的添加 		已完成
 
 ## 第三方框架
   * `AFNetworking`
