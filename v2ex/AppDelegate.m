@@ -12,6 +12,8 @@
 #import "WTAccountViewModel.h"
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
+
+
 #import "WTAppDelegateTool.h"
 #import "WTPublishTopicViewController.h"
 
@@ -60,7 +62,10 @@ static WTAppDelegateTool *_appDelegateTool;
 //    }];
     
     // 8、设置3DTouch 按钮
-    [_appDelegateTool setup3DTouchItems: application];
+    if (iOS9Later)
+    {
+        [_appDelegateTool setup3DTouchItems: application];
+    }
     
     // 9、初始化第三方SDK
     [_appDelegateTool initAppSDKWithDidFinishLaunchingWithOptions: launchOptions];
@@ -74,6 +79,7 @@ static WTAppDelegateTool *_appDelegateTool;
 #pragma mark - 处理3DTouch点击事件
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
+    UITabBarController *rootVC = (UITabBarController *)application.keyWindow.rootViewController;
     NSString *type = shortcutItem.type;
     if ([type isEqualToString: @"publishTopicItem"])
     {
@@ -81,7 +87,7 @@ static WTAppDelegateTool *_appDelegateTool;
     }
     else if([type isEqualToString: @"hotTopicItem"])
     {
-        WTLog(@"热门话题")
+        rootVC.selectedIndex = 2;
     }
     else
     {

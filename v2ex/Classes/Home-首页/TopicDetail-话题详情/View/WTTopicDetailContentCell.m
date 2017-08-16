@@ -68,7 +68,7 @@
     WTLog(@"url:%@", url)
     
     // 第一次加载
-    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:"] | [url isEqualToString: @"http:/"]) && ![url containsString: @"jpg"])
+    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:"] | [url isEqualToString: @"http:/"] || [url isEqualToString: @"https:/"]) && ![url containsString: @"jpg"])
     {
         return YES;
     }
@@ -133,11 +133,10 @@
         return NO;
     }
     
-    if ([url containsString: @"www.youtube.com"])
-        return NO;
+    if ([url containsString: @"www.youtube.com"]) return NO;
     
-    if ([url containsString: @"itunes.apple.com"])
-        [[UIApplication sharedApplication] openURL: request.URL];
+    if ([url containsString: @"itunes.apple.com"]) [[UIApplication sharedApplication] openURL: request.URL];
+    
     
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])

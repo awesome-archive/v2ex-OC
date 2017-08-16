@@ -54,3 +54,5 @@
 #define WTSelectedColor WTColor(53, 153, 247)
 
 #define Test   1
+
+#define iOS9Later [[UIDevice currentDevice].systemVersion floatValue] >= 9.0f

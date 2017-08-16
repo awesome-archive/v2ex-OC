@@ -82,7 +82,7 @@ static CGFloat const WTNavViewHeight = 64;
     
 //    self.titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
 
-    self.topicDetailUrl = @"https://www.v2ex.com/t/353634#reply0";
+//    self.topicDetailUrl = @"https://www.v2ex.com/t/353634#reply0";
 }
 
 #pragma mark -设置话题详情数据

@@ -97,7 +97,7 @@ static NSString *const ID = @"topicCell";
 //    [self.tableView.mj_header beginRefreshing];
     
     // 2、判断3DTouch
-    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+    if (iOS9Later && self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
     {
         [self registerForPreviewingWithDelegate: self sourceView: self.view];
     }
