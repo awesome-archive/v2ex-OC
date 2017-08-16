@@ -102,16 +102,13 @@
             image = [self parseImageUrl: image];
             
             if ([image containsString: @"http"])
-            {
                 [images addObject: [NSURL URLWithString: image]];
-            }
             
         }
         
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithContentImages:currentIndex:)])
-        {
             [self.delegate topicDetailContentCell: self didClickedWithContentImages: images currentIndex: currentIndex - 1];
-        }
+        
         return NO;
     }
 
@@ -119,38 +116,32 @@
     if ([url containsString:@"userid://"])
     {
         NSString *username = [url stringByReplacingOccurrencesOfString: @"userid://" withString: @""];
+
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithCommentAvatar:)])
-        {
             [self.delegate topicDetailContentCell: self didClickedWithCommentAvatar: username];
-        }
+
         return NO;
     }
     
+    // 用户名点击
     if ([url containsString: @"replyusername://"])
     {
         NSString *username = [url stringByReplacingOccurrencesOfString: @"replyusername://" withString: @""];
+        
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedCellWithUsername:)])
-        {
             [self.delegate topicDetailContentCell: self didClickedCellWithUsername: username];
-        }
         return NO;
     }
     
     if ([url containsString: @"www.youtube.com"])
-    {
         return NO;
-    }
     
     if ([url containsString: @"itunes.apple.com"])
-    {
         [[UIApplication sharedApplication] openURL: request.URL];
-    }
     
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
-    {
         [self.delegate topicDetailContentCell: self didClickedWithLinkURL: request.URL];
-    }
     
     
     return NO;

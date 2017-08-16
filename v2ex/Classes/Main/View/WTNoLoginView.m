@@ -8,6 +8,7 @@
 
 #import "WTNoLoginView.h"
 #import "WTLoginViewController.h"
+#import "WTRegisterViewController.h"
 #import "UIViewController+Extension.h"
 @interface WTNoLoginView()
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -47,6 +48,11 @@
         weakSelf.loginSuccessBlock();
     };
     [[UIViewController topVC] presentViewController: loginVC animated: YES completion: nil];
+}
+
+- (IBAction)registerBtnClick
+{
+     [[UIViewController topVC] presentViewController: [WTRegisterViewController new] animated: YES completion: nil];
 }
 
 @end

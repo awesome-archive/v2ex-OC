@@ -7,7 +7,7 @@
 
     initUsernameOnclick();
 
-//    initCellOnClick();
+    initCellOnClick();
 
     function initAvatarOnclick()
     {
@@ -20,6 +20,8 @@
                 var html = this.parentNode.parentNode.innerHTML;
 
                 window.location.href= "userId://" + html.match(/member\/(\S*)\"/)[1];
+
+                getEvent().stopPropagation();
             }
         }
     }
@@ -34,6 +36,8 @@
 
                 this.href = "javascript:;";
                 window.location.href= "userId://" + this.innerHTML;
+
+                getEvent().stopPropagation();
             }
         }
     }
@@ -49,7 +53,7 @@
                 cells[i].onclick = function(){
 
                     var dark = this.getElementsByClassName("dark")[0];
-                    window.location.href= "replyusername://@" + dark.innerHTML+" ";
+                    window.location.href= "replyusername://@" + dark.innerHTML;
                 }
             }
 
@@ -118,10 +122,33 @@
             topic_content.style.padding = "10px";
         }
     }
+       
+
+    function getEvent() {
+        if (document.all) {
+            return window.event; //如果是ie
+        }
+        func = getEvent.caller;
+        while (func != null) {
+            var arg0 = func.arguments[0];
+            if (arg0) {
+                if ((arg0.constructor == Event || arg0.constructor == MouseEvent) || (typeof(arg0) == "object" && arg0.preventDefault && arg0.stopPropagation)) {
+                    return arg0;
+                }
+            }
+            func = func.caller;
+        }
+        return null;
+    }                                                        
+                                                               
 
     window.onload = function(){
 
-
+        $('a').on('click touchend', function(e) {  
+          var el = $(this);  
+          var link = el.attr('href');  
+          window.location = link;  
+       });
 
 
 

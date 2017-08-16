@@ -19,7 +19,8 @@
 
 // 评论人的头像点击
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedWithCommentAvatar:(NSString *)userName;
-    
+
+// 整个cell的点击
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName;
 @end
 

@@ -94,6 +94,7 @@ static NSString  * const commentCellID = @"commentCellID";
     
     // BUG:
         // https:/www.v2ex.com/t/376552#reply1
+        // https:/www.v2ex.com/t/374772#reply81 图片太大
     // 1、加载数据
     [self setupData];
     
@@ -432,8 +433,26 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName
 {
-    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithUsername: userName];
-    [self.navigationController pushViewController: memeberDetailVC animated: YES];
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle: @"title" message: @"message" preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    
+    UIAlertAction *thankAction = [UIAlertAction actionWithTitle: @"感谢" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *replyAction = [UIAlertAction actionWithTitle: @"回复" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [ac addAction: thankAction];
+    [ac addAction: replyAction];
+    [ac addAction: cancelAction];
+    
+    [self presentViewController: ac animated: YES completion: nil];
 }
     
 #pragma mark - WTTopicDetailContentCellDelegate

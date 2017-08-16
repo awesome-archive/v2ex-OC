@@ -29,6 +29,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmz-Pa-Zce">
                     <rect key="frame" x="44.5" y="414.5" width="126" height="38"/>
                     <state key="normal" title="注册"/>
+                    <connections>
+                        <action selector="registerBtnClick" destination="te8-OX-vcU" eventType="touchUpInside" id="Ukh-cw-B7w"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录后，可以使用搜索功能，并查看全部的v2ex的帖子" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-mL-zkr">
                     <rect key="frame" x="44.5" y="373.5" width="286" height="21"/>
