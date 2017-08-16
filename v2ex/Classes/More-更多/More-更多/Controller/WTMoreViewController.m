@@ -257,7 +257,7 @@ CGFloat const moreHeaderViewH = 150;
                                 
                                 [WTSettingItem settingItemWithTitle: @"评分" image: [UIImage imageNamed: @"more_pingfen"] operationBlock: ^{
             
-                                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://appsto.re/cn/Etidbb.i"]];
+                                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/v2ex-%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E8%80%85%E4%BB%AC%E7%9A%84%E7%A4%BE%E5%8C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/id1091339486?mt=8"]];
 
                                 }],
                                 
