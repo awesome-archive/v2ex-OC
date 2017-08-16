@@ -57,7 +57,7 @@
     
 #endif
     WTHotTopicViewController *discoveryVC = [WTHotTopicViewController new];
-    [self addOneChildViewController: discoveryVC title: @"发现" imageName: @"Tabbar_Messages_Normal" selectedImageName: nil];
+    [self addOneChildViewController: discoveryVC title: @"最热" imageName: @"tabbar_hot_normal" selectedImageName: nil];
     
     
     // 通知

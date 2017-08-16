@@ -47,6 +47,8 @@
 #pragma mark - Private
 - (void)initView
 {
+    self.textView.contentInset = UIEdgeInsetsMake(0, 0, 30, 0);
+    self.contentView.layer.masksToBounds = YES;
     self.contentView.layer.cornerRadius = 10;
     self.contentView.layer.shadowRadius = 5;
     self.contentView.layer.shadowColor = [UIColor grayColor].CGColor;

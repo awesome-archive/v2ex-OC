@@ -255,9 +255,10 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf.navigationController pushViewController: [WTPrivacyStatementViewController new] animated: YES];
                                 }],
                                 
-                                [WTSettingItem settingItemWithTitle: @"评分" image: [UIImage imageNamed: @"more_privacystatement"] operationBlock: ^{
+                                [WTSettingItem settingItemWithTitle: @"评分" image: [UIImage imageNamed: @"more_pingfen"] operationBlock: ^{
             
-            
+                                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://appsto.re/cn/Etidbb.i"]];
+
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"项目源码" image: [UIImage imageNamed: @"more_project"] operationBlock: ^{

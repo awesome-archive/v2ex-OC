@@ -218,7 +218,11 @@ static NSString * const ID = @"notificationCell";
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
+    if (self.tableViewType == WTTableViewTypeNoData)
+    {
         return [UIImage imageNamed:@"no_notification"];
+    }
+    return nil;
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
@@ -226,7 +230,15 @@ static NSString * const ID = @"notificationCell";
     NSMutableDictionary *attributes = [NSMutableDictionary new];
     [attributes setObject: WTSelectedColor forKey: NSForegroundColorAttributeName];
     [attributes setObject: [UIFont systemFontOfSize: 18 weight: UIFontWeightMedium] forKey: NSFontAttributeName];
-    return [[NSAttributedString alloc] initWithString: @"登陆" attributes:attributes];
+    if (![WTAccountViewModel shareInstance].isLogin)
+    {
+        return [[NSAttributedString alloc] initWithString: @"登陆" attributes:attributes];
+    }
+    else if (self.notificationVM.notificationItems.count == 0)
+    {
+        return [[NSAttributedString alloc] initWithString: @"重新加载" attributes:attributes];
+    }
+    return nil;
 }
 
 
@@ -237,12 +249,20 @@ static NSString * const ID = @"notificationCell";
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
 {
-    WTLoginViewController *loginVC = [WTLoginViewController new];
-    __weak typeof(self) weakSelf = self;
-    loginVC.loginSuccessBlock = ^{
-        [weakSelf loadNewData];
-    };
-    [[UIViewController topVC] presentViewController: loginVC animated: YES completion: nil];
+    if ([WTAccountViewModel shareInstance].isLogin)
+    {
+        [self.tableView.mj_header beginRefreshing];
+    }
+    else
+    {
+        WTLoginViewController *loginVC = [WTLoginViewController new];
+        __weak typeof(self) weakSelf = self;
+        loginVC.loginSuccessBlock = ^{
+            [weakSelf loadNewData];
+        };
+        [self presentViewController: loginVC animated: YES completion: nil];
+    }
+    
 }
 
 #pragma mark - Lazy

@@ -155,8 +155,6 @@
 }
 - (IBAction)avatarBtnClick
 {
-    
-    
         UIAlertController *alertVC = [UIAlertController alertControllerWithTitle: @"上传图片"
                                                                          message: nil
                                                                   preferredStyle: UIAlertControllerStyleActionSheet];
