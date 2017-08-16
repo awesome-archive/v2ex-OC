@@ -7,6 +7,7 @@
 //
 
 #import "WTTabBarController.h"
+#import "UIViewController+Extension.h"
 #import "WTHomeViewController.h"
 #import "WTNavigationController.h"
 #import "WTHotTopicViewController.h"

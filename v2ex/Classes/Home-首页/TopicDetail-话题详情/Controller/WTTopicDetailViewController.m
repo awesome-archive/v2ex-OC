@@ -64,11 +64,11 @@ static CGFloat const WTNavViewHeight = 64;
 {
     [super viewDidLoad];
     
-    // 设置话题详情数据
-    [self setupTopicDetailData];
-    
     // 初始化View
     [self initView];
+    
+    // 设置话题详情数据
+    [self setupTopicDetailData];
 }
 
 #pragma mark - 初始化View
@@ -82,6 +82,7 @@ static CGFloat const WTNavViewHeight = 64;
     
 //    self.titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
 
+    self.topicDetailUrl = @"https://www.v2ex.com/t/353634#reply0";
 }
 
 #pragma mark -设置话题详情数据

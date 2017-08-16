@@ -263,4 +263,9 @@
     }
     return _personIconBtn;
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 @end

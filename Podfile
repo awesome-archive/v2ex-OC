@@ -33,6 +33,9 @@ target 'v2ex' do
 	pod 'MarqueeLabel'
 	pod 'UMengAnalytics-NO-IDFA'
 	#pod 'GHMarkdownParser'
+	#pod "Qiniu", "~> 7.1"
+
+
 end
 
 target 'Today' do

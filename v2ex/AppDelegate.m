@@ -15,6 +15,7 @@
 #import "WTAppDelegateTool.h"
 #import "WTPublishTopicViewController.h"
 
+
 static WTAppDelegateTool *_appDelegateTool;
 
 
@@ -27,7 +28,7 @@ static WTAppDelegateTool *_appDelegateTool;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // 4、自动登录
+    // 0、自动登录
     [[WTAccountViewModel shareInstance] autoLogin];
     
     // 1、创建窗口
@@ -52,11 +53,11 @@ static WTAppDelegateTool *_appDelegateTool;
     
 #endif
 
-    // 7、显示顶层window
-    [WTTopWindow showWithStatusBarClickBlock:^{
-        
-        [_appDelegateTool searchAllScrollViewsInView: application.keyWindow];
-    }];
+//    // 7、显示顶层window
+//    [WTTopWindow showWithStatusBarClickBlock:^{
+//        
+//        [_appDelegateTool searchAllScrollViewsInView: application.keyWindow];
+//    }];
     
     // 8、设置3DTouch 按钮
     [_appDelegateTool setup3DTouchItems: application];

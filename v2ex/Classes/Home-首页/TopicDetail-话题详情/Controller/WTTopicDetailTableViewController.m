@@ -23,6 +23,7 @@
 #import "NSString+Regex.h"
 #import "WTAccountViewModel.h"
 
+#import "Masonry.h"
 #import "IDMPhotoBrowser.h"
 #import "SVProgressHUD.h"
 #import "UITableView+FDTemplateLayoutCell.h"
@@ -42,6 +43,8 @@
 @property (nonatomic, strong) NSString                                 *lastPageUrl;
 
 @property (nonatomic, strong) WTTopicDetailViewModel                   *topicDetailVM;
+/** 回复控制器 */
+@property (nonatomic, weak) WTPostReplyViewController                  *postReplyVC;
 @end
 
 /** 帖子标题 */
@@ -95,6 +98,8 @@ static NSString  * const commentCellID = @"commentCellID";
     // BUG:
         // https:/www.v2ex.com/t/376552#reply1
         // https:/www.v2ex.com/t/374772#reply81 图片太大
+    
+    
     // 1、加载数据
     [self setupData];
     
@@ -159,6 +164,12 @@ static NSString  * const commentCellID = @"commentCellID";
         
     } failure:^(NSError *error) {
     }];
+}
+
+- (void)closePostReplyView
+{
+    [self.postReplyVC.view endEditing: YES];
+    self.postReplyVC.view.alpha = 0;
 }
 
 #pragma mark - 事件
@@ -227,25 +238,20 @@ static NSString  * const commentCellID = @"commentCellID";
     }
     
     // 2、moda回复话题控制器
-    WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
-    
+    //WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
     // 2.1、回复话题的必备参数
-    postReplyVC.urlString = self.replyTopicUrl;
-    postReplyVC.once = self.topicDetailVM.once;
+    self.postReplyVC.urlString = self.replyTopicUrl;
+    self.postReplyVC.once = self.topicDetailVM.once;
     
-    // 2.2、回复之后的block操作
-    postReplyVC.completionBlock = ^(BOOL isSuccess){
-        self.topicDetailUrl = self.lastPageUrl;
-        [self setupData];
-    };
-    
-    WTNavigationController *nav = [[WTNavigationController alloc] initWithRootViewController: postReplyVC];
-    [self presentViewController: nav animated: YES completion: nil];
+    // 3、显示回复的View
+    self.postReplyVC.view.alpha = 1;
+    [self.postReplyVC.textView becomeFirstResponder];
 }
 
 #pragma mark - 帖子操作
 - (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString allowOperation:(BOOL(^)())allowOperation
 {
+    __weak typeof(self) weakSelf = self;
     // 1、先判断是否登陆
     if (![[WTAccountViewModel shareInstance] isLogin])
     {
@@ -253,7 +259,7 @@ static NSString  * const commentCellID = @"commentCellID";
         WTLoginViewController *loginVC = [WTLoginViewController new];
         
         // 1.2、登陆之后的操作
-        __weak typeof(self) weakSelf = self;
+        
         loginVC.loginSuccessBlock = ^(){
             [weakSelf setupData];
         };
@@ -284,10 +290,10 @@ static NSString  * const commentCellID = @"commentCellID";
             return;
         }
         
-        self.topicDetailVM = topicDetailVM;
-        if (self.updateTopicDetailComplection)
+        weakSelf.topicDetailVM = topicDetailVM;
+        if (weakSelf.updateTopicDetailComplection)
         {
-            self.updateTopicDetailComplection(topicDetailVM, nil);
+            weakSelf.updateTopicDetailComplection(topicDetailVM, nil);
         }
     }];
     
@@ -433,7 +439,9 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName
 {
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle: @"title" message: @"message" preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle: @"操作" message: @"" preferredStyle: UIAlertControllerStyleActionSheet];
     
     
     UIAlertAction *thankAction = [UIAlertAction actionWithTitle: @"感谢" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -441,7 +449,10 @@ static NSString  * const commentCellID = @"commentCellID";
     }];
     
     UIAlertAction *replyAction = [UIAlertAction actionWithTitle: @"回复" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        weakSelf.postReplyVC.ausername = userName;
         
+        [weakSelf replyTopic];
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -467,6 +478,33 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
+#pragma mark - Lazy Method
+- (WTPostReplyViewController *)postReplyVC
+{
+    if (_postReplyVC == nil)
+    {
+        WTPostReplyViewController *vc = [WTPostReplyViewController new];
+        _postReplyVC = vc;
+        [self addChildViewController: vc];
+        [self.tableView addSubview: vc.view];
+        
+        vc.view.alpha = 0;
+        vc.view.frame = self.view.bounds;
+        
+        // 、回复之后的block操作
+        __weak typeof(self) weakSelf = self;
+        vc.completionBlock = ^(BOOL isSuccess){
+            weakSelf.topicDetailUrl = weakSelf.lastPageUrl;
+            [weakSelf setupData];
+            [weakSelf closePostReplyView];
+        };
+        vc.closeBlock = ^(){
+            [weakSelf closePostReplyView];
+        };
+    }
+    return _postReplyVC;
 }
 
 @end

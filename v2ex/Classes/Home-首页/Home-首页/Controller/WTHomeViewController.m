@@ -35,6 +35,7 @@
     [self setupAllChildViewControllers];
     
     self.view.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+    
 }
 
 
@@ -81,10 +82,7 @@
 
 - (void)rightBarButtonItemClick
 {
-    
-    
     [self presentViewController: [WTPublishTopicViewController new] animated: YES completion: nil];
 }
 
 @end
-

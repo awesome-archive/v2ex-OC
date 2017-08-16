@@ -377,4 +377,9 @@ CGFloat const moreHeaderViewH = 150;
     return _loginC;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

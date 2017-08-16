@@ -50,8 +50,6 @@
     pan.delegate = self;
     [self.view addGestureRecognizer: pan];
     
-    self.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    
     self.navigationBar.hidden = YES;
     
 }
@@ -83,6 +81,11 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     return self.childViewControllers.count > 1;
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+    return [self topViewController];
 }
 
 
