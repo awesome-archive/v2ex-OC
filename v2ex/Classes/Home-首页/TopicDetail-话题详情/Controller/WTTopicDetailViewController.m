@@ -89,8 +89,6 @@ static CGFloat const WTNavViewHeight = 64;
 #pragma mark -设置话题详情数据
 - (void)setupTopicDetailData
 {
-
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareItemClick)];
     
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController topicDetailTableViewController];
@@ -215,12 +213,12 @@ static CGFloat const WTNavViewHeight = 64;
     [self presentViewController: loginVC animated: YES completion: nil];
 }
 
-- (void)shareItemClick
+- (IBAction)shareItemClick
 {
     NSString *url = [self.topicDetailUrl stringByReplacingOccurrencesOfString: @"https:/" withString: @""];
     
     NSString *text = [self.topicTitle stringByAppendingString: [NSString stringWithFormat: @"https://%@", url]];
-    [WTShareSDKTool shareWithText: text url: url title: @"v2ex客户端"];
+    [WTShareSDKTool shareWithText: text url: url title: self.topicTitle];
 }
 
 - (void)dealloc
