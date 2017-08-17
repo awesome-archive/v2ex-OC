@@ -25,17 +25,6 @@
                 <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
                     <rect key="frame" x="10" y="191.5" width="355" height="284"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-HA-bLN">
-                            <rect key="frame" x="0.0" y="35" width="355" height="249"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回复" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5x-VW-add">
                             <rect key="frame" x="160" y="8" width="35" height="21"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -101,6 +90,17 @@
                                 <constraint firstAttribute="trailing" secondItem="ljC-ZD-2VL" secondAttribute="trailing" constant="8" id="wZh-kB-my5"/>
                             </constraints>
                         </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-HA-bLN">
+                            <rect key="frame" x="0.0" y="34.5" width="355" height="249"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -130,10 +130,10 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="0.45650858274647887" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.30364216549295775" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="10" id="GCY-DU-Dmw"/>
-                <constraint firstItem="i5M-Pr-FkT" firstAttribute="centerY" secondItem="Ivc-an-vXw" secondAttribute="centerY" id="S1z-cD-N46"/>
+                <constraint firstItem="i5M-Pr-FkT" firstAttribute="top" secondItem="Ivc-an-vXw" secondAttribute="top" constant="191.5" id="X7W-7H-gcS"/>
                 <constraint firstItem="i5M-Pr-FkT" firstAttribute="leading" secondItem="Ivc-an-vXw" secondAttribute="leading" constant="10" id="fOG-WI-gjd"/>
             </constraints>
         </view>

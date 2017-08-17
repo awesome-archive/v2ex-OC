@@ -43,6 +43,7 @@ static CGFloat const WTNavViewHeight = 64;
 @property (weak, nonatomic) IBOutlet UIView             *tipView;
 /** 帖子的tableView */
 @property (nonatomic, weak) UITableView                 *tableView;
+
 @end
 
 @implementation WTTopicDetailViewController
@@ -94,7 +95,7 @@ static CGFloat const WTNavViewHeight = 64;
     // 1、创建话题详情数据控制器
     WTTopicDetailTableViewController *topicVC = [WTTopicDetailTableViewController topicDetailTableViewController];
     topicVC.topicDetailUrl = self.topicDetailUrl;
-    [self.normalView addSubview: topicVC.tableView];
+    [self.normalView addSubview: topicVC.view];
     _tableView = topicVC.tableView;
     [self addChildViewController: topicVC];
     
@@ -121,6 +122,7 @@ static CGFloat const WTNavViewHeight = 64;
       
         [weakSelf updateScrollViewOffset: offset];
     };
+
 }
 
 

@@ -28,7 +28,7 @@
 #import "SVProgressHUD.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
-@interface WTTopicDetailTableViewController () <WTTopicDetailHeadCellDelegate, WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
+@interface WTTopicDetailTableViewController () <WTTopicDetailHeadCellDelegate, WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate, UITableViewDataSource, UITableViewDelegate>
 /** 帖子回复ViewModel */
 @property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
 /** 当前页 */
@@ -45,6 +45,8 @@
 @property (nonatomic, strong) WTTopicDetailViewModel                   *topicDetailVM;
 /** 回复控制器 */
 @property (nonatomic, weak) WTPostReplyViewController                  *postReplyVC;
+
+
 @end
 
 /** 帖子标题 */
@@ -108,6 +110,7 @@ static NSString  * const commentCellID = @"commentCellID";
     
     // 2、添加通知
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(toolbarButtonClick:) name: WTToolBarButtonClickNotification object: nil];
+
     
     // 3、回复帖子用的url
     if ([self.topicDetailUrl containsString: @"#"]) {
@@ -488,7 +491,7 @@ static NSString  * const commentCellID = @"commentCellID";
         WTPostReplyViewController *vc = [WTPostReplyViewController new];
         _postReplyVC = vc;
         [self addChildViewController: vc];
-        [self.tableView addSubview: vc.view];
+        [self.view addSubview: vc.view];
         
         vc.view.alpha = 0;
         vc.view.frame = self.view.bounds;

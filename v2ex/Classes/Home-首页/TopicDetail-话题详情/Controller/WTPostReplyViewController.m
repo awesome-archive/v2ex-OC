@@ -65,18 +65,18 @@
 - (void)pan:(UIPanGestureRecognizer *)pan
 {
     CGPoint center = pan.view.center;
-    CGPoint translation = [pan translationInView: self.view];
+    CGPoint translation = [pan translationInView: self.view.superview];
     
     
     pan.view.center = CGPointMake(center.x + translation.x, center.y + translation.y);
     
     
-    [pan setTranslation: CGPointZero inView: self.view];
+    [pan setTranslation: CGPointZero inView: self.view.superview];
     
     if (pan.state == UIGestureRecognizerStateEnded)
     {
         //计算速度向量的长度，当他小于200时，滑行会很短
-        CGPoint velocity = [pan velocityInView: self.view];
+        CGPoint velocity = [pan velocityInView: self.view.superview];
         CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
         CGFloat slideMult = magnitude / 200;
         //NSLog(@"magnitude: %f, slideMult: %f", magnitude, slideMult); //e.g. 397.973175, slideMult: 1.989866
@@ -181,7 +181,6 @@
         
         [SVProgressHUD showSuccessWithStatus: @"回复失败，请稍候重试"];
         [SVProgressHUD dismissWithDelay: 0.5 completion:^{
-            
             if (weakSelf.completionBlock) weakSelf.completionBlock(NO);
             [weakSelf dismissViewControllerAnimated: YES completion: nil];
         }];
