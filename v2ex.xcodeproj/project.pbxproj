@@ -228,6 +228,7 @@
 		B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BB73261E9A33780098F634 /* WTPublishTopicViewController.xib */; };
 		B6BB732B1E9A5C680098F634 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB732A1E9A5C680098F634 /* UITextView+Placeholder.m */; };
 		B6BB732E1E9A623C0098F634 /* WTPublishTopicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB732D1E9A623C0098F634 /* WTPublishTopicViewModel.m */; };
+		B6C249B61F449B2100F4C564 /* fastclick.js in Resources */ = {isa = PBXBuildFile; fileRef = B6C249B51F449B2100F4C564 /* fastclick.js */; };
 		B6DEEB6F1D4664BB00E3A313 /* WTAdvertiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DEEB6E1D4664BB00E3A313 /* WTAdvertiseViewController.m */; };
 		B6DEEB781D4665D900E3A313 /* WTAdvertiseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DEEB761D4665D900E3A313 /* WTAdvertiseCell.m */; };
 		B6DEEB791D4665D900E3A313 /* WTAdvertiseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DEEB771D4665D900E3A313 /* WTAdvertiseCell.xib */; };
@@ -694,6 +695,7 @@
 		B6BB732A1E9A5C680098F634 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		B6BB732C1E9A623C0098F634 /* WTPublishTopicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPublishTopicViewModel.h; sourceTree = "<group>"; };
 		B6BB732D1E9A623C0098F634 /* WTPublishTopicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPublishTopicViewModel.m; sourceTree = "<group>"; };
+		B6C249B51F449B2100F4C564 /* fastclick.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = fastclick.js; sourceTree = "<group>"; };
 		B6DEEB6D1D4664BB00E3A313 /* WTAdvertiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAdvertiseViewController.h; sourceTree = "<group>"; };
 		B6DEEB6E1D4664BB00E3A313 /* WTAdvertiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAdvertiseViewController.m; sourceTree = "<group>"; };
 		B6DEEB751D4665D900E3A313 /* WTAdvertiseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAdvertiseCell.h; sourceTree = "<group>"; };
@@ -992,6 +994,7 @@
 		30A2D8D41D6B06EF009AFA43 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B6C249B51F449B2100F4C564 /* fastclick.js */,
 				30A2D8DD1D6B071C009AFA43 /* nodeitem.sqlite */,
 				30A2D8D51D6B06EF009AFA43 /* HY-QiHei50.ttf */,
 				30A2D8D61D6B06EF009AFA43 /* light.css */,
@@ -2524,6 +2527,7 @@
 				B6B2B3A61F1258740074B56A /* WTHotTopicViewController.xib in Resources */,
 				B6E70C4C1D4E5CD6000CC806 /* WTNotificationCell.xib in Resources */,
 				30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */,
+				B6C249B61F449B2100F4C564 /* fastclick.js in Resources */,
 				B6BB73281E9A33780098F634 /* WTPublishTopicViewController.xib in Resources */,
 				30A2D8D81D6B06EF009AFA43 /* HY-QiHei50.ttf in Resources */,
 				B6235E441D48AA2F00E5ECDB /* WTMoreNotLoginHeaderView.xib in Resources */,

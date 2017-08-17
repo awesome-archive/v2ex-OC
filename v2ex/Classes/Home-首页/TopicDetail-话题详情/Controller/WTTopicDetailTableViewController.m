@@ -441,7 +441,7 @@ static NSString  * const commentCellID = @"commentCellID";
 {
     
     __weak typeof(self) weakSelf = self;
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle: @"操作" message: @"" preferredStyle: UIAlertControllerStyleActionSheet];
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle: nil message: nil preferredStyle: UIAlertControllerStyleActionSheet];
     
     
     UIAlertAction *thankAction = [UIAlertAction actionWithTitle: @"感谢" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -459,7 +459,7 @@ static NSString  * const commentCellID = @"commentCellID";
         
     }];
     
-    [ac addAction: thankAction];
+//    [ac addAction: thankAction];
     [ac addAction: replyAction];
     [ac addAction: cancelAction];
     

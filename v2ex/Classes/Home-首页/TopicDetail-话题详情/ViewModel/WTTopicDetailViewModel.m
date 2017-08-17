@@ -202,6 +202,9 @@
     NSString *jsPath = [[NSBundle mainBundle] pathForResource: @"v2ex.js" ofType: nil];
     NSString *js = [NSString stringWithContentsOfFile: jsPath encoding: NSUTF8StringEncoding error: nil];
     
+    NSString *fastClickJsPath = [[NSBundle mainBundle] pathForResource: @"fastclick.js" ofType: nil];
+    NSString *fastClickJs = [NSString stringWithContentsOfFile: fastClickJsPath encoding: NSUTF8StringEncoding error: nil];
+    
     NSString *highlightJsPath = [[NSBundle mainBundle] pathForResource: @"highlight.js" ofType: nil];
     NSString *highlightJs = [NSString stringWithContentsOfFile: highlightJsPath encoding: NSUTF8StringEncoding error: nil];
     
@@ -213,6 +216,8 @@
     [html appendString: css];
     
     [html appendString: highlightJs];
+    
+    [html appendString: fastClickJs];
      
     [html appendString: @"</head><body>"];
     

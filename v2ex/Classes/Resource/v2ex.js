@@ -9,6 +9,13 @@
 
     initCellOnClick();
 
+    if ('addEventListener' in document)
+    {
+        document.addEventListener('DOMContentLoaded', function(){
+                FastClick.attach(document.body);
+        }, false);
+    }
+
     function initAvatarOnclick()
     {
         var avatars = document.getElementsByClassName("avatar");
@@ -106,6 +113,7 @@
                     }
 
                 }
+                getEvent().stopPropagation();
                 window.location.href="images://" + imagesUrl;
             }
         }

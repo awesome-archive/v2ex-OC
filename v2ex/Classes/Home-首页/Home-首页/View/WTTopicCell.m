@@ -19,7 +19,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WTTopicCell ()
-@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIView                 *bgView;
 
 /** 头像*/
 @property (weak, nonatomic) IBOutlet UIImageView            *iconImageV;
@@ -66,7 +66,12 @@ NS_ASSUME_NONNULL_BEGIN
     self.iconImageV.layer.masksToBounds = YES;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    // 3、阴影和圆角
     self.bgView.layer.cornerRadius = 3;
+//    self.bgView.layer.shadowOpacity = 0.5;
+//    self.bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+//    self.bgView.layer.shadowRadius = 3;
+//    self.bgView.layer.shadowOffset = CGSizeMake(3, 3);
     
 }
 

@@ -226,7 +226,7 @@ a.black:hover {
 }
 ul {
     list-style: outside none square;
-    margin: 1em 0 1em 1em;
+    /*margin: 1em 0 1em 1em;*/
     padding: 0;
 }
 ul li, ol li {
@@ -1299,7 +1299,7 @@ a.btn_hero:hover {
     padding-left: 10px;
 }
 
-.markdown_body > p > img {
+.markdown_body img {
     max-width: 100%;
 }
 .markdown_body table {

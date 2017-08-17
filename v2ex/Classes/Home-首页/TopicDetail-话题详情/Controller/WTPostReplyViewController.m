@@ -163,22 +163,29 @@
         }
         else
         {
-            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus: @"回复成功"];
             
-            weakSelf.textView.text = @"";
-            if (weakSelf.completionBlock) weakSelf.completionBlock(YES);
             
-            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+            [SVProgressHUD dismissWithDelay: 0.5 completion:^{
+                weakSelf.textView.text = @"";
+                if (weakSelf.completionBlock) weakSelf.completionBlock(YES);
+                
+                [weakSelf dismissViewControllerAnimated: YES completion: nil];
+            }];
+            
+            
         }
     } failure:^(NSError *error) {
         
         WTLog(@"error:%@", error)
         
-        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus: @"回复失败，请稍候重试"];
+        [SVProgressHUD dismissWithDelay: 0.5 completion:^{
+            
+            if (weakSelf.completionBlock) weakSelf.completionBlock(NO);
+            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+        }];
         
-        if (weakSelf.completionBlock) weakSelf.completionBlock(NO);
-        
-        [weakSelf dismissViewControllerAnimated: YES completion: nil];
     }];
 }
 
