@@ -51,6 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.bgView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewCellBgViewBackgroundColor);
     
     self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+//    self.titleLabel.textColor = [UIColor blackColor];
     
     self.authorLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
     
@@ -58,7 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     [self.nodeBtn dk_setTitleColorPicker: DKColorPickerWithKey(WTTopicCellLabelColor) forState: UIControlStateNormal];
     
-    self.commentCountLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
+    self.commentCountLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+
     
     // 2、节点
     self.nodeBtn.layer.cornerRadius = 1.5;

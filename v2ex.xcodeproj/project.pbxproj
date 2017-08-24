@@ -48,7 +48,6 @@
 		30884B751DBA1926008FF94F /* WTConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30884B741DBA1926008FF94F /* WTConversationListViewController.m */; };
 		30884B771DBA1AE3008FF94F /* WTMessageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30884B761DBA1AE3008FF94F /* WTMessageViewController.storyboard */; };
 		3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */; };
-		3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */; };
 		30A2D8C31D6AE5FF009AFA43 /* WTNodeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8C21D6AE5FF009AFA43 /* WTNodeCollectionViewController.m */; };
 		30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A2D8CB1D6AE971009AFA43 /* WTNodeCollectionCell.m */; };
 		30A2D8CE1D6AE971009AFA43 /* WTNodeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D8CC1D6AE971009AFA43 /* WTNodeCollectionCell.xib */; };
@@ -350,8 +349,6 @@
 		30884B741DBA1926008FF94F /* WTConversationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTConversationListViewController.m; sourceTree = "<group>"; };
 		30884B761DBA1AE3008FF94F /* WTMessageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WTMessageViewController.storyboard; sourceTree = "<group>"; };
 		3099B53C1D9A935B00B2DA46 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3099B5491D9AA22E00B2DA46 /* WTGoogleSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTGoogleSearchController.h; sourceTree = "<group>"; };
-		3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTGoogleSearchController.m; sourceTree = "<group>"; };
 		309E321A1D657A8E00BE3DBC /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
 		309E321B1D657A8E00BE3DBC /* libCTAssetsPickerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCTAssetsPickerController.a; path = "Pods/../build/Debug-iphoneos/CTAssetsPickerController/libCTAssetsPickerController.a"; sourceTree = "<group>"; };
 		309E321C1D657A8E00BE3DBC /* libDKNightVersion.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDKNightVersion.a; path = "Pods/../build/Debug-iphoneos/DKNightVersion/libDKNightVersion.a"; sourceTree = "<group>"; };
@@ -929,39 +926,6 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
-		3099B5451D9AA1A600B2DA46 /* Search-搜索 */ = {
-			isa = PBXGroup;
-			children = (
-				3099B5461D9AA1A600B2DA46 /* Controller */,
-				3099B5471D9AA1A600B2DA46 /* Model */,
-				3099B5481D9AA1A600B2DA46 /* View */,
-			);
-			path = "Search-搜索";
-			sourceTree = "<group>";
-		};
-		3099B5461D9AA1A600B2DA46 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3099B5491D9AA22E00B2DA46 /* WTGoogleSearchController.h */,
-				3099B54A1D9AA22E00B2DA46 /* WTGoogleSearchController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		3099B5471D9AA1A600B2DA46 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3099B5481D9AA1A600B2DA46 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		30A2D8BC1D6AE5E9009AFA43 /* NodeCollection-节点收藏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1196,7 +1160,6 @@
 			isa = PBXGroup;
 			children = (
 				B6BB731F1E9A335D0098F634 /* PublishTopic-发表帖子 */,
-				3099B5451D9AA1A600B2DA46 /* Search-搜索 */,
 				30A2D8F41D6C5101009AFA43 /* MemberDetail-会员详情 */,
 				B60FA04D1D45C09100F98CF3 /* Home-首页 */,
 				B60FA0661D45C09100F98CF3 /* TopicDetail-话题详情 */,
@@ -2755,7 +2718,6 @@
 				B6B2B3A81F1258740074B56A /* WTSearchTopicRsp.m in Sources */,
 				B6DEEB7C1D46677600E3A313 /* WTAdvertiseItem.m in Sources */,
 				303CF23D1D6AA1C300D697F7 /* WTNode.m in Sources */,
-				3099B54B1D9AA22E00B2DA46 /* WTGoogleSearchController.m in Sources */,
 				B6179FBB1ECFC0FE00B17036 /* UIViewController+JTNavigationExtension.m in Sources */,
 				B60FA17B1D45C09200F98CF3 /* WTHomeViewController.m in Sources */,
 				B60FA1CC1D45C09200F98CF3 /* UITextField+Placeholder.m in Sources */,
