@@ -8,7 +8,7 @@
 
 #import "WTHomeViewController.h"
 #import "WTTopicDetailViewController.h"
-#import "WTGoogleSearchController.h"
+
 #import "WTPublishTopicViewController.h"
 
 #import "WTURLConst.h"
@@ -77,7 +77,7 @@
 #pragma mark - 事件
 - (void)leftBarButtonItemClick
 {
-    [self presentViewController: [WTGoogleSearchController new] animated: YES completion: nil];
+//    [self presentViewController: [WTGoogleSearchController new] animated: YES completion: nil];
 }
 
 - (void)rightBarButtonItemClick
