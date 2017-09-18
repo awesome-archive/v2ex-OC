@@ -144,6 +144,8 @@ static CGFloat const WTSearchBarNormalMargin = 10;
     }
     
     self.currentPage = 0;
+    
+    self.tabBarItem.badgeValue = @"1";
 }
 
 

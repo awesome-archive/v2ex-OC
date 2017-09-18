@@ -20,7 +20,6 @@
 #import "WTTopicDetailViewController.h"
 #import "JPUSHService.h"
 #import "WTConversationViewController.h"
-#import <AMapFoundationKit/AMapFoundationKit.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -89,6 +88,9 @@ static WTAppDelegateTool *_appDelegateTool;
     
     // 7、初始化友盟
     [self initMobClick];
+    
+    // 8、主题文件
+    [DKColorTable sharedColorTable].file = @"themes.txt";
     
 }
 
