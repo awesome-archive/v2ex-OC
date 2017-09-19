@@ -90,6 +90,30 @@
     return false;
 }
 
+#pragma mark - 解析未读节点
++ (void)parseUnreadWithDoc:(TFHpple *)doc
+{
+    return;
+    // 1、判断是否有未读数据
+    TFHppleElement *unreadE = [doc peekAtSearchWithXPathQuery: @"//input[@class='super special button']"];
+    NSString *value = nil;
+    if (unreadE)
+        value = [unreadE objectForKey: @"value"];
+    
+    // 2、有未读数据
+    if (value)
+    {
+        NSInteger unread = 0;
+        NSArray *values = [value componentsSeparatedByString: @" "];
+        if (values.count > 0)
+            unread = [[values objectAtIndex: 0] integerValue];
+        
+        // 3、发送未读通知
+        if (unread > 0)
+            [[NSNotificationCenter defaultCenter] postNotificationName: WTUnReadNotificationNotification object: nil userInfo: @{WTUnReadNumKey : @(unread)}];
+    }
+}
+
 
 /**
  解析HTML　头像变成清晰的

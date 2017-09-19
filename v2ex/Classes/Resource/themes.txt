@@ -11,7 +11,8 @@ NORMAL   NIGHT    RED
 #AAAAAA  #222222  #dedede WTTopicCellLabelColor
 #DCDDDE  #222222  #dedede UINavbarLineViewBackgroundColor
 #3599F7  #222222  #dedede WTNodeSelectedColor
-#EFEFEF  #222222  #dedede  UINavbarBackgroundColor
+#EFEFEF  #222222  #dedede UINavbarBackgroundColor
+#3599F7  #222222  #dedede UITabbarTintColor
 
 
   

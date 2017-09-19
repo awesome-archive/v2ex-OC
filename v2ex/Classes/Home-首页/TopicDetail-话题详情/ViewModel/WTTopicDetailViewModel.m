@@ -456,7 +456,7 @@
         topicDetailVM.currentPage = [currentPageE.content integerValue];
         
         // 10、未读的消息
-        [self parseTopicDetailWithDoc: doc];
+        [WTHTMLExtension parseUnreadWithDoc: doc];
     }
     
     
@@ -465,29 +465,7 @@
 }
 
 
-#pragma mark - 解析未读节点
-+ (void)parseUnreadWithDoc:(TFHpple *)doc
-{
-    // 1、判断是否有未读数据
-    TFHppleElement *unreadE = [doc peekAtSearchWithXPathQuery: @"//input[@class='super special button']"];
-    NSString *value = nil;
-    if (unreadE)
-        value = [unreadE objectForKey: @"value"];
-    
-    // 2、有未读数据
-    if (value)
-    {
-        NSInteger unread = 0;
-        NSArray *values = [value componentsSeparatedByString: @" "];
-        if (values.count > 0)
-            unread = [[values objectAtIndex: 0] integerValue];
-        
-        if (unread > 0)
-        {
-            
-        }
-    }
-}
+
 
 #pragma mark - 解析评论数组
 + (NSMutableArray<WTTopicDetailViewModel *> *)parseTopicCommentWithDoc:(TFHpple *)doc

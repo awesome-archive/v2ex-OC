@@ -6,8 +6,9 @@
 //  Copyright © 2016年 无头骑士 GJ. All rights reserved.
 //
 
-#import <RongIMKit/RongIMKit.h>
+//#import <RongIMKit/RongIMKit.h>
+#import <UIKit/UIKit.h>
 
-@interface WTConversationListViewController : RCConversationListViewController
+@interface WTConversationListViewController : UIViewController
 
 @end

@@ -48,3 +48,9 @@ CGFloat const WTUserInfoHeadViewHeight = 200;
 /** 用户控制器toolBar的高度*/
 CGFloat const WTUserInfoToolBarHeight = 44;
 
+/** 未读通知 */
+NSString * const WTUnReadNotificationNotification = @"WTUnReadNotificationNotification";
+
+/** 未读通知个数 */
+NSString * const WTUnReadNumKey = @"WTUnReadNumKey";
+

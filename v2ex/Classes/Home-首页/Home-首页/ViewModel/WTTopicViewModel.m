@@ -186,6 +186,8 @@
         [self.topics addObjectsFromArray: topics];
     }
 
+    // 10、未读的消息
+    [WTHTMLExtension parseUnreadWithDoc: doc];
 }
 
 

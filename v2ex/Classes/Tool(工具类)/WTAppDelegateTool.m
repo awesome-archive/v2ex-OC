@@ -7,7 +7,7 @@
 //
 
 #import "WTAppDelegateTool.h"
-#import <RongIMKit/RongIMKit.h>
+//#import <RongIMKit/RongIMKit.h>
 #import "UMMobClick/MobClick.h"
 
 
@@ -18,14 +18,14 @@
 #import <Bugly/Bugly.h>
 #import "IQKeyboardManager.h"
 #import "WTTopicDetailViewController.h"
-#import "JPUSHService.h"
-#import "WTConversationViewController.h"
+//#import "JPUSHService.h"
+//#import "WTConversationViewController.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
 
 
-@interface WTAppDelegateTool()<JPUSHRegisterDelegate, RCIMUserInfoDataSource>
+@interface WTAppDelegateTool()/*<JPUSHRegisterDelegate, RCIMUserInfoDataSource>*/
 
 @end
 
@@ -76,15 +76,15 @@ static WTAppDelegateTool *_appDelegateTool;
     
     
     
-#if Test == 0
-    // 5、初始化极光推送
-    [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
-    
-    // 6、初始化高德地图
-    [AMapServices sharedServices].apiKey = @"837660a1b113cc1edc65353e38414c2b";
-#else
-    
-#endif
+//#if Test == 0
+//    // 5、初始化极光推送
+//    [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
+//    
+//    // 6、初始化高德地图
+//    [AMapServices sharedServices].apiKey = @"837660a1b113cc1edc65353e38414c2b";
+//#else
+//    
+//#endif
     
     // 7、初始化友盟
     [self initMobClick];
@@ -131,22 +131,22 @@ static WTAppDelegateTool *_appDelegateTool;
 #pragma mark 初始化融云
 - (void)initRCIM
 {
-    NSString *token = [WTAccountViewModel shareInstance].userItem.rongToken;
-    
-    [[RCIM sharedRCIM] initWithAppKey: @"ik1qhw0911lep"];
-    
-    [[RCIM sharedRCIM] setUserInfoDataSource: self];
-    
-    [[RCIM sharedRCIM] connectWithToken: token success:^(NSString *userId) {
-        WTLog(@"登陆成功。当前登录的用户ID：%@", userId);
-    } error:^(RCConnectErrorCode status) {
-        WTLog(@"登陆的错误码为:%ld", status);
-    } tokenIncorrect:^{
-        //token过期或者不正确。
-        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
-        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-        WTLog(@"token错误");
-    }];
+//    NSString *token = [WTAccountViewModel shareInstance].userItem.rongToken;
+//    
+//    [[RCIM sharedRCIM] initWithAppKey: @"ik1qhw0911lep"];
+//    
+//    [[RCIM sharedRCIM] setUserInfoDataSource: self];
+//    
+//    [[RCIM sharedRCIM] connectWithToken: token success:^(NSString *userId) {
+//        WTLog(@"登陆成功。当前登录的用户ID：%@", userId);
+//    } error:^(RCConnectErrorCode status) {
+//        WTLog(@"登陆的错误码为:%ld", status);
+//    } tokenIncorrect:^{
+//        //token过期或者不正确。
+//        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
+//        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
+//        WTLog(@"token错误");
+//    }];
 }
 
 #pragma mark - 初始化友盟统计
@@ -167,13 +167,13 @@ static WTAppDelegateTool *_appDelegateTool;
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     WTLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken])
-    [JPUSHService registerDeviceToken:deviceToken];
+//    [JPUSHService registerDeviceToken:deviceToken];
 }
 
 #pragma mark - iOS10以下系统接收通知
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-    [JPUSHService handleRemoteNotification:userInfo];
+//    [JPUSHService handleRemoteNotification:userInfo];
     WTLog(@"iOS7及以上系统，收到通知:%@", [self logDic:userInfo])
     completionHandler(UIBackgroundFetchResultNewData);
 }
@@ -181,25 +181,25 @@ static WTAppDelegateTool *_appDelegateTool;
 
 - (void)initJPushWithDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-        entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
-        [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-#endif
-    } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        //可以添加自定义categories
-        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                          UIUserNotificationTypeSound |
-                                                          UIUserNotificationTypeAlert)
-                                              categories:nil];
-    }
-    
-    //如不需要使用IDFA，advertisingIdentifier 可为nil
-    [JPUSHService setupWithOption: launchOptions appKey: @"ee0077cf29d6b3aa6f40f280"
-                          channel: nil
-                 apsForProduction: NO
-            advertisingIdentifier: nil];
+//    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+//#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+//        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+//        entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
+//        [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+//#endif
+//    } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+//        //可以添加自定义categories
+//        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+//                                                          UIUserNotificationTypeSound |
+//                                                          UIUserNotificationTypeAlert)
+//                                              categories:nil];
+//    }
+//    
+//    //如不需要使用IDFA，advertisingIdentifier 可为nil
+//    [JPUSHService setupWithOption: launchOptions appKey: @"ee0077cf29d6b3aa6f40f280"
+//                          channel: nil
+//                 apsForProduction: NO
+//            advertisingIdentifier: nil];
 }
 
 #pragma mark - OpenURL
@@ -274,71 +274,71 @@ static WTAppDelegateTool *_appDelegateTool;
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #pragma mark- JPUSHRegisterDelegate
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
-    NSDictionary * userInfo = notification.request.content.userInfo;
-    
-    UNNotificationRequest *request = notification.request; // 收到推送的请求
-    UNNotificationContent *content = request.content; // 收到推送的消息内容
-    
-    NSNumber *badge = content.badge;  // 推送消息的角标
-    NSString *body = content.body;    // 推送消息体
-    UNNotificationSound *sound = content.sound;  // 推送消息的声音
-    NSString *subtitle = content.subtitle;  // 推送消息的副标题
-    NSString *title = content.title;  // 推送消息的标题
-    
-    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]])
-    {
-        [JPUSHService handleRemoteNotification:userInfo];
-        WTLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
-    }
-    else
-    {
-        // 判断为本地通知
-        WTLog(@"iOS10 前台收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
-    }
-    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
-}
-
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
-    
-    NSDictionary * userInfo = response.notification.request.content.userInfo;
-    UNNotificationRequest *request = response.notification.request; // 收到推送的请求
-    UNNotificationContent *content = request.content; // 收到推送的消息内容
-    
-    NSNumber *badge = content.badge;  // 推送消息的角标
-    NSString *body = content.body;    // 推送消息体
-    UNNotificationSound *sound = content.sound;  // 推送消息的声音
-    NSString *subtitle = content.subtitle;  // 推送消息的副标题
-    NSString *title = content.title;  // 推送消息的标题
-    
-    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]])
-    {
-        [JPUSHService handleRemoteNotification:userInfo];
-        WTLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
-    }
-    else
-    {
-        // 判断为本地通知
-        WTLog(@"iOS10 收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
-    }
-    
-    completionHandler();  // 系统要求执行这个方法
-}
-
-- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion
-{
-    WTUserItem *userItem = [WTUserItem new];
-    userItem.uid = [userId integerValue];
-    [WTAccountViewModel getUserInfoFromMisaka14WithUserItem: userItem success:^(WTUserItem *userItem) {
-        
-        RCUserInfo *userInfo = [[RCUserInfo alloc] initWithUserId: [NSString stringWithFormat: @"%zd", userItem.uid] name: userItem.username portrait: userItem.avatarUrl];
-        
-        completion(userInfo);
-        
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+//    NSDictionary * userInfo = notification.request.content.userInfo;
+//    
+//    UNNotificationRequest *request = notification.request; // 收到推送的请求
+//    UNNotificationContent *content = request.content; // 收到推送的消息内容
+//    
+//    NSNumber *badge = content.badge;  // 推送消息的角标
+//    NSString *body = content.body;    // 推送消息体
+//    UNNotificationSound *sound = content.sound;  // 推送消息的声音
+//    NSString *subtitle = content.subtitle;  // 推送消息的副标题
+//    NSString *title = content.title;  // 推送消息的标题
+//    
+//    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]])
+//    {
+//        [JPUSHService handleRemoteNotification:userInfo];
+//        WTLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
+//    }
+//    else
+//    {
+//        // 判断为本地通知
+//        WTLog(@"iOS10 前台收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
+//    }
+//    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
+//}
+//
+//- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+//    
+//    NSDictionary * userInfo = response.notification.request.content.userInfo;
+//    UNNotificationRequest *request = response.notification.request; // 收到推送的请求
+//    UNNotificationContent *content = request.content; // 收到推送的消息内容
+//    
+//    NSNumber *badge = content.badge;  // 推送消息的角标
+//    NSString *body = content.body;    // 推送消息体
+//    UNNotificationSound *sound = content.sound;  // 推送消息的声音
+//    NSString *subtitle = content.subtitle;  // 推送消息的副标题
+//    NSString *title = content.title;  // 推送消息的标题
+//    
+//    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]])
+//    {
+//        [JPUSHService handleRemoteNotification:userInfo];
+//        WTLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
+//    }
+//    else
+//    {
+//        // 判断为本地通知
+//        WTLog(@"iOS10 收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
+//    }
+//    
+//    completionHandler();  // 系统要求执行这个方法
+//}
+//
+//- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion
+//{
+//    WTUserItem *userItem = [WTUserItem new];
+//    userItem.uid = [userId integerValue];
+//    [WTAccountViewModel getUserInfoFromMisaka14WithUserItem: userItem success:^(WTUserItem *userItem) {
+//        
+//        RCUserInfo *userInfo = [[RCUserInfo alloc] initWithUserId: [NSString stringWithFormat: @"%zd", userItem.uid] name: userItem.username portrait: userItem.avatarUrl];
+//        
+//        completion(userInfo);
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//}
 
 #endif
 // log NSSet with UTF8

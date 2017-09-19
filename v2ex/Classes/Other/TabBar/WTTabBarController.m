@@ -62,6 +62,7 @@
     
     // 通知
     WTUserNotificationViewController *notificationVC = [WTUserNotificationViewController new];
+    notificationVC.view.backgroundColor = notificationVC.view.backgroundColor;
     [self addOneChildViewController: notificationVC title: @"通知" imageName: @"Tabbar_Notifications_Normal" selectedImageName: nil];
     
     
@@ -82,12 +83,12 @@
     
     
     // 设置文字正常状态属性
-    //NSDictionary *textAttrNormal = @{NSForegroundColorAttributeName : [UIColor colorWithHexString: WTNormalColor]};
-    //[vc.tabBarItem setTitleTextAttributes: textAttrNormal forState: UIControlStateNormal];
+//    NSDictionary *textAttrNormal = @{NSForegroundColorAttributeName : [UIColor colorWithHexString: WTNormalColor]};
+//    [vc.tabBarItem setTitleTextAttributes: textAttrNormal forState: UIControlStateNormal];
     
     // 设置文字选中状态下属性
-    //NSDictionary *textAttrSelected = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
-    //[vc.tabBarItem setTitleTextAttributes: textAttrSelected forState: UIControlStateSelected];
+//    NSDictionary *textAttrSelected = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
+//    [vc.tabBarItem setTitleTextAttributes: textAttrSelected forState: UIControlStateSelected];
     
     WTNavigationController *nav = [[WTNavigationController alloc] initWithRootViewController: vc];
     [self addChildViewController: nav];

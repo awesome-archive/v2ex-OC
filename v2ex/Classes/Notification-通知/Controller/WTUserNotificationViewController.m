@@ -38,20 +38,30 @@ static NSString * const ID = @"notificationCell";
 
 @property (nonatomic, assign) WTTableViewType                  tableViewType;
 
-
 @property (weak, nonatomic) IBOutlet UITableView               *tableView;
 
 @end
 
 @implementation WTUserNotificationViewController
 
+#pragma mark - Life
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    // 1、初始化View
+    [self initView];
     
-    self.titleLabel.text = @"提醒";
+    // 2、初始化数据
+    [self loadData];
     
+    // 3、初始化通知
+    [self initNoti];
+}
+
+#pragma mark - Private 
+- (void)initView
+{
     [self navViewWithTitle: @"提醒" hideBack: YES];
     
     self.tableView.tableFooterView = [UIView new];
@@ -74,10 +84,6 @@ static NSString * const ID = @"notificationCell";
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
-    
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadData) name: WTLoginStateChangeNotification object: nil];
-    
-    [self loadData];
 }
 
 - (void)loadData
@@ -98,26 +104,36 @@ static NSString * const ID = @"notificationCell";
     }
 }
 
-#pragma mark - 加载数据
+- (void)initNoti
+{
+    // 1、登陆状态变更通知
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadData) name: WTLoginStateChangeNotification object: nil];
+    
+    // 2、未读通知
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(unReadNotification:) name: WTUnReadNotificationNotification object: nil];
+}
+
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
     
+    __weak typeof(self) weakSelf = self;
     self.notificationVM.page = 1;
-    
     [self.notificationVM getUserNotificationsSuccess:^{
         
-        if (self.notificationVM.notificationItems.count == 0)
-            self.tableViewType = WTTableViewTypeNoData;
+        if (weakSelf.notificationVM.notificationItems.count == 0)
+            weakSelf.tableViewType = WTTableViewTypeNoData;
         else
-            self.tableViewType = WTTableViewTypeNormal;
+            weakSelf.tableViewType = WTTableViewTypeNormal;
         
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
         
-        [self.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+        weakSelf.navigationController.tabBarItem.badgeValue = nil;
         
     } failure:^(NSError *error) {
-        [self.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -142,6 +158,15 @@ static NSString * const ID = @"notificationCell";
     {
         [self.tableView.mj_footer endRefreshing];
     }
+}
+
+- (void)unReadNotification:(NSNotification *)noti
+{
+    // 1、未读个数
+    NSInteger unReadNum = [[noti.userInfo objectForKey: WTUnReadNumKey] integerValue];
+    
+    // 2、设置角标
+    self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat: @"%ld", unReadNum];
 }
 
 #pragma mark - 事件

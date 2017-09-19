@@ -69,4 +69,12 @@
  */
 + (NSString *)filterGarbageData:(NSString *)html;
 
+
+/**
+ 解析未读节点
+
+ @param doc 未读消息
+ */
++ (void)parseUnreadWithDoc:(TFHpple *)doc;
+
 @end

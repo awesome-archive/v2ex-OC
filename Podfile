@@ -21,17 +21,13 @@ target 'v2ex' do
 	pod 'UITableView+FDTemplateLayoutCell'
 	pod "DKNightVersion"
 	pod 'FMDB'
-	pod 'RongCloudIMKit'
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
 	pod 'Bugly'
-	pod 'JPush'
 	pod 'JGProgressHUD'
 	pod 'IDMPhotoBrowser'
 	pod 'MarqueeLabel'
 	pod 'UMengAnalytics-NO-IDFA'
-	#pod 'GHMarkdownParser'
-	#pod "Qiniu", "~> 7.1"
 
 
 end

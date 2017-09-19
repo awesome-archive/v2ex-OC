@@ -56,3 +56,9 @@ UIKIT_EXTERN NSString * const WTNoExistMemberTip;
 
 /** 话题主颜色　*/
 UIKIT_EXTERN NSString * const WTTopicCellMainColor;
+
+/** 未读通知 */
+UIKIT_EXTERN NSString * const WTUnReadNotificationNotification;
+
+/** 未读通知个数 */
+UIKIT_EXTERN NSString * const WTUnReadNumKey;

@@ -82,9 +82,9 @@
 // 发送消息
 - (IBAction)sendBtnClick
 {
-    WTConversationViewController *conversationVC = [[WTConversationViewController alloc] initWithConversationType:ConversationType_PRIVATE targetId: [NSString stringWithFormat: @"%lu", self.userItem.uid]];
-    conversationVC.title = self.userItem.username;
-    [self.navigationController pushViewController: conversationVC animated: YES];
+//    WTConversationViewController *conversationVC = [[WTConversationViewController alloc] initWithConversationType:ConversationType_PRIVATE targetId: [NSString stringWithFormat: @"%lu", self.userItem.uid]];
+//    conversationVC.title = self.userItem.username;
+//    [self.navigationController pushViewController: conversationVC animated: YES];
 }
 
 @end
