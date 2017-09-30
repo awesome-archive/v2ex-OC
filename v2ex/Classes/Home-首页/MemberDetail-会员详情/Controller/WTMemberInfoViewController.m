@@ -7,7 +7,6 @@
 //
 
 #import "WTMemberInfoViewController.h"
-#import "WTConversationViewController.h"
 #import "WTMemberInfoTableViewController.h"
 
 #import "WTMemberItem.h"
@@ -57,10 +56,7 @@
 }
 
 - (void)initView
-{
-    // 设置导航栏的View
-    [self setTempNavImageView];
-    
+{    
     self.title = @"详细资料";
     
     // 如果用户并没有用v2ex客户端登陆过，那就不能聊天

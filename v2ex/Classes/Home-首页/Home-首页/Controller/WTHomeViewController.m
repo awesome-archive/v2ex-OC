@@ -9,8 +9,6 @@
 #import "WTHomeViewController.h"
 #import "WTTopicDetailViewController.h"
 
-#import "WTPublishTopicViewController.h"
-
 #import "WTURLConst.h"
 #import "UIBarButtonItem+Extension.h"
 #import "UIViewController+Extension.h"
@@ -34,7 +32,7 @@
     // 添加子控制器
     [self setupAllChildViewControllers];
     
-    self.view.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+    self.view.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
     
 }
 
@@ -53,13 +51,7 @@
 #pragma mark - 初始化导航栏
 - (void)setupNav
 {
-    
     [self.navigationController setNavigationBarHidden: YES animated: NO];
-//    self.navigationItem.title = @"v2ex";
-
-    //self.navigationItem.leftBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_search"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(leftBarButtonItemClick)];
-    
-    //self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_write"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(rightBarButtonItemClick)];
 }
 
 #pragma mark 添加子控制器
@@ -72,17 +64,6 @@
         topicVC.urlString = [WTHTTPBaseUrl stringByAppendingString: node.nodeURL];
         [self addChildViewController: topicVC];
     }
-}
-
-#pragma mark - 事件
-- (void)leftBarButtonItemClick
-{
-//    [self presentViewController: [WTGoogleSearchController new] animated: YES completion: nil];
-}
-
-- (void)rightBarButtonItemClick
-{
-    [self presentViewController: [WTPublishTopicViewController new] animated: YES completion: nil];
 }
 
 @end

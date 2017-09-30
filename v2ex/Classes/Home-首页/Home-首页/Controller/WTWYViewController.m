@@ -7,6 +7,7 @@
 //  网易新闻架构 控制器
 
 #import "WTWYViewController.h"
+#import "Masonry.h"
 NS_ASSUME_NONNULL_BEGIN
 
 #define WTColorButton(r , g ,b) [UIColor colorWithRed:(r)  green:(g)  blue:(b) alpha:1]
@@ -79,12 +80,10 @@ NS_ASSUME_NONNULL_BEGIN
     self.titleScrollView = titleScrollView;
     
     // 是否有导航栏
-//    CGFloat y = self.navigationController.navigationBarHidden ? 20 : 64;
     CGFloat y = 0;
-    //CGFloat y = 0;
-    titleScrollView.frame = CGRectMake(0, y, WTScreenWidth, WTTitleViewHeight);
+    titleScrollView.frame = CGRectMake(0, 0, WTScreenWidth, WTTitleViewHeight);
     
-    titleScrollView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    titleScrollView.backgroundColor = [UIColor colorWithHexString: @"#EFEFEF"];
 }
 
 #pragma mark 设置内容滚动视图
@@ -96,7 +95,10 @@ NS_ASSUME_NONNULL_BEGIN
     self.contentScrollView = contentScrollView;
     
     // 2、设置尺寸
-    contentScrollView.frame = CGRectMake(0, 0, WTScreenWidth, WTScreenHeight);
+    [contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+    
     
     // 3、设置代理
     contentScrollView.delegate = self;
@@ -106,7 +108,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)initLineView
 {
     UIView *lineView = [UIView new];
-    lineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    lineView.backgroundColor = [UIColor colorWithHexString: @"#DCDDDE"];
     lineView.alpha = 0.3;
     lineView.frame = CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), WTScreenWidth, 1);
     [self.view addSubview: lineView];
@@ -161,7 +163,8 @@ NS_ASSUME_NONNULL_BEGIN
             btn.width += 25;
             btn.x = (w - btn.width) * 0.5;
             btn.height = btnH;
-            btn.y = (self.titleScrollView.height - btnH) * 0.5 + 10;
+            WTLog(@"height:%ld", WTNavigationBarCenterY)
+            btn.y = (self.titleScrollView.height - btnH) * 0.5 + WTNavigationBarCenterY;
         }
         
         // 默认点击第一个按钮
@@ -213,7 +216,7 @@ NS_ASSUME_NONNULL_BEGIN
     // 1、设置按钮颜色
     self.selectedBtn.backgroundColor = [UIColor clearColor];
     [self.selectedBtn setTitleColor: [UIColor lightGrayColor] forState: UIControlStateNormal];
-    selectedBtn.dk_backgroundColorPicker =  DKColorPickerWithKey(WTNodeSelectedColor);
+    selectedBtn.backgroundColor = [UIColor colorWithHexString: @"#3599F7"];
     [selectedBtn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
     
     // 2、让标题居中

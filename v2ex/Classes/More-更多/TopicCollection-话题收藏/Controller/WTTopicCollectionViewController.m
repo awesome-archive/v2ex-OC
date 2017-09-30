@@ -45,14 +45,6 @@ NSString * const WTTopicCollectionCellIdentifier = @"WTTopicCollectionCellIdenti
     // 1、设置View
     [self setupView];
     
-//    self.myFollowingVM = [WTMyFollowingViewModel new];
-//    
-//    // 2、登陆过
-//    if ([[WTAccountViewModel shareInstance] isLogin])
-//    {
-//        // 2、开始下拉刷新
-//        [self.tableView.mj_header beginRefreshing];
-//    }
 }
 
 // 设置View

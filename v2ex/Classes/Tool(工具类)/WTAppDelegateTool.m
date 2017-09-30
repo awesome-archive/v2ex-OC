@@ -75,22 +75,8 @@ static WTAppDelegateTool *_appDelegateTool;
     [Bugly startWithAppId:@"f20a87e6ba"];
     
     
-    
-//#if Test == 0
-//    // 5、初始化极光推送
-//    [self initJPushWithDidFinishLaunchingWithOptions: launchOptions];
-//    
-//    // 6、初始化高德地图
-//    [AMapServices sharedServices].apiKey = @"837660a1b113cc1edc65353e38414c2b";
-//#else
-//    
-//#endif
-    
     // 7、初始化友盟
     [self initMobClick];
-    
-    // 8、主题文件
-    [DKColorTable sharedColorTable].file = @"themes.txt";
     
 }
 
@@ -99,7 +85,7 @@ static WTAppDelegateTool *_appDelegateTool;
 {
     UIApplicationShortcutItem *publishTopicItem = [[UIApplicationShortcutItem alloc] initWithType: @"publishTopicItem" localizedTitle: @"搜索话题" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Search"] userInfo: nil];
     UIApplicationShortcutItem *hotTopicItem = [[UIApplicationShortcutItem alloc] initWithType: @"hotTopicItem" localizedTitle: @"热门话题" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Hot"] userInfo: nil];
-//    UIApplicationShortcutItem *notificationItem = [[UIApplicationShortcutItem alloc] initWithType: @"notificationItem" localizedTitle: @"消息" localizedSubtitle: @"" icon: [UIApplicationShortcutIcon iconWithTemplateImageName: @"3dTouch_Icon_Notification"] userInfo: nil];
+
     application.shortcutItems = @[hotTopicItem, publishTopicItem];
 }
 

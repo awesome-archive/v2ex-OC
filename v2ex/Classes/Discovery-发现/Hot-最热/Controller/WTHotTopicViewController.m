@@ -119,7 +119,7 @@ static CGFloat const WTSearchBarNormalMargin = 10;
         [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.offset(40);
             make.height.offset(20);
-            make.centerY.offset(10);
+            make.centerY.offset(WTNavigationBarCenterY);
             make.right.offset(-10);
         }];
     }
@@ -134,7 +134,7 @@ static CGFloat const WTSearchBarNormalMargin = 10;
         self.tableView.estimatedRowHeight = 100;
         
         // 背景颜色
-        self.tableView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+        self.tableView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
         
         // 下拉刷新
         __weak typeof(self) weakSelf = self;
@@ -144,7 +144,6 @@ static CGFloat const WTSearchBarNormalMargin = 10;
     }
     
     self.currentPage = 0;
-    
 }
 
 
@@ -157,6 +156,10 @@ static CGFloat const WTSearchBarNormalMargin = 10;
     [self addChildViewController: vc];
     [self.topicContentView addSubview: vc.view];
     vc.view.frame = self.topicContentView.bounds;
+    // 设置内边距
+//    vc.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    // 设置滚动条的内边距
+//    vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset;
     self.topicVC = vc;
 }
 

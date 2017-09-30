@@ -47,19 +47,18 @@ NS_ASSUME_NONNULL_BEGIN
 {
     [super awakeFromNib];
     
-    self.contentView.dk_backgroundColorPicker =  DKColorPickerWithKey(UITableViewBackgroundColor);
-    self.bgView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewCellBgViewBackgroundColor);
+    self.contentView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    self.bgView.backgroundColor = [UIColor colorWithHexString: @"#FFFFFF"];
     
-    self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
-//    self.titleLabel.textColor = [UIColor blackColor];
+    self.titleLabel.textColor = [UIColor colorWithHexString: @"#494949"];
     
-    self.authorLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
+    self.authorLabel.textColor = [UIColor colorWithHexString: @"#AAAAAA"];
     
-    self.lastReplyTimeLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
+    self.lastReplyTimeLabel.textColor = self.authorLabel.textColor;
     
-    [self.nodeBtn dk_setTitleColorPicker: DKColorPickerWithKey(WTTopicCellLabelColor) forState: UIControlStateNormal];
+    [self.nodeBtn setTitleColor: self.authorLabel.textColor forState: UIControlStateNormal];
     
-    self.commentCountLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+    self.commentCountLabel.textColor = self.titleLabel.textColor;
 
     
     // 2、节点
@@ -70,10 +69,10 @@ NS_ASSUME_NONNULL_BEGIN
     
     // 3、阴影和圆角
     self.bgView.layer.cornerRadius = 3;
-//    self.bgView.layer.shadowOpacity = 0.5;
-//    self.bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-//    self.bgView.layer.shadowRadius = 3;
-//    self.bgView.layer.shadowOffset = CGSizeMake(3, 3);
+    self.bgView.layer.shadowOpacity = 0.5;
+    self.bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.bgView.layer.shadowRadius = 3;
+    self.bgView.layer.shadowOffset = CGSizeMake(3, 3);
     
 }
 

@@ -24,6 +24,7 @@
 /** 导航栏线条 */
 @property (weak, nonatomic) IBOutlet UIView *navLineView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navViewHeightLayoutCons;
 
 @end
 
@@ -51,11 +52,11 @@
  */
 - (void)setupView
 {
-    self.navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    self.navView.backgroundColor = [UIColor colorWithHexString: @"#EFEFEF"];
     
-    self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    self.navLineView.backgroundColor = [UIColor colorWithHexString: @"#DCDDDE"];
     
-    
+    self.navViewHeightLayoutCons.constant = WTNavigationBarMaxY;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -66,7 +67,7 @@
     control.selectedSegmentIndex = 0;
     control.width = 150;
     control.x = (WTScreenWidth - control.width) * 0.5;
-    control.y = (WTTitleViewHeight - control.height) * 0.5 + 10;
+    control.y = (WTTitleViewHeight - control.height) * 0.5 + WTNavigationBarCenterY;
     control.tintColor = WTSelectedColor;
     
     [control setTitleTextAttributes: @{NSForegroundColorAttributeName : WTSelectedColor} forState: UIControlStateNormal];

@@ -19,7 +19,6 @@
 #import "WTWebViewController.h"
 #import "WTNodeCollectionViewController.h"
 #import "WTMyTopicViewController.h"
-#import "WTV2GroupViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"

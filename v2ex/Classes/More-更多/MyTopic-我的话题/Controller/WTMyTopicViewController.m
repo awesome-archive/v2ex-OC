@@ -23,7 +23,7 @@
 
 static NSString *const ID = @"myTopicCell";
 
-@interface WTMyTopicViewController () <WTTopicCellDelegate>
+@interface WTMyTopicViewController () <UITableViewDataSource, UITableViewDelegate, WTTopicCellDelegate>
 
 @property (nonatomic, strong) WTTopicViewModel *topicVM;
 @property (nonatomic, strong) NSString *urlString;

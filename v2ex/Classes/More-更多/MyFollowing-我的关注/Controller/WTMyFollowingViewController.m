@@ -71,6 +71,7 @@ NSString * const WTMyFollowingCellIdentifier = @"WTMyFollowingCellIdentifier";
         // 空白tableView
         self.tableView.emptyDataSetSource = self;
         self.tableView.emptyDataSetDelegate = self;
+        
     }
     
 }

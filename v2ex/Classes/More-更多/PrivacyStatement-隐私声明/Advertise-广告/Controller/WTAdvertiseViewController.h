@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTAdvertiseViewController : UITableViewController
+@interface WTAdvertiseViewController : UIViewController
 
 @end

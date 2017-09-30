@@ -16,9 +16,9 @@ typedef NS_ENUM(NSUInteger, WTTableViewType) {
     WTTableViewTypeError,
 };
 /** 标题View的高度 */
-UIKIT_EXTERN CGFloat const WTTitleViewHeight;
+//UIKIT_EXTERN CGFloat const WTTitleViewHeight;
 /** 导航栏的Y的最大值  */
-UIKIT_EXTERN CGFloat const WTNavigationBarMaxY;
+//UIKIT_EXTERN CGFloat const WTNavigationBarMaxY;
 /** TabBar的高度*/
 UIKIT_EXTERN CGFloat const WTTabBarHeight;
 /** 通用边距*/

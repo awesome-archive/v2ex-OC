@@ -14,7 +14,6 @@
 #import "WTNodeViewController.h"
 #import "WTMoreViewController.h"
 #import "WTNodeViewController.h"
-#import "WTMessageViewController.h"
 #import "WTUserNotificationViewController.h"
 
 @interface WTTabBarController () <UITabBarDelegate>
@@ -30,9 +29,9 @@
     // 添加所有的子控制器
     [self addChildViewControllers];
     
-    self.tabBar.dk_barTintColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    self.tabBar.barTintColor = [UIColor colorWithHexString: @"#EFEFEF"];
 
-    self.tabBar.dk_tintColorPicker =  DKColorPickerWithKey(UITabbarTintColor);
+    self.tabBar.tintColor = [UIColor colorWithHexString: @"#3599F7"];
     
     self.tabBar.translucent = NO;
     
@@ -49,13 +48,6 @@
     WTNodeViewController *nodeVC = [[WTNodeViewController alloc] init];
     [self addOneChildViewController: nodeVC title: @"节点" imageName: @"Tabbar_Discover_Normal" selectedImageName: nil];
     
-#if Test == 0
-    // 消息
-    WTMessageViewController *messageVC = [WTMessageViewController new];
-    [self addOneChildViewController: messageVC title: @"消息" imageName: @"Tabbar_Messages_Normal" selectedImageName: nil];
-#else
-    
-#endif
     WTHotTopicViewController *discoveryVC = [WTHotTopicViewController new];
     [self addOneChildViewController: discoveryVC title: @"最热" imageName: @"tabbar_hot_normal" selectedImageName: nil];
     
@@ -76,7 +68,7 @@
 #pragma mark - 添加单个子控制器
 - (void)addOneChildViewController:(UIViewController *)vc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
-//    vc.edgesForExtendedLayout = UIRectEdgeNone;
+//  vc.edgesForExtendedLayout = UIRectEdgeNone; 
     vc.tabBarItem.title = title;
     vc.tabBarItem.image = [UIImage imageNamed: imageName];
    // vc.tabBarItem.selectedImage = [UIImage imageNamed: selectedImageName];

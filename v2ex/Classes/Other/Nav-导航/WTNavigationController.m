@@ -46,9 +46,9 @@
      */
     
     // 2、添加全屏返回手势
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget: self.interactivePopGestureRecognizer.delegate action: @selector(handleNavigationTransition:)];
-    pan.delegate = self;
-    [self.view addGestureRecognizer: pan];
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget: self.interactivePopGestureRecognizer.delegate action: @selector(handleNavigationTransition:)];
+//    pan.delegate = self;
+//    [self.view addGestureRecognizer: pan];
     
     self.navigationBar.hidden = YES;
     
@@ -64,8 +64,9 @@
         
         //UIViewController *prevVc = self.childViewControllers[self.childViewControllers.count - 1];
         
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage: [UIImage imageNamed:@"nav_back_normal"] highImage: nil target: self action: @selector(back) title: nil];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage: [UIImage imageNamed:@"common_back_new"] highImage: nil target: self action: @selector(back) title: nil];
     }
+    viewController.edgesForExtendedLayout = UIRectEdgeNone;
     viewController.extendedLayoutIncludesOpaqueBars = YES;
     viewController.navigationController.navigationBar.hidden = YES;
     [super pushViewController: viewController animated: animated];

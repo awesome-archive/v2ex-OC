@@ -53,7 +53,7 @@ static NSString * const headerViewReuseIdentifier = @"headerViewReuseIdentifier"
     layout.minimumInteritemSpacing = WTHotNodeMinimumInteritemSpacing;
     layout.minimumLineSpacing = WTHotNodeCellSpacing;
     
-    self.collectionView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+    self.collectionView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
     
     self.collectionView.bounces = NO;
     

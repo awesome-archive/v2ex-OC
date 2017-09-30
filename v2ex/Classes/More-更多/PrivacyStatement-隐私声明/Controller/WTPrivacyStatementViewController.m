@@ -7,6 +7,7 @@
 //  隐私声明 
 
 #import "WTPrivacyStatementViewController.h"
+#import "UIViewController+Extension.h"
 #import "SVProgressHUD.h"
 @interface WTPrivacyStatementViewController () <UIWebViewDelegate>
 
@@ -19,10 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"服务条款与协议";
+    // 1、导航栏
+    [self navViewWithTitle: @"隐私说明"];
     
     // 2、加载网页
-    NSURL *url = [NSURL URLWithString: @"http://www.misaka14.com"];
+    NSURL *url = [NSURL URLWithString: @"https://www.misaka14.com/V2EX_JAVA/privacy.html"];
     NSURLRequest *request = [NSURLRequest requestWithURL: url];
     [self.webView loadRequest: request];
     

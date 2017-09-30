@@ -7,6 +7,7 @@
 //  鸣谢控制器
 
 #import "WTAdvertiseViewController.h"
+#import "UIViewController+Extension.h"
 #import "WTAdvertiseViewModel.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTAdvertiseCell.h"
@@ -15,7 +16,8 @@
 
 NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
 
-@interface WTAdvertiseViewController ()
+@interface WTAdvertiseViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray<WTAdvertiseItem *> *advertiseItems;
 @end
 
@@ -32,7 +34,7 @@ NSString * const advertiseCellIdentifier = @"advertiseCellIdentifier";
 // 加载View
 - (void)setupView
 {
-    self.title = @"广告中心";
+    [self navViewWithTitle: @"广告中心"];
     
     self.tableView.estimatedRowHeight = 180;
     self.tableView.rowHeight = UITableViewAutomaticDimension;

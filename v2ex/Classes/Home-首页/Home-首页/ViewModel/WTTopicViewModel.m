@@ -96,11 +96,11 @@
             TFHppleElement *nodeElement;
             if (nodeEs.count > 0)
             {
-                nodeElement = [cellItem searchWithXPathQuery: @"//a[@class='node']"][0];
+                nodeElement = [cellItem searchWithXPathQuery: @"//a[@class='node']"].firstObject;
             }
             
-            TFHppleElement *titleElement = [cellItem searchWithXPathQuery: @"//span[@class='item_title']//a"][0];
-            TFHppleElement *authorElement = [cellItem searchWithXPathQuery: @"//strong"][0];
+            TFHppleElement *titleElement = [cellItem searchWithXPathQuery: @"//span[@class='item_title']//a"].firstObject;
+            TFHppleElement *authorElement = [cellItem searchWithXPathQuery: @"//strong"].firstObject;
             NSArray<TFHppleElement *> *commentArray = [cellItem searchWithXPathQuery: @"//a[@class='count_livid']"];
             NSArray<TFHppleElement *> *smallFadeArray = [cellItem searchWithXPathQuery: @"//span[@class='small fade']"];
             NSArray<TFHppleElement *> *countOrangeArray = [cellItem searchWithXPathQuery: @"//a[@class='count_orange']"];

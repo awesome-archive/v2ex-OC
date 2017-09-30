@@ -39,6 +39,7 @@ static NSString * const ID = @"notificationCell";
 @property (nonatomic, assign) WTTableViewType                  tableViewType;
 
 @property (weak, nonatomic) IBOutlet UITableView               *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopLayoutCons;
 
 @end
 

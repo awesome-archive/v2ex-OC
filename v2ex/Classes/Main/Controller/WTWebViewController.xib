@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -48,7 +48,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="KuC-FZ-A2S"/>
                         <barButtonItem style="plain" id="oHT-1K-90B">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hYf-Uy-Rjo">
-                                <rect key="frame" x="171" y="6" width="32" height="32"/>
+                                <rect key="frame" x="171.5" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="webView_refresh"/>
                                 <state key="disabled" image="webView_refresh_disabled"/>
@@ -92,10 +92,10 @@
     </objects>
     <resources>
         <image name="webView_next" width="32" height="32"/>
-        <image name="webView_next_disabled" width="64" height="64"/>
+        <image name="webView_next_disabled" width="32" height="32"/>
         <image name="webView_refresh" width="32" height="32"/>
-        <image name="webView_refresh_disabled" width="64" height="64"/>
+        <image name="webView_refresh_disabled" width="32" height="32"/>
         <image name="webView_return" width="32" height="32"/>
-        <image name="webView_return_disabled" width="64" height="64"/>
+        <image name="webView_return_disabled" width="32" height="32"/>
     </resources>
 </document>

@@ -19,9 +19,9 @@
 {
     [super awakeFromNib];
 
-    self.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewCellBgViewBackgroundColor);
+    self.backgroundColor = [UIColor whiteColor];
     
-    self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+    self.titleLabel.textColor = [UIColor colorWithHexString: @"#494949"];
 }
 
 - (void)setTitle:(NSString *)title

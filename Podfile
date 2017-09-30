@@ -19,7 +19,6 @@ target 'v2ex' do
 	pod 'CTAssetsPickerController'
 	pod 'IQKeyboardManager'
 	pod 'UITableView+FDTemplateLayoutCell'
-	pod "DKNightVersion"
 	pod 'FMDB'
 	pod 'DZNEmptyDataSet'
 	pod 'pop'

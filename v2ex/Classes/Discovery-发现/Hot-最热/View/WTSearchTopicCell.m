@@ -33,7 +33,7 @@
     
     self.timeLabel.textColor = WTColor(140, 140, 140);
     
-    self.contentView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
+    self.contentView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
     
     self.bgView.layer.cornerRadius = 3;
 }

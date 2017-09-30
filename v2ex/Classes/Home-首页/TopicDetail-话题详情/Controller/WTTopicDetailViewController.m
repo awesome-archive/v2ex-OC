@@ -28,6 +28,8 @@ static CGFloat const WTNavViewHeight = 64;
 @property (weak, nonatomic) IBOutlet UIView             *navView;
 /** 导航栏用户信息ContentView */
 @property (weak, nonatomic) IBOutlet UIView             *navUserInfoContentView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navContetnViewHeightLayoutCons;
+
 
 /** 用户名　*/
 @property (weak, nonatomic) IBOutlet UILabel            *titleLabel;
@@ -75,11 +77,13 @@ static CGFloat const WTNavViewHeight = 64;
 #pragma mark - 初始化View
 - (void)initView
 {
-    self.navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    self.navContetnViewHeightLayoutCons.constant = WTNavigationBarMaxY;
     
-    self.navUserInfoContentView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    self.navView.backgroundColor = [UIColor colorWithHexString: @"#EFEFEF"];
     
-    self.navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    self.navUserInfoContentView.backgroundColor = [UIColor colorWithHexString: @"#EFEFEF"];
+    
+    self.navLineView.backgroundColor = [UIColor colorWithHexString: @"#DCDDDE"];
     
 //    self.titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
 
@@ -100,7 +104,7 @@ static CGFloat const WTNavViewHeight = 64;
     // 2、设置属性
     topicVC.tableView.contentInset = UIEdgeInsetsMake(0, 0, WTToolBarHeight, 0);
     topicVC.tableView.separatorInset = topicVC.tableView.contentInset;
-    
+    topicVC.tableView.contentSize = CGSizeMake(WTScreenWidth,  WTScreenHeight);
     // 3、设置布局
     [topicVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.normalView);
@@ -190,7 +194,7 @@ static CGFloat const WTNavViewHeight = 64;
         // 3、布局
         [toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(self.normalView);
-            make.height.equalTo(@(WTToolBarHeight));
+            make.height.equalTo(@(WTToolBarHeight + WTTabBarCenterY));
         }];
     }
     return _toolBarView;

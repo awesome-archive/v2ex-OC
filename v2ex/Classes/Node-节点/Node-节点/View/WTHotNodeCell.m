@@ -23,7 +23,7 @@
 //    self.backgroundColor = WTRandomColor;
     self.titleLabel.font = [UIFont QiHeiforSize: 15];
     
-    self.titleLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+    self.titleLabel.textColor = [UIColor colorWithHexString: @"#494949"];
 }
 
 - (void)setNodeItem:(WTNodeItem *)nodeItem

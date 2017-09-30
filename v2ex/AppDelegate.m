@@ -15,7 +15,6 @@
 
 
 #import "WTAppDelegateTool.h"
-#import "WTPublishTopicViewController.h"
 
 
 static WTAppDelegateTool *_appDelegateTool;

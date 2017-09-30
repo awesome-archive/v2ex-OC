@@ -49,6 +49,7 @@
     
     // 设置顶部额外滚动区域
     self.tableView.contentInset = UIEdgeInsetsMake(YZHeadViewH + YZTabBarH , 0, 0, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
     YZTableView *tableView = (YZTableView *)self.tableView;
     tableView.tabBar = _tabBar;

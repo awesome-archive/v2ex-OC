@@ -30,9 +30,9 @@
     [super awakeFromNib];
   //  self.contentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
     
-    self.authorLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+    self.authorLabel.textColor = [UIColor colorWithHexString: @"#494949"];
     
-    self.createTimeLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicCellLabelColor);
+    self.createTimeLabel.textColor = [UIColor colorWithHexString: @"#AAAAAA"];
     
 //    self.authorLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
     

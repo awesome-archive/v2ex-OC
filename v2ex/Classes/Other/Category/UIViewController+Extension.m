@@ -18,14 +18,9 @@
     UIImageView *greeenView = [[UIImageView alloc] init];
     greeenView.image = [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]];
     [self.view addSubview: greeenView];
-    greeenView.frame = CGRectMake(0, 0, WTScreenWidth, 64);
+    greeenView.frame = CGRectMake(0, 0, WTScreenWidth, WTNavigationBarMaxY);
 }
 
-/** 设置导航栏的背景图片 */
-- (void)setNavBackgroundImage
-{
-    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
-}
 
 + (void)load
 {
@@ -71,15 +66,15 @@
 {
     UIView *navView = [UIView new];
     self.nav_View = navView;
-    navView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarBackgroundColor);
+    navView.backgroundColor = [UIColor colorWithHexString: @"#EFEFEF"];
     [self.view addSubview: navView];
     [navView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.offset(64);
+        make.height.offset(WTNavigationBarMaxY);
         make.top.left.right.offset(0);
     }];
     
     UIView *navLineView = [UIView new];
-    navLineView.dk_backgroundColorPicker = DKColorPickerWithKey(UINavbarLineViewBackgroundColor);
+    navLineView.backgroundColor = [UIColor colorWithHexString: @"#DCDDDE"];
     navLineView.alpha = 0.3;
     [navView addSubview: navLineView];
     [navLineView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,11 +87,11 @@
         UILabel *titleLabel = [UILabel new];
         titleLabel.text = title;
         self.titleLabel = titleLabel;
-        titleLabel.dk_textColorPicker =  DKColorPickerWithKey(UITabBarTitleColor);
+        titleLabel.textColor =  [UIColor blackColor];
         [titleLabel sizeToFit];
         [navView addSubview: titleLabel];
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.offset(10);
+            make.centerY.offset(WTNavigationBarCenterY);
             make.centerX.offset(0);
         }];
     }
@@ -106,12 +101,14 @@
     if (hideBack == NO)
     {
         UIButton *backBtn = [UIButton new];
-        [backBtn setImage: [UIImage imageNamed: @"nav_back_normal"] forState: UIControlStateNormal];
+        [backBtn setImage: [UIImage imageNamed: @"common_back_new"] forState: UIControlStateNormal];
         [backBtn sizeToFit];
         [navView addSubview: backBtn];
         [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(8);
-            make.centerY.offset(10);
+            make.centerY.offset(WTNavigationBarCenterY);
+            make.width.offset(20);
+            make.height.offset(41);
         }];
         [backBtn addTarget: self action: @selector(backBtnClick) forControlEvents: UIControlEventTouchUpInside];
     }

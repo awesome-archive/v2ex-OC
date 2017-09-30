@@ -56,29 +56,14 @@ static NSString *const ID = @"topicCell";
 - (void)setUpView
 {
     // 1、设置tableView一些属性
-//    self.tableView.emptyDataSetSource = self;
-//    self.tableView.emptyDataSetDelegate = self;
-    // 1、headerView
-    {
-        UIView *headerView = [UIView new];
-        headerView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
-        headerView.width = WTScreenWidth;
-        headerView.height = 10;
-        self.tableView.tableHeaderView = headerView;
-    }
     
     // 2、自动计算
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     
     // 3、其他属性
-    self.tableView.dk_backgroundColorPicker = DKColorPickerWithKey(UITableViewBackgroundColor);
-    
+    self.tableView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    // 设置内边距
-    self.tableView.contentInset = UIEdgeInsetsMake(WTTitleViewHeight, 0, WTTabBarHeight, 0);
-    // 设置滚动条的内边距
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
     // 4、注册cell
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([WTTopicCell class]) bundle: nil] forCellReuseIdentifier: ID];
@@ -93,8 +78,6 @@ static NSString *const ID = @"topicCell";
     {
         self.tableView.mj_footer = nil;
     }
-    
-//    [self.tableView.mj_header beginRefreshing];
     
     // 2、判断3DTouch
     if (iOS9Later && self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
