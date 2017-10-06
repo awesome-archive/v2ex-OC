@@ -24,6 +24,8 @@
     self.contentView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
     
     // 取消反弹
+//    self.webView.userInteractionEnabled = NO;
+    self.webView.scrollView.scrollEnabled = NO;
     self.webView.scrollView.bounces = NO;
     // 监听scrollView的contentSize
     [self.webView.scrollView addObserver: self forKeyPath: @"contentSize" options: NSKeyValueObservingOptionNew context: nil];
@@ -157,5 +159,7 @@
     }
     return url;
 }
+
+
 
 @end

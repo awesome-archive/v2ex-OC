@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/TopicDetail-&#x8bdd;&#x9898;&#x8be6;&#x60c5;/ViewModel/WTTopicDetailViewModel.m"
-            timestampString = "527607780.463152"
+            timestampString = "528972524.839275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "360"
@@ -99,13 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/Home-&#x9996;&#x9875;/Controller/WTTopicViewController.m"
-            timestampString = "528309719.482742"
+            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/Controller/WTLoginViewController.m"
+            timestampString = "528990760.899954"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-setUpView"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-textFieldEditingChanged"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,13 +115,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/Home-&#x9996;&#x9875;/Controller/WTWYViewController.m"
-            timestampString = "528425871.78022"
+            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/TopicDetail-&#x8bdd;&#x9898;&#x8be6;&#x60c5;/Controller/WTPostReplyViewController.m"
+            timestampString = "528990760.900191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-setupContentScrollView"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-postClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Category/UITableView+Extension.m"
-            timestampString = "528425871.780357"
+            filePath = "v2ex/Classes/Home-&#x9996;&#x9875;/Home-&#x9996;&#x9875;/ViewModel/WTTopicViewModel.m"
+            timestampString = "528990760.900387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "+exchangeViewDidLoad"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-nodeTopicsWithData:topicType:avartorURL:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

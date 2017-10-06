@@ -46,9 +46,9 @@
      */
     
     // 2、添加全屏返回手势
-//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget: self.interactivePopGestureRecognizer.delegate action: @selector(handleNavigationTransition:)];
-//    pan.delegate = self;
-//    [self.view addGestureRecognizer: pan];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget: self.interactivePopGestureRecognizer.delegate action: @selector(handleNavigationTransition:)];
+    pan.delegate = self;
+    [self.view addGestureRecognizer: pan];
     
     self.navigationBar.hidden = YES;
     

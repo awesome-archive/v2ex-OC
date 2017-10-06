@@ -45,8 +45,8 @@
 @property (nonatomic, strong) WTTopicDetailViewModel                   *topicDetailVM;
 /** 回复控制器 */
 @property (nonatomic, weak) WTPostReplyViewController                  *postReplyVC;
-
-
+/** 子控制器 */
+@property (nonatomic, strong) NSMutableArray<UIViewController *>       *childVC;
 @end
 
 /** 帖子标题 */
@@ -130,11 +130,14 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)setupView
 {
     self.tableView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    
+    self.childVC = [NSMutableArray array];
 }
 
 #pragma mark - 加载数据
 - (void)setupData
 {
+    
     [self parseUrl];
     
     
@@ -490,8 +493,7 @@ static NSString  * const commentCellID = @"commentCellID";
     {
         WTPostReplyViewController *vc = [WTPostReplyViewController new];
         _postReplyVC = vc;
-        [self addChildViewController: vc];
-        [self.view addSubview: vc.view];
+        
         
         vc.view.alpha = 0;
         vc.view.frame = [UIScreen mainScreen].bounds;
@@ -507,6 +509,8 @@ static NSString  * const commentCellID = @"commentCellID";
             [weakSelf closePostReplyView];
         };
         vc.closeBlock = ^(){
+//            WTTopicDetailContentCell *cell = weakSelf.tableView.visibleCells.lastObject;
+//            [cell reloadData];
             [weakSelf closePostReplyView];
         };
     }

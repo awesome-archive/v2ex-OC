@@ -121,7 +121,7 @@
  @param html 要解析html
  @return 解析后的html
  */
-+ (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html
++ (NSString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html
 {
     NSString *newHTML =  [html stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 35px; max-height: 35px;"];
     

@@ -34,4 +34,6 @@
 @property (nonatomic, weak) id<WTTopicDetailContentCellDelegate> delegate;
 /** webView加载完成的block */
 @property (nonatomic, copy) void(^updateCellHeightBlock)(CGFloat height);
+
+
 @end

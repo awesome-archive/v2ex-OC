@@ -169,8 +169,7 @@
             [SVProgressHUD dismissWithDelay: 0.5 completion:^{
                 weakSelf.textView.text = @"";
                 if (weakSelf.completionBlock) weakSelf.completionBlock(YES);
-                
-                [weakSelf dismissViewControllerAnimated: YES completion: nil];
+            
             }];
             
             

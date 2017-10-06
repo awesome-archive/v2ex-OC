@@ -27,12 +27,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-hM-8uF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lY-fR-ewb">
-                                                <rect key="frame" x="12" y="52" width="12" height="20"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lY-fR-ewb">
+                                                <rect key="frame" x="12" y="52" width="25" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="iq0-Jd-762"/>
+                                                    <constraint firstAttribute="width" constant="25" id="l8I-WP-CHn"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="common_back_new">
+                                                <state key="normal" image="common_back_new">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                                 <connections>

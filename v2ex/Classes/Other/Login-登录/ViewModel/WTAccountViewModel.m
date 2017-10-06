@@ -42,7 +42,7 @@ static WTAccountViewModel *_instance;
         _instance.userItem = [WTUserItem new];
         _instance.account.usernameOrEmail = [[NSUserDefaults standardUserDefaults] objectForKey: WTUsernameOrEmailKey];
         _instance.account.password = [[NSUserDefaults standardUserDefaults] objectForKey: WTPasswordKey];
-
+        
     });
     return _instance;
 }
@@ -56,12 +56,8 @@ static WTAccountViewModel *_instance;
     {
         NSString *username = self.account.usernameOrEmail;
         NSString *password = self.account.password;
-
-        [[WTAccountViewModel shareInstance] getOnceWithUsername: username password: password success:^{
-            
-        } failure:^(NSError *error) {
-            
-        }];
+        
+    
     }
 }
 
@@ -111,54 +107,35 @@ static WTAccountViewModel *_instance;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
 /**
- *  登陆
- *
- *  @param username 用户名
- *  @param password 密码
- *  @param success  请求成功的回调
- *  @param failure  请求失败的回调
+ 获取登陆请求参数（验证码、用户名、密码、once）
+ 
+ @param success 请求成功的回调
+ @param failure 请求失败的回调
  */
-- (void)getOnceWithUsername:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(NSError *error))failure
+- (void)getLoginReqItemWithSuccess:(void(^)(WTLoginRequestItem *loginRequestItem))success failure:(void(^)(NSError *error))failure
 {
     void (^errorBlock)(NSError *error) = ^(NSError *error){
         if (failure)
-        {
             failure(error);
-        }
     };
-    
-    
-//    // 1、切换帐号有缓存问题
-//    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//    for (NSHTTPCookie *cookie in [storage cookies])
-//    {
-//        [storage deleteCookie:cookie];
-//    }
     
     // 2、获取网页中once的值
     NSString *urlString = [WTHTTPBaseUrl stringByAppendingPathComponent: WTLoginUrl];
+    
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: urlString param: nil success:^(id responseObject) {
         
         // 2.1、获取表单中请求参数的key和value
         WTLoginRequestItem *loginRequestItem = [WTAccountViewModel getLoginRequestParamWithData: responseObject];
         
-        if (loginRequestItem == nil)
-        {
-            WTLog(@"loginRequestItem获取不到")
-            return;
-        }
+        if (success)
+            success(loginRequestItem);
         
-        // 2.2、登录
-        [[WTAccountViewModel shareInstance] loginWithUrlString: urlString loginRequestItem: loginRequestItem username:username password: password success:^{
-            if (success)
-            {
-                success();
-            }
-        } failure: errorBlock];
-       
+        
     } failure: errorBlock];
 }
+
 
 /**
  *  签到
@@ -166,58 +143,59 @@ static WTAccountViewModel *_instance;
  */
 - (void)pastWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure
 {
-    NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: self.account.pastUrl];
+    void(^failureBlock)(NSError *error) = ^(NSError *error){
+        if (failure) failure(error);
+    };
     
-    [[NetworkTool shareInstance] GETWithUrlString: url success:^(id data) {
+    [[NetworkTool shareInstance] GETWithUrlString: @"https://www.v2ex.com/mission/daily" success:^(id data) {
         
-        NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+        NSString *pastUrl = [WTHTTPBaseUrl stringByAppendingPathComponent: [self getPastStateWithData: data]];
         
-        if ([html containsString: @"查看我的账户余额"])
-        {
-            if (success)
+        [[NetworkTool shareInstance] GETWithUrlString: pastUrl success:^(id data) {
+            
+            NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+            
+            if ([html containsString: @"查看我的账户余额"])
             {
-                success();
+                if (success) success();
+                
+                self.account.past = YES;
+                return;
             }
             
-            self.account.pastUrl = nil;
-            return;
-        }
-        
-        if (failure)
-        {
-            failure([[NSError alloc] initWithDomain: WTDomain code: WTErrorCode userInfo: @{WTErrorMessageKey: @"其他错误"}]);
-        }
-        
-    } failure:^(NSError *error) {
-        
-        if (failure)
-        {
-            failure(error);
-        }
-        
-    }];
+            if (failure)
+            {
+                failure([[NSError alloc] initWithDomain: WTDomain code: WTErrorCode userInfo: @{WTErrorMessageKey: @"其他错误"}]);
+            }
+            
+        } failure: failureBlock];
+    } failure: failureBlock];
+    
+    
 }
 
 /**
  *  登录
  *
- *  @param urlString        url
  *  @param loginRequestItem 请求参数key和value
  *  @param username         username的值
  *  @param password         password的值
+ *  @param verificationCodeValue 验证码值
  *  @param success          请求成功的回调
  *  @param failure          请求失败的回调
  */
-- (void)loginWithUrlString:(NSString *)urlString loginRequestItem:(WTLoginRequestItem *)loginRequestItem username:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(NSError *error))failure
+- (void)loginWithLoginRequestItem:(WTLoginRequestItem *)loginRequestItem username:(NSString *)username password:(NSString *)password verificationCodeValue:(NSString *)verificationCodeValue success:(void (^)())success failure:(void (^)(NSError *error))failure
 {
+    NSString *urlString = [WTHTTPBaseUrl stringByAppendingPathComponent: WTLoginUrl];
+    
     // 1、请求参数
-    NSDictionary *param = [loginRequestItem getLoginRequestParam: username passwordValue: password];
+    NSDictionary *param = [loginRequestItem getLoginRequestParam: username passwordValue: password verificationCodeValue: verificationCodeValue];
     
     [[NetworkTool shareInstance] requestFirefoxWithMethod: HTTPMethodTypePOST url: urlString param: param success:^(id responseObject) {
         
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
         
-
+        
         
         // 判断是否登陆成功
         if ([html containsString: @"notifications"])        // 登陆成功
@@ -226,14 +204,9 @@ static WTAccountViewModel *_instance;
             [NSKeyedArchiver archiveRootObject: self.account toFile: WTFilePath];
             
             // 是否已经领取过奖励
-            if ([html containsString: @"领取今日的登录奖励"])
-            {
-                
-            }
-            
-            // 登陆成功获取用户的信息
-            [self getUserInfoWithResponseObject: responseObject param: param loginRequestItem: loginRequestItem success: success failure: failure];
-            
+            self.account.past = ![html containsString: @"领取今日的登录奖励"];
+    
+            [self saveUsernameAndPassword];
             
             return;
         }
@@ -267,7 +240,7 @@ static WTAccountViewModel *_instance;
 
 /**
  获取用户的详细信息
-
+ 
  @param responseObject   responseObject
  @param param            请求参数
  @param loginRequestItem 请求参数
@@ -276,43 +249,7 @@ static WTAccountViewModel *_instance;
  */
 - (void)getUserInfoWithResponseObject:(NSData *)responseObject param:(NSDictionary *)param loginRequestItem:(WTLoginRequestItem *)loginRequestItem success:(void (^)())success failure:(void (^)(NSError *error))failure
 {
-    // 获取签到的网址
-    [[NetworkTool shareInstance] GETWithUrlString: @"https://www.v2ex.com/mission/daily" success:^(id data) {
-        self.account = [self getUserInfoWithData: responseObject usernameOrEmail: param[loginRequestItem.usernameKey] password: param[loginRequestItem.passwordKey]];
-        
-        [self saveUsernameAndPassword];
-        self.account.pastUrl = [self getPastStateWithData: data];
-        
-        // 登陆misaka14服务器
-        WTUserItem *userItem = [WTUserItem new];
-        userItem.avatarUrl = [self.account.avatarURL absoluteString];
-        userItem.username = self.account.usernameOrEmail;
-#if Test == 0
-        [self loginToMisaka14WithUserItem: userItem success:^(WTUserItem *loginUserItem) {
-            
-            self.userItem = loginUserItem;
-            
-            
-        } failure:^(NSError *error) {
-            
-        }];
-#else
-        
-#endif
-        
-        
-        
-        if (success)
-        {
-            success();
-        }
-        
-    } failure:^(NSError *error) {
-        if (error)
-        {
-            failure(error);
-        }
-    }];
+    
 }
 
 
@@ -327,7 +264,7 @@ static WTAccountViewModel *_instance;
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTRegisterUrl];
     
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: url param: nil success:^(id responseObject) {
-       
+        
         WTRegisterReqItem *item = [self getRegisterReqItemWithData: responseObject];
         if (item.verificationCode != nil)
         {
@@ -370,7 +307,7 @@ static WTAccountViewModel *_instance;
                             };
     
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTRegisterUrl];
-
+    
     [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: url param: param success:^(id responseObject) {
         
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
@@ -423,9 +360,10 @@ static WTAccountViewModel *_instance;
     NSString *once = [[doc peekAtSearchWithXPathQuery: @"//input[@name='once']"] objectForKey: @"value"];
     NSArray *slArray = [doc searchWithXPathQuery: @"//input[@class='sl']"];
     NSString *usernameKey = [slArray.firstObject objectForKey: @"name"];
-    NSString *passwordKey = [slArray.lastObject objectForKey: @"name"];
+    NSString *passwordKey = [slArray[1] objectForKey: @"name"];
+    NSString *verificationCodeKey = [slArray.lastObject objectForKey: @"name"];
     
-    return [WTLoginRequestItem loginRequestItemWithOnce: once usernameKey: usernameKey passwordKey: passwordKey];
+    return [WTLoginRequestItem loginRequestItemWithOnce: once usernameKey: usernameKey passwordKey: passwordKey verificationCodeKey: verificationCodeKey];
 }
 
 #pragma mark - 根据二进制获取请求参数
@@ -490,7 +428,7 @@ static WTAccountViewModel *_instance;
     {
         account.signature = fadeEs.firstObject.content;
     }
-//
+    //
     account.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, avatar]];
     return account;
 }
@@ -519,6 +457,7 @@ static WTAccountViewModel *_instance;
 }
 
 
+
 /**
  登陆至misaka14
  
@@ -536,7 +475,7 @@ static WTAccountViewModel *_instance;
             
             self.userItem = loginUserItem;
             
-//            WTAppDelegateTool *appDelegateTool = [WTAppDelegateTool new];
+            //            WTAppDelegateTool *appDelegateTool = [WTAppDelegateTool new];
             
             WTLog(@"misaka14服务器登陆成功UserID:%lu", loginUserItem.uid)
             
@@ -576,7 +515,7 @@ static WTAccountViewModel *_instance;
         if ([[responseObject objectForKey: @"code"] integerValue]  == 200)
         {
             WTUserItem *resultUserItem = [WTUserItem mj_objectWithKeyValues: [responseObject objectForKey: @"result"]];
-        
+            
             if (success)
             {
                 success(resultUserItem);
@@ -592,3 +531,4 @@ static WTAccountViewModel *_instance;
     }];
 }
 @end
+

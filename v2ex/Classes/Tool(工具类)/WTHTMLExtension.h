@@ -49,7 +49,7 @@
  @param html 要解析html
  @return 解析后的html
  */
-+ (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html;
++ (NSString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html;
 
 
 /**

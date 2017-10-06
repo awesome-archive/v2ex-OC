@@ -29,7 +29,6 @@
 		304B4EE91D6A9B7F00F7DD09 /* WTTopicCollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EE81D6A9B7F00F7DD09 /* WTTopicCollectionItem.m */; };
 		304B4EEC1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */; };
 		304E47D31DBDF5A60094FAD8 /* WTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */; };
-		304E48321DC083BA0094FAD8 /* WTLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E48311DC083BA0094FAD8 /* WTLocationTool.m */; };
 		3050F8491D73C719004069B2 /* WTMyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3050F8481D73C719004069B2 /* WTMyTopicViewController.m */; };
 		307F062D1D965D6500881C28 /* WTAppDelegateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F062C1D965D6500881C28 /* WTAppDelegateTool.m */; };
 		3082C3F61DAE6CD700090AE6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082C3F51DAE6CD700090AE6 /* NotificationCenter.framework */; };
@@ -145,8 +144,6 @@
 		B60FA1D11D45C09200F98CF3 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA11E1D45C09200F98CF3 /* TFHpple.m */; };
 		B60FA1D21D45C09200F98CF3 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1201D45C09200F98CF3 /* TFHppleElement.m */; };
 		B60FA1D31D45C09200F98CF3 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1221D45C09200F98CF3 /* XPathQuery.m */; };
-		B60FA1D41D45C09200F98CF3 /* WTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA1261D45C09200F98CF3 /* WTLoginViewController.m */; };
-		B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60FA1271D45C09200F98CF3 /* WTLoginViewController.xib */; };
 		B60FA1D61D45C09200F98CF3 /* WTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA12A1D45C09200F98CF3 /* WTAccount.m */; };
 		B60FA1D71D45C09200F98CF3 /* WTLoginRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA12C1D45C09200F98CF3 /* WTLoginRequestItem.m */; };
 		B60FA1D81D45C09200F98CF3 /* WTLoginRegisterTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B60FA12F1D45C09200F98CF3 /* WTLoginRegisterTextField.m */; };
@@ -231,12 +228,14 @@
 		B6E889771C99CE4F00BAA96B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E889341C99BDE100BAA96B /* libc++.tbd */; };
 		B6E9B8461EAB201F000120FA /* WTNoLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B8451EAB201F000120FA /* WTNoLoginView.m */; };
 		B6E9B8481EAB202D000120FA /* WTNoLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */; };
-		B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */; };
 		B6ED4FED1EFAA87E005B1C5D /* WTNodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */; };
 		B6ED4FEF1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */; };
 		B6ED4FF51EFAD75B005B1C5D /* WTNodeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF41EFAD75B005B1C5D /* WTNodeCollectionViewController.xib */; };
 		B6ED4FF71EFADB08005B1C5D /* WTMyFollowingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF61EFADB08005B1C5D /* WTMyFollowingViewController.xib */; };
 		B6ED4FF91EFADBB2005B1C5D /* WTMyReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */; };
+		B6EDD1171F87669B00904FBC /* WTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD1151F87668D00904FBC /* WTLoginViewController.m */; };
+		B6EDD1181F8766B200904FBC /* WTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */; };
+		B6EDD1191F876A1700904FBC /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */; };
 		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
 /* End PBXBuildFile section */
 
@@ -302,8 +301,6 @@
 		304B4EEB1D6A9B9B00F7DD09 /* WTTopicCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTopicCollectionViewModel.m; sourceTree = "<group>"; };
 		304E47D11DBDF5A60094FAD8 /* WTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProgressHUD.h; sourceTree = "<group>"; };
 		304E47D21DBDF5A60094FAD8 /* WTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProgressHUD.m; sourceTree = "<group>"; };
-		304E48301DC083BA0094FAD8 /* WTLocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLocationTool.h; sourceTree = "<group>"; };
-		304E48311DC083BA0094FAD8 /* WTLocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLocationTool.m; sourceTree = "<group>"; };
 		3050F8471D73C719004069B2 /* WTMyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMyTopicViewController.h; sourceTree = "<group>"; };
 		3050F8481D73C719004069B2 /* WTMyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMyTopicViewController.m; sourceTree = "<group>"; };
 		307F062B1D965D6500881C28 /* WTAppDelegateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAppDelegateTool.h; sourceTree = "<group>"; };
@@ -531,8 +528,6 @@
 		B60FA1211D45C09200F98CF3 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		B60FA1221D45C09200F98CF3 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		B60FA1251D45C09200F98CF3 /* WTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLoginViewController.h; sourceTree = "<group>"; };
-		B60FA1261D45C09200F98CF3 /* WTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLoginViewController.m; sourceTree = "<group>"; };
-		B60FA1271D45C09200F98CF3 /* WTLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTLoginViewController.xib; sourceTree = "<group>"; };
 		B60FA1291D45C09200F98CF3 /* WTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAccount.h; sourceTree = "<group>"; };
 		B60FA12A1D45C09200F98CF3 /* WTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAccount.m; sourceTree = "<group>"; };
 		B60FA12B1D45C09200F98CF3 /* WTLoginRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLoginRequestItem.h; sourceTree = "<group>"; };
@@ -686,13 +681,15 @@
 		B6E9B8441EAB201F000120FA /* WTNoLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNoLoginView.h; sourceTree = "<group>"; };
 		B6E9B8451EAB201F000120FA /* WTNoLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNoLoginView.m; sourceTree = "<group>"; };
 		B6E9B8471EAB202D000120FA /* WTNoLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNoLoginView.xib; sourceTree = "<group>"; };
-		B6E9B8491EAB78B9000120FA /* WTRegisterReqItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTRegisterReqItem.h; path = v2ex/Classes/Main/View/WTRegisterReqItem.h; sourceTree = SOURCE_ROOT; };
-		B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTRegisterReqItem.m; path = v2ex/Classes/Main/View/WTRegisterReqItem.m; sourceTree = SOURCE_ROOT; };
 		B6ED4FEC1EFAA87E005B1C5D /* WTNodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNodeViewController.xib; sourceTree = "<group>"; };
 		B6ED4FEE1EFAB8AC005B1C5D /* WTUserNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTUserNotificationViewController.xib; sourceTree = "<group>"; };
 		B6ED4FF41EFAD75B005B1C5D /* WTNodeCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTNodeCollectionViewController.xib; sourceTree = "<group>"; };
 		B6ED4FF61EFADB08005B1C5D /* WTMyFollowingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyFollowingViewController.xib; sourceTree = "<group>"; };
 		B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyReplyViewController.xib; sourceTree = "<group>"; };
+		B6EDD1131F87659800904FBC /* WTRegisterReqItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTRegisterReqItem.h; sourceTree = "<group>"; };
+		B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRegisterReqItem.m; sourceTree = "<group>"; };
+		B6EDD1151F87668D00904FBC /* WTLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTLoginViewController.m; sourceTree = "<group>"; };
+		B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WTLoginViewController.xib; sourceTree = "<group>"; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1419,6 +1416,7 @@
 				B60FA1231D45C09200F98CF3 /* Login-登录 */,
 				B60FA1331D45C09200F98CF3 /* Nav-导航 */,
 				B60FA1361D45C09200F98CF3 /* Register-注册 */,
+				B6EDD1121F87659800904FBC /* Model */,
 				B60FA13E1D45C09200F98CF3 /* TabBar */,
 			);
 			path = Other;
@@ -1511,8 +1509,8 @@
 			isa = PBXGroup;
 			children = (
 				B60FA1251D45C09200F98CF3 /* WTLoginViewController.h */,
-				B60FA1261D45C09200F98CF3 /* WTLoginViewController.m */,
-				B60FA1271D45C09200F98CF3 /* WTLoginViewController.xib */,
+				B6EDD1151F87668D00904FBC /* WTLoginViewController.m */,
+				B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1565,9 +1563,6 @@
 			isa = PBXGroup;
 			children = (
 				B60FA1371D45C09200F98CF3 /* Controller */,
-				B60FA13B1D45C09200F98CF3 /* Model */,
-				B60FA13C1D45C09200F98CF3 /* View */,
-				B60FA13D1D45C09200F98CF3 /* ViewModel */,
 			);
 			path = "Register-注册";
 			sourceTree = "<group>";
@@ -1580,29 +1575,6 @@
 				B60FA13A1D45C09200F98CF3 /* WTRegisterViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B60FA13B1D45C09200F98CF3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B6E9B8491EAB78B9000120FA /* WTRegisterReqItem.h */,
-				B6E9B84A1EAB78B9000120FA /* WTRegisterReqItem.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B60FA13C1D45C09200F98CF3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B60FA13D1D45C09200F98CF3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B60FA13E1D45C09200F98CF3 /* TabBar */ = {
@@ -1629,8 +1601,6 @@
 				B60FA17A1D45C09200F98CF3 /* WTShareSDKTool.m */,
 				307F062B1D965D6500881C28 /* WTAppDelegateTool.h */,
 				307F062C1D965D6500881C28 /* WTAppDelegateTool.m */,
-				304E48301DC083BA0094FAD8 /* WTLocationTool.h */,
-				304E48311DC083BA0094FAD8 /* WTLocationTool.m */,
 				B64977261EB343AF00BA6AFD /* WTCellAnimationTool.h */,
 				B64977271EB343AF00BA6AFD /* WTCellAnimationTool.m */,
 			);
@@ -2064,6 +2034,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B6EDD1121F87659800904FBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6EDD1131F87659800904FBC /* WTRegisterReqItem.h */,
+				B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */,
+			);
+			name = Model;
+			path = "Register-注册/Model";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2212,6 +2192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EDD1181F8766B200904FBC /* WTLoginViewController.xib in Resources */,
 				B6E6306E1E9532E30084EAD0 /* v2ex.js in Resources */,
 				B60FA1B91D45C09200F98CF3 /* WTHotNodeCell.xib in Resources */,
 				B60FA18A1D45C09200F98CF3 /* WTTopicDetailTableViewController.storyboard in Resources */,
@@ -2230,7 +2211,6 @@
 				3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */,
 				B6E9B8481EAB202D000120FA /* WTNoLoginView.xib in Resources */,
 				30E4987C1D70424100C2A6DA /* ShareSDK.bundle in Resources */,
-				B60FA1D51D45C09200F98CF3 /* WTLoginViewController.xib in Resources */,
 				30884B721DBA1407008FF94F /* WTMemberInfoTableViewController.storyboard in Resources */,
 				B6C92D241F701F370085F541 /* themes.txt in Resources */,
 				B63094571C4B8C1600E58EF8 /* nodes.plist in Resources */,
@@ -2383,6 +2363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EDD1191F876A1700904FBC /* WTRegisterReqItem.m in Sources */,
+				B6EDD1171F87669B00904FBC /* WTLoginViewController.m in Sources */,
 				B60FA18B1D45C09200F98CF3 /* WTTopicDetailViewController.m in Sources */,
 				B60FA17F1D45C09200F98CF3 /* WTTopic.m in Sources */,
 				B60FA1B41D45C09200F98CF3 /* WTHotNodeFlowLayout.m in Sources */,
@@ -2392,7 +2374,6 @@
 				B60FA1C81D45C09200F98CF3 /* UIColor+Extension.m in Sources */,
 				B6A273341EACDFB1000B3A87 /* MMParser.m in Sources */,
 				303CF2471D6AA37D00D697F7 /* WTTopicCollectionCell.m in Sources */,
-				B6E9B84B1EAB78B9000120FA /* WTRegisterReqItem.m in Sources */,
 				B60FA1F21D45C09200F98CF3 /* WTShareSDKTool.m in Sources */,
 				30A2D8CD1D6AE971009AFA43 /* WTNodeCollectionCell.m in Sources */,
 				B6B2B3AC1F1267380074B56A /* WTHotTopicViewModel.m in Sources */,
@@ -2502,7 +2483,6 @@
 				30884B5F1DB9C512008FF94F /* MJExtensionConfig.m in Sources */,
 				B60FA1921D45C09200F98CF3 /* WTTopicDetailHeadCell.m in Sources */,
 				B60FA1EC1D45C09200F98CF3 /* WTParseTool.m in Sources */,
-				304E48321DC083BA0094FAD8 /* WTLocationTool.m in Sources */,
 				B60FA1B51D45C09200F98CF3 /* WTHotNodeViewController.m in Sources */,
 				B60FA1801D45C09200F98CF3 /* WTTipView.m in Sources */,
 				B6B2B3AF1F1267600074B56A /* WTSearchTopicReq.m in Sources */,
@@ -2512,7 +2492,6 @@
 				B6E70C471D4E55B3000CC806 /* WTNotificationViewModel.m in Sources */,
 				B60FA1D71D45C09200F98CF3 /* WTLoginRequestItem.m in Sources */,
 				B60FA1BF1D45C09200F98CF3 /* WTNodeTopicCell.m in Sources */,
-				B60FA1D41D45C09200F98CF3 /* WTLoginViewController.m in Sources */,
 				B60FA1BA1D45C09200F98CF3 /* WTHotNodeReusableView.m in Sources */,
 				B60FA1EA1D45C09200F98CF3 /* WTHTMLExtension.m in Sources */,
 				30884B651DB9E7E9008FF94F /* WTMemberInfoViewController.m in Sources */,
