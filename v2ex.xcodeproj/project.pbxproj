@@ -236,6 +236,7 @@
 		B6EDD1171F87669B00904FBC /* WTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD1151F87668D00904FBC /* WTLoginViewController.m */; };
 		B6EDD1181F8766B200904FBC /* WTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */; };
 		B6EDD1191F876A1700904FBC /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */; };
+		B6EDD11F1F87DC9100904FBC /* WTContinueRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD11E1F87DC9100904FBC /* WTContinueRegisterReqItem.m */; };
 		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
 /* End PBXBuildFile section */
 
@@ -690,6 +691,8 @@
 		B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRegisterReqItem.m; sourceTree = "<group>"; };
 		B6EDD1151F87668D00904FBC /* WTLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTLoginViewController.m; sourceTree = "<group>"; };
 		B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WTLoginViewController.xib; sourceTree = "<group>"; };
+		B6EDD11D1F87DC9100904FBC /* WTContinueRegisterReqItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTContinueRegisterReqItem.h; sourceTree = "<group>"; };
+		B6EDD11E1F87DC9100904FBC /* WTContinueRegisterReqItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTContinueRegisterReqItem.m; sourceTree = "<group>"; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2DD917D497DE961BE1E73 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BE01CD86AF2A7611452E7E /* Pods-v2ex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-v2ex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-v2ex/Pods-v2ex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2039,6 +2042,8 @@
 			children = (
 				B6EDD1131F87659800904FBC /* WTRegisterReqItem.h */,
 				B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */,
+				B6EDD11D1F87DC9100904FBC /* WTContinueRegisterReqItem.h */,
+				B6EDD11E1F87DC9100904FBC /* WTContinueRegisterReqItem.m */,
 			);
 			name = Model;
 			path = "Register-注册/Model";
@@ -2118,7 +2123,7 @@
 					3082C3F31DAE6CD700090AE6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = ZD2FW4SQ72;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2133,8 +2138,7 @@
 					};
 					B69481671C462267001ABDA3 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZD2FW4SQ72;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2411,6 +2415,7 @@
 				30A2D8FB1D6C5117009AFA43 /* WTMemberDetailViewController.m in Sources */,
 				30A2D93C1D6D34DD009AFA43 /* WTMemberReplyViewController.m in Sources */,
 				B6BB732B1E9A5C680098F634 /* UITextView+Placeholder.m in Sources */,
+				B6EDD11F1F87DC9100904FBC /* WTContinueRegisterReqItem.m in Sources */,
 				30A2D9381D6D3073009AFA43 /* WTMemberTopicViewController.m in Sources */,
 				B60FA1CB1D45C09200F98CF3 /* UILabel+StringFrame.m in Sources */,
 				B6235E491D48BD2E00E5ECDB /* WTMoreButton.m in Sources */,
@@ -2548,8 +2553,8 @@
 				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZD2FW4SQ72;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -2559,6 +2564,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2571,8 +2577,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZD2FW4SQ72;
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2580,9 +2586,10 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e25a79b0-8a89-495f-90ab-21100a3bdddf";
+				PROVISIONING_PROFILE_SPECIFIER = v2exAppStoreToday;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -2716,8 +2723,8 @@
 				CODE_SIGN_ENTITLEMENTS = v2ex/v2ex.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZD2FW4SQ72;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2788,8 +2795,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = v2ex/v2ex.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Geng (ZD2FW4SQ72)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZD2FW4SQ72;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -2842,8 +2849,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutouqishi.v2ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "9808ac96-4935-4ba6-90aa-368b2d60d018";
+				PROVISIONING_PROFILE_SPECIFIER = v2exAppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "v2ex/Classes/Home(首页)/Controller/v2ex-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";

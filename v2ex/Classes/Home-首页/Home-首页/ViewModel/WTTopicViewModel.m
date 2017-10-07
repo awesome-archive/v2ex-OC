@@ -190,18 +190,7 @@
     [WTHTMLExtension parseUnreadWithDoc: doc];
     
     // 11、签到、头像
-    {
-        NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-        WTAccount *account = [WTAccountViewModel shareInstance].account;
-        account.past = ![html containsString: @"领取今日的登录奖励"];
-        
-        NSArray *imageE = [doc searchWithXPathQuery: @"//img"];
-        if (imageE.count > 1)
-        {
-            NSString *imageUrl = [WTHTMLExtension getOnceWithHtml: [imageE[1] objectForKey: @"src"]];
-            account.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, imageUrl]];
-        }
-    }
+    [WTHTMLExtension parseAvatarAndPastWithData: data];
     
 }
 

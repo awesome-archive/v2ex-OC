@@ -13,6 +13,7 @@
 #define WTScreenHeight [UIScreen mainScreen].bounds.size.height
 
 // iOS11适配
+#define LT
 #define ISIPHONEX ([UIScreen mainScreen].bounds.size.height == 812)
 #define WTTitleViewHeight (ISIPHONEX  ? 84 : 64)
 #define WTNavigationBarMaxY (ISIPHONEX  ? 84 : 64)

@@ -8,6 +8,8 @@
 
 #import "WTAccountViewModel.h"
 #import "TFHpple.h"
+#import "WTContinueRegisterReqItem.h"
+#import "WTHTMLExtension.h"
 #import "NetworkTool.h"
 #import "MisakaNetworkTool.h"
 #import "WTURLConst.h"
@@ -18,6 +20,9 @@
 #import "NSString+YYAdd.h"
 
 #define WTFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent: @"account.plist"]
+
+#define WTRegisterProblem @"注册过程中遇到一些问题："
+#define WTRegisterProblem1 @"请解决以下问题然后再提交："
 
 NSString * const WTUsernameOrEmailKey = @"WTUsernameOrEmailKey";
 
@@ -200,13 +205,17 @@ static WTAccountViewModel *_instance;
         // 判断是否登陆成功
         if ([html containsString: @"notifications"])        // 登陆成功
         {
+            self.account.usernameOrEmail = username;
+            self.account.password = password;
+            [WTHTMLExtension parseAvatarAndPastWithData: responseObject];
             WTLog(@"登陆成功")
-            [NSKeyedArchiver archiveRootObject: self.account toFile: WTFilePath];
-            
+        
             // 是否已经领取过奖励
             self.account.past = ![html containsString: @"领取今日的登录奖励"];
     
             [self saveUsernameAndPassword];
+            
+            if (success) success();
             
             return;
         }
@@ -216,6 +225,11 @@ static WTAccountViewModel *_instance;
         {
             error = [NSError errorWithDomain: WTDomain code: -1011 userInfo: @{@"message" : @"用户名和密码无法匹配"}];
             WTLog(@"用户名和密码无法匹配")
+        }
+        else if([html containsString: WTRegisterProblem1])
+        {
+            NSString *message = [self parseProblemWithData: responseObject];
+            error = [NSError errorWithDomain: WTDomain code: -1011 userInfo: @{@"message" : message}];
         }
         else
         {
@@ -237,6 +251,50 @@ static WTAccountViewModel *_instance;
     }];
 }
 
+
+/**
+ 继续注册
+ 
+ @param continueRegisterReqItem 请求参数
+ *  @param success  请求成功的回调
+ *  @param failure  请求失败的回调
+ */
+- (void)continueRegisterWithContinueRegisterReqItem:(WTContinueRegisterReqItem *)continueRegisterReqItem success:(void (^)())success failure:(void(^)(NSError *error))failure
+{
+    
+    NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTContinueRegisterUrl];
+    
+    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypePOST url: url param: continueRegisterReqItem.mj_keyValues success:^(id responseObject) {
+        
+        NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
+        
+        if ([html containsString: @"账户余额"]) // 注册成功
+        {
+            if (success) success();
+        }
+        else
+        {
+            NSError *error = nil;
+
+            error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"验证码不正确"}];
+
+            
+            if (failure)
+            {
+                failure(error);
+            }
+        }
+        
+        
+        
+    } failure:^(NSError *error) {
+        WTLog(@"registerWithUrlString Error:%@", error)
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
+}
 
 /**
  获取用户的详细信息
@@ -261,11 +319,17 @@ static WTAccountViewModel *_instance;
  */
 - (void)getRegisterReqItemWithSuccess:(void (^)(WTRegisterReqItem *item))success failure:(void (^)(NSError *error))failure
 {
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies])
+    {
+        [storage deleteCookie:cookie];
+    }
+    
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTRegisterUrl];
     
-    [[NetworkTool shareInstance] requestWithMethod: HTTPMethodTypeGET url: url param: nil success:^(id responseObject) {
-        
-        WTRegisterReqItem *item = [self getRegisterReqItemWithData: responseObject];
+
+    [[NetworkTool shareInstance] GETWithUrlString: url success:^(id data) {
+        WTRegisterReqItem *item = [self getRegisterReqItemWithData: data];
         if (item.verificationCode != nil)
         {
             if (success)
@@ -279,7 +343,6 @@ static WTAccountViewModel *_instance;
         {
             failure([[NSError alloc] initWithDomain: @"com.wutouqishi" code: -1011 userInfo: @{@"errorInfo" : @"获取验证码Url失败"}]);
         }
-        
     } failure:^(NSError *error) {
         if (failure)
         {
@@ -295,7 +358,7 @@ static WTAccountViewModel *_instance;
  *  @param success  请求成功的回调
  *  @param failure  请求失败的回调
  */
-- (void)registerWithRegisterReqItem:(WTRegisterReqItem *)item success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure
+- (void)registerWithRegisterReqItem:(WTRegisterReqItem *)item success:(void (^)(NSString *once))success failure:(void(^)(NSError *error))failure
 {
     // 1、拼接参数
     NSDictionary *param = @{
@@ -303,7 +366,9 @@ static WTAccountViewModel *_instance;
                             item.passwordKey : item.passwordValue,
                             item.emailKey : item.emailValue,
                             item.verificationCodeKey : item.verificationCodeValue,
-                            item.onceKey : item.onceValue
+                            item.onceKey : item.onceValue,
+                            item.phone_numberKey: item.phone_numberValue,
+                            item.calling_codeKey : item.calling_codeValue
                             };
     
     NSString *url = [WTHTTPBaseUrl stringByAppendingPathComponent: WTRegisterUrl];
@@ -312,36 +377,28 @@ static WTAccountViewModel *_instance;
         
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
         
-        if ([html containsString: @"账户余额"]) // 注册成功
+        if ([html containsString: @"注册确认"]) // 注册成功
         {
-            if (success)
+            NSString *once = [WTHTMLExtension getOnceWithHtml: html];
+            if (success) success(once);
+        }
+        else
+        {
+            NSError *error = nil;
+            if ([html containsString: WTRegisterProblem])
             {
-                success(YES);
+                NSString *errorInfo = [self parseProblemWithData: responseObject];
+                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : errorInfo}];
             }
-            return;
+            else if([html containsString: WTRegisterProblem1])
+            {
+                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"在短时间之内提交了太多次注册请求，请稍等片刻再试"}];
+            }
+            
+            if (failure) failure(error);
         }
         
-        NSError *error = nil;
-        if ([html containsString: @"注册过程中遇到一些问题："])
-        {
-            if ([html containsString: @"电子邮件地址"])
-            {
-                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"该邮箱已被注册过"}];
-            }
-            else if([html containsString: @"输入的验证码不正确"])
-            {
-                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"输入的验证码不正确"}];
-            }
-            else if([html containsString: @"用户名"])
-            {
-                error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorInfo" : @"用户名已经被注册过"}];
-            }
-        }
         
-        if (failure)
-        {
-            failure(error);
-        }
         
     } failure:^(NSError *error) {
         WTLog(@"registerWithUrlString Error:%@", error)
@@ -350,6 +407,13 @@ static WTAccountViewModel *_instance;
             failure(error);
         }
     }];
+}
+
+- (NSString *)parseProblemWithData:(NSData *)data
+{
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    
+    return [[[doc peekAtSearchWithXPathQuery: @"//div[@class='problem']"].content stringByReplacingOccurrencesOfString: WTRegisterProblem withString: @""] stringByReplacingOccurrencesOfString: WTRegisterProblem1 withString: @""];
 }
 
 #pragma mark - 根据二进制的值获取用户登录请求的必备参数的Key、Value
@@ -378,9 +442,10 @@ static WTAccountViewModel *_instance;
     
     WTRegisterReqItem *item = [WTRegisterReqItem new];
     
-    if (trE.count > 3)
+//    item.onceValue = [onceE objectForKey: @""]
+    if (trE.count > 5)
     {
-        NSArray *imgEs = [trE[3] searchWithXPathQuery: @"//img"];
+        NSArray *imgEs = [trE[5] searchWithXPathQuery: @"//img"];
         item.verificationCode = imgEs.count > 0 ? [imgEs[0] objectForKey: @"src"] : nil;
         if (item.verificationCode != nil)
         {
@@ -388,7 +453,7 @@ static WTAccountViewModel *_instance;
         }
     }
     
-    if (slE.count > 3)
+    if (slE.count > 4)
     {
         item.usernameKey = [[slE objectAtIndex: 0] objectForKey: @"name"];
         
@@ -396,7 +461,7 @@ static WTAccountViewModel *_instance;
         
         item.emailKey = [[slE objectAtIndex: 2] objectForKey: @"name"];
         
-        item.verificationCodeKey = [[slE objectAtIndex: 3] objectForKey: @"name"];
+        item.verificationCodeKey = [slE.lastObject objectForKey: @"name"];
     }
     
     

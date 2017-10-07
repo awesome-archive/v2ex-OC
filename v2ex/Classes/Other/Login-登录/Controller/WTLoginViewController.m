@@ -39,6 +39,9 @@
 @property (nonatomic, strong) NSTimer               *timer;
 /** 登录请求参数  */
 @property (nonatomic, strong) WTLoginRequestItem    *loginRequestItem;
+/** 验证码顶部约束 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verificationCodeTopLayoutCons;
+@property (weak, nonatomic) IBOutlet UIView *verificationCodeImageVBgView;
 
 @end
 
@@ -120,6 +123,13 @@
     [self.timer invalidate];
 }
 
+- (void)startAnimation
+{
+    [UIView animateWithDuration: 0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 #pragma mark 设置验证码图片
 - (void)setupCodeImage
 {
@@ -192,6 +202,19 @@
         self.loginButton.userInteractionEnabled = NO;
     }
 }
+- (IBAction)verificationCodeEditingEnd
+{
+    self.verificationCodeImageVBgView.hidden = YES;
+    self.verificationCodeTopLayoutCons.constant = 20;
+    [self startAnimation];
+}
+- (IBAction)verificationCodeEditingBegin
+{
+    self.verificationCodeImageVBgView.hidden = NO;
+    self.verificationCodeTopLayoutCons.constant = -120;
+    [self startAnimation];
+}
+
 
 #pragma mark textFieldEditingChanged
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

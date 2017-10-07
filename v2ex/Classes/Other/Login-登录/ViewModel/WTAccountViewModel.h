@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WTAccount.h"
 #import "WTUserItem.h"
-@class WTRegisterReqItem, WTLoginRequestItem;
+@class WTRegisterReqItem, WTLoginRequestItem, WTContinueRegisterReqItem;
 @interface WTAccountViewModel : NSObject
 
 @property (nonatomic, strong) WTAccount *account;
@@ -84,7 +84,17 @@
  *  @param success  请求成功的回调
  *  @param failure  请求失败的回调
  */
-- (void)registerWithRegisterReqItem:(WTRegisterReqItem *)item success:(void (^)(BOOL isSuccess))success failure:(void(^)(NSError *error))failure;
+- (void)registerWithRegisterReqItem:(WTRegisterReqItem *)item success:(void (^)(NSString *once))success failure:(void(^)(NSError *error))failure;
+
+
+/**
+ 继续注册
+
+ @param continueRegisterReqItem 请求参数
+ *  @param success  请求成功的回调
+ *  @param failure  请求失败的回调
+ */
+- (void)continueRegisterWithContinueRegisterReqItem:(WTContinueRegisterReqItem *)continueRegisterReqItem success:(void (^)())success failure:(void(^)(NSError *error))failure;
 
 /**
  *  签到

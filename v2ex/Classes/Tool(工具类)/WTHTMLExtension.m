@@ -7,7 +7,7 @@
 //
 
 #import "WTHTMLExtension.h"
-//#import "HTMLParser.h"
+#import "WTAccountViewModel.h"
 //#import "HTMLNode.h"
 #import "WTURLConst.h"
 #import "TFHpple.h"
@@ -44,7 +44,16 @@
 + (NSString *)getOnceWithHtml:(NSString *)html
 {
     NSRange range = [html rangeOfString: @"/signout?once="];
-    return [html substringWithRange: NSMakeRange(range.location + range.length, 5)];
+    if (range.length > 0)
+    {
+        return [html substringWithRange: NSMakeRange(range.location + range.length, 5)];
+    }
+    else
+    {
+        NSData *data = [html dataUsingEncoding: NSUTF8StringEncoding];
+        TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+        return [[doc peekAtSearchWithXPathQuery: @"//input[@name='once']"] objectForKey: @"value"];
+    }
 }
 
 /**
@@ -90,6 +99,8 @@
     return false;
 }
 
+
+
 #pragma mark - 解析未读节点
 + (void)parseUnreadWithDoc:(TFHpple *)doc
 {
@@ -121,7 +132,7 @@
  @param html 要解析html
  @return 解析后的html
  */
-+ (NSString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html
++ (NSString *)topicDetailParseAvatarWithHTML:(NSString *)html
 {
     NSString *newHTML =  [html stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 35px; max-height: 35px;"];
     
@@ -179,5 +190,22 @@
     
     
     return [html stringByReplacingOccurrencesOfString: @"<img src=\"/static/img/reply@2x.png\" width=\"20\" height=\"16\" align=\"absmiddle\" border=\"0\" alt=\"Reply\"/>" withString: @""];
+}
+
+#pragma mark - 解析头像和签到
++ (void)parseAvatarAndPastWithData:(NSData *)data
+{
+    NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    WTAccount *account = [WTAccountViewModel shareInstance].account;
+    account.past = ![html containsString: @"领取今日的登录奖励"];
+    
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    NSArray *imageE = [doc searchWithXPathQuery: @"//img"];
+    if (imageE.count > 1)
+    {
+        NSString *imageUrl = [WTHTMLExtension topicDetailParseAvatarWithHTML: [imageE[1] objectForKey: @"src"]];
+        account.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, imageUrl]];
+    }
+    
 }
 @end
