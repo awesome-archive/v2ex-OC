@@ -493,7 +493,8 @@ static NSString  * const commentCellID = @"commentCellID";
     {
         WTPostReplyViewController *vc = [WTPostReplyViewController new];
         _postReplyVC = vc;
-        
+        [self.childVC addObject: vc];
+        [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview: vc.view];
         
         vc.view.alpha = 0;
         vc.view.frame = [UIScreen mainScreen].bounds;
