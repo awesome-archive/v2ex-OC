@@ -192,6 +192,10 @@
 		B664E84B1D50680800C22480 /* WTReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E8491D50680800C22480 /* WTReplyCell.m */; };
 		B664E84C1D50680800C22480 /* WTReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B664E84A1D50680800C22480 /* WTReplyCell.xib */; };
 		B664E84F1D506B0B00C22480 /* WTReplyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */; };
+		B677517A1F8FA1E500BE8FBB /* WTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67751751F8FA14400BE8FBB /* WTLoginViewController.m */; };
+		B677517B1F8FA1EB00BE8FBB /* WTLogin2FARequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B67751791F8FA15300BE8FBB /* WTLogin2FARequestItem.m */; };
+		B677517C1F8FA1F400BE8FBB /* WTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67751771F8FA14400BE8FBB /* WTLoginViewController.xib */; };
+		B677517E1F8FA60800BE8FBB /* WTAllNodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B677517D1F8FA60800BE8FBB /* WTAllNodeViewController.xib */; };
 		B694816D1C462267001ABDA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816C1C462267001ABDA3 /* main.m */; };
 		B69481701C462267001ABDA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B694816F1C462267001ABDA3 /* AppDelegate.m */; };
 		B69481781C462267001ABDA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B69481771C462267001ABDA3 /* Assets.xcassets */; };
@@ -233,8 +237,6 @@
 		B6ED4FF51EFAD75B005B1C5D /* WTNodeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF41EFAD75B005B1C5D /* WTNodeCollectionViewController.xib */; };
 		B6ED4FF71EFADB08005B1C5D /* WTMyFollowingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF61EFADB08005B1C5D /* WTMyFollowingViewController.xib */; };
 		B6ED4FF91EFADBB2005B1C5D /* WTMyReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */; };
-		B6EDD1171F87669B00904FBC /* WTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD1151F87668D00904FBC /* WTLoginViewController.m */; };
-		B6EDD1181F8766B200904FBC /* WTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */; };
 		B6EDD1191F876A1700904FBC /* WTRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */; };
 		B6EDD11F1F87DC9100904FBC /* WTContinueRegisterReqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EDD11E1F87DC9100904FBC /* WTContinueRegisterReqItem.m */; };
 		F9FBA535E2F9367137721A2A /* libPods-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F91ED7AB1B9A1C2842D0A7C /* libPods-Today.a */; };
@@ -528,7 +530,6 @@
 		B60FA1201D45C09200F98CF3 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
 		B60FA1211D45C09200F98CF3 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		B60FA1221D45C09200F98CF3 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
-		B60FA1251D45C09200F98CF3 /* WTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLoginViewController.h; sourceTree = "<group>"; };
 		B60FA1291D45C09200F98CF3 /* WTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAccount.h; sourceTree = "<group>"; };
 		B60FA12A1D45C09200F98CF3 /* WTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAccount.m; sourceTree = "<group>"; };
 		B60FA12B1D45C09200F98CF3 /* WTLoginRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLoginRequestItem.h; sourceTree = "<group>"; };
@@ -612,6 +613,12 @@
 		B664E84A1D50680800C22480 /* WTReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTReplyCell.xib; sourceTree = "<group>"; };
 		B664E84D1D506B0B00C22480 /* WTReplyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReplyViewModel.h; sourceTree = "<group>"; };
 		B664E84E1D506B0B00C22480 /* WTReplyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReplyViewModel.m; sourceTree = "<group>"; };
+		B67751751F8FA14400BE8FBB /* WTLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTLoginViewController.m; sourceTree = "<group>"; };
+		B67751761F8FA14400BE8FBB /* WTLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTLoginViewController.h; sourceTree = "<group>"; };
+		B67751771F8FA14400BE8FBB /* WTLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WTLoginViewController.xib; sourceTree = "<group>"; };
+		B67751781F8FA15300BE8FBB /* WTLogin2FARequestItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTLogin2FARequestItem.h; sourceTree = "<group>"; };
+		B67751791F8FA15300BE8FBB /* WTLogin2FARequestItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTLogin2FARequestItem.m; sourceTree = "<group>"; };
+		B677517D1F8FA60800BE8FBB /* WTAllNodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WTAllNodeViewController.xib; sourceTree = "<group>"; };
 		B69481681C462267001ABDA3 /* v2ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = v2ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B694816C1C462267001ABDA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B694816E1C462267001ABDA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -689,8 +696,6 @@
 		B6ED4FF81EFADBB2005B1C5D /* WTMyReplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTMyReplyViewController.xib; sourceTree = "<group>"; };
 		B6EDD1131F87659800904FBC /* WTRegisterReqItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTRegisterReqItem.h; sourceTree = "<group>"; };
 		B6EDD1141F87659800904FBC /* WTRegisterReqItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRegisterReqItem.m; sourceTree = "<group>"; };
-		B6EDD1151F87668D00904FBC /* WTLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTLoginViewController.m; sourceTree = "<group>"; };
-		B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WTLoginViewController.xib; sourceTree = "<group>"; };
 		B6EDD11D1F87DC9100904FBC /* WTContinueRegisterReqItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTContinueRegisterReqItem.h; sourceTree = "<group>"; };
 		B6EDD11E1F87DC9100904FBC /* WTContinueRegisterReqItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTContinueRegisterReqItem.m; sourceTree = "<group>"; };
 		CDF392E5F2C48E95E3610957 /* libPods-v2ex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-v2ex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1279,6 +1284,7 @@
 			children = (
 				B60FA0CB1D45C09200F98CF3 /* WTAllNodeViewController.h */,
 				B60FA0CC1D45C09200F98CF3 /* WTAllNodeViewController.m */,
+				B677517D1F8FA60800BE8FBB /* WTAllNodeViewController.xib */,
 				B60FA0CD1D45C09200F98CF3 /* WTHotNodeFlowLayout.h */,
 				B60FA0CE1D45C09200F98CF3 /* WTHotNodeFlowLayout.m */,
 				B60FA0CF1D45C09200F98CF3 /* WTHotNodeViewController.h */,
@@ -1511,9 +1517,9 @@
 		B60FA1241D45C09200F98CF3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B60FA1251D45C09200F98CF3 /* WTLoginViewController.h */,
-				B6EDD1151F87668D00904FBC /* WTLoginViewController.m */,
-				B6EDD1161F87668D00904FBC /* WTLoginViewController.xib */,
+				B67751761F8FA14400BE8FBB /* WTLoginViewController.h */,
+				B67751751F8FA14400BE8FBB /* WTLoginViewController.m */,
+				B67751771F8FA14400BE8FBB /* WTLoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1521,6 +1527,8 @@
 		B60FA1281D45C09200F98CF3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B67751781F8FA15300BE8FBB /* WTLogin2FARequestItem.h */,
+				B67751791F8FA15300BE8FBB /* WTLogin2FARequestItem.m */,
 				303CF2411D6AA25800D697F7 /* WTMemberAPIItem.h */,
 				303CF2421D6AA25800D697F7 /* WTMemberAPIItem.m */,
 				303CF23E1D6AA1ED00D697F7 /* WTMemberItem.h */,
@@ -2197,7 +2205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6EDD1181F8766B200904FBC /* WTLoginViewController.xib in Resources */,
+				B677517C1F8FA1F400BE8FBB /* WTLoginViewController.xib in Resources */,
 				B6E6306E1E9532E30084EAD0 /* v2ex.js in Resources */,
 				B60FA1B91D45C09200F98CF3 /* WTHotNodeCell.xib in Resources */,
 				B60FA18A1D45C09200F98CF3 /* WTTopicDetailTableViewController.storyboard in Resources */,
@@ -2212,6 +2220,7 @@
 				B61CDB3E1F72AD7800BCA9DB /* WTMyTopicViewController.xib in Resources */,
 				B61CDB351F72A7DC00BCA9DB /* fastclick.js in Resources */,
 				B6A2732E1EACDFB1000B3A87 /* Info.plist in Resources */,
+				B677517E1F8FA60800BE8FBB /* WTAllNodeViewController.xib in Resources */,
 				B6235E461D48B9FB00E5ECDB /* WTMoreLoginHeaderView.xib in Resources */,
 				3099B53D1D9A935B00B2DA46 /* LaunchScreen.storyboard in Resources */,
 				B6E9B8481EAB202D000120FA /* WTNoLoginView.xib in Resources */,
@@ -2368,8 +2377,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B677517B1F8FA1EB00BE8FBB /* WTLogin2FARequestItem.m in Sources */,
+				B677517A1F8FA1E500BE8FBB /* WTLoginViewController.m in Sources */,
 				B6EDD1191F876A1700904FBC /* WTRegisterReqItem.m in Sources */,
-				B6EDD1171F87669B00904FBC /* WTLoginViewController.m in Sources */,
 				B60FA18B1D45C09200F98CF3 /* WTTopicDetailViewController.m in Sources */,
 				B60FA17F1D45C09200F98CF3 /* WTTopic.m in Sources */,
 				B60FA1B41D45C09200F98CF3 /* WTHotNodeFlowLayout.m in Sources */,

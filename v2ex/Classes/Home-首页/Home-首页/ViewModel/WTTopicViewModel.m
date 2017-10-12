@@ -72,6 +72,15 @@
 #pragma mark 根据data解析出节点话题数组
 - (void)nodeTopicsWithData:(NSData *)data topicType:(WTTopicType)topicType avartorURL:(NSURL *)avartorURL
 {
+    // 1、检查是否需要二次登录
+    NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    if ([html containsString: WTLogin2faUrl])
+    {
+        NSString *once = [WTHTMLExtension getOnceWithHtml: html];
+        if (once) [[NSNotificationCenter defaultCenter] postNotificationName: WTTwoStepAuthNSNotification object: nil  userInfo: @{WTTwoStepAuthWithOnceKey : once}];
+        return;
+    }
+    
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
     NSArray *cellItemArray;

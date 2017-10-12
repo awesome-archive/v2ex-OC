@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.983239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
-            landmarkName = "-registerWithRegisterReqItem:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "v2ex/Classes/Other/Register-&#x6ce8;&#x518c;/Controller/WTRegisterViewController.m"
             timestampString = "529006691.983945"
             startingColumnNumber = "9223372036854775807"
@@ -42,54 +26,6 @@
             startingLineNumber = "80"
             endingLineNumber = "80"
             landmarkName = "-loadResiterItemReq"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.984776"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
-            landmarkName = "-getRegisterReqItemWithSuccess:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.985015"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "-registerWithRegisterReqItem:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.985188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
-            landmarkName = "-getRegisterReqItemWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,109 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.985816"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "-continueRegisterWithContinueRegisterReqItem:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.985975"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "-continueRegisterWithContinueRegisterReqItem:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.986126"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "-continueRegisterWithContinueRegisterReqItem:success:failure:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WTAccountViewModel continueRegisterWithContinueRegisterReqItem:success:failure:]"
-                  moduleName = "v2ex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Other/Login-%E7%99%BB%E5%BD%95/ViewModel/WTAccountViewModel.m"
-                  timestampString = "529006640.988752"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__82-[WTAccountViewModel continueRegisterWithContinueRegisterReqItem:success:failure:]_block_invoke"
-                  moduleName = "v2ex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wutouqishigj/Documents/github/v2ex-OC/v2ex/Classes/Other/Login-%E7%99%BB%E5%BD%95/ViewModel/WTAccountViewModel.m"
-                  timestampString = "529006640.991152"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "96">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/ViewModel/WTAccountViewModel.m"
-            timestampString = "529006691.986254"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-loginWithLoginRequestItem:username:password:verificationCodeValue:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "v2ex/Classes/Other/Login-&#x767b;&#x5f55;/Controller/WTLoginViewController.m"
             timestampString = "529006691.986378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "207"
             endingLineNumber = "207"
-            landmarkName = "-verificationCodeEditingEnd"
+            landmarkName = "-loginButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,7 +73,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "-verificationCodeEditingBegin"
+            landmarkName = "-loginButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

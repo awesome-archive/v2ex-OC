@@ -8,6 +8,7 @@
 
 #import "NetworkTool.h"
 #import "WTURLConst.h"
+#import "WTProgressHUD.h"
 
 @implementation NetworkTool
 
@@ -22,11 +23,11 @@ static NSString *_userAgentMobile;
         _instance = [NetworkTool manager];
         
         // 1、设置请求头
-       // UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
-//        _userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+        // UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
+        //        _userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
         _userAgentMobile = @"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Mobile/14E304";
         [_instance.requestSerializer setValue: _userAgentMobile forHTTPHeaderField: @"User-Agent"];
-//        [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
+        //        [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
         _instance.responseSerializer = [AFHTTPResponseSerializer serializer];
     });
     _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
@@ -44,7 +45,7 @@ static NSString *_userAgentMobile;
  */
 - (void)requestWithMethod:(HTTPMethodType)method url:(NSString *)url param:(NSDictionary *)param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
 {
-
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     // 1、成功的回调
@@ -56,6 +57,7 @@ static NSString *_userAgentMobile;
     // 2、失败的回调
     void (^failureBlock)(NSError *error) = ^(NSError *error){
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [self showErrorMessageWithError: error];
         failure(error);
     };
     
@@ -65,7 +67,7 @@ static NSString *_userAgentMobile;
     if (method == HTTPMethodTypeGET)            // GET请求
     {
         [_instance GET: url parameters: param progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-           
+            
             successBlock(responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -108,6 +110,7 @@ static NSString *_userAgentMobile;
     // 2、失败的回调
     void (^failureBlock)(NSError *error) = ^(NSError *error){
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [self showErrorMessageWithError: error];
         failure(error);
     };
     
@@ -133,6 +136,7 @@ static NSString *_userAgentMobile;
             successBlock(responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
             failureBlock(error);
         }];
     }
@@ -161,6 +165,7 @@ static NSString *_userAgentMobile;
     // 2、失败的回调
     void (^failureBlock)(NSError *error) = ^(NSError *error){
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [self showErrorMessageWithError: error];
         failure(error);
     };
     
@@ -190,6 +195,7 @@ static NSString *_userAgentMobile;
             successBlock(responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
             failureBlock(error);
         }];
     }
@@ -205,13 +211,13 @@ static NSString *_userAgentMobile;
  */
 - (void)GETWithUrlString:(NSString *)urlString success:(void (^)(id data))success failure:(void(^)(NSError *error))failure
 {
-//    _instance = [NetworkTool manager];
+    //    _instance = [NetworkTool manager];
     [_instance.requestSerializer setValue: _userAgentMobile forHTTPHeaderField: @"User-Agent"];
     _instance.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/png",nil];
     // 1、设置请求头
-//    UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
-//    NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
-//    [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
+    //    UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectZero];
+    //    NSString *userAgentMobile = [webView stringByEvaluatingJavaScriptFromString: @"navigator.userAgent"];
+    //    [_instance.requestSerializer setValue: @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0" forHTTPHeaderField: @"User-Agent"];
     
     _instance.responseSerializer = [AFHTTPResponseSerializer serializer];
     
@@ -221,6 +227,7 @@ static NSString *_userAgentMobile;
             success(responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showErrorMessageWithError: error];
         if (failure)
         {
             failure(error);
@@ -253,6 +260,7 @@ static NSString *_userAgentMobile;
             success(responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showErrorMessageWithError: error];
         if (failure)
         {
             failure(error);
@@ -277,6 +285,8 @@ static NSString *_userAgentMobile;
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [self showErrorMessageWithError: error];
         
         if (failure)
         {
@@ -396,9 +406,12 @@ static NSString *_userAgentMobile;
     }];
 }
 
-- (void)loadNodeItems
+- (void)showErrorMessageWithError:(NSError *)error
 {
-    
+    NSString *message = [[NSString alloc] initWithData: [error.userInfo objectForKey: @"com.alamofire.serialization.response.error.data"] encoding: NSUTF8StringEncoding];
+    if ([message containsString: @"Access Denied"])
+        [[WTProgressHUD shareProgressHUD] errorWithMessage: @"您的IP暂时已被禁用"];
+    WTLog(@"error:%@", error)
 }
 
 @end

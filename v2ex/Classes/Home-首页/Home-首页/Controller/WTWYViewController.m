@@ -296,5 +296,16 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
+#pragma mark - Public
+/**
+ 刷新当前选中的VC的数据
+ */
+- (void)reloadSelectedVCData
+{
+    NSInteger index = [self.titleButtons indexOfObject: self.selectedBtn];
+    WTTopicViewController *vc = self.childViewControllers[index];
+    [vc loadNewData];
+}
+
 @end
 NS_ASSUME_NONNULL_END

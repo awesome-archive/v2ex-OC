@@ -10,5 +10,8 @@
 #import "WTTopicViewController.h"
 #import "WTNode.h"
 @interface WTWYViewController : UIViewController
-
+/**
+ 刷新当前选中的VC的数据
+ */
+- (void)reloadSelectedVCData;
 @end

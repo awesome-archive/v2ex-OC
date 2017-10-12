@@ -47,6 +47,9 @@ NSString * const WTUploadPictureUrl = @"https://pic.xiaojianjian.net/webtools/pi
 /** 注册 */
 NSString * const WTRegisterUrl = @"signup";
 
+/** 两步验证的URL */
+NSString * const WTLogin2faUrl = @"/2fa";
+
 /** 继续注册 */
 NSString * const WTContinueRegisterUrl = @"signup/confirm";
 

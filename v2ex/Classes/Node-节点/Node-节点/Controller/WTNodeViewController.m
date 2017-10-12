@@ -7,25 +7,25 @@
 //  节点控制器
 
 #import "WTNodeViewController.h"
-#import "WTNodeViewModel.h"
+#import "UIViewController+Extension.h"
 #import "WTHotNodeViewController.h"
-#import "WTHotNodeFlowLayout.h"
 #import "WTAllNodeViewController.h"
+
+#import "WTHotNodeFlowLayout.h"
+
+#import "WTNodeViewModel.h"
+
 #import "WTConst.h"
+
 #import "NetworkTool.h"
 
 @interface WTNodeViewController ()
 /** 热门节点View */
 @property (nonatomic, weak) UICollectionView *hotNodeCollectionView;
 /** 所有节点View */
-@property (nonatomic, weak) UITableView *allNodeTableView;
-/** 导航栏 */
-@property (weak, nonatomic) IBOutlet UIView *navView;
-/** 导航栏线条 */
-@property (weak, nonatomic) IBOutlet UIView *navLineView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navViewHeightLayoutCons;
+@property (nonatomic, weak) UIView *allNodeView;
 
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @end
 
 @implementation WTNodeViewController
@@ -52,15 +52,7 @@
  */
 - (void)setupView
 {
-    self.navView.backgroundColor = [UIColor colorWithHexString: @"#EFEFEF"];
-    
-    self.navLineView.backgroundColor = [UIColor colorWithHexString: @"#DCDDDE"];
-    
-    self.navViewHeightLayoutCons.constant = WTNavigationBarMaxY;
-    
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 0、设置nav的titleView
     UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems: @[@"最热", @"全部"]];
@@ -76,7 +68,8 @@
     [control addTarget: self action: @selector(segmentedControlValueChanged:) forControlEvents: UIControlEventValueChanged];
     
     
-    [self.navView addSubview: control];
+    [self navView];
+    [self.nav_View addSubview: control];
     
     // 1、添加热点节点控制器
     WTHotNodeViewController *hotNodeVC = [[WTHotNodeViewController alloc] initWithCollectionViewLayout: [WTHotNodeFlowLayout new]];
@@ -104,29 +97,28 @@
 {
     if (control.selectedSegmentIndex == 0)
     {
-        [self.allNodeTableView removeFromSuperview];
-        [self.contentView addSubview: self.hotNodeCollectionView];
+        
+        [self.contentView bringSubviewToFront: self.hotNodeCollectionView];
     }
     else
     {
-        [self.hotNodeCollectionView removeFromSuperview];
-        [self.contentView addSubview: self.allNodeTableView];
-
+        [self.contentView bringSubviewToFront: self.allNodeView];
+        
     }
 }
 
 #pragma mark - Layz Method
-- (UITableView *)allNodeTableView
+- (UIView *)allNodeView
 {
-    if (_allNodeTableView == nil)
+    if (_allNodeView == nil)
     {
         WTAllNodeViewController *allNodeVC = [[WTAllNodeViewController alloc] init];
         [self addChildViewController: allNodeVC];
         
-        _allNodeTableView = allNodeVC.tableView;
-        _allNodeTableView.frame = self.contentView.bounds;
-        [self.contentView addSubview: _allNodeTableView];
+        _allNodeView = allNodeVC.view;
+        _allNodeView.frame = self.contentView.bounds;
+        [self.contentView addSubview: _allNodeView];
     }
-    return _allNodeTableView;
+    return _allNodeView;
 }
 @end

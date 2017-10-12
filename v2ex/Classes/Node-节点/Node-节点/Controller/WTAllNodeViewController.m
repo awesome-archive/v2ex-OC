@@ -13,6 +13,7 @@
 NSString * const reuseIdentifier = @"reuseIdentifier";
 
 @interface WTAllNodeViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *datas;
 

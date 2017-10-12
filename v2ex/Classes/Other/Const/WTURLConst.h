@@ -22,6 +22,10 @@ UIKIT_EXTERN NSString * const WTNewestUrl;
 /** 登陆的URL */
 UIKIT_EXTERN NSString * const WTLoginUrl;
 
+
+/** 两步验证的URL */
+UIKIT_EXTERN NSString * const WTLogin2faUrl;
+
 /** 收藏话题URL */
 UIKIT_EXTERN NSString * const WTCollectionTopicUrl;
 
