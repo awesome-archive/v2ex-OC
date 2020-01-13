@@ -10,10 +10,12 @@
 #import "WTLoginViewController.h"
 #import "WTTopicDetailViewController.h"
 
+#import "WTNoLoginView.h"
 #import "WTNoDataView.h"
 #import "WTNotificationCell.h"
 #import "WTRefreshNormalHeader.h"
 #import "WTRefreshAutoNormalFooter.h"
+#import "UIViewController+Extension.h"
 
 #import "WTConst.h"
 #import "NetworkTool.h"
@@ -35,19 +37,33 @@ static NSString * const ID = @"notificationCell";
 @property (nonatomic, assign) NSInteger                        page;
 
 @property (nonatomic, assign) WTTableViewType                  tableViewType;
-/** 记录第一次进入APP登录的状态 */
-@property (nonatomic, assign, getter=isLogin) BOOL             login;
+
+@property (weak, nonatomic) IBOutlet UITableView               *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopLayoutCons;
 
 @end
 
 @implementation WTUserNotificationViewController
 
+#pragma mark - Life
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    // 1、初始化View
+    [self initView];
     
-    self.title = @"提醒";
+    // 2、初始化数据
+    [self loadData];
+    
+    // 3、初始化通知
+    [self initNoti];
+}
+
+#pragma mark - Private 
+- (void)initView
+{
+    [self navViewWithTitle: @"提醒" hideBack: YES];
     
     self.tableView.tableFooterView = [UIView new];
     
@@ -69,45 +85,56 @@ static NSString * const ID = @"notificationCell";
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
-    
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)loadData
 {
-    [super viewWillAppear: animated];
     
     // 2、登陆过
-    if ([[WTAccountViewModel shareInstance] isLogin] && self.login == NO)
+    if ([[WTAccountViewModel shareInstance] isLogin])
     {
-        self.login = YES;
         // 2、开始下拉刷新
         [self.tableView.mj_header beginRefreshing];
         
     }
-    else if(![[WTAccountViewModel shareInstance] isLogin])
+    else
     {
         self.tableViewType = WTTableViewTypeLogout;
-        self.login = NO;
         [self.notificationVM.notificationItems removeAllObjects];
         [self.tableView reloadData];
     }
 }
 
-#pragma mark - 加载数据
+- (void)initNoti
+{
+    // 1、登陆状态变更通知
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(loadData) name: WTLoginStateChangeNotification object: nil];
+    
+    // 2、未读通知
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(unReadNotification:) name: WTUnReadNotificationNotification object: nil];
+}
+
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
     
+    __weak typeof(self) weakSelf = self;
     self.notificationVM.page = 1;
-    
     [self.notificationVM getUserNotificationsSuccess:^{
         
-        [self.tableView reloadData];
+        if (weakSelf.notificationVM.notificationItems.count == 0)
+            weakSelf.tableViewType = WTTableViewTypeNoData;
+        else
+            weakSelf.tableViewType = WTTableViewTypeNormal;
         
-        [self.tableView.mj_header endRefreshing];
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+        weakSelf.navigationController.tabBarItem.badgeValue = nil;
         
     } failure:^(NSError *error) {
-        [self.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -132,6 +159,15 @@ static NSString * const ID = @"notificationCell";
     {
         [self.tableView.mj_footer endRefreshing];
     }
+}
+
+- (void)unReadNotification:(NSNotification *)noti
+{
+    // 1、未读个数
+    NSInteger unReadNum = [[noti.userInfo objectForKey: WTUnReadNumKey] integerValue];
+    
+    // 2、设置角标
+    self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat: @"%ld", unReadNum];
 }
 
 #pragma mark - 事件
@@ -190,34 +226,71 @@ static NSString * const ID = @"notificationCell";
     }];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: ID cacheByIndexPath: indexPath configuration:^(WTNotificationCell *cell) {
-        cell.noticationItem = self.notificationVM.notificationItems[indexPath.row];
-    }];
-}
 
 #pragma mark - DZNEmptyDataSetSource
-- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    UIView *view;
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    NSString *text = nil;
     if (self.tableViewType == WTTableViewTypeNoData)
     {
-        WTNoDataView *noDataView = [WTNoDataView noDataView];
-        noDataView.tipImageView.image = [UIImage imageNamed:@"no_notification"];
-        noDataView.tipTitleLabel.text = @"快去发表主题吧";
-        view = noDataView;
+        text = @"还没有收到通知";
+        [attributes setObject: [UIColor colorWithHexString: @"#BDBDBD"] forKey: NSForegroundColorAttributeName];
+        return [[NSAttributedString alloc] initWithString: text attributes:attributes];
     }
-    else if(self.tableViewType == WTTableViewTypeLogout)
-    {
-        UIButton *loginBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-        loginBtn.width = 100;
-        loginBtn.height = 30;
-        [loginBtn setTitle: @"登陆" forState: UIControlStateNormal];
-        [loginBtn setTitleColor: [UIColor blueColor] forState: UIControlStateNormal];
-        [loginBtn addTarget: self action: @selector(goToLoginVC) forControlEvents: UIControlEventTouchUpInside];
-        view = loginBtn;
-    }
-    return view;
+    
+    return nil;
 }
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if (self.tableViewType == WTTableViewTypeNoData)
+    {
+        return [UIImage imageNamed:@"no_notification"];
+    }
+    return nil;
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    [attributes setObject: WTSelectedColor forKey: NSForegroundColorAttributeName];
+    [attributes setObject: [UIFont systemFontOfSize: 18 weight: UIFontWeightMedium] forKey: NSFontAttributeName];
+    if (![WTAccountViewModel shareInstance].isLogin)
+    {
+        return [[NSAttributedString alloc] initWithString: @"登陆" attributes:attributes];
+    }
+    else if (self.notificationVM.notificationItems.count == 0)
+    {
+        return [[NSAttributedString alloc] initWithString: @"重新加载" attributes:attributes];
+    }
+    return nil;
+}
+
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
+{
+    return YES;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+    if ([WTAccountViewModel shareInstance].isLogin)
+    {
+        [self.tableView.mj_header beginRefreshing];
+    }
+    else
+    {
+        WTLoginViewController *loginVC = [WTLoginViewController new];
+        __weak typeof(self) weakSelf = self;
+        loginVC.loginSuccessBlock = ^{
+            [weakSelf loadNewData];
+        };
+        [self presentViewController: loginVC animated: YES completion: nil];
+    }
+    
+}
+
+#pragma mark - Lazy
+
 @end

@@ -52,7 +52,6 @@ typedef NS_ENUM(NSUInteger, WTThankType){
 
 + (WTTopicDetailViewModel *)topicDetailWithData:(NSData *)data;
 
-+ (void)getTopicDetailImages;
 
 /**
  *  帖子操作

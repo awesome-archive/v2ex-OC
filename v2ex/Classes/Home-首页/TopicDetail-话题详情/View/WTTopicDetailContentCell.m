@@ -20,7 +20,12 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.contentView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    
     // 取消反弹
+//    self.webView.userInteractionEnabled = NO;
+    self.webView.scrollView.scrollEnabled = NO;
     self.webView.scrollView.bounces = NO;
     // 监听scrollView的contentSize
     [self.webView.scrollView addObserver: self forKeyPath: @"contentSize" options: NSKeyValueObservingOptionNew context: nil];
@@ -65,7 +70,7 @@
     WTLog(@"url:%@", url)
     
     // 第一次加载
-    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:"] | [url isEqualToString: @"http:/"]) && ![url containsString: @"jpg"])
+    if (([url containsString: @"about:blank"] || [url isEqualToString: @"https:"] | [url isEqualToString: @"http:/"] || [url isEqualToString: @"https:/"]) && ![url containsString: @"jpg"])
     {
         return YES;
     }
@@ -99,16 +104,13 @@
             image = [self parseImageUrl: image];
             
             if ([image containsString: @"http"])
-            {
                 [images addObject: [NSURL URLWithString: image]];
-            }
             
         }
         
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithContentImages:currentIndex:)])
-        {
             [self.delegate topicDetailContentCell: self didClickedWithContentImages: images currentIndex: currentIndex - 1];
-        }
+        
         return NO;
     }
 
@@ -116,38 +118,31 @@
     if ([url containsString:@"userid://"])
     {
         NSString *username = [url stringByReplacingOccurrencesOfString: @"userid://" withString: @""];
+
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithCommentAvatar:)])
-        {
             [self.delegate topicDetailContentCell: self didClickedWithCommentAvatar: username];
-        }
+
         return NO;
     }
     
+    // 用户名点击
     if ([url containsString: @"replyusername://"])
     {
         NSString *username = [url stringByReplacingOccurrencesOfString: @"replyusername://" withString: @""];
+        
         if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedCellWithUsername:)])
-        {
             [self.delegate topicDetailContentCell: self didClickedCellWithUsername: username];
-        }
         return NO;
     }
     
-    if ([url containsString: @"www.youtube.com"])
-    {
-        return NO;
-    }
+    if ([url containsString: @"www.youtube.com"]) return NO;
     
-    if ([url containsString: @"itunes.apple.com"])
-    {
-        [[UIApplication sharedApplication] openURL: request.URL];
-    }
+    if ([url containsString: @"itunes.apple.com"]) [[UIApplication sharedApplication] openURL: request.URL];
+    
     
     // 网址
     if ([self.delegate respondsToSelector: @selector(topicDetailContentCell:didClickedWithLinkURL:)])
-    {
         [self.delegate topicDetailContentCell: self didClickedWithLinkURL: request.URL];
-    }
     
     
     return NO;
@@ -164,5 +159,7 @@
     }
     return url;
 }
+
+
 
 @end

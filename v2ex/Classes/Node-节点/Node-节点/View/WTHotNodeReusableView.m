@@ -18,8 +18,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+
+    self.backgroundColor = [UIColor whiteColor];
     
-    self.backgroundColor = WTColor(242, 243, 245);
+    self.titleLabel.textColor = [UIColor colorWithHexString: @"#494949"];
 }
 
 - (void)setTitle:(NSString *)title

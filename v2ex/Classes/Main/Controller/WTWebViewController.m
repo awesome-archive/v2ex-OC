@@ -7,6 +7,7 @@
 //
 
 #import "WTWebViewController.h"
+#import "UIViewController+Extension.h"
 #import <WebKit/WebKit.h>
 #import "WTShareSDKTool.h"
 #import "UIBarButtonItem+Extension.h"
@@ -39,7 +40,7 @@
     self.prevBtn.enabled = NO;
     self.nextBtn.enabled = NO;
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem createShareItemWithTarget: self action: @selector(shareClick)];
+    [self navViewWithTitle: self.url.absoluteString];
 }
 
 

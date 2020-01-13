@@ -128,11 +128,11 @@ NSString * const WTMemberReplyCellIdentifier = @"WTMemberReplyCellIdentifier";
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView fd_heightForCellWithIdentifier: WTMemberReplyCellIdentifier cacheByIndexPath:indexPath configuration:^(id cell) {
-        
-    }];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [tableView fd_heightForCellWithIdentifier: WTMemberReplyCellIdentifier cacheByIndexPath:indexPath configuration:^(id cell) {
+//        
+//    }];
+//}
 
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

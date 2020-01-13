@@ -22,7 +22,7 @@ MJCodingImplementation
 {
     _title = title;
     
-    self.width = [title boundingRectWithSize: CGSizeMake(WTScreenWidth, 15) options: NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes: @{NSFontAttributeName: [UIFont systemFontOfSize: 15]} context: nil].size.width + 2;
+    self.width = [title boundingRectWithSize: CGSizeMake(WTScreenWidth, 15) options: NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes: @{NSFontAttributeName: [UIFont QiHeiforSize: 15]} context: nil].size.width;
 }
 
 - (NSString *)description

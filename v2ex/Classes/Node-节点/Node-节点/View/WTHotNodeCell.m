@@ -20,9 +20,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+//    self.backgroundColor = WTRandomColor;
     self.titleLabel.font = [UIFont QiHeiforSize: 15];
-    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.titleLabel.textColor = [UIColor colorWithHexString: @"#494949"];
 }
 
 - (void)setNodeItem:(WTNodeItem *)nodeItem

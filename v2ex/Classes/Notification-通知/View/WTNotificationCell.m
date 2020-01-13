@@ -10,6 +10,7 @@
 #import "WTNotificationItem.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Extension.h"
+#import "NSString+YYAdd.h"
 
 @interface WTNotificationCell()
 /** 头像 */
@@ -30,6 +31,9 @@
     [super awakeFromNib];
     self.bgContentView.backgroundColor = [UIColor colorWithHexString: @"#F3F3F5"];
     self.bgContentView.layer.cornerRadius = 3;
+    
+    self.iconImageView.layer.cornerRadius = 5;
+    self.iconImageView.layer.masksToBounds = YES;
 }
 
 
@@ -41,7 +45,10 @@
     
     self.titleLabel.text = noticationItem.title;
     
-    self.contentLabel.text = noticationItem.content;
+    if (noticationItem.content == nil)
+        self.contentLabel.text = @"收藏了你发布的主题";
+    else
+        self.contentLabel.text = noticationItem.content;
     
     self.timeLabel.text = [noticationItem.lastReplyTime stringByReplacingOccurrencesOfString: @" " withString: @""];
 }

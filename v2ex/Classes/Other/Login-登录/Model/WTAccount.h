@@ -23,6 +23,6 @@
 /** 头像*/
 @property (nonatomic, strong) NSURL                                 *avatarURL;
 
-@property (nonatomic, strong) NSString                              *pastUrl;
+@property (nonatomic, assign, getter=isPast) BOOL                   past;
 
 @end

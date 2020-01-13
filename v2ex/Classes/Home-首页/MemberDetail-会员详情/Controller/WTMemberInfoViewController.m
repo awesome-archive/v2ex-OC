@@ -7,7 +7,6 @@
 //
 
 #import "WTMemberInfoViewController.h"
-#import "WTConversationViewController.h"
 #import "WTMemberInfoTableViewController.h"
 
 #import "WTMemberItem.h"
@@ -27,7 +26,7 @@
 @implementation WTMemberInfoViewController
 
 #pragma mark - Init
-- (instancetype)init
++ (instancetype)memberInfoVC
 {
     return [UIStoryboard storyboardWithName: NSStringFromClass([WTMemberInfoViewController class]) bundle: nil].instantiateInitialViewController;
 }
@@ -42,7 +41,7 @@
  */
 - (instancetype)initWithMemberItem:(WTMemberItem *)memberItem userItem:(WTUserItem *)userItem
 {
-    WTMemberInfoViewController *memberInfoVC = [WTMemberInfoViewController new];
+    WTMemberInfoViewController *memberInfoVC = [WTMemberInfoViewController memberInfoVC];
     memberInfoVC.memberItem = memberItem;
     memberInfoVC.userItem = userItem;
     return memberInfoVC;
@@ -57,10 +56,7 @@
 }
 
 - (void)initView
-{
-    // 设置导航栏的View
-    [self setTempNavImageView];
-    
+{    
     self.title = @"详细资料";
     
     // 如果用户并没有用v2ex客户端登陆过，那就不能聊天
@@ -82,9 +78,9 @@
 // 发送消息
 - (IBAction)sendBtnClick
 {
-    WTConversationViewController *conversationVC = [[WTConversationViewController alloc] initWithConversationType:ConversationType_PRIVATE targetId: [NSString stringWithFormat: @"%lu", self.userItem.uid]];
-    conversationVC.title = self.userItem.username;
-    [self.navigationController pushViewController: conversationVC animated: YES];
+//    WTConversationViewController *conversationVC = [[WTConversationViewController alloc] initWithConversationType:ConversationType_PRIVATE targetId: [NSString stringWithFormat: @"%lu", self.userItem.uid]];
+//    conversationVC.title = self.userItem.username;
+//    [self.navigationController pushViewController: conversationVC animated: YES];
 }
 
 @end

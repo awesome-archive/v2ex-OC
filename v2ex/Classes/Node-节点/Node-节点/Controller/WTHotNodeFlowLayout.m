@@ -8,9 +8,15 @@
 
 #import "WTHotNodeFlowLayout.h"
 
-const CGFloat cellSpacing = 15.0f;
+const CGFloat WTHotNodeSectionLeft = 15;
+
+const CGFloat WTHotNodeCellSpacing = 10;
+
+const CGFloat WTHotNodeMinimumInteritemSpacing = 15;
 
 @implementation WTHotNodeFlowLayout
+
+
 
 #pragma mark 返回collectionView视图中所有视图的属性
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
@@ -50,9 +56,9 @@ const CGFloat cellSpacing = 15.0f;
     NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem: indexPath.item - 1 inSection: indexPath.section];
     CGRect previousFrame = [self layoutAttributesForItemAtIndexPath: previousIndexPath].frame;
     
-    CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + cellSpacing;
+    CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + WTHotNodeMinimumInteritemSpacing;
     
-    CGRect strecthedCurrentFrame = CGRectMake(0, currentFrame.origin.y, self.collectionView.width, currentFrame.size.height);
+    CGRect strecthedCurrentFrame = CGRectMake(0, currentFrame.origin.y, self.collectionView.width - WTHotNodeSectionLeft, currentFrame.size.height);
     
     
     if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame))

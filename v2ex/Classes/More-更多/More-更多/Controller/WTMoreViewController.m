@@ -9,6 +9,7 @@
 #import "WTMoreViewController.h"
 #import "WTPrivacyStatementViewController.h"
 #import "WTLoginViewController.h"
+#import "WTConst.h"
 #import "WTRegisterViewController.h"
 #import "WTAdvertiseViewController.h"
 #import "WTMyReplyViewController.h"
@@ -18,7 +19,6 @@
 #import "WTWebViewController.h"
 #import "WTNodeCollectionViewController.h"
 #import "WTMyTopicViewController.h"
-#import "WTV2GroupViewController.h"
 
 #import "WTMoreNotLoginHeaderView.h"
 #import "WTMoreLoginHeaderView.h"
@@ -92,8 +92,6 @@ CGFloat const moreHeaderViewH = 150;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    
-    [self.navigationController setNavigationBarHidden: YES animated: NO];
     
     // 4、判断是否登录，添加不同的headerView
     if ([[WTAccountViewModel shareInstance] isLogin])
@@ -206,6 +204,7 @@ CGFloat const moreHeaderViewH = 150;
                              
                                 [WTSettingItem settingItemWithTitle: @"节点收藏" image: [UIImage imageNamed: @"mine_favourite"] operationBlock: ^{
             
+            
                                     [weakSelf checkIsLoginWithViewController: [WTNodeCollectionViewController new]];
                                 }],
             
@@ -230,6 +229,11 @@ CGFloat const moreHeaderViewH = 150;
                                     [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
                                 }],
                                 
+//                                [WTSettingItem settingItemWithTitle: @"我的回复" image: [UIImage imageNamed: @"more_systemnoti"] operationBlock: ^{
+//            
+//                                    [weakSelf checkIsLoginWithViewController: [WTMyReplyViewController new]];
+//                                }],
+                                
 #if Test == 0
                                 [WTSettingItem settingItemWithTitle: @"v2小组" image: [UIImage imageNamed: @"more_group"] operationBlock: ^{
             
@@ -248,6 +252,12 @@ CGFloat const moreHeaderViewH = 150;
                                 [WTSettingItem settingItemWithTitle: @"隐私声明" image: [UIImage imageNamed: @"more_privacystatement"] operationBlock: ^{
             
                                     [weakSelf.navigationController pushViewController: [WTPrivacyStatementViewController new] animated: YES];
+                                }],
+                                
+                                [WTSettingItem settingItemWithTitle: @"评分" image: [UIImage imageNamed: @"more_pingfen"] operationBlock: ^{
+            
+                                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/v2ex-%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E8%80%85%E4%BB%AC%E7%9A%84%E7%A4%BE%E5%8C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/id1091339486?mt=8"]];
+
                                 }],
                                 
                                 [WTSettingItem settingItemWithTitle: @"项目源码" image: [UIImage imageNamed: @"more_project"] operationBlock: ^{
@@ -350,6 +360,7 @@ CGFloat const moreHeaderViewH = 150;
         
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle: @"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             
+            [[NSNotificationCenter defaultCenter] postNotificationName: WTLoginStateChangeNotification object: nil];
             // 清除帐号
             [[WTAccountViewModel shareInstance] loginOut];
             [self viewWillAppear: YES];
@@ -364,6 +375,11 @@ CGFloat const moreHeaderViewH = 150;
         _loginC = loginC;
     }
     return _loginC;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

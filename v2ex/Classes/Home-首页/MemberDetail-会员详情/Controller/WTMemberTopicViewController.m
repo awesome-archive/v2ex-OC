@@ -155,12 +155,12 @@ NSString * const WTMemberTopicIdentifier = @"WTMemberTopicIdentifier";
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: WTMemberTopicIdentifier cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
-        cell.topic = self.memberTopicVM.topics[indexPath.row];
-    }];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [tableView fd_heightForCellWithIdentifier: WTMemberTopicIdentifier cacheByIndexPath: indexPath configuration:^(WTTopicCell *cell) {
+//        cell.topic = self.memberTopicVM.topics[indexPath.row];
+//    }];
+//}
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

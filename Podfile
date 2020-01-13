@@ -19,20 +19,16 @@ target 'v2ex' do
 	pod 'CTAssetsPickerController'
 	pod 'IQKeyboardManager'
 	pod 'UITableView+FDTemplateLayoutCell'
-	pod "DKNightVersion"
 	pod 'FMDB'
-	pod 'RongCloudIMKit'
 	pod 'DZNEmptyDataSet'
 	pod 'pop'
 	pod 'Bugly'
-	pod 'JPush'
-	pod 'AMap2DMap'
 	pod 'JGProgressHUD'
-	pod 'AMapLocation'
 	pod 'IDMPhotoBrowser'
 	pod 'MarqueeLabel'
 	pod 'UMengAnalytics-NO-IDFA'
-	pod 'GHMarkdownParser'
+
+
 end
 
 target 'Today' do

@@ -23,11 +23,12 @@
 #import "NSString+Regex.h"
 #import "WTAccountViewModel.h"
 
+#import "Masonry.h"
 #import "IDMPhotoBrowser.h"
 #import "SVProgressHUD.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
-@interface WTTopicDetailTableViewController () <WTTopicDetailHeadCellDelegate, WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate>
+@interface WTTopicDetailTableViewController () <WTTopicDetailHeadCellDelegate, WTTopicDetailContentCellDelegate, WTTopicDetailCommentCellDelegate, UITableViewDataSource, UITableViewDelegate>
 /** 帖子回复ViewModel */
 @property (nonatomic, strong) NSMutableArray<WTTopicDetailViewModel *> *topicDetailViewModels;
 /** 当前页 */
@@ -42,6 +43,10 @@
 @property (nonatomic, strong) NSString                                 *lastPageUrl;
 
 @property (nonatomic, strong) WTTopicDetailViewModel                   *topicDetailVM;
+/** 回复控制器 */
+@property (nonatomic, weak) WTPostReplyViewController                  *postReplyVC;
+/** 子控制器 */
+@property (nonatomic, strong) NSMutableArray<UIViewController *>       *childVC;
 @end
 
 /** 帖子标题 */
@@ -75,8 +80,8 @@ static NSString  * const commentCellID = @"commentCellID";
     //self.topicDetailUrl = @"https://www.v2ex.com/t/353492#reply0";  //可以回复的
     
    //self.topicDetailUrl = @"https:/www.v2ex.com/t/353415#reply11";
-   // self.topicDetailUrl = @"https://www.v2ex.com/t/353501#reply0"; //代码高亮显示
-    
+    //self.topicDetailUrl = @"https://www.v2ex.com/t/353501#reply0"; //代码高亮显示
+    //self.topicDetailUrl = @"https://www.v2ex.com/t/372577#reply5"; // 图片不显示
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/353464#reply24"; //多图，测试图片点击的
     
     //self.topicDetailUrl = @"https://www.v2ex.com/t/354606#reply70"; //需要会员登陆
@@ -91,11 +96,21 @@ static NSString  * const commentCellID = @"commentCellID";
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/355539#reply116"; // 评论中的爱心换行了
     
     //self.topicDetailUrl = @"https:/www.v2ex.com/t/356410#reply59";
+    
+    // BUG:
+        // https:/www.v2ex.com/t/376552#reply1
+        // https:/www.v2ex.com/t/374772#reply81 图片太大
+    
+    
     // 1、加载数据
     [self setupData];
     
+    // 2、加载 View
+    [self setupView];
+    
     // 2、添加通知
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(toolbarButtonClick:) name: WTToolBarButtonClickNotification object: nil];
+
     
     // 3、回复帖子用的url
     if ([self.topicDetailUrl containsString: @"#"]) {
@@ -109,6 +124,58 @@ static NSString  * const commentCellID = @"commentCellID";
     
     // 4、帖子详情url
     self.lastPageUrl = self.topicDetailUrl;
+}
+
+#pragma mark 设置View
+- (void)setupView
+{
+    self.tableView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    
+    self.childVC = [NSMutableArray array];
+}
+
+#pragma mark - 加载数据
+- (void)setupData
+{
+    
+    [self parseUrl];
+    
+    
+    [[NetworkTool shareInstance] GETWithUrlString: self.topicDetailUrl success:^(NSData *data) {
+        
+        self.topicDetailVM = [WTTopicDetailViewModel topicDetailWithData: data];
+        
+        
+        // 更新页数
+        self.currentPage = self.topicDetailVM.currentPage;
+        
+        // 说明帖子需要登陆
+        if (self.topicDetailVM == nil)
+        {
+            if (self.updateTopicDetailComplection)
+            {
+                NSError *error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorMessage" : @"查看本主题需要登录"}];
+                self.updateTopicDetailComplection(nil, error);
+            }
+            
+        }
+        else
+        {
+            if (self.updateTopicDetailComplection)
+                self.updateTopicDetailComplection(self.topicDetailVM, nil);
+            
+            [self.tableView reloadData];
+        }
+        
+        
+    } failure:^(NSError *error) {
+    }];
+}
+
+- (void)closePostReplyView
+{
+    [self.postReplyVC.view endEditing: YES];
+    self.postReplyVC.view.alpha = 0;
 }
 
 #pragma mark - 事件
@@ -177,25 +244,20 @@ static NSString  * const commentCellID = @"commentCellID";
     }
     
     // 2、moda回复话题控制器
-    WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
-    
+    //WTPostReplyViewController *postReplyVC = [WTPostReplyViewController new];
     // 2.1、回复话题的必备参数
-    postReplyVC.urlString = self.replyTopicUrl;
-    postReplyVC.once = self.topicDetailVM.once;
+    self.postReplyVC.urlString = self.replyTopicUrl;
+    self.postReplyVC.once = self.topicDetailVM.once;
     
-    // 2.2、回复之后的block操作
-    postReplyVC.completionBlock = ^(BOOL isSuccess){
-        self.topicDetailUrl = self.lastPageUrl;
-        [self setupData];
-    };
-    
-    WTNavigationController *nav = [[WTNavigationController alloc] initWithRootViewController: postReplyVC];
-    [self presentViewController: nav animated: YES completion: nil];
+    // 3、显示回复的View
+    self.postReplyVC.view.alpha = 1;
+    [self.postReplyVC.textView becomeFirstResponder];
 }
 
 #pragma mark - 帖子操作
 - (void)topicOperationWithMethod:(HTTPMethodType)method urlString:(NSString *)urlString allowOperation:(BOOL(^)())allowOperation
 {
+    __weak typeof(self) weakSelf = self;
     // 1、先判断是否登陆
     if (![[WTAccountViewModel shareInstance] isLogin])
     {
@@ -203,7 +265,7 @@ static NSString  * const commentCellID = @"commentCellID";
         WTLoginViewController *loginVC = [WTLoginViewController new];
         
         // 1.2、登陆之后的操作
-        __weak typeof(self) weakSelf = self;
+        
         loginVC.loginSuccessBlock = ^(){
             [weakSelf setupData];
         };
@@ -234,51 +296,16 @@ static NSString  * const commentCellID = @"commentCellID";
             return;
         }
         
-        self.topicDetailVM = topicDetailVM;
-        if (self.updateTopicDetailComplection)
+        weakSelf.topicDetailVM = topicDetailVM;
+        if (weakSelf.updateTopicDetailComplection)
         {
-            self.updateTopicDetailComplection(topicDetailVM, nil);
+            weakSelf.updateTopicDetailComplection(topicDetailVM, nil);
         }
     }];
     
 }
 
-#pragma mark - 加载数据
-- (void)setupData
-{
-    [self parseUrl];
-    
-    
-    [[NetworkTool shareInstance] GETWithUrlString: self.topicDetailUrl success:^(NSData *data) {
-        
-        self.topicDetailVM = [WTTopicDetailViewModel topicDetailWithData: data];
-        
-        
-        // 更新页数
-        self.currentPage = self.topicDetailVM.currentPage;
-        
-        // 说明帖子需要登陆
-        if (self.topicDetailVM == nil)
-        {
-            if (self.updateTopicDetailComplection)
-            {
-                NSError *error = [[NSError alloc] initWithDomain: WTDomain code: -1011 userInfo: @{@"errorMessage" : @"查看本主题需要登录"}];
-                self.updateTopicDetailComplection(nil, error);
-            }
-            
-        }
-        else
-        {
-            if (self.updateTopicDetailComplection)
-                self.updateTopicDetailComplection(self.topicDetailVM, nil);
-            
-            [self.tableView reloadData];
-        }
 
-        
-    } failure:^(NSError *error) {
-    }];
-}
 
 #pragma mark - 解析url
 - (void)parseUrl
@@ -349,6 +376,14 @@ static NSString  * const commentCellID = @"commentCellID";
 }
 
 #pragma mark - Table view delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.updateScrollViewOffsetComplecation)
+    {
+        self.updateScrollViewOffsetComplecation(scrollView.contentOffset.y);
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)   // 帖子标题
@@ -410,8 +445,31 @@ static NSString  * const commentCellID = @"commentCellID";
 
 - (void)topicDetailContentCell:(WTTopicDetailContentCell *)contentCell didClickedCellWithUsername:(NSString *)userName
 {
-    WTMemberDetailViewController *memeberDetailVC = [[WTMemberDetailViewController alloc] initWithUsername: userName];
-    [self.navigationController pushViewController: memeberDetailVC animated: YES];
+    
+    __weak typeof(self) weakSelf = self;
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle: nil message: nil preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    
+    UIAlertAction *thankAction = [UIAlertAction actionWithTitle: @"感谢" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *replyAction = [UIAlertAction actionWithTitle: @"回复" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        weakSelf.postReplyVC.ausername = userName;
+        
+        [weakSelf replyTopic];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+//    [ac addAction: thankAction];
+    [ac addAction: replyAction];
+    [ac addAction: cancelAction];
+    
+    [self presentViewController: ac animated: YES completion: nil];
 }
     
 #pragma mark - WTTopicDetailContentCellDelegate
@@ -426,6 +484,37 @@ static NSString  * const commentCellID = @"commentCellID";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
+#pragma mark - Lazy Method
+- (WTPostReplyViewController *)postReplyVC
+{
+    if (_postReplyVC == nil)
+    {
+        WTPostReplyViewController *vc = [WTPostReplyViewController new];
+        _postReplyVC = vc;
+        [self.childVC addObject: vc];
+        [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview: vc.view];
+        
+        vc.view.alpha = 0;
+        [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.offset(0);
+        }];
+        
+        // 、回复之后的block操作
+        __weak typeof(self) weakSelf = self;
+        vc.completionBlock = ^(BOOL isSuccess){
+            weakSelf.topicDetailUrl = weakSelf.lastPageUrl;
+            [weakSelf setupData];
+            [weakSelf closePostReplyView];
+        };
+        vc.closeBlock = ^(){
+//            WTTopicDetailContentCell *cell = weakSelf.tableView.visibleCells.lastObject;
+//            [cell reloadData];
+            [weakSelf closePostReplyView];
+        };
+    }
+    return _postReplyVC;
 }
 
 @end

@@ -10,11 +10,12 @@
 
 #import "WTConst.h"
 #import "WTAccountViewModel.h"
+#import "UIViewController+Extension.h"
 
 #import "POP.h"
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
-@interface WTMoreLoginHeaderView () <POPAnimationDelegate>
+@interface WTMoreLoginHeaderView () <POPAnimationDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView1;
 @property (weak, nonatomic) IBOutlet UIView *avatarbgView2;
 
@@ -32,7 +33,6 @@
 
 /** 签到 */
 @property (weak, nonatomic) IBOutlet UIButton *pastBtn;
-
 
 @end
 
@@ -77,7 +77,7 @@
     [self.avatarImageV sd_setImageWithURL: account.avatarURL placeholderImage: WTIconPlaceholderImage];
     
     NSString *past = @"签到";
-    if (account.pastUrl.length == 0 || account.pastUrl == nil)
+    if (account.isPast)
     {
         past = @"已签到";
     }
@@ -151,10 +151,5 @@
         [self.pastBtn setTitle: @"已签到" forState: UIControlStateNormal];
     });
 }
-
-//- (void)dealloc
-//{
-//    [[WTAccountViewModel shareInstance].account removeObserver: self forKeyPath: @"pastUrl"];
-//}
 
 @end

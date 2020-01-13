@@ -10,6 +10,6 @@
 
 
 
-@interface WTUserNotificationViewController : UITableViewController
+@interface WTUserNotificationViewController : UIViewController
 
 @end

@@ -11,13 +11,32 @@
 
 @interface UIViewController (Extension)
 
+@property (nonatomic, weak) UILabel *titleLabel;
 
-
-/** 设置导航栏的imageView */
-- (void)setTempNavImageView;
+@property (nonatomic, weak) UIView *nav_View;
 
 /** 设置导航栏的背景图片 */
 - (void)setNavBackgroundImage;
 
 
+/** 添加导航栏 */
+- (void)navView;
+
+/** 添加导航栏 */
+- (void)navViewWithTitle:(NSString *)title;
+
+
+/**
+ 添加导航栏
+
+ @param title 标题
+ @param hideBack 是否隐藏返回按钮
+ */
+- (void)navViewWithTitle:(NSString *)title hideBack:(BOOL)hideBack;
+
+
+/**
+ 获取栈顶控制器
+ */
++ (UIViewController *)topVC;
 @end

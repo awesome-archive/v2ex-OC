@@ -19,6 +19,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WTTopicCell ()
+@property (weak, nonatomic) IBOutlet UIView                 *bgView;
 
 /** 头像*/
 @property (weak, nonatomic) IBOutlet UIImageView            *iconImageV;
@@ -46,9 +47,19 @@ NS_ASSUME_NONNULL_BEGIN
 {
     [super awakeFromNib];
     
-    self.authorLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    self.contentView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    self.bgView.backgroundColor = [UIColor colorWithHexString: @"#FFFFFF"];
     
-    self.titleLabel.textColor = [UIColor colorWithHexString: WTTopicCellMainColor];
+    self.titleLabel.textColor = [UIColor colorWithHexString: @"#494949"];
+    
+    self.authorLabel.textColor = [UIColor colorWithHexString: @"#AAAAAA"];
+    
+    self.lastReplyTimeLabel.textColor = self.authorLabel.textColor;
+    
+    [self.nodeBtn setTitleColor: self.authorLabel.textColor forState: UIControlStateNormal];
+    
+    self.commentCountLabel.textColor = self.titleLabel.textColor;
+
     
     // 2、节点
     self.nodeBtn.layer.cornerRadius = 1.5;
@@ -56,11 +67,13 @@ NS_ASSUME_NONNULL_BEGIN
     self.iconImageV.layer.masksToBounds = YES;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    // 之前添加点击手势失效，所以才用两个按钮辅助添加点击事件
-//    // 3、添加点击手势
-//    UITapGestureRecognizer *memeberDetailTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(tap)];
-//    [self.iconImageV addGestureRecognizer: memeberDetailTap];
-//    [self.authorLabel addGestureRecognizer: memeberDetailTap];
+    // 3、阴影和圆角
+    self.bgView.layer.cornerRadius = 3;
+    self.bgView.layer.shadowOpacity = 0.5;
+    self.bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.bgView.layer.shadowRadius = 3;
+    self.bgView.layer.shadowOffset = CGSizeMake(3, 3);
+    
 }
 
 - (void)setTopic:(WTTopic *)topic
@@ -78,15 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
     // 3、节点
     if (topic.node.length > 0)
     {
-        //self.nodeBtn.hidden = NO;
-        NSString *node = topic.node;
-        // 判断是否包含中文字符串
-        if ([NSString isChineseCharactersWithString: node] || node.length > 4)
-        {
-            //NSLog(@"中文:%@", _blog.node);
-            node = [NSString stringWithFormat: @" %@ ", topic.node];
-        }
-        [self.nodeBtn setTitle: node forState: UIControlStateNormal];
+        [self.nodeBtn setTitle: topic.node forState: UIControlStateNormal];
         self.lastReplyTimeLabelLeadingLayoutCons.constant = 8;
         [self.nodeBtn sizeToFit];
     }
@@ -106,17 +111,6 @@ NS_ASSUME_NONNULL_BEGIN
     // 7、评论数
     self.commentCountLabel.text = topic.commentCount;
     self.commentCountImageView.hidden = !(topic.commentCount.length > 0);
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    if (self.nodeBtn.titleLabel.text.length > 0)
-    {
-        self.nodeBtnWidthLayoutCons.constant = self.nodeBtn.width;
-        self.nodeBtn.height = 15;
-    }
 }
 
 #pragma mark - 事件

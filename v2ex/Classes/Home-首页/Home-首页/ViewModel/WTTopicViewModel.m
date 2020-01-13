@@ -13,7 +13,7 @@
 #import "NetworkTool.h"
 #import "WTTopicApiItem.h"
 #import "WTHTMLExtension.h"
-
+#import "WTAccountViewModel.h"
 
 #import "TFHpple.h"
 #import "NSString+YYAdd.h"
@@ -72,6 +72,15 @@
 #pragma mark 根据data解析出节点话题数组
 - (void)nodeTopicsWithData:(NSData *)data topicType:(WTTopicType)topicType avartorURL:(NSURL *)avartorURL
 {
+    // 1、检查是否需要二次登录
+    NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    if ([html containsString: WTLogin2faUrl])
+    {
+        NSString *once = [WTHTMLExtension getOnceWithHtml: html];
+        if (once) [[NSNotificationCenter defaultCenter] postNotificationName: WTTwoStepAuthNSNotification object: nil  userInfo: @{WTTwoStepAuthWithOnceKey : once}];
+        return;
+    }
+    
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
     
     NSArray *cellItemArray;
@@ -96,11 +105,11 @@
             TFHppleElement *nodeElement;
             if (nodeEs.count > 0)
             {
-                nodeElement = [cellItem searchWithXPathQuery: @"//a[@class='node']"][0];
+                nodeElement = [cellItem searchWithXPathQuery: @"//a[@class='node']"].firstObject;
             }
             
-            TFHppleElement *titleElement = [cellItem searchWithXPathQuery: @"//span[@class='item_title']//a"][0];
-            TFHppleElement *authorElement = [cellItem searchWithXPathQuery: @"//strong"][0];
+            TFHppleElement *titleElement = [cellItem searchWithXPathQuery: @"//span[@class='item_title']//a"].firstObject;
+            TFHppleElement *authorElement = [cellItem searchWithXPathQuery: @"//strong"].firstObject;
             NSArray<TFHppleElement *> *commentArray = [cellItem searchWithXPathQuery: @"//a[@class='count_livid']"];
             NSArray<TFHppleElement *> *smallFadeArray = [cellItem searchWithXPathQuery: @"//span[@class='small fade']"];
             NSArray<TFHppleElement *> *countOrangeArray = [cellItem searchWithXPathQuery: @"//a[@class='count_orange']"];
@@ -186,6 +195,12 @@
         [self.topics addObjectsFromArray: topics];
     }
 
+    // 10、未读的消息
+    [WTHTMLExtension parseUnreadWithDoc: doc];
+    
+    // 11、签到、头像
+    [WTHTMLExtension parseAvatarAndPastWithData: data];
+    
 }
 
 

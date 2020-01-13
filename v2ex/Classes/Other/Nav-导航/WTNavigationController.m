@@ -18,18 +18,19 @@
 
 + (void)load
 {
-    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses: @[[self class]]];
+//    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses: @[[self class]]];
     /*
     navBar.barTintColor = WTColor(42, 183, 103);
     navBar.translucent = NO;
     */
     // 当设置不透明的图片，效果是如上面的代码，会导致View位移，在控制器里面使用 extendedLayoutIncludesOpaqueBars = YES就行了
-    [navBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
-    //[navBar setBackgroundImage: [UIImage imageNamed: @"123"] forBarMetrics:forBarMetrics:UIBarMetricsDefault]
-    navBar.shadowImage = [[UIImage alloc] init];
+//    [navBar setBackgroundImage: [UIImage imageWithColor: [UIColor colorWithHexString: WTAppLightColor]] forBarMetrics:UIBarMetricsDefault];
+//    //[navBar setBackgroundImage: [UIImage imageNamed: @"123"] forBarMetrics:forBarMetrics:UIBarMetricsDefault]
+//    navBar.shadowImage = [[UIImage alloc] init];
     
-    NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    [navBar setTitleTextAttributes: textAttr];
+//    NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+//    [navBar setTitleTextAttributes: textAttr];
+    
     
 }
 
@@ -49,11 +50,13 @@
     pan.delegate = self;
     [self.view addGestureRecognizer: pan];
     
-    self.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    self.navigationBar.hidden = YES;
+    
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    
     // 非根控制器隐藏tabBar
     if (self.childViewControllers.count >= 1)
     {
@@ -61,9 +64,11 @@
         
         //UIViewController *prevVc = self.childViewControllers[self.childViewControllers.count - 1];
         
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage: [UIImage imageNamed:@"nav_back_normal"] highImage: nil target: self action: @selector(back) title: nil];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage: [UIImage imageNamed:@"common_back_new"] highImage: nil target: self action: @selector(back) title: nil];
     }
+    viewController.edgesForExtendedLayout = UIRectEdgeNone;
     viewController.extendedLayoutIncludesOpaqueBars = YES;
+    viewController.navigationController.navigationBar.hidden = YES;
     [super pushViewController: viewController animated: animated];
 }
 
@@ -77,6 +82,11 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     return self.childViewControllers.count > 1;
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+    return [self topViewController];
 }
 
 

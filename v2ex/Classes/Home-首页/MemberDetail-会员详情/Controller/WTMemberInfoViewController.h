@@ -11,6 +11,7 @@
 @interface WTMemberInfoViewController : UIViewController
 
 
++ (instancetype)memberInfoVC;
 /**
  快速创建的类方法
 

@@ -11,7 +11,7 @@
 @implementation WTParseTool
 
 #pragma mark - 把小图url解析成大图的Url
-+ (NSURL *)parseBigImageUrlWithSmallImageUrl: (NSString *)smallImageUrl
++ (NSURL *)parseBigImageUrlWithSmallImageUrl:(NSString *)smallImageUrl
 {
     if (smallImageUrl.length == 0)
         return nil;

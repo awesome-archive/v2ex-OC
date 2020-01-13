@@ -69,6 +69,20 @@
 }
 
 #pragma mark - Life Cycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear: animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -248,5 +262,10 @@
         _personIconBtn = personIconBtn;
     }
     return _personIconBtn;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 @end

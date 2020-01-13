@@ -13,6 +13,13 @@
 @property (nonatomic, strong) NSString              *once;
 /** 请求的URL */
 @property (nonatomic, strong) NSString              *urlString;
+/** 需要@的用户名 */
+@property (nonatomic, strong) NSString              *ausername;
+/** 回复的内容 */
+@property (weak, nonatomic) IBOutlet UITextView       *textView;
+
 /** 是否回复成功的回调 */
 @property (nonatomic, strong) void(^completionBlock)(BOOL isSuccess);
+/** 关闭*/
+@property (nonatomic,strong) void(^closeBlock)();
 @end

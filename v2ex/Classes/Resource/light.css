@@ -226,7 +226,7 @@ a.black:hover {
 }
 ul {
     list-style: outside none square;
-    margin: 1em 0 1em 1em;
+    /*margin: 1em 0 1em 1em;*/
     padding: 0;
 }
 ul li, ol li {
@@ -374,11 +374,14 @@ ol {
 
 
 .cell {
-    border-bottom: 1px solid #EAEAEA;
+/*    border-bottom: 1px solid #EAEAEA;*/
     font-size: 12px;
     line-height: 120%;
     padding: 10px;
     text-align: left;
+/*    border-bottom-color: RGBA(170,170,170,0.3);*/
+    background-color: #F2F3F5;
+    padding: 0 9px 10px 9px;
 }
 
 
@@ -429,7 +432,14 @@ ol {
 }
 .cell[id^="r_"] > table, .inner[id^="r_"] > table {
     table-layout: fixed;
+    background-color: #fff;
+    border-radius: 3px;
 }
+
+.cell[id^="r_"] > table .sep3{
+    padding-top: 10px;
+}
+
 div.node {
     background-color: transparent;
     border-radius: 3px;
@@ -564,9 +574,9 @@ div.node:hover .node_compose {
 /*.sep10 {*/
 /*    height: 10px;*/
 /*}*/
-/*.sep5 {*/
-/*    height: 5px;*/
-/*}*/
+.sep5 {
+    height: 5px;
+}
 /*.sep3 {*/
 /*    height: 3px;*/
 /*}*/
@@ -1208,6 +1218,7 @@ table.data td.d {
 }
 img.avatar {
     border-radius: 4px;
+    padding: 10px 0 0 8px;
 }
 a.img_sq {
     background-color: #fff;
@@ -1283,11 +1294,12 @@ a.btn_hero:hover {
 .note > *:last-child, .markdown_body > *:last-child, .problem > *:last-child, .page > *:last-child {
     margin-bottom: 0 !important;
 }
-.topic_content img{
-    max-width: 100%;
+.topic_content>img{
+    max-width: 95%;
+    padding-left: 10px;
 }
 
-.markdown_body > p > img {
+.markdown_body img {
     max-width: 100%;
 }
 .markdown_body table {
@@ -1392,6 +1404,7 @@ a.btn_hero:hover {
 
 .cell:first-child{
     padding: 0;
+    background-color: #fff;
 }
 
 .cell:first-child p{
@@ -1402,8 +1415,9 @@ a.btn_hero:hover {
     padding: 10px;
 }
 
+
 .reply_content img{
-    max-width: 100%;
+    max-width: 95%;
 }
 
 .cell:first-child ul{
@@ -1422,10 +1436,30 @@ a.btn_hero:hover {
 
 .cell .fr span{
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 8px;
+    top: 10px;
 }
 
+.cell table{
+    padding-right: 2px;
+}
 
+.cell[id^="r_"] > table .sep3{
+    padding-top: 8px;
+}
+
+.markdown_body>img{
+    padding-left: 10px;
+    max-width: 95%;
+}
+
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 
 </style>

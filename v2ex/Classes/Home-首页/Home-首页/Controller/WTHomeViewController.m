@@ -8,8 +8,10 @@
 
 #import "WTHomeViewController.h"
 #import "WTTopicDetailViewController.h"
-#import "WTGoogleSearchController.h"
-#import "WTPublishTopicViewController.h"
+#import "WTLoginViewController.h"
+
+#import "WTAccountViewModel.h"
+#import "WTLogin2FARequestItem.h"
 
 #import "WTURLConst.h"
 #import "UIBarButtonItem+Extension.h"
@@ -34,18 +36,38 @@
     // 添加子控制器
     [self setupAllChildViewControllers];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    // 设置导航栏的View
-    [self setTempNavImageView];
+    self.view.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+ 
+    // 注册通知
+    [self initNoti];
 }
-- (void)viewDidAppear:(BOOL)animated
+
+#pragma mark 注册通知
+- (void)initNoti
 {
-    [super viewDidAppear: animated];
-    
-    // 设置导航栏背景图片
-    [self setNavBackgroundImage];
+    // 1、二次登录的通知
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(twoStepAuth:) name: WTTwoStepAuthNSNotification object: nil];
 }
+
+#pragma mark 事件
+- (void)twoStepAuth:(NSNotification *)noti
+{
+    NSString *once = [noti.userInfo objectForKey: WTTwoStepAuthWithOnceKey];
+    
+    WTLoginViewController *loginVC = [WTLoginViewController new];
+    
+    // 两次登录的请求参数
+    WTAccount *account = [WTAccountViewModel shareInstance].account;
+    WTLogin2FARequestItem *item = [[WTLogin2FARequestItem alloc] initWithOnce: once usernameOrEmail: account.usernameOrEmail password: account.password];
+    loginVC.twoFArequestItem = item;
+    // 请求成功Block
+    __weak typeof (self) weakSelf = self;
+    loginVC.loginSuccessBlock = ^{
+        [weakSelf reloadSelectedVCData];
+    };
+    [self presentViewController: loginVC animated: YES completion: nil];
+}
+
 
 #pragma mark - Lazy method
 #pragma mark nodes
@@ -61,11 +83,7 @@
 #pragma mark - 初始化导航栏
 - (void)setupNav
 {
-    self.navigationItem.title = @"v2ex";
-
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_search"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(leftBarButtonItemClick)];
-    
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem setupBarButtonItemWithImage: [UIImage imageNamed: @"nav_write"] frame: CGRectMake(0, 0, 20, 20) addTarget: self action: @selector(rightBarButtonItemClick)];
+    [self.navigationController setNavigationBarHidden: YES animated: NO];
 }
 
 #pragma mark 添加子控制器
@@ -80,18 +98,4 @@
     }
 }
 
-#pragma mark - 事件
-- (void)leftBarButtonItemClick
-{
-    [self presentViewController: [WTGoogleSearchController new] animated: YES completion: nil];
-}
-
-- (void)rightBarButtonItemClick
-{
-    
-    
-    [self presentViewController: [WTPublishTopicViewController new] animated: YES completion: nil];
-}
-
 @end
-

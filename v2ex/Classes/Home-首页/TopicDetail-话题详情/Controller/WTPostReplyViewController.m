@@ -17,43 +17,101 @@
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
 /** 上传图片完成之后的地址 */
 @property (nonatomic, strong) NSString                *original_pic;
-/** 回复的内容 */
-@property (weak, nonatomic) IBOutlet UITextView       *textView;
+
+@property (weak, nonatomic) IBOutlet UIView           *contentView;
 @end
 
 @implementation WTPostReplyViewController
 
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear: animated];
+    
+    [SVProgressHUD dismiss];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 1、设置导航栏items
-    [self setupNavigationItems];
+    // 初始化View
+    [self initView];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    // 1、添加手势
+    [self addGes];
+    
+    
 
 }
 
-#pragma mark - 设置导航栏items
-- (void)setupNavigationItems
+#pragma mark - Private
+- (void)initView
 {
-    self.title = @"回复";
-
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"nav_close_white_normal"] style: UIBarButtonItemStylePlain target: self action: @selector(closeClick)];
+    self.textView.contentInset = UIEdgeInsetsMake(0, 0, 30, 0);
+    self.contentView.layer.masksToBounds = YES;
+    self.contentView.layer.cornerRadius = 10;
+    self.contentView.layer.shadowRadius = 5;
+    self.contentView.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.contentView.layer.shadowOffset = CGSizeMake(5, 5);
+    self.contentView.layer.shadowOpacity = 0.5;
+}
+- (void)addGes
+{
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget: self action: @selector(pan:)];
     
-    UIBarButtonItem *rightItem0 = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_post_normal"] style: UIBarButtonItemStyleDone target: self action: @selector(postClick)];
-    UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"nav_photo_normal"] style: UIBarButtonItemStyleDone target: self action: @selector(photoClick)];
-    self.navigationItem.rightBarButtonItems = @[rightItem0, rightItem1];
+    [self.contentView addGestureRecognizer: pan];
+}
+
+- (void)pan:(UIPanGestureRecognizer *)pan
+{
+    CGPoint center = pan.view.center;
+    CGPoint translation = [pan translationInView: self.view.superview];
+    
+    
+    pan.view.center = CGPointMake(center.x + translation.x, center.y + translation.y);
+    
+    
+    [pan setTranslation: CGPointZero inView: self.view.superview];
+    
+    if (pan.state == UIGestureRecognizerStateEnded)
+    {
+        //计算速度向量的长度，当他小于200时，滑行会很短
+        CGPoint velocity = [pan velocityInView: self.view.superview];
+        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+        CGFloat slideMult = magnitude / 200;
+        //NSLog(@"magnitude: %f, slideMult: %f", magnitude, slideMult); //e.g. 397.973175, slideMult: 1.989866
+        
+        //基于速度和速度因素计算一个终点
+        float slideFactor = 0.1 * slideMult;
+        CGPoint finalPoint = CGPointMake(center.x + (velocity.x * slideFactor),center.y + (velocity.y * slideFactor));
+        //限制最小widthCornerRadius,heightCornerRadius 和最大边界值HWScreenWidth - widthCornerRadius，HWScreenHeight - heightCornerRadius 以免拖动出屏幕界限
+        CGFloat widthCornerRadius = pan.view.width / 2;
+        CGFloat heightCornerRadius = pan.view.height / 2;
+        
+        
+        finalPoint.y = MIN(MAX(finalPoint.y, heightCornerRadius), WTScreenHeight - 49 - heightCornerRadius);
+        
+        finalPoint.x = MIN(MAX(finalPoint.x, widthCornerRadius), WTScreenHeight - widthCornerRadius);
+        
+        //使用 UIView 动画使 view 滑行到终点
+        [UIView animateWithDuration: slideFactor * 2 delay: 0 options: UIViewAnimationOptionCurveEaseOut animations: ^{
+            
+            pan.view.center = finalPoint;
+            
+        } completion: nil];
+    }
 }
 
 #pragma mark - 点击事件
 #pragma mark 关闭控制器
-- (void)closeClick
+- (IBAction)closeClick
 {
-    [self dismissViewControllerAnimated: YES completion: nil];
+    self.textView.text = @"";
+    if (self.closeBlock) self.closeBlock();
 }
 
 #pragma mark 选择图片
-- (void)photoClick
+- (IBAction)photoClick
 {
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle: @"上传图片"
                                                                      message: nil
@@ -85,7 +143,7 @@
 }
 
 #pragma mark 发表回复
-- (void)postClick
+- (IBAction)postClick
 {
     NSString *content = self.textView.text;
     if (content.length == 0)
@@ -94,6 +152,7 @@
     }
     
     [SVProgressHUD show];
+    __weak typeof(self) weakSelf = self;
     [[NetworkTool shareInstance] replyTopicWithUrlString: self.urlString once: self.once content: content success:^(id responseObject) {
         
         NSString *html = [[NSString alloc] initWithData: responseObject encoding: NSUTF8StringEncoding];
@@ -104,23 +163,27 @@
         }
         else
         {
-            [SVProgressHUD dismiss];
-            if (self.completionBlock)
-            {
-                self.completionBlock(YES);
-            }
-            [self dismissViewControllerAnimated: YES completion: nil];
+            [SVProgressHUD showSuccessWithStatus: @"回复成功"];
+            
+            
+            [SVProgressHUD dismissWithDelay: 0.5 completion:^{
+                weakSelf.textView.text = @"";
+                if (weakSelf.completionBlock) weakSelf.completionBlock(YES);
+            
+            }];
+            
+            
         }
     } failure:^(NSError *error) {
         
         WTLog(@"error:%@", error)
         
-        [SVProgressHUD dismiss];
-        if (self.completionBlock)
-        {
-            self.completionBlock(NO);
-        }
-        [self dismissViewControllerAnimated: YES completion: nil];
+        [SVProgressHUD showSuccessWithStatus: @"回复失败，请稍候重试"];
+        [SVProgressHUD dismissWithDelay: 0.5 completion:^{
+            if (weakSelf.completionBlock) weakSelf.completionBlock(NO);
+            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+        }];
+        
     }];
 }
 
@@ -169,6 +232,12 @@
         _imagePicker = imagePicker;
     }
     return _imagePicker;
+}
+
+#pragma mark - Setter
+- (void)setAusername:(NSString *)ausername
+{
+    self.textView.text = [NSString stringWithFormat: @"@%@ ", ausername];
 }
 
 - (void)dealloc

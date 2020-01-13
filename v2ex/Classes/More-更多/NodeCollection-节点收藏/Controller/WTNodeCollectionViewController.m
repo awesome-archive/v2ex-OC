@@ -7,6 +7,8 @@
 //  节点收藏控制器
 
 #import "WTNodeCollectionViewController.h"
+#import "WTNodeTopicViewController.h"
+#import "UIViewController+Extension.h"
 
 #import "WTNodeCollectionCell.h"
 
@@ -22,19 +24,11 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
 
 @property (nonatomic, strong) WTNodeViewModel *nodeVM;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @end
 
 @implementation WTNodeCollectionViewController
-
-#pragma mark - Init Method
-- (instancetype)init
-{
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    
-    layout.itemSize = CGSizeMake(100, 138);
-    
-    return [[WTNodeCollectionViewController alloc] initWithCollectionViewLayout: layout];
-}
 
 #pragma mark - Life Cycle
 - (void)viewDidLoad
@@ -48,7 +42,16 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
 
 - (void)setupView
 {
-    self.title = @"节点收藏";
+    [self navViewWithTitle: @"节点收藏"];
+    
+    //声明tableView的位置 添加下面代码
+    if (@available(iOS 11.0, *))
+        self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    self.collectionView.contentInset = UIEdgeInsetsMake(WTNavigationBarMaxY, 0, 0, 0);
+    self.collectionView.scrollIndicatorInsets = self.collectionView.contentInset;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.itemSize = CGSizeMake(100, 138);
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
@@ -62,12 +65,12 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
     [self.collectionView.mj_header beginRefreshing];
 }
 
+
 #pragma mark - 加载数据
 #pragma mark 加载最新的数据
 - (void)loadNewData
 {
-    
-    
+
     [self.nodeVM getMyNodeCollectionItemsWithSuccess:^{
         
         [self.collectionView reloadData];
@@ -108,5 +111,12 @@ NSString * const WTNodeCollectionCellIdentifier = @"WTNodeCollectionCellIdentifi
     cell.nodeItem = self.nodeVM.nodeItems[indexPath.row];
     
     return cell;
+}
+#pragma mark - UICollectionView delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    WTNodeTopicViewController *vc = [WTNodeTopicViewController new];
+    vc.nodeItem = self.nodeVM.nodeItems[indexPath.row];
+    [self.navigationController pushViewController: vc animated: YES];
 }
 @end

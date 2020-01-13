@@ -7,6 +7,7 @@
 //  话题收藏控制器
 
 #import "WTTopicCollectionViewController.h"
+#import "UIViewController+Extension.h"
 
 #import "WTTopicCollectionCell.h"
 #import "WTTopicCollectionViewModel.h"
@@ -23,9 +24,18 @@ NSString * const WTTopicCollectionCellIdentifier = @"WTTopicCollectionCellIdenti
 
 @property (nonatomic, strong) WTTopicCollectionViewModel *topicCollectionVM;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation WTTopicCollectionViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,21 +45,12 @@ NSString * const WTTopicCollectionCellIdentifier = @"WTTopicCollectionCellIdenti
     // 1、设置View
     [self setupView];
     
-//    self.myFollowingVM = [WTMyFollowingViewModel new];
-//    
-//    // 2、登陆过
-//    if ([[WTAccountViewModel shareInstance] isLogin])
-//    {
-//        // 2、开始下拉刷新
-//        [self.tableView.mj_header beginRefreshing];
-//    }
 }
 
 // 设置View
 - (void)setupView
 {
-    
-    self.title = @"话题收藏 ";
+    [self navViewWithTitle: @"话题收藏"];
     
     // tableView
     {
@@ -126,11 +127,11 @@ NSString * const WTTopicCollectionCellIdentifier = @"WTTopicCollectionCellIdenti
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView fd_heightForCellWithIdentifier: WTTopicCollectionCellIdentifier configuration:^(WTTopicCollectionCell *cell) {
-        cell.topicCollectionItem = self.topicCollectionVM.topicCollectionItems[indexPath.row];
-    }];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [tableView fd_heightForCellWithIdentifier: WTTopicCollectionCellIdentifier configuration:^(WTTopicCollectionCell *cell) {
+//        cell.topicCollectionItem = self.topicCollectionVM.topicCollectionItems[indexPath.row];
+//    }];
+//}
 
 @end

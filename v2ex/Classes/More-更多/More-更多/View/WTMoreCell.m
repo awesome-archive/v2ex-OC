@@ -31,6 +31,8 @@ CGFloat const WTHeaderViewH = 44;
     {
         self.backgroundColor = [UIColor clearColor];
         
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         // 1、头部的View
         UIView *headerView = [UIView new];
         
@@ -131,6 +133,7 @@ CGFloat const WTHeaderViewH = 44;
     {
         item.operationBlock();
     }
+
 }
 
 @end

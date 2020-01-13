@@ -177,7 +177,8 @@
     }
     
     //
-    NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
+//    NSString *newContentHTML = [contentHTML stringByReplacingOccurrencesOfString: @"<p><img" withString: @"<p style=\"padding: 0;\"><img"];
+    NSString *newContentHTML = contentHTML;
     newContentHTML = [newContentHTML stringByReplacingOccurrencesOfString: @"<script><![CDATA[<![CDATA[<![CDATA[<![CDATA[hljs.initHighlightingOnLoad();]]]]]]]]><![CDATA[><![CDATA[><![CDATA[>]]]]]]><![CDATA[><![CDATA[>]]]]><![CDATA[>]]></script>" withString: @"<script>hljs.initHighlightingOnLoad();</script>"];
     
     
@@ -201,6 +202,9 @@
     NSString *jsPath = [[NSBundle mainBundle] pathForResource: @"v2ex.js" ofType: nil];
     NSString *js = [NSString stringWithContentsOfFile: jsPath encoding: NSUTF8StringEncoding error: nil];
     
+    NSString *fastClickJsPath = [[NSBundle mainBundle] pathForResource: @"fastclick.js" ofType: nil];
+    NSString *fastClickJs = [NSString stringWithContentsOfFile: fastClickJsPath encoding: NSUTF8StringEncoding error: nil];
+    
     NSString *highlightJsPath = [[NSBundle mainBundle] pathForResource: @"highlight.js" ofType: nil];
     NSString *highlightJs = [NSString stringWithContentsOfFile: highlightJsPath encoding: NSUTF8StringEncoding error: nil];
     
@@ -212,11 +216,14 @@
     [html appendString: css];
     
     [html appendString: highlightJs];
+    
+    [html appendString: fastClickJs];
      
     [html appendString: @"</head><body>"];
     
     [html appendString: newContentHTML];
     
+    NSUInteger tempI = 0;
     for (TFHppleElement *e in commentCellEs)
     {
         if([e objectForKey: @"id"])
@@ -225,20 +232,35 @@
             if ([e.raw containsString: @"embedded_video_wrapper"])
             {
                 continue;
+            
             }
-            [html appendString: [WTHTMLExtension filterGarbageData: e.raw]];
+            
+            NSString *raw = [WTHTMLExtension filterGarbageData: e.raw];
+            
+            if (tempI==0)
+                raw = [raw stringByReplacingOccurrencesOfString: @"class=\"cell\"" withString: @"class=\"cell\"  style=\"padding-top:10px\""];
+            
+            [html appendString: raw];
+            
+            tempI++;
         }
+        
     }
     
     for (TFHppleElement *e in commentInnerEs)
     {
         if([e objectForKey: @"id"])
         {
-            [html appendString: [WTHTMLExtension filterGarbageData: e.raw]];
+            NSString *raw = [WTHTMLExtension filterGarbageData: e.raw];
+            
+            if (tempI == 0)
+                raw = [raw stringByReplacingOccurrencesOfString: @"class=\"cell\"" withString: @"class=\"cell\"  style=\"padding-top:10px\""];
+            
+            [html appendString: raw];
         }
     }
     
-    html = [WTHTMLExtension topicDetailParseAvatarWithHTML: html];
+    //html = [WTHTMLExtension topicDetailParseAvatarWithHTML: html];
     
     [html appendString: js];
     
@@ -248,7 +270,7 @@
     
     topicDetailVM.contentHTML = html;
     
-   // WTLog(@"html:%@", html)
+    WTLog(@"html:%@", html)
     
     return topicDetailVM;
 }
@@ -432,12 +454,18 @@
         
         // 9、页数
         topicDetailVM.currentPage = [currentPageE.content integerValue];
+        
+        // 10、未读的消息
+        [WTHTMLExtension parseUnreadWithDoc: doc];
     }
     
     
     
     return topicDetailVM;
 }
+
+
+
 
 #pragma mark - 解析评论数组
 + (NSMutableArray<WTTopicDetailViewModel *> *)parseTopicCommentWithDoc:(TFHpple *)doc

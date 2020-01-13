@@ -17,7 +17,7 @@
  *
  *  @return 大图的URL
  */
-+ (NSURL *)parseBigImageUrlWithSmallImageUrl: (NSString *)smallImageUrl;
++ (NSURL *)parseBigImageUrlWithSmallImageUrl:(NSString *)smallImageUrl;
 
 /**
  *  把小图url解析成大图的Url
@@ -27,7 +27,7 @@
  *
  *  @return 大图的URL
  */
-+ (NSURL *)parseBigImageUrlWithSmallImageUrl: (NSString *)smallImageUrl isNormalPic:(BOOL)isNormalPic;
++ (NSURL *)parseBigImageUrlWithSmallImageUrl:(NSString *)smallImageUrl isNormalPic:(BOOL)isNormalPic;
 /**
  *  把收藏的地址解析成喜欢的地址
  *

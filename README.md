@@ -10,11 +10,12 @@
 本项目纯属学习，没有任何其他恶意用途，若有任何侵犯到您的权益，请您在第一时间联系我。我会尽快删除。
 
 ## 截图
-![首页](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4532.PNG)
+![首页](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_5104.PNG)
+![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_5010.PNG)
 ![节点](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4533.PNG) 
-![话题详情](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4534.PNG)
+![话题详情](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_5106.PNG)
 ![会员详情](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4535.PNG)
-![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_4554.PNG)
+![](https://github.com/misaka14/v2ex-OC/blob/master/Screenshots/IMG_5105.PNG)
 
 ## 期待
 其实整个项目没有任何难点,项目中当然也存在着些许错误与设计上不合理的地方，如果您有任何好的想法、建议、意见。欢迎您联系我(misaka14@163.com)。我们共同学习。
@@ -29,11 +30,11 @@
 * 1、刚刚注册的用户是有一段时间不能对话题做处理的，这时候对帖子操作是有问题的。
 * 2、注册不成功错误提示优化。　　　　　　已完成
 * 3、评论列表中的图文混排，点击优化。　　已完成
-* 4、搜索话题的功能。
+* 4、搜索话题的功能。	            已完成
 * 5、可以对别的用户进行添加关注和忽略。
 * 6、用户可以上传高清头像   
 * 7、添加聊天的功能
-* 8、用户详情模块的添加 已完成
+* 8、用户详情模块的添加 		已完成
 
 ## 第三方框架
   * `AFNetworking`

@@ -30,9 +30,15 @@
     [super awakeFromNib];
   //  self.contentView.backgroundColor = [UIColor colorWithHexString: WTAppLightColor];
     
+    self.authorLabel.textColor = [UIColor colorWithHexString: @"#494949"];
+    
+    self.createTimeLabel.textColor = [UIColor colorWithHexString: @"#AAAAAA"];
+    
+//    self.authorLabel.dk_textColorPicker = DKColorPickerWithKey(WTTopicTitleColor);
+    
     // 圆角
-    self.nodeLabel.layer.cornerRadius = 3;
-    self.nodeLabel.layer.masksToBounds = YES;
+//    self.nodeLabel.layer.cornerRadius = 3;
+//    self.nodeLabel.layer.masksToBounds = YES;
     
     self.iconImageView.layer.cornerRadius = 5;
     self.iconImageView.layer.masksToBounds = YES;

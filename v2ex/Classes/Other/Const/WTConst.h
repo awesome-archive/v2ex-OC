@@ -16,9 +16,9 @@ typedef NS_ENUM(NSUInteger, WTTableViewType) {
     WTTableViewTypeError,
 };
 /** 标题View的高度 */
-UIKIT_EXTERN CGFloat const WTTitleViewHeight;
+//UIKIT_EXTERN CGFloat const WTTitleViewHeight;
 /** 导航栏的Y的最大值  */
-UIKIT_EXTERN CGFloat const WTNavigationBarMaxY;
+//UIKIT_EXTERN CGFloat const WTNavigationBarMaxY;
 /** TabBar的高度*/
 UIKIT_EXTERN CGFloat const WTTabBarHeight;
 /** 通用边距*/
@@ -41,8 +41,8 @@ UIKIT_EXTERN NSString * const WTNoNormalColor;
 /** 工具栏上按钮点击的通知 */
 UIKIT_EXTERN NSString * const WTToolBarButtonClickNotification;
 
-/** 登陆成功的通知　*/
-UIKIT_EXTERN NSString * const WTLoginSuccessNotification;
+/** 登陆状态发生变化 通知　*/
+UIKIT_EXTERN NSString * const WTLoginStateChangeNotification;
 
 /** 用户控制器头部View的高度 */
 UIKIT_EXTERN CGFloat const WTUserInfoHeadViewHeight;
@@ -56,3 +56,18 @@ UIKIT_EXTERN NSString * const WTNoExistMemberTip;
 
 /** 话题主颜色　*/
 UIKIT_EXTERN NSString * const WTTopicCellMainColor;
+
+/** 未读通知 */
+UIKIT_EXTERN NSString * const WTUnReadNotificationNotification;
+
+/** 未读通知个数 */
+UIKIT_EXTERN NSString * const WTUnReadNumKey;
+
+
+/** 需要两步验证 */
+UIKIT_EXTERN NSString * const WT2FALoginTip;
+
+/** 两步验证通知 */
+UIKIT_EXTERN NSString * const WTTwoStepAuthNSNotification;
+/** 两步验证通知Once的key */
+UIKIT_EXTERN NSString * const WTTwoStepAuthWithOnceKey;

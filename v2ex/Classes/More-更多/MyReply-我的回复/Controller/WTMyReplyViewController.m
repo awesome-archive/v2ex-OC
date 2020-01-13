@@ -9,6 +9,7 @@
 #import "WTMyReplyViewController.h"
 #import "WTLoginViewController.h"
 #import "WTTopicDetailViewController.h"
+#import "UIViewController+Extension.h"
 
 #import "WTReplyCell.h"
 #import "WTRefreshNormalHeader.h"
@@ -25,6 +26,7 @@
 
 @property (nonatomic, strong) WTReplyViewModel *replyVM;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 NSString * const WTReplyCellIdentifier = @"WTReplyCellIdentifier";
@@ -51,8 +53,7 @@ NSString * const WTReplyCellIdentifier = @"WTReplyCellIdentifier";
 // 设置View
 - (void)setupView
 {
-    
-    self.title = @"我的回复";
+    [self navViewWithTitle: @"我的回复"];
     
     // tableView
     {
@@ -73,6 +74,8 @@ NSString * const WTReplyCellIdentifier = @"WTReplyCellIdentifier";
     }
 
 }
+
+
 
 #pragma mark - 加载数据
 #pragma mark 加载最新的数据

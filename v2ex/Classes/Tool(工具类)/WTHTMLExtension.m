@@ -7,7 +7,7 @@
 //
 
 #import "WTHTMLExtension.h"
-//#import "HTMLParser.h"
+#import "WTAccountViewModel.h"
 //#import "HTMLNode.h"
 #import "WTURLConst.h"
 #import "TFHpple.h"
@@ -44,7 +44,16 @@
 + (NSString *)getOnceWithHtml:(NSString *)html
 {
     NSRange range = [html rangeOfString: @"/signout?once="];
-    return [html substringWithRange: NSMakeRange(range.location + range.length, 5)];
+    if (range.length > 0)
+    {
+        return [html substringWithRange: NSMakeRange(range.location + range.length, 5)];
+    }
+    else
+    {
+        NSData *data = [html dataUsingEncoding: NSUTF8StringEncoding];
+        TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+        return [[doc peekAtSearchWithXPathQuery: @"//input[@name='once']"] objectForKey: @"value"];
+    }
 }
 
 /**
@@ -91,13 +100,39 @@
 }
 
 
+
+#pragma mark - 解析未读节点
++ (void)parseUnreadWithDoc:(TFHpple *)doc
+{
+    return;
+    // 1、判断是否有未读数据
+    TFHppleElement *unreadE = [doc peekAtSearchWithXPathQuery: @"//input[@class='super special button']"];
+    NSString *value = nil;
+    if (unreadE)
+        value = [unreadE objectForKey: @"value"];
+    
+    // 2、有未读数据
+    if (value)
+    {
+        NSInteger unread = 0;
+        NSArray *values = [value componentsSeparatedByString: @" "];
+        if (values.count > 0)
+            unread = [[values objectAtIndex: 0] integerValue];
+        
+        // 3、发送未读通知
+        if (unread > 0)
+            [[NSNotificationCenter defaultCenter] postNotificationName: WTUnReadNotificationNotification object: nil userInfo: @{WTUnReadNumKey : @(unread)}];
+    }
+}
+
+
 /**
  解析HTML　头像变成清晰的
 
  @param html 要解析html
  @return 解析后的html
  */
-+ (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html
++ (NSString *)topicDetailParseAvatarWithHTML:(NSString *)html
 {
     NSString *newHTML =  [html stringByReplacingOccurrencesOfString: @"max-width: 24px; max-height: 24px;" withString: @"max-width: 35px; max-height: 35px;"];
     
@@ -131,6 +166,46 @@
  */
 + (NSString *)filterGarbageData:(NSString *)html
 {
+    // 特殊情况1
+    
+        // https://www.v2ex.com/t/369999#reply2
+    html = [html stringByReplacingOccurrencesOfString: @"<div class=\"badge_mod\"/>" withString: @""];
+    
+    // 特殊情况2
+    
+    html = [html stringByReplacingOccurrencesOfString: @"<div class=\"sep3\"/>" withString: @"<div class=\"sep3\"></div>"];
+    
+    // 特殊情况3
+    
+    html = [html stringByReplacingOccurrencesOfString: @"<div class=\"sep5\"/>" withString: @"<div class=\"sep5\"></div>"];
+    
+    
+    
+    html = [html stringByReplacingOccurrencesOfString: @"<td width=\"10\" valign=\"top\"/>" withString: @"<td width=\"14\" valign=\"top\"></td>"];
+    
+    
+    
+    html = [html stringByReplacingOccurrencesOfString: @"class=\"inner\"" withString: @"class=\"cell\""];
+
+    
+    
     return [html stringByReplacingOccurrencesOfString: @"<img src=\"/static/img/reply@2x.png\" width=\"20\" height=\"16\" align=\"absmiddle\" border=\"0\" alt=\"Reply\"/>" withString: @""];
+}
+
+#pragma mark - 解析头像和签到
++ (void)parseAvatarAndPastWithData:(NSData *)data
+{
+    NSString *html = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    WTAccount *account = [WTAccountViewModel shareInstance].account;
+    account.past = ![html containsString: @"领取今日的登录奖励"];
+    
+    TFHpple *doc = [[TFHpple alloc] initWithHTMLData: data];
+    NSArray *imageE = [doc searchWithXPathQuery: @"//img"];
+    if (imageE.count > 1)
+    {
+        NSString *imageUrl = [WTHTMLExtension topicDetailParseAvatarWithHTML: [imageE[1] objectForKey: @"src"]];
+        account.avatarURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", WTHTTP, imageUrl]];
+    }
+    
 }
 @end

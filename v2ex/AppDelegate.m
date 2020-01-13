@@ -12,8 +12,10 @@
 #import "WTAccountViewModel.h"
 #import "WTFPSLabel.h"
 #import "WTTopWindow.h"
+
+
 #import "WTAppDelegateTool.h"
-#import "WTPublishTopicViewController.h"
+
 
 static WTAppDelegateTool *_appDelegateTool;
 
@@ -27,7 +29,7 @@ static WTAppDelegateTool *_appDelegateTool;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // 4、自动登录
+    // 0、自动登录
     [[WTAccountViewModel shareInstance] autoLogin];
     
     // 1、创建窗口
@@ -39,12 +41,10 @@ static WTAppDelegateTool *_appDelegateTool;
     // 3、显示窗口
     [self.window makeKeyAndVisible];
     
-    
-    
     // 5、全局设置状态栏颜色
-    application.statusBarStyle = UIStatusBarStyleLightContent;
+//    application.statusBarStyle = UIStatusBarStyleLightContent;
+    
     application.applicationIconBadgeNumber = 0;
-    [UITabBar appearance].tintColor = WTLightColor;
     
     // 6、界面 FPS 代码
 #if DEBUG
@@ -61,11 +61,13 @@ static WTAppDelegateTool *_appDelegateTool;
     }];
     
     // 8、设置3DTouch 按钮
-    [_appDelegateTool setup3DTouchItems: application];
+    if (iOS9Later)
+    {
+        [_appDelegateTool setup3DTouchItems: application];
+    }
     
     // 9、初始化第三方SDK
     [_appDelegateTool initAppSDKWithDidFinishLaunchingWithOptions: launchOptions];
-
     
     return YES;
 }
@@ -74,6 +76,7 @@ static WTAppDelegateTool *_appDelegateTool;
 #pragma mark - 处理3DTouch点击事件
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
+    UITabBarController *rootVC = (UITabBarController *)application.keyWindow.rootViewController;
     NSString *type = shortcutItem.type;
     if ([type isEqualToString: @"publishTopicItem"])
     {
@@ -81,7 +84,7 @@ static WTAppDelegateTool *_appDelegateTool;
     }
     else if([type isEqualToString: @"hotTopicItem"])
     {
-        WTLog(@"热门话题")
+        rootVC.selectedIndex = 2;
     }
     else
     {

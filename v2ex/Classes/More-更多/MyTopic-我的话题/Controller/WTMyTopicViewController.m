@@ -9,6 +9,7 @@
 #import "WTMyTopicViewController.h"
 #import "WTTopicDetailViewController.h"
 #import "WTMemberDetailViewController.h"
+#import "UIViewController+Extension.h"
 
 #import "WTTopicCell.h"
 
@@ -22,10 +23,12 @@
 
 static NSString *const ID = @"myTopicCell";
 
-@interface WTMyTopicViewController () <WTTopicCellDelegate>
+@interface WTMyTopicViewController () <UITableViewDataSource, UITableViewDelegate, WTTopicCellDelegate>
 
 @property (nonatomic, strong) WTTopicViewModel *topicVM;
 @property (nonatomic, strong) NSString *urlString;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation WTMyTopicViewController
@@ -33,8 +36,7 @@ static NSString *const ID = @"myTopicCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = @"我的话题";
+
     
     self.urlString = [NSString stringWithFormat: @"https://www.v2ex.com/member/%@/topics", [WTAccountViewModel shareInstance].account.usernameOrEmail];
     
@@ -47,6 +49,8 @@ static NSString *const ID = @"myTopicCell";
 #pragma mark - 初始化页面
 - (void)setUpView
 {
+    [self navViewWithTitle: @"我的话题"];
+    
     // 1、设置tableView一些属性
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -61,6 +65,7 @@ static NSString *const ID = @"myTopicCell";
     [self.tableView.mj_header beginRefreshing];
     
 }
+
 
 
 #pragma mark 加载最新的数据

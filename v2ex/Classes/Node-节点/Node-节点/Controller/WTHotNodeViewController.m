@@ -9,6 +9,7 @@
 #import "WTHotNodeViewController.h"
 #import "WTNodeViewModel.h"
 #import "WTHotNodeCell.h"
+#import "WTHotNodeFlowLayout.h"
 #import "WTHotNodeReusableView.h"
 #import "WTTopicViewController.h"
 #import "WTNodeTopicViewController.h"
@@ -47,8 +48,17 @@ static NSString * const headerViewReuseIdentifier = @"headerViewReuseIdentifier"
  */
 - (void)setupView
 {
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.sectionInset = UIEdgeInsetsMake(WTHotNodeCellSpacing, WTHotNodeSectionLeft, WTHotNodeCellSpacing, 0);
+    layout.minimumInteritemSpacing = WTHotNodeMinimumInteritemSpacing;
+    layout.minimumLineSpacing = WTHotNodeCellSpacing;
     
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor colorWithHexString: @"#F2F3F5"];
+    
+    self.collectionView.bounces = NO;
+    
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.showsVerticalScrollIndicator = NO;
     
     [self.collectionView registerNib: [UINib nibWithNibName: @"WTHotNodeCell" bundle: nil] forCellWithReuseIdentifier: reuseIdentifier];
 
@@ -132,11 +142,6 @@ static NSString * const headerViewReuseIdentifier = @"headerViewReuseIdentifier"
 {
     CGSize size = CGSizeMake(self.nodeVMs[indexPath.section].nodeItems[indexPath.row].width, 25);
     return size;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 15.0f;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section

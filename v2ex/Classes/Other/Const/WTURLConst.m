@@ -47,6 +47,12 @@ NSString * const WTUploadPictureUrl = @"https://pic.xiaojianjian.net/webtools/pi
 /** 注册 */
 NSString * const WTRegisterUrl = @"signup";
 
+/** 两步验证的URL */
+NSString * const WTLogin2faUrl = @"/2fa";
+
+/** 继续注册 */
+NSString * const WTContinueRegisterUrl = @"signup/confirm";
+
 /** domain*/
 NSString * const WTDomain = @"com.miaska14.com";
 /** code */
@@ -55,4 +61,6 @@ CGFloat const WTErrorCode = -1011;
 NSString * const WTErrorMessageKey = @"message";
 
 /** www.misaka14.com服务器 */
-NSString * const WTMisaka14Domain = @"http://172.16.1.45:8080/v2ex";
+NSString * const WTMisaka14Domain = @"https://www.misaka14.com/V2EX_JAVA/";
+/** 搜索话题 */
+NSString * const WTSearchTopicUrl = @"worm?method=searchTopic";

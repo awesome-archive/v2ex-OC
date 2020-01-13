@@ -143,7 +143,7 @@
         
         [btn setTitleColor: WTColor(111, 111, 111) forState:UIControlStateNormal];
         
-        [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+        [btn setTitleColor: WTSelectedColor forState:UIControlStateSelected];
         
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchDown];
         

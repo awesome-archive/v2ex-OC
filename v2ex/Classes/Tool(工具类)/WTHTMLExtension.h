@@ -49,7 +49,7 @@
  @param html 要解析html
  @return 解析后的html
  */
-+ (NSMutableString *)topicDetailParseAvatarWithHTML:(NSMutableString *)html;
++ (NSString *)topicDetailParseAvatarWithHTML:(NSString *)html;
 
 
 /**
@@ -68,5 +68,18 @@
  @return 过滤之后的数据
  */
 + (NSString *)filterGarbageData:(NSString *)html;
+
+
+/**
+ 解析未读节点
+
+ @param doc 未读消息
+ */
++ (void)parseUnreadWithDoc:(TFHpple *)doc;
+
+/**
+ 解析头像和签到
+ */
++ (void)parseAvatarAndPastWithData:(NSData *)data;
 
 @end
